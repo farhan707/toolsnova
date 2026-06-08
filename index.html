@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolsNova — Free Online Developer, Finance & Trading Tools</title>
+<meta name="description" content="34 free browser-based utilities. Developer tools, calculators, finance tools, and trading calculators. JSON formatter, EMI calculator, SIP calculator, lot size calculator and more. No signup, no ads, instant results.">
+<link rel="canonical" href="https://toolsnova.net/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"ToolsNova","url":"https://toolsnova.net/","description":"Free browser-based developer utilities, finance calculators, and trading tools."}
+</script>
+<style>
+.hero { padding:3rem 2rem 1.5rem; max-width:620px; }
+.hero h1 { font-family:var(--display);font-weight:800;font-size:2.2rem;letter-spacing:-.04em;line-height:1.1;margin-bottom:.8rem; }
+.hero h1 span { color:var(--accent); }
+.hero p { font-size:.83rem;color:var(--text2);line-height:1.8; }
+.pill-row { display:flex;gap:6px;flex-wrap:wrap;margin-top:.8rem; }
+.pill { font-size:.67rem;padding:.25rem .7rem;border-radius:99px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);letter-spacing:.04em; }
+.cat-section { padding:0 2rem 2rem; }
+.cat-label { font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.02em;color:var(--text);margin:2rem 0 .8rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem; }
+.cat-label span { font-size:.65rem;font-family:var(--mono);color:var(--text3);font-weight:400;letter-spacing:.06em; }
+.tools-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px; }
+.tool-card { background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;text-decoration:none;color:inherit;transition:border-color .15s,background .15s;display:flex;flex-direction:column;gap:.4rem; }
+.tool-card:hover { border-color:var(--border2);background:var(--surface2); }
+.tool-icon { font-size:1.1rem;opacity:.6;margin-bottom:.1rem; }
+.tool-name { font-family:var(--display);font-weight:700;font-size:.92rem;letter-spacing:-.02em;color:var(--text); }
+.tool-desc { font-size:.73rem;color:var(--text2);line-height:1.6; }
+.tool-go { font-size:.68rem;color:var(--accent);margin-top:auto;padding-top:.6rem;letter-spacing:.03em; }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Tools that <span>just work</span></h1>
+  <p>21 free utilities for developers, analysts, and traders. Everything runs in your browser — nothing uploaded, no account required.</p>
+  <div class="pill-row">
+    <span class="pill">100% client-side</span>
+    <span class="pill">no signup</span>
+    <span class="pill">instant results</span>
+    <span class="pill">toolsnova.net</span>
+  </div>
+</section>
+
+<div class="cat-section">
+
+  <!-- DEVELOPER TOOLS -->
+  <div class="cat-label">🛠 Developer Tools <span>10 tools</span></div>
+  <div class="tools-grid">
+    <a href="json-formatter.html" class="tool-card"><div class="tool-icon">{}</div><div class="tool-name">JSON Formatter</div><div class="tool-desc">Format, validate and beautify JSON with syntax highlighting.</div><div class="tool-go">Open →</div></a>
+    <a href="base64-encoder.html" class="tool-card"><div class="tool-icon">⇌</div><div class="tool-name">Base64 Encoder</div><div class="tool-desc">Encode or decode Base64 strings. Supports Unicode and emoji.</div><div class="tool-go">Open →</div></a>
+    <a href="case-converter.html" class="tool-card"><div class="tool-icon">Cc</div><div class="tool-name">Case Converter</div><div class="tool-desc">UPPER, lower, camelCase, PascalCase, snake_case, kebab-case.</div><div class="tool-go">Open →</div></a>
+    <a href="word-counter.html" class="tool-card"><div class="tool-icon">Aa</div><div class="tool-name">Word Counter</div><div class="tool-desc">Count words, characters, sentences, paragraphs and reading time.</div><div class="tool-go">Open →</div></a>
+    <a href="url-encoder.html" class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">URL Encoder</div><div class="tool-desc">Encode or decode URLs and query parameters with breakdown.</div><div class="tool-go">Open →</div></a>
+    <a href="timestamp-converter.html" class="tool-card"><div class="tool-icon">⏱</div><div class="tool-name">Timestamp Converter</div><div class="tool-desc">Unix epoch ↔ human date. UTC, ISO 8601, local timezone.</div><div class="tool-go">Open →</div></a>
+    <a href="password-generator.html" class="tool-card"><div class="tool-icon">🔑</div><div class="tool-name">Password Generator</div><div class="tool-desc">Cryptographically random strong passwords. Bulk generation.</div><div class="tool-go">Open →</div></a>
+    <a href="lorem-ipsum.html" class="tool-card"><div class="tool-icon">¶</div><div class="tool-name">Lorem Ipsum</div><div class="tool-desc">Generate placeholder text — words, sentences or paragraphs.</div><div class="tool-go">Open →</div></a>
+    <a href="uuid-generator.html" class="tool-card"><div class="tool-icon">⬡</div><div class="tool-name">UUID Generator</div><div class="tool-desc">Generate UUID v4 strings. Bulk, uppercase, and no-dash formats.</div><div class="tool-go">Open →</div></a>
+    <a href="hash-generator.html" class="tool-card"><div class="tool-icon">#</div><div class="tool-name">Hash Generator</div><div class="tool-desc">MD5, SHA-1, SHA-256, SHA-512 from any text. All at once.</div><div class="tool-go">Open →</div></a>
+  </div>
+
+  <!-- GENERAL UTILITIES -->
+  <div class="cat-label">🧮 General Utilities <span>3 tools</span></div>
+  <div class="tools-grid">
+    <a href="age-calculator.html" class="tool-card"><div class="tool-icon">🎂</div><div class="tool-name">Age Calculator</div><div class="tool-desc">Exact age in years, months and days. Days to next birthday.</div><div class="tool-go">Open →</div></a>
+    <a href="bmi-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">BMI Calculator</div><div class="tool-desc">Body Mass Index in metric or imperial. Health category guidance.</div><div class="tool-go">Open →</div></a>
+    <a href="percentage-calculator.html" class="tool-card"><div class="tool-icon">%</div><div class="tool-name">Percentage Calculator</div><div class="tool-desc">X% of Y, percentage change, add/subtract %, and more.</div><div class="tool-go">Open →</div></a>
+  </div>
+
+  <!-- FINANCE TOOLS -->
+  <div class="cat-label">💰 Finance Tools <span>4 tools</span></div>
+  <div class="tools-grid">
+    <a href="emi-calculator.html" class="tool-card"><div class="tool-icon">🏦</div><div class="tool-name">EMI Calculator</div><div class="tool-desc">Monthly loan EMI, total interest, and amortisation breakdown.</div><div class="tool-go">Open →</div></a>
+    <a href="sip-calculator.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">SIP Calculator</div><div class="tool-desc">SIP future value, total invested vs estimated returns.</div><div class="tool-go">Open →</div></a>
+    <a href="compound-interest-calculator.html" class="tool-card"><div class="tool-icon">🔁</div><div class="tool-name">Compound Interest</div><div class="tool-desc">CI with any frequency — annual, monthly, daily compounding.</div><div class="tool-go">Open →</div></a>
+    <a href="age-calculator.html" class="tool-card" style="opacity:.5;pointer-events:none"><div class="tool-icon">💳</div><div class="tool-name">Currency Converter</div><div class="tool-desc">Coming soon</div></a>
+  </div>
+
+  <!-- TRADING TOOLS -->
+  <div class="cat-label">📊 Trading Tools <span>5 tools</span></div>
+  <div class="tools-grid">
+    <a href="lot-size-calculator.html" class="tool-card"><div class="tool-icon">📐</div><div class="tool-name">Lot Size Calculator</div><div class="tool-desc">Forex position size from balance, risk %, entry and stop loss.</div><div class="tool-go">Open →</div></a>
+    <a href="risk-reward-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Risk:Reward Ratio</div><div class="tool-desc">R:R ratio, P&L, and breakeven win rate for any trade.</div><div class="tool-go">Open →</div></a>
+    <a href="drawdown-calculator.html" class="tool-card"><div class="tool-icon">📉</div><div class="tool-name">Drawdown Calculator</div><div class="tool-desc">Drawdown loss and recovery % needed to break even.</div><div class="tool-go">Open →</div></a>
+    <a href="margin-calculator.html" class="tool-card"><div class="tool-icon">🏧</div><div class="tool-name">Margin Calculator</div><div class="tool-desc">Required margin for any forex/CFD position and leverage.</div><div class="tool-go">Open →</div></a>
+    <a href="gold-position-size-calculator.html" class="tool-card"><div class="tool-icon">🥇</div><div class="tool-name">Gold Position Size</div><div class="tool-desc">XAUUSD lot size calculator. Accounts for gold pip value.</div><div class="tool-go">Open →</div></a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

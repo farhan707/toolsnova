@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — ToolsNova</title>
+<meta name="description" content="ToolsNova is a free collection of browser-based developer utilities. Learn about our mission, how the tools work, and why we built them.">
+<link rel="canonical" href="https://toolsnova.net/about">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.prose {
+  max-width: 680px;
+  padding: 2rem 2rem 4rem;
+}
+.prose h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+}
+.prose .tagline {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.prose h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 2rem 0 0.6rem;
+}
+.prose p {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.85;
+  margin-bottom: 0.8rem;
+}
+.prose a { color: var(--accent); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 1.2rem 0;
+}
+.principle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.principle-card .pc-icon { font-size: 1.1rem; margin-bottom: 6px; }
+.principle-card .pc-title { font-size: 0.78rem; font-weight: 500; color: var(--text); margin-bottom: 4px; font-family: var(--display); }
+.principle-card .pc-desc { font-size: 0.73rem; color: var(--text2); line-height: 1.6; }
+
+.tools-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 6px;
+  margin: 1rem 0;
+}
+.tool-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.76rem;
+  color: var(--text2);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.tool-item:hover { border-color: var(--border2); color: var(--text); text-decoration: none; }
+.tool-item .ti-icon { color: var(--accent); font-size: 0.85rem; opacity: 0.8; }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"      class="nav-link">JSON</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64</a>
+    <a href="word-counter.html"        class="nav-link">Words</a>
+    <a href="case-converter.html"      class="nav-link">Case</a>
+    <a href="password-generator.html"  class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem</a>
+    <a href="url-encoder.html"         class="nav-link">URL</a>
+  </nav>
+</header>
+
+<div class="prose">
+  <h1>About ToolsNova</h1>
+  <p class="tagline">A free, fast, and private collection of developer utilities that run entirely in your browser.</p>
+
+  <h2>What we built and why</h2>
+  <p>ToolsNova started from a simple frustration: too many online tools require sign-ups, show intrusive ads, upload your data to remote servers, or simply load too slowly. When you're in the middle of debugging at 2 AM, you don't want friction — you want the answer in under a second.</p>
+  <p>We built ToolsNova to be the tool we wished existed: lightweight, instant, private, and completely free. Every utility on this site works entirely inside your browser using standard JavaScript Web APIs. Nothing you type or paste is ever sent to a server.</p>
+
+  <hr class="divider">
+
+  <h2>Our principles</h2>
+  <div class="principles">
+    <div class="principle-card">
+      <div class="pc-icon">🔒</div>
+      <div class="pc-title">Private by design</div>
+      <div class="pc-desc">Your data never leaves your device. All processing runs locally using browser APIs — no backend, no logging.</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-icon">⚡</div>
+      <div class="pc-title">Instant results</div>
+      <div class="pc-desc">No loading spinners, no waiting for a server response. Output appears as you type.</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-icon">🎯</div>
+      <div class="pc-title">Single purpose</div>
+      <div class="pc-desc">Each tool does one thing and does it well. No bloat, no feature creep.</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-icon">🌐</div>
+      <div class="pc-title">Always free</div>
+      <div class="pc-desc">Every tool is free to use with no account, no paywall, and no usage limits.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>The tools</h2>
+  <p>ToolsNova currently offers 8 tools, with more planned. Each lives at its own URL so you can bookmark exactly what you need:</p>
+
+  <div class="tools-list">
+    <a href="json-formatter.html"      class="tool-item"><span class="ti-icon">{}</span> JSON Formatter</a>
+    <a href="base64-encoder.html"      class="tool-item"><span class="ti-icon">⇌</span> Base64 Encoder</a>
+    <a href="word-counter.html"        class="tool-item"><span class="ti-icon">Aa</span> Word Counter</a>
+    <a href="case-converter.html"      class="tool-item"><span class="ti-icon">Cc</span> Case Converter</a>
+    <a href="password-generator.html"  class="tool-item"><span class="ti-icon">🔑</span> Password Generator</a>
+    <a href="timestamp-converter.html" class="tool-item"><span class="ti-icon">⏱</span> Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="tool-item"><span class="ti-icon">¶</span> Lorem Ipsum Generator</a>
+    <a href="url-encoder.html"         class="tool-item"><span class="ti-icon">🔗</span> URL Encoder / Decoder</a>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Technology</h2>
+  <p>ToolsNova is a static website — no server, no database, no framework. Every page is plain HTML, CSS, and vanilla JavaScript. The entire site loads in under 200ms on a standard connection and works offline after the first visit.</p>
+  <p>Passwords are generated using <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:.75rem;color:var(--accent)">crypto.getRandomValues()</code>, the Web Cryptography API — the same standard used by password managers. No <code style="background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:.75rem;color:var(--accent)">Math.random()</code>, which is not cryptographically secure.</p>
+
+  <hr class="divider">
+
+  <h2>Contact &amp; feedback</h2>
+  <p>Found a bug? Have a suggestion for a new tool? We'd love to hear from you. Visit our <a href="contact.html">contact page</a> to get in touch.</p>
+  <p>You can also review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</p>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

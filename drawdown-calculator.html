@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drawdown Calculator — Trading Account Drawdown & Recovery</title>
+<meta name="description" content="Calculate trading account drawdown and recovery percentage needed. See exactly how much gain is needed to recover from a loss.">
+<link rel="canonical" href="https://toolsnova.net/drawdown-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Drawdown Calculator — Trading Account Drawdown & Recovery">
+<meta property="og:description" content="Calculate trading account drawdown and recovery percentage needed. See exactly how much gain is needed to recover from a loss.">
+<meta property="og:url" content="https://toolsnova.net/drawdown-calculator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Drawdown Calculator — Trading Account Drawdown & Recovery","url":"https://toolsnova.net/drawdown-calculator","description":"Calculate trading account drawdown and recovery percentage needed. See exactly how much gain is needed to recover from a loss.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"      class="nav-link">JSON</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64</a>
+    <a href="word-counter.html"        class="nav-link">Words</a>
+    <a href="case-converter.html"      class="nav-link">Case</a>
+    <a href="password-generator.html"  class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem</a>
+    <a href="url-encoder.html"         class="nav-link">URL</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID</a>
+    <a href="hash-generator.html"      class="nav-link">Hash</a>
+    <a href="age-calculator.html"      class="nav-link">Age</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI</a>
+    <a href="percentage-calculator.html" class="nav-link">%</a>
+    <a href="emi-calculator.html"      class="nav-link">EMI</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP</a>
+    <a href="compound-interest-calculator.html" class="nav-link">CI</a>
+    <a href="lot-size-calculator.html" class="nav-link">Lots</a>
+    <a href="risk-reward-calculator.html" class="nav-link">R:R</a>
+    <a href="drawdown-calculator.html" class="nav-link active">DD</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Drawdown Calculator</h1>
+  <p>Calculate drawdown loss in dollars and the exact recovery percentage needed to break even. Essential for prop traders.</p>
+</div>
+<main>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+      <div><div class="pane-label">Account balance ($)</div><input type="number" id="dd-balance" placeholder="10000" min="1" oninput="calcDrawdown()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+      <div><div class="pane-label">Drawdown (%)</div><input type="number" id="dd-pct" placeholder="20" step="0.1" min="0.1" max="99" oninput="calcDrawdown()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+    </div>
+    <button class="btn primary" onclick="calcDrawdown()" style="max-width:160px">Calculate →</button>
+  </div>
+  <div><div class="pane-label">Result</div>
+  <div class="output-box" id="dd-output" style="min-height:120px;white-space:pre;cursor:pointer" onclick="copyEl('dd-output')"></div></div>
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About drawdown</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">What is drawdown?</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Maximum peak-to-trough decline in account balance. A 20% drawdown means the account fell from its highest point by 20%.</div>
+      </div>      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Recovery math</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Losses require disproportionately larger gains to recover. A 50% loss needs a 100% gain to break even.</div>
+      </div>      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Prop firm limits</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Most prop trading firms set maximum drawdown limits at 5–10%. Exceeding this results in account termination.</div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — https://toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

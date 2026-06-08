@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margin Calculator — Forex Margin Requirement Calculator</title>
+<meta name="description" content="Calculate the margin required to open any forex or CFD position. Supports any leverage ratio and contract size.">
+<link rel="canonical" href="https://toolsnova.net/margin-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Margin Calculator — Forex Margin Requirement Calculator">
+<meta property="og:description" content="Calculate the margin required to open any forex or CFD position. Supports any leverage ratio and contract size.">
+<meta property="og:url" content="https://toolsnova.net/margin-calculator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Margin Calculator — Forex Margin Requirement Calculator","url":"https://toolsnova.net/margin-calculator","description":"Calculate the margin required to open any forex or CFD position. Supports any leverage ratio and contract size.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"      class="nav-link">JSON</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64</a>
+    <a href="word-counter.html"        class="nav-link">Words</a>
+    <a href="case-converter.html"      class="nav-link">Case</a>
+    <a href="password-generator.html"  class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem</a>
+    <a href="url-encoder.html"         class="nav-link">URL</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID</a>
+    <a href="hash-generator.html"      class="nav-link">Hash</a>
+    <a href="age-calculator.html"      class="nav-link">Age</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI</a>
+    <a href="percentage-calculator.html" class="nav-link">%</a>
+    <a href="emi-calculator.html"      class="nav-link">EMI</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP</a>
+    <a href="compound-interest-calculator.html" class="nav-link">CI</a>
+    <a href="lot-size-calculator.html" class="nav-link">Lots</a>
+    <a href="risk-reward-calculator.html" class="nav-link">R:R</a>
+    <a href="drawdown-calculator.html" class="nav-link">DD</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Margin Calculator</h1>
+  <p>Calculate required margin for forex and CFD positions. Enter price, lot size, leverage, and contract size for instant results.</p>
+</div>
+<main>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+      <div><div class="pane-label">Instrument price</div><input type="number" id="mg-price" placeholder="1.2500" step="0.0001" oninput="calcMargin()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+      <div><div class="pane-label">Position size (lots)</div><input type="number" id="mg-lots" placeholder="1" step="0.01" min="0.01" oninput="calcMargin()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+      <div><div class="pane-label">Leverage (1:X)</div><input type="number" id="mg-leverage" placeholder="100" min="1" oninput="calcMargin()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+      <div><div class="pane-label">Contract size</div><input type="number" id="mg-contract" placeholder="100000" min="1" oninput="calcMargin()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+    </div>
+    <button class="btn primary" onclick="calcMargin()" style="max-width:160px">Calculate →</button>
+  </div>
+  <div><div class="pane-label">Result</div>
+  <div class="output-box" id="mg-output" style="min-height:100px;white-space:pre;cursor:pointer" onclick="copyEl('mg-output')"></div></div>
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About margin</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">What is margin?</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Margin is the collateral required to open a leveraged position. It is not a cost, but a deposit held by your broker.</div>
+      </div>      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Margin formula</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Required Margin = (Lots × Contract Size × Price) / Leverage</div>
+      </div>      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Free margin</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Free margin = Equity − Used Margin. When free margin approaches zero, a margin call occurs.</div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — https://toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

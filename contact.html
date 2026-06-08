@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — ToolsNova</title>
+<meta name="description" content="Get in touch with the ToolsNova team. Report a bug, suggest a new tool, or ask a general question.">
+<link rel="canonical" href="https://toolsnova.net/contact">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.prose {
+  max-width: 620px;
+  padding: 2rem 2rem 4rem;
+}
+.prose h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+}
+.prose .tagline {
+  font-size: 0.83rem;
+  color: var(--text2);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.prose h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 2rem 0 0.6rem;
+}
+.prose p { font-size: 0.82rem; color: var(--text2); line-height: 1.85; margin-bottom: 0.7rem; }
+.prose a { color: var(--accent); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* Contact form */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label {
+  font-size: 0.65rem;
+  color: var(--text3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.field input, .field select, .field textarea {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 7px;
+  color: var(--text);
+  padding: 0.6rem 0.85rem;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: rgba(127,255,111,0.4);
+}
+.field textarea { resize: vertical; min-height: 140px; line-height: 1.7; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text3); }
+.field select { cursor: pointer; }
+.field select option { background: var(--surface2); }
+
+.submit-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.submit-btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.6rem 1.4rem;
+  background: var(--accent-dim);
+  border: 1px solid rgba(127,255,111,0.35);
+  color: var(--accent);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  letter-spacing: 0.03em;
+}
+.submit-btn:hover { background: rgba(127,255,111,0.2); }
+.submit-note { font-size: 0.7rem; color: var(--text3); }
+
+.success-msg {
+  display: none;
+  background: rgba(127,255,111,0.08);
+  border: 1px solid rgba(127,255,111,0.25);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  line-height: 1.65;
+}
+
+/* Info cards */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 8px;
+  margin: 1rem 0;
+}
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+}
+.info-card .ic-label { font-size: 0.62rem; color: var(--text3); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 4px; }
+.info-card .ic-val { font-size: 0.78rem; color: var(--text2); line-height: 1.5; }
+.info-card .ic-val a { color: var(--accent); text-decoration: none; }
+.info-card .ic-val a:hover { text-decoration: underline; }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"      class="nav-link">JSON</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64</a>
+    <a href="word-counter.html"        class="nav-link">Words</a>
+    <a href="case-converter.html"      class="nav-link">Case</a>
+    <a href="password-generator.html"  class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem</a>
+    <a href="url-encoder.html"         class="nav-link">URL</a>
+  </nav>
+</header>
+
+<div class="prose">
+  <h1>Contact</h1>
+  <p class="tagline">Found a bug, have a tool suggestion, or just want to say hello? Fill in the form below and we'll get back to you.</p>
+
+  <!-- Contact form — wire to Formspree / Netlify Forms on deploy -->
+  <div class="contact-form">
+
+    <div id="success-msg" class="success-msg">
+      ✓ Message sent — thanks for reaching out. We'll reply within 1–2 business days.
+    </div>
+
+    <div class="field">
+      <label for="cf-name">Your name</label>
+      <input type="text" id="cf-name" placeholder="Jane Smith" autocomplete="name">
+    </div>
+
+    <div class="field">
+      <label for="cf-email">Email address</label>
+      <input type="email" id="cf-email" placeholder="jane@example.com" autocomplete="email">
+    </div>
+
+    <div class="field">
+      <label for="cf-subject">Subject</label>
+      <select id="cf-subject">
+        <option value="">— select a topic —</option>
+        <option value="bug">Bug report</option>
+        <option value="suggestion">Tool suggestion</option>
+        <option value="general">General question</option>
+        <option value="business">Business / partnership</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" placeholder="Describe the bug, share your idea, or say hello…"></textarea>
+    </div>
+
+    <div class="submit-row">
+      <button class="submit-btn" onclick="submitForm()">Send message →</button>
+      <span class="submit-note">We typically reply within 1–2 business days.</span>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <h2>Other ways to reach us</h2>
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="ic-label">Email</div>
+      <div class="ic-val"><a href="mailto:contact@toolsnova.net">contact@toolsnova.net</a></div>
+    </div>
+    <div class="info-card">
+      <div class="ic-label">Response time</div>
+      <div class="ic-val">1–2 business days</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-label">Bug reports</div>
+      <div class="ic-val">Use the form above with subject "Bug report"</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Frequently asked questions</h2>
+
+  <h2 style="font-size:.85rem;color:var(--text2);margin-top:1.2rem">Is ToolsNova really free?</h2>
+  <p>Yes. All 8 tools are completely free with no usage limits, no account required, and no paywall. The site is supported by non-intrusive advertising.</p>
+
+  <h2 style="font-size:.85rem;color:var(--text2);margin-top:1.2rem">Does my data get sent to a server?</h2>
+  <p>No. Every tool runs entirely in your browser using standard JavaScript APIs. Nothing you type, paste, or upload is transmitted to any server. We do not log inputs.</p>
+
+  <h2 style="font-size:.85rem;color:var(--text2);margin-top:1.2rem">Can I suggest a new tool?</h2>
+  <p>Absolutely — that's one of the best reasons to contact us. Use the form above and select "Tool suggestion." The most-requested tools get built first.</p>
+
+  <h2 style="font-size:.85rem;color:var(--text2);margin-top:1.2rem">Can I use ToolsNova offline?</h2>
+  <p>After your first visit, the browser caches the CSS and JavaScript files. The tool pages themselves will work offline as long as you've visited them before.</p>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+<script>
+function submitForm() {
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value;
+  const message = document.getElementById('cf-message').value.trim();
+
+  if (!name)    { alert('Please enter your name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  if (!subject) { alert('Please select a subject.'); return; }
+  if (!message) { alert('Please enter a message.'); return; }
+
+  /* ── Replace the action below with your Formspree endpoint or Netlify form handler ──
+     Formspree:  fetch('https://formspree.io/f/YOUR_ID', { method:'POST', ... })
+     Netlify:    add name="contact" data-netlify="true" to the wrapper div            */
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('cf-name').value    = '';
+  document.getElementById('cf-email').value   = '';
+  document.getElementById('cf-subject').value = '';
+  document.getElementById('cf-message').value = '';
+  document.getElementById('success-msg').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorem Ipsum Generator — Free Placeholder &amp; Dummy Text Generator</title>
+<meta name="description" content="Generate lorem ipsum placeholder text instantly. Choose words, sentences or paragraphs. Free online dummy text generator for designers and developers. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/lorem-ipsum">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title"       content="Lorem Ipsum Generator — Free Placeholder & Dummy Text Generator">
+<meta property="og:description" content="Generate lorem ipsum placeholder text instantly — words, sentences or paragraphs. Free, no signup.">
+<meta property="og:url"         content="https://toolsnova.net/lorem-ipsum">
+<meta property="og:type"        content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Lorem Ipsum Generator",
+  "url": "https://toolsnova.net/lorem-ipsum",
+  "description": "Free lorem ipsum placeholder and dummy text generator. Generate words, sentences or paragraphs instantly.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+.controls-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ctrl-group { display: flex; flex-direction: column; gap: 5px; }
+.ctrl-label { font-size: 0.62rem; color: var(--text3); letter-spacing: 0.07em; text-transform: uppercase; }
+
+select {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.45rem 0.7rem;
+  outline: none;
+  cursor: pointer;
+}
+select:focus { border-color: rgba(127,255,111,0.4); }
+
+.count-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.count-row input[type="range"] { width: 120px; accent-color: var(--accent); }
+#lorem-count-display {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+  min-width: 22px;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.75rem;
+  color: var(--text2);
+  cursor: pointer;
+}
+.check-row input[type="checkbox"] { accent-color: var(--accent); width: 14px; height: 14px; cursor: pointer; }
+
+.lorem-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#lorem-wc { font-size: 0.7rem; color: var(--text3); }
+
+.output-box { min-height: 300px; white-space: pre-wrap; cursor: pointer; }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"     class="nav-link">JSON</a>
+    <a href="base64-encoder.html"     class="nav-link">Base64</a>
+    <a href="word-counter.html"       class="nav-link">Words</a>
+    <a href="case-converter.html"     class="nav-link">Case</a>
+    <a href="password-generator.html" class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"        class="nav-link active">Lorem</a>
+    <a href="url-encoder.html"        class="nav-link">URL</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>Lorem Ipsum Generator</h1>
+  <p>Generate placeholder text for your designs and prototypes. Choose words, sentences or paragraphs — output updates instantly. Classic lorem ipsum or randomised variants.</p>
+</div>
+
+<main>
+  <!-- Controls -->
+  <div class="controls-card">
+
+    <div class="ctrl-group">
+      <div class="ctrl-label">Generate</div>
+      <select id="lorem-type" onchange="loremGenerate()">
+        <option value="paragraphs">Paragraphs</option>
+        <option value="sentences">Sentences</option>
+        <option value="words">Words</option>
+      </select>
+    </div>
+
+    <div class="ctrl-group">
+      <div class="ctrl-label">Amount</div>
+      <div class="count-row">
+        <input type="range" id="lorem-count" min="1" max="20" value="3" step="1" oninput="loremCountUpdate()">
+        <span id="lorem-count-display">3</span>
+      </div>
+    </div>
+
+    <label class="check-row">
+      <input type="checkbox" id="lorem-start" checked onchange="loremGenerate()">
+      Start with "Lorem ipsum…"
+    </label>
+
+    <button class="btn primary" onclick="loremGenerate()" style="margin-left:auto">↻ Regenerate</button>
+
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn" onclick="copyEl('lorem-output')">Copy text</button>
+    <div class="lorem-meta">
+      <span id="lorem-wc"></span>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div>
+    <div class="pane-label">Generated text <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box" id="lorem-output"
+      role="region"
+      aria-label="Generated lorem ipsum text"
+      onclick="copyEl('lorem-output')"></div>
+  </div>
+
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About Lorem Ipsum</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Origin</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Lorem ipsum text derives from "de Finibus Bonorum et Malorum," a 1st-century BC work by Cicero. It has been used as placeholder text since the 1500s.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Why designers use it</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Readable content distracts reviewers from evaluating layout and typography. Lorem ipsum keeps attention on visual design decisions rather than the words themselves.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">When to stop using it</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Switch to real content as early as possible. Lorem ipsum can mask readability and layout issues that only appear with actual text lengths and line breaks.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — all text generation runs in your browser</span>
+  <nav class="footer-links">
+    <a href="index.html">All tools</a>
+    <a href="word-counter.html">Word Counter</a>
+    <a href="case-converter.html">Case Converter</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', loremGenerate);
+</script>
+</body>
+</html>

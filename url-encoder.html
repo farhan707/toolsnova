@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Encoder / Decoder Online — Free Percent Encoding Tool</title>
+<meta name="description" content="Encode or decode URLs and query parameters instantly. Free online URL encoder and decoder with percent-encoding. Smart mode preserves URL structure. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/url-encoder">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title"       content="URL Encoder / Decoder Online — Free Percent Encoding Tool">
+<meta property="og:description" content="Encode or decode URLs and query strings instantly. Smart encoding preserves URL structure. Free, no signup.">
+<meta property="og:url"         content="https://toolsnova.net/url-encoder">
+<meta property="og:type"        content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "URL Encoder / Decoder Online",
+  "url": "https://toolsnova.net/url-encoder",
+  "description": "Free online URL encoder and decoder. Smart mode preserves URL structure while encoding special characters in query parameters.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+.mode-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text2);
+  line-height: 1.65;
+}
+.mode-info code {
+  background: var(--surface2);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.url-parse-section { display: none; }
+.url-parse-section.active { display: block; }
+.parse-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+.parse-table th {
+  text-align: left;
+  font-size: 0.62rem;
+  color: var(--text3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.parse-table td {
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: top;
+}
+.parse-table td:first-child { color: var(--text3); white-space: nowrap; }
+.parse-table td:last-child  { color: var(--text); word-break: break-all; font-family: var(--mono); }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"     class="nav-link">JSON</a>
+    <a href="base64-encoder.html"     class="nav-link">Base64</a>
+    <a href="word-counter.html"       class="nav-link">Words</a>
+    <a href="case-converter.html"     class="nav-link">Case</a>
+    <a href="password-generator.html" class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"        class="nav-link">Lorem</a>
+    <a href="url-encoder.html"        class="nav-link active">URL</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>URL Encoder &amp; Decoder</h1>
+  <p>Encode URLs for safe transmission or decode percent-encoded strings back to plain text. Smart mode preserves URL structure (<code style="font-size:.8em;background:var(--surface2);padding:1px 5px;border-radius:3px;color:var(--accent)">:// ? & =</code>) while encoding special characters.</p>
+</div>
+
+<main>
+  <div class="toolbar">
+    <div class="toggle-group">
+      <button class="toggle-btn active" id="url-btn-encode" onclick="urlSetMode('encode')">Encode →</button>
+      <button class="toggle-btn"        id="url-btn-decode" onclick="urlSetMode('decode')">← Decode</button>
+    </div>
+    <button class="btn" onclick="urlSwap()">Swap ⇌</button>
+    <button class="btn" onclick="urlClear()">Clear</button>
+    <button class="btn" onclick="copyEl('url-output')">Copy output</button>
+    <span class="status-badge" id="url-status">awaiting input</span>
+  </div>
+
+  <div class="mode-info" id="url-mode-info">
+    <strong style="color:var(--text)">Smart encode mode:</strong> preserves <code>://</code> <code>?</code> <code>&amp;</code> <code>=</code> <code>#</code> so full URLs remain valid. Special characters in values (spaces, brackets, non-ASCII) are percent-encoded.
+  </div>
+
+  <div class="split">
+    <div>
+      <div class="pane-label" id="url-in-label">Plain URL / text input</div>
+      <textarea id="url-input"
+        placeholder="https://example.com/search?q=hello world&lang=en"
+        oninput="urlRun(); urlParse()"
+        spellcheck="false"
+        aria-label="URL input"></textarea>
+    </div>
+    <div>
+      <div class="pane-label" id="url-out-label">URL-encoded output <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+      <div class="output-box" id="url-output"
+        role="region"
+        aria-label="URL-encoded output"
+        onclick="copyEl('url-output')"
+        style="white-space:pre-wrap"></div>
+    </div>
+  </div>
+
+  <!-- URL parser breakdown -->
+  <div class="url-parse-section" id="url-parse-section">
+    <div class="pane-label" style="margin-bottom:6px">URL breakdown</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <table class="parse-table" id="url-parse-table">
+        <thead>
+          <tr><th>Component</th><th>Value</th></tr>
+        </thead>
+        <tbody id="url-parse-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">What is URL encoding?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Percent encoding</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">URL encoding replaces unsafe characters with a <code style="background:var(--surface2);padding:1px 4px;border-radius:3px;font-size:.7rem">%</code> followed by the character's hex value. A space becomes <code style="background:var(--surface2);padding:1px 4px;border-radius:3px;font-size:.7rem">%20</code>.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">When to encode</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Encode query parameters containing special characters before appending them to a URL. This prevents the server from misinterpreting <code style="background:var(--surface2);padding:1px 4px;border-radius:3px;font-size:.7rem">&amp;</code>, <code style="background:var(--surface2);padding:1px 4px;border-radius:3px;font-size:.7rem">=</code> or <code style="background:var(--surface2);padding:1px 4px;border-radius:3px;font-size:.7rem">#</code> as delimiters.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Safe characters</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Letters (A–Z, a–z), digits (0–9), and <code style="background:var(--surface2);padding:1px 4px;border-radius:3px;font-size:.7rem">- _ . ~</code> are safe and never need encoding. Everything else should be percent-encoded.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — all URL encoding runs in your browser</span>
+  <nav class="footer-links">
+    <a href="index.html">All tools</a>
+    <a href="base64-encoder.html">Base64 Encoder</a>
+    <a href="json-formatter.html">JSON Formatter</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+<script>
+function urlParse() {
+  const raw = document.getElementById('url-input')?.value.trim();
+  const sec = document.getElementById('url-parse-section');
+  const body = document.getElementById('url-parse-body');
+  if (!sec || !body) return;
+  if (!raw || urlMode !== 'encode') { sec.classList.remove('active'); return; }
+  try {
+    const u = new URL(raw);
+    const params = [...u.searchParams.entries()];
+    const rows = [
+      ['Protocol', u.protocol],
+      ['Host', u.host],
+      ['Pathname', u.pathname || '/'],
+      ...params.map(([k,v]) => [`?${k}`, v]),
+      u.hash ? ['Hash', u.hash] : null,
+    ].filter(Boolean);
+    body.innerHTML = rows.map(([k,v]) =>
+      `<tr><td>${k}</td><td>${v || '—'}</td></tr>`
+    ).join('');
+    sec.classList.add('active');
+  } catch(_) {
+    sec.classList.remove('active');
+  }
+}
+
+document.getElementById('url-input').addEventListener('input', () => {
+  const info = document.getElementById('url-mode-info');
+  if (!info) return;
+  if (urlMode === 'encode') {
+    info.innerHTML = '<strong style="color:var(--text)">Smart encode mode:</strong> preserves <code>://</code> <code>?</code> <code>&amp;</code> <code>=</code> <code>#</code> so full URLs remain valid.';
+  } else {
+    info.innerHTML = '<strong style="color:var(--text)">Decode mode:</strong> converts <code>%20</code> → space, <code>%26</code> → &amp;, and all other percent-encoded sequences back to their original characters.';
+  }
+});
+</script>
+</body>
+</html>

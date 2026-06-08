@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Generator Online — MD5, SHA-1, SHA-256, SHA-512</title>
+<meta name="description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text instantly. Free online hash generator, no signup, runs in your browser.">
+<link rel="canonical" href="https://toolsnova.net/hash-generator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Hash Generator Online — MD5, SHA-1, SHA-256, SHA-512">
+<meta property="og:description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text instantly. Free online hash generator, no signup, runs in your browser.">
+<meta property="og:url" content="https://toolsnova.net/hash-generator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Hash Generator Online — MD5, SHA-1, SHA-256, SHA-512","url":"https://toolsnova.net/hash-generator","description":"Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text instantly. Free online hash generator, no signup, runs in your browser.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"      class="nav-link">JSON</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64</a>
+    <a href="word-counter.html"        class="nav-link">Words</a>
+    <a href="case-converter.html"      class="nav-link">Case</a>
+    <a href="password-generator.html"  class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem</a>
+    <a href="url-encoder.html"         class="nav-link">URL</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID</a>
+    <a href="hash-generator.html"      class="nav-link">Hash</a>
+    <a href="age-calculator.html"      class="nav-link">Age</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI</a>
+    <a href="percentage-calculator.html" class="nav-link">%</a>
+    <a href="emi-calculator.html"      class="nav-link">EMI</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP</a>
+    <a href="compound-interest-calculator.html" class="nav-link">CI</a>
+    <a href="lot-size-calculator.html" class="nav-link">Lots</a>
+    <a href="risk-reward-calculator.html" class="nav-link">R:R</a>
+    <a href="drawdown-calculator.html" class="nav-link">DD</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Hash Generator</h1>
+  <p>Generate MD5, SHA-1, SHA-256 and SHA-512 cryptographic hashes from any text. All four algorithms shown simultaneously.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="hashGenerate()">Generate <kbd style="opacity:.5;font-size:.7em">⌘↵</kbd></button>
+    <button class="btn" onclick="hashClear()">Clear</button>
+  </div>
+  <div>
+    <div class="pane-label">Input text</div>
+    <textarea id="hash-input" placeholder="Type or paste text to hash…" oninput="hashGenerate()" spellcheck="false" style="min-height:100px"></textarea>
+  </div>
+  <div style="display:grid;gap:10px">
+    <div><div class="pane-label">MD5 <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box" id="md5-out" onclick="copyEl('md5-out')" style="min-height:44px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+    <div><div class="pane-label">SHA-1</div>
+    <div class="output-box" id="sha1-out" onclick="copyEl('sha1-out')" style="min-height:44px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+    <div><div class="pane-label">SHA-256</div>
+    <div class="output-box" id="sha256-out" onclick="copyEl('sha256-out')" style="min-height:44px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+    <div><div class="pane-label">SHA-512</div>
+    <div class="output-box" id="sha512-out" onclick="copyEl('sha512-out')" style="min-height:44px;white-space:pre;cursor:pointer;font-size:.78rem;word-break:break-all"></div></div>
+  </div>
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About hash functions</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">MD5</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">128-bit hash. Fast but cryptographically broken — use only for checksums, not security.</div>
+      </div>      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">SHA-1</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">160-bit hash. Deprecated for security use. Still found in legacy systems and Git.</div>
+      </div>      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">SHA-256 / SHA-512</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Current standards. SHA-256 used in Bitcoin, TLS, JWT. SHA-512 provides stronger collision resistance.</div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — https://toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

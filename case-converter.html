@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Converter Online — UPPERCASE, lowercase, Title Case, camelCase, snake_case</title>
+<meta name="description" content="Convert text between uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case and kebab-case instantly. Free online case converter, no signup required.">
+<link rel="canonical" href="https://toolsnova.net/case-converter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title"       content="Case Converter Online — UPPERCASE, camelCase, snake_case & more">
+<meta property="og:description" content="Convert text to any case format instantly. Free, no signup, runs in your browser.">
+<meta property="og:url"         content="https://toolsnova.net/case-converter">
+<meta property="og:type"        content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Case Converter Online",
+  "url": "https://toolsnova.net/case-converter",
+  "description": "Free online text case converter. Supports uppercase, lowercase, title case, camelCase, PascalCase, snake_case, kebab-case and more.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+}
+.case-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  color: var(--text2);
+  font-family: var(--mono);
+  font-size: 0.73rem;
+}
+.case-btn:hover { border-color: var(--border2); background: var(--surface2); color: var(--text); }
+.case-btn.active { border-color: rgba(127,255,111,0.35); background: var(--accent-dim); color: var(--accent); }
+.case-btn .cb-label { font-size: 0.62rem; color: var(--text3); display: block; margin-bottom: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+.case-btn .cb-example { font-size: 0.78rem; font-weight: 500; color: inherit; }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"  class="nav-link">JSON</a>
+    <a href="base64-encoder.html"  class="nav-link">Base64</a>
+    <a href="word-counter.html"    class="nav-link">Words</a>
+    <a href="case-converter.html"  class="nav-link active">Case</a>
+    <a href="password-generator.html" class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp</a>
+    <a href="lorem-ipsum.html"     class="nav-link">Lorem</a>
+    <a href="url-encoder.html"     class="nav-link">URL</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>Case Converter</h1>
+  <p>Convert text between any case format instantly. Click a case button below — output updates live. Supports 8 formats including camelCase, snake_case and kebab-case.</p>
+</div>
+
+<main>
+  <div class="toolbar">
+    <button class="btn" onclick="caseClear()">Clear</button>
+    <button class="btn" onclick="copyEl('case-output')">Copy output</button>
+    <span class="status-badge ok" id="case-status">select a case</span>
+  </div>
+
+  <div class="case-grid" id="case-grid">
+    <button class="case-btn active" onclick="caseApply('upper', this)">
+      <span class="cb-label">uppercase</span>
+      <span class="cb-example">HELLO WORLD</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('lower', this)">
+      <span class="cb-label">lowercase</span>
+      <span class="cb-example">hello world</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('title', this)">
+      <span class="cb-label">title case</span>
+      <span class="cb-example">Hello World</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('sentence', this)">
+      <span class="cb-label">sentence case</span>
+      <span class="cb-example">Hello world</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('camel', this)">
+      <span class="cb-label">camelCase</span>
+      <span class="cb-example">helloWorld</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('pascal', this)">
+      <span class="cb-label">PascalCase</span>
+      <span class="cb-example">HelloWorld</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('snake', this)">
+      <span class="cb-label">snake_case</span>
+      <span class="cb-example">hello_world</span>
+    </button>
+    <button class="case-btn" onclick="caseApply('kebab', this)">
+      <span class="cb-label">kebab-case</span>
+      <span class="cb-example">hello-world</span>
+    </button>
+  </div>
+
+  <div class="split">
+    <div>
+      <div class="pane-label">Input text</div>
+      <textarea id="case-input"
+        placeholder="Type or paste your text here…"
+        oninput="caseRunActive()"
+        spellcheck="false"
+        aria-label="Text input for case conversion"></textarea>
+    </div>
+    <div>
+      <div class="pane-label">Converted output <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+      <div class="output-box" id="case-output"
+        role="region"
+        aria-label="Case-converted output"
+        onclick="copyEl('case-output')"></div>
+    </div>
+  </div>
+
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">When to use each case format</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">camelCase &amp; PascalCase</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Used in JavaScript, Java, and Swift. camelCase for variables and functions; PascalCase for class names and components.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">snake_case &amp; kebab-case</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">snake_case is common in Python and databases. kebab-case is standard for CSS class names, HTML attributes, and URL slugs.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Title Case</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Used for headings, article titles, product names, and navigation labels. Capitalises the first letter of each word.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — all text processing runs in your browser</span>
+  <nav class="footer-links">
+    <a href="index.html">All tools</a>
+    <a href="word-counter.html">Word Counter</a>
+    <a href="url-encoder.html">URL Encoder</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+<script>
+let activeCase = 'upper';
+function caseApply(type, btn) {
+  activeCase = type;
+  document.querySelectorAll('.case-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  caseRunActive();
+}
+function caseRunActive() { caseConvert(activeCase); }
+window.addEventListener('DOMContentLoaded', () => caseConvert('upper'));
+</script>
+</body>
+</html>

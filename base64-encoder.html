@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Encoder / Decoder Online — Free &amp; Instant</title>
+<meta name="description" content="Encode text to Base64 or decode Base64 strings back to plain text instantly. Free online Base64 encoder and decoder. Supports Unicode, emoji, and all languages. No signup.">
+<link rel="canonical" href="https://toolsnova.net/base64-encoder">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Open Graph -->
+<meta property="og:title"       content="Base64 Encoder / Decoder Online — Free & Instant">
+<meta property="og:description" content="Encode text to Base64 or decode Base64 strings. Free, no signup, runs in your browser.">
+<meta property="og:url"         content="https://toolsnova.net/base64-encoder">
+<meta property="og:type"        content="website">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Base64 Encoder / Decoder Online",
+  "url": "https://toolsnova.net/base64-encoder",
+  "description": "Free online Base64 encoder and decoder. Supports Unicode and all languages.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html" class="nav-link">JSON</a>
+    <a href="base64-encoder.html" class="nav-link active">Base64</a>
+    <a href="word-counter.html"   class="nav-link">Word Counter</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>Base64 Encoder &amp; Decoder</h1>
+  <p>Encode plain text to Base64 or decode Base64 back to text. Live output as you type. Supports Unicode, Arabic, emoji, and all scripts.</p>
+</div>
+
+<main>
+  <div class="toolbar">
+    <div class="toggle-group">
+      <button class="toggle-btn active" id="btn-encode" onclick="b64SetMode('encode')">Encode →</button>
+      <button class="toggle-btn"        id="btn-decode" onclick="b64SetMode('decode')">← Decode</button>
+    </div>
+    <button class="btn" onclick="b64Swap()">Swap ⇌</button>
+    <button class="btn" onclick="b64Clear()">Clear</button>
+    <button class="btn" onclick="copyEl('b64-output')">Copy output</button>
+    <span class="status-badge" id="b64-status">awaiting input</span>
+  </div>
+
+  <div class="split">
+    <div>
+      <div class="pane-label" id="b64-in-label">Plain text input</div>
+      <textarea id="b64-input"
+        placeholder="Type or paste text to encode…"
+        oninput="b64Run()"
+        spellcheck="false"
+        aria-label="Base64 input"></textarea>
+    </div>
+    <div>
+      <div class="pane-label" id="b64-out-label">Base64 output <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+      <div class="output-box" id="b64-output"
+        role="region"
+        aria-label="Base64 output"
+        onclick="copyEl('b64-output')"></div>
+    </div>
+  </div>
+
+  <!-- SEO content block -->
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">What is Base64 encoding?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">What it is</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Base64 is a binary-to-text encoding that converts data into a safe ASCII string using 64 printable characters (A–Z, a–z, 0–9, +, /).</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Common uses</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Embedding images in HTML/CSS, passing data in URLs, encoding API credentials in HTTP headers, storing binary data in JSON.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Not encryption</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Base64 is encoding, not encryption. Anyone with the encoded string can decode it. Never use it to secure sensitive data.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — all encoding runs in your browser, nothing sent to a server</span>
+  <nav class="footer-links">
+    <a href="json-formatter.html">JSON Formatter</a>
+    <a href="word-counter.html">Word Counter</a>
+    <a href="index.html">All tools</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unix Timestamp Converter Online — Epoch to Date &amp; Time</title>
+<meta name="description" content="Convert Unix timestamps to human-readable dates and vice versa. Free online epoch converter with UTC, ISO 8601, and local time output. Supports seconds and milliseconds. No signup.">
+<link rel="canonical" href="https://toolsnova.net/timestamp-converter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title"       content="Unix Timestamp Converter — Epoch to Date & Time">
+<meta property="og:description" content="Convert Unix timestamps to readable dates instantly. Supports UTC, ISO 8601, local time. Free, no signup.">
+<meta property="og:url"         content="https://toolsnova.net/timestamp-converter">
+<meta property="og:type"        content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Unix Timestamp Converter Online",
+  "url": "https://toolsnova.net/timestamp-converter",
+  "description": "Free online Unix timestamp to date converter. Supports epoch seconds, milliseconds, UTC, ISO 8601, and local time zones.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+.now-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.now-ts {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.now-label { font-size: 0.65rem; color: var(--text3); letter-spacing: 0.07em; text-transform: uppercase; }
+.now-iso { font-size: 0.78rem; color: var(--text2); margin-top: 2px; }
+.now-diff { font-size: 0.72rem; color: var(--text3); margin-left: auto; font-style: italic; }
+
+.conv-section { display: flex; flex-direction: column; gap: 1rem; }
+.conv-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+}
+.conv-card h3 {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text2);
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+}
+.inp-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.inp-row input[type="text"], .inp-row input[type="number"], .inp-row input[type="datetime-local"] {
+  flex: 1;
+  min-width: 180px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  padding: 0.5rem 0.8rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.inp-row input:focus { border-color: rgba(127,255,111,0.4); }
+
+.ts-diff-badge {
+  font-size: 0.7rem;
+  color: var(--text3);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 0.25rem 0.7rem;
+  font-style: italic;
+}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <nav class="site-nav">
+    <a href="json-formatter.html"     class="nav-link">JSON</a>
+    <a href="base64-encoder.html"     class="nav-link">Base64</a>
+    <a href="word-counter.html"       class="nav-link">Words</a>
+    <a href="case-converter.html"     class="nav-link">Case</a>
+    <a href="password-generator.html" class="nav-link">Password</a>
+    <a href="timestamp-converter.html" class="nav-link active">Timestamp</a>
+    <a href="lorem-ipsum.html"        class="nav-link">Lorem</a>
+    <a href="url-encoder.html"        class="nav-link">URL</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>Unix Timestamp Converter</h1>
+  <p>Convert Unix epoch timestamps to human-readable dates and back. Live current timestamp, UTC, ISO 8601, and local timezone output.</p>
+</div>
+
+<main>
+
+  <!-- Live current timestamp -->
+  <div class="now-card" id="now-card">
+    <div>
+      <div class="now-label">Current Unix timestamp</div>
+      <div class="now-ts" id="now-ts">—</div>
+      <div class="now-iso" id="now-iso">—</div>
+    </div>
+    <div class="now-diff" id="now-tz">—</div>
+    <button class="btn" onclick="tsNow()">Use now →</button>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn danger" onclick="tsClear()">Clear all</button>
+  </div>
+
+  <div class="conv-section">
+
+    <!-- Unix → Human -->
+    <div class="conv-card">
+      <h3>Unix timestamp → human-readable date</h3>
+      <div class="inp-row">
+        <input type="text" id="ts-unix" placeholder="e.g. 1700000000 or 1700000000000" oninput="tsFromUnix()" aria-label="Unix timestamp input">
+        <button class="btn primary" onclick="tsNow()">Use current time</button>
+        <span class="ts-diff-badge" id="ts-diff"></span>
+      </div>
+      <div style="margin-top:10px">
+        <div class="pane-label">Output</div>
+        <div class="output-box" id="ts-human" onclick="copyEl('ts-human')" style="min-height:120px;white-space:pre;cursor:pointer" aria-label="Human-readable date output"></div>
+      </div>
+    </div>
+
+    <!-- Human → Unix -->
+    <div class="conv-card">
+      <h3>Date / time → Unix timestamp</h3>
+      <div class="inp-row">
+        <input type="text" id="ts-human-inp"
+          placeholder="e.g. 2024-01-15 or Jan 15 2024 12:00:00 UTC"
+          oninput="tsFromHuman()"
+          aria-label="Human date input">
+        <button class="btn" onclick="document.getElementById('ts-human-inp').value=new Date().toISOString();tsFromHuman()">Use now</button>
+      </div>
+      <div style="margin-top:10px">
+        <div class="pane-label">Output</div>
+        <div class="output-box" id="ts-unix-out" onclick="copyEl('ts-unix-out')" style="min-height:90px;white-space:pre;cursor:pointer" aria-label="Unix timestamp output"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About Unix timestamps</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">What is a Unix timestamp?</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">A Unix timestamp (also called epoch time) is the number of seconds elapsed since January 1, 1970 00:00:00 UTC. It is timezone-independent and universally used in programming.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Seconds vs milliseconds</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">Unix timestamps in seconds are 10 digits long (e.g. 1700000000). JavaScript's <code>Date.now()</code> returns milliseconds — 13 digits. This tool detects both automatically.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <div style="font-size:.7rem;color:var(--accent);margin-bottom:.4rem">Year 2038 problem</div>
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.65">32-bit systems storing Unix time as a signed integer will overflow on January 19, 2038. 64-bit systems can represent dates hundreds of billions of years into the future.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — all date conversion runs in your browser</span>
+  <nav class="footer-links">
+    <a href="index.html">All tools</a>
+    <a href="json-formatter.html">JSON Formatter</a>
+    <a href="case-converter.html">Case Converter</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+<script>
+function tickNow() {
+  const now  = Date.now();
+  const unix  = Math.floor(now / 1000);
+  const d     = new Date(now);
+  const tz    = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const el    = document.getElementById('now-ts');
+  const iso   = document.getElementById('now-iso');
+  const tzEl  = document.getElementById('now-tz');
+  if (el)  el.textContent  = unix;
+  if (iso) iso.textContent = d.toISOString();
+  if (tzEl) tzEl.textContent = tz;
+}
+tickNow();
+setInterval(tickNow, 1000);
+</script>
+</body>
+</html>

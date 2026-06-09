@@ -478,3 +478,160 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 4px; }
 .dice-grid { display: flex; gap: 6px; flex-wrap: wrap; }
 .dice-btn { font-family: var(--mono); font-size: 0.72rem; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px; padding: 0.35rem 0.7rem; cursor: pointer; color: var(--text2); transition: all .15s; }
 .dice-btn:hover { background: var(--accent-dim); border-color: rgba(127,255,111,.35); color: var(--accent); }
+
+/* ══════════════════════════════════════
+   BATCH 2 STYLES
+   ══════════════════════════════════════ */
+
+/* GST slab buttons */
+.slab-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+.gst-slab, .tip-btn {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text2);
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+.gst-slab:hover, .tip-btn:hover {
+  background: var(--surface3);
+  color: var(--text);
+  border-color: rgba(255,255,255,0.2);
+}
+.gst-slab.active, .tip-btn.active {
+  background: var(--accent-dim);
+  border-color: rgba(127,255,111,0.35);
+  color: var(--accent);
+}
+
+/* Currency selects */
+.cx-select {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 7px;
+  padding: 0.55rem 0.75rem;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.cx-select:focus { border-color: rgba(127,255,111,0.4); }
+
+/* Batch 2 number inputs */
+.b2-input {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 7px;
+  padding: 0.55rem 0.8rem;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.b2-input:focus { border-color: rgba(127,255,111,0.4); }
+
+/* Mode toggle same as existing toggle-group */
+.mode-select {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.45rem 0.7rem;
+  outline: none;
+  cursor: pointer;
+}
+.mode-select:focus { border-color: rgba(127,255,111,0.4); }
+
+/* Rate note */
+.rate-note {
+  font-size: 0.7rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* ══════════════════════════════════════
+   BATCH 3 — UNIT CONVERTER STYLES
+   ══════════════════════════════════════ */
+.uc-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: end;
+}
+.uc-select {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 7px;
+  padding: 0.55rem 0.75rem;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.uc-select:focus { border-color: rgba(127,255,111,0.4); }
+.uc-input {
+  font-family: var(--mono);
+  font-size: 1rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 7px;
+  padding: 0.6rem 0.85rem;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+  letter-spacing: 0.02em;
+}
+.uc-input:focus { border-color: rgba(127,255,111,0.4); }
+.swap-btn {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.55rem 0.7rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.swap-btn:hover { background: var(--surface3); color: var(--text); }
+.uc-output {
+  min-height: 220px;
+  white-space: pre;
+  overflow-x: auto;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+.quick-vals {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.qv-btn {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.qv-btn:hover { color: var(--text); border-color: var(--border2); background: var(--surface3); }

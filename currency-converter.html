@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter Online — Free Exchange Rate Calculator</title>
+<meta name="description" content="Convert between 30 currencies including USD, EUR, GBP, PKR, INR, AED and more. Free online currency converter with quick reference rate table.">
+<link rel="canonical" href="https://toolsnova.net/currency-converter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Currency Converter Online — Free Exchange Rate Calculator">
+<meta property="og:description" content="Convert between 30 currencies including USD, EUR, GBP, PKR, INR, AED and more. Free online currency converter with quick reference rate table.">
+<meta property="og:url" content="https://toolsnova.net/currency-converter">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Currency Converter Online","url":"https://toolsnova.net/currency-converter","description":"Convert between 30 currencies including USD, EUR, GBP, PKR, INR, AED and more. Free online currency converter with quick reference rate table.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link active">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Currency Converter</h1>
+  <p>Convert between 30 currencies including USD, PKR, INR, EUR, GBP, AED, SAR and more. Quick reference table shows multiple amounts at once.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="currencyConvert()">Convert</button>
+    <button class="btn" onclick="currencySwap()">Swap ⇌</button>
+    <button class="btn" onclick="currencyClear()">Clear</button>
+    <button class="btn" onclick="copyEl('cx-output')">Copy</button>
+    <span class="status-badge" id="cx-status">enter amount to convert</span>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div>
+      <div class="pane-label">Amount</div>
+      <input type="number" id="cx-amount" placeholder="e.g. 100" class="b2-input" oninput="currencyConvert()" aria-label="Amount to convert">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:end">
+      <div>
+        <div class="pane-label">From</div>
+        <select id="cx-from" class="cx-select" onchange="currencyConvert()">
+<option value="USD" selected>USD — US Dollar</option>
+<option value="EUR">EUR — Euro</option>
+<option value="GBP">GBP — British Pound</option>
+<option value="PKR">PKR — Pakistani Rupee</option>
+<option value="INR">INR — Indian Rupee</option>
+<option value="AED">AED — UAE Dirham</option>
+<option value="SAR">SAR — Saudi Riyal</option>
+<option value="CAD">CAD — Canadian Dollar</option>
+<option value="AUD">AUD — Australian Dollar</option>
+<option value="JPY">JPY — Japanese Yen</option>
+<option value="CNY">CNY — Chinese Yuan</option>
+<option value="CHF">CHF — Swiss Franc</option>
+<option value="SGD">SGD — Singapore Dollar</option>
+<option value="MYR">MYR — Malaysian Ringgit</option>
+<option value="BDT">BDT — Bangladeshi Taka</option>
+<option value="LKR">LKR — Sri Lankan Rupee</option>
+<option value="KWD">KWD — Kuwaiti Dinar</option>
+<option value="QAR">QAR — Qatari Riyal</option>
+<option value="BHD">BHD — Bahraini Dinar</option>
+<option value="OMR">OMR — Omani Rial</option>
+<option value="EGP">EGP — Egyptian Pound</option>
+<option value="TRY">TRY — Turkish Lira</option>
+<option value="ZAR">ZAR — South African Rand</option>
+<option value="MXN">MXN — Mexican Peso</option>
+<option value="BRL">BRL — Brazilian Real</option>
+<option value="KRW">KRW — South Korean Won</option>
+<option value="THB">THB — Thai Baht</option>
+<option value="NGN">NGN — Nigerian Naira</option>
+<option value="GHS">GHS — Ghanaian Cedi</option>
+<option value="KES">KES — Kenyan Shilling</option>
+        </select>
+      </div>
+      <button class="btn" onclick="currencySwap()" style="margin-bottom:0;white-space:nowrap">⇌</button>
+      <div>
+        <div class="pane-label">To</div>
+        <select id="cx-to" class="cx-select" onchange="currencyConvert()">
+<option value="USD">USD — US Dollar</option>
+<option value="EUR">EUR — Euro</option>
+<option value="GBP">GBP — British Pound</option>
+<option value="PKR" selected>PKR — Pakistani Rupee</option>
+<option value="INR">INR — Indian Rupee</option>
+<option value="AED">AED — UAE Dirham</option>
+<option value="SAR">SAR — Saudi Riyal</option>
+<option value="CAD">CAD — Canadian Dollar</option>
+<option value="AUD">AUD — Australian Dollar</option>
+<option value="JPY">JPY — Japanese Yen</option>
+<option value="CNY">CNY — Chinese Yuan</option>
+<option value="CHF">CHF — Swiss Franc</option>
+<option value="SGD">SGD — Singapore Dollar</option>
+<option value="MYR">MYR — Malaysian Ringgit</option>
+<option value="BDT">BDT — Bangladeshi Taka</option>
+<option value="LKR">LKR — Sri Lankan Rupee</option>
+<option value="KWD">KWD — Kuwaiti Dinar</option>
+<option value="QAR">QAR — Qatari Riyal</option>
+<option value="BHD">BHD — Bahraini Dinar</option>
+<option value="OMR">OMR — Omani Rial</option>
+<option value="EGP">EGP — Egyptian Pound</option>
+<option value="TRY">TRY — Turkish Lira</option>
+<option value="ZAR">ZAR — South African Rand</option>
+<option value="MXN">MXN — Mexican Peso</option>
+<option value="BRL">BRL — Brazilian Real</option>
+<option value="KRW">KRW — South Korean Won</option>
+<option value="THB">THB — Thai Baht</option>
+<option value="NGN">NGN — Nigerian Naira</option>
+<option value="GHS">GHS — Ghanaian Cedi</option>
+<option value="KES">KES — Kenyan Shilling</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box" id="cx-output" onclick="copyEl('cx-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div>
+  </div>
+  <p class="rate-note" id="cx-note"></p>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Are the exchange rates live?</div>
+    <div class="faq-a">The rates in this tool are indicative reference rates updated periodically. For real-time live rates, use a bank, forex broker, or services like Google Finance or XE.com. Exchange rates fluctuate constantly during market hours.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the difference between buy and sell rates?</div>
+    <div class="faq-a">Banks offer two rates: the buy rate (what they pay you when you sell foreign currency) and the sell rate (what they charge you when you buy foreign currency). The difference is the spread — the bank's profit margin. This tool shows mid-market rates between buy and sell.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Why is my bank rate different from this calculator?</div>
+    <div class="faq-a">Banks add a margin (spread) of 1–5% on top of the mid-market rate. Money changers and forex brokers may offer better rates. For large transfers, compare multiple services — even 0.5% difference on $10,000 is $50.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is USD/PKR exchange rate?</div>
+    <div class="faq-a">The USD to PKR rate fluctuates based on Pakistan's foreign exchange market, State Bank of Pakistan interventions, and global dollar strength. Check the State Bank of Pakistan website or a forex broker for the current interbank rate.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAT Calculator Online — Add or Remove VAT Instantly</title>
+<meta name="description" content="Add VAT to a price or remove VAT from a gross amount instantly. Supports UK 20%, EU rates, and any custom rate. Free online VAT calculator.">
+<link rel="canonical" href="https://toolsnova.net/vat-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="VAT Calculator Online — Add or Remove VAT Instantly">
+<meta property="og:description" content="Add VAT to a price or remove VAT from a gross amount instantly. Supports UK 20%, EU rates, and any custom rate. Free online VAT calculator.">
+<meta property="og:url" content="https://toolsnova.net/vat-calculator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VAT Calculator Online","url":"https://toolsnova.net/vat-calculator","description":"Add VAT to a price or remove VAT from a gross amount instantly. Supports UK 20%, EU rates, and any custom rate. Free online VAT calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link active">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>VAT Calculator</h1>
+  <p>Add or remove VAT at any rate instantly. Supports UK 20%, EU 19–21%, and custom rates. One-click common VAT rate buttons.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="vatCalc()">Calculate</button>
+    <button class="btn" onclick="vatClear()">Clear</button>
+    <button class="btn" onclick="copyEl('vat-output')">Copy result</button>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div>
+        <div class="pane-label">Amount</div>
+        <input type="number" id="vat-amount" placeholder="e.g. 1000" class="b2-input" oninput="vatCalc()" aria-label="Amount">
+      </div>
+      <div>
+        <div class="pane-label">VAT Rate (%)</div>
+        <input type="number" id="vat-rate" placeholder="e.g. 20" class="b2-input" oninput="vatCalc()" value="20" aria-label="VAT rate">
+      </div>
+    </div>
+
+    <div>
+      <div class="pane-label" style="margin-bottom:6px">Common VAT rates</div>
+      <div class="slab-grid">
+        <button class="gst-slab" onclick="document.getElementById('vat-rate').value=5;vatCalc()">UK 5%</button>
+        <button class="gst-slab active" onclick="document.getElementById('vat-rate').value=20;vatCalc()">UK 20%</button>
+        <button class="gst-slab" onclick="document.getElementById('vat-rate').value=19;vatCalc()">EU 19%</button>
+        <button class="gst-slab" onclick="document.getElementById('vat-rate').value=21;vatCalc()">EU 21%</button>
+        <button class="gst-slab" onclick="document.getElementById('vat-rate').value=15;vatCalc()">15%</button>
+        <button class="gst-slab" onclick="document.getElementById('vat-rate').value=5;vatCalc()">5%</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="pane-label">Mode</div>
+      <select id="vat-mode" class="mode-select" onchange="vatCalc()">
+        <option value="add">Add VAT (net → gross)</option>
+        <option value="remove">Remove VAT (gross → net)</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box" id="vat-output" onclick="copyEl('vat-output')" style="min-height:100px;white-space:pre;cursor:pointer"></div>
+  </div>
+  <div id="vat-chart"></div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is VAT?</div>
+    <div class="faq-a">VAT (Value Added Tax) is a consumption tax levied at each stage of the supply chain. Unlike sales tax (collected only at point of sale), VAT is collected at every stage but businesses reclaim the VAT they've paid on purchases, so only the end consumer bears the final cost.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the VAT rate in the UK?</div>
+    <div class="faq-a">The UK has three VAT rates: Standard rate 20% (most goods and services), Reduced rate 5% (home energy, children's car seats, sanitary products), and Zero rate 0% (most food, books, children's clothing, public transport).</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I remove VAT from a price?</div>
+    <div class="faq-a">Divide the VAT-inclusive (gross) price by (1 + VAT rate/100). For 20% VAT: Net = Gross ÷ 1.20. Example: £120 ÷ 1.20 = £100 net + £20 VAT. This calculator does this automatically in 'Remove VAT' mode.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the difference between VAT and GST?</div>
+    <div class="faq-a">Both are consumption taxes on goods and services, but they have different names and rates by country. UK/EU uses VAT. India, Australia, Canada, and Singapore use GST. The calculation method is identical — they differ mainly in rate and administrative details.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

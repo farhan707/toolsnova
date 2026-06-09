@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter Online — Celsius, Fahrenheit, Kelvin</title>
+<meta name="description" content="Convert temperature between Celsius, Fahrenheit, Kelvin and Rankine instantly. Free online temperature converter with all unit results and reference points.">
+<link rel="canonical" href="https://toolsnova.net/temperature-converter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Temperature Converter Online — Celsius, Fahrenheit, Kelvin">
+<meta property="og:description" content="Convert temperature between Celsius, Fahrenheit, Kelvin and Rankine instantly. Free online temperature converter with all unit results and reference points.">
+<meta property="og:url" content="https://toolsnova.net/temperature-converter">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Temperature Converter Online","url":"https://toolsnova.net/temperature-converter","description":"Convert temperature between Celsius, Fahrenheit, Kelvin and Rankine instantly. Free online temperature converter with all unit results and reference points.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link active">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Temperature Converter</h1>
+  <p>Convert between Celsius, Fahrenheit, Kelvin, and Rankine instantly. Shows all four scales at once with common reference points.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="tempConvert()">Convert</button>
+    <button class="btn" onclick="tempClear()">Clear</button>
+    <button class="btn" onclick="copyEl('temp-output')">Copy</button>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div>
+        <div class="pane-label">Temperature value</div>
+        <input type="number" id="temp-input" placeholder="e.g. 100" class="uc-input" oninput="tempConvert()" aria-label="Temperature value">
+      </div>
+      <div>
+        <div class="pane-label">From unit</div>
+        <select id="temp-from" class="uc-select" onchange="tempConvert()">
+          <option value="C">°C — Celsius</option>
+          <option value="F">°F — Fahrenheit</option>
+          <option value="K">K — Kelvin</option>
+          <option value="R">°R — Rankine</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div class="pane-label" style="margin-bottom:6px">Quick values</div>
+      <div class="quick-vals">
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=0;document.getElementById('temp-from').value='C';tempConvert()">0°C</button>
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=100;document.getElementById('temp-from').value='C';tempConvert()">100°C</button>
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=37;document.getElementById('temp-from').value='C';tempConvert()">37°C body</button>
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=32;document.getElementById('temp-from').value='F';tempConvert()">32°F</button>
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=212;document.getElementById('temp-from').value='F';tempConvert()">212°F</button>
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=98.6;document.getElementById('temp-from').value='F';tempConvert()">98.6°F body</button>
+        <button class="qv-btn" onclick="document.getElementById('temp-input').value=0;document.getElementById('temp-from').value='K';tempConvert()">0K absolute zero</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane-label">Result — all scales <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box uc-output" id="temp-output" onclick="copyEl('temp-output')" aria-label="Temperature conversion result"></div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I convert Celsius to Fahrenheit?</div>
+    <div class="faq-a">Formula: °F = (°C × 9/5) + 32. Example: 100°C = (100 × 9/5) + 32 = 180 + 32 = 212°F. For a quick mental estimate: double the Celsius, subtract 10%, add 32.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I convert Fahrenheit to Celsius?</div>
+    <div class="faq-a">Formula: °C = (°F − 32) × 5/9. Example: 98.6°F = (98.6 − 32) × 5/9 = 66.6 × 0.556 = 37°C (normal body temperature).</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is Kelvin and when is it used?</div>
+    <div class="faq-a">Kelvin is the SI base unit for temperature, used in science and engineering. 0K is absolute zero — the coldest possible temperature. Kelvin = Celsius + 273.15. There are no negative Kelvin values.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is normal body temperature?</div>
+    <div class="faq-a">37°C = 98.6°F = 310.15K. A temperature above 38°C (100.4°F) is generally considered a fever. Normal body temperature can vary between 36.1°C and 37.2°C depending on the person and time of day.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What temperature does water boil and freeze?</div>
+    <div class="faq-a">At sea level (1 atm pressure): water freezes at 0°C (32°F, 273.15K) and boils at 100°C (212°F, 373.15K). At higher altitudes, boiling point decreases because atmospheric pressure is lower.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

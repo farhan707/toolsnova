@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Length Converter Online — km, Miles, Metres, Feet, Inches</title>
+<meta name="description" content="Convert length between kilometres, miles, metres, feet, inches, cm, mm and more. Free online length converter with all units shown at once.">
+<link rel="canonical" href="https://toolsnova.net/length-converter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Length Converter Online — km, Miles, Metres, Feet, Inches">
+<meta property="og:description" content="Convert length between kilometres, miles, metres, feet, inches, cm, mm and more. Free online length converter with all units shown at once.">
+<meta property="og:url" content="https://toolsnova.net/length-converter">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Length Converter Online","url":"https://toolsnova.net/length-converter","description":"Convert length between kilometres, miles, metres, feet, inches, cm, mm and more. Free online length converter with all units shown at once.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link active">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Length Converter</h1>
+  <p>Convert between km, miles, metres, feet, inches, cm, mm, nautical miles and more. All conversions shown at once.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="lengthConvert()">Convert</button>
+    <button class="btn" onclick="lenClear()">Clear</button>
+    <button class="btn" onclick="copyEl('len-output')">Copy</button>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div>
+      <div class="pane-label">Value to convert</div>
+      <input type="number" id="len-input" placeholder="e.g. 5" class="uc-input" oninput="lengthConvert()" aria-label="Value to convert">
+    </div>
+    <div class="uc-grid">
+      <div>
+        <div class="pane-label">From</div>
+      <select id="len-from" class="uc-select" onchange="lenConvert()">
+        <option value="m">m — Metres</option>
+        <option value="km" selected>km — Kilometres</option>
+        <option value="cm">cm — Centimetres</option>
+        <option value="mm">mm — Millimetres</option>
+        <option value="mi">mi — Miles</option>
+        <option value="yd">yd — Yards</option>
+        <option value="ft">ft — Feet</option>
+        <option value="in">in — Inches</option>
+        <option value="nmi">nmi — Nautical Miles</option>
+        <option value="μm">μm — Micrometres</option>
+        <option value="nm">nm — Nanometres</option>
+      </select>
+      </div>
+      <button class="swap-btn" onclick="
+  var f=document.getElementById('len-from'),t=document.getElementById('len-to');
+  var tmp=f.value;f.value=t.value;t.value=tmp;lengthConvert()">⇌</button>
+      <div>
+        <div class="pane-label">To</div>
+      <select id="len-to" class="uc-select" onchange="lenConvert()">
+        <option value="m">m — Metres</option>
+        <option value="km">km — Kilometres</option>
+        <option value="cm">cm — Centimetres</option>
+        <option value="mm">mm — Millimetres</option>
+        <option value="mi" selected>mi — Miles</option>
+        <option value="yd">yd — Yards</option>
+        <option value="ft">ft — Feet</option>
+        <option value="in">in — Inches</option>
+        <option value="nmi">nmi — Nautical Miles</option>
+        <option value="μm">μm — Micrometres</option>
+        <option value="nm">nm — Nanometres</option>
+      </select>
+      </div>
+    </div>
+    <div>
+      <div class="pane-label" style="margin-bottom:6px">Quick values</div>
+      <div class="quick-vals"><button class="qv-btn" onclick="document.getElementById('len-input').value='1';lengthConvert()">1</button><button class="qv-btn" onclick="document.getElementById('len-input').value='5';lengthConvert()">5</button><button class="qv-btn" onclick="document.getElementById('len-input').value='10';lengthConvert()">10</button><button class="qv-btn" onclick="document.getElementById('len-input').value='100';lengthConvert()">100</button><button class="qv-btn" onclick="document.getElementById('len-input').value='1000';lengthConvert()">1000</button></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box uc-output" id="len-output" onclick="copyEl('len-output')" aria-label="Conversion result"></div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How many kilometres in a mile?</div>
+    <div class="faq-a">1 mile = 1.60934 kilometres. Conversely, 1 kilometre = 0.621371 miles. A quick approximation: multiply miles by 1.6 to get km, or multiply km by 0.6 to get miles.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How many cm in an inch?</div>
+    <div class="faq-a">1 inch = 2.54 centimetres exactly. This is the defined conversion. So 1 foot (12 inches) = 30.48 cm, and 1 metre = 39.3701 inches.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I convert feet and inches to centimetres?</div>
+    <div class="faq-a">First convert feet to inches (multiply by 12), add the remaining inches, then multiply by 2.54. Example: 5 feet 11 inches = (5×12 + 11) × 2.54 = 71 × 2.54 = 180.34 cm.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is a nautical mile?</div>
+    <div class="faq-a">A nautical mile is 1,852 metres (1.852 km), defined as one minute of arc along a meridian of the Earth. It is used in aviation and maritime navigation. 1 nautical mile ≈ 1.15078 statute miles.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

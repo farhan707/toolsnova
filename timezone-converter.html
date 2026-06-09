@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Zone Converter Online — Convert Time Between Any Time Zones</title>
+<meta name="description" content="Convert time between any two time zones instantly. Supports UTC, PKT, IST, EST, GMT, PST and 20+ more. Shows all time zones at once. Free online time zone converter.">
+<link rel="canonical" href="https://toolsnova.net/timezone-converter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Time Zone Converter Online — Convert Time Between Any Time Zones">
+<meta property="og:description" content="Convert time between any two time zones instantly. Supports UTC, PKT, IST, EST, GMT, PST and 20+ more. Shows all time zones at once. Free online time zone converter.">
+<meta property="og:url" content="https://toolsnova.net/timezone-converter">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Time Zone Converter Online","url":"https://toolsnova.net/timezone-converter","description":"Convert time between any two time zones instantly. Supports UTC, PKT, IST, EST, GMT, PST and 20+ more. Shows all time zones at once. Free online time zone converter.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link active">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Time Zone Converter</h1>
+  <p>Convert any time between 20+ world time zones instantly. Enter a time, select your zones, and see the equivalent time everywhere in one click.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="tzConvert()">Convert</button>
+    <button class="btn" onclick="tzNow()">Use now</button>
+    <button class="btn" onclick="tzClear()">Clear</button>
+    <button class="btn" onclick="copyEl('tz-output')">Copy</button>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div>
+      <div class="pane-label">Time (HH:MM or H:MM AM/PM)</div>
+      <input type="text" id="tz-input" placeholder="e.g. 14:30 or 2:30 PM" class="uc-input" oninput="tzConvert()" aria-label="Time to convert" spellcheck="false">
+    </div>
+    <div class="uc-grid">
+      <div>
+        <div class="pane-label">From timezone</div>
+        <select id="tz-from" class="uc-select" onchange="tzConvert()">
+          <option value="UTC">UTC — Coordinated Universal Time</option>
+          <option value="PKT" selected>PKT — Pakistan Standard Time</option>
+          <option value="IST">IST — India Standard Time</option>
+          <option value="EST">EST — Eastern Standard (US)</option>
+          <option value="EDT">EDT — Eastern Daylight (US)</option>
+          <option value="CST">CST — Central Standard (US)</option>
+          <option value="PST">PST — Pacific Standard (US)</option>
+          <option value="GMT">GMT — Greenwich Mean Time</option>
+          <option value="BST">BST — British Summer Time</option>
+          <option value="CET">CET — Central European Time</option>
+          <option value="GST">GST — Gulf Standard Time</option>
+          <option value="AST">AST — Arabia Standard (KSA)</option>
+          <option value="BDT">BDT — Bangladesh Standard</option>
+          <option value="SGT">SGT — Singapore Time</option>
+          <option value="JST">JST — Japan Standard Time</option>
+          <option value="AEST">AEST — Australian Eastern</option>
+        </select>
+      </div>
+      <button class="swap-btn" onclick="var f=document.getElementById('tz-from'),t=document.getElementById('tz-to');var tmp=f.value;f.value=t.value;t.value=tmp;tzConvert()">⇌</button>
+      <div>
+        <div class="pane-label">To timezone</div>
+        <select id="tz-to" class="uc-select" onchange="tzConvert()">
+          <option value="UTC">UTC — Coordinated Universal Time</option>
+          <option value="PKT">PKT — Pakistan Standard Time</option>
+          <option value="IST">IST — India Standard Time</option>
+          <option value="EST">EST — Eastern Standard (US)</option>
+          <option value="EDT" selected>EDT — Eastern Daylight (US)</option>
+          <option value="CST">CST — Central Standard (US)</option>
+          <option value="PST">PST — Pacific Standard (US)</option>
+          <option value="GMT">GMT — Greenwich Mean Time</option>
+          <option value="BST">BST — British Summer Time</option>
+          <option value="CET">CET — Central European Time</option>
+          <option value="GST">GST — Gulf Standard Time</option>
+          <option value="AST">AST — Arabia Standard (KSA)</option>
+          <option value="BDT">BDT — Bangladesh Standard</option>
+          <option value="SGT">SGT — Singapore Time</option>
+          <option value="JST">JST — Japan Standard Time</option>
+          <option value="AEST">AEST — Australian Eastern</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane-label">Result — all timezones <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box uc-output" id="tz-output" onclick="copyEl('tz-output')" aria-label="Time zone conversion result"></div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is UTC?</div>
+    <div class="faq-a">UTC (Coordinated Universal Time) is the world's primary time standard. All other time zones are defined as offsets from UTC. It replaced GMT as the standard in 1967 and does not observe daylight saving time.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the difference between EST and EDT?</div>
+    <div class="faq-a">EST (Eastern Standard Time) is UTC−5, used in winter. EDT (Eastern Daylight Time) is UTC−4, used in summer when clocks are moved forward one hour. The US switches between them twice a year.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What time zone is Pakistan?</div>
+    <div class="faq-a">Pakistan uses PKT (Pakistan Standard Time) = UTC+5. Pakistan does not observe daylight saving time. When it's 12:00 noon UTC, it's 5:00 PM in Pakistan.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I schedule a meeting across time zones?</div>
+    <div class="faq-a">Enter the meeting time in your local timezone and check the result for all participants' timezones. Key Pakistan-friendly times: 9 AM PKT = 4 AM UTC = 12 AM EST = 11 AM IST. For US West Coast: 9 AM PST = 10 PM PKT (next day).</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is daylight saving time?</div>
+    <div class="faq-a">Daylight saving time (DST) moves clocks forward by 1 hour in spring and back in autumn to make better use of daylight. Not all countries observe DST — Pakistan, India, China, and Japan do not. The US, UK, and most of Europe do.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

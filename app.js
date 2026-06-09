@@ -1219,3 +1219,546 @@ function rngClear(){
   if(hist) hist.innerHTML='';
   setStatus('rng-status','','set range and generate');
 }
+
+/* ════════════════════════════════════
+   GST CALCULATOR
+   ════════════════════════════════════ */
+function gstCalc() {
+  const amount  = parseFloat(document.getElementById('gst-amount')?.value);
+  const rate    = parseFloat(document.getElementById('gst-rate')?.value);
+  const mode    = document.getElementById('gst-mode')?.value || 'add';
+  const out     = document.getElementById('gst-output');
+  if (!out) return;
+  if (isNaN(amount) || isNaN(rate) || amount <= 0 || rate < 0) {
+    out.textContent = 'Please enter a valid amount and GST rate.';
+    out.className = 'output-box error'; return;
+  }
+  let original, gstAmt, total;
+  if (mode === 'add') {
+    original = amount;
+    gstAmt   = amount * rate / 100;
+    total    = amount + gstAmt;
+  } else {
+    total    = amount;
+    original = amount / (1 + rate / 100);
+    gstAmt   = total - original;
+  }
+  out.className = 'output-box success';
+  out.textContent =
+    `${mode === 'add' ? 'Original Amount' : 'Pre-GST Amount'}:  ${formatCur(original)}\n` +
+    `GST @ ${rate}%:          ${formatCur(gstAmt)}\n` +
+    `${'─'.repeat(32)}\n` +
+    `${mode === 'add' ? 'Total (with GST)' : 'GST-inclusive Price'}:  ${formatCur(total)}\n\n` +
+    `CGST (${rate/2}%):          ${formatCur(gstAmt/2)}\n` +
+    `SGST (${rate/2}%):          ${formatCur(gstAmt/2)}`;
+  renderAmortChart('gst-chart', original, gstAmt);
+}
+function gstSetRate(r) {
+  const el = document.getElementById('gst-rate');
+  if (el) { el.value = r; gstCalc(); }
+  document.querySelectorAll('.gst-slab').forEach(b => {
+    b.classList.toggle('active', b.dataset.rate == r);
+  });
+}
+function gstClear() {
+  const a = document.getElementById('gst-amount');
+  const o = document.getElementById('gst-output');
+  const c = document.getElementById('gst-chart');
+  if (a) a.value = '';
+  if (o) { o.textContent = ''; o.className = 'output-box'; }
+  if (c) c.innerHTML = '';
+}
+
+/* ════════════════════════════════════
+   SALARY CALCULATOR
+   ════════════════════════════════════ */
+function salaryCalc() {
+  const amount   = parseFloat(document.getElementById('sal-amount')?.value);
+  const fromUnit = document.getElementById('sal-from')?.value || 'annual';
+  const out      = document.getElementById('sal-output');
+  if (!out) return;
+  if (isNaN(amount) || amount <= 0) {
+    out.textContent = 'Please enter a valid salary amount.';
+    out.className = 'output-box error'; return;
+  }
+  // Convert to annual first
+  const toAnnual = { annual:1, monthly:12, weekly:52, daily:260, hourly:2080 };
+  const annual  = amount * toAnnual[fromUnit];
+  const monthly = annual / 12;
+  const weekly  = annual / 52;
+  const daily   = annual / 260;
+  const hourly  = annual / 2080;
+  // Simple tax estimate (generic brackets)
+  const taxRate = annual <= 12500 ? 0 : annual <= 50000 ? 0.20 : annual <= 150000 ? 0.40 : 0.45;
+  const taxAmt  = annual * taxRate;
+  const takeHome = annual - taxAmt;
+  out.className = 'output-box success';
+  out.textContent =
+    `── Salary Breakdown ──────────────\n` +
+    `Hourly:          ${formatCur(hourly)}\n` +
+    `Daily:           ${formatCur(daily)}\n` +
+    `Weekly:          ${formatCur(weekly)}\n` +
+    `Monthly:         ${formatCur(monthly)}\n` +
+    `Annual:          ${formatCur(annual)}\n\n` +
+    `── Estimated Tax (generic) ───────\n` +
+    `Tax rate:        ${(taxRate*100).toFixed(0)}%\n` +
+    `Est. tax/year:   ${formatCur(taxAmt)}\n` +
+    `Est. take-home:  ${formatCur(takeHome)}/yr\n` +
+    `                 ${formatCur(takeHome/12)}/mo\n\n` +
+    `Note: Tax estimate is illustrative only.\nConsult a tax advisor for accurate figures.`;
+  renderAmortChart('sal-chart', takeHome, taxAmt);
+}
+function salaryClear() {
+  const a = document.getElementById('sal-amount');
+  const o = document.getElementById('sal-output');
+  if (a) a.value = '';
+  if (o) { o.textContent = ''; o.className = 'output-box'; }
+}
+
+/* ════════════════════════════════════
+   VAT CALCULATOR
+   ════════════════════════════════════ */
+function vatCalc() {
+  const amount = parseFloat(document.getElementById('vat-amount')?.value);
+  const rate   = parseFloat(document.getElementById('vat-rate')?.value);
+  const mode   = document.getElementById('vat-mode')?.value || 'add';
+  const out    = document.getElementById('vat-output');
+  if (!out) return;
+  if (isNaN(amount) || isNaN(rate) || amount <= 0 || rate < 0) {
+    out.textContent = 'Please enter a valid amount and VAT rate.';
+    out.className = 'output-box error'; return;
+  }
+  let original, vatAmt, total;
+  if (mode === 'add') {
+    original = amount;
+    vatAmt   = amount * rate / 100;
+    total    = amount + vatAmt;
+  } else {
+    total    = amount;
+    original = amount / (1 + rate / 100);
+    vatAmt   = total - original;
+  }
+  out.className = 'output-box success';
+  out.textContent =
+    `${mode === 'add' ? 'Net Amount (ex-VAT)' : 'Net Amount (ex-VAT)'}:  ${formatCur(original)}\n` +
+    `VAT @ ${rate}%:              ${formatCur(vatAmt)}\n` +
+    `${'─'.repeat(34)}\n` +
+    `Gross Amount (inc-VAT):  ${formatCur(total)}`;
+  renderAmortChart('vat-chart', original, vatAmt);
+}
+function vatClear() {
+  ['vat-amount'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('vat-output');
+  const c=document.getElementById('vat-chart');
+  if(o){o.textContent='';o.className='output-box';}
+  if(c) c.innerHTML='';
+}
+
+/* ════════════════════════════════════
+   DISCOUNT CALCULATOR
+   ════════════════════════════════════ */
+function discountCalc() {
+  const price    = parseFloat(document.getElementById('disc-price')?.value);
+  const discount = parseFloat(document.getElementById('disc-pct')?.value);
+  const out      = document.getElementById('disc-output');
+  if (!out) return;
+  if (isNaN(price) || isNaN(discount) || price <= 0 || discount < 0 || discount > 100) {
+    out.textContent = 'Please enter a valid price and discount percentage.';
+    out.className = 'output-box error'; return;
+  }
+  const saving   = price * discount / 100;
+  const finalPr  = price - saving;
+  // Also show what % off would give round numbers
+  out.className = 'output-box success';
+  out.textContent =
+    `Original Price:   ${formatCur(price)}\n` +
+    `Discount:         ${discount}% = ${formatCur(saving)}\n` +
+    `${'─'.repeat(30)}\n` +
+    `Final Price:      ${formatCur(finalPr)}\n` +
+    `You Save:         ${formatCur(saving)}\n\n` +
+    `── Other discounts on ${formatCur(price)} ──\n` +
+    [5,10,15,20,25,30,40,50].map(d => {
+      const s = price*d/100;
+      return `${String(d).padStart(3)}% off → ${formatCur(price-s)} (save ${formatCur(s)})`;
+    }).join('\n');
+  renderAmortChart('disc-chart', finalPr, saving);
+}
+function discountClear() {
+  ['disc-price','disc-pct'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('disc-output');
+  const c=document.getElementById('disc-chart');
+  if(o){o.textContent='';o.className='output-box';}
+  if(c) c.innerHTML='';
+}
+
+/* ════════════════════════════════════
+   TIP CALCULATOR
+   ════════════════════════════════════ */
+function tipCalc() {
+  const bill    = parseFloat(document.getElementById('tip-bill')?.value);
+  const tipPct  = parseFloat(document.getElementById('tip-pct')?.value);
+  const people  = parseInt(document.getElementById('tip-people')?.value) || 1;
+  const out     = document.getElementById('tip-output');
+  if (!out) return;
+  if (isNaN(bill) || isNaN(tipPct) || bill <= 0 || tipPct < 0) {
+    out.textContent = 'Please enter a valid bill amount and tip %.';
+    out.className = 'output-box error'; return;
+  }
+  const tipAmt   = bill * tipPct / 100;
+  const total    = bill + tipAmt;
+  const perPerson = total / Math.max(1, people);
+  const tipPer   = tipAmt / Math.max(1, people);
+  out.className = 'output-box success';
+  out.textContent =
+    `Bill Amount:      ${formatCur(bill)}\n` +
+    `Tip (${tipPct}%):       ${formatCur(tipAmt)}\n` +
+    `${'─'.repeat(28)}\n` +
+    `Total:            ${formatCur(total)}\n\n` +
+    (people > 1 ?
+    `── Split ${people} ways ─────────────\n` +
+    `Per Person:       ${formatCur(perPerson)}\n` +
+    `  (bill share):   ${formatCur(bill/people)}\n` +
+    `  (tip share):    ${formatCur(tipPer)}\n\n` : '') +
+    `── Common tip amounts ───────────\n` +
+    [10,15,18,20,25].map(t => {
+      const ta=bill*t/100;
+      return `${String(t).padStart(3)}% → tip ${formatCur(ta)} · total ${formatCur(bill+ta)}${people>1?' · '+formatCur((bill+ta)/people)+'/person':''}`;
+    }).join('\n');
+}
+function tipSetPct(p) {
+  const el = document.getElementById('tip-pct');
+  if (el) { el.value = p; tipCalc(); }
+  document.querySelectorAll('.tip-btn').forEach(b => b.classList.toggle('active', b.dataset.tip == p));
+}
+function tipClear() {
+  ['tip-bill','tip-pct','tip-people'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=id==='tip-people'?'1':'';});
+  const o=document.getElementById('tip-output');
+  if(o){o.textContent='';o.className='output-box';}
+}
+
+/* ════════════════════════════════════
+   CURRENCY CONVERTER
+   ════════════════════════════════════ */
+const CURRENCY_RATES = {
+  USD:1, EUR:0.92, GBP:0.79, PKR:278, INR:83.5, AED:3.67,
+  SAR:3.75, CAD:1.36, AUD:1.53, JPY:149.5, CNY:7.24,
+  CHF:0.90, SGD:1.34, MYR:4.72, BDT:110, LKR:305,
+  KWD:0.31, QAR:3.64, BHD:0.38, OMR:0.385, EGP:30.9,
+  TRY:32.1, ZAR:18.6, MXN:17.1, BRL:4.97, KRW:1325,
+  THB:35.1, NGN:1550, GHS:12.5, KES:130
+};
+const CURRENCY_NAMES = {
+  USD:'US Dollar', EUR:'Euro', GBP:'British Pound', PKR:'Pakistani Rupee',
+  INR:'Indian Rupee', AED:'UAE Dirham', SAR:'Saudi Riyal', CAD:'Canadian Dollar',
+  AUD:'Australian Dollar', JPY:'Japanese Yen', CNY:'Chinese Yuan',
+  CHF:'Swiss Franc', SGD:'Singapore Dollar', MYR:'Malaysian Ringgit',
+  BDT:'Bangladeshi Taka', LKR:'Sri Lankan Rupee', KWD:'Kuwaiti Dinar',
+  QAR:'Qatari Riyal', BHD:'Bahraini Dinar', OMR:'Omani Rial',
+  EGP:'Egyptian Pound', TRY:'Turkish Lira', ZAR:'South African Rand',
+  MXN:'Mexican Peso', BRL:'Brazilian Real', KRW:'South Korean Won',
+  THB:'Thai Baht', NGN:'Nigerian Naira', GHS:'Ghanaian Cedi', KES:'Kenyan Shilling'
+};
+function currencyConvert() {
+  const amount = parseFloat(document.getElementById('cx-amount')?.value);
+  const from   = document.getElementById('cx-from')?.value || 'USD';
+  const to     = document.getElementById('cx-to')?.value   || 'PKR';
+  const out    = document.getElementById('cx-output');
+  const note   = document.getElementById('cx-note');
+  if (!out) return;
+  if (isNaN(amount) || amount < 0) {
+    out.textContent = 'Please enter a valid amount.';
+    out.className = 'output-box error'; return;
+  }
+  const rateFrom = CURRENCY_RATES[from] || 1;
+  const rateTo   = CURRENCY_RATES[to]   || 1;
+  const result   = (amount / rateFrom) * rateTo;
+  const rateDisp = (rateTo / rateFrom);
+  out.className = 'output-box success';
+  out.textContent =
+    `${amount.toLocaleString()} ${from} = ${result.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:4})} ${to}\n\n` +
+    `Rate: 1 ${from} = ${rateDisp.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:6})} ${to}\n` +
+    `Rate: 1 ${to} = ${(1/rateDisp).toLocaleString('en-US',{minimumFractionDigits:6,maximumFractionDigits:8})} ${from}\n\n` +
+    `── Quick reference (${from} → ${to}) ──\n` +
+    [1,5,10,50,100,500,1000].map(v => {
+      const r = (v/rateFrom)*rateTo;
+      return `${String(v).padStart(5)} ${from} = ${r.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} ${to}`;
+    }).join('\n');
+  if (note) note.textContent = '⚠ Rates are indicative and updated periodically. Use a bank or broker for live rates.';
+  setStatus('cx-status','ok',`✓ ${from} → ${to}`);
+}
+function currencySwap() {
+  const f = document.getElementById('cx-from');
+  const t = document.getElementById('cx-to');
+  if (!f||!t) return;
+  [f.value, t.value] = [t.value, f.value];
+  currencyConvert();
+}
+function currencyClear() {
+  const a=document.getElementById('cx-amount');
+  const o=document.getElementById('cx-output');
+  if(a) a.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('cx-status','','enter amount to convert');
+}
+
+/* ════════════════════════════════════
+   BATCH 3 — UNIT CONVERTERS
+   Shared helper
+   ════════════════════════════════════ */
+function ucConvert(units, fromId, toId, inputId, outputId, precision) {
+  const val  = parseFloat(document.getElementById(inputId)?.value);
+  const from = document.getElementById(fromId)?.value;
+  const to   = document.getElementById(toId)?.value;
+  const out  = document.getElementById(outputId);
+  if (!out) return;
+  if (isNaN(val)) { out.textContent = ''; out.className = 'output-box'; return; }
+
+  // Convert to base unit then to target
+  const toBase   = units[from]?.toBase   || (v => v);
+  const fromBase = units[to]?.fromBase   || (v => v);
+  const result   = fromBase(toBase(val));
+  const prec     = precision || 6;
+
+  // Build full reference table
+  const fmt = n => {
+    if (Math.abs(n) === 0) return '0';
+    if (Math.abs(n) >= 1e9 || (Math.abs(n) < 0.0001 && n !== 0)) return n.toExponential(4);
+    return parseFloat(n.toPrecision(prec)).toLocaleString('en-US', {maximumFractionDigits: prec});
+  };
+
+  const mainLine = `${val.toLocaleString()} ${from} = ${fmt(result)} ${to}`;
+  const table = Object.keys(units)
+    .filter(u => u !== from)
+    .map(u => {
+      const r = units[u].fromBase(toBase(val));
+      return `  ${(u + ':').padEnd(18)} ${fmt(r)}`;
+    }).join('\n');
+
+  out.textContent = mainLine + '\n\n── All units ──────────────────\n' + table;
+  out.className = 'output-box success';
+  setStatus(outputId.replace('output','status'), 'ok', `✓ ${from} → ${to}`);
+}
+
+/* ════════════════════════════════════
+   TEMPERATURE CONVERTER
+   ════════════════════════════════════ */
+function tempConvert() {
+  const val  = parseFloat(document.getElementById('temp-input')?.value);
+  const from = document.getElementById('temp-from')?.value || 'C';
+  const out  = document.getElementById('temp-output');
+  if (!out) return;
+  if (isNaN(val)) { out.textContent = ''; out.className = 'output-box'; return; }
+
+  // Convert to Celsius first
+  let celsius;
+  if (from === 'C') celsius = val;
+  else if (from === 'F') celsius = (val - 32) * 5/9;
+  else if (from === 'K') celsius = val - 273.15;
+  else if (from === 'R') celsius = (val - 491.67) * 5/9;
+
+  const results = {
+    'Celsius (°C)':    celsius,
+    'Fahrenheit (°F)': celsius * 9/5 + 32,
+    'Kelvin (K)':      celsius + 273.15,
+    'Rankine (°R)':    (celsius + 273.15) * 9/5,
+  };
+
+  const fmt = n => parseFloat(n.toFixed(4)).toLocaleString('en-US', {maximumFractionDigits:4});
+
+  const lines = Object.entries(results)
+    .map(([unit, v]) => `  ${(unit+':').padEnd(20)} ${fmt(v)}`)
+    .join('\n');
+
+  out.textContent = `── Temperature Conversion ──────────\n${lines}\n\n── Reference points ────────────────\n  Water freezes:      0°C = 32°F = 273.15K\n  Water boils:        100°C = 212°F = 373.15K\n  Body temperature:   37°C = 98.6°F = 310.15K\n  Absolute zero:      -273.15°C = -459.67°F = 0K`;
+  out.className = 'output-box success';
+}
+function tempClear() {
+  const i=document.getElementById('temp-input');
+  const o=document.getElementById('temp-output');
+  if(i) i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+}
+
+/* ════════════════════════════════════
+   LENGTH CONVERTER
+   ════════════════════════════════════ */
+const LENGTH_UNITS = {
+  'm':   { toBase: v=>v,          fromBase: v=>v,            name:'Metres' },
+  'km':  { toBase: v=>v*1000,     fromBase: v=>v/1000,       name:'Kilometres' },
+  'cm':  { toBase: v=>v/100,      fromBase: v=>v*100,        name:'Centimetres' },
+  'mm':  { toBase: v=>v/1000,     fromBase: v=>v*1000,       name:'Millimetres' },
+  'mi':  { toBase: v=>v*1609.344, fromBase: v=>v/1609.344,   name:'Miles' },
+  'yd':  { toBase: v=>v*0.9144,   fromBase: v=>v/0.9144,     name:'Yards' },
+  'ft':  { toBase: v=>v*0.3048,   fromBase: v=>v/0.3048,     name:'Feet' },
+  'in':  { toBase: v=>v*0.0254,   fromBase: v=>v/0.0254,     name:'Inches' },
+  'nmi': { toBase: v=>v*1852,     fromBase: v=>v/1852,       name:'Nautical Miles' },
+  'μm':  { toBase: v=>v/1e6,      fromBase: v=>v*1e6,        name:'Micrometres' },
+  'nm':  { toBase: v=>v/1e9,      fromBase: v=>v*1e9,        name:'Nanometres' },
+};
+function lengthConvert() { ucConvert(LENGTH_UNITS,'len-from','len-to','len-input','len-output'); }
+function lengthClear() { clearUC('len-input','len-output'); }
+
+/* ════════════════════════════════════
+   WEIGHT CONVERTER
+   ════════════════════════════════════ */
+const WEIGHT_UNITS = {
+  'kg':  { toBase: v=>v,           fromBase: v=>v,           name:'Kilograms' },
+  'g':   { toBase: v=>v/1000,      fromBase: v=>v*1000,      name:'Grams' },
+  'mg':  { toBase: v=>v/1e6,       fromBase: v=>v*1e6,       name:'Milligrams' },
+  'lb':  { toBase: v=>v*0.453592,  fromBase: v=>v/0.453592,  name:'Pounds' },
+  'oz':  { toBase: v=>v*0.0283495, fromBase: v=>v/0.0283495, name:'Ounces' },
+  'st':  { toBase: v=>v*6.35029,   fromBase: v=>v/6.35029,   name:'Stones' },
+  't':   { toBase: v=>v*1000,      fromBase: v=>v/1000,      name:'Metric Tonnes' },
+  'ton': { toBase: v=>v*907.185,   fromBase: v=>v/907.185,   name:'US Tons' },
+  'μg':  { toBase: v=>v/1e9,       fromBase: v=>v*1e9,       name:'Micrograms' },
+};
+function weightConvert() { ucConvert(WEIGHT_UNITS,'wt-from','wt-to','wt-input','wt-output'); }
+function weightClear() { clearUC('wt-input','wt-output'); }
+
+/* ════════════════════════════════════
+   SPEED CONVERTER
+   ════════════════════════════════════ */
+const SPEED_UNITS = {
+  'km/h':  { toBase: v=>v/3.6,        fromBase: v=>v*3.6,        name:'Kilometres/hour' },
+  'mph':   { toBase: v=>v*0.44704,     fromBase: v=>v/0.44704,    name:'Miles/hour' },
+  'm/s':   { toBase: v=>v,             fromBase: v=>v,            name:'Metres/second' },
+  'kn':    { toBase: v=>v*0.514444,    fromBase: v=>v/0.514444,   name:'Knots' },
+  'ft/s':  { toBase: v=>v*0.3048,      fromBase: v=>v/0.3048,     name:'Feet/second' },
+  'Mach':  { toBase: v=>v*343,         fromBase: v=>v/343,        name:'Mach (sea level)' },
+  'c':     { toBase: v=>v*299792458,   fromBase: v=>v/299792458,  name:'Speed of light' },
+};
+function speedConvert() { ucConvert(SPEED_UNITS,'sp-from','sp-to','sp-input','sp-output'); }
+function speedClear() { clearUC('sp-input','sp-output'); }
+
+/* ════════════════════════════════════
+   DATA SIZE CONVERTER
+   ════════════════════════════════════ */
+const DATA_UNITS = {
+  'bit':  { toBase: v=>v,             fromBase: v=>v,             name:'Bits' },
+  'B':    { toBase: v=>v*8,           fromBase: v=>v/8,           name:'Bytes' },
+  'KB':   { toBase: v=>v*8*1024,      fromBase: v=>v/(8*1024),    name:'Kilobytes' },
+  'MB':   { toBase: v=>v*8*1024**2,   fromBase: v=>v/(8*1024**2), name:'Megabytes' },
+  'GB':   { toBase: v=>v*8*1024**3,   fromBase: v=>v/(8*1024**3), name:'Gigabytes' },
+  'TB':   { toBase: v=>v*8*1024**4,   fromBase: v=>v/(8*1024**4), name:'Terabytes' },
+  'PB':   { toBase: v=>v*8*1024**5,   fromBase: v=>v/(8*1024**5), name:'Petabytes' },
+  'Kbit': { toBase: v=>v*1000,        fromBase: v=>v/1000,        name:'Kilobits' },
+  'Mbit': { toBase: v=>v*1e6,         fromBase: v=>v/1e6,         name:'Megabits' },
+  'Gbit': { toBase: v=>v*1e9,         fromBase: v=>v/1e9,         name:'Gigabits' },
+};
+function dataConvert() { ucConvert(DATA_UNITS,'dt-from','dt-to','dt-input','dt-output'); }
+function dataClear() { clearUC('dt-input','dt-output'); }
+
+/* ════════════════════════════════════
+   TIME ZONE CONVERTER
+   ════════════════════════════════════ */
+const TIMEZONES = {
+  'UTC':   { offset: 0,     name: 'UTC — Coordinated Universal Time' },
+  'PKT':   { offset: 5,     name: 'PKT — Pakistan Standard Time' },
+  'IST':   { offset: 5.5,   name: 'IST — India Standard Time' },
+  'EST':   { offset: -5,    name: 'EST — Eastern Standard Time (US)' },
+  'EDT':   { offset: -4,    name: 'EDT — Eastern Daylight Time (US)' },
+  'CST':   { offset: -6,    name: 'CST — Central Standard Time (US)' },
+  'CDT':   { offset: -5,    name: 'CDT — Central Daylight Time (US)' },
+  'MST':   { offset: -7,    name: 'MST — Mountain Standard Time' },
+  'PST':   { offset: -8,    name: 'PST — Pacific Standard Time (US)' },
+  'PDT':   { offset: -7,    name: 'PDT — Pacific Daylight Time (US)' },
+  'GMT':   { offset: 0,     name: 'GMT — Greenwich Mean Time' },
+  'BST':   { offset: 1,     name: 'BST — British Summer Time' },
+  'CET':   { offset: 1,     name: 'CET — Central European Time' },
+  'CEST':  { offset: 2,     name: 'CEST — Central European Summer Time' },
+  'EET':   { offset: 2,     name: 'EET — Eastern European Time' },
+  'MSK':   { offset: 3,     name: 'MSK — Moscow Standard Time' },
+  'GST':   { offset: 4,     name: 'GST — Gulf Standard Time (UAE/Oman)' },
+  'AST':   { offset: 3,     name: 'AST — Arabia Standard Time (KSA)' },
+  'BDT':   { offset: 6,     name: 'BDT — Bangladesh Standard Time' },
+  'ICT':   { offset: 7,     name: 'ICT — Indochina Time' },
+  'CST8':  { offset: 8,     name: 'CST — China Standard Time' },
+  'SGT':   { offset: 8,     name: 'SGT — Singapore Time' },
+  'JST':   { offset: 9,     name: 'JST — Japan Standard Time' },
+  'AEST':  { offset: 10,    name: 'AEST — Australian Eastern Standard' },
+  'AEDT':  { offset: 11,    name: 'AEDT — Australian Eastern Daylight' },
+  'NZST':  { offset: 12,    name: 'NZST — New Zealand Standard Time' },
+};
+function tzConvert() {
+  const timeStr = document.getElementById('tz-input')?.value.trim();
+  const from    = document.getElementById('tz-from')?.value || 'UTC';
+  const to      = document.getElementById('tz-to')?.value   || 'PKT';
+  const out     = document.getElementById('tz-output');
+  if (!out) return;
+  if (!timeStr) { out.textContent = ''; out.className = 'output-box'; return; }
+
+  // Parse time — accept HH:MM, H:MM AM/PM, or full datetime
+  let hours = 0, mins = 0;
+  const ampm = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM|am|pm)?/);
+  if (ampm) {
+    hours = parseInt(ampm[1]);
+    mins  = parseInt(ampm[2]);
+    if (ampm[3]) {
+      const ap = ampm[3].toUpperCase();
+      if (ap === 'PM' && hours !== 12) hours += 12;
+      if (ap === 'AM' && hours === 12) hours = 0;
+    }
+  } else {
+    out.textContent = 'Enter time as HH:MM or H:MM AM/PM (e.g. 14:30 or 2:30 PM)';
+    out.className = 'output-box error'; return;
+  }
+
+  const fromOffset = TIMEZONES[from]?.offset ?? 0;
+  const toOffset   = TIMEZONES[to]?.offset   ?? 0;
+  const diffHours  = toOffset - fromOffset;
+
+  let newHours = hours + Math.floor(diffHours);
+  let newMins  = mins  + Math.round((diffHours % 1) * 60);
+  if (newMins >= 60) { newHours++; newMins -= 60; }
+  if (newMins < 0)   { newHours--; newMins += 60; }
+  const dayOffset = Math.floor(newHours / 24);
+  newHours = ((newHours % 24) + 24) % 24;
+
+  const fmt24 = (h, m) => `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+  const fmt12 = (h, m) => {
+    const ap = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    return `${h12}:${String(m).padStart(2,'0')} ${ap}`;
+  };
+  const dayLabel = dayOffset === 0 ? '' : dayOffset > 0 ? ` (+${dayOffset} day)` : ` (${dayOffset} day)`;
+
+  out.textContent =
+    `Input:    ${fmt24(hours,mins)} (${fmt12(hours,mins)}) ${from}\n` +
+    `Output:   ${fmt24(newHours,newMins)} (${fmt12(newHours,newMins)}) ${to}${dayLabel}\n\n` +
+    `Offset difference: ${diffHours >= 0 ? '+' : ''}${diffHours} hours\n\n` +
+    `── All zones for ${fmt24(hours,mins)} ${from} ─────────────\n` +
+    Object.entries(TIMEZONES).map(([code, tz]) => {
+      const diff = tz.offset - fromOffset;
+      let h = hours + Math.floor(diff);
+      let m = mins  + Math.round((diff % 1) * 60);
+      if (m >= 60) { h++; m -= 60; }
+      if (m < 0)   { h--; m += 60; }
+      const day = Math.floor(h/24);
+      h = ((h%24)+24)%24;
+      const dayStr = day === 0 ? '' : day > 0 ? ` +${day}d` : ` ${day}d`;
+      return `  ${(code+':').padEnd(8)} ${fmt24(h,m)} (${fmt12(h,m)})${dayStr}`;
+    }).join('\n');
+
+  out.className = 'output-box success';
+}
+function tzNow() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const inp = document.getElementById('tz-input');
+  if (inp) { inp.value = `${h}:${m}`; tzConvert(); }
+}
+function tzClear() {
+  const i=document.getElementById('tz-input');
+  const o=document.getElementById('tz-output');
+  if(i) i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+}
+
+/* Shared clear helper */
+function clearUC(inputId, outputId) {
+  const i=document.getElementById(inputId);
+  const o=document.getElementById(outputId);
+  if(i) i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+}

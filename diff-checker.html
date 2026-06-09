@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diff Checker Online — Free Text & Code Comparison Tool</title>
+<meta name="description" content="Compare two pieces of text or code and see exactly what changed. Free online diff checker with line-by-line highlighting of additions and deletions. No signup.">
+<link rel="canonical" href="https://toolsnova.net/diff-checker">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Diff Checker Online — Free Text & Code Comparison Tool">
+<meta property="og:description" content="Compare two pieces of text or code and see exactly what changed. Free online diff checker with line-by-line highlighting of additions and deletions. No signup.">
+<meta property="og:url" content="https://toolsnova.net/diff-checker">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Diff Checker Online","url":"https://toolsnova.net/diff-checker","description":"Compare two pieces of text or code and see exactly what changed. Free online diff checker with line-by-line highlighting of additions and deletions. No signup.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link active">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Diff Checker</h1>
+  <p>Paste two versions of any text or code and instantly see what changed. Line-by-line diff with green additions, red deletions, and unchanged lines.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="diffCheck()">Compare</button>
+    <button class="btn" onclick="diffSwap()">Swap ⇌</button>
+    <button class="btn" onclick="diffClear()">Clear</button>
+    <span class="status-badge" id="diff-status">paste text in both panels</span>
+  </div>
+
+  <div class="split">
+    <div>
+      <div class="pane-label">Original text / Version A</div>
+      <textarea id="diff-a" placeholder="Paste original text or code here…" oninput="diffCheck()" spellcheck="false" aria-label="Original text for diff comparison"></textarea>
+    </div>
+    <div>
+      <div class="pane-label">Changed text / Version B</div>
+      <textarea id="diff-b" placeholder="Paste changed text or code here…" oninput="diffCheck()" spellcheck="false" aria-label="Changed text for diff comparison"></textarea>
+    </div>
+  </div>
+
+  <div>
+    <div class="pane-label" style="margin-bottom:6px">
+      Diff output
+      <span style="margin-left:10px;font-size:.65rem">
+        <span style="color:var(--accent)">■</span> added &nbsp;
+        <span style="color:var(--red)">■</span> removed &nbsp;
+        <span style="color:var(--text3)">■</span> unchanged
+      </span>
+    </div>
+    <div class="diff-output" id="diff-output"></div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is a diff checker?</div>
+    <div class="faq-a">A diff checker compares two pieces of text (or code) and highlights what has been added, removed, or left unchanged. The name 'diff' comes from the Unix <code>diff</code> command, which is the foundation of version control systems like Git.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What does the + and − symbol mean?</div>
+    <div class="faq-a">Lines starting with <code>+</code> (green) appear in Version B but not Version A — they were added. Lines starting with <code>−</code> (red) appear in Version A but not Version B — they were removed. Lines with no symbol are identical in both versions.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Can I compare code?</div>
+    <div class="faq-a">Yes. Paste any code — JavaScript, Python, HTML, CSS, SQL, JSON — and the diff will highlight exactly which lines changed. This is particularly useful for reviewing changes before committing to version control.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How does the comparison algorithm work?</div>
+    <div class="faq-a">This tool uses the Longest Common Subsequence (LCS) algorithm — the same approach used by Git's diff engine. It finds the maximum number of lines that appear in the same order in both texts, then marks everything else as added or removed.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+
+</body>
+</html>

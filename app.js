@@ -846,3 +846,376 @@ function faqToggle(el) {
   item.closest('.faq-section')?.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
+
+/* ════════════════════════════════════
+   REGEX TESTER
+   ════════════════════════════════════ */
+function regexRun() {
+  const patternEl = document.getElementById('rx-pattern');
+  const flagsEl   = document.getElementById('rx-flags');
+  const inputEl   = document.getElementById('rx-input');
+  const outEl     = document.getElementById('rx-output');
+  const infoEl    = document.getElementById('rx-info');
+  if (!patternEl||!inputEl||!outEl) return;
+
+  const pat  = patternEl.value;
+  const flags= flagsEl ? flagsEl.value : 'g';
+  const text = inputEl.value;
+
+  if (!pat) {
+    outEl.innerHTML = text ? escHtml(text) : '';
+    if (infoEl) infoEl.textContent = '';
+    setStatus('rx-status','','awaiting pattern');
+    return;
+  }
+  try {
+    const re = new RegExp(pat, flags.includes('g') ? flags : flags+'g');
+    let matchCount = 0, lastIndex = 0, html = '';
+    const matches = [...text.matchAll(re)];
+    matchCount = matches.length;
+    if (matchCount === 0) {
+      outEl.innerHTML = escHtml(text);
+      setStatus('rx-status','err','0 matches');
+      if (infoEl) infoEl.textContent = 'No matches found';
+      return;
+    }
+    let cursor = 0;
+    for (const m of matches) {
+      html += escHtml(text.slice(cursor, m.index));
+      html += `<mark style="background:rgba(127,255,111,0.25);color:inherit;border-radius:2px;outline:1px solid rgba(127,255,111,0.5)">${escHtml(m[0])}</mark>`;
+      cursor = m.index + m[0].length;
+    }
+    html += escHtml(text.slice(cursor));
+    outEl.innerHTML = html;
+    setStatus('rx-status','ok',`✓ ${matchCount} match${matchCount!==1?'es':''}`);
+    if (infoEl) {
+      const groups = matches[0].groups ? Object.keys(matches[0].groups) : [];
+      infoEl.textContent = groups.length ? `Groups: ${groups.join(', ')}` : `${matchCount} match${matchCount!==1?'es':''}`;
+    }
+  } catch(e) {
+    outEl.innerHTML = escHtml(text);
+    setStatus('rx-status','err','✗ '+e.message.slice(0,40));
+    if (infoEl) infoEl.textContent = e.message;
+  }
+}
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function regexClear() {
+  ['rx-pattern','rx-input'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const out=document.getElementById('rx-output');
+  if(out) out.innerHTML='';
+  const info=document.getElementById('rx-info');
+  if(info) info.textContent='';
+  setStatus('rx-status','','awaiting pattern');
+}
+function rxInsert(val) {
+  const inp = document.getElementById('rx-pattern');
+  if (!inp) return;
+  const s = inp.selectionStart, e = inp.selectionEnd;
+  inp.value = inp.value.slice(0,s)+val+inp.value.slice(e);
+  inp.selectionStart = inp.selectionEnd = s+val.length;
+  inp.focus();
+  regexRun();
+}
+
+/* ════════════════════════════════════
+   DIFF CHECKER
+   ════════════════════════════════════ */
+function diffCheck() {
+  const a   = document.getElementById('diff-a')?.value||'';
+  const b   = document.getElementById('diff-b')?.value||'';
+  const out = document.getElementById('diff-output');
+  const st  = document.getElementById('diff-status');
+  if (!out) return;
+  if (!a&&!b) { out.innerHTML=''; setStatus('diff-status','','paste text in both panels'); return; }
+
+  const aLines = a.split('\n');
+  const bLines = b.split('\n');
+  const lcs = buildLCS(aLines, bLines);
+  const diff = buildDiff(aLines, bLines, lcs);
+
+  let adds=0, dels=0, same=0;
+  let html = '';
+  for (const [type, line] of diff) {
+    if (type==='add')  { adds++; html+=`<div class="diff-line diff-add"><span class="diff-gutter">+</span><span>${escHtml(line)}</span></div>`; }
+    else if (type==='del') { dels++; html+=`<div class="diff-line diff-del"><span class="diff-gutter">−</span><span>${escHtml(line)}</span></div>`; }
+    else { same++; html+=`<div class="diff-line diff-same"><span class="diff-gutter"> </span><span>${escHtml(line)}</span></div>`; }
+  }
+  out.innerHTML = html || '<div style="padding:1rem;color:var(--text3);font-size:.8rem">Files are identical</div>';
+  if (adds===0&&dels===0) {
+    setStatus('diff-status','ok','✓ identical');
+  } else {
+    setStatus('diff-status', dels>0||adds>0 ? 'err' : 'ok',
+      `+${adds} −${dels} ~${same}`);
+  }
+}
+
+function buildLCS(a, b) {
+  const m=a.length, n=b.length;
+  const dp=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++)
+    dp[i][j] = a[i-1]===b[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j],dp[i][j-1]);
+  return dp;
+}
+function buildDiff(a, b, dp) {
+  const result=[]; let i=a.length, j=b.length;
+  while(i>0||j>0) {
+    if(i>0&&j>0&&a[i-1]===b[j-1]) { result.unshift(['same',a[i-1]]); i--;j--; }
+    else if(j>0&&(i===0||dp[i][j-1]>=dp[i-1][j])) { result.unshift(['add',b[j-1]]); j--; }
+    else { result.unshift(['del',a[i-1]]); i--; }
+  }
+  return result;
+}
+function diffClear() {
+  ['diff-a','diff-b'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const out=document.getElementById('diff-output');
+  if(out) out.innerHTML='';
+  setStatus('diff-status','','paste text in both panels');
+}
+function diffSwap() {
+  const a=document.getElementById('diff-a');
+  const b=document.getElementById('diff-b');
+  if(!a||!b) return;
+  [a.value,b.value]=[b.value,a.value];
+  diffCheck();
+}
+
+/* ════════════════════════════════════
+   COLOR PICKER
+   ════════════════════════════════════ */
+function colorUpdate(src) {
+  try {
+    let r,g,b,h,s,l;
+    if (src==='hex') {
+      const hex = document.getElementById('cp-hex')?.value.replace('#','');
+      if (!/^[0-9a-fA-F]{6}$/.test(hex)) return;
+      r=parseInt(hex.slice(0,2),16); g=parseInt(hex.slice(2,4),16); b=parseInt(hex.slice(4,6),16);
+    } else if (src==='rgb') {
+      r=parseInt(document.getElementById('cp-r')?.value)||0;
+      g=parseInt(document.getElementById('cp-g')?.value)||0;
+      b=parseInt(document.getElementById('cp-b')?.value)||0;
+    } else if (src==='picker') {
+      const hex=document.getElementById('cp-picker')?.value.replace('#','');
+      r=parseInt(hex.slice(0,2),16); g=parseInt(hex.slice(2,4),16); b=parseInt(hex.slice(4,6),16);
+    } else if (src==='hsl') {
+      h=parseFloat(document.getElementById('cp-h')?.value)||0;
+      s=parseFloat(document.getElementById('cp-s')?.value)||0;
+      l=parseFloat(document.getElementById('cp-l')?.value)||0;
+      [r,g,b]=hslToRgb(h,s,l);
+    }
+    r=Math.max(0,Math.min(255,r)); g=Math.max(0,Math.min(255,g)); b=Math.max(0,Math.min(255,b));
+    const hex=('#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join(''));
+    ;[h,s,l]=rgbToHsl(r,g,b);
+    const hsl=`hsl(${Math.round(h)}, ${Math.round(s)}%, ${Math.round(l)}%)`;
+    const rgb=`rgb(${r}, ${g}, ${b})`;
+    // Update all fields
+    const set=(id,v)=>{const e=document.getElementById(id);if(e&&document.activeElement!==e)e.value=v;};
+    if(src!=='hex')    set('cp-hex', hex);
+    if(src!=='rgb')  { set('cp-r',r); set('cp-g',g); set('cp-b',b); }
+    if(src!=='hsl')  { set('cp-h',Math.round(h)); set('cp-s',Math.round(s)); set('cp-l',Math.round(l)); }
+    if(src!=='picker') set('cp-picker', hex);
+    // Swatch
+    const sw=document.getElementById('cp-swatch');
+    if(sw) { sw.style.background=hex; sw.style.borderColor=l<50?'rgba(255,255,255,.2)':'rgba(0,0,0,.15)'; }
+    // Text outputs
+    const setOut=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+    setOut('cp-out-hex', hex.toUpperCase());
+    setOut('cp-out-rgb', rgb);
+    setOut('cp-out-hsl', hsl);
+    setOut('cp-out-css', `color: ${hex};`);
+    // Contrast
+    const lum=(v)=>{v/=255; return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);};
+    const rel=0.2126*lum(r)+0.7152*lum(g)+0.0722*lum(b);
+    const contrast=(n,d)=>((Math.max(n,d)+0.05)/(Math.min(n,d)+0.05)).toFixed(2);
+    const wcEl=document.getElementById('cp-contrast');
+    if(wcEl) {
+      const cW=contrast(rel,1), cB=contrast(rel,0);
+      wcEl.textContent=`White: ${cW}:1  Black: ${cB}:1  AA: ${cW>=4.5||cB>=4.5?'✓ pass':'✗ fail'}`;
+    }
+    setStatus('cp-status','ok','✓ valid color');
+  } catch(_) {}
+}
+function rgbToHsl(r,g,b) {
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b);
+  let h,s, l=(max+min)/2;
+  if(max===min){h=s=0;}
+  else{
+    const d=max-min; s=l>0.5?d/(2-max-min):d/(max+min);
+    switch(max){ case r:h=((g-b)/d+(g<b?6:0))/6;break; case g:h=((b-r)/d+2)/6;break; default:h=((r-g)/d+4)/6; }
+  }
+  return [h*360,s*100,l*100];
+}
+function hslToRgb(h,s,l) {
+  s/=100; l/=100;
+  const k=n=>(n+h/30)%12, a=s*Math.min(l,1-l);
+  const f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));
+  return [Math.round(f(0)*255),Math.round(f(8)*255),Math.round(f(4)*255)];
+}
+function colorCopyFormat(id) {
+  const el=document.getElementById(id);
+  if(el) navigator.clipboard.writeText(el.textContent).then(()=>showToast('Copied ✓'));
+}
+
+/* ════════════════════════════════════
+   NUMBER TO WORDS
+   ════════════════════════════════════ */
+const NTW_ONES=['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const NTW_TENS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+const NTW_SCALES=['','thousand','million','billion','trillion','quadrillion'];
+function ntwChunk(n) {
+  let s='';
+  if(n>=100){s+=NTW_ONES[Math.floor(n/100)]+' hundred '; n%=100;}
+  if(n>=20){s+=NTW_TENS[Math.floor(n/10)]+' '; n%=10;}
+  if(n>0) s+=NTW_ONES[n]+' ';
+  return s;
+}
+function numberToWords(num) {
+  if(num===0) return 'zero';
+  if(num<0) return 'negative '+numberToWords(-num);
+  let result='', scale=0;
+  while(num>0){
+    const chunk=num%1000;
+    if(chunk!==0) result=ntwChunk(chunk)+(NTW_SCALES[scale]?NTW_SCALES[scale]+' ':'')+result;
+    num=Math.floor(num/1000); scale++;
+  }
+  return result.trim().replace(/\s+/g,' ');
+}
+function ntwRun() {
+  const inp=document.getElementById('ntw-input');
+  const out=document.getElementById('ntw-output');
+  if(!inp||!out) return;
+  const raw=inp.value.trim();
+  if(!raw){out.textContent='';out.className='output-box';setStatus('ntw-status','','enter a number');return;}
+  const parts=raw.split('.');
+  const intPart=parseInt(parts[0].replace(/,/g,''));
+  if(isNaN(intPart)||intPart>999999999999999){
+    out.textContent='Please enter a whole number up to 999,999,999,999,999';
+    out.className='output-box error';
+    setStatus('ntw-status','err','✗ out of range');
+    return;
+  }
+  let words=numberToWords(Math.abs(intPart));
+  if(intPart<0) words='negative '+words;
+  let result=words.charAt(0).toUpperCase()+words.slice(1);
+  // Handle decimal part
+  if(parts[1]!==undefined) {
+    const dec=parts[1].replace(/0+$/,'');
+    if(dec.length>0) {
+      const decWords=dec.split('').map(d=>NTW_ONES[parseInt(d)]||'zero').join(' ');
+      result+=` and ${decWords} ${dec.length===1?'tenth':dec.length===2?'hundredth':'thousandth'}${dec!=='1'?'s':''}`;
+    }
+  }
+  out.textContent=result;
+  out.className='output-box success';
+  setStatus('ntw-status','ok','✓ converted');
+}
+function ntwClear(){
+  const i=document.getElementById('ntw-input');
+  const o=document.getElementById('ntw-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('ntw-status','','enter a number');
+}
+
+/* ════════════════════════════════════
+   TEXT REPEATER
+   ════════════════════════════════════ */
+function textRepeat() {
+  const text  = document.getElementById('tr-text')?.value||'';
+  const times = parseInt(document.getElementById('tr-times')?.value)||1;
+  const sep   = document.getElementById('tr-sep')?.value??'\n';
+  const out   = document.getElementById('tr-output');
+  if(!out) return;
+  if(!text.trim()){out.textContent='';out.className='output-box';setStatus('tr-status','','enter text to repeat');return;}
+  const actualSep = sep.replace(/\\n/g,'\n').replace(/\\t/g,'\t');
+  const result = Array(Math.max(1,Math.min(times,10000))).fill(text).join(actualSep);
+  out.textContent=result;
+  out.className='output-box success';
+  const wc=result.length.toLocaleString();
+  setStatus('tr-status','ok',`✓ ${times}× — ${wc} chars`);
+}
+function trTimesUpdate(){
+  const v=document.getElementById('tr-times')?.value;
+  const d=document.getElementById('tr-times-display');
+  if(d) d.textContent=parseInt(v).toLocaleString()+'×';
+  textRepeat();
+}
+function trClear(){
+  const t=document.getElementById('tr-text');
+  const o=document.getElementById('tr-output');
+  if(t)t.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('tr-status','','enter text to repeat');
+}
+
+/* ════════════════════════════════════
+   RANDOM NUMBER GENERATOR
+   ════════════════════════════════════ */
+function rngGenerate(count) {
+  const min    = parseInt(document.getElementById('rng-min')?.value??1);
+  const max    = parseInt(document.getElementById('rng-max')?.value??100);
+  const n      = parseInt(count||document.getElementById('rng-count')?.value||1);
+  const unique = document.getElementById('rng-unique')?.checked??false;
+  const sort   = document.getElementById('rng-sort')?.checked??false;
+  const out    = document.getElementById('rng-output');
+  if(!out) return;
+  if(isNaN(min)||isNaN(max)||min>max){
+    out.textContent='Min must be less than or equal to max';
+    out.className='output-box error';
+    setStatus('rng-status','err','✗ invalid range');
+    return;
+  }
+  const range=max-min+1;
+  if(unique&&n>range){
+    out.textContent=`Cannot generate ${n} unique numbers in range ${min}–${max} (only ${range} possible)`;
+    out.className='output-box error';
+    setStatus('rng-status','err','✗ range too small');
+    return;
+  }
+  const arr=new Uint32Array(n*3);
+  crypto.getRandomValues(arr);
+  let results=[];
+  if(unique) {
+    const pool=Array.from({length:range},(_,i)=>min+i);
+    // Fisher-Yates
+    for(let i=pool.length-1;i>0;i--){
+      const j=arr[i]%(i+1);
+      [pool[i],pool[j]]=[pool[j],pool[i]];
+    }
+    results=pool.slice(0,n);
+  } else {
+    for(let i=0;i<n;i++) results.push(min+arr[i]%range);
+  }
+  if(sort) results.sort((a,b)=>a-b);
+  out.textContent = n===1 ? String(results[0]) : results.join(n<=20?'\n':',  ');
+  out.className='output-box success';
+  setStatus('rng-status','ok',`✓ ${n} number${n!==1?'s':''} · range ${min}–${max}`);
+  // History
+  const hist=document.getElementById('rng-history');
+  if(hist&&n===1){
+    const tag=document.createElement('span');
+    tag.className='rng-tag';
+    tag.textContent=results[0];
+    tag.title='Click to copy';
+    tag.onclick=()=>navigator.clipboard.writeText(String(results[0])).then(()=>showToast('Copied ✓'));
+    hist.prepend(tag);
+    while(hist.children.length>20) hist.removeChild(hist.lastChild);
+  }
+}
+function rngRoll(sides){
+  const out=document.getElementById('rng-output');
+  const arr=new Uint32Array(1);
+  crypto.getRandomValues(arr);
+  const r=(arr[0]%sides)+1;
+  if(out){out.textContent=String(r);out.className='output-box success';}
+  setStatus('rng-status','ok',`✓ d${sides} → ${r}`);
+}
+function rngClear(){
+  const out=document.getElementById('rng-output');
+  const hist=document.getElementById('rng-history');
+  if(out){out.textContent='';out.className='output-box';}
+  if(hist) hist.innerHTML='';
+  setStatus('rng-status','','set range and generate');
+}

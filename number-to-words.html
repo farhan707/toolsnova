@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number to Words Converter Online — Free Number Spelling Tool</title>
+<meta name="description" content="Convert numbers to words in English instantly. Perfect for cheque writing, legal documents, and invoices. Supports numbers up to 999 trillion. Free, no signup.">
+<link rel="canonical" href="https://toolsnova.net/number-to-words">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Number to Words Converter Online — Free Number Spelling Tool">
+<meta property="og:description" content="Convert numbers to words in English instantly. Perfect for cheque writing, legal documents, and invoices. Supports numbers up to 999 trillion. Free, no signup.">
+<meta property="og:url" content="https://toolsnova.net/number-to-words">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Number to Words Converter Online","url":"https://toolsnova.net/number-to-words","description":"Convert numbers to words in English instantly. Perfect for cheque writing, legal documents, and invoices. Supports numbers up to 999 trillion. Free, no signup.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link active">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Number to Words Converter</h1>
+  <p>Convert any number to its English word equivalent instantly. Perfect for cheque amounts, legal documents, and invoices. Supports up to 999 trillion.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="ntwRun()">Convert</button>
+    <button class="btn" onclick="ntwClear()">Clear</button>
+    <button class="btn" onclick="copyEl('ntw-output')">Copy result</button>
+    <span class="status-badge" id="ntw-status">enter a number</span>
+  </div>
+
+  <div>
+    <div class="pane-label">Enter number</div>
+    <input type="text" id="ntw-input" placeholder="e.g. 1234567 or 99.50"
+      oninput="ntwRun()" spellcheck="false"
+      style="width:100%;font-family:var(--mono);font-size:1.1rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.7rem 1rem;outline:none;transition:border-color .15s;letter-spacing:.05em"
+      aria-label="Number to convert to words">
+  </div>
+
+  <div>
+    <div class="pane-label">In words <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box" id="ntw-output" onclick="copyEl('ntw-output')"
+      style="min-height:80px;white-space:pre-wrap;font-size:1rem;line-height:1.7;cursor:pointer"
+      aria-label="Number converted to words"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem 1rem">
+    <div class="pane-label" style="margin-bottom:8px">Quick examples</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="btn" onclick="document.getElementById('ntw-input').value='1000';ntwRun()">1,000</button>
+      <button class="btn" onclick="document.getElementById('ntw-input').value='99.50';ntwRun()">99.50</button>
+      <button class="btn" onclick="document.getElementById('ntw-input').value='1000000';ntwRun()">1 million</button>
+      <button class="btn" onclick="document.getElementById('ntw-input').value='1234567890';ntwRun()">1.23 billion</button>
+      <button class="btn" onclick="document.getElementById('ntw-input').value='999999999999';ntwRun()">999 billion</button>
+    </div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">When do I need to write numbers in words?</div>
+    <div class="faq-a">Common uses include: writing cheque/check amounts (legal requirement), writing contract values, invoice amounts in words for legal documents, official government forms, academic writing style guides, and entering amounts in bank forms that require both numeric and written values.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the largest number this tool supports?</div>
+    <div class="faq-a">This tool supports numbers up to 999,999,999,999,999 (nine hundred ninety-nine trillion). This covers all practical use cases including financial documents, legal contracts, and cheque writing.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How are decimals handled?</div>
+    <div class="faq-a">Decimal parts are converted to their fractional word form. For example, 99.50 becomes 'Ninety-nine and fifty hundredths'. For cheque writing, this is useful for expressing cents: $1,250.75 → 'One thousand two hundred fifty and seventy-five hundredths dollars'.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Is there a difference between Indian and International number systems?</div>
+    <div class="faq-a">Yes. The Indian system uses lakh (100,000) and crore (10,000,000), while the international system uses million and billion. This tool uses the international system. For Indian number words, the conversion differs from lakh onwards.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js"></script>
+
+</body>
+</html>

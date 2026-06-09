@@ -1762,3 +1762,456 @@ function clearUC(inputId, outputId) {
   if(i) i.value='';
   if(o){o.textContent='';o.className='output-box';}
 }
+
+/* ════════════════════════════════════
+   BATCH 4 — ADVANCED TRADING TOOLS
+   ════════════════════════════════════ */
+
+/* ── PIP VALUE CALCULATOR ── */
+const PIP_PAIRS = {
+  'EUR/USD':{ pipPos:4, quote:'USD' }, 'GBP/USD':{ pipPos:4, quote:'USD' },
+  'AUD/USD':{ pipPos:4, quote:'USD' }, 'NZD/USD':{ pipPos:4, quote:'USD' },
+  'USD/JPY':{ pipPos:2, quote:'JPY' }, 'USD/CHF':{ pipPos:4, quote:'CHF' },
+  'USD/CAD':{ pipPos:4, quote:'CAD' }, 'EUR/JPY':{ pipPos:2, quote:'JPY' },
+  'GBP/JPY':{ pipPos:2, quote:'JPY' }, 'EUR/GBP':{ pipPos:4, quote:'GBP' },
+  'EUR/CHF':{ pipPos:4, quote:'CHF' }, 'GBP/CHF':{ pipPos:4, quote:'CHF' },
+  'AUD/JPY':{ pipPos:2, quote:'JPY' }, 'CAD/JPY':{ pipPos:2, quote:'JPY' },
+  'USD/SGD':{ pipPos:4, quote:'SGD' }, 'USD/HKD':{ pipPos:4, quote:'HKD' },
+  'USD/MXN':{ pipPos:4, quote:'MXN' }, 'USD/ZAR':{ pipPos:4, quote:'ZAR' },
+  'USD/PKR':{ pipPos:2, quote:'PKR' }, 'USD/INR':{ pipPos:2, quote:'INR' },
+  'XAU/USD':{ pipPos:2, quote:'USD', contract:100 }, // Gold
+  'XAG/USD':{ pipPos:3, quote:'USD', contract:5000 }, // Silver
+  'BTC/USD':{ pipPos:0, quote:'USD', contract:1 },
+};
+// Account currency → USD approximate rates
+const ACCT_RATES = {
+  USD:1, EUR:1.09, GBP:1.27, PKR:0.0036, INR:0.012,
+  AED:0.27, SAR:0.267, JPY:0.0067, CHF:1.11, CAD:0.74,
+  AUD:0.65, SGD:0.74, HKD:0.13,
+};
+
+function pipValueCalc() {
+  const pair    = document.getElementById('pv-pair')?.value || 'EUR/USD';
+  const lots    = parseFloat(document.getElementById('pv-lots')?.value) || 1;
+  const acct    = document.getElementById('pv-acct')?.value || 'USD';
+  const price   = parseFloat(document.getElementById('pv-price')?.value) || 0;
+  const out     = document.getElementById('pv-output');
+  if (!out) return;
+
+  const pairData = PIP_PAIRS[pair] || { pipPos:4, quote:'USD' };
+  const pipSize  = Math.pow(10, -pairData.pipPos);
+  const contract = pairData.contract || 100000;
+  const lotUnits = lots * contract;
+
+  // Pip value in quote currency
+  let pipValueQuote = pipSize * lotUnits;
+
+  // Convert to account currency
+  const quoteToUSD = ACCT_RATES[pairData.quote] || 1;
+  const acctToUSD  = ACCT_RATES[acct] || 1;
+  let pipValueAcct = pipValueQuote * quoteToUSD / acctToUSD;
+
+  // If price provided and quote is not USD-equivalent, use price
+  if (price > 0 && pairData.quote !== 'USD' && pair !== 'XAU/USD') {
+    pipValueAcct = (pipSize * lotUnits) / price / acctToUSD;
+  }
+
+  const fmt = n => n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:4});
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Pair:              ${pair}\n` +
+    `Lot Size:          ${lots} lot${lots!==1?'s':''} (${lotUnits.toLocaleString()} units)\n` +
+    `Pip Size:          ${pipSize}\n` +
+    `─────────────────────────────────\n` +
+    `Pip Value:         ${fmt(pipValueAcct)} ${acct} per pip\n` +
+    `10 pips:           ${fmt(pipValueAcct*10)} ${acct}\n` +
+    `50 pips:           ${fmt(pipValueAcct*50)} ${acct}\n` +
+    `100 pips:          ${fmt(pipValueAcct*100)} ${acct}\n\n` +
+    `── Per lot size ──────────────────\n` +
+    [0.01,0.05,0.1,0.25,0.5,1,2,5].map(l =>
+      `  ${String(l+' lot').padEnd(9)} → ${fmt(pipValueAcct/lots*l)} ${acct}/pip`
+    ).join('\n');
+  setStatus('pv-status','ok',`✓ ${fmt(pipValueAcct)} ${acct}/pip`);
+}
+function pvClear() {
+  ['pv-lots','pv-price'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('pv-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('pv-status','','select pair and enter lots');
+}
+
+/* ── FOREX PROFIT CALCULATOR ── */
+function forexProfitCalc() {
+  const pair   = document.getElementById('fp-pair')?.value || 'EUR/USD';
+  const lots   = parseFloat(document.getElementById('fp-lots')?.value);
+  const entry  = parseFloat(document.getElementById('fp-entry')?.value);
+  const exit   = parseFloat(document.getElementById('fp-exit')?.value);
+  const dir    = document.getElementById('fp-dir')?.value || 'buy';
+  const acct   = document.getElementById('fp-acct')?.value || 'USD';
+  const out    = document.getElementById('fp-output');
+  if (!out) return;
+  if (isNaN(lots)||isNaN(entry)||isNaN(exit)||lots<=0) {
+    out.textContent='Enter all fields.'; out.className='output-box error'; return;
+  }
+
+  const pairData = PIP_PAIRS[pair] || { pipPos:4, quote:'USD' };
+  const pipSize  = Math.pow(10, -pairData.pipPos);
+  const contract = pairData.contract || 100000;
+  const priceDiff = dir==='buy' ? exit-entry : entry-exit;
+  const pips      = priceDiff / pipSize;
+  const pipVal    = pipSize * lots * contract;
+  const quoteUSD  = ACCT_RATES[pairData.quote] || 1;
+  const acctUSD   = ACCT_RATES[acct] || 1;
+  const profitUSD = priceDiff * lots * contract * quoteUSD;
+  const profitAcct= profitUSD / acctUSD;
+  const isProfit  = profitAcct >= 0;
+
+  out.className = isProfit ? 'output-box success' : 'output-box error';
+  out.textContent =
+    `Direction:         ${dir.toUpperCase()}\n` +
+    `Pair:              ${pair}\n` +
+    `Entry:             ${entry}\n` +
+    `Exit:              ${exit}\n` +
+    `Lots:              ${lots}\n` +
+    `─────────────────────────────────\n` +
+    `Pips ${isProfit?'gained':'lost'}:       ${Math.abs(pips).toFixed(1)} pips\n` +
+    `${isProfit?'PROFIT':'LOSS'}:             ${isProfit?'+':''}${formatCur(profitAcct)} ${acct}\n\n` +
+    `── Scenarios ─────────────────────\n` +
+    [-100,-50,-20,-10,10,20,50,100].map(p => {
+      const pl = p * pipSize * lots * contract * quoteUSD / acctUSD;
+      return `  ${String(p+'p').padEnd(6)} → ${pl>=0?'+':''}${formatCur(pl)} ${acct}`;
+    }).join('\n');
+  setStatus('fp-status', isProfit?'ok':'err',
+    `${isProfit?'Profit':'Loss'}: ${isProfit?'+':''}${formatCur(profitAcct)} ${acct}`);
+}
+function fpClear() {
+  ['fp-lots','fp-entry','fp-exit'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('fp-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('fp-status','','enter trade details');
+}
+
+/* ── PIVOT POINT CALCULATOR ── */
+function pivotCalc() {
+  const high   = parseFloat(document.getElementById('pp-high')?.value);
+  const low    = parseFloat(document.getElementById('pp-low')?.value);
+  const close  = parseFloat(document.getElementById('pp-close')?.value);
+  const method = document.getElementById('pp-method')?.value || 'standard';
+  const out    = document.getElementById('pp-output');
+  if (!out) return;
+  if (isNaN(high)||isNaN(low)||isNaN(close)||high<=0) {
+    out.textContent='Enter High, Low, and Close prices.'; out.className='output-box error'; return;
+  }
+
+  const P = (high+low+close)/3;
+  let levels = {};
+
+  if (method==='standard') {
+    const R1=2*P-low, S1=2*P-high;
+    const R2=P+(high-low), S2=P-(high-low);
+    const R3=high+2*(P-low), S3=low-2*(high-P);
+    levels = { R3,R2,R1, PP:P, S1,S2,S3 };
+  } else if (method==='fibonacci') {
+    const range=high-low;
+    levels = {
+      R3: P+range*1.000, R2: P+range*0.618, R1: P+range*0.382,
+      PP: P,
+      S1: P-range*0.382, S2: P-range*0.618, S3: P-range*1.000,
+    };
+  } else if (method==='camarilla') {
+    const range=high-low;
+    levels = {
+      R4: close+range*1.1/2, R3: close+range*1.1/4, R2: close+range*1.1/6, R1: close+range*1.1/12,
+      PP: P,
+      S1: close-range*1.1/12, S2: close-range*1.1/6, S3: close-range*1.1/4, S4: close-range*1.1/2,
+    };
+  } else if (method==='woodie') {
+    const Pw=(high+low+2*close)/4;
+    levels = {
+      R2: Pw+high-low, R1: 2*Pw-low,
+      PP: Pw,
+      S1: 2*Pw-high, S2: Pw-high+low,
+    };
+  }
+
+  const fmt = n => parseFloat(n.toFixed(5));
+  const lines = Object.entries(levels).map(([k,v]) => {
+    const bar = k==='PP' ? '━' : k.startsWith('R') ? '▲' : '▼';
+    return `  ${bar} ${k.padEnd(4)} ${fmt(v)}`;
+  });
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Method: ${method.charAt(0).toUpperCase()+method.slice(1)}\n` +
+    `High: ${high}  Low: ${low}  Close: ${close}\n` +
+    `─────────────────────────────────\n` +
+    lines.join('\n') + '\n\n' +
+    `▲ = Resistance  ▼ = Support  ━ = Pivot`;
+  setStatus('pp-status','ok','✓ levels calculated');
+}
+function ppClear() {
+  ['pp-high','pp-low','pp-close'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('pp-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('pp-status','','enter high, low, close');
+}
+
+/* ── FIBONACCI CALCULATOR ── */
+function fibCalc() {
+  const high   = parseFloat(document.getElementById('fib-high')?.value);
+  const low    = parseFloat(document.getElementById('fib-low')?.value);
+  const trend  = document.getElementById('fib-trend')?.value || 'uptrend';
+  const out    = document.getElementById('fib-output');
+  if (!out) return;
+  if (isNaN(high)||isNaN(low)||high<=0||low<=0) {
+    out.textContent='Enter High and Low prices.'; out.className='output-box error'; return;
+  }
+  if (high<=low) {
+    out.textContent='High must be greater than Low.'; out.className='output-box error'; return;
+  }
+
+  const range = high-low;
+  const RET_LEVELS = [0,0.236,0.382,0.5,0.618,0.786,1.0];
+  const EXT_LEVELS = [1.272,1.414,1.618,2.0,2.618];
+  const fmt = n => parseFloat(n.toFixed(5));
+
+  let retLines, extLines;
+  if (trend==='uptrend') {
+    retLines = RET_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(high-range*l)}`);
+    extLines = EXT_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(low+range*l)}`);
+  } else {
+    retLines = RET_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(low+range*l)}`);
+    extLines = EXT_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(high-range*l)}`);
+  }
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Trend:   ${trend==='uptrend'?'↑ Uptrend (High→Low retracement)':'↓ Downtrend (Low→High retracement)'}\n` +
+    `High:    ${high}\n` +
+    `Low:     ${low}\n` +
+    `Range:   ${fmt(range)}\n` +
+    `─────────────────────────────────\n` +
+    `── Retracement Levels ───────────\n` +
+    retLines.join('\n') + '\n\n' +
+    `── Extension Levels ─────────────\n` +
+    extLines.join('\n') + '\n\n' +
+    `Key levels: 38.2%, 50%, 61.8% (golden ratio)`;
+  setStatus('fib-status','ok','✓ Fib levels calculated');
+}
+function fibClear() {
+  ['fib-high','fib-low'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('fib-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('fib-status','','enter high and low prices');
+}
+
+/* ── COMPOUND TRADING CALCULATOR ── */
+function compoundTradeCalc() {
+  const balance  = parseFloat(document.getElementById('ct-balance')?.value);
+  const monthly  = parseFloat(document.getElementById('ct-monthly')?.value);
+  const months   = parseInt(document.getElementById('ct-months')?.value) || 12;
+  const withdraw = parseFloat(document.getElementById('ct-withdraw')?.value) || 0;
+  const out      = document.getElementById('ct-output');
+  if (!out) return;
+  if (isNaN(balance)||isNaN(monthly)||balance<=0) {
+    out.textContent='Enter starting balance and monthly return %.'; out.className='output-box error'; return;
+  }
+
+  let bal = balance;
+  let totalWithdrawn = 0;
+  const rows = [];
+  const rate = monthly/100;
+
+  for (let m=1; m<=Math.min(months,120); m++) {
+    const profit = bal*rate;
+    const wd = Math.min(withdraw, profit);
+    bal = bal+profit-wd;
+    totalWithdrawn += wd;
+    if (m<=12 || m%6===0 || m===months) {
+      rows.push(`  Mo ${String(m).padStart(3)}: $${formatCur(bal).padStart(12)} ${wd>0?`(withdrew $${formatCur(wd)})`:'(compounding)'}`);
+    }
+  }
+
+  const totalProfit = bal+totalWithdrawn-balance;
+  out.className = 'output-box success';
+  out.textContent =
+    `Start:             $${formatCur(balance)}\n` +
+    `Monthly return:    ${monthly}%\n` +
+    `Period:            ${months} months\n` +
+    `Monthly withdraw:  $${formatCur(withdraw)}\n` +
+    `─────────────────────────────────\n` +
+    rows.join('\n') + '\n\n' +
+    `─────────────────────────────────\n` +
+    `Final Balance:     $${formatCur(bal)}\n` +
+    `Total Withdrawn:   $${formatCur(totalWithdrawn)}\n` +
+    `Total Profit:      $${formatCur(totalProfit)}\n` +
+    `Return on Capital: ${((totalProfit/balance)*100).toFixed(1)}%`;
+  setStatus('ct-status','ok',`✓ Final: $${formatCur(bal)}`);
+}
+function ctClear() {
+  ['ct-balance','ct-monthly','ct-months','ct-withdraw'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('ct-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('ct-status','','enter account details');
+}
+
+/* ── RISK OF RUIN CALCULATOR ── */
+function rorCalc() {
+  const winRate = parseFloat(document.getElementById('ror-winrate')?.value)/100;
+  const rr      = parseFloat(document.getElementById('ror-rr')?.value);
+  const riskPct = parseFloat(document.getElementById('ror-risk')?.value)/100;
+  const out     = document.getElementById('ror-output');
+  if (!out) return;
+  if (isNaN(winRate)||isNaN(rr)||isNaN(riskPct)||winRate<=0||winRate>=1) {
+    out.textContent='Enter valid win rate (1–99%), R:R ratio, and risk %.'; out.className='output-box error'; return;
+  }
+
+  const lossRate  = 1-winRate;
+  const avgWin    = riskPct*rr;
+  const avgLoss   = riskPct;
+  const expectancy= (winRate*avgWin) - (lossRate*avgLoss);
+
+  // Risk of Ruin formula (simplified)
+  // RoR = ((1-edge)/(1+edge))^(capital/risk)
+  const edge = (winRate*rr - lossRate) / (winRate*rr + lossRate);
+  let ror;
+  if (edge <= 0) {
+    ror = 100;
+  } else {
+    const ratio = (1-edge)/(1+edge);
+    ror = Math.pow(ratio, 1/riskPct)*100;
+    ror = Math.min(100, Math.max(0, ror));
+  }
+
+  // Consecutive losses to blow account
+  const consec = Math.ceil(Math.log(0.01)/Math.log(1-riskPct));
+
+  const expClass = expectancy>0 ? 'POSITIVE ✓' : 'NEGATIVE ✗';
+
+  out.className = expectancy>0 ? 'output-box success' : 'output-box error';
+  out.textContent =
+    `Win Rate:          ${(winRate*100).toFixed(1)}%\n` +
+    `Risk:Reward:       1 : ${rr}\n` +
+    `Risk per trade:    ${(riskPct*100).toFixed(1)}%\n` +
+    `─────────────────────────────────\n` +
+    `Expectancy:        ${expectancy>=0?'+':''}${(expectancy*100).toFixed(3)}% per trade\n` +
+    `Expectancy:        ${expClass}\n` +
+    `Edge:              ${(edge*100).toFixed(2)}%\n` +
+    `Risk of Ruin:      ${ror.toFixed(2)}%\n\n` +
+    `Consecutive losses\nto blow account:   ${consec} trades\n\n` +
+    `── Verdict ───────────────────────\n` +
+    (expectancy>0
+      ? `Strategy is PROFITABLE over time.\nRisk of ruin: ${ror<5?'LOW ✓':ror<20?'MODERATE ⚠':'HIGH ✗'}`
+      : `Strategy is NOT profitable.\nReduce risk, improve win rate, or increase R:R.`);
+  setStatus('ror-status', expectancy>0?'ok':'err',
+    `Expectancy: ${expectancy>=0?'+':''}${(expectancy*100).toFixed(3)}%`);
+}
+function rorClear() {
+  ['ror-winrate','ror-rr','ror-risk'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('ror-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('ror-status','','enter strategy parameters');
+}
+
+/* ── LEVERAGE CALCULATOR ── */
+function leverageCalc() {
+  const balance  = parseFloat(document.getElementById('lev-balance')?.value);
+  const leverage = parseFloat(document.getElementById('lev-leverage')?.value);
+  const lots     = parseFloat(document.getElementById('lev-lots')?.value);
+  const price    = parseFloat(document.getElementById('lev-price')?.value) || 1;
+  const out      = document.getElementById('lev-output');
+  if (!out) return;
+  if (isNaN(balance)||isNaN(leverage)||isNaN(lots)||balance<=0||leverage<=0) {
+    out.textContent='Enter balance, leverage, and lot size.'; out.className='output-box error'; return;
+  }
+
+  const contract  = 100000;
+  const notional  = lots*contract*price;
+  const margin    = notional/leverage;
+  const freeMargin= balance-margin;
+  const marginPct = (margin/balance)*100;
+  const maxLots   = (balance*leverage)/(contract*price);
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Account Balance:   $${formatCur(balance)}\n` +
+    `Leverage:          1 : ${leverage}\n` +
+    `Position:          ${lots} lots @ ${price}\n` +
+    `─────────────────────────────────\n` +
+    `Notional Value:    $${formatCur(notional)}\n` +
+    `Required Margin:   $${formatCur(margin)}\n` +
+    `Free Margin:       $${formatCur(freeMargin)}\n` +
+    `Margin Used:       ${marginPct.toFixed(2)}%\n` +
+    `Max Lots Possible: ${maxLots.toFixed(3)} lots\n\n` +
+    `── Leverage comparison ───────────\n` +
+    [10,20,50,100,200,500].map(l => {
+      const m = notional/l;
+      return `  1:${String(l).padEnd(4)} → margin $${formatCur(m)} (${(m/balance*100).toFixed(1)}% of balance)`;
+    }).join('\n');
+  setStatus('lev-status','ok',`✓ Margin: $${formatCur(margin)}`);
+}
+function levClear() {
+  ['lev-balance','lev-leverage','lev-lots','lev-price'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('lev-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('lev-status','','enter account details');
+}
+
+/* ── STOP LOSS & TAKE PROFIT CALCULATOR ── */
+function slTpCalc() {
+  const entry   = parseFloat(document.getElementById('sl-entry')?.value);
+  const riskAmt = parseFloat(document.getElementById('sl-risk')?.value);
+  const rr      = parseFloat(document.getElementById('sl-rr')?.value) || 2;
+  const lots    = parseFloat(document.getElementById('sl-lots')?.value) || 1;
+  const pair    = document.getElementById('sl-pair')?.value || 'EUR/USD';
+  const dir     = document.getElementById('sl-dir')?.value || 'buy';
+  const out     = document.getElementById('sl-output');
+  if (!out) return;
+  if (isNaN(entry)||isNaN(riskAmt)||entry<=0||riskAmt<=0) {
+    out.textContent='Enter entry price and risk amount.'; out.className='output-box error'; return;
+  }
+
+  const pairData = PIP_PAIRS[pair] || { pipPos:4, quote:'USD' };
+  const pipSize  = Math.pow(10, -pairData.pipPos);
+  const contract = pairData.contract || 100000;
+  const quoteUSD = ACCT_RATES[pairData.quote] || 1;
+
+  // SL pips from risk amount
+  const pipValueUSD = pipSize * lots * contract * quoteUSD;
+  const slPips = riskAmt / pipValueUSD;
+  const tpPips = slPips * rr;
+
+  const slPrice = dir==='buy' ? entry-slPips*pipSize : entry+slPips*pipSize;
+  const tpPrice = dir==='buy' ? entry+tpPips*pipSize : entry-tpPips*pipSize;
+  const tpProfit = riskAmt * rr;
+
+  const fmt5 = n => parseFloat(n.toFixed(pairData.pipPos));
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Direction:         ${dir.toUpperCase()}\n` +
+    `Pair:              ${pair}\n` +
+    `Entry:             ${entry}\n` +
+    `Lots:              ${lots}\n` +
+    `Risk Amount:       $${formatCur(riskAmt)}\n` +
+    `R:R Ratio:         1 : ${rr}\n` +
+    `─────────────────────────────────\n` +
+    `Stop Loss:         ${fmt5(slPrice)}  (${slPips.toFixed(1)} pips)\n` +
+    `Take Profit:       ${fmt5(tpPrice)}  (${tpPips.toFixed(1)} pips)\n` +
+    `─────────────────────────────────\n` +
+    `Max Loss:          -$${formatCur(riskAmt)}\n` +
+    `Target Profit:     +$${formatCur(tpProfit)}\n\n` +
+    `── Multiple TP levels ────────────\n` +
+    [1,1.5,2,2.5,3,4,5].map(r => {
+      const tp = dir==='buy' ? entry+slPips*r*pipSize : entry-slPips*r*pipSize;
+      return `  1:${String(r).padEnd(4)} TP ${fmt5(tp).toString().padEnd(10)} +$${formatCur(riskAmt*r)}`;
+    }).join('\n');
+  setStatus('sl-status','ok',`SL: ${fmt5(slPrice)} · TP: ${fmt5(tpPrice)}`);
+}
+function slClear() {
+  ['sl-entry','sl-risk','sl-rr','sl-lots'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('sl-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('sl-status','','enter trade details');
+}

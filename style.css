@@ -635,3 +635,48 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 4px; }
   transition: all 0.15s;
 }
 .qv-btn:hover { color: var(--text); border-color: var(--border2); background: var(--surface3); }
+
+/* ══════════════════════════════════════
+   BATCH 5 STYLES
+   ══════════════════════════════════════ */
+
+/* QR Code */
+.qr-preset { font-family:var(--mono);font-size:.72rem;padding:.32rem .7rem;background:var(--surface2);border:1px solid var(--border);border-radius:5px;cursor:pointer;color:var(--text2);transition:all .15s; }
+.qr-preset:hover { background:var(--surface3);color:var(--text); }
+.qr-preset.active { background:var(--accent-dim);border-color:rgba(127,255,111,.35);color:var(--accent); }
+#qr-output { display:flex;align-items:center;justify-content:center;min-height:120px; }
+#qr-output canvas { border-radius:8px; }
+
+/* Image compressor */
+.img-drop-zone { border:2px dashed var(--border2);border-radius:var(--radius);padding:2.5rem 1rem;text-align:center;cursor:pointer;transition:border-color .15s;background:var(--surface); }
+.img-drop-zone:hover,.img-drop-zone.drag-over { border-color:rgba(127,255,111,.5);background:var(--accent-dim); }
+.img-preview { max-width:100%;max-height:200px;border-radius:6px;object-fit:contain;display:none; }
+.img-compare { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.img-compare-panel { text-align:center; }
+.img-compare-panel .pane-label { margin-bottom:6px; }
+
+/* Typing speed test */
+#typing-display { font-family:var(--mono);font-size:1rem;line-height:1.9;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;letter-spacing:.03em;min-height:80px;word-break:break-word;user-select:none; }
+.tc-ok      { color:var(--accent); }
+.tc-err     { color:var(--red);text-decoration:underline; }
+.tc-cursor  { background:var(--accent);color:var(--bg);border-radius:2px; }
+.tc-pending { color:var(--text3); }
+#typing-input { font-family:var(--mono);font-size:.9rem;width:100%;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.6rem .9rem;outline:none;transition:border-color .15s; }
+#typing-input:focus { border-color:rgba(127,255,111,.4); }
+.typing-stat { text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.6rem .5rem; }
+.typing-stat-val { font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--accent); }
+.typing-stat-lbl { font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-top:2px; }
+.typing-dur-btn { font-family:var(--mono);font-size:.72rem;padding:.32rem .7rem;background:var(--surface2);border:1px solid var(--border);border-radius:5px;cursor:pointer;color:var(--text2);transition:all .15s; }
+.typing-dur-btn.active { background:var(--accent-dim);border-color:rgba(127,255,111,.35);color:var(--accent); }
+#typing-result { background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-top:8px; }
+
+/* Pomodoro timer */
+.pom-ring-wrap { display:flex;align-items:center;justify-content:center;padding:1rem 0; }
+.pom-ring-svg { transform:rotate(-90deg); }
+#pom-ring { fill:none;stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .9s linear; }
+.pom-ring-bg { fill:none;stroke:var(--border); }
+#pom-display { font-family:var(--display);font-weight:800;font-size:3.5rem;color:var(--text);letter-spacing:-.02em; }
+.pom-mode-btn { font-family:var(--mono);font-size:.72rem;padding:.35rem .8rem;background:var(--surface2);border:1px solid var(--border);border-radius:5px;cursor:pointer;color:var(--text2);transition:all .15s; }
+.pom-mode-btn.active { background:var(--accent-dim);border-color:rgba(127,255,111,.35);color:var(--accent); }
+.pom-config-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:8px; }
+.pom-sessions-badge { display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text2);background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:.3rem .8rem; }

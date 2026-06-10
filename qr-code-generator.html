@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator Online — Free QR Code Maker</title>
+<meta name="description" content="Generate QR codes for URLs, text, WiFi, email, and phone numbers. Download as PNG or SVG. Free, no signup, runs in your browser.">
+<link rel="canonical" href="https://toolsnova.net/qr-code-generator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=5">
+<meta property="og:title" content="QR Code Generator Online — Free QR Code Maker">
+<meta property="og:description" content="Generate QR codes for URLs, text, WiFi, email, and phone numbers. Download as PNG or SVG. Free, no signup, runs in your browser.">
+<meta property="og:url" content="https://toolsnova.net/qr-code-generator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator Online","url":"https://toolsnova.net/qr-code-generator","description":"Generate QR codes for URLs, text, WiFi, email, and phone numbers. Download as PNG or SVG. Free, no signup, runs in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link active">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>QR Code Generator</h1>
+  <p>Generate QR codes for any URL, text, WiFi password, email, or phone number. Customise colours and size, then download as PNG or SVG instantly.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="qrGenerate()">Generate</button>
+    <button class="btn" onclick="qrClear()">Clear</button>
+    <span class="status-badge" id="qr-status">enter text or URL</span>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:flex;flex-direction:column;gap:12px">
+    <div>
+      <div class="pane-label">Text or URL to encode</div>
+      <input type="text" id="qr-text" placeholder="https://toolsnova.net" class="b2-input"
+        oninput="qrGenerate()" spellcheck="false" style="font-size:.9rem"
+        aria-label="Text or URL to encode as QR code">
+    </div>
+
+    <div>
+      <div class="pane-label" style="margin-bottom:6px">Quick presets</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="qr-preset" data-val="https://toolsnova.net" onclick="qrSetPreset('https://toolsnova.net')">Website URL</button>
+        <button class="qr-preset" data-val="Hello, World!" onclick="qrSetPreset('Hello, World!')">Plain text</button>
+        <button class="qr-preset" data-val="WIFI:T:WPA;S:MyNetwork;P:MyPassword;;" onclick="qrSetPreset('WIFI:T:WPA;S:MyNetwork;P:MyPassword;;')">WiFi</button>
+        <button class="qr-preset" data-val="mailto:hello@example.com" onclick="qrSetPreset('mailto:hello@example.com')">Email</button>
+        <button class="qr-preset" data-val="tel:+1234567890" onclick="qrSetPreset('tel:+1234567890')">Phone</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+      <div>
+        <div class="pane-label">Size (px)</div>
+        <select id="qr-size" onchange="qrGenerate()" class="mode-select" style="width:100%">
+          <option value="128">128 × 128</option>
+          <option value="256" selected>256 × 256</option>
+          <option value="512">512 × 512</option>
+          <option value="1024">1024 × 1024</option>
+        </select>
+      </div>
+      <div>
+        <div class="pane-label">Foreground</div>
+        <input type="color" id="qr-fg" value="#000000" oninput="qrGenerate()"
+          style="width:100%;height:38px;border:1px solid var(--border2);border-radius:6px;cursor:pointer;padding:2px;background:var(--surface2)"
+          aria-label="QR code foreground color">
+      </div>
+      <div>
+        <div class="pane-label">Background</div>
+        <input type="color" id="qr-bg" value="#ffffff" oninput="qrGenerate()"
+          style="width:100%;height:38px;border:1px solid var(--border2);border-radius:6px;cursor:pointer;padding:2px;background:var(--surface2)"
+          aria-label="QR code background color">
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div id="qr-output"></div>
+    <div id="qr-download-row" style="display:none;gap:8px">
+      <button class="btn primary" onclick="qrDownloadPNG()">⬇ Download PNG</button>
+      <button class="btn" onclick="qrDownloadSVG()">⬇ Download SVG</button>
+    </div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What can I encode in a QR code?</div>
+    <div class="faq-a">QR codes can encode URLs, plain text, phone numbers, email addresses, WiFi credentials, contact cards (vCard), calendar events, and more. This generator supports all text formats up to ~2,900 alphanumeric characters.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the difference between PNG and SVG download?</div>
+    <div class="faq-a">PNG is a raster image at fixed pixel dimensions — best for printing at the size specified. SVG is vector format that scales to any size without losing quality — best for logos, large print materials, and digital use where size may vary.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What size QR code should I use?</div>
+    <div class="faq-a">For digital screens: 256×256 is fine. For print materials: 512×512 minimum. For large banners or posters: use 1024×1024 or the SVG format which scales infinitely. The QR code must be at least 2×2 cm for reliable smartphone scanning.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the WiFi QR code format?</div>
+    <div class="faq-a">WiFi QR codes use the format: WIFI:T:WPA;S:NetworkName;P:Password;; (replace NetworkName and Password with your actual credentials). When scanned, Android and iOS automatically prompt the user to join the network.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Is my data sent to a server?</div>
+    <div class="faq-a">No. All QR code generation happens entirely in your browser using JavaScript. Your text, URLs, and WiFi passwords never leave your device.</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js?v=5"></script>
+</body>
+</html>

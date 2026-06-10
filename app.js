@@ -2215,3 +2215,479 @@ function slClear() {
   if(o){o.textContent='';o.className='output-box';}
   setStatus('sl-status','','enter trade details');
 }
+
+/* ════════════════════════════════════
+   BATCH 5 — QR CODE GENERATOR
+   Uses qrcodejs library loaded in HTML
+   ════════════════════════════════════ */
+function qrGenerate() {
+  const text    = document.getElementById('qr-text')?.value?.trim();
+  const size    = parseInt(document.getElementById('qr-size')?.value) || 256;
+  const fgColor = document.getElementById('qr-fg')?.value || '#000000';
+  const bgColor = document.getElementById('qr-bg')?.value || '#ffffff';
+  const out     = document.getElementById('qr-output');
+  const status  = document.getElementById('qr-status');
+  if (!out) return;
+  if (!text) {
+    out.innerHTML = '';
+    setStatus('qr-status', '', 'enter text or URL');
+    return;
+  }
+  out.innerHTML = '';
+  try {
+    new QRCode(out, {
+      text: text,
+      width: size,
+      height: size,
+      colorDark: fgColor,
+      colorLight: bgColor,
+      correctLevel: QRCode.CorrectLevel.H,
+    });
+    setStatus('qr-status', 'ok', `✓ QR code ready — ${text.length} chars`);
+    // Show download buttons
+    const dlRow = document.getElementById('qr-download-row');
+    if (dlRow) dlRow.style.display = 'flex';
+  } catch(e) {
+    out.innerHTML = '<span style="color:var(--red);font-size:.8rem">Error: ' + e.message + '</span>';
+    setStatus('qr-status', 'err', '✗ ' + e.message);
+  }
+}
+
+function qrDownloadPNG() {
+  const canvas = document.querySelector('#qr-output canvas');
+  if (!canvas) { showToast('Generate a QR code first'); return; }
+  const a = document.createElement('a');
+  a.download = 'qrcode-toolsnova.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+
+function qrDownloadSVG() {
+  const canvas = document.querySelector('#qr-output canvas');
+  if (!canvas) { showToast('Generate a QR code first'); return; }
+  const size = canvas.width;
+  const ctx  = canvas.getContext('2d');
+  const img  = ctx.getImageData(0, 0, size, size);
+  const cell = 1;
+  let rects  = '';
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const i = (y * size + x) * 4;
+      if (img.data[i] < 128) {
+        rects += `<rect x="${x}" y="${y}" width="1" height="1"/>`;
+      }
+    }
+  }
+  const fg = document.getElementById('qr-fg')?.value || '#000000';
+  const bg = document.getElementById('qr-bg')?.value || '#ffffff';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}"><rect width="${size}" height="${size}" fill="${bg}"/><g fill="${fg}">${rects}</g></svg>`;
+  const a = document.createElement('a');
+  a.download = 'qrcode-toolsnova.svg';
+  a.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  a.click();
+}
+
+function qrSetPreset(val) {
+  const inp = document.getElementById('qr-text');
+  if (inp) { inp.value = val; qrGenerate(); }
+  document.querySelectorAll('.qr-preset').forEach(b =>
+    b.classList.toggle('active', b.dataset.val === val)
+  );
+}
+
+function qrClear() {
+  const t = document.getElementById('qr-text');
+  const o = document.getElementById('qr-output');
+  const d = document.getElementById('qr-download-row');
+  if (t) t.value = '';
+  if (o) o.innerHTML = '';
+  if (d) d.style.display = 'none';
+  setStatus('qr-status', '', 'enter text or URL');
+}
+
+/* ════════════════════════════════════
+   BATCH 5 — IMAGE COMPRESSOR
+   Uses Canvas API — fully client-side
+   ════════════════════════════════════ */
+let imgOriginalFile = null;
+
+function imgHandleDrop(e) {
+  e.preventDefault();
+  const file = e.dataTransfer?.files?.[0] || e.target?.files?.[0];
+  if (file) imgLoadFile(file);
+}
+
+function imgLoadFile(file) {
+  if (!file || !file.type.startsWith('image/')) {
+    setStatus('img-status', 'err', '✗ Please select an image file');
+    return;
+  }
+  imgOriginalFile = file;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = document.getElementById('img-preview-orig');
+    if (img) {
+      img.src = e.target.result;
+      img.style.display = 'block';
+    }
+    const origSize = document.getElementById('img-orig-size');
+    if (origSize) origSize.textContent = imgFmtSize(file.size);
+    const origName = document.getElementById('img-orig-name');
+    if (origName) origName.textContent = file.name;
+    document.getElementById('img-drop-hint').style.display = 'none';
+    document.getElementById('img-info-row').style.display = 'flex';
+    imgCompress();
+  };
+  reader.readAsDataURL(file);
+}
+
+function imgCompress() {
+  if (!imgOriginalFile) return;
+  const quality = (parseInt(document.getElementById('img-quality')?.value) || 80) / 100;
+  const format  = document.getElementById('img-format')?.value || 'image/jpeg';
+  const reader  = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width  = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      if (format === 'image/png') {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const prev = document.getElementById('img-preview-comp');
+        if (prev) { prev.src = url; prev.style.display = 'block'; }
+        const saving = ((1 - blob.size / imgOriginalFile.size) * 100);
+        const compSize = document.getElementById('img-comp-size');
+        if (compSize) compSize.textContent = imgFmtSize(blob.size);
+        const savEl = document.getElementById('img-saving');
+        if (savEl) {
+          savEl.textContent = saving > 0 ? `${saving.toFixed(1)}% smaller` : 'no change';
+          savEl.style.color = saving > 0 ? 'var(--accent)' : 'var(--text3)';
+        }
+        const dlBtn = document.getElementById('img-dl-btn');
+        if (dlBtn) {
+          dlBtn.style.display = 'inline-block';
+          dlBtn.onclick = () => {
+            const a = document.createElement('a');
+            const ext = format === 'image/png' ? 'png' : format === 'image/webp' ? 'webp' : 'jpg';
+            a.download = imgOriginalFile.name.replace(/\.[^.]+$/, '') + '-compressed.' + ext;
+            a.href = url;
+            a.click();
+          };
+        }
+        setStatus('img-status', 'ok', `✓ ${imgFmtSize(blob.size)} · saved ${saving.toFixed(1)}%`);
+        document.getElementById('img-result-row').style.display = 'flex';
+      }, format, quality);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(imgOriginalFile);
+}
+
+function imgFmtSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/1024/1024).toFixed(2) + ' MB';
+}
+
+function imgQualityUpdate() {
+  const v = document.getElementById('img-quality')?.value;
+  const d = document.getElementById('img-quality-display');
+  if (d) d.textContent = v + '%';
+  imgCompress();
+}
+
+function imgReset() {
+  imgOriginalFile = null;
+  ['img-preview-orig','img-preview-comp'].forEach(id => {
+    const e = document.getElementById(id);
+    if (e) { e.src = ''; e.style.display = 'none'; }
+  });
+  document.getElementById('img-drop-hint').style.display = 'block';
+  document.getElementById('img-info-row').style.display  = 'none';
+  document.getElementById('img-result-row').style.display = 'none';
+  const dl = document.getElementById('img-dl-btn');
+  if (dl) dl.style.display = 'none';
+  setStatus('img-status', '', 'drop an image or click to upload');
+}
+
+/* ════════════════════════════════════
+   BATCH 5 — TYPING SPEED TEST
+   ════════════════════════════════════ */
+const TYPING_TEXTS = [
+  "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump.",
+  "Programming is the art of telling another human being what one wants the computer to do. Clean code always looks like it was written by someone who cares.",
+  "The best way to predict the future is to invent it. Innovation distinguishes between a leader and a follower. Stay hungry, stay foolish.",
+  "In the beginning was the Word, and the Word was with God. All the world is a stage and all the men and women merely players.",
+  "To be or not to be, that is the question. Whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune.",
+  "Success is not final, failure is not fatal: it is the courage to continue that counts. The secret of getting ahead is getting started.",
+  "A journey of a thousand miles begins with a single step. Life is what happens when you are busy making other plans. Keep it simple.",
+  "The only way to do great work is to love what you do. If you have not found it yet, keep looking. Do not settle for less than your best.",
+];
+
+let typingState = {
+  active: false, started: false, finished: false,
+  startTime: 0, timerInterval: null,
+  duration: 60, remaining: 60,
+  currentText: '', typed: '',
+  errors: 0, keystrokes: 0,
+};
+
+function typingInit(duration) {
+  clearInterval(typingState.timerInterval);
+  typingState = {
+    active: false, started: false, finished: false,
+    startTime: 0, timerInterval: null,
+    duration: duration || typingState.duration,
+    remaining: duration || typingState.duration,
+    currentText: '', typed: '',
+    errors: 0, keystrokes: 0,
+  };
+  // Pick random text
+  typingState.currentText = TYPING_TEXTS[Math.floor(Math.random() * TYPING_TEXTS.length)];
+  typingRender();
+  const inp = document.getElementById('typing-input');
+  if (inp) { inp.value = ''; inp.disabled = false; inp.placeholder = 'Start typing...'; }
+  document.getElementById('typing-timer').textContent = typingState.duration + 's';
+  document.getElementById('typing-wpm').textContent   = '0';
+  document.getElementById('typing-acc').textContent   = '100%';
+  document.getElementById('typing-errors').textContent = '0';
+  const res = document.getElementById('typing-result');
+  if (res) res.style.display = 'none';
+  const restartBtn = document.getElementById('typing-restart-btn');
+  if (restartBtn) restartBtn.style.display = 'none';
+}
+
+function typingRender() {
+  const display = document.getElementById('typing-display');
+  if (!display) return;
+  const text   = typingState.currentText;
+  const typed  = typingState.typed;
+  let html = '';
+  for (let i = 0; i < text.length; i++) {
+    if (i < typed.length) {
+      const correct = typed[i] === text[i];
+      html += `<span class="tc-${correct?'ok':'err'}">${text[i] === ' ' ? '&nbsp;' : text[i]}</span>`;
+    } else if (i === typed.length) {
+      html += `<span class="tc-cursor">${text[i] === ' ' ? '&nbsp;' : text[i]}</span>`;
+    } else {
+      html += `<span class="tc-pending">${text[i] === ' ' ? '&nbsp;' : text[i]}</span>`;
+    }
+  }
+  display.innerHTML = html;
+}
+
+function typingOnInput(e) {
+  const inp  = document.getElementById('typing-input');
+  if (!inp || typingState.finished) return;
+  const val  = inp.value;
+
+  if (!typingState.started) {
+    typingState.started = true;
+    typingState.active  = true;
+    typingState.startTime = Date.now();
+    typingState.timerInterval = setInterval(typingTick, 200);
+  }
+
+  typingState.typed = val;
+  typingState.keystrokes++;
+
+  let errors = 0;
+  for (let i = 0; i < val.length; i++) {
+    if (val[i] !== typingState.currentText[i]) errors++;
+  }
+  typingState.errors = errors;
+
+  typingRender();
+
+  const elapsed = (Date.now() - typingState.startTime) / 60000;
+  const words   = val.trim().split(/\s+/).length;
+  const wpm     = elapsed > 0 ? Math.round(words / elapsed) : 0;
+  const acc     = val.length > 0 ? Math.round(((val.length - errors) / val.length) * 100) : 100;
+
+  document.getElementById('typing-wpm').textContent    = wpm;
+  document.getElementById('typing-acc').textContent    = acc + '%';
+  document.getElementById('typing-errors').textContent = errors;
+
+  // Check if finished
+  if (val === typingState.currentText) {
+    typingFinish();
+  }
+}
+
+function typingTick() {
+  const elapsed = Math.floor((Date.now() - typingState.startTime) / 1000);
+  typingState.remaining = Math.max(0, typingState.duration - elapsed);
+  document.getElementById('typing-timer').textContent = typingState.remaining + 's';
+  if (typingState.remaining === 0) typingFinish();
+}
+
+function typingFinish() {
+  if (typingState.finished) return;
+  typingState.finished = true;
+  clearInterval(typingState.timerInterval);
+
+  const inp = document.getElementById('typing-input');
+  if (inp) inp.disabled = true;
+
+  const elapsed  = (Date.now() - typingState.startTime) / 60000;
+  const typed    = typingState.typed;
+  const words    = typed.trim().split(/\s+/).length;
+  const wpm      = elapsed > 0 ? Math.round(words / elapsed) : 0;
+  const errors   = typingState.errors;
+  const acc      = typed.length > 0 ? Math.round(((typed.length - errors) / typed.length) * 100) : 100;
+
+  let grade = wpm >= 80 ? 'Excellent' : wpm >= 60 ? 'Good' : wpm >= 40 ? 'Average' : 'Keep practising';
+
+  const res = document.getElementById('typing-result');
+  if (res) {
+    res.innerHTML =
+      `<div style="text-align:center;padding:1rem">` +
+      `<div style="font-size:2.5rem;font-weight:700;color:var(--accent)">${wpm}</div>` +
+      `<div style="font-size:.8rem;color:var(--text3);margin-bottom:.5rem">WPM</div>` +
+      `<div style="font-size:1rem;color:var(--text2)">${grade}</div>` +
+      `<div style="margin-top:.75rem;display:flex;gap:1rem;justify-content:center;font-size:.78rem;color:var(--text3)">` +
+      `<span>Accuracy: <strong style="color:var(--text)">${acc}%</strong></span>` +
+      `<span>Errors: <strong style="color:var(--red)">${errors}</strong></span>` +
+      `<span>Time: <strong style="color:var(--text)">${Math.round(elapsed*60)}s</strong></span>` +
+      `</div></div>`;
+    res.style.display = 'block';
+  }
+  const rb = document.getElementById('typing-restart-btn');
+  if (rb) rb.style.display = 'inline-block';
+}
+
+function typingSetDuration(d) {
+  document.querySelectorAll('.typing-dur-btn').forEach(b =>
+    b.classList.toggle('active', parseInt(b.dataset.dur) === d)
+  );
+  typingInit(d);
+  document.getElementById('typing-input')?.focus();
+}
+
+/* ════════════════════════════════════
+   BATCH 5 — POMODORO TIMER
+   ════════════════════════════════════ */
+let pomState = {
+  mode: 'work', // work | short | long
+  running: false,
+  interval: null,
+  seconds: 25 * 60,
+  sessions: 0,
+  config: { work: 25, short: 5, long: 15 },
+};
+
+function pomInit() {
+  pomStop();
+  pomState.seconds = pomState.config[pomState.mode] * 60;
+  pomUpdateDisplay();
+}
+
+function pomStart() {
+  if (pomState.running) return;
+  pomState.running = true;
+  const startBtn = document.getElementById('pom-start');
+  const pauseBtn = document.getElementById('pom-pause');
+  if (startBtn) startBtn.style.display = 'none';
+  if (pauseBtn) pauseBtn.style.display = 'inline-block';
+  pomState.interval = setInterval(pomTick, 1000);
+}
+
+function pomPause() {
+  pomState.running = false;
+  clearInterval(pomState.interval);
+  const startBtn = document.getElementById('pom-start');
+  const pauseBtn = document.getElementById('pom-pause');
+  if (startBtn) startBtn.style.display = 'inline-block';
+  if (pauseBtn) pauseBtn.style.display = 'none';
+}
+
+function pomStop() {
+  pomState.running = false;
+  clearInterval(pomState.interval);
+  pomState.seconds = pomState.config[pomState.mode] * 60;
+  pomUpdateDisplay();
+  const startBtn = document.getElementById('pom-start');
+  const pauseBtn = document.getElementById('pom-pause');
+  if (startBtn) startBtn.style.display = 'inline-block';
+  if (pauseBtn) pauseBtn.style.display = 'none';
+}
+
+function pomTick() {
+  if (pomState.seconds <= 0) {
+    clearInterval(pomState.interval);
+    pomState.running = false;
+    if (pomState.mode === 'work') pomState.sessions++;
+    // Play sound
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+      osc.start(); osc.stop(ctx.currentTime + 0.8);
+    } catch(_) {}
+    pomUpdateDisplay();
+    const sessions = document.getElementById('pom-sessions');
+    if (sessions) sessions.textContent = pomState.sessions;
+    const startBtn = document.getElementById('pom-start');
+    const pauseBtn = document.getElementById('pom-pause');
+    if (startBtn) startBtn.style.display = 'inline-block';
+    if (pauseBtn) pauseBtn.style.display = 'none';
+    return;
+  }
+  pomState.seconds--;
+  pomUpdateDisplay();
+}
+
+function pomUpdateDisplay() {
+  const m = Math.floor(pomState.seconds / 60);
+  const s = pomState.seconds % 60;
+  const timeStr = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const display = document.getElementById('pom-display');
+  if (display) display.textContent = timeStr;
+  // Update page title
+  document.title = pomState.running ? `${timeStr} — ToolsNova Pomodoro` : 'Pomodoro Timer — ToolsNova';
+  // Progress ring
+  const total = pomState.config[pomState.mode] * 60;
+  const pct   = (total - pomState.seconds) / total;
+  const circle = document.getElementById('pom-ring');
+  if (circle) {
+    const r = 90;
+    const circ = 2 * Math.PI * r;
+    circle.style.strokeDasharray  = circ;
+    circle.style.strokeDashoffset = circ * (1 - pct);
+  }
+}
+
+function pomSetMode(mode) {
+  pomStop();
+  pomState.mode = mode;
+  document.querySelectorAll('.pom-mode-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.mode === mode)
+  );
+  const label = document.getElementById('pom-mode-label');
+  if (label) label.textContent = mode === 'work' ? 'Focus Time' : mode === 'short' ? 'Short Break' : 'Long Break';
+  pomInit();
+}
+
+function pomUpdateConfig() {
+  const w = parseInt(document.getElementById('pom-work-min')?.value)  || 25;
+  const s = parseInt(document.getElementById('pom-short-min')?.value) || 5;
+  const l = parseInt(document.getElementById('pom-long-min')?.value)  || 15;
+  pomState.config = { work: w, short: s, long: l };
+  pomStop();
+  pomInit();
+  showToast('Timer updated ✓');
+}

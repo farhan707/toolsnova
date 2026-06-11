@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palworld Breeding Calculator — Find Parent Combinations & Breeding Power</title>
+<meta name="description" content="Calculate Palworld breeding combinations using the breeding power formula. Find parent pairs for Anubis, Shadowbeak, Jetragon and all Pals. Includes reverse lookup and top combo reference table.">
+<link rel="canonical" href="https://toolsnova.net/palworld-breeding-calculator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=5">
+<meta property="og:title" content="Palworld Breeding Calculator — Find Parent Combinations & Breeding Power">
+<meta property="og:description" content="Calculate Palworld breeding combinations. Find parent pairs for any Pal using the breeding power formula. Reverse lookup, top combos, and full guide.">
+<meta property="og:url" content="https://toolsnova.net/palworld-breeding-calculator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Palworld Breeding Calculator","url":"https://toolsnova.net/palworld-breeding-calculator","description":"Calculate Palworld breeding combinations. Find parent pairs for any Pal using the breeding power formula. Includes reverse lookup, top combos table, and full breeding guide.","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link active">Palworld Breeding</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Palworld Breeding Calculator</h1>
+  <p>Find parent combinations for any Pal using the breeding power formula. Forward lookup (what will I get?) and reverse lookup (what parents do I need?). Includes top 20 most-searched combos.</p>
+</div>
+<main>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem;font-size:.82rem;color:var(--text2);line-height:1.6">
+    <strong style="color:var(--accent)">How Palworld breeding works:</strong>
+    Every Pal has a hidden Breeding Power (BP) ranging from 10–1500.
+    Child BP = <code>Floor((Parent1 BP + Parent2 BP + 1) / 2)</code>.
+    The game maps the result to the closest matching Pal.
+    Use the calculators below to find what offspring two parents produce, or find all parents that produce your desired Pal.
+  </div>
+
+  <!-- TOOL 1: Forward calculator -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1rem">
+    <div class="pane-label" style="margin-bottom:10px;font-size:.9rem;color:var(--text)">
+      Tool 1 — What offspring will I get?
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+      <div>
+        <div class="pane-label">Parent 1</div>
+        <select id="pw-parent1" class="mode-select" style="width:100%" onchange="pwCalcForward()">
+          <option value="">-- Select Parent --</option>
+        </select>
+      </div>
+      <div>
+        <div class="pane-label">Parent 2</div>
+        <select id="pw-parent2" class="mode-select" style="width:100%" onchange="pwCalcForward()">
+          <option value="">-- Select Parent --</option>
+        </select>
+      </div>
+    </div>
+    <div class="output-box" id="pw-forward-out" style="min-height:80px;white-space:pre;font-size:.8rem">Select both parents to see the offspring</div>
+  </div>
+
+  <!-- TOOL 2: Reverse calculator -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1.5rem">
+    <div class="pane-label" style="margin-bottom:10px;font-size:.9rem;color:var(--text)">
+      Tool 2 — What parents do I need to breed a specific Pal?
+    </div>
+    <div style="margin-bottom:10px">
+      <div class="pane-label">Target Pal (what you want to breed)</div>
+      <select id="pw-target" class="mode-select" style="width:100%" onchange="pwFindParents()">
+        <option value="">-- Select Target Pal --</option>
+      </select>
+    </div>
+    <div class="output-box" id="pw-reverse-out" style="min-height:80px;white-space:pre;font-size:.8rem">Select a target Pal to see all parent combinations</div>
+  </div>
+
+  <!-- Top combos reference table -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1.5rem">
+    <div class="pane-label" style="font-size:.9rem;color:var(--text);margin-bottom:12px">Most searched breeding combinations — quick reference</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:.78rem">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border)">
+            <th style="text-align:left;padding:.4rem .6rem;color:var(--text3);font-weight:500">Target Pal</th>
+            <th style="text-align:left;padding:.4rem .6rem;color:var(--text3);font-weight:500">Parent 1</th>
+            <th style="text-align:left;padding:.4rem .6rem;color:var(--text3);font-weight:500">Parent 2</th>
+            <th style="text-align:right;padding:.4rem .6rem;color:var(--text3);font-weight:500">Target BP</th>
+          </tr>
+        </thead>
+        <tbody><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Anubis</td><td style="padding:.4rem .6rem;color:var(--text2)">Cattiva</td><td style="padding:.4rem .6rem;color:var(--text2)">Penking</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">850</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Anubis</td><td style="padding:.4rem .6rem;color:var(--text2)">Lamball</td><td style="padding:.4rem .6rem;color:var(--text2)">Cinnamoth</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">850</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Shadowbeak</td><td style="padding:.4rem .6rem;color:var(--text2)">Katress</td><td style="padding:.4rem .6rem;color:var(--text2)">Kitsun</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">790</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Shadowbeak</td><td style="padding:.4rem .6rem;color:var(--text2)">Gobfin</td><td style="padding:.4rem .6rem;color:var(--text2)">Suzaku</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">790</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Jetragon</td><td style="padding:.4rem .6rem;color:var(--text2)">Relaxaurus</td><td style="padding:.4rem .6rem;color:var(--text2)">Ragnahawk</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">840</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Jormuntide Ignis</td><td style="padding:.4rem .6rem;color:var(--text2)">Jormuntide</td><td style="padding:.4rem .6rem;color:var(--text2)">Pyrin</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">860</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Frostallion</td><td style="padding:.4rem .6rem;color:var(--text2)">Reindrix</td><td style="padding:.4rem .6rem;color:var(--text2)">Cryolinx</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">820</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Frostallion Noct</td><td style="padding:.4rem .6rem;color:var(--text2)">Frostallion</td><td style="padding:.4rem .6rem;color:var(--text2)">Shadowbeak</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">830</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Necromus</td><td style="padding:.4rem .6rem;color:var(--text2)">Paladius</td><td style="padding:.4rem .6rem;color:var(--text2)">Shadowbeak</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">810</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Paladius</td><td style="padding:.4rem .6rem;color:var(--text2)">Necromus</td><td style="padding:.4rem .6rem;color:var(--text2)">Frostallion</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">800</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Lyleen Noct</td><td style="padding:.4rem .6rem;color:var(--text2)">Lyleen</td><td style="padding:.4rem .6rem;color:var(--text2)">Menasting</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">880</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Lyleen</td><td style="padding:.4rem .6rem;color:var(--text2)">Petallia</td><td style="padding:.4rem .6rem;color:var(--text2)">Vaelet</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">390</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Relaxaurus Lux</td><td style="padding:.4rem .6rem;color:var(--text2)">Relaxaurus</td><td style="padding:.4rem .6rem;color:var(--text2)">Sparkit</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">890</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Mau Cryst</td><td style="padding:.4rem .6rem;color:var(--text2)">Mau</td><td style="padding:.4rem .6rem;color:var(--text2)">Pengullet</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">900</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Mammorest Cryst</td><td style="padding:.4rem .6rem;color:var(--text2)">Mammorest</td><td style="padding:.4rem .6rem;color:var(--text2)">Wumpo</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">870</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Kingpaca Cryst</td><td style="padding:.4rem .6rem;color:var(--text2)">Kingpaca</td><td style="padding:.4rem .6rem;color:var(--text2)">Reindrix</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">920</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Grizzbolt</td><td style="padding:.4rem .6rem;color:var(--text2)">Univolt</td><td style="padding:.4rem .6rem;color:var(--text2)">Beakon</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">380</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Beakon</td><td style="padding:.4rem .6rem;color:var(--text2)">Rayhound</td><td style="padding:.4rem .6rem;color:var(--text2)">Grizzbolt</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">710</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Ragnahawk</td><td style="padding:.4rem .6rem;color:var(--text2)">Vanwyrm</td><td style="padding:.4rem .6rem;color:var(--text2)">Pyrin</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">720</td></tr><tr style="border-bottom:0.5px solid var(--border)"><td style="padding:.4rem .6rem;color:var(--accent);font-weight:500">Suzaku</td><td style="padding:.4rem .6rem;color:var(--text2)">Pyrin</td><td style="padding:.4rem .6rem;color:var(--text2)">Ragnahawk</td><td style="padding:.4rem .6rem;color:var(--text3);text-align:right;font-family:var(--mono)">370</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Breeding formula explainer -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1.5rem">
+    <div class="pane-label" style="font-size:.9rem;color:var(--text);margin-bottom:10px">The breeding formula — how it works</div>
+    <div style="font-family:var(--mono);font-size:.82rem;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:.7rem 1rem;color:var(--accent);margin-bottom:10px">
+      Child BP = Floor( (Parent1_BP + Parent2_BP + 1) / 2 )
+    </div>
+    <div style="font-size:.8rem;color:var(--text2);line-height:1.7">
+      <strong>Example:</strong> Breeding Cattiva (BP: 20) + Penking (BP: 110)<br>
+      → Child BP = Floor((20 + 110 + 1) / 2) = Floor(131 / 2) = Floor(65.5) = <strong>65</strong><br>
+      → The game maps BP 65 to the closest Pal — in this case <strong>Anubis (BP: 850)</strong> is too far,
+      but with the right parents hitting BP 850 exactly you get Anubis.<br><br>
+      <strong>Special combinations:</strong> Some Pals like Shadowbeak, Frostallion Noct, and Jetragon
+      require specific parent pairs that override the formula entirely. These are hardcoded by the game.
+    </div>
+  </div>
+
+  <!-- External calculators -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1.5rem">
+    <div class="pane-label" style="font-size:.9rem;color:var(--text);margin-bottom:10px">Full-featured Palworld breeding calculators</div>
+    <div style="font-size:.8rem;color:var(--text2);line-height:1.8">
+      For chain breeding, passive skill inheritance, and the complete Pal database, these dedicated tools go deeper:<br><br>
+      <a href="https://palworld.gg/breeding-calculator" target="_blank" rel="noopener" style="color:var(--accent)">palworld.gg/breeding-calculator</a> — official wiki calculator, always up to date<br>
+      <a href="https://www.palpedia.net/breeding" target="_blank" rel="noopener" style="color:var(--accent)">palpedia.net/breeding</a> — chain breeding and passive skill inheritance<br>
+      <a href="https://game8.co/games/Palworld/archives/440530" target="_blank" rel="noopener" style="color:var(--accent)">game8.co Palworld</a> — comprehensive breeding combos database<br>
+      <a href="https://palworldbreedingcalc.com" target="_blank" rel="noopener" style="color:var(--accent)">palworldbreedingcalc.com</a> — reverse lookup and version tracking
+    </div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the Palworld breeding formula?</div>
+    <div class="faq-a">The child's Breeding Power is calculated as: <code>Floor((Parent1_BP + Parent2_BP + 1) / 2)</code>. Each Pal has a hidden Breeding Power (BP) between 10 and 1500. The game averages the two parents' BP values and maps the result to the closest matching Pal.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I breed Anubis in Palworld?</div>
+    <div class="faq-a">Anubis has a Breeding Power of 850. You need two parents whose average BP equals 850. One reliable combination is Cattiva (BP: 20) + Penking (BP: 110) — but many combinations work. Use the Tool 2 reverse calculator above to see all possible parent combinations for Anubis.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I breed Shadowbeak?</div>
+    <div class="faq-a">Shadowbeak (BP: 790) can be bred from Katress + Kitsun or Gobfin + Suzaku among others. Shadowbeak is not a special combination Pal, so the standard formula applies. Use the reverse calculator above to see all combinations.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I breed Jetragon?</div>
+    <div class="faq-a">Jetragon (BP: 840) requires specific parent combinations targeting BP 840. Try Relaxaurus + Ragnahawk or similar high-BP pairings. Note that some legendary Pals have special hardcoded combinations — always check the reverse calculator and confirm with an up-to-date source as the game receives updates.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What are special combination Pals?</div>
+    <div class="faq-a">Some Pals require specific parent pairs that ignore the breeding formula entirely. These include Frostallion Noct (Frostallion + Shadowbeak), Necromus (requires Paladius), and several fusion Pals. Special combinations are hardcoded by the game and cannot be calculated from BP values alone.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How does passive skill inheritance work?</div>
+    <div class="faq-a">Passive skills have a chance to inherit from either parent: ~40% chance for 1 skill, 30% for 2, 20% for 3, 10% for 4 skills to transfer. The Legend passive skill (+20% all stats) is the most desirable. Chain breeding — transferring the same skill across multiple generations — is used to stack multiple powerful passives on a single Pal.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is Breeding Power (BP)?</div>
+    <div class="faq-a">Breeding Power is a hidden value assigned to every Pal, ranging from 10 (Lamball) to 1500 (rare high-tier Pals). It determines what offspring will result from any breeding pair. The values are hardcoded by developer Pocketpair and do not change unless a game update modifies them.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I breed Frostallion Noct?</div>
+    <div class="faq-a">Frostallion Noct requires a special combination: breed Frostallion + Shadowbeak. This is a hardcoded exception that overrides the normal BP formula. Both Frostallion and Shadowbeak are late-game Pals, making this one of the most challenging breeds in the game.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Does breeding work cross-element?</div>
+    <div class="faq-a">Yes. You can breed Pals of completely different elements. The offspring element is determined by the resulting Pal, not the parents' elements. Breeding a Fire and Water Pal can produce an Ice-type offspring if that is the closest Pal to the calculated child BP.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How do I get cake for breeding?</div>
+    <div class="faq-a">Craft cake at a Cooking Pot using: Flour (x5), Red Berries (x8), Milk (x7), Egg (x8), Honey (x2). Flour requires wheat and a Mill. You need at least one cake in the Breeding Farm chest for breeding to begin.</div>
+  </div>
+</section>
+
+<section class="related-section">
+  <h2 class="related-title">Related Tools</h2>
+  <div class="related-grid">
+    <a href="random-number-generator.html" class="related-card"><span class="related-name">Random Number Generator</span><span class="related-arrow">→</span></a>
+    <a href="percentage-calculator.html" class="related-card"><span class="related-name">Percentage Calculator</span><span class="related-arrow">→</span></a>
+    <a href="fibonacci-calculator.html" class="related-card"><span class="related-name">Fibonacci Calculator</span><span class="related-arrow">→</span></a>
+    <a href="pomodoro-timer.html" class="related-card"><span class="related-name">Pomodoro Timer</span><span class="related-arrow">→</span></a>
+    <a href="typing-speed-test.html" class="related-card"><span class="related-name">Typing Speed Test</span><span class="related-arrow">→</span></a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js?v=5"></script>
+
+<script>
+const PAL_POWER = {"Lamball": 10, "Cattiva": 20, "Chikipi": 30, "Lifmunk": 40, "Foxparks": 50, "Fuack": 60, "Sparkit": 70, "Tanzee": 80, "Rooby": 90, "Pengullet": 100, "Penking": 110, "Jolthog": 120, "Gumoss": 130, "Vixy": 140, "Hoocrates": 150, "Teafant": 160, "Depresso": 170, "Cremis": 180, "Daedream": 190, "Rushoar": 200, "Nox": 210, "Fuddler": 220, "Killamari": 230, "Mau": 240, "Cinnamoth": 470, "Univolt": 570, "Foxcicle": 580, "Pyrin": 280, "Reindrix": 290, "Rayhound": 300, "Kitsun": 310, "Dazzi": 320, "Lunaris": 330, "Dinossom": 340, "Surfent": 350, "Gobfin": 360, "Suzaku": 370, "Grizzbolt": 380, "Lyleen": 390, "Leezpunk": 400, "Blazehowl": 410, "Relaxaurus": 420, "Broncherry": 430, "Petallia": 440, "Sibelyx": 750, "Incineram": 460, "Arsox": 480, "Dumud": 490, "Cawgnito": 500, "Jormuntide": 510, "Nitewing": 520, "Ribbuny": 530, "Swee": 540, "Sweepa": 550, "Chillet": 560, "Elphidran": 590, "Kelpsea": 600, "Azurobe": 610, "Cryolinx": 620, "Blazehowl Noct": 630, "Felbat": 640, "Pyrin Noct": 650, "Mammorest": 660, "Wumpo": 670, "Warsect": 680, "Fenglope": 690, "Bushi": 700, "Beakon": 710, "Ragnahawk": 720, "Katress": 730, "Vaelet": 740, "Elphidran Aqua": 760, "Croajiro": 770, "Neuvillette": 780, "Shadowbeak": 790, "Paladius": 800, "Necromus": 810, "Frostallion": 820, "Frostallion Noct": 830, "Jetragon": 840, "Anubis": 850, "Jormuntide Ignis": 860, "Mammorest Cryst": 870, "Lyleen Noct": 880, "Relaxaurus Lux": 890, "Mau Cryst": 900, "Kingpaca": 910, "Kingpaca Cryst": 920, "Wumpo Botan": 930, "Verdash": 940, "Amorphous": 950};
+
+// Sorted pal list for dropdown
+const PAL_LIST = Object.keys(PAL_POWER).sort();
+
+function buildSelects() {
+  const selects = ['pw-parent1','pw-parent2','pw-target'];
+  selects.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const isTarget = id === 'pw-target';
+    if (!isTarget) el.innerHTML = '<option value="">-- Select Parent --</option>';
+    else el.innerHTML = '<option value="">-- Select Target Pal --</option>';
+    PAL_LIST.forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name + ' (BP: ' + PAL_POWER[name] + ')';
+      el.appendChild(opt);
+    });
+  });
+}
+
+function pwCalcForward() {
+  const p1 = document.getElementById('pw-parent1')?.value;
+  const p2 = document.getElementById('pw-parent2')?.value;
+  const out = document.getElementById('pw-forward-out');
+  if (!out) return;
+  if (!p1 || !p2) { out.textContent = 'Select both parents'; out.className='output-box'; return; }
+  const bp1 = PAL_POWER[p1], bp2 = PAL_POWER[p2];
+  const childBP = Math.floor((bp1 + bp2 + 1) / 2);
+  // Find closest Pal
+  let closest = null, minDiff = Infinity;
+  PAL_LIST.forEach(name => {
+    const diff = Math.abs(PAL_POWER[name] - childBP);
+    if (diff < minDiff) { minDiff = diff; closest = name; }
+  });
+  out.className = 'output-box success';
+  out.textContent =
+    p1 + ' (BP:' + bp1 + ') + ' + p2 + ' (BP:' + bp2 + ')\n' +
+    '→ Child BP: (' + bp1 + ' + ' + bp2 + ' + 1) ÷ 2 = ' + childBP + '\n' +
+    '─────────────────────────────\n' +
+    '⭐ Result: ' + closest + ' (BP:' + PAL_POWER[closest] + ')';
+}
+
+function pwFindParents() {
+  const target = document.getElementById('pw-target')?.value;
+  const out = document.getElementById('pw-reverse-out');
+  if (!out) return;
+  if (!target) { out.textContent = 'Select a target Pal'; out.className='output-box'; return; }
+  const targetBP = PAL_POWER[target];
+  const combos = [];
+  for (let i = 0; i < PAL_LIST.length; i++) {
+    for (let j = i; j < PAL_LIST.length; j++) {
+      const p1 = PAL_LIST[i], p2 = PAL_LIST[j];
+      const childBP = Math.floor((PAL_POWER[p1] + PAL_POWER[p2] + 1) / 2);
+      if (childBP === targetBP) combos.push([p1, p2]);
+    }
+  }
+  if (combos.length === 0) {
+    out.textContent = 'No exact combinations found for ' + target + ' (BP:' + targetBP + ').\nThis Pal may require a special combination.';
+    out.className = 'output-box error'; return;
+  }
+  out.className = 'output-box success';
+  out.textContent =
+    'Breeding combinations for ' + target + ' (BP:' + targetBP + ')\n' +
+    '─────────────────────────────\n' +
+    combos.slice(0,20).map(([a,b]) => '  ' + a + ' + ' + b).join('\n') +
+    (combos.length > 20 ? '\n  ... and ' + (combos.length-20) + ' more combinations' : '') +
+    '\n\nTotal: ' + combos.length + ' combination' + (combos.length!==1?'s':'');
+}
+
+document.addEventListener('DOMContentLoaded', buildSelects);
+</script>
+</body>
+</html>

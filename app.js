@@ -3741,3 +3741,1314 @@ function salesTaxCalc(){
   setStatus('stx-status','ok',`✓ Tax: ${formatCur(tax)} · Total: ${formatCur(total)}`);
 }
 function stxClear(){['stx-price','stx-rate'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const o=document.getElementById('stx-output');if(o){o.textContent='';o.className='output-box';}setStatus('stx-status','','enter price and tax rate');}
+
+/* ════════════════════════════════════
+   BATCH 9 — DEVELOPER EXTENDED
+   ════════════════════════════════════ */
+
+/* ── JWT DECODER ── */
+function jwtDecode() {
+  const token = document.getElementById('jwt-input')?.value?.trim();
+  const out   = document.getElementById('jwt-output');
+  if (!out) return;
+  if (!token) { out.textContent = ''; out.className = 'output-box'; setStatus('jwt-status','','paste a JWT token'); return; }
+
+  const parts = token.split('.');
+  if (parts.length !== 3) {
+    out.textContent = 'Invalid JWT — expected 3 parts separated by dots.';
+    out.className = 'output-box error';
+    setStatus('jwt-status','err','✗ not a valid JWT');
+    return;
+  }
+  try {
+    const b64url = s => {
+      s = s.replace(/-/g,'+').replace(/_/g,'/');
+      while (s.length % 4) s += '=';
+      return JSON.parse(atob(s));
+    };
+    const header  = b64url(parts[0]);
+    const payload = b64url(parts[1]);
+    const sig     = parts[2];
+
+    // Format timestamps
+    const fmtTime = ts => ts ? new Date(ts*1000).toISOString().replace('T',' ').slice(0,19) + ' UTC' : 'N/A';
+    const now = Math.floor(Date.now()/1000);
+    const expired = payload.exp && payload.exp < now;
+    const expInfo = payload.exp
+      ? `${fmtTime(payload.exp)} ${expired ? '⚠ EXPIRED' : '✓ valid'}`
+      : 'No expiry';
+
+    out.className = expired ? 'output-box error' : 'output-box success';
+    out.textContent =
+      `── Header ────────────────────────────\n` +
+      JSON.stringify(header, null, 2) + '\n\n' +
+      `── Payload ───────────────────────────\n` +
+      JSON.stringify(payload, null, 2) + '\n\n' +
+      `── Signature ─────────────────────────\n` +
+      sig.slice(0,32) + '...\n\n' +
+      `── Token Info ────────────────────────\n` +
+      `Algorithm:  ${header.alg || 'unknown'}\n` +
+      `Type:       ${header.typ || 'JWT'}\n` +
+      (payload.iss ? `Issuer:     ${payload.iss}\n` : '') +
+      (payload.sub ? `Subject:    ${payload.sub}\n` : '') +
+      (payload.aud ? `Audience:   ${Array.isArray(payload.aud)?payload.aud.join(', '):payload.aud}\n` : '') +
+      `Issued at:  ${fmtTime(payload.iat)}\n` +
+      `Expires:    ${expInfo}\n` +
+      `Status:     ${expired ? '⚠ Token has expired' : '✓ Token appears valid (signature not verified)'}`;
+    setStatus('jwt-status', expired?'err':'ok', `${header.alg} · ${expired?'expired':'valid'}`);
+  } catch(e) {
+    out.textContent = 'Failed to decode: ' + e.message;
+    out.className = 'output-box error';
+    setStatus('jwt-status','err','✗ decode failed');
+  }
+}
+function jwtClear() {
+  const i=document.getElementById('jwt-input');
+  const o=document.getElementById('jwt-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('jwt-status','','paste a JWT token');
+}
+
+/* ── MARKDOWN EDITOR / PREVIEWER ── */
+function mdRender() {
+  const src = document.getElementById('md-input')?.value || '';
+  const out = document.getElementById('md-preview');
+  if (!out) return;
+  if (!src.trim()) { out.innerHTML = '<p style="color:var(--text3);font-size:.8rem">Preview will appear here as you type…</p>'; return; }
+
+  let html = src
+    // Headings
+    .replace(/^##### (.+)$/gm, '<h5>$1</h5>')
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // HR
+    .replace(/^---+$/gm, '<hr>')
+    // Blockquote
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    // Code blocks
+    .replace(/```(\w*)\n([\s\S]*?)```/g, (m,lang,code)=>`<pre><code class="lang-${lang}">${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`)
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Bold + italic
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/__(.+?)__/g, '<strong>$1</strong>')
+    .replace(/_(.+?)_/g, '<em>$1</em>')
+    // Strikethrough
+    .replace(/~~(.+?)~~/g, '<del>$1</del>')
+    // Links and images
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%">')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    // Unordered lists
+    .replace(/^[-*+] (.+)$/gm, '<li>$1</li>')
+    // Ordered lists
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    // Paragraphs (double newline)
+    .replace(/\n\n/g, '</p><p>')
+    // Single newlines → br (inside paragraphs)
+    .replace(/\n(?!<)/g, '<br>');
+
+  // Wrap in p if not block element
+  if (!html.startsWith('<')) html = '<p>' + html + '</p>';
+
+  // Wrap consecutive <li> in <ul>
+  html = html.replace(/((<li>.*?<\/li>\s*)+)/g, '<ul>$1</ul>');
+
+  out.innerHTML = html;
+  const wc = src.trim().split(/\s+/).length;
+  setStatus('md-status','ok',`✓ ${wc} words · ${src.length} chars`);
+}
+function mdClear() {
+  const i=document.getElementById('md-input');
+  const o=document.getElementById('md-preview');
+  if(i)i.value='';
+  if(o)o.innerHTML='<p style="color:var(--text3);font-size:.8rem">Preview will appear here as you type…</p>';
+  setStatus('md-status','','start typing Markdown');
+}
+function mdCopyHtml() {
+  const o=document.getElementById('md-preview');
+  if(o) navigator.clipboard.writeText(o.innerHTML).then(()=>showToast('HTML copied ✓'));
+}
+
+/* ── JSON TO CSV CONVERTER ── */
+function jsonToCsvConvert() {
+  const src  = document.getElementById('jcsv-input')?.value?.trim();
+  const mode = document.getElementById('jcsv-mode')?.value || 'json2csv';
+  const out  = document.getElementById('jcsv-output');
+  if (!out) return;
+  if (!src) { out.textContent=''; out.className='output-box'; return; }
+
+  try {
+    if (mode === 'json2csv') {
+      let data = JSON.parse(src);
+      if (!Array.isArray(data)) {
+        // Try to find an array in the object
+        const arr = Object.values(data).find(v=>Array.isArray(v));
+        if (arr) data = arr;
+        else data = [data];
+      }
+      if (!data.length) { out.textContent='Empty array.'; out.className='output-box error'; return; }
+      const keys = [...new Set(data.flatMap(r=>Object.keys(r)))];
+      const escape = v => {
+        if (v===null||v===undefined) return '';
+        const s = String(v);
+        if (s.includes(',')||s.includes('"')||s.includes('\n')) return '"'+s.replace(/"/g,'""')+'"';
+        return s;
+      };
+      const csv = [keys.join(','), ...data.map(r=>keys.map(k=>escape(r[k])).join(','))].join('\n');
+      out.textContent = csv;
+      out.className = 'output-box success';
+      setStatus('jcsv-status','ok',`✓ ${data.length} rows · ${keys.length} columns`);
+    } else {
+      // CSV to JSON
+      const lines = src.split('\n').filter(l=>l.trim());
+      if (lines.length < 2) { out.textContent='Need at least a header row and one data row.'; out.className='output-box error'; return; }
+      const parseCsvLine = line => {
+        const result=[]; let cur=''; let inQ=false;
+        for(let i=0;i<line.length;i++){
+          if(line[i]==='"'){if(inQ&&line[i+1]==='"'){cur+='"';i++;}else inQ=!inQ;}
+          else if(line[i]===','&&!inQ){result.push(cur);cur='';}
+          else cur+=line[i];
+        }
+        result.push(cur);
+        return result;
+      };
+      const headers = parseCsvLine(lines[0]);
+      const rows = lines.slice(1).map(l=>{
+        const vals=parseCsvLine(l);
+        const obj={};
+        headers.forEach((h,i)=>obj[h]=vals[i]||'');
+        return obj;
+      });
+      out.textContent = JSON.stringify(rows, null, 2);
+      out.className = 'output-box success';
+      setStatus('jcsv-status','ok',`✓ ${rows.length} rows · ${headers.length} columns`);
+    }
+  } catch(e) {
+    out.textContent = 'Error: ' + e.message;
+    out.className = 'output-box error';
+    setStatus('jcsv-status','err','✗ ' + e.message.slice(0,40));
+  }
+}
+function jcsvClear() {
+  const i=document.getElementById('jcsv-input');
+  const o=document.getElementById('jcsv-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('jcsv-status','','paste JSON or CSV');
+}
+
+/* ── HTML ENCODER / DECODER ── */
+function htmlEncDec() {
+  const src  = document.getElementById('html-input')?.value || '';
+  const mode = document.getElementById('html-mode')?.value || 'encode';
+  const out  = document.getElementById('html-output');
+  if (!out) return;
+  if (!src) { out.textContent=''; out.className='output-box'; return; }
+  let result;
+  if (mode === 'encode') {
+    result = src
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;')
+      .replace(/©/g,'&copy;').replace(/®/g,'&reg;').replace(/™/g,'&trade;')
+      .replace(/€/g,'&euro;').replace(/£/g,'&pound;').replace(/¥/g,'&yen;')
+      .replace(/—/g,'&mdash;').replace(/–/g,'&ndash;').replace(/…/g,'&hellip;');
+  } else {
+    result = src
+      .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+      .replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&apos;/g,"'")
+      .replace(/&copy;/g,'©').replace(/&reg;/g,'®').replace(/&trade;/g,'™')
+      .replace(/&euro;/g,'€').replace(/&pound;/g,'£').replace(/&yen;/g,'¥')
+      .replace(/&mdash;/g,'—').replace(/&ndash;/g,'–').replace(/&hellip;/g,'…')
+      .replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(parseInt(n)))
+      .replace(/&#x([0-9a-fA-F]+);/g,(_,h)=>String.fromCharCode(parseInt(h,16)));
+  }
+  out.textContent = result;
+  out.className = 'output-box success';
+  setStatus('html-status','ok',`✓ ${mode}d · ${result.length} chars`);
+}
+function htmlClear() {
+  const i=document.getElementById('html-input');
+  const o=document.getElementById('html-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('html-status','','paste text or HTML entities');
+}
+function htmlSwap() {
+  const i=document.getElementById('html-input');
+  const o=document.getElementById('html-output');
+  const m=document.getElementById('html-mode');
+  if(!i||!o||!m) return;
+  i.value=o.textContent;
+  m.value = m.value==='encode'?'decode':'encode';
+  htmlEncDec();
+}
+
+/* ── HEX / BINARY CONVERTER ── */
+function hexBinConvert() {
+  const src  = document.getElementById('hb-input')?.value?.trim();
+  const from = document.getElementById('hb-from')?.value || 'decimal';
+  const out  = document.getElementById('hb-output');
+  if (!out) return;
+  if (!src) { out.textContent=''; out.className='output-box'; return; }
+
+  try {
+    let dec;
+    if (from==='decimal')  dec = parseInt(src, 10);
+    else if (from==='hex') dec = parseInt(src.replace(/^0x/i,''), 16);
+    else if (from==='binary') dec = parseInt(src.replace(/\s/g,''), 2);
+    else if (from==='octal') dec = parseInt(src, 8);
+
+    if (isNaN(dec)||dec<0) { out.textContent='Invalid input for selected base.'; out.className='output-box error'; return; }
+
+    const bin = dec.toString(2);
+    const hex = dec.toString(16).toUpperCase();
+    const oct = dec.toString(8);
+    const binPadded = bin.padStart(Math.ceil(bin.length/4)*4,'0').replace(/(.{4})/g,'$1 ').trim();
+
+    out.className = 'output-box success';
+    out.textContent =
+      `Input (${from}):   ${src}\n\n` +
+      `── Conversions ───────────────────────\n` +
+      `Decimal:    ${dec}\n` +
+      `Hexadecimal:${hex.padStart(dec>255?4:2,'0')} (0x${hex})\n` +
+      `Binary:     ${binPadded}\n` +
+      `Octal:      ${oct}\n\n` +
+      `── Byte analysis ─────────────────────\n` +
+      `Bits needed: ${bin.length}\n` +
+      `Bytes needed: ${Math.ceil(bin.length/8)}\n` +
+      (dec<=127?`ASCII char: ${String.fromCharCode(dec)} (${dec<=31||dec===127?'control char':'printable'})\n`:'')+
+      (dec<=65535?`Unicode: U+${hex.padStart(4,'0')}\n`:'');
+    setStatus('hb-status','ok',`✓ Dec:${dec} Hex:0x${hex} Bin:${bin}`);
+  } catch(e) {
+    out.textContent = 'Error: ' + e.message;
+    out.className = 'output-box error';
+  }
+}
+function hbClear() {
+  const i=document.getElementById('hb-input');
+  const o=document.getElementById('hb-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('hb-status','','enter a number to convert');
+}
+
+/* ── CSS MINIFIER / FORMATTER ── */
+function cssMinify() {
+  const src  = document.getElementById('css-input')?.value || '';
+  const mode = document.getElementById('css-mode')?.value || 'minify';
+  const out  = document.getElementById('css-output');
+  if (!out) return;
+  if (!src.trim()) { out.textContent=''; out.className='output-box'; return; }
+
+  if (mode === 'minify') {
+    let result = src
+      .replace(/\/\*[\s\S]*?\*\//g, '')       // remove comments
+      .replace(/\s+/g, ' ')                    // collapse whitespace
+      .replace(/\s*{\s*/g, '{')               // remove space around {
+      .replace(/\s*}\s*/g, '}')               // remove space around }
+      .replace(/\s*:\s*/g, ':')               // remove space around :
+      .replace(/\s*;\s*/g, ';')               // remove space around ;
+      .replace(/\s*,\s*/g, ',')               // remove space around ,
+      .replace(/;}/g, '}')                    // remove last semicolon
+      .trim();
+    out.textContent = result;
+    out.className = 'output-box success';
+    const saved = ((1 - result.length/src.length)*100).toFixed(1);
+    setStatus('css-status','ok',`✓ ${result.length} chars (${saved}% smaller)`);
+  } else {
+    // Format/prettify
+    let result = src
+      .replace(/\/\*[\s\S]*?\*\//g, m => m)  // preserve comments
+      .replace(/\s+/g, ' ')
+      .replace(/{\s*/g, ' {\n  ')
+      .replace(/;\s*/g, ';\n  ')
+      .replace(/\s*}\s*/g, '\n}\n')
+      .replace(/,\s*/g, ',\n')
+      .trim();
+    out.textContent = result;
+    out.className = 'output-box success';
+    setStatus('css-status','ok',`✓ formatted · ${result.split('\n').length} lines`);
+  }
+}
+function cssCopy() { copyEl('css-output'); }
+function cssClear() {
+  const i=document.getElementById('css-input');
+  const o=document.getElementById('css-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('css-status','','paste CSS to minify or format');
+}
+
+/* ── CRON EXPRESSION BUILDER ── */
+function cronBuild() {
+  const min   = document.getElementById('cron-min')?.value?.trim()   || '*';
+  const hour  = document.getElementById('cron-hour')?.value?.trim()  || '*';
+  const dom   = document.getElementById('cron-dom')?.value?.trim()   || '*';
+  const month = document.getElementById('cron-month')?.value?.trim() || '*';
+  const dow   = document.getElementById('cron-dow')?.value?.trim()   || '*';
+  const expr  = `${min} ${hour} ${dom} ${month} ${dow}`;
+  const out   = document.getElementById('cron-output');
+  const disp  = document.getElementById('cron-expr-display');
+  if (disp) disp.textContent = expr;
+  if (!out) return;
+
+  // Parse and describe
+  const describe = (val, unit, labels) => {
+    if (val === '*') return `every ${unit}`;
+    if (val.startsWith('*/')) return `every ${val.slice(2)} ${unit}s`;
+    if (val.includes('-')) {
+      const [a,b] = val.split('-');
+      return `${unit}s ${labels?labels[a]||a:a} through ${labels?labels[b]||b:b}`;
+    }
+    if (val.includes(',')) {
+      const parts = val.split(',');
+      return `${unit}s ${parts.map(p=>labels?labels[p]||p:p).join(', ')}`;
+    }
+    return `${unit} ${labels?labels[val]||val:val}`;
+  };
+
+  const MONTHS = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
+  const DAYS   = {0:'Sun',1:'Mon',2:'Tue',3:'Wed',4:'Thu',5:'Fri',6:'Sat'};
+
+  const desc =
+    `Runs at ${describe(min,'minute')} of ${describe(hour,'hour')}, ` +
+    `on ${describe(dom,'day')} of the month, ` +
+    `in ${describe(month,'month',MONTHS)}, ` +
+    `on ${describe(dow,'weekday',DAYS)}.`;
+
+  // Next 5 runs (simplified — shows pattern description)
+  const commonExamples = {
+    '* * * * *':    'Every minute',
+    '0 * * * *':    'Every hour at :00',
+    '0 0 * * *':    'Every day at midnight',
+    '0 9 * * *':    'Every day at 9:00 AM',
+    '0 9 * * 1':    'Every Monday at 9:00 AM',
+    '0 0 * * 0':    'Every Sunday at midnight',
+    '0 0 1 * *':    'First day of every month at midnight',
+    '0 0 1 1 *':    'Every year on Jan 1 at midnight',
+    '*/5 * * * *':  'Every 5 minutes',
+    '*/15 * * * *': 'Every 15 minutes',
+    '*/30 * * * *': 'Every 30 minutes',
+    '0 */2 * * *':  'Every 2 hours',
+    '0 9-17 * * 1-5': 'Every hour 9AM–5PM, Monday–Friday',
+    '0 0,12 * * *': 'At midnight and noon every day',
+  };
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Expression:  ${expr}\n\n` +
+    `Description: ${desc}\n\n` +
+    `── Field reference ──────────────────\n` +
+    `  Minute:     ${min.padEnd(12)} (0–59)\n` +
+    `  Hour:       ${hour.padEnd(12)} (0–23)\n` +
+    `  Day/Month:  ${dom.padEnd(12)} (1–31)\n` +
+    `  Month:      ${month.padEnd(12)} (1–12 or JAN–DEC)\n` +
+    `  Day/Week:   ${dow.padEnd(12)} (0–6, 0=Sunday)\n\n` +
+    `── Special characters ───────────────\n` +
+    `  *   = any value\n` +
+    `  ,   = value list  (1,3,5)\n` +
+    `  -   = range       (1-5)\n` +
+    `  /   = step        (*/15 = every 15)\n\n` +
+    `── Common patterns ──────────────────\n` +
+    Object.entries(commonExamples).map(([k,v]) =>
+      `  ${k.padEnd(20)} ${v}`
+    ).join('\n');
+
+  setStatus('cron-status', 'ok', `✓ ${expr}`);
+}
+
+function cronPreset(expr) {
+  const parts = expr.split(' ');
+  const ids = ['cron-min','cron-hour','cron-dom','cron-month','cron-dow'];
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el) el.value = parts[i] || '*';
+  });
+  cronBuild();
+}
+
+function cronClear() {
+  ['cron-min','cron-hour','cron-dom','cron-month','cron-dow'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '*';
+  });
+  const o = document.getElementById('cron-output');
+  const d = document.getElementById('cron-expr-display');
+  if (o) { o.textContent = ''; o.className = 'output-box'; }
+  if (d) d.textContent = '* * * * *';
+  setStatus('cron-status', '', 'build or select a preset');
+}
+
+/* ════════════════════════════════════
+   BATCH 10 — NICHE CALCULATORS
+   ════════════════════════════════════ */
+
+/* ── SLEEP CALCULATOR ── */
+function sleepCalc() {
+  const mode   = document.getElementById('slp-mode')?.value || 'wake';
+  const timeIn = document.getElementById('slp-time')?.value;
+  const out    = document.getElementById('slp-output');
+  if (!out) return;
+  if (!timeIn) { out.textContent = 'Select a time.'; out.className='output-box'; return; }
+
+  const [h, m] = timeIn.split(':').map(Number);
+  const totalMins = h * 60 + m;
+  // Sleep cycle = 90 minutes, fall asleep in ~14 mins
+  const CYCLE = 90, DOZE = 14;
+
+  const fmt = mins => {
+    const d = new Date(2000,0,1, Math.floor(mins/60)%24, mins%60);
+    return d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true});
+  };
+
+  let lines = [];
+  if (mode === 'wake') {
+    // Given wake time, when should I sleep?
+    for (let cycles = 6; cycles >= 2; cycles--) {
+      const bedtime = ((totalMins - DOZE - cycles * CYCLE) + 1440) % 1440;
+      lines.push({ cycles, time: fmt(bedtime), quality: cycles >= 5 ? '✅ Ideal' : cycles === 4 ? '✅ Good' : cycles === 3 ? '⚠ Acceptable' : '❌ Too short' });
+    }
+    out.className = 'output-box success';
+    out.textContent =
+      `Wake up time: ${fmt(totalMins)}\n\n` +
+      `── Recommended bedtimes ─────────────\n` +
+      lines.map(l => `  ${l.time.padEnd(12)} ${l.cycles} cycles (${(l.cycles*1.5).toFixed(1)}h)  ${l.quality}`).join('\n') +
+      `\n\n── Sleep cycle facts ────────────────\n` +
+      `  1 sleep cycle = 90 minutes\n` +
+      `  Optimal sleep = 5–6 cycles (7.5–9h)\n` +
+      `  You take ~14 min to fall asleep\n` +
+      `  REM sleep peaks in later cycles\n` +
+      `  Wake between cycles = feel refreshed`;
+  } else {
+    // Given bedtime, when will I wake feeling refreshed?
+    const sleepTime = totalMins + DOZE;
+    for (let cycles = 3; cycles <= 7; cycles++) {
+      const wake = (sleepTime + cycles * CYCLE) % 1440;
+      lines.push({ cycles, time: fmt(wake), quality: cycles >= 5 ? '✅ Ideal' : cycles === 4 ? '✅ Good' : '⚠ Short' });
+    }
+    out.className = 'output-box success';
+    out.textContent =
+      `Bedtime: ${fmt(totalMins)}\n` +
+      `You fall asleep around: ${fmt(sleepTime)}\n\n` +
+      `── Best wake-up times ───────────────\n` +
+      lines.map(l => `  ${l.time.padEnd(12)} ${l.cycles} cycles (${(l.cycles*1.5).toFixed(1)}h)  ${l.quality}`).join('\n') +
+      `\n\n── Tips ─────────────────────────────\n` +
+      `  Set alarm for a cycle boundary above\n` +
+      `  Waking mid-cycle = groggy feeling\n` +
+      `  Consistent schedule improves quality`;
+  }
+  setStatus('slp-status', 'ok', '✓ Sleep times calculated');
+}
+
+/* ── LOVE CALCULATOR ── */
+function loveCalc() {
+  const n1  = document.getElementById('love-name1')?.value?.trim();
+  const n2  = document.getElementById('love-name2')?.value?.trim();
+  const out = document.getElementById('love-output');
+  if (!out) return;
+  if (!n1 || !n2) { out.textContent='Enter both names.'; out.className='output-box'; return; }
+
+  // Deterministic but fun hash — same names always give same result
+  const hash = str => {
+    let h = 0;
+    for (let i=0; i<str.length; i++) h = (h * 31 + str.charCodeAt(i)) & 0xffffffff;
+    return Math.abs(h);
+  };
+  const combined = (n1+n2).toLowerCase().replace(/\s/g,'') + (n2+n1).toLowerCase().replace(/\s/g,'');
+  const pct = 40 + (hash(combined) % 55); // range 40–94 (always looks plausible)
+
+  const msg = pct >= 90 ? ['💞 Soulmates!', 'An extraordinary connection. The stars align perfectly for you two.']
+    : pct >= 80 ? ['💕 Great match!', 'Strong compatibility. You bring out the best in each other.']
+    : pct >= 70 ? ['💛 Good together', 'Solid connection with real potential. Communication is key.']
+    : pct >= 60 ? ['🌸 Promising', 'There\'s something here worth exploring. Give it time.']
+    : ['🤝 Friends first', 'Friendship is a wonderful foundation. See where it goes!'];
+
+  const bar = '█'.repeat(Math.round(pct/5)) + '░'.repeat(20-Math.round(pct/5));
+
+  out.className = 'output-box success';
+  out.textContent =
+    `${n1}  ❤️  ${n2}\n\n` +
+    `${bar}  ${pct}%\n\n` +
+    `${msg[0]}\n${msg[1]}\n\n` +
+    `── Compatibility breakdown ───────────\n` +
+    `  Communication: ${30 + hash(n1.toLowerCase()) % 65}%\n` +
+    `  Trust:         ${35 + hash(n2.toLowerCase()) % 60}%\n` +
+    `  Chemistry:     ${40 + hash(combined.slice(0,8)) % 55}%\n` +
+    `  Long-term:     ${30 + hash(combined.slice(-8)) % 65}%\n\n` +
+    `  ✨ Just for fun — love is what you make it!`;
+  setStatus('love-status','ok',`✓ ${pct}% compatibility`);
+}
+function loveClear(){
+  ['love-name1','love-name2'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('love-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('love-status','','enter two names');
+}
+
+/* ── LUCKY NUMBER GENERATOR ── */
+function luckyNumberCalc() {
+  const name = document.getElementById('lucky-name')?.value?.trim() || '';
+  const dob  = document.getElementById('lucky-dob')?.value || '';
+  const out  = document.getElementById('lucky-output');
+  if (!out) return;
+
+  // Numerology: reduce to single digit
+  const reduce = n => { while(n>9 && n!==11 && n!==22 && n!==33) { n=[...String(n)].reduce((s,d)=>s+parseInt(d),0); } return n; };
+  const letterVal = s => [...s.toLowerCase()].filter(c=>c>='a'&&c<='z').reduce((s,c)=>s+(c.charCodeAt(0)-96),0);
+
+  let lines = [];
+  let lifePath = null;
+
+  if (dob) {
+    const digits = dob.replace(/-/g,'');
+    const sum = [...digits].reduce((s,d)=>s+parseInt(d),0);
+    lifePath = reduce(sum);
+    lines.push(`Life Path Number:   ${lifePath}`);
+  }
+
+  if (name) {
+    const destiny = reduce(letterVal(name));
+    const vowels = [...name.toLowerCase()].filter(c=>'aeiou'.includes(c));
+    const soul   = reduce(vowels.reduce((s,c)=>s+(c.charCodeAt(0)-96),0)||1);
+    const consonants = [...name.toLowerCase()].filter(c=>c>='a'&&c<='z'&&!'aeiou'.includes(c));
+    const persona = reduce(consonants.reduce((s,c)=>s+(c.charCodeAt(0)-96),0)||1);
+    lines.push(`Destiny Number:     ${destiny}  (full name)`);
+    lines.push(`Soul Urge Number:   ${soul}  (vowels only)`);
+    lines.push(`Personality Number: ${persona}  (consonants)`);
+  }
+
+  // Generate 5 lucky numbers based on inputs
+  const seed = (name + dob).split('').reduce((s,c)=>s+c.charCodeAt(0),0) || 42;
+  const luckies = [];
+  let x = seed;
+  while (luckies.length < 7) {
+    x = (x * 1664525 + 1013904223) & 0xffffffff;
+    const n = (Math.abs(x) % 49) + 1;
+    if (!luckies.includes(n)) luckies.push(n);
+  }
+
+  const meanings = {1:'Leadership',2:'Harmony',3:'Creativity',4:'Stability',5:'Freedom',6:'Nurturing',7:'Wisdom',8:'Abundance',9:'Completion',11:'Intuition',22:'Master Builder',33:'Master Teacher'};
+
+  out.className = 'output-box success';
+  out.textContent =
+    (lines.length ? `── Your numerology numbers ──────────\n${lines.map(l=>`  ${l}`).join('\n')}\n\n` : '') +
+    (lifePath ? `  Life Path ${lifePath} meaning: ${meanings[lifePath]||'Spiritual'}\n\n` : '') +
+    `── Lucky numbers ─────────────────────\n` +
+    `  Personal:    ${luckies.slice(0,5).join('  ')}\n` +
+    `  Lottery pick: ${luckies.slice(0,6).sort((a,b)=>a-b).join('  ')}\n\n` +
+    `── Lucky days this week ─────────────\n` +
+    ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+      .filter((_,i) => luckies[i%7] % 3 === 0 ? false : i % 3 !== 2)
+      .slice(0,3).map(d=>`  ✨ ${d}`).join('\n') + '\n\n' +
+    `  ✨ For entertainment only — make your own luck!`;
+  setStatus('lucky-status','ok','✓ Lucky numbers generated');
+}
+function luckyClear(){
+  ['lucky-name','lucky-dob'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('lucky-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('lucky-status','','enter your name or date of birth');
+}
+
+/* ── COIN FLIP & DICE ROLLER ── */
+function coinFlip() {
+  const count = parseInt(document.getElementById('coin-count')?.value) || 1;
+  const out   = document.getElementById('coin-output');
+  if (!out) return;
+  const results = Array.from({length:Math.min(count,100)}, ()=> Math.random()<0.5 ? 'Heads' : 'Tails');
+  const heads = results.filter(r=>r==='Heads').length;
+  const tails = results.length - heads;
+  const bar = r => '█'.repeat(Math.round(r/results.length*20)) + '░'.repeat(20-Math.round(r/results.length*20));
+  out.className = 'output-box success';
+  out.textContent =
+    (count===1
+      ? `Result: ${results[0] === 'Heads' ? '🪙 HEADS' : '🪙 TAILS'}`
+      : `${count} flips:\n${results.join('  ')}\n\n` +
+        `Heads: ${heads}/${results.length}  ${bar(heads)}  ${(heads/results.length*100).toFixed(1)}%\n` +
+        `Tails: ${tails}/${results.length}  ${bar(tails)}  ${(tails/results.length*100).toFixed(1)}%`
+    );
+  setStatus('coin-status','ok', count===1 ? `✓ ${results[0]}` : `✓ H:${heads} T:${tails}`);
+}
+
+function diceRoll() {
+  const sides = parseInt(document.getElementById('dice-sides')?.value) || 6;
+  const count = parseInt(document.getElementById('dice-count')?.value) || 1;
+  const out   = document.getElementById('dice-output');
+  if (!out) return;
+  const results = Array.from({length:Math.min(count,20)}, ()=>Math.floor(Math.random()*sides)+1);
+  const sum = results.reduce((s,n)=>s+n,0);
+  const avg = sum/results.length;
+  out.className = 'output-box success';
+  out.textContent =
+    (count===1
+      ? `🎲 Rolled: ${results[0]}  (d${sides})`
+      : `${count}d${sides}:\n  ${results.join('  ')}\n\n  Sum: ${sum}  Average: ${avg.toFixed(1)}\n  Min: ${Math.min(...results)}  Max: ${Math.max(...results)}`
+    );
+  setStatus('dice-status','ok', count===1 ? `✓ Rolled ${results[0]}` : `✓ Sum: ${sum}`);
+}
+
+/* ── DAYS BETWEEN DATES ── */
+function daysBetween() {
+  const d1  = document.getElementById('dbd-date1')?.value;
+  const d2  = document.getElementById('dbd-date2')?.value;
+  const out = document.getElementById('dbd-output');
+  if (!out) return;
+  if (!d1||!d2) { out.textContent='Select both dates.'; out.className='output-box'; return; }
+
+  const date1 = new Date(d1), date2 = new Date(d2);
+  const diff  = Math.abs(date2-date1);
+  const days  = Math.round(diff/86400000);
+  const weeks = Math.floor(days/7);
+  const months= Math.abs((date2.getFullYear()-date1.getFullYear())*12 + date2.getMonth()-date1.getMonth());
+  const years = Math.abs(date2.getFullYear()-date1.getFullYear());
+  const earlier = date1 <= date2 ? date1 : date2;
+  const later   = date1 <= date2 ? date2 : date1;
+
+  // Workdays (Mon–Fri)
+  let workdays = 0;
+  for (let d=new Date(earlier); d<later; d.setDate(d.getDate()+1)) {
+    const wd = d.getDay();
+    if (wd!==0 && wd!==6) workdays++;
+  }
+  const weekends = days - workdays;
+
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const fmtDate = d => d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  out.className = 'output-box success';
+  out.textContent =
+    `From: ${fmtDate(earlier)}\n` +
+    `To:   ${fmtDate(later)}\n\n` +
+    `── Duration ──────────────────────────\n` +
+    `${days.toLocaleString()} days total\n` +
+    `${weeks} weeks + ${days%7} days\n` +
+    `~${months} months\n` +
+    `~${years > 0 ? years+' year'+(years!==1?'s':'')+' and ':''}${months%12} month${months%12!==1?'s':''}\n\n` +
+    `── Breakdown ─────────────────────────\n` +
+    `  Weekdays:    ${workdays.toLocaleString()} days\n` +
+    `  Weekends:    ${weekends.toLocaleString()} days\n` +
+    `  Hours:       ${(days*24).toLocaleString()}\n` +
+    `  Minutes:     ${(days*24*60).toLocaleString()}\n` +
+    `  Seconds:     ${(days*24*3600).toLocaleString()}`;
+  setStatus('dbd-status','ok',`✓ ${days.toLocaleString()} days`);
+}
+function dbdSetToday(id) {
+  const el = document.getElementById(id);
+  if (el) { el.value = new Date().toISOString().slice(0,10); daysBetween(); }
+}
+
+/* ── ZODIAC / HOROSCOPE CALCULATOR ── */
+function zodiacCalc() {
+  const dob = document.getElementById('zod-dob')?.value;
+  const out = document.getElementById('zod-output');
+  if (!out) return;
+  if (!dob) { out.textContent='Select your date of birth.'; out.className='output-box'; return; }
+
+  const date  = new Date(dob);
+  const month = date.getMonth()+1;
+  const day   = date.getDate();
+  const year  = date.getFullYear();
+
+  const SIGNS = [
+    {sign:'Capricorn', symbol:'♑', date:'Dec 22 – Jan 19', el:'Earth',  rule:'Saturn',  trait:'Ambitious, disciplined, patient'},
+    {sign:'Aquarius',  symbol:'♒', date:'Jan 20 – Feb 18', el:'Air',    rule:'Uranus',  trait:'Innovative, independent, humanitarian'},
+    {sign:'Pisces',    symbol:'♓', date:'Feb 19 – Mar 20', el:'Water',  rule:'Neptune', trait:'Compassionate, artistic, intuitive'},
+    {sign:'Aries',     symbol:'♈', date:'Mar 21 – Apr 19', el:'Fire',   rule:'Mars',    trait:'Courageous, energetic, passionate'},
+    {sign:'Taurus',    symbol:'♉', date:'Apr 20 – May 20', el:'Earth',  rule:'Venus',   trait:'Reliable, patient, determined'},
+    {sign:'Gemini',    symbol:'♊', date:'May 21 – Jun 20', el:'Air',    rule:'Mercury', trait:'Adaptable, curious, expressive'},
+    {sign:'Cancer',    symbol:'♋', date:'Jun 21 – Jul 22', el:'Water',  rule:'Moon',    trait:'Intuitive, emotional, protective'},
+    {sign:'Leo',       symbol:'♌', date:'Jul 23 – Aug 22', el:'Fire',   rule:'Sun',     trait:'Creative, generous, confident'},
+    {sign:'Virgo',     symbol:'♍', date:'Aug 23 – Sep 22', el:'Earth',  rule:'Mercury', trait:'Analytical, practical, diligent'},
+    {sign:'Libra',     symbol:'♎', date:'Sep 23 – Oct 22', el:'Air',    rule:'Venus',   trait:'Diplomatic, fair, social'},
+    {sign:'Scorpio',   symbol:'♏', date:'Oct 23 – Nov 21', el:'Water',  rule:'Pluto',   trait:'Passionate, resourceful, determined'},
+    {sign:'Sagittarius',symbol:'♐',date:'Nov 22 – Dec 21', el:'Fire',   rule:'Jupiter', trait:'Adventurous, optimistic, philosophical'},
+  ];
+
+  const getSign = (m,d) => {
+    const dates = [[1,20],[2,19],[3,21],[4,20],[5,21],[6,21],[7,23],[8,23],[9,23],[10,23],[11,22],[12,22]];
+    for (let i=0;i<12;i++) { if(m===dates[i][0]&&d>=dates[i][1]) return SIGNS[(i+1)%12]; if(m===(dates[i][0]%12)+1&&d<dates[i][1]) return SIGNS[(i+1)%12]; }
+    return SIGNS[0];
+  };
+
+  // Better sign lookup
+  const boundaries = [
+    [1,20,'Aquarius'],[2,19,'Pisces'],[3,21,'Aries'],[4,20,'Taurus'],
+    [5,21,'Gemini'],[6,21,'Cancer'],[7,23,'Leo'],[8,23,'Virgo'],
+    [9,23,'Libra'],[10,23,'Scorpio'],[11,22,'Sagittarius'],[12,22,'Capricorn']
+  ];
+  let signName = 'Capricorn';
+  for (const [bm, bd, bsign] of boundaries) {
+    if (month < bm || (month === bm && day < bd)) { signName = bsign; break; }
+    signName = bsign;
+  }
+  const s = SIGNS.find(x=>x.sign===signName) || SIGNS[0];
+
+  // Chinese zodiac
+  const CHINESE = ['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'];
+  const chinese = CHINESE[(year-1900)%12];
+
+  // Life path
+  const digits = dob.replace(/-/g,'');
+  let lp = [...digits].reduce((s,d)=>s+parseInt(d),0);
+  while(lp>9&&lp!==11&&lp!==22) lp=[...String(lp)].reduce((s,d)=>s+parseInt(d),0);
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Date of Birth: ${date.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}\n\n` +
+    `── Western Zodiac ────────────────────\n` +
+    `  Sign:         ${s.symbol} ${s.sign}\n` +
+    `  Dates:        ${s.date}\n` +
+    `  Element:      ${s.el}\n` +
+    `  Ruling planet:${s.rule}\n` +
+    `  Traits:       ${s.trait}\n\n` +
+    `── Chinese Zodiac ────────────────────\n` +
+    `  Year ${year}: ${chinese}\n\n` +
+    `── Numerology ───────────────────────\n` +
+    `  Life Path:    ${lp}\n\n` +
+    `── Compatible signs ──────────────────\n` +
+    (s.el==='Fire'  ?'  Aries, Leo, Sagittarius (Fire)\n  Gemini, Libra, Aquarius (Air)':
+     s.el==='Earth' ?'  Taurus, Virgo, Capricorn (Earth)\n  Cancer, Scorpio, Pisces (Water)':
+     s.el==='Air'   ?'  Gemini, Libra, Aquarius (Air)\n  Aries, Leo, Sagittarius (Fire)':
+                     '  Cancer, Scorpio, Pisces (Water)\n  Taurus, Virgo, Capricorn (Earth)');
+  setStatus('zod-status','ok',`✓ ${s.symbol} ${s.sign}`);
+}
+
+/* ════════════════════════════════════
+   BATCH 11 — FINAL 12 TOOLS TO 100
+   ════════════════════════════════════ */
+
+/* ── STOPWATCH & COUNTDOWN TIMER ── */
+let swState = { running:false, startTime:0, elapsed:0, interval:null };
+let cdState = { running:false, target:0, interval:null };
+
+function swStart() {
+  if (swState.running) return;
+  swState.running = true;
+  swState.startTime = Date.now() - swState.elapsed;
+  swState.interval = setInterval(swTick, 10);
+  document.getElementById('sw-start').style.display='none';
+  document.getElementById('sw-pause').style.display='inline-block';
+}
+function swPause() {
+  swState.running = false;
+  swState.elapsed = Date.now() - swState.startTime;
+  clearInterval(swState.interval);
+  document.getElementById('sw-start').style.display='inline-block';
+  document.getElementById('sw-pause').style.display='none';
+}
+function swReset() {
+  clearInterval(swState.interval);
+  swState = { running:false, startTime:0, elapsed:0, interval:null };
+  const d = document.getElementById('sw-display');
+  if (d) d.textContent = '00:00.000';
+  document.getElementById('sw-start').style.display='inline-block';
+  document.getElementById('sw-pause').style.display='none';
+}
+function swLap() {
+  if (!swState.running && swState.elapsed === 0) return;
+  const ms = swState.running ? Date.now() - swState.startTime : swState.elapsed;
+  const laps = document.getElementById('sw-laps');
+  if (!laps) return;
+  const count = laps.children.length + 1;
+  const div = document.createElement('div');
+  div.style = 'font-family:var(--mono);font-size:.78rem;color:var(--text2);padding:.3rem 0;border-bottom:1px solid var(--border)';
+  div.textContent = `Lap ${count}:  ${swFmt(ms)}`;
+  laps.prepend(div);
+}
+function swTick() {
+  const ms = Date.now() - swState.startTime;
+  const d = document.getElementById('sw-display');
+  if (d) d.textContent = swFmt(ms);
+}
+function swFmt(ms) {
+  const h=Math.floor(ms/3600000), m=Math.floor((ms%3600000)/60000),
+        s=Math.floor((ms%60000)/1000), cs=Math.floor((ms%1000));
+  return h>0
+    ? `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${String(cs).padStart(3,'0')}`
+    : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${String(cs).padStart(3,'0')}`;
+}
+
+function cdStart() {
+  const h=parseInt(document.getElementById('cd-hours')?.value)||0;
+  const m=parseInt(document.getElementById('cd-mins')?.value)||0;
+  const s=parseInt(document.getElementById('cd-secs')?.value)||0;
+  const total = h*3600+m*60+s;
+  if (total<=0) { showToast('Enter a time to count down'); return; }
+  if (cdState.running) { clearInterval(cdState.interval); }
+  cdState.target = Date.now() + total*1000;
+  cdState.running = true;
+  cdState.interval = setInterval(cdTick, 200);
+  document.getElementById('cd-start-btn').style.display='none';
+  document.getElementById('cd-stop-btn').style.display='inline-block';
+}
+function cdStop() {
+  cdState.running = false;
+  clearInterval(cdState.interval);
+  document.getElementById('cd-start-btn').style.display='inline-block';
+  document.getElementById('cd-stop-btn').style.display='none';
+}
+function cdTick() {
+  const rem = Math.max(0, cdState.target - Date.now());
+  const h=Math.floor(rem/3600000), m=Math.floor((rem%3600000)/60000), s=Math.floor((rem%60000)/1000);
+  const d = document.getElementById('cd-display');
+  if (d) d.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  if (rem === 0) {
+    cdStop();
+    try {
+      const ctx = new (window.AudioContext||window.webkitAudioContext)();
+      [880,1100,880].forEach((freq,i) => {
+        const o=ctx.createOscillator(), g=ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.frequency.value=freq; g.gain.setValueAtTime(0.3,ctx.currentTime+i*0.25);
+        g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.25+0.2);
+        o.start(ctx.currentTime+i*0.25); o.stop(ctx.currentTime+i*0.25+0.2);
+      });
+    } catch(_){}
+    if (d) d.textContent = '⏰ Time\'s up!';
+  }
+}
+
+/* ── RANDOM WORD GENERATOR ── */
+const WORD_LISTS = {
+  nouns:['apple','bridge','castle','dragon','empire','forest','garden','harbor','island','jungle','kingdom','lantern','mirror','needle','ocean','palace','river','shadow','throne','unicorn','valley','winter','zenith','anchor','beacon','crystal','diamond','echo','flame','glacier','horizon','ivory','jasmine','knight','lemon','marble','nebula','orbit','pearl','quartz','rainbow','silver','torch','umber','vapor','willow','xenon','yellow','zephyr'],
+  adjectives:['ancient','brave','calm','dark','elegant','fierce','golden','hidden','icy','jolly','kind','lively','majestic','noble','opaque','proud','quiet','radiant','serene','tall','unique','vibrant','wise','young','zealous','bold','crisp','daring','ethereal','frosty','grand','harsh','infinite','joyful','keen','luminous','mighty','nimble','ornate','plush','rapid','swift','tender','vast'],
+  verbs:['amaze','build','climb','dance','explore','fly','grow','help','inspire','jump','keep','learn','move','nurture','observe','paint','quest','run','soar','teach','unlock','venture','wander','excel','yearn'],
+  mixed:['apple','brave','climb','dragon','elegant','fly','golden','harbor','inspire','jungle','keen','lively','mirror','noble','orbit','proud','quest','radiant','soar','throne','unlock','vibrant','wander','xenon','yellow','zenith','ancient','bridge','crystal','dance','empire','forest','glacier','hidden','ivory','jasmine','knight','luminous','mirror','nebula','ocean','pearl','quartz','river','shadow','torch','unicorn','valley','wise'],
+};
+function randomWordGen() {
+  const type   = document.getElementById('rw-type')?.value || 'mixed';
+  const count  = Math.min(parseInt(document.getElementById('rw-count')?.value)||5, 50);
+  const out    = document.getElementById('rw-output');
+  if (!out) return;
+  const list = WORD_LISTS[type] || WORD_LISTS.mixed;
+  const words = [];
+  const used  = new Set();
+  while (words.length < count) {
+    const w = list[Math.floor(Math.random()*list.length)];
+    if (!used.has(w)) { words.push(w); used.add(w); }
+    if (used.size >= list.length) break;
+  }
+  out.className = 'output-box success';
+  out.textContent = words.join('\n');
+  setStatus('rw-status','ok',`✓ ${words.length} words generated`);
+}
+function rwCopy() { copyEl('rw-output'); }
+
+/* ── TEXT TO SLUG CONVERTER ── */
+function slugConvert() {
+  const inp  = document.getElementById('slug-input')?.value || '';
+  const sep  = document.getElementById('slug-sep')?.value || '-';
+  const out  = document.getElementById('slug-output');
+  if (!out) return;
+  if (!inp.trim()) { out.textContent=''; return; }
+  let slug = inp.trim().toLowerCase()
+    .replace(/[àáâãäå]/g,'a').replace(/[èéêë]/g,'e').replace(/[ìíîï]/g,'i')
+    .replace(/[òóôõö]/g,'o').replace(/[ùúûü]/g,'u').replace(/[ñ]/g,'n')
+    .replace(/[ç]/g,'c').replace(/[^\w\s-]/g,'')
+    .replace(/[\s_-]+/g, sep).replace(new RegExp(`^[${sep}]+|[${sep}]+$`,'g'),'');
+  out.textContent = slug;
+  setStatus('slug-status','ok',`✓ ${slug.length} chars`);
+}
+
+/* ── ASPECT RATIO CALCULATOR ── */
+function aspectCalc() {
+  const w   = parseFloat(document.getElementById('ar-width')?.value);
+  const h   = parseFloat(document.getElementById('ar-height')?.value);
+  const out = document.getElementById('ar-output');
+  if (!out) return;
+  if (isNaN(w)||isNaN(h)||w<=0||h<=0) { out.textContent='Enter width and height.'; out.className='output-box'; return; }
+  const g = (a,b) => b===0?a:g(b,a%b);
+  const d = g(Math.round(w),Math.round(h));
+  const rw = Math.round(w)/d, rh = Math.round(h)/d;
+  const decimal = (w/h).toFixed(4);
+  const common = [[1,1],[4,3],[3,2],[16,9],[16,10],[21,9],[2,1],[9,16],[3,4]];
+  const closest = common.reduce((best,r) => Math.abs(w/h-r[0]/r[1]) < Math.abs(w/h-best[0]/best[1]) ? r : best);
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Dimensions:    ${w} × ${h}\n` +
+    `Aspect Ratio:  ${rw}:${rh}\n` +
+    `Decimal:       ${decimal}:1\n` +
+    `Closest common:${closest[0]}:${closest[1]}\n\n` +
+    `── Scale to common widths ────────────\n` +
+    [320,480,640,720,1024,1280,1920,2560,3840].map(nw => {
+      const nh = Math.round(nw*(h/w));
+      return `  ${String(nw+'px').padEnd(8)} → ${nh}px`;
+    }).join('\n');
+  setStatus('ar-status','ok',`✓ ${rw}:${rh}`);
+}
+
+/* ── FUEL COST CALCULATOR ── */
+function fuelCalc() {
+  const dist     = parseFloat(document.getElementById('fuel-dist')?.value);
+  const effic    = parseFloat(document.getElementById('fuel-effic')?.value);
+  const price    = parseFloat(document.getElementById('fuel-price')?.value);
+  const distUnit = document.getElementById('fuel-dist-unit')?.value || 'km';
+  const efficUnit= document.getElementById('fuel-effic-unit')?.value || 'L100km';
+  const out      = document.getElementById('fuel-output');
+  if (!out) return;
+  if (isNaN(dist)||isNaN(effic)||isNaN(price)||dist<=0||effic<=0||price<=0) {
+    out.textContent='Enter distance, fuel efficiency, and price per litre.'; out.className='output-box error'; return;
+  }
+
+  let distKm = distUnit==='km' ? dist : dist*1.60934;
+  let liters;
+  if (efficUnit==='L100km') liters = distKm * effic / 100;
+  else if (efficUnit==='mpg') liters = distKm / (effic * 0.425144);
+  else liters = distKm / effic; // km/L
+
+  const cost = liters * price;
+  const costPerKm = cost / distKm;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Distance:          ${dist} ${distUnit} (${distKm.toFixed(1)} km)\n` +
+    `Fuel efficiency:   ${effic} ${efficUnit}\n` +
+    `Fuel price:        $${price}/L\n\n` +
+    `── Trip cost ─────────────────────────\n` +
+    `Fuel needed:       ${liters.toFixed(2)} litres\n` +
+    `Total cost:        $${formatCur(cost)}\n` +
+    `Cost per km:       $${costPerKm.toFixed(4)}/km\n` +
+    `Cost per mile:     $${(costPerKm*1.60934).toFixed(4)}/mi\n\n` +
+    `── Distance comparison ───────────────\n` +
+    [50,100,200,500,1000].map(d => {
+      const l = distUnit==='km' ? d*effic/100 : d*1.60934*effic/100;
+      return `  ${String(d+'km').padEnd(8)} → ${l.toFixed(1)}L  $${formatCur(l*price)}`;
+    }).join('\n');
+  setStatus('fuel-status','ok',`✓ ${liters.toFixed(1)}L · $${formatCur(cost)}`);
+}
+
+/* ── PACE CALCULATOR ── */
+function paceCalc() {
+  const mode = document.getElementById('pace-mode')?.value || 'pace';
+  const out  = document.getElementById('pace-output');
+  if (!out) return;
+
+  if (mode === 'pace') {
+    const dist = parseFloat(document.getElementById('pace-dist')?.value);
+    const h = parseInt(document.getElementById('pace-h')?.value)||0;
+    const m = parseInt(document.getElementById('pace-m')?.value)||0;
+    const s = parseInt(document.getElementById('pace-s')?.value)||0;
+    if (isNaN(dist)||dist<=0||(h+m+s)===0) { out.textContent='Enter distance and finish time.'; out.className='output-box'; return; }
+    const totalSec = h*3600+m*60+s;
+    const paceSec  = totalSec/dist;
+    const pm = Math.floor(paceSec/60), ps = Math.round(paceSec%60);
+    const speedKph = dist/(totalSec/3600);
+    const speedMph = speedKph*0.621371;
+    out.className='output-box success';
+    out.textContent=
+      `Distance: ${dist} km  Time: ${h}h ${m}m ${s}s\n\n`+
+      `Pace:        ${pm}:${String(ps).padStart(2,'0')} /km\n`+
+      `Speed:       ${speedKph.toFixed(2)} km/h  (${speedMph.toFixed(2)} mph)\n\n`+
+      `── Split times ───────────────────────\n`+
+      [1,2,5,10,21.0975,42.195].map(d=>{
+        const t=Math.round(paceSec*d);
+        const hh=Math.floor(t/3600),mm=Math.floor((t%3600)/60),ss=t%60;
+        return `  ${String(d+'km').padEnd(10)} ${hh>0?hh+'h ':''} ${mm}:${String(ss).padStart(2,'0')}`;
+      }).join('\n');
+  } else {
+    const dist = parseFloat(document.getElementById('pace-dist')?.value);
+    const pm = parseInt(document.getElementById('pace-pm')?.value)||0;
+    const ps = parseInt(document.getElementById('pace-ps')?.value)||0;
+    if (isNaN(dist)||dist<=0||(pm+ps)===0) { out.textContent='Enter distance and pace.'; out.className='output-box'; return; }
+    const paceSec = pm*60+ps;
+    const totalSec = paceSec*dist;
+    const h=Math.floor(totalSec/3600),m=Math.floor((totalSec%3600)/60),s=Math.round(totalSec%60);
+    out.className='output-box success';
+    out.textContent=
+      `Distance: ${dist} km  Pace: ${pm}:${String(ps).padStart(2,'0')} /km\n\n`+
+      `Finish time: ${h>0?h+'h ':''} ${m}:${String(s).padStart(2,'0')}\n`+
+      `Speed:       ${(3600/paceSec).toFixed(2)} km/h\n\n`+
+      `── Common race finish times ──────────\n`+
+      [5,10,21.0975,42.195].map(d=>{
+        const t=Math.round(paceSec*d);
+        const hh=Math.floor(t/3600),mm=Math.floor((t%3600)/60),ss=t%60;
+        return `  ${String(d+'km').padEnd(10)} ${hh>0?hh+'h ':''} ${mm}:${String(ss).padStart(2,'0')}`;
+      }).join('\n');
+  }
+  setStatus('pace-status','ok','✓ calculated');
+}
+
+/* ── COLOR CODE CONVERTER ── */
+function colorCodeConvert() {
+  const inp = document.getElementById('cc-input')?.value?.trim();
+  const out = document.getElementById('cc-output');
+  if (!out) return;
+  if (!inp) { out.textContent=''; return; }
+
+  let r,g,b,a=1;
+  // Parse HEX
+  const hex = inp.replace('#','');
+  if (/^[0-9a-f]{6}$/i.test(hex)) {
+    r=parseInt(hex.slice(0,2),16); g=parseInt(hex.slice(2,4),16); b=parseInt(hex.slice(4,6),16);
+  } else if (/^[0-9a-f]{3}$/i.test(hex)) {
+    r=parseInt(hex[0]+hex[0],16); g=parseInt(hex[1]+hex[1],16); b=parseInt(hex[2]+hex[2],16);
+  // Parse RGB
+  } else if (/rgb/i.test(inp)) {
+    const m=inp.match(/[\d.]+/g);
+    if(m&&m.length>=3){r=parseInt(m[0]);g=parseInt(m[1]);b=parseInt(m[2]);if(m[4])a=parseFloat(m[3]);}
+  // Parse HSL
+  } else if (/hsl/i.test(inp)) {
+    const m=inp.match(/[\d.]+/g);
+    if(m&&m.length>=3){
+      const H=parseFloat(m[0])/360,S=parseFloat(m[1])/100,L=parseFloat(m[2])/100;
+      const q=L<0.5?L*(1+S):L+S-L*S,p=2*L-q;
+      const hue2rgb=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};
+      r=Math.round(hue2rgb(p,q,H+1/3)*255);g=Math.round(hue2rgb(p,q,H)*255);b=Math.round(hue2rgb(p,q,H-1/3)*255);
+    }
+  } else { out.textContent='Invalid format. Try: #ff6600, rgb(255,102,0), hsl(24,100%,50%)'; out.className='output-box error'; return; }
+
+  if(isNaN(r)||r<0||r>255){out.textContent='Invalid colour value.';out.className='output-box error';return;}
+
+  const toHex=n=>n.toString(16).padStart(2,'0');
+  const hexOut=`#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  // RGB to HSL
+  const rn=r/255,gn=g/255,bn=b/255;
+  const max=Math.max(rn,gn,bn),min=Math.min(rn,gn,bn),l=(max+min)/2;
+  let h2=0,s2=0;
+  if(max!==min){const d=max-min;s2=l>0.5?d/(2-max-min):d/(max+min);h2=max===rn?(gn-bn)/d+(gn<bn?6:0):max===gn?(bn-rn)/d+2:(rn-gn)/d+4;h2=Math.round(h2*60);}
+  const hslOut=`hsl(${h2}, ${Math.round(s2*100)}%, ${Math.round(l*100)}%)`;
+  const cmykK=1-Math.max(rn,gn,bn);
+  const cmyk=cmykK===1?'cmyk(0, 0, 0, 100%)':`cmyk(${Math.round((1-rn-cmykK)/(1-cmykK)*100)}%, ${Math.round((1-gn-cmykK)/(1-cmykK)*100)}%, ${Math.round((1-bn-cmykK)/(1-cmykK)*100)}%, ${Math.round(cmykK*100)}%)`;
+
+  const swatch = document.getElementById('cc-swatch');
+  if(swatch) swatch.style.background=hexOut;
+  out.className='output-box success';
+  out.textContent=
+    `HEX:    ${hexOut}\n`+
+    `RGB:    rgb(${r}, ${g}, ${b})\n`+
+    `RGBA:   rgba(${r}, ${g}, ${b}, ${a})\n`+
+    `HSL:    ${hslOut}\n`+
+    `CMYK:   ${cmyk}\n`+
+    `Decimal:${r*65536+g*256+b}\n\n`+
+    `── Tints (lighter) ──────────────────\n`+
+    [0.9,0.75,0.5,0.25].map(t=>{
+      const tr=Math.round(r+(255-r)*t),tg=Math.round(g+(255-g)*t),tb=Math.round(b+(255-b)*t);
+      return `  #${toHex(tr)}${toHex(tg)}${toHex(tb)}  (${Math.round(t*100)}% white)`;
+    }).join('\n')+'\n\n'+
+    `── Shades (darker) ──────────────────\n`+
+    [0.75,0.5,0.25,0.1].map(s=>{
+      const sr=Math.round(r*s),sg=Math.round(g*s),sb=Math.round(b*s);
+      return `  #${toHex(sr)}${toHex(sg)}${toHex(sb)}  (${Math.round((1-s)*100)}% black)`;
+    }).join('\n');
+  setStatus('cc-status','ok',`✓ ${hexOut}`);
+}
+
+/* ── NUMBER BASE CONVERTER ── */
+function baseConvert() {
+  const inp  = document.getElementById('base-input')?.value?.trim();
+  const from = parseInt(document.getElementById('base-from')?.value) || 10;
+  const out  = document.getElementById('base-output');
+  if (!out) return;
+  if (!inp) { out.textContent=''; return; }
+  const n = parseInt(inp, from);
+  if (isNaN(n)) { out.textContent=`Invalid number for base ${from}.`; out.className='output-box error'; return; }
+  out.className='output-box success';
+  out.textContent=
+    `Input (base ${from}): ${inp}\n`+
+    `Decimal value: ${n}\n\n`+
+    `── All bases ─────────────────────────\n`+
+    `Binary (2):      ${n.toString(2)}\n`+
+    `Octal (8):       ${n.toString(8)}\n`+
+    `Decimal (10):    ${n.toString(10)}\n`+
+    `Hex (16):        ${n.toString(16).toUpperCase()}\n`+
+    `Base 32:         ${n.toString(32).toUpperCase()}\n`+
+    `Base 36:         ${n.toString(36).toUpperCase()}\n\n`+
+    `── Binary breakdown ──────────────────\n`+
+    `  ${n.toString(2).padStart(16,'0').match(/.{4}/g).join(' ')}`;
+  setStatus('base-status','ok',`✓ Dec: ${n}  Hex: ${n.toString(16).toUpperCase()}`);
+}
+
+/* ── CHARACTER COUNTER ── */
+function charCount() {
+  const text = document.getElementById('char-input')?.value || '';
+  const out  = document.getElementById('char-output');
+  if (!out) return;
+  const chars     = text.length;
+  const noSpaces  = text.replace(/\s/g,'').length;
+  const words     = text.trim()==='' ? 0 : text.trim().split(/\s+/).length;
+  const sentences = (text.match(/[.!?]+/g)||[]).length;
+  const paragraphs= text.trim()==='' ? 0 : text.trim().split(/\n\s*\n/).length;
+  const lines     = text==='' ? 0 : text.split('\n').length;
+  const digits    = (text.match(/\d/g)||[]).length;
+  const letters   = (text.match(/[a-zA-Z]/g)||[]).length;
+  const spaces    = chars - noSpaces;
+  const readMin   = Math.ceil(words/200);
+  const speakMin  = Math.ceil(words/130);
+
+  // Twitter/Instagram/LinkedIn limits
+  const limits = [[280,'Twitter/X'],[2200,'Instagram'],[3000,'LinkedIn post'],[700,'SMS (5 parts)'],[160,'SMS (1 part)']];
+
+  out.className='output-box success';
+  out.textContent=
+    `Characters:        ${chars.toLocaleString()} (${noSpaces.toLocaleString()} without spaces)\n`+
+    `Words:             ${words.toLocaleString()}\n`+
+    `Sentences:         ${sentences.toLocaleString()}\n`+
+    `Paragraphs:        ${paragraphs.toLocaleString()}\n`+
+    `Lines:             ${lines.toLocaleString()}\n`+
+    `Letters:           ${letters.toLocaleString()}\n`+
+    `Digits:            ${digits.toLocaleString()}\n`+
+    `Spaces:            ${spaces.toLocaleString()}\n\n`+
+    `── Reading & speaking time ───────────\n`+
+    `  Read time:  ~${readMin} min (200 wpm)\n`+
+    `  Speak time: ~${speakMin} min (130 wpm)\n\n`+
+    `── Platform limits ───────────────────\n`+
+    limits.map(([lim,name])=>{
+      const used=Math.min(chars,lim), pct=Math.round(chars/lim*100);
+      const bar='█'.repeat(Math.min(20,Math.round(pct/5)))+'░'.repeat(Math.max(0,20-Math.min(20,Math.round(pct/5))));
+      return `  ${name.padEnd(18)} ${chars}/${lim}  ${bar}  ${pct}%`;
+    }).join('\n');
+  setStatus('char-status','ok',`✓ ${chars} chars · ${words} words`);
+}
+
+/* ── PASSWORD STRENGTH CHECKER ── */
+function passStrengthCheck() {
+  const pass = document.getElementById('ps-input')?.value || '';
+  const out  = document.getElementById('ps-output');
+  if (!out) return;
+  if (!pass) { out.textContent='Type a password to analyse.'; out.className='output-box'; return; }
+
+  const checks = {
+    len8:  pass.length >= 8,
+    len12: pass.length >= 12,
+    len16: pass.length >= 16,
+    upper: /[A-Z]/.test(pass),
+    lower: /[a-z]/.test(pass),
+    digit: /\d/.test(pass),
+    symbol:/[^a-zA-Z0-9]/.test(pass),
+    noRepeat: !/(.)\1{2}/.test(pass),
+    noCommon: !['password','123456','qwerty','abc123','letmein','welcome'].includes(pass.toLowerCase()),
+  };
+
+  let score = 0;
+  if(checks.len8)    score+=15;
+  if(checks.len12)   score+=15;
+  if(checks.len16)   score+=10;
+  if(checks.upper)   score+=10;
+  if(checks.lower)   score+=10;
+  if(checks.digit)   score+=10;
+  if(checks.symbol)  score+=20;
+  if(checks.noRepeat)score+=5;
+  if(checks.noCommon)score+=5;
+  score = Math.min(100, score);
+
+  const label = score>=80?'Strong ✅':score>=60?'Good ✅':score>=40?'Fair ⚠':score>=20?'Weak ❌':'Very weak ❌';
+  const bar = '█'.repeat(Math.round(score/5))+'░'.repeat(20-Math.round(score/5));
+
+  // Entropy estimate
+  let pool=0;
+  if(/[a-z]/.test(pass)) pool+=26;
+  if(/[A-Z]/.test(pass)) pool+=26;
+  if(/\d/.test(pass))    pool+=10;
+  if(/[^a-zA-Z0-9]/.test(pass)) pool+=32;
+  const entropy = Math.round(pass.length * Math.log2(pool||1));
+
+  // Crack time estimate
+  const combinations = Math.pow(pool||1, pass.length);
+  const rate = 1e10; // 10 billion guesses/sec (fast GPU)
+  const secs = combinations / rate / 2; // average half
+  const crackTime = secs<1?'instant':secs<60?`${Math.round(secs)}s`:secs<3600?`${Math.round(secs/60)}m`:secs<86400?`${Math.round(secs/3600)}h`:secs<31536000?`${Math.round(secs/86400)} days`:`${Math.round(secs/31536000).toLocaleString()} years`;
+
+  out.className=score>=60?'output-box success':score>=40?'output-box':'output-box error';
+  out.textContent=
+    `Password: ${'*'.repeat(Math.min(pass.length,20))} (${pass.length} chars)\n\n`+
+    `Strength:  ${bar}  ${score}/100\n`+
+    `Rating:    ${label}\n`+
+    `Entropy:   ${entropy} bits\n`+
+    `Crack time: ${crackTime} (GPU brute force)\n\n`+
+    `── Checks ────────────────────────────\n`+
+    `  ${checks.len8?'✅':'❌'} At least 8 characters\n`+
+    `  ${checks.len12?'✅':'❌'} At least 12 characters\n`+
+    `  ${checks.len16?'✅':'❌'} At least 16 characters\n`+
+    `  ${checks.upper?'✅':'❌'} Contains uppercase letters\n`+
+    `  ${checks.lower?'✅':'❌'} Contains lowercase letters\n`+
+    `  ${checks.digit?'✅':'❌'} Contains numbers\n`+
+    `  ${checks.symbol?'✅':'❌'} Contains special characters\n`+
+    `  ${checks.noRepeat?'✅':'❌'} No repeated characters (aaa)\n`+
+    `  ${checks.noCommon?'✅':'❌'} Not a common password`;
+  setStatus('ps-status',score>=60?'ok':'err',`${label} — ${score}/100`);
+}
+
+/* ── WORD FREQUENCY COUNTER ── */
+function wordFreqCalc() {
+  const text  = document.getElementById('wf-input')?.value || '';
+  const limit = parseInt(document.getElementById('wf-limit')?.value) || 20;
+  const stopwords_on = document.getElementById('wf-stopwords')?.checked !== false;
+  const out   = document.getElementById('wf-output');
+  if (!out) return;
+  if (!text.trim()) { out.textContent='Paste text to analyse.'; out.className='output-box'; return; }
+
+  const STOP = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','is','are','was','were','be','been','have','has','had','do','did','will','would','could','should','may','might','this','that','these','those','i','you','he','she','it','we','they','my','your','his','her','its','our','their','not','as','if','so','up','out','about','what','which','who','when','where','how','than','then','there','can','no','more','also','into','after','over','such','just','only','even','back','any','all','very','too','now','here','new','first','well','us']);
+
+  const words = text.toLowerCase().replace(/[^a-z0-9\s]/g,'').split(/\s+/).filter(w=>w.length>1&&(!stopwords_on||!STOP.has(w)));
+  const freq  = {};
+  words.forEach(w=>freq[w]=(freq[w]||0)+1);
+  const sorted = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,limit);
+  const maxCount = sorted[0]?.[1] || 1;
+  const totalWords = words.length;
+
+  out.className='output-box success';
+  out.textContent=
+    `Total words analysed: ${totalWords.toLocaleString()}\n`+
+    `Unique words: ${Object.keys(freq).length.toLocaleString()}\n`+
+    `Showing top ${sorted.length}\n\n`+
+    `── Word frequency ────────────────────\n`+
+    sorted.map(([w,c])=>{
+      const pct=(c/totalWords*100).toFixed(1);
+      const bar='█'.repeat(Math.round(c/maxCount*15))+'░'.repeat(15-Math.round(c/maxCount*15));
+      return `  ${w.padEnd(18)} ${bar}  ${String(c).padStart(4)} (${pct}%)`;
+    }).join('\n');
+  setStatus('wf-status','ok',`✓ ${Object.keys(freq).length} unique words`);
+}
+
+/* ── SCREEN RESOLUTION CALCULATOR ── */
+function screenResCalc() {
+  const w    = parseFloat(document.getElementById('sr-width')?.value);
+  const h    = parseFloat(document.getElementById('sr-height')?.value);
+  const size = parseFloat(document.getElementById('sr-size')?.value);
+  const out  = document.getElementById('sr-output');
+  if (!out) return;
+  if (isNaN(w)||isNaN(h)||w<=0||h<=0) { out.textContent='Enter width and height in pixels.'; out.className='output-box'; return; }
+
+  const g = (a,b) => b===0?a:g(b,a%b);
+  const d = g(Math.round(w),Math.round(h));
+  const rw = Math.round(w)/d, rh = Math.round(h)/d;
+  const totalPx = w*h;
+  const megapx  = (totalPx/1e6).toFixed(2);
+
+  let ppiLine = '';
+  if (!isNaN(size) && size > 0) {
+    const diag = Math.sqrt(w*w+h*h);
+    const ppi  = Math.round(diag/size);
+    const category = ppi>300?'Retina/Hi-DPI':ppi>200?'High DPI':ppi>150?'Standard HD':ppi>96?'Standard':ppi>72?'Low':'Very low';
+    ppiLine = `PPI (pixels/inch): ${ppi}  (${category})\n`;
+  }
+
+  const common = [
+    [1280,720,'720p HD'],    [1366,768,'Laptop HD'],
+    [1920,1080,'1080p FHD'], [2560,1440,'1440p QHD'],
+    [3840,2160,'4K UHD'],    [7680,4320,'8K UHD'],
+    [1080,1920,'Portrait FHD'],[2160,3840,'Portrait 4K'],
+  ];
+  const matchLine = common.find(([cw,ch])=>cw===w&&ch===h);
+
+  out.className='output-box success';
+  out.textContent=
+    `Resolution:    ${w} × ${h} pixels${matchLine?`  (${matchLine[2]})`:''}\n`+
+    `Aspect Ratio:  ${rw}:${rh}\n`+
+    `Total pixels:  ${totalPx.toLocaleString()} px  (${megapx} MP)\n`+
+    ppiLine+
+    `\n── Scale factors ─────────────────────\n`+
+    [0.25,0.5,0.75,1,1.25,1.5,2].map(s=>`  ${(s*100).toFixed(0).padStart(4)}%  → ${Math.round(w*s)} × ${Math.round(h*s)}`).join('\n')+
+    `\n\n── Common resolutions ────────────────\n`+
+    common.map(([cw,ch,name])=>{
+      const match = cw===w&&ch===h ? ' ← yours' : '';
+      return `  ${name.padEnd(15)} ${cw} × ${ch}${match}`;
+    }).join('\n');
+  setStatus('sr-status','ok',`✓ ${w}×${h}  ${rw}:${rh}`);
+}

@@ -2691,3 +2691,1053 @@ function pomUpdateConfig() {
   pomInit();
   showToast('Timer updated ✓');
 }
+
+/* ════════════════════════════════════
+   BATCH 6 — HEALTH & FITNESS TOOLS
+   ════════════════════════════════════ */
+
+/* ── CALORIE CALCULATOR ── */
+function calorieCalc() {
+  const age      = parseInt(document.getElementById('cal-age')?.value);
+  const gender   = document.getElementById('cal-gender')?.value || 'male';
+  const weightKg = parseFloat(document.getElementById('cal-weight')?.value);
+  const heightCm = parseFloat(document.getElementById('cal-height')?.value);
+  const activity = parseFloat(document.getElementById('cal-activity')?.value) || 1.2;
+  const goal     = document.getElementById('cal-goal')?.value || 'maintain';
+  const unit     = document.getElementById('cal-unit')?.value || 'metric';
+  const out      = document.getElementById('cal-output');
+  if (!out) return;
+
+  if (isNaN(age)||isNaN(weightKg)||isNaN(heightCm)||age<=0||weightKg<=0||heightCm<=0) {
+    out.textContent = 'Please enter valid age, weight, and height.';
+    out.className = 'output-box error'; return;
+  }
+
+  // Convert if imperial
+  let wKg = weightKg, hCm = heightCm;
+  if (unit === 'imperial') {
+    wKg = weightKg * 0.453592;  // lbs to kg
+    hCm = heightCm * 2.54;       // inches to cm
+  }
+
+  // Mifflin-St Jeor formula (most accurate)
+  let bmr;
+  if (gender === 'male') {
+    bmr = 10 * wKg + 6.25 * hCm - 5 * age + 5;
+  } else {
+    bmr = 10 * wKg + 6.25 * hCm - 5 * age - 161;
+  }
+
+  const tdee = Math.round(bmr * activity);
+  const bmrR = Math.round(bmr);
+
+  const goalCalories = {
+    'lose2':   Math.round(tdee - 1000),
+    'lose1':   Math.round(tdee - 500),
+    'lose0.5': Math.round(tdee - 250),
+    'maintain': tdee,
+    'gain0.5': Math.round(tdee + 250),
+    'gain1':   Math.round(tdee + 500),
+  };
+
+  const target = goalCalories[goal] || tdee;
+  const protein = Math.round(wKg * 2.2); // g/day
+  const fat      = Math.round(target * 0.25 / 9);
+  const carbs    = Math.round((target - protein * 4 - fat * 9) / 4);
+
+  const actLabels = {
+    '1.2':'Sedentary (little/no exercise)',
+    '1.375':'Light (1–3 days/week)',
+    '1.55':'Moderate (3–5 days/week)',
+    '1.725':'Active (6–7 days/week)',
+    '1.9':'Very active (physical job + exercise)',
+  };
+
+  out.className = 'output-box success';
+  out.textContent =
+    `── Your Results ──────────────────────\n` +
+    `BMR (at complete rest):   ${bmrR} kcal/day\n` +
+    `TDEE (maintenance):       ${tdee} kcal/day\n` +
+    `Activity:                 ${actLabels[String(activity)]||''}\n\n` +
+    `── Target: ${goal.replace('lose','Lose ').replace('gain','Gain ').replace('maintain','Maintain weight').replace('0.5',' 0.5 kg/wk').replace('1 ','1 kg/wk').replace('2 ','2 kg/wk')} ──\n` +
+    `Daily Calories:           ${target} kcal\n\n` +
+    `── Suggested Macros ──────────────────\n` +
+    `Protein:  ${protein}g   (${Math.round(protein*4)} kcal, ${Math.round(protein*4/target*100)}%)\n` +
+    `Fat:      ${fat}g   (${Math.round(fat*9)} kcal, ${Math.round(fat*9/target*100)}%)\n` +
+    `Carbs:    ${carbs}g   (${Math.round(carbs*4)} kcal, ${Math.round(carbs*4/target*100)}%)\n\n` +
+    `── Calorie targets by goal ───────────\n` +
+    Object.entries(goalCalories).map(([g,c]) =>
+      `  ${g.padEnd(9)} → ${c} kcal/day`
+    ).join('\n');
+
+  setStatus('cal-status','ok',`✓ TDEE: ${tdee} kcal · Target: ${target} kcal`);
+}
+function calUnitSwitch() {
+  const unit = document.getElementById('cal-unit')?.value;
+  const wLabel = document.getElementById('cal-weight-label');
+  const hLabel = document.getElementById('cal-height-label');
+  const wPH    = document.getElementById('cal-weight');
+  const hPH    = document.getElementById('cal-height');
+  if (unit === 'imperial') {
+    if (wLabel) wLabel.textContent = 'Weight (lbs)';
+    if (hLabel) hLabel.textContent = 'Height (inches)';
+    if (wPH)  wPH.placeholder = 'e.g. 154';
+    if (hPH)  hPH.placeholder = 'e.g. 68';
+  } else {
+    if (wLabel) wLabel.textContent = 'Weight (kg)';
+    if (hLabel) hLabel.textContent = 'Height (cm)';
+    if (wPH)  wPH.placeholder = 'e.g. 70';
+    if (hPH)  hPH.placeholder = 'e.g. 175';
+  }
+}
+function calClear() {
+  ['cal-age','cal-weight','cal-height'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('cal-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('cal-status','','fill in your details');
+}
+
+/* ── TDEE CALCULATOR ── */
+function tdeeCalc() {
+  // Reuse calorie calc logic but show full TDEE breakdown
+  const age    = parseInt(document.getElementById('tdee-age')?.value);
+  const gender = document.getElementById('tdee-gender')?.value || 'male';
+  const wKg    = parseFloat(document.getElementById('tdee-weight')?.value);
+  const hCm    = parseFloat(document.getElementById('tdee-height')?.value);
+  const out    = document.getElementById('tdee-output');
+  if (!out) return;
+  if (isNaN(age)||isNaN(wKg)||isNaN(hCm)||age<=0) {
+    out.textContent='Enter valid age, weight (kg), and height (cm).';
+    out.className='output-box error'; return;
+  }
+
+  let bmr = gender==='male'
+    ? 10*wKg + 6.25*hCm - 5*age + 5
+    : 10*wKg + 6.25*hCm - 5*age - 161;
+  bmr = Math.round(bmr);
+
+  const levels = [
+    ['Sedentary (desk job, no exercise)',        1.2,   'BMR × 1.2'],
+    ['Lightly active (1–3 days/week)',           1.375, 'BMR × 1.375'],
+    ['Moderately active (3–5 days/week)',        1.55,  'BMR × 1.55'],
+    ['Very active (6–7 days/week)',              1.725, 'BMR × 1.725'],
+    ['Extremely active (physical job + daily)',  1.9,   'BMR × 1.9'],
+  ];
+
+  out.className = 'output-box success';
+  out.textContent =
+    `BMR (Mifflin-St Jeor):  ${bmr} kcal\n` +
+    `Gender: ${gender}  Age: ${age}  Weight: ${wKg}kg  Height: ${hCm}cm\n\n` +
+    `── TDEE by activity level ────────────\n` +
+    levels.map(([label, mult, formula]) =>
+      `  ${Math.round(bmr*mult)} kcal  ${formula}\n  ${label}`
+    ).join('\n\n') + '\n\n' +
+    `── What to eat per goal ──────────────\n` +
+    `  Lose weight fast:  ${Math.round(bmr*1.55-500)} kcal  (moderate activity −500)\n` +
+    `  Lose slowly:       ${Math.round(bmr*1.55-250)} kcal  (moderate −250)\n` +
+    `  Maintain:          ${Math.round(bmr*1.55)} kcal\n` +
+    `  Gain muscle:       ${Math.round(bmr*1.55+300)} kcal  (moderate +300)`;
+  setStatus('tdee-status','ok',`✓ BMR: ${bmr} kcal`);
+}
+function tdeeClear() {
+  ['tdee-age','tdee-weight','tdee-height'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('tdee-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('tdee-status','','enter your stats');
+}
+
+/* ── MACRO CALCULATOR ── */
+function macroCalc() {
+  const calories = parseInt(document.getElementById('mac-calories')?.value);
+  const goal     = document.getElementById('mac-goal')?.value || 'balanced';
+  const wKg      = parseFloat(document.getElementById('mac-weight')?.value) || 0;
+  const out      = document.getElementById('mac-output');
+  if (!out) return;
+  if (isNaN(calories)||calories<500) {
+    out.textContent='Enter a valid daily calorie target (min 500).';
+    out.className='output-box error'; return;
+  }
+
+  // Macro splits by goal
+  const splits = {
+    'lose':     { p:0.40, f:0.30, c:0.30, label:'Weight loss (high protein)' },
+    'balanced': { p:0.30, f:0.25, c:0.45, label:'Balanced / maintenance' },
+    'muscle':   { p:0.35, f:0.25, c:0.40, label:'Muscle building' },
+    'keto':     { p:0.25, f:0.70, c:0.05, label:'Ketogenic (very low carb)' },
+    'lowcarb':  { p:0.35, f:0.40, c:0.25, label:'Low carb' },
+    'highcarb': { p:0.20, f:0.20, c:0.60, label:'High carb (endurance)' },
+  };
+
+  const s = splits[goal] || splits['balanced'];
+  const pCal = Math.round(calories * s.p);
+  const fCal = Math.round(calories * s.f);
+  const cCal = calories - pCal - fCal;
+  const pG = Math.round(pCal / 4);
+  const fG = Math.round(fCal / 9);
+  const cG = Math.round(cCal / 4);
+  const minProtein = wKg > 0 ? Math.round(wKg * 1.8) : null;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Goal: ${s.label}\n` +
+    `Daily target: ${calories} kcal\n\n` +
+    `── Macronutrients ────────────────────\n` +
+    `Protein:  ${pG}g/day  (${pCal} kcal, ${Math.round(s.p*100)}%)\n` +
+    `Fat:      ${fG}g/day  (${fCal} kcal, ${Math.round(s.f*100)}%)\n` +
+    `Carbs:    ${cG}g/day  (${cCal} kcal, ${Math.round(s.c*100)}%)\n\n` +
+    (minProtein ? `Min protein for muscle retention: ${minProtein}g/day\n(based on ${wKg}kg × 1.8g/kg)\n\n` : '') +
+    `── Per meal (3 meals/day) ────────────\n` +
+    `Protein:  ${Math.round(pG/3)}g\n` +
+    `Fat:      ${Math.round(fG/3)}g\n` +
+    `Carbs:    ${Math.round(cG/3)}g\n` +
+    `Calories: ${Math.round(calories/3)} kcal\n\n` +
+    `── All goal splits at ${calories} kcal ───\n` +
+    Object.entries(splits).map(([k,v]) => {
+      const p=Math.round(calories*v.p/4), f=Math.round(calories*v.f/9), c=Math.round(calories*v.c/4);
+      return `  ${v.label.split(' (')[0].padEnd(22)} P:${p}g F:${f}g C:${c}g`;
+    }).join('\n');
+  setStatus('mac-status','ok',`✓ P:${pG}g F:${fG}g C:${cG}g`);
+}
+function macroClear() {
+  ['mac-calories','mac-weight'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('mac-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('mac-status','','enter calories and goal');
+}
+
+/* ── IDEAL WEIGHT CALCULATOR ── */
+function idealWeightCalc() {
+  const hCm   = parseFloat(document.getElementById('iw-height')?.value);
+  const gender= document.getElementById('iw-gender')?.value || 'male';
+  const frame = document.getElementById('iw-frame')?.value  || 'medium';
+  const out   = document.getElementById('iw-output');
+  if (!out) return;
+  if (isNaN(hCm)||hCm<100||hCm>250) {
+    out.textContent='Enter a valid height in centimetres (100–250).';
+    out.className='output-box error'; return;
+  }
+
+  const hIn = hCm / 2.54;
+  const hFt = Math.floor(hIn / 12);
+  const hInR = Math.round(hIn % 12);
+
+  // Multiple formulas
+  const hamwi  = gender==='male' ? 48 + 2.7*(hIn-60) : 45.5 + 2.2*(hIn-60);
+  const devine = gender==='male' ? 50 + 2.3*(hIn-60) : 45.5 + 2.3*(hIn-60);
+  const robinson = gender==='male' ? 52 + 1.9*(hIn-60) : 49 + 1.7*(hIn-60);
+  const miller = gender==='male' ? 56.2 + 1.41*(hIn-60) : 53.1 + 1.36*(hIn-60);
+  const avg = (hamwi+devine+robinson+miller)/4;
+
+  // Frame adjustment
+  const frameAdj = frame==='small' ? -0.1 : frame==='large' ? 0.1 : 0;
+  const adjAvg = avg * (1 + frameAdj);
+
+  // BMI-based healthy range (18.5–24.9)
+  const hM = hCm / 100;
+  const bmiLow  = Math.round(18.5 * hM * hM * 10) / 10;
+  const bmiHigh = Math.round(24.9 * hM * hM * 10) / 10;
+
+  const fmt = n => `${Math.round(n)} kg (${Math.round(n*2.205)} lbs)`;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Height: ${hCm}cm (${hFt}ft ${hInR}in)  Gender: ${gender}  Frame: ${frame}\n\n` +
+    `── Ideal weight by formula ───────────\n` +
+    `Hamwi:      ${fmt(hamwi)}\n` +
+    `Devine:     ${fmt(devine)}\n` +
+    `Robinson:   ${fmt(robinson)}\n` +
+    `Miller:     ${fmt(miller)}\n` +
+    `─────────────────────────────────────\n` +
+    `Average:    ${fmt(avg)}\n` +
+    `With ${frame} frame: ${fmt(adjAvg)}\n\n` +
+    `── Healthy BMI range (18.5–24.9) ────\n` +
+    `Min weight: ${fmt(bmiLow)}\n` +
+    `Max weight: ${fmt(bmiHigh)}\n\n` +
+    `Note: Ideal weight is a guideline. Muscle mass,\nbone density, and body composition matter more than weight alone.`;
+  setStatus('iw-status','ok',`✓ Ideal: ${Math.round(adjAvg)}–${Math.round(bmiHigh)} kg`);
+}
+function iwClear() {
+  const h=document.getElementById('iw-height');
+  const o=document.getElementById('iw-output');
+  if(h)h.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('iw-status','','enter your height');
+}
+
+/* ── BODY FAT CALCULATOR ── */
+function bodyFatCalc() {
+  const gender = document.getElementById('bf-gender')?.value || 'male';
+  const method = document.getElementById('bf-method')?.value || 'navy';
+  const out    = document.getElementById('bf-output');
+  if (!out) return;
+
+  let bf = NaN;
+  let details = '';
+
+  if (method === 'navy') {
+    const waist  = parseFloat(document.getElementById('bf-waist')?.value);
+    const neck   = parseFloat(document.getElementById('bf-neck')?.value);
+    const hip    = parseFloat(document.getElementById('bf-hip')?.value);
+    const height = parseFloat(document.getElementById('bf-height-bf')?.value);
+    if (isNaN(waist)||isNaN(neck)||isNaN(height)) {
+      out.textContent='Enter waist, neck, and height measurements.';
+      out.className='output-box error'; return;
+    }
+    if (gender==='male') {
+      bf = 495/(1.0324 - 0.19077*Math.log10(waist-neck) + 0.15456*Math.log10(height)) - 450;
+    } else {
+      if (isNaN(hip)) { out.textContent='Enter hip measurement for female.'; out.className='output-box error'; return; }
+      bf = 495/(1.29579 - 0.35004*Math.log10(waist+hip-neck) + 0.22100*Math.log10(height)) - 450;
+    }
+    details = `Method: US Navy\nMeasurements: Waist ${waist}cm, Neck ${neck}cm${gender==='female'?`, Hip ${hip}cm`:''}, Height ${height}cm`;
+  } else if (method === 'bmi') {
+    const bmi = parseFloat(document.getElementById('bf-bmi')?.value);
+    const age = parseInt(document.getElementById('bf-age-bf')?.value);
+    if (isNaN(bmi)||isNaN(age)) {
+      out.textContent='Enter BMI and age.'; out.className='output-box error'; return;
+    }
+    // Deurenberg formula
+    bf = 1.2*bmi + 0.23*age - 10.8*(gender==='male'?1:0) - 5.4;
+    details = `Method: Deurenberg BMI formula\nBMI: ${bmi}, Age: ${age}`;
+  }
+
+  if (isNaN(bf)||bf<0||bf>70) {
+    out.textContent='Could not calculate. Check measurements.';
+    out.className='output-box error'; return;
+  }
+  bf = Math.round(bf * 10) / 10;
+
+  // Classification
+  const classify = (bf, g) => {
+    if (g==='male') {
+      if (bf<6)  return 'Essential fat (athletic minimum)';
+      if (bf<14) return 'Athletic';
+      if (bf<18) return 'Fitness';
+      if (bf<25) return 'Average';
+      return 'Obese';
+    } else {
+      if (bf<14) return 'Essential fat';
+      if (bf<21) return 'Athletic';
+      if (bf<25) return 'Fitness';
+      if (bf<32) return 'Average';
+      return 'Obese';
+    }
+  };
+
+  const category = classify(bf, gender);
+
+  out.className = 'output-box success';
+  out.textContent =
+    `${details}\n\n` +
+    `── Result ────────────────────────────\n` +
+    `Body Fat:   ${bf}%\n` +
+    `Category:   ${category}\n\n` +
+    `── ${gender==='male'?'Male':'Female'} body fat ranges ──────────────\n` +
+    (gender==='male'
+      ? `  Essential fat:   2–5%\n  Athletes:        6–13%\n  Fitness:         14–17%\n  Average:         18–24%\n  Obese:           25%+`
+      : `  Essential fat:   10–13%\n  Athletes:        14–20%\n  Fitness:         21–24%\n  Average:         25–31%\n  Obese:           32%+`);
+  setStatus('bf-status','ok',`✓ Body fat: ${bf}%  ${category}`);
+}
+function bfClear() {
+  ['bf-waist','bf-neck','bf-hip','bf-height-bf','bf-bmi','bf-age-bf'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('bf-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('bf-status','','enter measurements');
+}
+
+/* ── WATER INTAKE CALCULATOR ── */
+function waterCalc() {
+  const wKg    = parseFloat(document.getElementById('wt-weight')?.value);
+  const activity = document.getElementById('wt-activity')?.value || 'moderate';
+  const climate  = document.getElementById('wt-climate')?.value  || 'temperate';
+  const out    = document.getElementById('wt-output');
+  if (!out) return;
+  if (isNaN(wKg)||wKg<20||wKg>300) {
+    out.textContent='Enter a valid weight (20–300 kg).';
+    out.className='output-box error'; return;
+  }
+
+  // Base: 35ml per kg body weight
+  let base = wKg * 35;
+
+  // Activity adjustments
+  const actAdj = { sedentary:0, light:350, moderate:700, active:1050, intense:1400 };
+  base += actAdj[activity] || 0;
+
+  // Climate adjustments
+  const climAdj = { cold:0, temperate:0, warm:350, hot:700, very_hot:1050 };
+  base += climAdj[climate] || 0;
+
+  const liters  = (base / 1000).toFixed(1);
+  const cups    = Math.round(base / 237);
+  const glasses = Math.round(base / 250);
+  const bottles = (base / 500).toFixed(1);
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Weight: ${wKg}kg  Activity: ${activity}  Climate: ${climate}\n\n` +
+    `── Daily water intake target ─────────\n` +
+    `${liters} litres per day\n` +
+    `${Math.round(base)} ml per day\n\n` +
+    `── In common containers ──────────────\n` +
+    `  ${cups} standard cups    (237ml)\n` +
+    `  ${glasses} drinking glasses  (250ml)\n` +
+    `  ${bottles} standard bottles  (500ml)\n\n` +
+    `── Hourly schedule (16 waking hours) ─\n` +
+    `  ${Math.round(base/16)} ml per hour\n` +
+    `  ${Math.round(base/8)} ml every 2 hours\n\n` +
+    `── Tips ──────────────────────────────\n` +
+    `  Drink 500ml on waking (before coffee)\n` +
+    `  500ml before and after each workout\n` +
+    `  Urine should be pale yellow — dark = dehydrated\n` +
+    `  Coffee/tea count toward intake (contrary to myth)`;
+  setStatus('wt-status','ok',`✓ ${liters}L/day · ${cups} cups`);
+}
+function waterClear() {
+  const w=document.getElementById('wt-weight');
+  const o=document.getElementById('wt-output');
+  if(w)w.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('wt-status','','enter your weight');
+}
+
+/* ════════════════════════════════════
+   BATCH 7 — STUDENT TOOLS
+   ════════════════════════════════════ */
+
+/* ── GPA CALCULATOR ── */
+let gpaRows = [];
+function gpaAddRow() {
+  const id = Date.now();
+  gpaRows.push({ id, course:'', credits:3, grade:'A' });
+  gpaRender();
+}
+function gpaRemoveRow(id) {
+  gpaRows = gpaRows.filter(r => r.id !== id);
+  gpaRender();
+  gpaCalc();
+}
+function gpaRender() {
+  const tbl = document.getElementById('gpa-table');
+  if (!tbl) return;
+  const gradeOpts = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','D-','F'];
+  tbl.innerHTML = gpaRows.map(r => `
+    <div style="display:grid;grid-template-columns:1fr 80px 100px 36px;gap:6px;margin-bottom:6px;align-items:center">
+      <input type="text" value="${r.course}" placeholder="Course name (optional)"
+        class="b2-input" style="font-size:.78rem"
+        oninput="gpaRows.find(x=>x.id==${r.id}).course=this.value">
+      <input type="number" value="${r.credits}" min="0.5" max="12" step="0.5"
+        class="b2-input" style="font-size:.78rem;text-align:center"
+        oninput="gpaRows.find(x=>x.id==${r.id}).credits=parseFloat(this.value)||0;gpaCalc()">
+      <select class="mode-select" style="font-size:.78rem"
+        onchange="gpaRows.find(x=>x.id==${r.id}).grade=this.value;gpaCalc()">
+        ${gradeOpts.map(g=>`<option value="${g}"${g===r.grade?' selected':''}>${g}</option>`).join('')}
+      </select>
+      <button onclick="gpaRemoveRow(${r.id})" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.8rem;height:34px">✕</button>
+    </div>`).join('');
+}
+const GPA_MAP = {'A+':4.3,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0};
+function gpaCalc() {
+  const out = document.getElementById('gpa-output');
+  if (!out) return;
+  const valid = gpaRows.filter(r => r.credits > 0);
+  if (!valid.length) { out.textContent='Add courses to calculate GPA.'; out.className='output-box'; return; }
+  let totalPts = 0, totalCreds = 0;
+  valid.forEach(r => { const pts = (GPA_MAP[r.grade]||0)*r.credits; totalPts+=pts; totalCreds+=r.credits; });
+  const gpa = totalPts / totalCreds;
+  const letter = gpa>=3.7?'A':gpa>=3.3?'A-':gpa>=3.0?'B+':gpa>=2.7?'B':gpa>=2.3?'B-':gpa>=2.0?'C':gpa>=1.0?'D':'F';
+  out.className = 'output-box success';
+  out.textContent =
+    `GPA:              ${gpa.toFixed(2)} / 4.0\n` +
+    `Letter grade:     ${letter}\n` +
+    `Total credits:    ${totalCreds}\n` +
+    `Quality points:   ${totalPts.toFixed(2)}\n\n` +
+    `── Course breakdown ──────────────────\n` +
+    valid.map(r=>`  ${(r.course||'Course').padEnd(20)} ${r.grade.padEnd(4)} ${r.credits}cr → ${((GPA_MAP[r.grade]||0)*r.credits).toFixed(2)}pts`).join('\n') +
+    '\n\n── GPA scale reference ─────────────\n' +
+    '  4.0 = A   3.7 = A-  3.3 = B+\n  3.0 = B   2.7 = B-  2.3 = C+\n  2.0 = C   1.7 = C-  1.0 = D';
+  setStatus('gpa-status','ok',`✓ GPA: ${gpa.toFixed(2)}`);
+}
+function gpaClear() {
+  gpaRows = [];
+  gpaRender();
+  const o=document.getElementById('gpa-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('gpa-status','','add courses to begin');
+}
+
+/* ── GRADE CALCULATOR ── */
+function gradeCalc() {
+  const rows  = document.querySelectorAll('.grade-row');
+  const scale = document.getElementById('grade-scale')?.value || 'standard';
+  const out   = document.getElementById('grade-output');
+  if (!out) return;
+  let totalWeighted = 0, totalWeight = 0, items = [];
+  rows.forEach(row => {
+    const score  = parseFloat(row.querySelector('.grade-score')?.value);
+    const total  = parseFloat(row.querySelector('.grade-total')?.value) || 100;
+    const weight = parseFloat(row.querySelector('.grade-weight')?.value) || 0;
+    const name   = row.querySelector('.grade-name')?.value || 'Assignment';
+    if (!isNaN(score) && weight > 0) {
+      const pct = (score/total)*100;
+      totalWeighted += pct * weight;
+      totalWeight   += weight;
+      items.push({ name, score, total, weight, pct });
+    }
+  });
+  if (!items.length) { out.textContent='Add at least one graded item.'; out.className='output-box'; return; }
+  const grade = totalWeight > 0 ? totalWeighted / totalWeight : 0;
+  const toGPA = g => g>=90?4.0:g>=80?3.0:g>=70?2.0:g>=60?1.0:0;
+  const toLetter = g => g>=97?'A+':g>=93?'A':g>=90?'A-':g>=87?'B+':g>=83?'B':g>=80?'B-':g>=77?'C+':g>=73?'C':g>=70?'C-':g>=67?'D+':g>=63?'D':g>=60?'D-':'F';
+  out.className = 'output-box success';
+  out.textContent =
+    `Current grade:    ${grade.toFixed(2)}%  (${toLetter(grade)})  GPA: ${toGPA(grade).toFixed(1)}\n` +
+    `Weight used:      ${totalWeight}%\n\n` +
+    `── Assignment breakdown ──────────────\n` +
+    items.map(i=>`  ${i.name.padEnd(18)} ${i.score}/${i.total} (${i.pct.toFixed(1)}%) × ${i.weight}% = ${(i.pct*i.weight/100).toFixed(2)}pts`).join('\n') +
+    `\n\n── What you need on remaining ${(100-totalWeight).toFixed(0)}% ──\n` +
+    [60,70,80,90,95].map(target => {
+      const rem = 100-totalWeight;
+      if (rem <= 0) return `  N/A (all weight assigned)`;
+      const needed = (target*100 - totalWeighted) / rem;
+      return `  To get ${target}%: need ${needed.toFixed(1)}% on remaining work`;
+    }).join('\n');
+  setStatus('grade-status','ok',`✓ ${grade.toFixed(1)}%  ${toLetter(grade)}`);
+}
+function gradeAddRow() {
+  const cont = document.getElementById('grade-rows');
+  if (!cont) return;
+  const div = document.createElement('div');
+  div.className = 'grade-row';
+  div.style = 'display:grid;grid-template-columns:1fr 70px 70px 70px 36px;gap:6px;margin-bottom:6px;align-items:center';
+  div.innerHTML = `
+    <input class="b2-input grade-name" placeholder="Assignment" style="font-size:.78rem" oninput="gradeCalc()">
+    <input class="b2-input grade-score" placeholder="Score" type="number" style="font-size:.78rem" oninput="gradeCalc()">
+    <input class="b2-input grade-total" placeholder="Total" type="number" value="100" style="font-size:.78rem" oninput="gradeCalc()">
+    <input class="b2-input grade-weight" placeholder="Weight%" type="number" style="font-size:.78rem" oninput="gradeCalc()">
+    <button onclick="this.parentElement.remove();gradeCalc()" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.8rem;height:34px">✕</button>`;
+  cont.appendChild(div);
+  gradeCalc();
+}
+function gradeClear() {
+  const cont = document.getElementById('grade-rows');
+  const o = document.getElementById('grade-output');
+  if(cont) cont.innerHTML='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('grade-status','','add assignments to begin');
+}
+
+/* ── FRACTION CALCULATOR ── */
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function simplify(n,d){const g=gcd(Math.abs(n),Math.abs(d));return[n/g,d/g];}
+function fracParse(str){
+  str=str.trim();
+  if(str.includes('/')){const[n,d]=str.split('/').map(Number);return isNaN(n)||isNaN(d)||d===0?null:[n,d];}
+  const n=parseFloat(str);
+  if(isNaN(n)) return null;
+  // Convert decimal to fraction
+  const str2=String(n);
+  const dec=str2.includes('.')?str2.split('.')[1].length:0;
+  const denom=Math.pow(10,dec);
+  return simplify(Math.round(n*denom),denom);
+}
+function fracCalc() {
+  const a = fracParse(document.getElementById('frac-a')?.value||'');
+  const b = fracParse(document.getElementById('frac-b')?.value||'');
+  const op = document.getElementById('frac-op')?.value||'+';
+  const out = document.getElementById('frac-output');
+  if (!out) return;
+  if (!a||!b){out.textContent='Enter two fractions (e.g. 3/4 or 1.5).';out.className='output-box error';return;}
+  const [an,ad]=[...a], [bn,bd]=[...b];
+  let rn,rd;
+  if(op==='+'){rn=an*bd+bn*ad;rd=ad*bd;}
+  else if(op==='-'){rn=an*bd-bn*ad;rd=ad*bd;}
+  else if(op==='×'){rn=an*bn;rd=ad*bd;}
+  else{if(bn===0){out.textContent='Cannot divide by zero.';out.className='output-box error';return;}rn=an*bd;rd=ad*bn;}
+  const [sn,sd]=simplify(rn,rd);
+  const decimal=(sn/sd);
+  const mixed = Math.abs(sn)>=Math.abs(sd) && sd!==1
+    ? `${Math.trunc(sn/sd)} ${Math.abs(sn%sd)}/${Math.abs(sd)}`
+    : '';
+  out.className='output-box success';
+  out.textContent=
+    `${an}/${ad} ${op} ${bn}/${bd}\n\n`+
+    `= ${rn}/${rd}\n`+
+    `= ${sn}/${sd}  (simplified)\n`+
+    (mixed?`= ${mixed}  (mixed number)\n`:'')+
+    `= ${decimal.toFixed(6).replace(/\.?0+$/,'')}  (decimal)\n\n`+
+    `── Step by step (${op}) ───────────────\n`+
+    (op==='+'||op==='-'?
+      `  Common denominator: ${ad*bd}\n`+
+      `  ${an}/${ad} = ${an*bd}/${ad*bd}\n`+
+      `  ${bn}/${bd} = ${bn*ad}/${ad*bd}\n`+
+      `  ${an*bd} ${op} ${bn*ad} = ${rn}\n`+
+      `  Result: ${rn}/${ad*bd} = ${sn}/${sd}`
+    : op==='×'?
+      `  Numerators: ${an} × ${bn} = ${rn}\n`+
+      `  Denominators: ${ad} × ${bd} = ${rd}\n`+
+      `  Result: ${rn}/${rd} = ${sn}/${sd}`
+    :
+      `  Reciprocal of ${bn}/${bd} = ${bd}/${bn}\n`+
+      `  ${an}/${ad} × ${bd}/${bn} = ${rn}/${rd} = ${sn}/${sd}`
+    );
+  setStatus('frac-status','ok',`✓ ${sn}/${sd} = ${decimal.toFixed(4)}`);
+}
+function fracClear(){
+  ['frac-a','frac-b'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('frac-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('frac-status','','enter two fractions');
+}
+
+/* ── SCIENTIFIC CALCULATOR ── */
+let sciExpr = '';
+function sciPress(val) {
+  const disp = document.getElementById('sci-display');
+  const expr = document.getElementById('sci-expr');
+  if (val === 'C') { sciExpr=''; if(disp)disp.textContent='0'; if(expr)expr.textContent=''; return; }
+  if (val === '⌫') { sciExpr=sciExpr.slice(0,-1); if(disp)disp.textContent=sciExpr||'0'; return; }
+  if (val === '=') {
+    try {
+      if(expr) expr.textContent = sciExpr + ' =';
+      let e = sciExpr
+        .replace(/×/g,'*').replace(/÷/g,'/')
+        .replace(/π/g,'Math.PI').replace(/e(?![0-9])/g,'Math.E')
+        .replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(')
+        .replace(/asin\(/g,'Math.asin(').replace(/acos\(/g,'Math.acos(').replace(/atan\(/g,'Math.atan(')
+        .replace(/log\(/g,'Math.log10(').replace(/ln\(/g,'Math.log(')
+        .replace(/sqrt\(/g,'Math.sqrt(').replace(/cbrt\(/g,'Math.cbrt(')
+        .replace(/abs\(/g,'Math.abs(').replace(/\^/g,'**')
+        .replace(/(\d+)!/g,'(()=>{let f=1;for(let i=2;i<=$1;i++)f*=i;return f;})()');
+      // eslint-disable-next-line no-eval
+      const res = Function('"use strict";return ('+e+')')();
+      if(disp) disp.textContent = Number.isFinite(res) ? parseFloat(res.toPrecision(12)).toString() : 'Error';
+      sciExpr = Number.isFinite(res) ? parseFloat(res.toPrecision(12)).toString() : '';
+    } catch(_) { if(disp)disp.textContent='Error'; sciExpr=''; }
+    return;
+  }
+  sciExpr += val;
+  if(disp) disp.textContent = sciExpr;
+}
+function sciToggleSign() {
+  if(sciExpr.startsWith('-')) sciExpr=sciExpr.slice(1);
+  else sciExpr='-'+sciExpr;
+  const d=document.getElementById('sci-display');
+  if(d)d.textContent=sciExpr||'0';
+}
+
+/* ── PERCENTAGE ERROR CALCULATOR ── */
+function pctErrCalc() {
+  const exp = parseFloat(document.getElementById('pe-experimental')?.value);
+  const theo = parseFloat(document.getElementById('pe-theoretical')?.value);
+  const out = document.getElementById('pe-output');
+  if (!out) return;
+  if (isNaN(exp)||isNaN(theo)) { out.textContent='Enter experimental and theoretical values.'; out.className='output-box error'; return; }
+  if (theo===0) { out.textContent='Theoretical value cannot be zero.'; out.className='output-box error'; return; }
+  const absErr = Math.abs(exp - theo);
+  const relErr = absErr / Math.abs(theo);
+  const pctErr = relErr * 100;
+  const isHighErr = pctErr > 10;
+  out.className = isHighErr ? 'output-box error' : 'output-box success';
+  out.textContent =
+    `Experimental:     ${exp}\n` +
+    `Theoretical:      ${theo}\n\n` +
+    `── Results ───────────────────────────\n` +
+    `Absolute error:   ${absErr.toFixed(6).replace(/\.?0+$/,'')}\n` +
+    `Relative error:   ${(relErr*100).toFixed(4)}%\n` +
+    `Percentage error: ${pctErr.toFixed(4)}%\n` +
+    `Accuracy:         ${(100-pctErr).toFixed(4)}%\n\n` +
+    `── Formula ───────────────────────────\n` +
+    `% Error = |Experimental − Theoretical|\n` +
+    `          ─────────────────────────── × 100\n` +
+    `                 |Theoretical|\n\n` +
+    `        = |${exp} − ${theo}| / |${theo}| × 100\n` +
+    `        = ${absErr.toFixed(6)} / ${Math.abs(theo)} × 100\n` +
+    `        = ${pctErr.toFixed(4)}%\n\n` +
+    `Verdict: ${pctErr<1?'Excellent (<1%)':pctErr<5?'Good (<5%)':pctErr<10?'Acceptable (<10%)':'High error (>10%) — check your method'}`;
+  setStatus('pe-status', isHighErr?'err':'ok', `✓ Error: ${pctErr.toFixed(2)}%`);
+}
+function pctErrClear() {
+  ['pe-experimental','pe-theoretical'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('pe-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('pe-status','','enter experimental and theoretical values');
+}
+
+/* ── ROMAN NUMERAL CONVERTER ── */
+const ROMAN_VALS = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+function toRoman(n) {
+  if (n<=0||n>3999) return null;
+  let result='';
+  for(const[val,sym] of ROMAN_VALS){while(n>=val){result+=sym;n-=val;}}
+  return result;
+}
+function fromRoman(s) {
+  const map={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+  s=s.toUpperCase();
+  if(!/^[IVXLCDM]+$/.test(s)) return null;
+  let total=0;
+  for(let i=0;i<s.length;i++){
+    const cur=map[s[i]],nxt=map[s[i+1]]||0;
+    total+=cur<nxt?-cur:cur;
+  }
+  return total;
+}
+function romanConvert() {
+  const inp = document.getElementById('rom-input')?.value?.trim();
+  const mode = document.getElementById('rom-mode')?.value || 'toRoman';
+  const out = document.getElementById('rom-output');
+  if (!out) return;
+  if (!inp) { out.textContent=''; out.className='output-box'; return; }
+  if (mode === 'toRoman') {
+    const n = parseInt(inp);
+    if (isNaN(n)||n<=0||n>3999) { out.textContent='Enter a number between 1 and 3999.'; out.className='output-box error'; return; }
+    const roman = toRoman(n);
+    out.className='output-box success';
+    out.textContent=
+      `${n} = ${roman}\n\n`+
+      `── Breakdown ──────────────────────\n`+
+      ROMAN_VALS.filter(([v])=>n>=v||roman.includes(ROMAN_VALS.find(([vv])=>vv===v)?.[1]||'')).slice(0,8)
+        .map(([v,s])=>{ const count=Math.floor(n/v); return count>0?`  ${s.padEnd(4)} = ${v.toString().padEnd(6)} × ${count} = ${v*count}`:''; })
+        .filter(Boolean).join('\n')+
+      `\n\n── Quick reference ─────────────────\n`+
+      `  I=1  V=5  X=10  L=50  C=100  D=500  M=1000`;
+  } else {
+    const n = fromRoman(inp);
+    if (n===null||n<=0) { out.textContent='Invalid Roman numeral. Use I, V, X, L, C, D, M only.'; out.className='output-box error'; return; }
+    out.className='output-box success';
+    out.textContent=
+      `${inp.toUpperCase()} = ${n}\n\n`+
+      `── Character values ───────────────\n`+
+      inp.toUpperCase().split('').map((c,i,a)=>{
+        const cur={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}[c];
+        const nxt={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}[a[i+1]]||0;
+        return `  ${c} = ${cur}${cur<nxt?' (subtracted)':''}`;
+      }).join('\n');
+  }
+  setStatus('rom-status','ok',`✓ converted`);
+}
+function romanClear(){
+  const i=document.getElementById('rom-input');
+  const o=document.getElementById('rom-output');
+  if(i)i.value='';
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('rom-status','','enter a number or Roman numeral');
+}
+
+/* ════════════════════════════════════
+   BATCH 8 — FINANCE EXTENDED
+   ════════════════════════════════════ */
+
+/* ── MORTGAGE CALCULATOR ── */
+function mortgageCalc() {
+  const price    = parseFloat(document.getElementById('mtg-price')?.value);
+  const downPct  = parseFloat(document.getElementById('mtg-down')?.value) || 20;
+  const rate     = parseFloat(document.getElementById('mtg-rate')?.value);
+  const years    = parseInt(document.getElementById('mtg-years')?.value) || 30;
+  const tax      = parseFloat(document.getElementById('mtg-tax')?.value) || 0;
+  const insurance= parseFloat(document.getElementById('mtg-ins')?.value) || 0;
+  const out      = document.getElementById('mtg-output');
+  if (!out) return;
+  if (isNaN(price)||isNaN(rate)||price<=0||rate<=0) {
+    out.textContent='Enter home price and annual interest rate.'; out.className='output-box error'; return;
+  }
+  const downAmt  = price * downPct / 100;
+  const principal= price - downAmt;
+  const r        = rate / 100 / 12;
+  const n        = years * 12;
+  const pmt      = principal * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
+  const taxMo    = tax / 12;
+  const insMo    = insurance / 12;
+  const total    = pmt + taxMo + insMo;
+  const totalPaid= pmt * n;
+  const totalInt = totalPaid - principal;
+
+  // Amortisation first and last 3 months
+  let bal = principal;
+  const rows = [];
+  for (let mo=1; mo<=n; mo++) {
+    const intPmt = bal * r;
+    const prinPmt = pmt - intPmt;
+    bal -= prinPmt;
+    if (mo<=3 || mo>=n-2) rows.push([mo, intPmt, prinPmt, Math.max(0,bal)]);
+    if (mo===3 && n>6) rows.push(null); // ellipsis
+  }
+
+  out.className = 'output-box success';
+  out.textContent =
+    `── Monthly Payment Breakdown ────────\n` +
+    `Principal & Interest:  ${formatCur(pmt)}/mo\n` +
+    (taxMo>0?`Property Tax:          ${formatCur(taxMo)}/mo\n`:'')+
+    (insMo>0?`Home Insurance:        ${formatCur(insMo)}/mo\n`:'')+
+    `${'─'.repeat(38)}\n` +
+    `Total Monthly Payment: ${formatCur(total)}/mo\n\n` +
+    `── Loan Summary ─────────────────────\n` +
+    `Home Price:            ${formatCur(price)}\n` +
+    `Down Payment:          ${formatCur(downAmt)} (${downPct}%)\n` +
+    `Loan Amount:           ${formatCur(principal)}\n` +
+    `Interest Rate:         ${rate}% (${(rate/12).toFixed(3)}%/mo)\n` +
+    `Loan Term:             ${years} years (${n} payments)\n\n` +
+    `── Total Cost ───────────────────────\n` +
+    `Total of Payments:     ${formatCur(totalPaid)}\n` +
+    `Total Interest:        ${formatCur(totalInt)}\n` +
+    `Interest Ratio:        ${(totalInt/price*100).toFixed(1)}% of home price\n\n` +
+    `── Amortisation (first & last months)\n` +
+    `  Mo    Interest    Principal    Balance\n` +
+    rows.map(r => r ? `  ${String(r[0]).padEnd(5)} ${formatCur(r[1]).padStart(10)}  ${formatCur(r[2]).padStart(10)}  ${formatCur(r[3]).padStart(12)}` : `  ...`).join('\n');
+  setStatus('mtg-status','ok',`✓ Monthly: ${formatCur(total)} · Total interest: ${formatCur(totalInt)}`);
+}
+function mtgClear() {
+  ['mtg-price','mtg-down','mtg-rate','mtg-years','mtg-tax','mtg-ins'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('mtg-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('mtg-status','','enter home price and rate');
+}
+
+/* ── AUTO LOAN CALCULATOR ── */
+function autoLoanCalc() {
+  const price    = parseFloat(document.getElementById('auto-price')?.value);
+  const down     = parseFloat(document.getElementById('auto-down')?.value) || 0;
+  const trade    = parseFloat(document.getElementById('auto-trade')?.value) || 0;
+  const rate     = parseFloat(document.getElementById('auto-rate')?.value);
+  const months   = parseInt(document.getElementById('auto-months')?.value) || 60;
+  const tax      = parseFloat(document.getElementById('auto-tax')?.value) || 0;
+  const out      = document.getElementById('auto-output');
+  if (!out) return;
+  if (isNaN(price)||isNaN(rate)||price<=0||rate<0) {
+    out.textContent='Enter vehicle price and interest rate.'; out.className='output-box error'; return;
+  }
+  const taxAmt   = price * tax / 100;
+  const principal= price + taxAmt - down - trade;
+  if (principal <= 0) { out.textContent='Down payment + trade-in exceeds vehicle price.'; out.className='output-box error'; return; }
+  const r   = rate / 100 / 12;
+  let pmt;
+  if (r === 0) { pmt = principal / months; }
+  else { pmt = principal * r * Math.pow(1+r,months) / (Math.pow(1+r,months)-1); }
+  const totalPaid = pmt * months;
+  const totalInt  = totalPaid - principal;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `── Monthly Payment ──────────────────\n` +
+    `${formatCur(pmt)}/month for ${months} months\n\n` +
+    `── Loan Details ─────────────────────\n` +
+    `Vehicle Price:         ${formatCur(price)}\n` +
+    (taxAmt>0?`Sales Tax (${tax}%):      ${formatCur(taxAmt)}\n`:'')+
+    (down>0?`Down Payment:          -${formatCur(down)}\n`:'')+
+    (trade>0?`Trade-in Value:        -${formatCur(trade)}\n`:'')+
+    `Loan Amount:           ${formatCur(principal)}\n` +
+    `Interest Rate:         ${rate}% APR\n` +
+    `Loan Term:             ${months} months\n\n` +
+    `── Total Cost ───────────────────────\n` +
+    `Total of Payments:     ${formatCur(totalPaid)}\n` +
+    `Total Interest:        ${formatCur(totalInt)}\n` +
+    `Total Vehicle Cost:    ${formatCur(price+taxAmt)}\n\n` +
+    `── Compare loan terms ───────────────\n` +
+    [24,36,48,60,72,84].map(mo => {
+      const p = r===0 ? principal/mo : principal*r*Math.pow(1+r,mo)/(Math.pow(1+r,mo)-1);
+      const ti = p*mo-principal;
+      return `  ${mo} mo: ${formatCur(p)}/mo  (${formatCur(ti)} interest)`;
+    }).join('\n');
+  setStatus('auto-status','ok',`✓ ${formatCur(pmt)}/mo · ${formatCur(totalInt)} interest`);
+}
+function autoClear() {
+  ['auto-price','auto-down','auto-trade','auto-rate','auto-months','auto-tax'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('auto-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('auto-status','','enter vehicle price and rate');
+}
+
+/* ── RETIREMENT CALCULATOR ── */
+function retirementCalc() {
+  const current  = parseFloat(document.getElementById('ret-current')?.value) || 0;
+  const monthly  = parseFloat(document.getElementById('ret-monthly')?.value) || 0;
+  const retAge   = parseInt(document.getElementById('ret-retage')?.value) || 65;
+  const curAge   = parseInt(document.getElementById('ret-curage')?.value) || 30;
+  const growth   = parseFloat(document.getElementById('ret-growth')?.value) || 7;
+  const withdraw = parseFloat(document.getElementById('ret-withdraw')?.value) || 4;
+  const out      = document.getElementById('ret-output');
+  if (!out) return;
+  if (curAge>=retAge) { out.textContent='Current age must be less than retirement age.'; out.className='output-box error'; return; }
+  const years  = retAge - curAge;
+  const r      = growth / 100 / 12;
+  const n      = years * 12;
+  // Future value of lump sum + future value of monthly contributions
+  const fvLump = current * Math.pow(1+r, n);
+  const fvPMT  = monthly * (Math.pow(1+r,n)-1) / r;
+  const total  = fvLump + fvPMT;
+  const totalContrib = current + monthly * n;
+  const totalGrowth  = total - totalContrib;
+  const annualIncome = total * withdraw / 100;
+  const monthlyIncome= annualIncome / 12;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `── Retirement Projection ────────────\n` +
+    `Years to retire:       ${years} years\n` +
+    `Retirement savings:    ${formatCur(total)}\n\n` +
+    `── Breakdown ────────────────────────\n` +
+    `Current savings:       ${formatCur(current)}\n` +
+    `Monthly contributions: ${formatCur(monthly)} × ${n} mo = ${formatCur(monthly*n)}\n` +
+    `Total contributions:   ${formatCur(totalContrib)}\n` +
+    `Investment growth:     ${formatCur(totalGrowth)}\n\n` +
+    `── Retirement Income (${withdraw}% rule) ────\n` +
+    `Annual withdrawal:     ${formatCur(annualIncome)}\n` +
+    `Monthly income:        ${formatCur(monthlyIncome)}\n\n` +
+    `── Milestone projections ────────────\n` +
+    [10,20,30,40].filter(y=>y<years).map(y => {
+      const n2=y*12;
+      const t=current*Math.pow(1+r,n2)+monthly*(Math.pow(1+r,n2)-1)/r;
+      return `  Age ${curAge+y}: ${formatCur(t)}`;
+    }).join('\n') +
+    `\n  Age ${retAge}: ${formatCur(total)} (retirement)`;
+  setStatus('ret-status','ok',`✓ Retirement fund: ${formatCur(total)}`);
+}
+function retClear() {
+  ['ret-current','ret-monthly','ret-retage','ret-curage','ret-growth','ret-withdraw'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const o=document.getElementById('ret-output');
+  if(o){o.textContent='';o.className='output-box';}
+  setStatus('ret-status','','enter your retirement details');
+}
+
+/* ── NET WORTH CALCULATOR ── */
+let nwAssets=[], nwLiabilities=[];
+function nwAddRow(type) {
+  const id=Date.now();
+  if(type==='asset') nwAssets.push({id,name:'',value:0});
+  else nwLiabilities.push({id,name:'',value:0});
+  nwRender(); nwCalc();
+}
+function nwRemoveRow(type,id) {
+  if(type==='asset') nwAssets=nwAssets.filter(r=>r.id!==id);
+  else nwLiabilities=nwLiabilities.filter(r=>r.id!==id);
+  nwRender(); nwCalc();
+}
+function nwRender() {
+  const aTable=document.getElementById('nw-assets-table');
+  const lTable=document.getElementById('nw-liab-table');
+  const rowHtml=(rows,type)=>rows.map(r=>`
+    <div style="display:grid;grid-template-columns:1fr 130px 32px;gap:5px;margin-bottom:5px;align-items:center">
+      <input class="b2-input" style="font-size:.78rem" value="${r.name}" placeholder="${type==='asset'?'e.g. Savings account':'e.g. Car loan'}"
+        oninput="nw${type==='asset'?'Assets':'Liabilities'}.find(x=>x.id==${r.id}).name=this.value">
+      <input class="b2-input" style="font-size:.78rem;text-align:right" type="number" value="${r.value||''}" placeholder="0"
+        oninput="nw${type==='asset'?'Assets':'Liabilities'}.find(x=>x.id==${r.id}).value=parseFloat(this.value)||0;nwCalc()">
+      <button onclick="nwRemoveRow('${type}',${r.id})" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>
+    </div>`).join('');
+  if(aTable) aTable.innerHTML=rowHtml(nwAssets,'asset');
+  if(lTable) lTable.innerHTML=rowHtml(nwLiabilities,'liability');
+}
+function nwCalc() {
+  const out=document.getElementById('nw-output');
+  if(!out) return;
+  const totalAssets=nwAssets.reduce((s,r)=>s+r.value,0);
+  const totalLiab=nwLiabilities.reduce((s,r)=>s+r.value,0);
+  const netWorth=totalAssets-totalLiab;
+  const debtRatio=totalAssets>0?(totalLiab/totalAssets*100).toFixed(1):0;
+  out.className=netWorth>=0?'output-box success':'output-box error';
+  out.textContent=
+    `── Assets ───────────────────────────\n`+
+    (nwAssets.length?nwAssets.map(r=>`  ${(r.name||'Asset').padEnd(22)} ${formatCur(r.value)}`).join('\n')+'\n':'  (none added)\n')+
+    `  ${'─'.repeat(36)}\n`+
+    `  Total Assets:         ${formatCur(totalAssets)}\n\n`+
+    `── Liabilities ──────────────────────\n`+
+    (nwLiabilities.length?nwLiabilities.map(r=>`  ${(r.name||'Liability').padEnd(22)} ${formatCur(r.value)}`).join('\n')+'\n':'  (none added)\n')+
+    `  ${'─'.repeat(36)}\n`+
+    `  Total Liabilities:    ${formatCur(totalLiab)}\n\n`+
+    `── Net Worth ────────────────────────\n`+
+    `  Net Worth:            ${netWorth>=0?'':'-'}${formatCur(Math.abs(netWorth))}\n`+
+    `  Debt-to-Asset Ratio:  ${debtRatio}%\n`+
+    `  Financial Health:     ${netWorth>100000?'Strong':netWorth>0?'Positive':netWorth===0?'Break-even':'Negative (liabilities exceed assets)'}`;
+  const total=document.getElementById('nw-total');
+  if(total) total.textContent=`Net Worth: ${netWorth>=0?'':'-'}${formatCur(Math.abs(netWorth))}`;
+  setStatus('nw-status',netWorth>=0?'ok':'err',`✓ Net Worth: ${netWorth>=0?'':'-'}${formatCur(Math.abs(netWorth))}`);
+}
+function nwClear(){nwAssets=[];nwLiabilities=[];nwRender();const o=document.getElementById('nw-output');if(o){o.textContent='';o.className='output-box';}setStatus('nw-status','','add assets and liabilities');}
+
+/* ── INVOICE GENERATOR ── */
+let invItems=[];
+function invAddItem(){
+  invItems.push({id:Date.now(),desc:'',qty:1,price:0});
+  invRender(); invCalc();
+}
+function invRemoveItem(id){invItems=invItems.filter(r=>r.id!==id);invRender();invCalc();}
+function invRender(){
+  const t=document.getElementById('inv-items');
+  if(!t)return;
+  t.innerHTML=invItems.map(r=>`
+    <div style="display:grid;grid-template-columns:1fr 70px 100px 32px;gap:5px;margin-bottom:5px;align-items:center">
+      <input class="b2-input" style="font-size:.78rem" value="${r.desc}" placeholder="Item description"
+        oninput="invItems.find(x=>x.id==${r.id}).desc=this.value;invCalc()">
+      <input class="b2-input" style="font-size:.78rem;text-align:center" type="number" value="${r.qty}" min="0.1" step="0.1"
+        oninput="invItems.find(x=>x.id==${r.id}).qty=parseFloat(this.value)||0;invCalc()">
+      <input class="b2-input" style="font-size:.78rem;text-align:right" type="number" value="${r.price||''}" placeholder="0.00"
+        oninput="invItems.find(x=>x.id==${r.id}).price=parseFloat(this.value)||0;invCalc()">
+      <button onclick="invRemoveItem(${r.id})" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>
+    </div>`).join('');
+}
+function invCalc(){
+  const out=document.getElementById('inv-output');
+  if(!out)return;
+  const from   =document.getElementById('inv-from')?.value||'Your Business';
+  const to     =document.getElementById('inv-to')?.value||'Client Name';
+  const invNum =document.getElementById('inv-num')?.value||'INV-001';
+  const date   =document.getElementById('inv-date')?.value||new Date().toISOString().slice(0,10);
+  const due    =document.getElementById('inv-due')?.value||'';
+  const taxRate=parseFloat(document.getElementById('inv-tax')?.value)||0;
+  const curr   =document.getElementById('inv-curr')?.value||'$';
+  const fmt    =n=>`${curr}${n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+  const subtotal=invItems.reduce((s,r)=>s+r.qty*r.price,0);
+  const taxAmt =subtotal*taxRate/100;
+  const total  =subtotal+taxAmt;
+  out.className='output-box success';
+  out.textContent=
+    `${'═'.repeat(48)}\n`+
+    `  INVOICE\n`+
+    `${'═'.repeat(48)}\n`+
+    `From:    ${from}\n`+
+    `To:      ${to}\n`+
+    `Invoice: ${invNum}    Date: ${date}\n`+
+    (due?`Due:     ${due}\n`:'')+
+    `${'─'.repeat(48)}\n`+
+    `  Description             Qty      Amount\n`+
+    `${'─'.repeat(48)}\n`+
+    (invItems.length?invItems.map(r=>{
+      const amt=r.qty*r.price;
+      return `  ${(r.desc||'Item').padEnd(22)} ${String(r.qty).padEnd(8)} ${fmt(amt).padStart(12)}`;
+    }).join('\n'):'  (no items added)')+
+    `\n${'─'.repeat(48)}\n`+
+    `  ${'Subtotal:'.padEnd(38)} ${fmt(subtotal).padStart(8)}\n`+
+    (taxRate>0?`  ${'Tax ('+taxRate+'%):'.padEnd(38)} ${fmt(taxAmt).padStart(8)}\n`:'')+
+    `${'═'.repeat(48)}\n`+
+    `  ${'TOTAL:'.padEnd(38)} ${fmt(total).padStart(8)}\n`+
+    `${'═'.repeat(48)}`;
+  setStatus('inv-status','ok',`✓ Total: ${fmt(total)}`);
+}
+function invClear(){invItems=[];invRender();const o=document.getElementById('inv-output');if(o){o.textContent='';o.className='output-box';}setStatus('inv-status','','fill in details and add items');}
+function invCopy(){copyEl('inv-output');}
+
+/* ── SALES TAX CALCULATOR ── */
+function salesTaxCalc(){
+  const price =parseFloat(document.getElementById('stx-price')?.value);
+  const rate  =parseFloat(document.getElementById('stx-rate')?.value);
+  const mode  =document.getElementById('stx-mode')?.value||'add';
+  const out   =document.getElementById('stx-output');
+  if(!out)return;
+  if(isNaN(price)||isNaN(rate)||price<=0||rate<0){out.textContent='Enter valid price and tax rate.';out.className='output-box error';return;}
+  let pre,tax,total;
+  if(mode==='add'){pre=price;tax=price*rate/100;total=price+tax;}
+  else{total=price;pre=price/(1+rate/100);tax=total-pre;}
+  out.className='output-box success';
+  out.textContent=
+    `${mode==='add'?'Pre-tax Amount':'Pre-tax Amount'}:    ${formatCur(pre)}\n`+
+    `Sales Tax (${rate}%):      ${formatCur(tax)}\n`+
+    `${'─'.repeat(32)}\n`+
+    `${mode==='add'?'Total (with tax)':'VAT-inclusive Price'}:    ${formatCur(total)}\n\n`+
+    `── Compare tax rates ────────────────\n`+
+    [0,5,6,7,8,8.5,9,10,13,15,20].map(r=>{
+      const t=pre*(r/100);
+      return `  ${String(r+'%').padEnd(7)} tax: ${formatCur(t).padStart(10)} → total ${formatCur(pre+t)}`;
+    }).join('\n');
+  setStatus('stx-status','ok',`✓ Tax: ${formatCur(tax)} · Total: ${formatCur(total)}`);
+}
+function stxClear(){['stx-price','stx-rate'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const o=document.getElementById('stx-output');if(o){o.textContent='';o.className='output-box';}setStatus('stx-status','','enter price and tax rate');}

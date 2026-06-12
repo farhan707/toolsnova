@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Loan Calculator — Car Payment & Total Cost</title>
+<meta name="description" content="Calculate your monthly car payment, total interest, and compare different loan terms. Includes down payment, trade-in, and sales tax. Free auto loan calculator.">
+<link rel="canonical" href="https://toolsnova.net/auto-loan-calculator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=8">
+<meta property="og:title" content="Auto Loan Calculator — Car Payment & Total Cost">
+<meta property="og:description" content="Calculate your monthly car payment, total interest, and compare different loan terms. Includes down payment, trade-in, and sales tax. Free auto loan calculator.">
+<meta property="og:url" content="https://toolsnova.net/auto-loan-calculator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Auto Loan Calculator","url":"https://toolsnova.net/auto-loan-calculator","description":"Calculate your monthly car payment, total interest, and compare different loan terms. Includes down payment, trade-in, and sales tax. Free auto loan calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link active">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Auto Loan Calculator</h1>
+  <p>Calculate your monthly car payment with down payment, trade-in value, and sales tax. Compares all common loan terms (24–84 months) side by side.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="autoLoanCalc()">Calculate</button>
+    <button class="btn" onclick="autoClear()">Clear</button>
+    <button class="btn" onclick="copyEl('auto-output')">Copy</button>
+    <span class="status-badge" id="auto-status">enter vehicle price and rate</span>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
+        <div>
+      <div class="pane-label">Vehicle Price ($)</div>
+      <input type="number" id="auto-price" placeholder="e.g. 35000" class="b2-input" oninput="autoLoanCalc()" aria-label="Vehicle Price ($)">
+    </div>
+        <div>
+      <div class="pane-label">Down Payment ($)</div>
+      <input type="number" id="auto-down" placeholder="e.g. 5000 (optional)" class="b2-input" oninput="autoLoanCalc()" aria-label="Down Payment ($)">
+    </div>
+        <div>
+      <div class="pane-label">Trade-in Value ($)</div>
+      <input type="number" id="auto-trade" placeholder="e.g. 3000 (optional)" class="b2-input" oninput="autoLoanCalc()" aria-label="Trade-in Value ($)">
+    </div>
+        <div>
+      <div class="pane-label">Annual Interest Rate (%)</div>
+      <input type="number" id="auto-rate" placeholder="e.g. 6.9" class="b2-input" oninput="autoLoanCalc()" aria-label="Annual Interest Rate (%)">
+    </div>
+        <div>
+      <div class="pane-label">Loan Term</div>
+      <select id="auto-months" class="mode-select" style="width:100%" onchange="autoLoanCalc()">
+          <option value="24">24 months</option>
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60" selected>60 months</option>
+          <option value="72">72 months</option>
+          <option value="84">84 months</option>
+      </select>
+    </div>
+        <div>
+      <div class="pane-label">Sales Tax Rate (%)</div>
+      <input type="number" id="auto-tax" placeholder="e.g. 8 (optional)" class="b2-input" oninput="autoLoanCalc()" aria-label="Sales Tax Rate (%)">
+    </div>
+  </div>
+  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="output-box" id="auto-output" onclick="copyEl('auto-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is a good interest rate for a car loan?</div>
+    <div class="faq-a">As of 2025, average auto loan rates: new cars 5–8% APR for good credit (720+), 8–15% for fair credit. Used cars typically 1–3% higher. Credit unions often offer the best rates. Always get pre-approved before visiting a dealership.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Should I put more money down on a car?</div>
+    <div class="faq-a">A larger down payment reduces your monthly payment and total interest paid. It also reduces the risk of being 'upside down' (owing more than the car is worth). Aim for 10–20% down on a new car, 10%+ on used. If financing 0% APR, a down payment matters less.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is a trade-in?</div>
+    <div class="faq-a">A trade-in is selling your old vehicle to the dealership as part of a new purchase. The trade-in value is deducted from the purchase price, reducing your loan amount. You can often get a better price selling privately, but a trade-in is faster and more convenient.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Is a 72 or 84 month car loan a good idea?</div>
+    <div class="faq-a">Longer terms mean lower monthly payments but significantly more interest. A 84-month loan on a $35,000 car at 7% costs ~$3,200 more in interest than a 60-month loan. Cars also depreciate faster than long loans pay down, leaving you owing more than the car is worth.</div>
+  </div>
+</section>
+
+<section class="related-section">
+  <h2 class="related-title">Related Tools</h2>
+  <div class="related-grid">
+    <a href="mortgage-calculator.html" class="related-card"><span class="related-name">Mortgage Calculator</span><span class="related-arrow">→</span></a>
+    <a href="emi-calculator.html" class="related-card"><span class="related-name">EMI Calculator</span><span class="related-arrow">→</span></a>
+    <a href="sales-tax-calculator.html" class="related-card"><span class="related-name">Sales Tax Calculator</span><span class="related-arrow">→</span></a>
+    <a href="percentage-calculator.html" class="related-card"><span class="related-name">Percentage Calculator</span><span class="related-arrow">→</span></a>
+    <a href="net-worth-calculator.html" class="related-card"><span class="related-name">Net Worth</span><span class="related-arrow">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retirement Calculator — Savings Projection & Income Forecast</title>
+<meta name="description" content="Project your retirement savings with monthly contributions and compound growth. See your retirement income using the 4% rule. Free retirement calculator.">
+<link rel="canonical" href="https://toolsnova.net/retirement-calculator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=8">
+<meta property="og:title" content="Retirement Calculator — Savings Projection & Income Forecast">
+<meta property="og:description" content="Project your retirement savings with monthly contributions and compound growth. See your retirement income using the 4% rule. Free retirement calculator.">
+<meta property="og:url" content="https://toolsnova.net/retirement-calculator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Calculator","url":"https://toolsnova.net/retirement-calculator","description":"Project your retirement savings with monthly contributions and compound growth. See your retirement income using the 4% rule. Free retirement calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link active">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>Retirement Calculator</h1>
+  <p>Project your retirement fund with compound growth, monthly contributions, and milestone balances. Uses the 4% safe withdrawal rule to estimate monthly retirement income.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="retirementCalc()">Calculate</button>
+    <button class="btn" onclick="retClear()">Clear</button>
+    <button class="btn" onclick="copyEl('ret-output')">Copy</button>
+    <span class="status-badge" id="ret-status">enter your retirement details</span>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
+        <div>
+      <div class="pane-label">Current Age</div>
+      <input type="number" id="ret-curage" placeholder="e.g. 30" value="30" class="b2-input" oninput="retirementCalc()" aria-label="Current Age">
+    </div>
+        <div>
+      <div class="pane-label">Retirement Age</div>
+      <input type="number" id="ret-retage" placeholder="e.g. 65" value="65" class="b2-input" oninput="retirementCalc()" aria-label="Retirement Age">
+    </div>
+        <div>
+      <div class="pane-label">Current Savings ($)</div>
+      <input type="number" id="ret-current" placeholder="e.g. 50000" value="0" class="b2-input" oninput="retirementCalc()" aria-label="Current Savings ($)">
+    </div>
+        <div>
+      <div class="pane-label">Monthly Contribution ($)</div>
+      <input type="number" id="ret-monthly" placeholder="e.g. 500" value="500" class="b2-input" oninput="retirementCalc()" aria-label="Monthly Contribution ($)">
+    </div>
+        <div>
+      <div class="pane-label">Expected Annual Return (%)</div>
+      <input type="number" id="ret-growth" placeholder="e.g. 7" value="7" class="b2-input" oninput="retirementCalc()" aria-label="Expected Annual Return (%)">
+    </div>
+        <div>
+      <div class="pane-label">Safe Withdrawal Rate (%)</div>
+      <input type="number" id="ret-withdraw" placeholder="e.g. 4" value="4" class="b2-input" oninput="retirementCalc()" aria-label="Safe Withdrawal Rate (%)">
+    </div>
+  </div>
+  <div><div class="pane-label">Retirement Projection <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="output-box" id="ret-output" onclick="copyEl('ret-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How much do I need to retire?</div>
+    <div class="faq-a">The most common rule: multiply your desired annual retirement income by 25. To generate $50,000/year, you need $1.25 million (using the 4% rule). This assumes your savings grow at 5–7% annually and you withdraw 4% per year.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the 4% rule?</div>
+    <div class="faq-a">The 4% rule states you can withdraw 4% of your retirement savings annually with a very low risk of running out of money over 30 years. Based on historical US market returns. Some advisors now recommend 3–3.5% due to lower expected future returns.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is a realistic investment return?</div>
+    <div class="faq-a">Historical US stock market average: ~10% annually before inflation, ~7% after inflation. A diversified portfolio (stocks + bonds) typically averages 5–8% real return. This calculator uses 7% as a default — adjust to match your actual investment mix.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Should I max out my 401k or IRA?</div>
+    <div class="faq-a">Yes, especially if your employer offers matching contributions — that's a guaranteed 50–100% return on investment. For 2025: 401k limit is $23,500/year ($31,000 if 50+). IRA limit is $7,000/year. Prioritise: 1) employer match, 2) max IRA, 3) max 401k.</div>
+  </div>
+</section>
+
+<section class="related-section">
+  <h2 class="related-title">Related Tools</h2>
+  <div class="related-grid">
+    <a href="compound-interest-calculator.html" class="related-card"><span class="related-name">Compound Interest</span><span class="related-arrow">→</span></a>
+    <a href="sip-calculator.html" class="related-card"><span class="related-name">SIP Calculator</span><span class="related-arrow">→</span></a>
+    <a href="net-worth-calculator.html" class="related-card"><span class="related-name">Net Worth</span><span class="related-arrow">→</span></a>
+    <a href="mortgage-calculator.html" class="related-card"><span class="related-name">Mortgage Calculator</span><span class="related-arrow">→</span></a>
+    <a href="compound-trading-calculator.html" class="related-card"><span class="related-name">Compound Trading</span><span class="related-arrow">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js?v=8"></script>
+</body>
+</html>

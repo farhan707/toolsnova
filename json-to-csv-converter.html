@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to CSV Converter Online — Free JSON↔CSV Tool</title>
+<meta name="description" content="Convert JSON to CSV or CSV to JSON instantly. Handles nested arrays, quoted values, and special characters. Free online JSON CSV converter.">
+<link rel="canonical" href="https://toolsnova.net/json-to-csv-converter">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=9">
+<meta property="og:title" content="JSON to CSV Converter Online — Free JSON↔CSV Tool">
+<meta property="og:description" content="Convert JSON to CSV or CSV to JSON instantly. Handles nested arrays, quoted values, and special characters. Free online JSON CSV converter.">
+<meta property="og:url" content="https://toolsnova.net/json-to-csv-converter">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON to CSV Converter Online","url":"https://toolsnova.net/json-to-csv-converter","description":"Convert JSON to CSV or CSV to JSON instantly. Handles nested arrays, quoted values, and special characters. Free online JSON CSV converter.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link active">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+  </nav>
+</header>
+<div class="page-hero">
+  <h1>JSON ↔ CSV Converter</h1>
+  <p>Convert JSON arrays to CSV format or CSV files to JSON arrays instantly. Handles quoted values, special characters, and nested data. Bidirectional conversion.</p>
+</div>
+<main>
+  <div class="toolbar">
+    <button class="btn primary" onclick="jsonToCsvConvert()">Convert</button>
+    <button class="btn" onclick="jcsvClear()">Clear</button>
+    <button class="btn" onclick="copyEl('jcsv-output')">Copy output</button>
+    <span class="status-badge" id="jcsv-status">paste JSON or CSV</span>
+  </div>
+  <div style="margin-bottom:10px">
+    <div class="pane-label">Conversion direction</div>
+    <select id="jcsv-mode" class="mode-select" onchange="jsonToCsvConvert()" style="min-width:200px">
+      <option value="json2csv" selected>JSON → CSV</option>
+      <option value="csv2json">CSV → JSON</option>
+    </select>
+  </div>
+  <div class="split">
+    <div>
+      <div class="pane-label">Input</div>
+      <textarea id="jcsv-input" placeholder='[{"name":"Alice","age":30},{"name":"Bob","age":25}]'
+        oninput="jsonToCsvConvert()" spellcheck="false" style="min-height:180px;font-size:.78rem"
+        aria-label="JSON or CSV input"></textarea>
+    </div>
+    <div>
+      <div class="pane-label">Output <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+      <div class="output-box" id="jcsv-output" onclick="copyEl('jcsv-output')"
+        style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
+    </div>
+  </div>
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How does JSON to CSV work?</div>
+    <div class="faq-a">The converter takes a JSON array of objects and extracts all unique keys as CSV headers. Each object becomes one CSV row. Values containing commas or quotes are automatically escaped with double quotes per the RFC 4180 CSV standard.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What JSON structure is supported?</div>
+    <div class="faq-a">The converter works best with a flat array of objects: [{...},{...}]. Nested objects are converted to their string representation. If you provide a JSON object (not array), the converter looks for an array value inside it.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How does CSV to JSON work?</div>
+    <div class="faq-a">The first row of the CSV is treated as headers. Each subsequent row becomes a JSON object with the headers as keys. Empty values become empty strings. The output is a pretty-printed JSON array.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What about CSV values with commas?</div>
+    <div class="faq-a">The converter correctly handles quoted CSV values containing commas, double quotes, and newlines, following RFC 4180 standard. For example: "New York, NY" stays as one field, not two.</div>
+  </div>
+</section>
+
+<section class="related-section">
+  <h2 class="related-title">Related Tools</h2>
+  <div class="related-grid">
+    <a href="json-formatter.html" class="related-card"><span class="related-name">JSON Formatter</span><span class="related-arrow">→</span></a>
+    <a href="diff-checker.html" class="related-card"><span class="related-name">Diff Checker</span><span class="related-arrow">→</span></a>
+    <a href="csv-minifier" class="related-card"><span class="related-name">CSS Minifier</span><span class="related-arrow">→</span></a>
+    <a href="base64-encoder.html" class="related-card"><span class="related-name">Base64 Encoder</span><span class="related-arrow">→</span></a>
+    <a href="url-encoder.html" class="related-card"><span class="related-name">URL Encoder</span><span class="related-arrow">→</span></a>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+<div class="copy-toast" id="toast"></div>
+<script src="app.js?v=9"></script>
+</body>
+</html>

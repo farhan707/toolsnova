@@ -173,5 +173,14 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 <div class="copy-toast" id="toast"></div>
 <script src="app.js?v=7"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered'))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
 </body>
 </html>

@@ -1,125 +1,124 @@
 /* ================================================================
    ToolsNova Service Worker — PWA Offline Cache
-   Version: 1.0
+   Version: 2.0 — Fixed index.html redirect issue
    ================================================================ */
 
-const CACHE_NAME = 'toolsnova-v1';
-const ASSETS_CACHE = 'toolsnova-assets-v1';
+const CACHE_NAME = 'toolsnova-v2';
+const ASSETS_CACHE = 'toolsnova-assets-v2';
 
 // Core files to cache immediately on install
 const CORE_FILES = [
   '/',
-  '/index.html',
   '/app.js',
   '/style.css',
   '/favicon.svg',
   '/manifest.json',
 ];
 
-// All 100 tool pages
+// All 100 tool pages — using .html extension to match actual files
 const TOOL_PAGES = [
-  '/json-formatter',
-  '/base64-encoder',
-  '/word-counter',
-  '/case-converter',
-  '/password-generator',
-  '/timestamp-converter',
-  '/lorem-ipsum',
-  '/url-encoder',
-  '/uuid-generator',
-  '/hash-generator',
-  '/regex-tester',
-  '/diff-checker',
-  '/color-picker',
-  '/number-to-words',
-  '/text-repeater',
-  '/random-number-generator',
-  '/jwt-decoder',
-  '/markdown-editor',
-  '/json-to-csv-converter',
-  '/html-encoder-decoder',
-  '/hex-binary-converter',
-  '/css-minifier',
-  '/cron-expression-builder',
-  '/text-to-slug-converter',
-  '/number-base-converter',
-  '/color-code-converter',
-  '/password-strength-checker',
-  '/age-calculator',
-  '/bmi-calculator',
-  '/percentage-calculator',
-  '/qr-code-generator',
-  '/image-compressor',
-  '/typing-speed-test',
-  '/pomodoro-timer',
-  '/palworld-breeding-calculator',
-  '/stopwatch-timer',
-  '/aspect-ratio-calculator',
-  '/character-counter',
-  '/word-frequency-counter',
-  '/random-word-generator',
-  '/screen-resolution-calculator',
-  '/sleep-calculator',
-  '/love-calculator',
-  '/lucky-number-generator',
-  '/coin-flip-dice-roller',
-  '/days-between-dates',
-  '/zodiac-calculator',
-  '/calorie-calculator',
-  '/tdee-calculator',
-  '/macro-calculator',
-  '/ideal-weight-calculator',
-  '/body-fat-calculator',
-  '/water-intake-calculator',
-  '/pace-calculator',
-  '/fuel-cost-calculator',
-  '/gpa-calculator',
-  '/grade-calculator',
-  '/fraction-calculator',
-  '/scientific-calculator',
-  '/percentage-error-calculator',
-  '/roman-numeral-converter',
-  '/emi-calculator',
-  '/sip-calculator',
-  '/compound-interest-calculator',
-  '/gst-calculator',
-  '/salary-calculator',
-  '/vat-calculator',
-  '/discount-calculator',
-  '/tip-calculator',
-  '/currency-converter',
-  '/mortgage-calculator',
-  '/auto-loan-calculator',
-  '/retirement-calculator',
-  '/net-worth-calculator',
-  '/invoice-generator',
-  '/sales-tax-calculator',
-  '/temperature-converter',
-  '/length-converter',
-  '/weight-converter',
-  '/speed-converter',
-  '/data-size-converter',
-  '/timezone-converter',
-  '/lot-size-calculator',
-  '/risk-reward-calculator',
-  '/drawdown-calculator',
-  '/margin-calculator',
-  '/gold-position-size-calculator',
-  '/pip-value-calculator',
-  '/forex-profit-calculator',
-  '/pivot-point-calculator',
-  '/fibonacci-calculator',
-  '/compound-trading-calculator',
-  '/risk-of-ruin-calculator',
-  '/leverage-calculator',
-  '/stop-loss-take-profit-calculator',
-  '/about',
-  '/contact',
-  '/privacy-policy',
-  '/terms',
+  '/json-formatter.html',
+  '/base64-encoder.html',
+  '/word-counter.html',
+  '/case-converter.html',
+  '/password-generator.html',
+  '/timestamp-converter.html',
+  '/lorem-ipsum.html',
+  '/url-encoder.html',
+  '/uuid-generator.html',
+  '/hash-generator.html',
+  '/regex-tester.html',
+  '/diff-checker.html',
+  '/color-picker.html',
+  '/number-to-words.html',
+  '/text-repeater.html',
+  '/random-number-generator.html',
+  '/jwt-decoder.html',
+  '/markdown-editor.html',
+  '/json-to-csv-converter.html',
+  '/html-encoder-decoder.html',
+  '/hex-binary-converter.html',
+  '/css-minifier.html',
+  '/cron-expression-builder.html',
+  '/text-to-slug-converter.html',
+  '/number-base-converter.html',
+  '/color-code-converter.html',
+  '/password-strength-checker.html',
+  '/age-calculator.html',
+  '/bmi-calculator.html',
+  '/percentage-calculator.html',
+  '/qr-code-generator.html',
+  '/image-compressor.html',
+  '/typing-speed-test.html',
+  '/pomodoro-timer.html',
+  '/palworld-breeding-calculator.html',
+  '/stopwatch-timer.html',
+  '/aspect-ratio-calculator.html',
+  '/character-counter.html',
+  '/word-frequency-counter.html',
+  '/random-word-generator.html',
+  '/screen-resolution-calculator.html',
+  '/sleep-calculator.html',
+  '/love-calculator.html',
+  '/lucky-number-generator.html',
+  '/coin-flip-dice-roller.html',
+  '/days-between-dates.html',
+  '/zodiac-calculator.html',
+  '/calorie-calculator.html',
+  '/tdee-calculator.html',
+  '/macro-calculator.html',
+  '/ideal-weight-calculator.html',
+  '/body-fat-calculator.html',
+  '/water-intake-calculator.html',
+  '/pace-calculator.html',
+  '/fuel-cost-calculator.html',
+  '/gpa-calculator.html',
+  '/grade-calculator.html',
+  '/fraction-calculator.html',
+  '/scientific-calculator.html',
+  '/percentage-error-calculator.html',
+  '/roman-numeral-converter.html',
+  '/emi-calculator.html',
+  '/sip-calculator.html',
+  '/compound-interest-calculator.html',
+  '/gst-calculator.html',
+  '/salary-calculator.html',
+  '/vat-calculator.html',
+  '/discount-calculator.html',
+  '/tip-calculator.html',
+  '/currency-converter.html',
+  '/mortgage-calculator.html',
+  '/auto-loan-calculator.html',
+  '/retirement-calculator.html',
+  '/net-worth-calculator.html',
+  '/invoice-generator.html',
+  '/sales-tax-calculator.html',
+  '/temperature-converter.html',
+  '/length-converter.html',
+  '/weight-converter.html',
+  '/speed-converter.html',
+  '/data-size-converter.html',
+  '/timezone-converter.html',
+  '/lot-size-calculator.html',
+  '/risk-reward-calculator.html',
+  '/drawdown-calculator.html',
+  '/margin-calculator.html',
+  '/gold-position-size-calculator.html',
+  '/pip-value-calculator.html',
+  '/forex-profit-calculator.html',
+  '/pivot-point-calculator.html',
+  '/fibonacci-calculator.html',
+  '/compound-trading-calculator.html',
+  '/risk-of-ruin-calculator.html',
+  '/leverage-calculator.html',
+  '/stop-loss-take-profit-calculator.html',
+  '/about.html',
+  '/contact.html',
+  '/privacy-policy.html',
+  '/terms.html',
 ];
 
-// ── INSTALL: cache core files immediately ──────────────────────────
+// ── INSTALL ────────────────────────────────────────────────────────
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -135,11 +134,14 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys =>
       Promise.all(
         keys.filter(k => k !== CACHE_NAME && k !== ASSETS_CACHE)
-            .map(k => caches.delete(k))
+            .map(k => {
+              console.log('[SW] Deleting old cache:', k);
+              return caches.delete(k);
+            })
       )
     ).then(() => {
-      console.log('[SW] Activated, old caches cleared');
-      // Cache all tool pages in background after activation
+      console.log('[SW] Activated v2, old caches cleared');
+      // Cache all tool pages in background
       caches.open(CACHE_NAME).then(cache => {
         TOOL_PAGES.forEach(page => {
           fetch(page).then(res => {
@@ -152,15 +154,20 @@ self.addEventListener('activate', event => {
   );
 });
 
-// ── FETCH: serve from cache, fall back to network ─────────────────
+// ── FETCH ──────────────────────────────────────────────────────────
 self.addEventListener('fetch', event => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
-  // Skip cross-origin requests (Google Analytics, fonts CDN, etc.)
   const url = new URL(event.request.url);
+
+  // CRITICAL FIX: Never intercept /index.html
+  // Let it pass through to Cloudflare so the redirect works
+  if (url.pathname === '/index.html') {
+    return; // Do not intercept — let Cloudflare handle it
+  }
+
+  // Skip cross-origin except Google Fonts
   if (url.origin !== self.location.origin) {
-    // For Google Fonts — cache them too
     if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
       event.respondWith(
         caches.open(ASSETS_CACHE).then(cache =>
@@ -181,18 +188,17 @@ self.addEventListener('fetch', event => {
     caches.match(event.request).then(cached => {
       if (cached) {
         // Serve from cache, update in background
-        const fetchPromise = fetch(event.request).then(networkRes => {
-          if (networkRes.ok) {
+        fetch(event.request).then(networkRes => {
+          if (networkRes && networkRes.ok) {
             caches.open(CACHE_NAME).then(cache =>
               cache.put(event.request, networkRes.clone())
             );
           }
-          return networkRes;
         }).catch(() => {});
         return cached;
       }
 
-      // Not in cache — fetch from network and cache it
+      // Not cached — fetch from network
       return fetch(event.request).then(networkRes => {
         if (!networkRes || !networkRes.ok || networkRes.type === 'opaque') {
           return networkRes;
@@ -203,16 +209,15 @@ self.addEventListener('fetch', event => {
         );
         return networkRes;
       }).catch(() => {
-        // Offline fallback for HTML pages
         if (event.request.headers.get('accept')?.includes('text/html')) {
-          return caches.match('/index.html');
+          return caches.match('/');
         }
       });
     })
   );
 });
 
-// ── MESSAGE: force update ──────────────────────────────────────────
+// ── MESSAGE ────────────────────────────────────────────────────────
 self.addEventListener('message', event => {
   if (event.data === 'skipWaiting') self.skipWaiting();
 });

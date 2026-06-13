@@ -18,6 +18,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="ToolsNova">
 <link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
 <meta property="og:title" content="Aspect Ratio Calculator — Find & Scale Any Ratio">
 <meta property="og:description" content="Calculate aspect ratio from any dimensions and scale to any width. Supports 16:9, 4:3, 21:9 and all custom ratios. Free aspect ratio calculator.">
 <meta property="og:url" content="https://toolsnova.net/aspect-ratio-calculator">
@@ -223,7 +225,7 @@ gtag('config', 'G-S6PPGS7N63');
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('[ToolsNova] SW registered'))
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
       .catch(err => console.log('[ToolsNova] SW failed:', err));
   });
 }

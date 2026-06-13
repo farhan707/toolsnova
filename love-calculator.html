@@ -10,7 +10,16 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
 <meta property="og:title" content="Love Calculator — Compatibility Percentage">
 <meta property="og:description" content="Calculate love compatibility between two names with our free love calculator. Get a compatibility percentage, breakdown, and fun personality match. Just for fun!">
 <meta property="og:url" content="https://toolsnova.net/love-calculator">
@@ -54,6 +63,10 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
     <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
     <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
     <div class="nav-divider"></div>
     <span class="nav-category-label">Utilities</span>
     <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
@@ -64,6 +77,14 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
     <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
     <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
     <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
     <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
     <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
@@ -78,6 +99,8 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
     <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
     <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
     <div class="nav-divider"></div>
     <span class="nav-category-label">Student Tools</span>
     <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
@@ -187,12 +210,12 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=10"></script>
+<script src="app.js?v=11"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('[ToolsNova] SW registered'))
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
       .catch(err => console.log('[ToolsNova] SW failed:', err));
   });
 }

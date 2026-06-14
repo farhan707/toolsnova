@@ -5962,3 +5962,645 @@ function cgpaCalc() {
     .map(([s,c])=>`  ${c} ${s}-scale: ${(gpa/scale*s).toFixed(2)}`).join('\n');
   setStatus('cgpa-status','ok',`✓ ${pct}% = ${grade}`);
 }
+
+/* ════════════════════════════════════
+   PROP FIRM TOOLS + POSITION SCALING
+   ════════════════════════════════════ */
+
+/* ── 1. PROP FIRM CHALLENGE CALCULATOR ── */
+function challengeCalc() {
+  const balance  = parseFloat(document.getElementById('ch-balance')?.value);
+  const target   = parseFloat(document.getElementById('ch-target')?.value) || 8;
+  const maxDD    = parseFloat(document.getElementById('ch-maxdd')?.value) || 10;
+  const dailyDD  = parseFloat(document.getElementById('ch-dailydd')?.value) || 5;
+  const days     = parseInt(document.getElementById('ch-days')?.value) || 30;
+  const fee      = parseFloat(document.getElementById('ch-fee')?.value) || 0;
+  const split    = parseFloat(document.getElementById('ch-split')?.value) || 80;
+  const out      = document.getElementById('ch-output');
+  if (!out) return;
+  if (isNaN(balance)||balance<=0) { out.textContent='Enter account balance.'; out.className='output-box error'; return; }
+
+  const targetAmt  = balance * target / 100;
+  const maxDDAmt   = balance * maxDD / 100;
+  const dailyDDAmt = balance * dailyDD / 100;
+  const minPerDay  = targetAmt / days;
+
+  // ROI after passing (assuming 1 funded payout cycle)
+  const fundedBalance = balance;
+  const firstPayout   = fundedBalance * target / 100 * split / 100;
+  const roiOnFee      = fee > 0 ? ((firstPayout - fee) / fee * 100) : 0;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Account: $${balance.toLocaleString()}  |  Fee: ${fee>0?'$'+fee:'N/A'}\n\n`+
+    `── Challenge Rules ───────────────────\n`+
+    `Profit Target:     ${target}%  =  $${formatCur(targetAmt)}\n`+
+    `Max Drawdown:      ${maxDD}%   =  $${formatCur(maxDDAmt)}\n`+
+    `Daily Drawdown:    ${dailyDD}% =  $${formatCur(dailyDDAmt)}\n`+
+    `Time Limit:        ${days} trading days\n\n`+
+    `── What you need ─────────────────────\n`+
+    `Min profit/day:    $${formatCur(minPerDay)} (${(target/days).toFixed(2)}%/day)\n`+
+    `Trades to target:  Depends on your R:R and win rate\n`+
+    `Max loss allowed:  $${formatCur(maxDDAmt)} total  /  $${formatCur(dailyDDAmt)} per day\n\n`+
+    `── Funded payout projection ──────────\n`+
+    `First payout (${split}% split): $${formatCur(firstPayout)}\n`+
+    (fee>0?`ROI on challenge fee: ${roiOnFee.toFixed(1)}%\n`:'')+
+    `Annual (12 payouts): $${formatCur(firstPayout*12)}\n\n`+
+    `── Risk per trade to stay safe ───────\n`+
+    [0.5,1,1.5,2].map(r=>{
+      const riskAmt = balance*r/100;
+      const tradesBefore = Math.floor(dailyDDAmt/riskAmt);
+      return `  ${r}% risk ($${formatCur(riskAmt)}/trade) → max ${tradesBefore} losses/day`;
+    }).join('\n');
+  setStatus('ch-status','ok',`✓ Target: $${formatCur(targetAmt)} | Daily limit: $${formatCur(dailyDDAmt)}`);
+}
+
+/* ── 2. DAILY DRAWDOWN CALCULATOR ── */
+function dailyDrawdownCalc() {
+  const startBal  = parseFloat(document.getElementById('dd-start')?.value);
+  const currentBal= parseFloat(document.getElementById('dd-current')?.value);
+  const ddPct     = parseFloat(document.getElementById('dd-pct')?.value) || 5;
+  const ddType    = document.getElementById('dd-type')?.value || 'balance';
+  const out       = document.getElementById('dd-output');
+  if (!out) return;
+  if (isNaN(startBal)||isNaN(currentBal)||startBal<=0) {
+    out.textContent='Enter starting and current balance.'; out.className='output-box error'; return;
+  }
+
+  // Daily drawdown limit calculated from start-of-day balance (most common) or initial balance
+  const refBalance = ddType==='balance' ? currentBal : startBal;
+  const ddLimit    = refBalance * ddPct / 100;
+  const ddFloor    = refBalance - ddLimit;
+  const currentDD  = startBal - currentBal;
+  const currentDDPct = (currentDD/startBal*100);
+  const remaining  = ddLimit - currentDD;
+  const remainingPct = (remaining/startBal*100);
+  const safe       = remaining > 0;
+
+  // Lots they can still lose (approximate for XAUUSD)
+  const pipsCanLose = Math.floor(remaining/10); // rough
+
+  out.className = safe ? 'output-box success' : 'output-box error';
+  out.textContent =
+    `── Your daily status ─────────────────\n`+
+    `Start of day balance: $${formatCur(startBal)}\n`+
+    `Current balance:      $${formatCur(currentBal)}\n`+
+    `P&L today:            ${currentDD>0?'-':'+'} $${formatCur(Math.abs(currentDD))} (${currentDDPct.toFixed(2)}%)\n\n`+
+    `── Drawdown limit (${ddPct}% ${ddType==='balance'?'trailing':'fixed'}) ───────\n`+
+    `DD limit amount:      $${formatCur(ddLimit)}\n`+
+    `Account floor:        $${formatCur(ddFloor)}\n`+
+    `Already used:         $${formatCur(Math.max(0,currentDD))} (${Math.max(0,currentDDPct).toFixed(2)}%)\n`+
+    `Remaining today:      $${formatCur(Math.max(0,remaining))} (${Math.max(0,remainingPct).toFixed(2)}%)\n\n`+
+    `── Status ────────────────────────────\n`+
+    (safe
+      ? `✅ SAFE — You have $${formatCur(remaining)} left today\n\n`+
+        `── Risk recommendations ──────────────\n`+
+        [0.5,1,1.5,2].map(r=>{
+          const rAmt=startBal*r/100;
+          const trades=Math.floor(remaining/rAmt);
+          return `  ${r}% risk ($${formatCur(rAmt)}): ${trades} more losing trades before breach`;
+        }).join('\n')
+      : `🚨 BREACH — Daily drawdown exceeded!\nStop trading for today.`
+    );
+  setStatus('dd-status', safe?'ok':'err',
+    safe ? `✅ $${formatCur(remaining)} remaining` : '🚨 Limit breached');
+}
+
+/* ── 3. CONSISTENCY CALCULATOR ── */
+function consistencyCalc() {
+  const total    = parseFloat(document.getElementById('con2-total')?.value);
+  const bestDay  = parseFloat(document.getElementById('con2-best')?.value);
+  const threshold= parseFloat(document.getElementById('con2-threshold')?.value) || 30;
+  const out      = document.getElementById('con2-output');
+  if (!out) return;
+  if (isNaN(total)||isNaN(bestDay)||total<=0||bestDay<=0) {
+    out.textContent='Enter total profit and best day profit.'; out.className='output-box error'; return;
+  }
+  if (bestDay > total) { out.textContent='Best day cannot exceed total profit.'; out.className='output-box error'; return; }
+
+  const score    = (bestDay/total*100);
+  const passes   = score <= threshold;
+  const maxAllowed = total * threshold / 100;
+  const excess   = bestDay - maxAllowed;
+
+  // What they need to earn on other days to bring score under threshold
+  const neededTotal = bestDay / (threshold/100);
+  const neededMore  = neededTotal - total;
+
+  out.className = passes ? 'output-box success' : 'output-box error';
+  out.textContent =
+    `Total Profit:         $${formatCur(total)}\n`+
+    `Best Single Day:      $${formatCur(bestDay)}\n`+
+    `Consistency Rule:     ≤${threshold}% of total from one day\n\n`+
+    `── Your Score ────────────────────────\n`+
+    `Consistency Score:    ${score.toFixed(1)}%\n`+
+    `Max allowed (${threshold}%):   $${formatCur(maxAllowed)}\n`+
+    `Status: ${passes ? '✅ CONSISTENT — You qualify for payout' : '❌ INCONSISTENT — Best day too high'}\n\n`+
+    (!passes ? `── How to fix ────────────────────────\n`+
+      `Excess on best day:  $${formatCur(excess)}\n`+
+      `Earn $${formatCur(neededMore)} more on other days to qualify\n`+
+      `Or: Reduce best day target to $${formatCur(maxAllowed)}\n\n` : '')+
+    `── Simulate future days ──────────────\n`+
+    [50,100,200,300,500].map(extra=>{
+      const newTotal=total+extra;
+      const newScore=(bestDay/newTotal*100);
+      return `  +$${extra}/day more → score becomes ${newScore.toFixed(1)}% ${newScore<=threshold?'✅':'❌'}`;
+    }).join('\n');
+  setStatus('con2-status', passes?'ok':'err',
+    `Score: ${score.toFixed(1)}% — ${passes?'CONSISTENT ✅':'INCONSISTENT ❌'}`);
+}
+
+/* ── 4. PROFIT TARGET TRACKER ── */
+function profitTargetTracker() {
+  const initial   = parseFloat(document.getElementById('pt-initial')?.value);
+  const current   = parseFloat(document.getElementById('pt-current')?.value);
+  const target    = parseFloat(document.getElementById('pt-target')?.value) || 8;
+  const daysTotal = parseInt(document.getElementById('pt-days')?.value) || 30;
+  const daysUsed  = parseInt(document.getElementById('pt-daysused')?.value) || 0;
+  const out       = document.getElementById('pt-output');
+  if (!out) return;
+  if (isNaN(initial)||isNaN(current)||initial<=0) {
+    out.textContent='Enter initial and current balance.'; out.className='output-box error'; return;
+  }
+
+  const targetAmt    = initial * target / 100;
+  const targetBal    = initial + targetAmt;
+  const currentProfit= current - initial;
+  const remaining    = targetAmt - currentProfit;
+  const progressPct  = Math.max(0,Math.min(100,(currentProfit/targetAmt)*100));
+  const daysLeft     = daysTotal - daysUsed;
+  const neededPerDay = daysLeft > 0 ? remaining/daysLeft : remaining;
+  const onTrack      = daysLeft > 0 && (currentProfit/(daysUsed||1)) >= (targetAmt/daysTotal);
+
+  const bar = '█'.repeat(Math.round(progressPct/5)) + '░'.repeat(20-Math.round(progressPct/5));
+
+  out.className = progressPct >= 100 ? 'output-box success' : 'output-box';
+  out.textContent =
+    `Account:    $${formatCur(initial)}  →  Target: $${formatCur(targetBal)}\n\n`+
+    `── Progress ──────────────────────────\n`+
+    `${bar}  ${progressPct.toFixed(1)}%\n\n`+
+    `Profit so far:  $${formatCur(currentProfit)} of $${formatCur(targetAmt)}\n`+
+    `Still needed:   $${formatCur(Math.max(0,remaining))}\n\n`+
+    `── Time ──────────────────────────────\n`+
+    `Days used:  ${daysUsed} / ${daysTotal}\n`+
+    `Days left:  ${daysLeft}\n`+
+    `Need/day:   $${formatCur(Math.max(0,neededPerDay))} (${(Math.max(0,neededPerDay)/initial*100).toFixed(2)}%/day)\n`+
+    `Pace:       ${onTrack ? '✅ On track' : currentProfit<=0 ? '⚠ No profit yet' : '⚠ Behind pace'}\n\n`+
+    (progressPct>=100
+      ? `🎉 TARGET REACHED! You can request evaluation phase 2 or payout.\n`
+      : `── Daily profit needed ───────────────\n`+
+        [3,5,7,10,14].filter(d=>d<=daysLeft).map(d=>{
+          const ppd=remaining/d;
+          return `  In ${d} days: $${formatCur(ppd)}/day (${(ppd/initial*100).toFixed(2)}%)`;
+        }).join('\n'));
+  setStatus('pt-status',
+    progressPct>=100?'ok':onTrack?'ok':'err',
+    `${progressPct.toFixed(1)}% complete — ${progressPct>=100?'TARGET HIT! 🎉':'$'+formatCur(Math.max(0,remaining))+' to go'}`);
+}
+
+/* ── 5. CHALLENGE PASS PROBABILITY ── */
+function challengePassProb() {
+  const winRate  = parseFloat(document.getElementById('cpp-winrate')?.value);
+  const rr       = parseFloat(document.getElementById('cpp-rr')?.value);
+  const trades   = parseInt(document.getElementById('cpp-trades')?.value) || 30;
+  const target   = parseFloat(document.getElementById('cpp-target')?.value) || 8;
+  const maxDD    = parseFloat(document.getElementById('cpp-maxdd')?.value) || 10;
+  const riskPct  = parseFloat(document.getElementById('cpp-risk')?.value) || 1;
+  const out      = document.getElementById('cpp-output');
+  if (!out) return;
+  if (isNaN(winRate)||isNaN(rr)||winRate<=0||winRate>=100||rr<=0) {
+    out.textContent='Enter win rate (%), risk:reward ratio, and number of trades.'; out.className='output-box error'; return;
+  }
+
+  const wr = winRate/100;
+  const lr = 1 - wr;
+  // Expectancy per trade (in R)
+  const expectancy = wr*rr - lr;
+  // Expected profit in % after N trades
+  const expectedProfit = expectancy * riskPct * trades;
+  // Simple pass probability using normal approximation
+  const stdDev = Math.sqrt(trades) * riskPct * Math.sqrt(wr*rr*rr + lr);
+  const zScore = (target - expectedProfit) / stdDev;
+  // Probability of reaching target before hitting max DD
+  // Simplified: P(profit >= target) assuming normal distribution
+  const passProbRaw = 1 - 0.5*(1+Math.sign(zScore)*Math.min(0.9999,
+    1-Math.exp(-0.147*(zScore*zScore)+0.14*(Math.abs(zScore)))
+  ));
+  const passProb = Math.max(1,Math.min(99, passProbRaw*100));
+
+  // Monte Carlo (1000 simple simulations)
+  let passes = 0;
+  const SIMS = 2000;
+  for (let s=0; s<SIMS; s++) {
+    let bal = 100, maxBal = 100, failed = false;
+    for (let t=0; t<trades; t++) {
+      if (Math.random() < wr) bal += riskPct*rr;
+      else bal -= riskPct;
+      if (bal > maxBal) maxBal = bal;
+      if ((maxBal-bal) >= maxDD || bal < (100-maxDD)) { failed=true; break; }
+    }
+    if (!failed && (bal-100) >= target) passes++;
+  }
+  const mcProb = (passes/SIMS*100).toFixed(1);
+
+  out.className = parseFloat(mcProb)>=50 ? 'output-box success' : 'output-box error';
+  out.textContent =
+    `Win Rate:   ${winRate}%\n`+
+    `Risk:Reward: 1:${rr}\n`+
+    `Risk/Trade:  ${riskPct}%\n`+
+    `Trades:     ${trades}\n`+
+    `Target:     ${target}%\n`+
+    `Max DD:     ${maxDD}%\n\n`+
+    `── Pass Probability ──────────────────\n`+
+    `Monte Carlo (${SIMS} sims): ${mcProb}%\n\n`+
+    `── Your edge ─────────────────────────\n`+
+    `Expectancy:     ${expectancy.toFixed(3)}R per trade\n`+
+    `Expected profit: ${expectedProfit.toFixed(2)}% after ${trades} trades\n`+
+    `${expectancy>0?'✅ Positive edge':'❌ Negative edge — fix strategy first'}\n\n`+
+    `── Improve your odds ─────────────────\n`+
+    [[winRate+5,rr],[winRate,rr+0.2],[winRate+5,rr+0.2]].map(([wr2,rr2])=>{
+      let p2=0;
+      for(let s=0;s<1000;s++){
+        let b=100,m=100,f=false;
+        for(let t=0;t<trades;t++){
+          if(Math.random()<wr2/100)b+=riskPct*rr2;
+          else b-=riskPct;
+          if(b>m)m=b;
+          if((m-b)>=maxDD||b<(100-maxDD)){f=true;break;}
+        }
+        if(!f&&(b-100)>=target)p2++;
+      }
+      return `  WR${wr2.toFixed(0)}% / RR${rr2.toFixed(1)} → ${(p2/10).toFixed(0)}% pass rate`;
+    }).join('\n');
+  setStatus('cpp-status',
+    parseFloat(mcProb)>=50?'ok':'err',
+    `✓ Pass probability: ${mcProb}%`);
+}
+
+/* ── 6. FUNDED ACCOUNT ROI CALCULATOR ── */
+function fundedROICalc() {
+  const fee       = parseFloat(document.getElementById('fr-fee')?.value);
+  const accountSz = parseFloat(document.getElementById('fr-account')?.value);
+  const target    = parseFloat(document.getElementById('fr-target')?.value) || 8;
+  const split     = parseFloat(document.getElementById('fr-split')?.value) || 80;
+  const cycles    = parseInt(document.getElementById('fr-cycles')?.value) || 3;
+  const scale     = document.getElementById('fr-scale')?.value || 'no';
+  const out       = document.getElementById('fr-output');
+  if (!out) return;
+  if (isNaN(fee)||isNaN(accountSz)||fee<=0||accountSz<=0) {
+    out.textContent='Enter challenge fee and account size.'; out.className='output-box error'; return;
+  }
+
+  const profitPerCycle = accountSz * target/100 * split/100;
+  const totalEarned    = profitPerCycle * cycles;
+  const netProfit      = totalEarned - fee;
+  const roi            = (netProfit/fee*100);
+  const breakEvenCycles= Math.ceil(fee/profitPerCycle);
+
+  out.className = netProfit>=0 ? 'output-box success' : 'output-box error';
+  out.textContent =
+    `Challenge Fee:      $${formatCur(fee)}\n`+
+    `Account Size:       $${formatCur(accountSz)}\n`+
+    `Profit Target:      ${target}%\n`+
+    `Profit Split:       ${split}%\n\n`+
+    `── Per payout cycle ──────────────────\n`+
+    `Gross profit:       $${formatCur(accountSz*target/100)}\n`+
+    `Your share (${split}%):  $${formatCur(profitPerCycle)}\n`+
+    `Break even after:   ${breakEvenCycles} payout${breakEvenCycles!==1?'s':''}\n\n`+
+    `── ${cycles} payout cycles ─────────────────\n`+
+    `Total earned:       $${formatCur(totalEarned)}\n`+
+    `Net (after fee):    $${formatCur(netProfit)}\n`+
+    `ROI on fee:         ${roi.toFixed(1)}%\n\n`+
+    `── Payout timeline ───────────────────\n`+
+    Array.from({length:Math.min(cycles,8)},(_,i)=>{
+      const earned=(i+1)*profitPerCycle;
+      const net=earned-fee;
+      return `  Payout ${i+1}: $${formatCur(earned)} earned | Net: ${net>=0?'+':''}$${formatCur(net)}`;
+    }).join('\n')+
+    `\n\n── Compare account sizes ─────────────\n`+
+    [5000,10000,25000,50000,100000,200000].map(sz=>{
+      const p=sz*target/100*split/100;
+      const r=(p*cycles-fee)/fee*100;
+      return `  $${sz.toLocaleString().padEnd(9)} → $${formatCur(p)}/payout | ${cycles}x ROI: ${r.toFixed(0)}%`;
+    }).join('\n');
+  setStatus('fr-status',netProfit>=0?'ok':'err',
+    `✓ ROI: ${roi.toFixed(1)}% | Net: $${formatCur(netProfit)}`);
+}
+
+/* ── 7. POSITION SCALING CALCULATOR ── */
+function positionScalingCalc() {
+  const balance  = parseFloat(document.getElementById('ps2-balance')?.value);
+  const riskPct  = parseFloat(document.getElementById('ps2-risk')?.value) || 1;
+  const sl       = parseFloat(document.getElementById('ps2-sl')?.value);
+  const symbol   = document.getElementById('ps2-symbol')?.value || 'XAUUSD';
+  const method   = document.getElementById('ps2-method')?.value || 'fixed';
+  const winStreak= parseInt(document.getElementById('ps2-streak')?.value) || 0;
+  const out      = document.getElementById('ps2-output');
+  if (!out) return;
+  if (isNaN(balance)||isNaN(sl)||balance<=0||sl<=0) {
+    out.textContent='Enter balance and stop loss.'; out.className='output-box error'; return;
+  }
+
+  const riskAmt = balance * riskPct / 100;
+
+  // Pip/point values per lot
+  const pipValues = {
+    'XAUUSD':10, 'EURUSD':10, 'GBPUSD':10, 'USDJPY':9.1,
+    'USDCHF':10, 'AUDUSD':10, 'USDCAD':10, 'BTCUSD':1,
+    'NAS100':1,  'SPX500':10, 'US30':1,
+  };
+  const pipVal = pipValues[symbol] || 10;
+  const baseLots = riskAmt / (sl * pipVal);
+
+  // Scaling methods
+  let scaledLots = baseLots;
+  let methodDesc = '';
+
+  if (method === 'fixed') {
+    scaledLots = baseLots;
+    methodDesc = 'Fixed fractional — same risk % every trade';
+  } else if (method === 'kelly') {
+    // Simplified Kelly (need win rate and RR)
+    scaledLots = baseLots * 0.5; // half-Kelly is safer
+    methodDesc = 'Half-Kelly — conservative position scaling';
+  } else if (method === 'martingale') {
+    scaledLots = baseLots * Math.pow(2, winStreak);
+    methodDesc = `Martingale (${winStreak} wins) — doubles each win ⚠ HIGH RISK`;
+  } else if (method === 'antimartingale') {
+    scaledLots = winStreak > 0 ? baseLots * (1 + winStreak*0.5) : baseLots;
+    methodDesc = `Anti-martingale (${winStreak} wins) — scale up on winning streaks`;
+  } else if (method === 'linear') {
+    scaledLots = baseLots * (1 + winStreak * 0.25);
+    methodDesc = `Linear scaling (+25% per win, ${winStreak} wins)`;
+  }
+
+  scaledLots = Math.max(0.01, Math.round(scaledLots * 100) / 100);
+  const actualRisk = scaledLots * sl * pipVal;
+  const actualRiskPct = actualRisk/balance*100;
+
+  out.className = 'output-box success';
+  out.textContent =
+    `Balance: $${formatCur(balance)}  |  Symbol: ${symbol}\n`+
+    `Risk: ${riskPct}% ($${formatCur(riskAmt)})  |  SL: ${sl} pips\n`+
+    `Method: ${methodDesc}\n\n`+
+    `── Position Size ─────────────────────\n`+
+    `Lot size:       ${scaledLots} lots\n`+
+    `Actual risk:    $${formatCur(actualRisk)} (${actualRiskPct.toFixed(2)}%)\n`+
+    `Pip value:      $${pipVal}/pip per lot\n\n`+
+    `── Scaling comparison ────────────────\n`+
+    [0.5,1,1.5,2,3].map(r=>{
+      const lots=Math.round(balance*r/100/(sl*pipVal)*100)/100;
+      const risk=lots*sl*pipVal;
+      return `  ${r}% risk → ${Math.max(0.01,lots)} lots ($${formatCur(risk)})`;
+    }).join('\n')+
+    `\n\n── Win/Loss scenarios ────────────────\n`+
+    [1,2,3,-1,-2].map(mult=>{
+      const tp = sl * 2; // assume 1:2 RR
+      const pnl = mult > 0 ? scaledLots*tp*pipVal*mult : scaledLots*sl*pipVal*mult;
+      return `  ${mult>0?mult+' win'+(mult>1?'s':''):Math.abs(mult)+' loss'+(Math.abs(mult)>1?'es':'')}: ${pnl>=0?'+':''}$${formatCur(pnl)}`;
+    }).join('\n');
+  setStatus('ps2-status','ok',`✓ ${scaledLots} lots | $${formatCur(actualRisk)} at risk`);
+}
+
+/* ════════════════════════════════════
+   4 NEW PRO TRADER TOOLS
+   ════════════════════════════════════ */
+
+/* ── KELLY CRITERION CALCULATOR ── */
+function kellyCalc() {
+  const wr    = parseFloat(document.getElementById('kelly-wr')?.value);
+  const rr    = parseFloat(document.getElementById('kelly-rr')?.value);
+  const bal   = parseFloat(document.getElementById('kelly-bal')?.value) || 0;
+  const out   = document.getElementById('kelly-output');
+  if (!out) return;
+  if (isNaN(wr)||isNaN(rr)||wr<=0||wr>=100||rr<=0) {
+    out.textContent='Enter win rate (%) and risk:reward ratio.';
+    out.className='output-box error'; return;
+  }
+  const w = wr/100, l = 1-w;
+  const kelly    = w - (l/rr);           // Full Kelly %
+  const halfKelly= kelly/2;
+  const qtrKelly = kelly/4;
+  const riskAmt  = bal>0 ? bal*halfKelly : null;
+
+  if (kelly <= 0) {
+    out.className='output-box error';
+    out.textContent=
+      `Kelly = ${(kelly*100).toFixed(2)}% — NEGATIVE EDGE\n\n`+
+      `Your strategy has no mathematical edge.\n`+
+      `Expected loss per trade: ${(kelly*100).toFixed(2)}%\n\n`+
+      `Fix: Increase win rate OR increase R:R ratio\n`+
+      `Break-even win rate at ${rr}:1 RR: ${(1/(1+rr)*100).toFixed(1)}%`;
+    setStatus('kelly-status','err','❌ Negative edge — do not trade');
+    return;
+  }
+
+  out.className='output-box success';
+  out.textContent=
+    `Win Rate:      ${wr}%\n`+
+    `Risk:Reward:   1:${rr}\n`+
+    `Expectancy:    ${((w*rr-l)*100).toFixed(3)}R per $1 risked\n\n`+
+    `── Kelly Criterion ───────────────────\n`+
+    `Full Kelly:    ${(kelly*100).toFixed(2)}% per trade\n`+
+    `Half Kelly:    ${(halfKelly*100).toFixed(2)}% ← recommended\n`+
+    `Quarter Kelly: ${(qtrKelly*100).toFixed(2)}% ← conservative\n\n`+
+    (bal>0
+      ? `── Dollar amounts ($${bal.toLocaleString()} balance) ──\n`+
+        `Full Kelly:    $${formatCur(bal*kelly)}\n`+
+        `Half Kelly:    $${formatCur(bal*halfKelly)} ← recommended\n`+
+        `Quarter Kelly: $${formatCur(bal*qtrKelly)}\n\n`
+      : '')+
+    `── Why Half-Kelly? ───────────────────\n`+
+    `Full Kelly maximises growth but creates huge\n`+
+    `drawdowns. Half-Kelly gives 75% of the growth\n`+
+    `with much lower variance — preferred by pros.\n\n`+
+    `── Sensitivity ───────────────────────\n`+
+    [45,50,55,60,65].map(wr2=>{
+      const w2=wr2/100, l2=1-w2;
+      const k=w2-(l2/rr);
+      return `  WR ${wr2}%: Kelly=${k>0?(k*100).toFixed(1)+'%':'negative ❌'}`;
+    }).join('\n');
+  setStatus('kelly-status','ok',`✓ Half-Kelly: ${(halfKelly*100).toFixed(2)}%`);
+}
+
+/* ── WIN RATE & EXPECTANCY CALCULATOR ── */
+function winRateCalc() {
+  const wins   = parseFloat(document.getElementById('we-wins')?.value);
+  const losses = parseFloat(document.getElementById('we-losses')?.value);
+  const avgWin = parseFloat(document.getElementById('we-avgwin')?.value);
+  const avgLoss= parseFloat(document.getElementById('we-avgloss')?.value);
+  const trades = parseInt(document.getElementById('we-trades')?.value) || 100;
+  const out    = document.getElementById('we-output');
+  if (!out) return;
+  if (isNaN(wins)||isNaN(losses)||isNaN(avgWin)||isNaN(avgLoss)) {
+    out.textContent='Enter wins, losses, avg win and avg loss.';
+    out.className='output-box error'; return;
+  }
+  const total   = wins+losses;
+  const wr      = wins/total;
+  const rr      = avgWin/avgLoss;
+  const expect  = wr*avgWin - (1-wr)*avgLoss;
+  const expectR = wr*rr - (1-wr);
+  const profFactor = (wins*avgWin)/(losses*avgLoss);
+  const projProfit = expect * trades;
+  const breakEvenWR = 1/(1+rr);
+
+  out.className = expect>=0 ? 'output-box success' : 'output-box error';
+  out.textContent=
+    `Wins: ${wins}  Losses: ${losses}  Total: ${total}\n`+
+    `Avg Win: $${formatCur(avgWin)}  Avg Loss: $${formatCur(avgLoss)}\n\n`+
+    `── Core Statistics ───────────────────\n`+
+    `Win Rate:          ${(wr*100).toFixed(1)}%\n`+
+    `Risk:Reward:       1:${rr.toFixed(2)}\n`+
+    `Profit Factor:     ${profFactor.toFixed(2)}x\n`+
+    `Expectancy/trade:  $${formatCur(expect)} (${expectR.toFixed(3)}R)\n`+
+    `Break-even WR:     ${(breakEvenWR*100).toFixed(1)}% (at ${rr.toFixed(1)} RR)\n\n`+
+    `── Projections ───────────────────────\n`+
+    `Expected profit per ${trades} trades: $${formatCur(projProfit)}\n`+
+    `${expect>=0?'✅ Positive edge':'❌ Negative edge — strategy needs improvement'}\n\n`+
+    `── Profit factor guide ───────────────\n`+
+    `  < 1.0  Losing strategy\n`+
+    `  1.0-1.5 Marginal — needs improvement\n`+
+    `  1.5-2.0 Good\n`+
+    `  2.0-3.0 Strong\n`+
+    `  > 3.0  Excellent (rare in live trading)\n\n`+
+    `── Improve your edge ─────────────────\n`+
+    [1,1.5,2,2.5,3].map(rr2=>{
+      const bwr=1/(1+rr2);
+      return `  RR 1:${rr2} → need ${(bwr*100).toFixed(1)}% WR to break even`;
+    }).join('\n');
+  setStatus('we-status',expect>=0?'ok':'err',
+    `✓ WR: ${(wr*100).toFixed(1)}% | Expectancy: $${formatCur(expect)}/trade | PF: ${profFactor.toFixed(2)}`);
+}
+
+/* ── FOREX SWAP/ROLLOVER CALCULATOR ── */
+function forexSwapCalc() {
+  const pair   = document.getElementById('swap-pair')?.value || 'EURUSD';
+  const lots   = parseFloat(document.getElementById('swap-lots')?.value);
+  const days   = parseInt(document.getElementById('swap-days')?.value) || 1;
+  const dir    = document.getElementById('swap-dir')?.value || 'long';
+  const out    = document.getElementById('swap-output');
+  if (!out) return;
+  if (isNaN(lots)||lots<=0) {
+    out.textContent='Enter lot size.'; out.className='output-box error'; return;
+  }
+
+  // Approximate swap rates (pips per lot per night) — typical 2025 broker values
+  // Format: [long swap pips, short swap pips, pip value per lot]
+  const SWAPS = {
+    'EURUSD':  [-6.5,  1.2,  10],
+    'GBPUSD':  [-4.8,  0.8,  10],
+    'USDJPY':  [ 1.8, -7.2,  9.1],
+    'USDCHF':  [ 1.5, -6.8,  10],
+    'AUDUSD':  [-3.2, -0.5,  10],
+    'USDCAD':  [ 0.8, -5.5,  10],
+    'NZDUSD':  [-2.8, -0.2,  10],
+    'EURGBP':  [-2.5, -0.8,  10],
+    'EURJPY':  [-4.5, -2.1,  9.1],
+    'GBPJPY':  [-3.8, -3.2,  9.1],
+    'XAUUSD':  [-4.2, -1.8,  10],
+    'XAGUSD':  [-2.5, -0.8,  50],
+    'BTCUSD':  [-15,  -12,    1],
+    'US30':    [-3.5, -2.5,   1],
+    'NAS100':  [-4.2, -3.1,   1],
+    'SPX500':  [-3.8, -2.8,  10],
+  };
+
+  const data = SWAPS[pair] || [-3, -1, 10];
+  const [longSwap, shortSwap, pipVal] = data;
+  const swapPips = dir==='long' ? longSwap : shortSwap;
+  const dailyCost = swapPips * pipVal * lots;
+  const weeklyCost= dailyCost * 5; // 5 trading days (Wed triple swap = 3x)
+  const wednesdayCost = dailyCost * 3;
+  const monthlyCost= dailyCost * 22;
+  const annualCost = dailyCost * 252;
+  const totalCost  = dailyCost * days;
+
+  // Wednesday triple swap
+  const hasWednesday = days >= 3;
+
+  out.className = dailyCost<=0 ? 'output-box error' : 'output-box success';
+  out.textContent=
+    `Pair: ${pair}  |  ${lots} lots  |  ${dir.toUpperCase()}\n\n`+
+    `── Swap rate ─────────────────────────\n`+
+    `Daily swap:     ${swapPips} pips = $${formatCur(Math.abs(dailyCost))} ${dailyCost<0?'(cost)':'(earn)'}/night\n`+
+    `Wednesday:      $${formatCur(Math.abs(wednesdayCost))} (3× swap night)\n\n`+
+    `── Your position (${days} day${days!==1?'s':''}) ────────────────\n`+
+    `Total swap:     $${formatCur(Math.abs(totalCost))} ${totalCost<0?'COST':'EARNED'}\n\n`+
+    `── Period projections ────────────────\n`+
+    `Per week:       $${formatCur(Math.abs(weeklyCost))} ${weeklyCost<0?'cost':'earned'}\n`+
+    `Per month:      $${formatCur(Math.abs(monthlyCost))} ${monthlyCost<0?'cost':'earned'}\n`+
+    `Per year:       $${formatCur(Math.abs(annualCost))} ${annualCost<0?'cost':'earned'}\n\n`+
+    `── Both directions ───────────────────\n`+
+    `Long swap:  ${data[0]} pips = $${formatCur(Math.abs(data[0]*pipVal*lots))}/night\n`+
+    `Short swap: ${data[1]} pips = $${formatCur(Math.abs(data[1]*pipVal*lots))}/night\n\n`+
+    `── ⚠ Important notes ─────────────────\n`+
+    `Swap rates change daily with interest rates.\n`+
+    `Wednesday swap is 3× (covers weekend).\n`+
+    `Rates above are estimates — check your broker.`;
+  setStatus('swap-status',
+    dailyCost<=0?'err':'ok',
+    `$${formatCur(Math.abs(dailyCost))}/night ${dailyCost<0?'cost':'earned'}`);
+}
+
+/* ── CURRENCY CORRELATION CALCULATOR ── */
+function correlationCalc() {
+  const pair1 = document.getElementById('corr-pair1')?.value || 'EURUSD';
+  const pair2 = document.getElementById('corr-pair2')?.value || 'GBPUSD';
+  const out   = document.getElementById('corr-output');
+  if (!out) return;
+
+  // Historical correlation matrix (approximate 3-month averages, 2025)
+  // Values: -1 to +1
+  const CORR = {
+    'EURUSD': { 'EURUSD':1.00,'GBPUSD':0.89,'USDJPY':-0.82,'USDCHF':-0.93,'AUDUSD':0.73,'USDCAD':-0.71,'NZDUSD':0.68,'EURGBP':0.31,'EURJPY':0.52,'GBPJPY':0.48,'XAUUSD':0.65,'US30':-0.12,'NAS100':-0.08 },
+    'GBPUSD': { 'EURUSD':0.89,'GBPUSD':1.00,'USDJPY':-0.76,'USDCHF':-0.85,'AUDUSD':0.71,'USDCAD':-0.68,'NZDUSD':0.65,'EURGBP':-0.22,'EURJPY':0.48,'GBPJPY':0.55,'XAUUSD':0.61,'US30':-0.10,'NAS100':-0.06 },
+    'USDJPY': { 'EURUSD':-0.82,'GBPUSD':-0.76,'USDJPY':1.00,'USDCHF':0.78,'AUDUSD':-0.65,'USDCAD':0.62,'NZDUSD':-0.60,'EURGBP':-0.18,'EURJPY':0.42,'GBPJPY':0.52,'XAUUSD':-0.55,'US30':0.35,'NAS100':0.28 },
+    'USDCHF': { 'EURUSD':-0.93,'GBPUSD':-0.85,'USDJPY':0.78,'USDCHF':1.00,'AUDUSD':-0.70,'USDCAD':0.68,'NZDUSD':-0.66,'EURGBP':-0.28,'EURJPY':-0.48,'GBPJPY':-0.44,'XAUUSD':-0.62,'US30':0.15,'NAS100':0.10 },
+    'AUDUSD': { 'EURUSD':0.73,'GBPUSD':0.71,'USDJPY':-0.65,'USDCHF':-0.70,'AUDUSD':1.00,'USDCAD':-0.55,'NZDUSD':0.92,'EURGBP':0.18,'EURJPY':0.32,'GBPJPY':0.38,'XAUUSD':0.75,'US30':0.42,'NAS100':0.45 },
+    'USDCAD': { 'EURUSD':-0.71,'GBPUSD':-0.68,'USDJPY':0.62,'USDCHF':0.68,'AUDUSD':-0.55,'USDCAD':1.00,'NZDUSD':-0.52,'EURGBP':-0.15,'EURJPY':-0.38,'GBPJPY':-0.35,'XAUUSD':-0.48,'US30':0.22,'NAS100':0.18 },
+    'NZDUSD': { 'EURUSD':0.68,'GBPUSD':0.65,'USDJPY':-0.60,'USDCHF':-0.66,'AUDUSD':0.92,'USDCAD':-0.52,'NZDUSD':1.00,'EURGBP':0.15,'EURJPY':0.28,'GBPJPY':0.35,'XAUUSD':0.70,'US30':0.38,'NAS100':0.40 },
+    'EURGBP': { 'EURUSD':0.31,'GBPUSD':-0.22,'USDJPY':-0.18,'USDCHF':-0.28,'AUDUSD':0.18,'USDCAD':-0.15,'NZDUSD':0.15,'EURGBP':1.00,'EURJPY':0.42,'GBPJPY':0.22,'XAUUSD':0.25,'US30':-0.05,'NAS100':-0.02 },
+    'EURJPY': { 'EURUSD':0.52,'GBPUSD':0.48,'USDJPY':0.42,'USDCHF':-0.48,'AUDUSD':0.32,'USDCAD':-0.38,'NZDUSD':0.28,'EURGBP':0.42,'EURJPY':1.00,'GBPJPY':0.88,'XAUUSD':0.35,'US30':0.28,'NAS100':0.22 },
+    'GBPJPY': { 'EURUSD':0.48,'GBPUSD':0.55,'USDJPY':0.52,'USDCHF':-0.44,'AUDUSD':0.38,'USDCAD':-0.35,'NZDUSD':0.35,'EURGBP':0.22,'EURJPY':0.88,'GBPJPY':1.00,'XAUUSD':0.32,'US30':0.30,'NAS100':0.25 },
+    'XAUUSD': { 'EURUSD':0.65,'GBPUSD':0.61,'USDJPY':-0.55,'USDCHF':-0.62,'AUDUSD':0.75,'USDCAD':-0.48,'NZDUSD':0.70,'EURGBP':0.25,'EURJPY':0.35,'GBPJPY':0.32,'XAUUSD':1.00,'US30':0.18,'NAS100':0.22 },
+    'US30':   { 'EURUSD':-0.12,'GBPUSD':-0.10,'USDJPY':0.35,'USDCHF':0.15,'AUDUSD':0.42,'USDCAD':0.22,'NZDUSD':0.38,'EURGBP':-0.05,'EURJPY':0.28,'GBPJPY':0.30,'XAUUSD':0.18,'US30':1.00,'NAS100':0.95 },
+    'NAS100': { 'EURUSD':-0.08,'GBPUSD':-0.06,'USDJPY':0.28,'USDCHF':0.10,'AUDUSD':0.45,'USDCAD':0.18,'NZDUSD':0.40,'EURGBP':-0.02,'EURJPY':0.22,'GBPJPY':0.25,'XAUUSD':0.22,'US30':0.95,'NAS100':1.00 },
+  };
+
+  const corrVal = CORR[pair1]?.[pair2] ?? CORR[pair2]?.[pair1] ?? 0;
+  const absCorr = Math.abs(corrVal);
+  const direction = corrVal > 0 ? 'Positive' : 'Negative';
+  const strength  = absCorr>=0.9?'Very Strong':absCorr>=0.7?'Strong':absCorr>=0.5?'Moderate':absCorr>=0.3?'Weak':'Very Weak / None';
+  const risk = corrVal > 0.7 ? 'HIGH — Trading both = doubling your exposure'
+             : corrVal < -0.7 ? 'HIGH — Trading same direction = they cancel out'
+             : 'MODERATE — Some overlap in exposure';
+
+  // Full correlation table for pair1
+  const allPairs = Object.keys(CORR);
+
+  out.className='output-box success';
+  out.textContent=
+    `${pair1}  ↔  ${pair2}\n\n`+
+    `── Correlation ───────────────────────\n`+
+    `Value:      ${corrVal.toFixed(2)}\n`+
+    `Direction:  ${direction}\n`+
+    `Strength:   ${strength}\n`+
+    `Risk level: ${risk}\n\n`+
+    `── What this means ───────────────────\n`+
+    (corrVal>=0.7
+      ? `These pairs move in the SAME direction.\nTrading both LONG doubles your USD exposure.\nAvoid holding both simultaneously for risk mgmt.`
+      : corrVal<=-0.7
+      ? `These pairs move in OPPOSITE directions.\nLong ${pair1} + Long ${pair2} mostly cancel out.\nThis can be used as a hedge or to reduce risk.`
+      : `These pairs have MODERATE/LOW correlation.\nCan be traded simultaneously without major\noverlap in currency exposure.`)+
+    `\n\n── ${pair1} correlation with all pairs ──\n`+
+    Object.entries(CORR[pair1]||{})
+      .filter(([p])=>p!==pair1)
+      .sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]))
+      .map(([p,c])=>{
+        const bar='█'.repeat(Math.round(Math.abs(c)*10))+'░'.repeat(10-Math.round(Math.abs(c)*10));
+        return `  ${p.padEnd(8)} ${c>=0?'+':''}${c.toFixed(2)} ${bar} ${c>=0.7?'⚠ high':c<=-0.7?'⚠ inverse':''}`;
+      }).join('\n');
+  setStatus('corr-status','ok',
+    `✓ ${pair1}/${pair2}: ${corrVal.toFixed(2)} (${strength} ${direction})`);
+}

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monte Carlo Trading Simulator — 100 Equity Curve Simulator</title>
+<meta name="description" content="Simulate 100 equity curves for any trading strategy using Monte Carlo simulation. Enter win rate, risk %, reward ratio and number of trades. Free professional Monte Carlo trading simulator.">
+<link rel="canonical" href="https://toolsnova.net/monte-carlo-simulator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=14">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="Monte Carlo Trading Simulator — 100 Equity Curves">
+<meta property="og:description" content="Simulate 100 equity curves for any trading strategy. Professional Monte Carlo simulator — free online.">
+<meta property="og:url" content="https://toolsnova.net/monte-carlo-simulator">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monte Carlo Trading Simulator","url":"https://toolsnova.net/monte-carlo-simulator","description":"Simulate 100 equity curves for any trading strategy using Monte Carlo simulation.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<style>
+/* ── Monte Carlo specific styles ── */
+.mc-canvas-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  position: relative;
+}
+.mc-canvas-wrap canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+.mc-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: .72rem;
+  font-family: var(--mono);
+  color: var(--text3);
+}
+.mc-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.mc-legend i {
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+}
+.mc-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.mc-stat {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem .8rem;
+  text-align: center;
+}
+.mc-stat-val {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+.mc-stat-val.red { color: var(--red); }
+.mc-stat-val.yellow { color: #ffd060; }
+.mc-stat-label {
+  font-size: .65rem;
+  color: var(--text3);
+  margin-top: 2px;
+  font-family: var(--mono);
+}
+.mc-progress {
+  height: 4px;
+  background: var(--surface2);
+  border-radius: 2px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+.mc-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width .1s;
+  width: 0%;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link active">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>Monte Carlo Trading Simulator</h1>
+  <p>Simulate 100 random equity curves for your strategy. See the full range of possible outcomes — best case, worst case, median — based on your win rate, risk, and reward ratio.</p>
+</div>
+
+<main>
+
+  <!-- INPUTS -->
+  <div class="toolbar">
+    <button class="btn primary" onclick="mcRun()">▶ Run Simulation</button>
+    <button class="btn" onclick="mcReset()">Reset</button>
+    <button class="btn" onclick="mcDownload()">Save Chart</button>
+    <span class="status-badge" id="mc-status">enter your strategy stats</span>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1rem">
+    <div>
+      <div class="pane-label">Win Rate (%)</div>
+      <input type="number" id="mc-wr" value="55" min="1" max="99" class="b2-input" aria-label="Win rate">
+    </div>
+    <div>
+      <div class="pane-label">Risk per Trade (%)</div>
+      <input type="number" id="mc-risk" value="1" min="0.1" max="10" step="0.1" class="b2-input" aria-label="Risk per trade">
+    </div>
+    <div>
+      <div class="pane-label">Reward Ratio (R)</div>
+      <input type="number" id="mc-rr" value="1.5" min="0.1" step="0.1" class="b2-input" aria-label="Reward ratio">
+    </div>
+    <div>
+      <div class="pane-label">Number of Trades</div>
+      <input type="number" id="mc-trades" value="100" min="10" max="500" class="b2-input" aria-label="Number of trades">
+    </div>
+    <div>
+      <div class="pane-label">Starting Balance ($)</div>
+      <input type="number" id="mc-balance" value="10000" class="b2-input" aria-label="Starting balance">
+    </div>
+    <div>
+      <div class="pane-label">Simulations</div>
+      <select id="mc-sims" class="mode-select" style="width:100%">
+        <option value="50">50 curves</option>
+        <option value="100" selected>100 curves</option>
+        <option value="200">200 curves</option>
+        <option value="500">500 curves</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Prop firm overlay options -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem 1rem;margin-bottom:1rem;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+    <div style="font-size:.75rem;color:var(--text2);font-weight:600">Prop Firm Rules:</div>
+    <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text2);cursor:pointer">
+      <input type="checkbox" id="mc-maxdd-on"> Max Drawdown
+      <input type="number" id="mc-maxdd" value="10" min="1" max="50" style="width:52px" class="b2-input">%
+    </label>
+    <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text2);cursor:pointer">
+      <input type="checkbox" id="mc-target-on"> Profit Target
+      <input type="number" id="mc-target" value="8" min="1" max="50" style="width:52px" class="b2-input">%
+    </label>
+    <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text2);cursor:pointer">
+      <input type="checkbox" id="mc-dailydd-on"> Daily DD
+      <input type="number" id="mc-dailydd" value="5" min="1" max="20" style="width:52px" class="b2-input">%
+    </label>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="mc-progress" id="mc-progress-wrap" style="display:none">
+    <div class="mc-progress-bar" id="mc-progress-bar"></div>
+  </div>
+
+  <!-- CANVAS -->
+  <div class="mc-canvas-wrap" id="mc-canvas-wrap">
+    <canvas id="mc-canvas" width="1200" height="500"
+      style="background:#0c0c0e;border-radius:6px;cursor:crosshair"
+      onmousemove="mcTooltip(event)" onmouseleave="mcHideTooltip()"></canvas>
+    <div id="mc-tooltip" style="display:none;position:absolute;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:.4rem .7rem;font-size:.72rem;font-family:var(--mono);color:var(--text);pointer-events:none;z-index:10"></div>
+    <div class="mc-legend">
+      <span><i style="background:#7fff6f;opacity:.25"></i> All curves</span>
+      <span><i style="background:#7fff6f"></i> Median curve</span>
+      <span><i style="background:#60cfff"></i> Best 10%</span>
+      <span><i style="background:#ff6060"></i> Worst 10%</span>
+      <span><i style="background:#ffd060;height:1px"></i> Profit target</span>
+      <span><i style="background:#ff6060;height:1px"></i> Max drawdown</span>
+    </div>
+  </div>
+
+  <!-- STATS GRID -->
+  <div class="mc-stats-grid" id="mc-stats" style="display:none"></div>
+
+  <!-- DISTRIBUTION -->
+  <div id="mc-distribution" style="display:none;margin-top:1rem">
+    <div class="pane-label" style="margin-bottom:8px">Final balance distribution</div>
+    <canvas id="mc-dist-canvas" width="1200" height="160"
+      style="width:100%;height:auto;background:#0c0c0e;border-radius:6px;border:1px solid var(--border)"></canvas>
+  </div>
+
+  <!-- TEXT RESULTS -->
+  <div id="mc-results" style="display:none;margin-top:1rem">
+    <div class="pane-label">Simulation summary <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+    <div class="output-box" id="mc-output" onclick="copyEl('mc-output')"
+      style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What is Monte Carlo simulation in trading?</div>
+      <div class="faq-a">Monte Carlo simulation runs hundreds of randomised trade sequences using your strategy's statistics (win rate, R:R, risk per trade) to show the full range of possible outcomes. Instead of one expected equity curve, you see 100 different paths your account could realistically take — from best case to worst case. It's used by professional quant traders and fund managers to stress-test strategies before deploying real capital.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Why do the curves look so different even with the same stats?</div>
+      <div class="faq-a">Because of variance — the natural randomness in trade outcomes. Even a profitable strategy with 55% win rate will sometimes produce 8-10 consecutive losses purely by chance. Monte Carlo reveals this reality: your strategy might end up +40% or barely break even after 100 trades, even with a genuine edge. The median curve (green) shows the most likely path, while the spread of curves shows the realistic range of outcomes.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How do I use this for prop firm challenge planning?</div>
+      <div class="faq-a">Enable the Prop Firm Rules overlays — set your max drawdown (e.g. 10%) and profit target (e.g. 8%). The simulator then shows how many curves hit the target without breaching the drawdown, giving you your real probability of passing. If less than 50% of curves pass, you need to adjust your risk per trade, increase your win rate, or improve your R:R before attempting the challenge.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What is the maximum drawdown in the simulation?</div>
+      <div class="faq-a">The simulator tracks the maximum peak-to-trough decline for each equity curve across all trades. The worst-case max drawdown shown in the stats is the highest drawdown seen across all simulated curves — this represents the worst scenario your strategy could realistically face given your statistics. Your risk per trade is the primary lever to control maximum drawdown.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many simulations should I run?</div>
+      <div class="faq-a">100 simulations gives a reliable visual picture and is fast. 500 simulations gives more statistically precise probability estimates (e.g. exact pass rate). For final strategy validation before a real prop firm challenge, run 500. For quick visual checks of a strategy change, 100 is sufficient.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2 class="related-title">Related Tools</h2>
+    <div class="related-grid">
+      <a href="challenge-pass-probability.html" class="related-card"><span class="related-name">Pass Probability</span><span class="related-arrow">→</span></a>
+      <a href="kelly-criterion-calculator.html" class="related-card"><span class="related-name">Kelly Criterion</span><span class="related-arrow">→</span></a>
+      <a href="win-rate-expectancy-calculator.html" class="related-card"><span class="related-name">Win Rate & Expectancy</span><span class="related-arrow">→</span></a>
+      <a href="risk-of-ruin-calculator.html" class="related-card"><span class="related-name">Risk of Ruin</span><span class="related-arrow">→</span></a>
+      <a href="prop-firm-challenge-calculator.html" class="related-card"><span class="related-name">Challenge Calculator</span><span class="related-arrow">→</span></a>
+      <a href="daily-drawdown-calculator.html" class="related-card"><span class="related-name">Daily Drawdown</span><span class="related-arrow">→</span></a>
+      <a href="position-scaling-calculator.html" class="related-card"><span class="related-name">Position Scaling</span><span class="related-arrow">→</span></a>
+      <a href="drawdown-calculator.html" class="related-card"><span class="related-name">Drawdown Calculator</span><span class="related-arrow">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<div class="copy-toast" id="toast"></div>
+<script src="app.js?v=14"></script>
+<script>
+/* ════════════════════════════════════════════════════════════
+   MONTE CARLO TRADING SIMULATOR
+   Self-contained — canvas rendering, tooltip, download
+   ════════════════════════════════════════════════════════════ */
+
+let mcCurves = [];
+let mcParams = {};
+
+function mcRun() {
+  const wr      = parseFloat(document.getElementById('mc-wr').value) / 100;
+  const risk    = parseFloat(document.getElementById('mc-risk').value) / 100;
+  const rr      = parseFloat(document.getElementById('mc-rr').value);
+  const trades  = parseInt(document.getElementById('mc-trades').value);
+  const balance = parseFloat(document.getElementById('mc-balance').value);
+  const sims    = parseInt(document.getElementById('mc-sims').value);
+  const maxDDOn = document.getElementById('mc-maxdd-on').checked;
+  const targetOn= document.getElementById('mc-target-on').checked;
+  const dailyOn = document.getElementById('mc-dailydd-on').checked;
+  const maxDDPct= parseFloat(document.getElementById('mc-maxdd').value) / 100;
+  const tgtPct  = parseFloat(document.getElementById('mc-target').value) / 100;
+  const dailyPct= parseFloat(document.getElementById('mc-dailydd').value) / 100;
+
+  if (isNaN(wr)||isNaN(risk)||isNaN(rr)||isNaN(trades)||isNaN(balance)||
+      wr<=0||wr>=1||risk<=0||rr<=0||trades<10||balance<=0) {
+    setStatus('mc-status','err','Invalid inputs — check values'); return;
+  }
+
+  mcParams = { wr, risk, rr, trades, balance, sims, maxDDOn, targetOn, dailyOn, maxDDPct, tgtPct, dailyPct };
+
+  // Show progress bar
+  const prog = document.getElementById('mc-progress-wrap');
+  const bar  = document.getElementById('mc-progress-bar');
+  prog.style.display = 'block';
+
+  // Run simulations in chunks to avoid blocking UI
+  mcCurves = [];
+  let done = 0;
+  const CHUNK = 50;
+
+  function runChunk() {
+    for (let s = 0; s < CHUNK && done < sims; s++, done++) {
+      const curve = [balance];
+      let bal = balance, peak = balance, failed = false, won = false;
+
+      for (let t = 0; t < trades; t++) {
+        const isWin = Math.random() < wr;
+        if (isWin) bal *= (1 + risk * rr);
+        else       bal *= (1 - risk);
+        bal = Math.max(0, bal);
+        if (bal > peak) peak = bal;
+
+        // Check prop firm rules
+        if (maxDDOn && (peak - bal) / peak >= maxDDPct) { failed = true; }
+        if (dailyOn && (curve[curve.length-1] - bal) / curve[curve.length-1] >= dailyPct) { failed = true; }
+        if (targetOn && (bal - balance) / balance >= tgtPct) { won = true; }
+
+        curve.push(failed ? null : bal);
+        if (failed || won) {
+          // Fill rest with last value for visual
+          const lastVal = failed ? bal : bal;
+          for (let r = t+1; r < trades; r++) curve.push(failed ? null : lastVal);
+          break;
+        }
+      }
+      curve.failed = failed;
+      curve.won    = won;
+      mcCurves.push(curve);
+    }
+    bar.style.width = (done/sims*100) + '%';
+    if (done < sims) {
+      requestAnimationFrame(runChunk);
+    } else {
+      prog.style.display = 'none';
+      mcDraw();
+      mcShowStats();
+    }
+  }
+  runChunk();
+  setStatus('mc-status','ok','Running...');
+}
+
+function mcDraw() {
+  const canvas = document.getElementById('mc-canvas');
+  const ctx    = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const PAD = { top:30, right:20, bottom:40, left:70 };
+  const { balance, trades, maxDDOn, targetOn, maxDDPct, tgtPct } = mcParams;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Find global min/max for y-axis
+  let globalMin = Infinity, globalMax = -Infinity;
+  mcCurves.forEach(curve => {
+    curve.forEach(v => {
+      if (v != null) {
+        if (v < globalMin) globalMin = v;
+        if (v > globalMax) globalMax = v;
+      }
+    });
+  });
+  // Add padding
+  const range = globalMax - globalMin || 1;
+  globalMin = Math.max(0, globalMin - range * 0.05);
+  globalMax = globalMax + range * 0.05;
+
+  const toX = t => PAD.left + (t / (trades)) * (W - PAD.left - PAD.right);
+  const toY = v => PAD.top + (1 - (v - globalMin) / (globalMax - globalMin)) * (H - PAD.top - PAD.bottom);
+
+  // Background grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 5; i++) {
+    const y = PAD.top + i * (H - PAD.top - PAD.bottom) / 5;
+    ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(W - PAD.right, y); ctx.stroke();
+  }
+  for (let i = 0; i <= 10; i++) {
+    const x = PAD.left + i * (W - PAD.left - PAD.right) / 10;
+    ctx.beginPath(); ctx.moveTo(x, PAD.top); ctx.lineTo(x, H - PAD.bottom); ctx.stroke();
+  }
+
+  // Y axis labels
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '11px IBM Plex Mono, monospace';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 5; i++) {
+    const val = globalMin + (globalMax - globalMin) * (1 - i/5);
+    const y   = PAD.top + i * (H - PAD.top - PAD.bottom) / 5;
+    ctx.fillText('$' + Math.round(val).toLocaleString(), PAD.left - 5, y + 4);
+  }
+
+  // X axis labels (trade numbers)
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= 10; i++) {
+    const t = Math.round(i * trades / 10);
+    const x = toX(t);
+    ctx.fillText(t, x, H - PAD.bottom + 16);
+  }
+  ctx.fillText('Trades', W/2, H - 2);
+
+  // Starting balance line
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.setLineDash([4,4]);
+  ctx.lineWidth = 1;
+  const startY = toY(balance);
+  ctx.beginPath(); ctx.moveTo(PAD.left, startY); ctx.lineTo(W - PAD.right, startY); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Prop firm lines
+  if (maxDDOn) {
+    const ddY = toY(balance * (1 - maxDDPct));
+    ctx.strokeStyle = 'rgba(255,96,96,0.7)';
+    ctx.setLineDash([6,3]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(PAD.left, ddY); ctx.lineTo(W - PAD.right, ddY); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,96,96,0.8)';
+    ctx.fillText('Max DD', PAD.left + 35, ddY - 4);
+    ctx.setLineDash([]);
+  }
+  if (targetOn) {
+    const tgtY = toY(balance * (1 + tgtPct));
+    ctx.strokeStyle = 'rgba(255,208,96,0.7)';
+    ctx.setLineDash([6,3]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(PAD.left, tgtY); ctx.lineTo(W - PAD.right, tgtY); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,208,96,0.8)';
+    ctx.textAlign = 'left';
+    ctx.fillText('Target', PAD.left + 5, tgtY - 4);
+    ctx.textAlign = 'center';
+    ctx.setLineDash([]);
+  }
+
+  // Sort curves by final value
+  const sorted = [...mcCurves].sort((a,b) => {
+    const av = a[a.length-1] ?? 0, bv = b[b.length-1] ?? 0;
+    return av - bv;
+  });
+  const n = sorted.length;
+
+  // Draw all curves — faint
+  mcCurves.forEach(curve => {
+    const finalVal = curve[curve.length-1];
+    const isFailed = curve.failed;
+    ctx.strokeStyle = isFailed
+      ? 'rgba(255,96,96,0.12)'
+      : 'rgba(127,255,111,0.10)';
+    ctx.lineWidth = 0.8;
+    ctx.beginPath();
+    let started = false;
+    curve.forEach((v, t) => {
+      if (v == null) return;
+      const x = toX(t), y = toY(v);
+      if (!started) { ctx.moveTo(x, y); started = true; }
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  });
+
+  // Draw worst 10% — red slightly brighter
+  sorted.slice(0, Math.floor(n*0.1)).forEach(curve => {
+    ctx.strokeStyle = 'rgba(255,96,96,0.35)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    let started = false;
+    curve.forEach((v, t) => {
+      if (v == null) return;
+      const x=toX(t), y=toY(v);
+      if (!started) { ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+  });
+
+  // Draw best 10% — blue brighter
+  sorted.slice(Math.floor(n*0.9)).forEach(curve => {
+    ctx.strokeStyle = 'rgba(96,207,255,0.35)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    let started = false;
+    curve.forEach((v, t) => {
+      if (v == null) return;
+      const x=toX(t), y=toY(v);
+      if (!started) { ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+  });
+
+  // Median curve — bright green
+  const medianCurve = sorted[Math.floor(n/2)];
+  ctx.strokeStyle = '#7fff6f';
+  ctx.lineWidth = 2.5;
+  ctx.shadowColor = '#7fff6f';
+  ctx.shadowBlur = 6;
+  ctx.beginPath();
+  let mStarted = false;
+  medianCurve.forEach((v, t) => {
+    if (v == null) return;
+    const x=toX(t), y=toY(v);
+    if (!mStarted) { ctx.moveTo(x,y); mStarted=true; } else ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Store draw params for tooltip
+  canvas._mcMeta = { toX, toY, PAD, trades, globalMin, globalMax, sorted };
+
+  // Draw distribution chart
+  mcDrawDistribution();
+}
+
+function mcDrawDistribution() {
+  const canvas = document.getElementById('mc-dist-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const { balance } = mcParams;
+
+  // Final balances
+  const finals = mcCurves.map(c => c[c.length-1] ?? 0).sort((a,b)=>a-b);
+  const min = finals[0], max = finals[finals.length-1];
+  const BINS = 40;
+  const binSize = (max - min) / BINS || 1;
+  const bins = new Array(BINS).fill(0);
+  finals.forEach(v => {
+    const b = Math.min(BINS-1, Math.floor((v-min)/binSize));
+    bins[b]++;
+  });
+  const maxBin = Math.max(...bins);
+  const PAD = { top:10, right:10, bottom:24, left:55 };
+
+  ctx.clearRect(0,0,W,H);
+
+  // Draw bars
+  bins.forEach((count, i) => {
+    const x  = PAD.left + i * (W-PAD.left-PAD.right)/BINS;
+    const bw = (W-PAD.left-PAD.right)/BINS - 1;
+    const bh = count/maxBin * (H-PAD.top-PAD.bottom);
+    const val= min + i*binSize;
+    const isProfit = val >= balance;
+    ctx.fillStyle = isProfit ? 'rgba(127,255,111,0.6)' : 'rgba(255,96,96,0.5)';
+    ctx.fillRect(x, H-PAD.bottom-bh, bw, bh);
+  });
+
+  // Axis labels
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '10px IBM Plex Mono, monospace';
+  ctx.textAlign = 'center';
+  [0, 0.25, 0.5, 0.75, 1].forEach(pct => {
+    const val = min + pct*(max-min);
+    const x   = PAD.left + pct*(W-PAD.left-PAD.right);
+    ctx.fillText('$'+Math.round(val).toLocaleString(), x, H-6);
+  });
+
+  // Starting balance line
+  const startX = PAD.left + (balance-min)/(max-min)*(W-PAD.left-PAD.right);
+  ctx.strokeStyle='rgba(255,255,255,0.5)';
+  ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(startX,PAD.top); ctx.lineTo(startX,H-PAD.bottom); ctx.stroke();
+  ctx.setLineDash([]);
+
+  document.getElementById('mc-distribution').style.display='block';
+}
+
+function mcShowStats() {
+  const { balance, trades, sims, maxDDOn, targetOn, tgtPct } = mcParams;
+  const finals = mcCurves.map(c => c[c.length-1] ?? 0);
+  const sorted  = [...finals].sort((a,b)=>a-b);
+  const n = sorted.length;
+
+  const median  = sorted[Math.floor(n/2)];
+  const p10     = sorted[Math.floor(n*0.1)];
+  const p90     = sorted[Math.floor(n*0.9)];
+  const mean    = finals.reduce((s,v)=>s+v,0)/n;
+  const profitable = finals.filter(v=>v>balance).length;
+  const profitPct  = (profitable/n*100).toFixed(0);
+  const failed     = mcCurves.filter(c=>c.failed).length;
+  const passed     = targetOn ? mcCurves.filter(c=>c.won).length : null;
+
+  // Max drawdowns
+  const maxDDs = mcCurves.map(curve => {
+    let peak=balance, maxDD=0;
+    curve.forEach(v => {
+      if(v==null) return;
+      if(v>peak) peak=v;
+      const dd=(peak-v)/peak;
+      if(dd>maxDD) maxDD=dd;
+    });
+    return maxDD*100;
+  });
+  const avgMaxDD = maxDDs.reduce((s,v)=>s+v,0)/n;
+  const worstDD  = Math.max(...maxDDs);
+
+  const fmt = v => '$'+Math.round(v).toLocaleString();
+  const pct = v => (((v-balance)/balance)*100).toFixed(1)+'%';
+
+  const stats = [
+    { val: fmt(median),   label: 'Median Result',    color: (median>=balance?'':'red') },
+    { val: pct(median),   label: 'Median Return',     color: (median>=balance?'':'red') },
+    { val: profitPct+'%', label: 'Profitable Curves', color: (parseInt(profitPct)>=50?'':'red') },
+    { val: fmt(p10),      label: 'Worst 10% (P10)',   color: 'red' },
+    { val: fmt(p90),      label: 'Best 10% (P90)',    color: '' },
+    { val: avgMaxDD.toFixed(1)+'%', label: 'Avg Max Drawdown', color: 'yellow' },
+    { val: worstDD.toFixed(1)+'%', label: 'Worst Max DD',      color: 'red' },
+    ...(passed!==null ? [{ val: (passed/n*100).toFixed(0)+'%', label: 'Challenge Pass Rate', color: passed/n>=0.5?'':'red' }] : []),
+    ...(failed>0 ? [{ val: (failed/n*100).toFixed(0)+'%', label: 'Breached DD Limit', color: 'red' }] : []),
+  ];
+
+  document.getElementById('mc-stats').innerHTML = stats.map(s=>
+    `<div class="mc-stat"><div class="mc-stat-val ${s.color}">${s.val}</div><div class="mc-stat-label">${s.label}</div></div>`
+  ).join('');
+  document.getElementById('mc-stats').style.display='grid';
+
+  // Text output
+  const out = document.getElementById('mc-output');
+  out.textContent =
+    `Monte Carlo Trading Simulator — ToolsNova\n`+
+    `${'─'.repeat(42)}\n`+
+    `Strategy:   WR ${(mcParams.wr*100).toFixed(0)}% | RR 1:${mcParams.rr} | Risk ${(mcParams.risk*100).toFixed(1)}%/trade\n`+
+    `Simulations:${n} curves | ${trades} trades each | Start $${balance.toLocaleString()}\n\n`+
+    `── Results ──────────────────────────\n`+
+    `Median result:     ${fmt(median)} (${pct(median)})\n`+
+    `Mean result:       ${fmt(mean)} (${(((mean-balance)/balance)*100).toFixed(1)}%)\n`+
+    `Profitable curves: ${profitable}/${n} (${profitPct}%)\n`+
+    `P10 (worst 10%):   ${fmt(p10)} (${pct(p10)})\n`+
+    `P90 (best 10%):    ${fmt(p90)} (${pct(p90)})\n\n`+
+    `── Drawdown ─────────────────────────\n`+
+    `Avg max drawdown:  ${avgMaxDD.toFixed(2)}%\n`+
+    `Worst max drawdown:${worstDD.toFixed(2)}%\n`+
+    (failed>0?`DD breach rate:    ${failed}/${n} curves (${(failed/n*100).toFixed(0)}%)\n`:'')+
+    (passed!==null?`Challenge pass:    ${passed}/${n} curves (${(passed/n*100).toFixed(0)}%)\n`:'')+
+    `\nGenerated by ToolsNova.net`;
+  document.getElementById('mc-results').style.display='block';
+
+  setStatus('mc-status','ok',
+    `✓ ${n} curves | Median: ${pct(median)} | ${profitPct}% profitable`);
+}
+
+function mcTooltip(e) {
+  const canvas = document.getElementById('mc-canvas');
+  const meta   = canvas._mcMeta;
+  if (!meta || !mcCurves.length) return;
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const mx = (e.clientX - rect.left) * scaleX;
+  const { toX, PAD, trades } = meta;
+  const tradeIdx = Math.round((mx - PAD.left) / (canvas.width - PAD.left - 20) * trades);
+  if (tradeIdx < 0 || tradeIdx > trades) return;
+
+  const vals = mcCurves.map(c=>c[tradeIdx]).filter(v=>v!=null).sort((a,b)=>a-b);
+  if (!vals.length) return;
+  const med = vals[Math.floor(vals.length/2)];
+  const p10 = vals[Math.floor(vals.length*0.1)];
+  const p90 = vals[Math.floor(vals.length*0.9)];
+
+  const tip = document.getElementById('mc-tooltip');
+  tip.style.display='block';
+  tip.style.left = (e.clientX - rect.left + 12)+'px';
+  tip.style.top  = (e.clientY - rect.top - 60)+'px';
+  tip.innerHTML =
+    `<b>Trade ${tradeIdx}</b><br>`+
+    `Median: $${Math.round(med).toLocaleString()}<br>`+
+    `P10: $${Math.round(p10).toLocaleString()}<br>`+
+    `P90: $${Math.round(p90).toLocaleString()}`;
+}
+
+function mcHideTooltip() {
+  document.getElementById('mc-tooltip').style.display='none';
+}
+
+function mcReset() {
+  mcCurves=[];
+  mcParams={};
+  const ctx=document.getElementById('mc-canvas').getContext('2d');
+  ctx.clearRect(0,0,1200,500);
+  const ctx2=document.getElementById('mc-dist-canvas').getContext('2d');
+  ctx2.clearRect(0,0,1200,160);
+  document.getElementById('mc-stats').style.display='none';
+  document.getElementById('mc-results').style.display='none';
+  document.getElementById('mc-distribution').style.display='none';
+  document.getElementById('mc-output').textContent='';
+  setStatus('mc-status','','enter your strategy stats');
+}
+
+function mcDownload() {
+  const canvas = document.getElementById('mc-canvas');
+  const a = document.createElement('a');
+  a.download = 'monte-carlo-toolsnova.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js');
+  });
+}
+</script>
+</body>
+</html>

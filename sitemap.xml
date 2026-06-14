@@ -31,6 +31,16 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/blood-pressure-checker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/blood-type-compatibility</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/bmi-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -41,12 +51,27 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/break-even-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/calorie-burn-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/calorie-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://toolsnova.net/case-converter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/cgpa-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -77,6 +102,11 @@
   </url>
   <url>
     <loc>https://toolsnova.net/compound-trading-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/concrete-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -121,7 +151,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/dividend-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/drawdown-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/electricity-cost-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -132,6 +172,11 @@
   </url>
   <url>
     <loc>https://toolsnova.net/fibonacci-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/flooring-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -176,6 +221,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/height-converter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/hex-binary-converter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -192,6 +242,11 @@
   </url>
   <url>
     <loc>https://toolsnova.net/image-compressor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/inflation-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -261,6 +316,16 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/matrix-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/meeting-time-zone-planner</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/mortgage-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -281,7 +346,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/ovulation-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/pace-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/paint-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -326,12 +401,22 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/pregnancy-due-date-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://toolsnova.net/qr-code-generator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/quadratic-equation-solver</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -366,7 +451,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/roi-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/roman-numeral-converter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/roof-pitch-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -391,6 +486,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/significant-figures-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/sip-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -402,6 +502,16 @@
   </url>
   <url>
     <loc>https://toolsnova.net/speed-converter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/square-footage-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/standard-deviation-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -456,6 +566,16 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net/tip-split-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/triangle-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/typing-speed-test</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -472,6 +592,11 @@
   </url>
   <url>
     <loc>https://toolsnova.net/vat-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolsnova.net/vitamin-d-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -5052,3 +5052,913 @@ function screenResCalc() {
     }).join('\n');
   setStatus('sr-status','ok',`✓ ${w}×${h}  ${rw}:${rh}`);
 }
+
+/* ════════════════════════════════════
+   BATCH 12 — 25 NEW TOOLS
+   ════════════════════════════════════ */
+
+/* ── 1. QUADRATIC EQUATION SOLVER ── */
+function quadraticSolve() {
+  const a = parseFloat(document.getElementById('quad-a')?.value);
+  const b = parseFloat(document.getElementById('quad-b')?.value);
+  const c = parseFloat(document.getElementById('quad-c')?.value);
+  const out = document.getElementById('quad-output');
+  if (!out) return;
+  if (isNaN(a)||isNaN(b)||isNaN(c)||a===0) {
+    out.textContent = a===0 ? 'Coefficient a cannot be 0 (not quadratic).' : 'Enter values for a, b, and c.';
+    out.className = 'output-box error'; return;
+  }
+  const disc = b*b - 4*a*c;
+  const fmt = n => parseFloat(n.toFixed(6)).toString();
+  out.className = 'output-box success';
+  if (disc > 0) {
+    const x1 = (-b + Math.sqrt(disc))/(2*a);
+    const x2 = (-b - Math.sqrt(disc))/(2*a);
+    out.textContent =
+      `Equation: ${a}x² + ${b}x + ${c} = 0\n\n`+
+      `Discriminant: ${fmt(disc)} (> 0 → two real roots)\n\n`+
+      `── Solutions ─────────────────────────\n`+
+      `x₁ = ${fmt(x1)}\nx₂ = ${fmt(x2)}\n\n`+
+      `── Steps ─────────────────────────────\n`+
+      `Discriminant = b² - 4ac\n`+
+      `             = ${b}² - 4(${a})(${c})\n`+
+      `             = ${b*b} - ${4*a*c}\n`+
+      `             = ${fmt(disc)}\n\n`+
+      `x = (-b ± √discriminant) / 2a\n`+
+      `x₁ = (${-b} + ${fmt(Math.sqrt(disc))}) / ${2*a} = ${fmt(x1)}\n`+
+      `x₂ = (${-b} - ${fmt(Math.sqrt(disc))}) / ${2*a} = ${fmt(x2)}`;
+  } else if (disc === 0) {
+    const x = -b/(2*a);
+    out.textContent =
+      `Equation: ${a}x² + ${b}x + ${c} = 0\n\n`+
+      `Discriminant: 0 (one repeated root)\n\n`+
+      `x = -b / 2a = ${-b} / ${2*a} = ${fmt(x)}`;
+  } else {
+    const re = -b/(2*a);
+    const im = Math.sqrt(-disc)/(2*a);
+    out.textContent =
+      `Equation: ${a}x² + ${b}x + ${c} = 0\n\n`+
+      `Discriminant: ${fmt(disc)} (< 0 → complex roots)\n\n`+
+      `── Complex Solutions ─────────────────\n`+
+      `x₁ = ${fmt(re)} + ${fmt(im)}i\n`+
+      `x₂ = ${fmt(re)} - ${fmt(im)}i`;
+  }
+  setStatus('quad-status','ok','✓ solved');
+}
+
+/* ── 2. TRIANGLE CALCULATOR ── */
+function triangleCalc() {
+  const mode = document.getElementById('tri-mode')?.value || 'sss';
+  const out  = document.getElementById('tri-output');
+  if (!out) return;
+  const a = parseFloat(document.getElementById('tri-a')?.value) || 0;
+  const b = parseFloat(document.getElementById('tri-b')?.value) || 0;
+  const c = parseFloat(document.getElementById('tri-c')?.value) || 0;
+  const A = parseFloat(document.getElementById('tri-A')?.value) * Math.PI/180 || 0;
+  const B = parseFloat(document.getElementById('tri-B')?.value) * Math.PI/180 || 0;
+  const fmt = n => parseFloat(n.toFixed(4)).toString();
+  const deg = r => parseFloat((r*180/Math.PI).toFixed(4));
+  try {
+    let sa=a,sb=b,sc=c,sA=A,sB=B,sC;
+    if (mode==='sss') {
+      if(!sa||!sb||!sc) { out.textContent='Enter all 3 sides.'; out.className='output-box error'; return; }
+      sA=Math.acos((sb*sb+sc*sc-sa*sa)/(2*sb*sc));
+      sB=Math.acos((sa*sa+sc*sc-sb*sb)/(2*sa*sc));
+      sC=Math.PI-sA-sB;
+    } else if (mode==='sas') {
+      if(!sa||!sb||!sB) { out.textContent='Enter two sides and included angle.'; out.className='output-box error'; return; }
+      sc=Math.sqrt(sa*sa+sb*sb-2*sa*sb*Math.cos(sB));
+      sA=Math.acos((sb*sb+sc*sc-sa*sa)/(2*sb*sc));
+      sC=Math.PI-sA-sB;
+    } else if (mode==='asa') {
+      if(!sA||!sB||!sc) { out.textContent='Enter two angles and included side.'; out.className='output-box error'; return; }
+      sC=Math.PI-sA-sB;
+      sa=sc*Math.sin(sA)/Math.sin(sC);
+      sb=sc*Math.sin(sB)/Math.sin(sC);
+    }
+    const perim = sa+sb+sc;
+    const s = perim/2;
+    const area = Math.sqrt(s*(s-sa)*(s-sb)*(s-sc));
+    out.className='output-box success';
+    out.textContent=
+      `── Sides ─────────────────────────────\n`+
+      `a = ${fmt(sa)}\nb = ${fmt(sb)}\nc = ${fmt(sc)}\n\n`+
+      `── Angles ────────────────────────────\n`+
+      `A = ${deg(sA)}°\nB = ${deg(sB)}°\nC = ${deg(Math.PI-sA-sB)}°\n\n`+
+      `── Properties ────────────────────────\n`+
+      `Perimeter: ${fmt(perim)}\nArea: ${fmt(area)}\n`+
+      `Type: ${sa===sb&&sb===sc?'Equilateral':sa===sb||sb===sc||sa===sc?'Isosceles':'Scalene'}`;
+    setStatus('tri-status','ok','✓ solved');
+  } catch(e) { out.textContent='Invalid triangle values.'; out.className='output-box error'; }
+}
+
+/* ── 3. STANDARD DEVIATION CALCULATOR ── */
+function stdDevCalc() {
+  const raw = document.getElementById('std-input')?.value || '';
+  const out = document.getElementById('std-output');
+  if (!out) return;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n=>!isNaN(n)&&n!==null);
+  if (nums.length < 2) { out.textContent='Enter at least 2 numbers separated by commas or spaces.'; out.className='output-box error'; return; }
+  const n = nums.length;
+  const mean = nums.reduce((s,x)=>s+x,0)/n;
+  const variance = nums.reduce((s,x)=>s+(x-mean)**2,0)/(n-1); // sample
+  const popVariance = nums.reduce((s,x)=>s+(x-mean)**2,0)/n;
+  const std = Math.sqrt(variance);
+  const popStd = Math.sqrt(popVariance);
+  const sorted = [...nums].sort((a,b)=>a-b);
+  const median = n%2===0?(sorted[n/2-1]+sorted[n/2])/2:sorted[Math.floor(n/2)];
+  const fmt = x=>parseFloat(x.toFixed(6)).toString();
+  out.className='output-box success';
+  out.textContent=
+    `Count:              ${n}\n`+
+    `Sum:                ${fmt(nums.reduce((s,x)=>s+x,0))}\n`+
+    `Mean (average):     ${fmt(mean)}\n`+
+    `Median:             ${fmt(median)}\n`+
+    `Min:                ${Math.min(...nums)}\n`+
+    `Max:                ${Math.max(...nums)}\n`+
+    `Range:              ${Math.max(...nums)-Math.min(...nums)}\n\n`+
+    `── Spread ────────────────────────────\n`+
+    `Sample Std Dev:     ${fmt(std)}\n`+
+    `Population Std Dev: ${fmt(popStd)}\n`+
+    `Sample Variance:    ${fmt(variance)}\n`+
+    `Pop. Variance:      ${fmt(popVariance)}\n\n`+
+    `── Data ──────────────────────────────\n`+
+    `${sorted.join(', ')}`;
+  setStatus('std-status','ok',`✓ Mean: ${fmt(mean)} · StdDev: ${fmt(std)}`);
+}
+
+/* ── 4. SIGNIFICANT FIGURES CALCULATOR ── */
+function sigFigCalc() {
+  const inp = document.getElementById('sf-input')?.value?.trim();
+  const round = parseInt(document.getElementById('sf-round')?.value)||3;
+  const out = document.getElementById('sf-output');
+  if (!out) return;
+  if (!inp) { out.textContent='Enter a number.'; out.className='output-box'; return; }
+  const n = parseFloat(inp);
+  if (isNaN(n)) { out.textContent='Invalid number.'; out.className='output-box error'; return; }
+  // Count sig figs in input
+  const countSigFigs = s => {
+    s = s.replace(/^-/,'').replace(',','.');
+    if (s.includes('.')) return s.replace('.','').replace(/^0+/,'').length;
+    return s.replace(/0+$/,'').replace(/^0+/,'').length || 1;
+  };
+  const originalSF = countSigFigs(inp);
+  // Round to N sig figs
+  const rounded = parseFloat(n.toPrecision(round));
+  out.className='output-box success';
+  out.textContent=
+    `Input:                  ${inp}\n`+
+    `Significant figures:    ${originalSF}\n\n`+
+    `── Rounded to sig figs ───────────────\n`+
+    `${round} sig figs: ${rounded.toPrecision(round)}\n`+
+    `1 sig fig:  ${n.toPrecision(1)}\n`+
+    `2 sig figs: ${n.toPrecision(2)}\n`+
+    `3 sig figs: ${n.toPrecision(3)}\n`+
+    `4 sig figs: ${n.toPrecision(4)}\n`+
+    `5 sig figs: ${n.toPrecision(5)}\n\n`+
+    `── Rules for counting sig figs ───────\n`+
+    `  All non-zero digits are significant\n`+
+    `  Zeros between non-zeros are significant\n`+
+    `  Trailing zeros after decimal point are significant\n`+
+    `  Leading zeros are NOT significant`;
+  setStatus('sf-status','ok',`✓ ${originalSF} sig figs in input`);
+}
+
+/* ── 5. CONCRETE CALCULATOR ── */
+function concreteCalc() {
+  const shape = document.getElementById('con-shape')?.value || 'slab';
+  const unit  = document.getElementById('con-unit')?.value || 'ft';
+  const out   = document.getElementById('con-output');
+  if (!out) return;
+  const l = parseFloat(document.getElementById('con-l')?.value);
+  const w = parseFloat(document.getElementById('con-w')?.value);
+  const h = parseFloat(document.getElementById('con-h')?.value);
+  const d = parseFloat(document.getElementById('con-d')?.value)||0;
+  if (isNaN(l)||isNaN(w)||isNaN(h)) { out.textContent='Enter all dimensions.'; out.className='output-box error'; return; }
+  let volCubicFt;
+  if (unit==='m') { volCubicFt = l*w*h*35.3147; }
+  else { volCubicFt = l*w*h/12; } // ft + inches for h
+  const volCubicYd = volCubicFt/27;
+  const volCubicM  = volCubicFt*0.0283168;
+  // Add 10% waste
+  const bags60lb = Math.ceil(volCubicYd*45); // ~45 x 60lb bags per cu yd
+  const bags80lb = Math.ceil(volCubicYd*34);
+  out.className='output-box success';
+  out.textContent=
+    `Dimensions: ${l} × ${w} × ${h} ${unit==='ft'?'ft (h in inches)':unit}\n\n`+
+    `── Volume ────────────────────────────\n`+
+    `Cubic feet:  ${volCubicFt.toFixed(2)} ft³\n`+
+    `Cubic yards: ${volCubicYd.toFixed(2)} yd³\n`+
+    `Cubic metres:${volCubicM.toFixed(2)} m³\n\n`+
+    `── Concrete bags needed ──────────────\n`+
+    `60 lb bags:  ${bags60lb} bags (inc. 10% waste)\n`+
+    `80 lb bags:  ${bags80lb} bags (inc. 10% waste)\n\n`+
+    `── Ready-mix concrete ────────────────\n`+
+    `Order:       ${(volCubicYd*1.1).toFixed(2)} yd³ (with 10% extra)`;
+  setStatus('con-status','ok',`✓ ${volCubicYd.toFixed(2)} yd³`);
+}
+
+/* ── 6. PAINT CALCULATOR ── */
+function paintCalc() {
+  const rooms = document.querySelectorAll('.paint-room');
+  const coats = parseInt(document.getElementById('paint-coats')?.value)||2;
+  const coverage = parseFloat(document.getElementById('paint-coverage')?.value)||400; // sq ft per gallon
+  const out = document.getElementById('paint-output');
+  if (!out) return;
+  let totalSqFt = 0;
+  rooms.forEach(room => {
+    const l = parseFloat(room.querySelector('.pr-l')?.value)||0;
+    const w = parseFloat(room.querySelector('.pr-w')?.value)||0;
+    const h = parseFloat(room.querySelector('.pr-h')?.value)||8;
+    const doors = parseInt(room.querySelector('.pr-doors')?.value)||0;
+    const windows = parseInt(room.querySelector('.pr-windows')?.value)||0;
+    const wallArea = 2*(l+w)*h - doors*21 - windows*15;
+    totalSqFt += Math.max(0,wallArea);
+  });
+  if (totalSqFt===0) { out.textContent='Add room dimensions.'; out.className='output-box'; return; }
+  const totalWithCoats = totalSqFt * coats;
+  const gallons = totalWithCoats/coverage;
+  const quarts  = gallons*4;
+  out.className='output-box success';
+  out.textContent=
+    `Wall area:      ${totalSqFt.toFixed(0)} sq ft\n`+
+    `Coats:          ${coats}\n`+
+    `Total to cover: ${totalWithCoats.toFixed(0)} sq ft\n`+
+    `Coverage:       ${coverage} sq ft/gallon\n\n`+
+    `── Paint needed ──────────────────────\n`+
+    `Gallons: ${gallons.toFixed(2)} gal\n`+
+    `Quarts:  ${quarts.toFixed(1)} qt\n\n`+
+    `── Buy ───────────────────────────────\n`+
+    `Round up: ${Math.ceil(gallons)} gallons\n`+
+    `With 10% extra: ${Math.ceil(gallons*1.1)} gallons`;
+  setStatus('paint-status','ok',`✓ ${Math.ceil(gallons)} gallons needed`);
+}
+function paintAddRoom() {
+  const cont = document.getElementById('paint-rooms');
+  if (!cont) return;
+  const n = cont.children.length+1;
+  const div = document.createElement('div');
+  div.style='background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem;margin-bottom:8px';
+  div.className='paint-room';
+  div.innerHTML=`<div style="font-size:.75rem;color:var(--accent);margin-bottom:6px">Room ${n}</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">
+      <div><div class="pane-label" style="font-size:.65rem">Length (ft)</div><input class="b2-input pr-l" type="number" placeholder="12" oninput="paintCalc()"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Width (ft)</div><input class="b2-input pr-w" type="number" placeholder="10" oninput="paintCalc()"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Height (ft)</div><input class="b2-input pr-h" type="number" placeholder="8" oninput="paintCalc()"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Doors</div><input class="b2-input pr-doors" type="number" placeholder="1" oninput="paintCalc()"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Windows</div><input class="b2-input pr-windows" type="number" placeholder="1" oninput="paintCalc()"></div>
+    </div>`;
+  cont.appendChild(div);
+  paintCalc();
+}
+
+/* ── 7. SQUARE FOOTAGE CALCULATOR ── */
+function sqftCalc() {
+  const shape = document.getElementById('sqft-shape')?.value||'rectangle';
+  const out   = document.getElementById('sqft-output');
+  if (!out) return;
+  const l = parseFloat(document.getElementById('sqft-l')?.value)||0;
+  const w = parseFloat(document.getElementById('sqft-w')?.value)||0;
+  const unit = document.getElementById('sqft-unit')?.value||'ft';
+  const toFt = {ft:1,in:1/12,m:3.28084,cm:0.0328084,yd:3};
+  const conv = toFt[unit]||1;
+  const lFt=l*conv, wFt=w*conv;
+  let area=0;
+  if(shape==='rectangle') area=lFt*wFt;
+  else if(shape==='circle') area=Math.PI*(lFt/2)**2;
+  else if(shape==='triangle') area=0.5*lFt*wFt;
+  const pricePerSqFt = parseFloat(document.getElementById('sqft-price')?.value)||0;
+  out.className='output-box success';
+  out.textContent=
+    `Shape: ${shape}\n`+
+    `Dimensions: ${l} × ${w} ${unit}\n\n`+
+    `── Area ──────────────────────────────\n`+
+    `Square feet:   ${area.toFixed(2)} sq ft\n`+
+    `Square metres: ${(area*0.092903).toFixed(2)} m²\n`+
+    `Square yards:  ${(area/9).toFixed(2)} sq yd\n`+
+    `Acres:         ${(area/43560).toFixed(6)}\n`+
+    (pricePerSqFt>0?`\n── Cost ──────────────────────────────\n$${(area*pricePerSqFt).toFixed(2)} @ $${pricePerSqFt}/sq ft`:'');
+  setStatus('sqft-status','ok',`✓ ${area.toFixed(2)} sq ft`);
+}
+
+/* ── 8. PREGNANCY DUE DATE CALCULATOR ── */
+function pregnancyCalc() {
+  const mode = document.getElementById('preg-mode')?.value||'lmp';
+  const out  = document.getElementById('preg-output');
+  if (!out) return;
+  let lmp;
+  if (mode==='lmp') {
+    const d = document.getElementById('preg-lmp')?.value;
+    if (!d) { out.textContent='Enter your last menstrual period date.'; out.className='output-box'; return; }
+    lmp = new Date(d);
+  } else {
+    const d = document.getElementById('preg-conception')?.value;
+    if (!d) { out.textContent='Enter conception date.'; out.className='output-box'; return; }
+    lmp = new Date(d);
+    lmp.setDate(lmp.getDate()-14);
+  }
+  const due = new Date(lmp); due.setDate(due.getDate()+280);
+  const today = new Date();
+  const daysPreg = Math.floor((today-lmp)/86400000);
+  const weeksPreg = Math.floor(daysPreg/7);
+  const daysMod   = daysPreg%7;
+  const daysLeft  = Math.max(0,Math.floor((due-today)/86400000));
+  const trimester = weeksPreg<13?1:weeksPreg<27?2:3;
+  const fmtDate = d=>d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const milestones = [
+    [13,'End of 1st trimester'],
+    [20,'Anatomy scan (20 weeks)'],
+    [24,'Viability milestone'],
+    [28,'Start of 3rd trimester'],
+    [37,'Full term'],
+    [40,'Due date'],
+  ];
+  out.className='output-box success';
+  out.textContent=
+    `── Pregnancy dates ───────────────────\n`+
+    `Last period:   ${fmtDate(lmp)}\n`+
+    `Due date:      ${fmtDate(due)}\n\n`+
+    `── Current status ────────────────────\n`+
+    `${weeksPreg} weeks and ${daysMod} days pregnant\n`+
+    `Trimester:     ${trimester} of 3\n`+
+    `Days remaining: ${daysLeft} days\n\n`+
+    `── Key milestones ────────────────────\n`+
+    milestones.map(([w,label])=>{
+      const d=new Date(lmp); d.setDate(d.getDate()+w*7);
+      return `  ${label.padEnd(28)} ${d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
+    }).join('\n');
+  setStatus('preg-status','ok',`✓ ${weeksPreg}w ${daysMod}d pregnant`);
+}
+
+/* ── 9. OVULATION CALCULATOR ── */
+function ovulationCalc() {
+  const lmpStr = document.getElementById('ov-lmp')?.value;
+  const cycle  = parseInt(document.getElementById('ov-cycle')?.value)||28;
+  const out    = document.getElementById('ov-output');
+  if (!out) return;
+  if (!lmpStr) { out.textContent='Enter your last period date.'; out.className='output-box'; return; }
+  const lmp = new Date(lmpStr);
+  const ovulation = new Date(lmp); ovulation.setDate(lmp.getDate()+cycle-14);
+  const fertStart = new Date(ovulation); fertStart.setDate(ovulation.getDate()-5);
+  const fertEnd   = new Date(ovulation); fertEnd.setDate(ovulation.getDate()+1);
+  const nextPeriod= new Date(lmp); nextPeriod.setDate(lmp.getDate()+cycle);
+  const fmt=d=>d.toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric'});
+  out.className='output-box success';
+  out.textContent=
+    `Cycle length:       ${cycle} days\n\n`+
+    `── This cycle ────────────────────────\n`+
+    `Period started:     ${fmt(lmp)}\n`+
+    `Fertile window:     ${fmt(fertStart)} → ${fmt(fertEnd)}\n`+
+    `Peak ovulation:     ${fmt(ovulation)} ⭐\n`+
+    `Next period (est):  ${fmt(nextPeriod)}\n\n`+
+    `── Next 3 cycles ─────────────────────\n`+
+    [1,2,3].map(i=>{
+      const np=new Date(lmp); np.setDate(lmp.getDate()+cycle*i);
+      const ov=new Date(np); ov.setDate(np.getDate()+cycle-14);
+      return `  Cycle ${i+1}: Period ${fmt(np)} · Ovulation ${fmt(ov)}`;
+    }).join('\n')+
+    `\n\n  ⭐ = peak fertility day`;
+  setStatus('ov-status','ok',`✓ Ovulation: ${fmt(ovulation)}`);
+}
+
+/* ── 10. ROI CALCULATOR ── */
+function roiCalc() {
+  const invest   = parseFloat(document.getElementById('roi-invest')?.value);
+  const returns  = parseFloat(document.getElementById('roi-return')?.value);
+  const years    = parseFloat(document.getElementById('roi-years')?.value)||1;
+  const out      = document.getElementById('roi-output');
+  if (!out) return;
+  if (isNaN(invest)||isNaN(returns)||invest<=0) {
+    out.textContent='Enter investment amount and net return.'; out.className='output-box error'; return;
+  }
+  const netProfit = returns - invest;
+  const roi = (netProfit/invest)*100;
+  const annualRoi = (Math.pow(returns/invest,1/years)-1)*100;
+  const multiple  = returns/invest;
+  out.className = roi>=0?'output-box success':'output-box error';
+  out.textContent=
+    `Investment:        ${formatCur(invest)}\n`+
+    `Return:            ${formatCur(returns)}\n`+
+    `Period:            ${years} year${years!==1?'s':''}\n\n`+
+    `── Results ───────────────────────────\n`+
+    `Net Profit/Loss:   ${netProfit>=0?'+':''}${formatCur(netProfit)}\n`+
+    `ROI:               ${roi.toFixed(2)}%\n`+
+    `Annualised ROI:    ${annualRoi.toFixed(2)}%/year\n`+
+    `Return Multiple:   ${multiple.toFixed(2)}x\n\n`+
+    `── Comparison ────────────────────────\n`+
+    [0.5,1,2,3,5,10].map(yr=>{
+      const ann=(Math.pow(returns/invest,1/yr)-1)*100;
+      return `  ${yr} yr${yr!==1?'s':' '}: ${ann.toFixed(2)}% annualised ROI`;
+    }).join('\n');
+  setStatus('roi-status',roi>=0?'ok':'err',`✓ ROI: ${roi.toFixed(2)}%`);
+}
+
+/* ── 11. INFLATION CALCULATOR ── */
+function inflationCalc() {
+  const amount  = parseFloat(document.getElementById('inf-amount')?.value);
+  const from    = parseInt(document.getElementById('inf-from')?.value);
+  const to      = parseInt(document.getElementById('inf-to')?.value);
+  const rate    = parseFloat(document.getElementById('inf-rate')?.value)||3.5;
+  const out     = document.getElementById('inf-output');
+  if (!out) return;
+  if (isNaN(amount)||isNaN(from)||isNaN(to)||amount<=0) {
+    out.textContent='Enter amount and years.'; out.className='output-box error'; return;
+  }
+  const years = to - from;
+  const future = amount * Math.pow(1+rate/100, years);
+  const loss   = future - amount;
+  const purchPower = (amount/future*100);
+  out.className='output-box success';
+  out.textContent=
+    `Amount in ${from}:    ${formatCur(amount)}\n`+
+    `Average inflation:  ${rate}%/year\n`+
+    `Years:              ${Math.abs(years)}\n\n`+
+    `── Result ────────────────────────────\n`+
+    `Value in ${to}:       ${formatCur(future)}\n`+
+    `Inflation impact:   +${formatCur(loss)}\n`+
+    `Purchasing power:   ${purchPower.toFixed(1)}% (lost ${(100-purchPower).toFixed(1)}%)\n\n`+
+    `── Year by year ──────────────────────\n`+
+    Array.from({length:Math.min(Math.abs(years),10)},(_,i)=>{
+      const y=from+i+1;
+      const v=amount*Math.pow(1+rate/100,i+1);
+      return `  ${y}: ${formatCur(v)}`;
+    }).join('\n');
+  setStatus('inf-status','ok',`✓ ${formatCur(future)} in ${to}`);
+}
+
+/* ── 12. BREAK-EVEN CALCULATOR ── */
+function breakEvenCalc() {
+  const fixed   = parseFloat(document.getElementById('be-fixed')?.value);
+  const varCost = parseFloat(document.getElementById('be-var')?.value);
+  const price   = parseFloat(document.getElementById('be-price')?.value);
+  const out     = document.getElementById('be-output');
+  if (!out) return;
+  if (isNaN(fixed)||isNaN(varCost)||isNaN(price)||price<=varCost) {
+    out.textContent = price<=varCost ? 'Price must be greater than variable cost.' : 'Enter all values.';
+    out.className='output-box error'; return;
+  }
+  const contrib  = price - varCost;
+  const bepUnits = Math.ceil(fixed/contrib);
+  const bepRev   = bepUnits * price;
+  const margin   = (contrib/price*100);
+  out.className='output-box success';
+  out.textContent=
+    `Fixed costs:         ${formatCur(fixed)}\n`+
+    `Variable cost/unit:  ${formatCur(varCost)}\n`+
+    `Selling price/unit:  ${formatCur(price)}\n\n`+
+    `── Break-Even Point ──────────────────\n`+
+    `Units to break even: ${bepUnits.toLocaleString()} units\n`+
+    `Revenue at BEP:      ${formatCur(bepRev)}\n`+
+    `Contribution margin: ${formatCur(contrib)}/unit (${margin.toFixed(1)}%)\n\n`+
+    `── Profit at different volumes ───────\n`+
+    [0.5,0.75,1,1.25,1.5,2].map(mult=>{
+      const units=Math.round(bepUnits*mult);
+      const profit=units*contrib-fixed;
+      return `  ${units.toLocaleString().padStart(8)} units → ${profit>=0?'+':''}${formatCur(profit)}`;
+    }).join('\n');
+  setStatus('be-status','ok',`✓ BEP: ${bepUnits.toLocaleString()} units`);
+}
+
+/* ── 13. DIVIDEND CALCULATOR ── */
+function dividendCalc() {
+  const shares   = parseFloat(document.getElementById('div-shares')?.value);
+  const divPerSh = parseFloat(document.getElementById('div-dps')?.value);
+  const freq     = document.getElementById('div-freq')?.value||'annual';
+  const price    = parseFloat(document.getElementById('div-price')?.value)||0;
+  const growth   = parseFloat(document.getElementById('div-growth')?.value)||0;
+  const out      = document.getElementById('div-output');
+  if (!out) return;
+  if (isNaN(shares)||isNaN(divPerSh)||shares<=0||divPerSh<=0) {
+    out.textContent='Enter shares and dividend per share.'; out.className='output-box error'; return;
+  }
+  const freqMap={annual:1,semi:2,quarterly:4,monthly:12};
+  const paymentsPerYear=freqMap[freq]||1;
+  const annualDiv=shares*divPerSh*paymentsPerYear;
+  const yieldPct=price>0?(annualDiv/(shares*price)*100):0;
+  out.className='output-box success';
+  out.textContent=
+    `Shares:              ${shares.toLocaleString()}\n`+
+    `Dividend per share:  ${formatCur(divPerSh)} (${freq})\n`+
+    (price>0?`Share price:         ${formatCur(price)}\n`:'')+
+    `\n── Income ─────────────────────────────\n`+
+    `Per payment:         ${formatCur(shares*divPerSh)}\n`+
+    `Annual dividend:     ${formatCur(annualDiv)}\n`+
+    `Monthly income:      ${formatCur(annualDiv/12)}\n`+
+    (price>0?`Dividend yield:      ${yieldPct.toFixed(2)}%\n`:'')+
+    `\n── Growth projection ─────────────────\n`+
+    [1,3,5,10].map(yr=>{
+      const d=annualDiv*Math.pow(1+growth/100,yr);
+      return `  Year ${yr}: ${formatCur(d)}/year`;
+    }).join('\n');
+  setStatus('div-status','ok',`✓ ${formatCur(annualDiv)}/year`);
+}
+
+/* ── 14. ELECTRICITY COST CALCULATOR ── */
+function electricityCalc() {
+  const rows = document.querySelectorAll('.elec-row');
+  const rate = parseFloat(document.getElementById('elec-rate')?.value)||0.12;
+  const out  = document.getElementById('elec-output');
+  if (!out) return;
+  let totalDailyKwh=0;
+  const items=[];
+  rows.forEach(row=>{
+    const name  = row.querySelector('.er-name')?.value||'Device';
+    const watts = parseFloat(row.querySelector('.er-watts')?.value)||0;
+    const hours = parseFloat(row.querySelector('.er-hours')?.value)||0;
+    const kwhDay= watts*hours/1000;
+    totalDailyKwh+=kwhDay;
+    if(watts>0) items.push({name,watts,hours,kwhDay});
+  });
+  if(!items.length){out.textContent='Add appliances to calculate.';out.className='output-box';return;}
+  const monthly=totalDailyKwh*30;
+  const yearly =totalDailyKwh*365;
+  out.className='output-box success';
+  out.textContent=
+    `Rate: $${rate}/kWh\n\n`+
+    `── Appliance breakdown ───────────────\n`+
+    items.map(i=>`  ${i.name.padEnd(18)} ${i.watts}W × ${i.hours}h = ${i.kwhDay.toFixed(3)} kWh/day`).join('\n')+
+    `\n\n── Total cost ────────────────────────\n`+
+    `Daily:   ${totalDailyKwh.toFixed(3)} kWh = ${formatCur(totalDailyKwh*rate)}\n`+
+    `Monthly: ${monthly.toFixed(1)} kWh = ${formatCur(monthly*rate)}\n`+
+    `Yearly:  ${yearly.toFixed(0)} kWh = ${formatCur(yearly*rate)}`;
+  setStatus('elec-status','ok',`✓ ${formatCur(monthly*rate)}/month`);
+}
+function elecAddRow() {
+  const cont=document.getElementById('elec-rows');
+  if(!cont)return;
+  const div=document.createElement('div');
+  div.className='elec-row';
+  div.style='display:grid;grid-template-columns:1fr 80px 80px 32px;gap:6px;margin-bottom:6px;align-items:center';
+  div.innerHTML=`
+    <input class="b2-input er-name" placeholder="Appliance name" style="font-size:.78rem" oninput="electricityCalc()">
+    <input class="b2-input er-watts" type="number" placeholder="Watts" style="font-size:.78rem" oninput="electricityCalc()">
+    <input class="b2-input er-hours" type="number" placeholder="Hrs/day" style="font-size:.78rem" oninput="electricityCalc()">
+    <button onclick="this.parentElement.remove();electricityCalc()" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>`;
+  cont.appendChild(div);
+  electricityCalc();
+}
+
+/* ── 15. HEIGHT CONVERTER ── */
+function heightConvert() {
+  const inp  = document.getElementById('ht-input')?.value?.trim();
+  const from = document.getElementById('ht-from')?.value||'cm';
+  const out  = document.getElementById('ht-output');
+  if (!out) return;
+  if (!inp) { out.textContent=''; return; }
+  let cm;
+  if (from==='cm') cm=parseFloat(inp);
+  else if (from==='m') cm=parseFloat(inp)*100;
+  else if (from==='in') cm=parseFloat(inp)*2.54;
+  else if (from==='ft') {
+    const parts=inp.replace("'",' ').replace('"','').split(/\s+/);
+    cm=(parseFloat(parts[0])*12+(parseFloat(parts[1])||0))*2.54;
+  } else if (from==='ftin') {
+    const m=inp.match(/(\d+)\s*(?:ft|'|feet)\s*(\d+)?\s*(?:in|"|inches)?/i);
+    if(m) cm=((parseFloat(m[1])||0)*12+(parseFloat(m[2])||0))*2.54;
+  }
+  if (!cm||isNaN(cm)||cm<=0) { out.textContent='Invalid input.'; out.className='output-box error'; return; }
+  const m=cm/100, inches=cm/2.54, ft=Math.floor(inches/12), inRem=Math.round(inches%12);
+  out.className='output-box success';
+  out.textContent=
+    `── All conversions ───────────────────\n`+
+    `Centimetres: ${cm.toFixed(1)} cm\n`+
+    `Metres:      ${m.toFixed(3)} m\n`+
+    `Inches:      ${inches.toFixed(2)} in\n`+
+    `Feet:        ${(inches/12).toFixed(4)} ft\n`+
+    `Feet+Inches: ${ft}' ${inRem}"  (${ft}ft ${inRem}in)\n\n`+
+    `── Common heights ────────────────────\n`+
+    [[150,'4\'11"'],[155,'5\'1"'],[160,'5\'3"'],[165,'5\'5"'],
+     [170,'5\'7"'],[175,'5\'9"'],[180,'5\'11"'],[185,'6\'1"'],[190,'6\'3"']]
+    .map(([c,f])=>`  ${c}cm = ${f}`).join('\n');
+  setStatus('ht-status','ok',`✓ ${ft}'${inRem}" = ${cm.toFixed(1)}cm`);
+}
+
+/* ── 16. CALORIE BURN CALCULATOR ── */
+function calorieBurnCalc() {
+  const weight = parseFloat(document.getElementById('cb-weight')?.value);
+  const time   = parseFloat(document.getElementById('cb-time')?.value);
+  const act    = document.getElementById('cb-activity')?.value||'walking';
+  const unit   = document.getElementById('cb-unit')?.value||'kg';
+  const out    = document.getElementById('cb-output');
+  if (!out) return;
+  if (isNaN(weight)||isNaN(time)||weight<=0||time<=0) {
+    out.textContent='Enter weight and duration.'; out.className='output-box error'; return;
+  }
+  const wKg = unit==='lbs' ? weight*0.453592 : weight;
+  // MET values
+  const METS={
+    'walking':3.5,'running':9.8,'cycling':7.5,'swimming':8,
+    'yoga':3,'hiit':10,'weights':5,'basketball':8,'tennis':7.3,
+    'dancing':5.5,'hiking':6,'rowing':8.5,'elliptical':6.5,'jump_rope':12
+  };
+  const met=METS[act]||4;
+  const calories=met*wKg*time/60;
+  out.className='output-box success';
+  out.textContent=
+    `Weight: ${weight} ${unit}\nDuration: ${time} min\n\n`+
+    `── Calories burned ───────────────────\n`+
+    `${Math.round(calories)} calories\n\n`+
+    `── Compare activities (${time} min) ──────\n`+
+    Object.entries(METS).map(([a,m])=>{
+      const cal=Math.round(m*wKg*time/60);
+      return `  ${a.replace('_',' ').padEnd(16)} ${cal} cal`;
+    }).join('\n');
+  setStatus('cb-status','ok',`✓ ${Math.round(calories)} calories burned`);
+}
+
+/* ── 17. TIP SPLIT CALCULATOR ── */
+function tipSplitCalc() {
+  const bill   = parseFloat(document.getElementById('ts-bill')?.value);
+  const tip    = parseFloat(document.getElementById('ts-tip')?.value)||15;
+  const people = parseInt(document.getElementById('ts-people')?.value)||1;
+  const out    = document.getElementById('ts-output');
+  if (!out) return;
+  if (isNaN(bill)||bill<=0) { out.textContent='Enter bill amount.'; out.className='output-box error'; return; }
+  const tipAmt   = bill*tip/100;
+  const total    = bill+tipAmt;
+  const perPerson= total/people;
+  const tipPer   = tipAmt/people;
+  out.className='output-box success';
+  out.textContent=
+    `Bill:          ${formatCur(bill)}\n`+
+    `Tip (${tip}%):    ${formatCur(tipAmt)}\n`+
+    `Total:         ${formatCur(total)}\n`+
+    `People:        ${people}\n\n`+
+    `── Per person ────────────────────────\n`+
+    `Each pays:     ${formatCur(perPerson)}\n`+
+    `Each tips:     ${formatCur(tipPer)}\n\n`+
+    `── Quick tip reference ───────────────\n`+
+    [10,15,18,20,25].map(t=>{
+      const ta=bill*t/100;
+      return `  ${t}% tip: ${formatCur(ta)} total → ${formatCur((bill+ta)/people)}/person`;
+    }).join('\n');
+  setStatus('ts-status','ok',`✓ ${formatCur(perPerson)}/person`);
+}
+
+/* ── 18. MEETING TIME ZONE PLANNER ── */
+function meetingCalc() {
+  const time = document.getElementById('meet-time')?.value;
+  const date = document.getElementById('meet-date')?.value;
+  const out  = document.getElementById('meet-output');
+  if (!out) return;
+  if (!time) { out.textContent='Enter a meeting time.'; out.className='output-box'; return; }
+  const zones = [
+    ['New York','America/New_York','🇺🇸'],
+    ['London','Europe/London','🇬🇧'],
+    ['Dubai','Asia/Dubai','🇦🇪'],
+    ['Karachi/PKT','Asia/Karachi','🇵🇰'],
+    ['Mumbai','Asia/Kolkata','🇮🇳'],
+    ['Singapore','Asia/Singapore','🇸🇬'],
+    ['Tokyo','Asia/Tokyo','🇯🇵'],
+    ['Sydney','Australia/Sydney','🇦🇺'],
+    ['Los Angeles','America/Los_Angeles','🇺🇸'],
+    ['Toronto','America/Toronto','🇨🇦'],
+    ['Berlin','Europe/Berlin','🇩🇪'],
+    ['Paris','Europe/Paris','🇫🇷'],
+  ];
+  const base = date ? new Date(`${date}T${time}`) : new Date(`2000-01-01T${time}`);
+  out.className='output-box success';
+  out.textContent=
+    `Meeting time: ${time}${date?' on '+date:''}\n\n`+
+    `── Global times ──────────────────────\n`+
+    zones.map(([city,tz,flag])=>{
+      try {
+        const t=base.toLocaleTimeString('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:true});
+        const d=date?base.toLocaleDateString('en-US',{timeZone:tz,weekday:'short',month:'short',day:'numeric'}):'';
+        const hour=parseInt(base.toLocaleTimeString('en-US',{timeZone:tz,hour:'numeric',hour12:false}));
+        const status=hour>=9&&hour<18?'✅ Work hours':hour>=7&&hour<22?'🟡 Ok':hour>=0&&hour<7?'🔴 Night':'🔴 Late';
+        return `  ${flag} ${city.padEnd(16)} ${t}${d?' '+d:''} ${status}`;
+      } catch(e){return '';}
+    }).filter(Boolean).join('\n');
+  setStatus('meet-status','ok','✓ times calculated');
+}
+
+/* ── 19. MATRIX CALCULATOR ── */
+function matrixCalc() {
+  const op  = document.getElementById('mat-op')?.value||'add';
+  const out = document.getElementById('mat-output');
+  if (!out) return;
+  const parseMatrix = id => {
+    const val = document.getElementById(id)?.value?.trim();
+    if (!val) return null;
+    return val.split('\n').map(row=>row.trim().split(/[\s,]+/).map(Number));
+  };
+  const A = parseMatrix('mat-a');
+  const B = parseMatrix('mat-b');
+  if (!A) { out.textContent='Enter matrix A (rows separated by newlines, values by spaces or commas).'; out.className='output-box'; return; }
+  const fmtMatrix = m => m.map(r=>r.map(v=>String(parseFloat(v.toFixed(4))).padStart(8)).join(' ')).join('\n');
+  try {
+    let result;
+    if (op==='add'||op==='sub') {
+      if (!B) { out.textContent='Enter both matrices.'; out.className='output-box error'; return; }
+      result = A.map((row,i)=>row.map((v,j)=>op==='add'?v+B[i][j]:v-B[i][j]));
+    } else if (op==='mul') {
+      if (!B) { out.textContent='Enter both matrices.'; out.className='output-box error'; return; }
+      result = A.map((row,i)=>B[0].map((_,j)=>row.reduce((s,_,k)=>s+A[i][k]*B[k][j],0)));
+    } else if (op==='transpose') {
+      result = A[0].map((_,i)=>A.map(row=>row[i]));
+    } else if (op==='det') {
+      if (A.length!==A[0].length) { out.textContent='Determinant requires a square matrix.'; out.className='output-box error'; return; }
+      const det = m => {
+        if(m.length===1) return m[0][0];
+        if(m.length===2) return m[0][0]*m[1][1]-m[0][1]*m[1][0];
+        return m[0].reduce((s,v,j)=>s+(j%2===0?1:-1)*v*det(m.slice(1).map(r=>[...r.slice(0,j),...r.slice(j+1)])),0);
+      };
+      const d = det(A);
+      out.className='output-box success';
+      out.textContent=`Matrix A:\n${fmtMatrix(A)}\n\nDeterminant = ${parseFloat(d.toFixed(6))}`;
+      setStatus('mat-status','ok',`✓ det = ${parseFloat(d.toFixed(4))}`);
+      return;
+    }
+    out.className='output-box success';
+    out.textContent=`Result:\n${fmtMatrix(result)}`;
+    setStatus('mat-status','ok','✓ calculated');
+  } catch(e) { out.textContent='Matrix dimensions incompatible for this operation.'; out.className='output-box error'; }
+}
+
+/* ── 20. ROOF PITCH CALCULATOR ── */
+function roofPitchCalc() {
+  const run  = parseFloat(document.getElementById('rp-run')?.value);
+  const rise = parseFloat(document.getElementById('rp-rise')?.value);
+  const out  = document.getElementById('rp-output');
+  if (!out) return;
+  if (isNaN(run)||isNaN(rise)||run<=0) { out.textContent='Enter run and rise.'; out.className='output-box error'; return; }
+  const pitch   = rise/run;
+  const angle   = Math.atan(pitch)*180/Math.PI;
+  const slope   = Math.sqrt(run*run+rise*rise)/run;
+  const pitchStr= `${rise}:12`;
+  // Normalize to per 12
+  const riseP12 = (rise/run*12).toFixed(2);
+  out.className='output-box success';
+  out.textContent=
+    `Run: ${run}  Rise: ${rise}\n\n`+
+    `── Roof Pitch ────────────────────────\n`+
+    `Pitch:         ${riseP12}:12\n`+
+    `Angle:         ${angle.toFixed(2)}°\n`+
+    `Slope factor:  ${slope.toFixed(4)}\n`+
+    `Multiplier:    ${slope.toFixed(4)}x (multiply flat area)\n\n`+
+    `── Pitch classification ──────────────\n`+
+    `${parseFloat(riseP12)<3?'Flat/low pitch':parseFloat(riseP12)<6?'Medium pitch':parseFloat(riseP12)<9?'Steep':parseFloat(riseP12)<12?'Very steep':'Extreme pitch'}\n\n`+
+    `── Common pitches ────────────────────\n`+
+    [2,3,4,5,6,7,8,9,10,12].map(r=>{
+      const a=Math.atan(r/12)*180/Math.PI;
+      const s=Math.sqrt(144+r*r)/12;
+      return `  ${String(r+':12').padEnd(6)} ${a.toFixed(1)}° slope×${s.toFixed(3)}`;
+    }).join('\n');
+  setStatus('rp-status','ok',`✓ ${riseP12}:12 = ${angle.toFixed(1)}°`);
+}
+
+/* ── 21. FLOORING CALCULATOR ── */
+function flooringCalc() {
+  const l      = parseFloat(document.getElementById('fl-l')?.value);
+  const w      = parseFloat(document.getElementById('fl-w')?.value);
+  const waste  = parseFloat(document.getElementById('fl-waste')?.value)||10;
+  const price  = parseFloat(document.getElementById('fl-price')?.value)||0;
+  const boxSz  = parseFloat(document.getElementById('fl-box')?.value)||20;
+  const out    = document.getElementById('fl-output');
+  if (!out) return;
+  if (isNaN(l)||isNaN(w)||l<=0||w<=0) { out.textContent='Enter room dimensions.'; out.className='output-box error'; return; }
+  const sqFt    = l*w;
+  const withWaste = sqFt*(1+waste/100);
+  const boxes   = Math.ceil(withWaste/boxSz);
+  const totalCost = price>0 ? withWaste*price : 0;
+  out.className='output-box success';
+  out.textContent=
+    `Room: ${l} × ${w} ft\n`+
+    `Waste allowance: ${waste}%\n\n`+
+    `── Material needed ───────────────────\n`+
+    `Room area:     ${sqFt.toFixed(2)} sq ft\n`+
+    `With waste:    ${withWaste.toFixed(2)} sq ft\n`+
+    `Sq metres:     ${(withWaste*0.0929).toFixed(2)} m²\n`+
+    (boxSz>0?`Boxes needed:  ${boxes} boxes (${boxSz} sq ft/box)\n`:'')+
+    (price>0?`\n── Cost ──────────────────────────────\n$${totalCost.toFixed(2)} @ $${price}/sq ft\n`:'');
+  setStatus('fl-status','ok',`✓ ${withWaste.toFixed(0)} sq ft needed`);
+}
+
+/* ── 22. BLOOD PRESSURE CHECKER ── */
+function bloodPressureCalc() {
+  const sys = parseInt(document.getElementById('bp-sys')?.value);
+  const dia = parseInt(document.getElementById('bp-dia')?.value);
+  const out = document.getElementById('bp-output');
+  if (!out) return;
+  if (isNaN(sys)||isNaN(dia)||sys<=0||dia<=0) { out.textContent='Enter systolic and diastolic values.'; out.className='output-box error'; return; }
+  const pulse = sys - dia;
+  let category, color, advice;
+  if (sys<90||dia<60) { category='Low Blood Pressure'; color='var(--accent)'; advice='Consult a doctor if you feel dizzy or faint.'; }
+  else if (sys<120&&dia<80) { category='Normal'; color='var(--accent)'; advice='Excellent! Maintain healthy habits.'; }
+  else if (sys<130&&dia<80) { category='Elevated'; color='#ffd060'; advice='Make lifestyle changes to prevent hypertension.'; }
+  else if (sys<140||dia<90) { category='High — Stage 1'; color='#ff9070'; advice='Consult your doctor about treatment options.'; }
+  else if (sys<180||dia<120) { category='High — Stage 2'; color='var(--red)'; advice='Seek medical attention. Lifestyle + medication needed.'; }
+  else { category='Hypertensive Crisis'; color='var(--red)'; advice='Seek emergency medical care immediately!'; }
+
+  out.className='output-box success';
+  out.textContent=
+    `Systolic:   ${sys} mmHg\nDiastolic:  ${dia} mmHg\nPulse pressure: ${pulse} mmHg\n\n`+
+    `── Classification ────────────────────\n`+
+    `Category: ${category}\n`+
+    `Advice: ${advice}\n\n`+
+    `── BP Categories (AHA guidelines) ───\n`+
+    `  Normal:          <120 / <80\n`+
+    `  Elevated:        120-129 / <80\n`+
+    `  High Stage 1:    130-139 / 80-89\n`+
+    `  High Stage 2:    ≥140 / ≥90\n`+
+    `  Crisis:          >180 / >120`;
+  setStatus('bp-status','ok',`${sys}/${dia} — ${category}`);
+}
+
+/* ── 23. VITAMIN D CALCULATOR ── */
+function vitaminDCalc() {
+  const skin    = document.getElementById('vd-skin')?.value||'medium';
+  const lat     = document.getElementById('vd-lat')?.value||'temperate';
+  const time    = parseInt(document.getElementById('vd-time')?.value)||0;
+  const age     = parseInt(document.getElementById('vd-age')?.value)||30;
+  const out     = document.getElementById('vd-output');
+  if (!out) return;
+  const skinMult = {fair:1.5,medium:1,dark:0.5,very_dark:0.3};
+  const latMult  = {tropical:1.4,subtropical:1.1,temperate:0.8,northern:0.5};
+  const sm = skinMult[skin]||1;
+  const lm = latMult[lat]||1;
+  const iuPerMin = 33*sm*lm; // rough IU per minute of midday sun
+  const iuFromSun = time*iuPerMin;
+  const ageSupp   = age>=70?800:age>=50?600:400;
+  const totalRec  = age>=70?800:600;
+  const sunMins   = Math.ceil(totalRec/iuPerMin);
+  out.className='output-box success';
+  out.textContent=
+    `Skin tone:     ${skin}\nLatitude:      ${lat}\nAge:           ${age}\n\n`+
+    `── Sun exposure ──────────────────────\n`+
+    `${time} min sun ≈ ${Math.round(iuFromSun)} IU vitamin D\n`+
+    `Recommended:   ${totalRec} IU/day (age ${age})\n`+
+    `Sun needed:    ~${sunMins} min at midday (arms+legs exposed)\n\n`+
+    `── Recommended daily intake ──────────\n`+
+    `  0–12 months: 400 IU\n`+
+    `  1–70 years:  600 IU\n`+
+    `  70+ years:   800 IU\n`+
+    `  Upper limit: 4,000 IU/day (adults)\n\n`+
+    `── Sources ───────────────────────────\n`+
+    `  Sunlight (15-30 min): 1,000-20,000 IU\n`+
+    `  Fatty fish (85g):     450-570 IU\n`+
+    `  Fortified milk (cup): 120 IU\n`+
+    `  Egg yolk:             40 IU`;
+  setStatus('vd-status','ok','✓ calculated');
+}
+
+/* ── 24. BLOOD TYPE COMPATIBILITY ── */
+function bloodTypeCalc() {
+  const type = document.getElementById('bt-type')?.value||'O+';
+  const out  = document.getElementById('bt-output');
+  if (!out) return;
+  const compatibility = {
+    'O-':  { donate:['O-','O+','A-','A+','B-','B+','AB-','AB+'], receive:['O-'] },
+    'O+':  { donate:['O+','A+','B+','AB+'], receive:['O-','O+'] },
+    'A-':  { donate:['A-','A+','AB-','AB+'], receive:['O-','A-'] },
+    'A+':  { donate:['A+','AB+'], receive:['O-','O+','A-','A+'] },
+    'B-':  { donate:['B-','B+','AB-','AB+'], receive:['O-','B-'] },
+    'B+':  { donate:['B+','AB+'], receive:['O-','O+','B-','B+'] },
+    'AB-': { donate:['AB-','AB+'], receive:['O-','A-','B-','AB-'] },
+    'AB+': { donate:['AB+'], receive:['O-','O+','A-','A+','B-','B+','AB-','AB+'] },
+  };
+  const c = compatibility[type];
+  out.className='output-box success';
+  out.textContent=
+    `Blood type: ${type}\n\n`+
+    `── Can donate blood to ───────────────\n`+
+    `  ${c.donate.join('  ')}\n\n`+
+    `── Can receive blood from ────────────\n`+
+    `  ${c.receive.join('  ')}\n\n`+
+    `── Blood type facts ──────────────────\n`+
+    `  O- = Universal donor (all types can receive)\n`+
+    `  AB+ = Universal recipient (can receive all types)\n`+
+    `  Most common: O+ (~38% of population)\n`+
+    `  Rarest: AB- (~1% of population)`;
+  setStatus('bt-status','ok',`✓ ${type} compatibility shown`);
+}
+
+/* ── 25. TIMEZONE MEETING PLANNER (already have timezone-converter) ──
+   Use this as GRADE POINT AVERAGE UPGRADE / GPA to CGPA ── */
+function cgpaCalc() {
+  const gpa  = parseFloat(document.getElementById('cgpa-gpa')?.value);
+  const scale= parseFloat(document.getElementById('cgpa-scale')?.value)||4.0;
+  const out  = document.getElementById('cgpa-output');
+  if (!out) return;
+  if (isNaN(gpa)||gpa<0||gpa>scale) { out.textContent=`Enter GPA between 0 and ${scale}.`; out.className='output-box error'; return; }
+  const pct = (gpa/scale*100).toFixed(2);
+  const grade = gpa>=scale*0.9?'A+':gpa>=scale*0.8?'A':gpa>=scale*0.7?'B':gpa>=scale*0.6?'C':gpa>=scale*0.5?'D':'F';
+  out.className='output-box success';
+  out.textContent=
+    `GPA: ${gpa} / ${scale}\n\n`+
+    `── Conversions ───────────────────────\n`+
+    `Percentage:    ${pct}%\n`+
+    `Letter grade:  ${grade}\n`+
+    `On 4.0 scale:  ${(gpa/scale*4).toFixed(2)}\n`+
+    `On 5.0 scale:  ${(gpa/scale*5).toFixed(2)}\n`+
+    `On 10.0 scale: ${(gpa/scale*10).toFixed(2)}\n\n`+
+    `── Classification ────────────────────\n`+
+    [[0.9,'Distinction / Summa Cum Laude'],[0.8,'Merit / Magna Cum Laude'],
+     [0.7,'Cum Laude'],[0.6,'Pass'],[0,'Fail']]
+    .map(([t,l])=>`  ${(t*scale).toFixed(1)}+ → ${l}`).join('\n')+
+    `\n\n── Scale conversions ─────────────────\n`+
+    [[4.0,'US'],[5.0,'India (some)'],[7.0,'India (some)'],[10.0,'India/Pakistan']]
+    .map(([s,c])=>`  ${c} ${s}-scale: ${(gpa/scale*s).toFixed(2)}`).join('\n');
+  setStatus('cgpa-status','ok',`✓ ${pct}% = ${grade}`);
+}

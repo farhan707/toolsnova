@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -189,6 +189,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -225,7 +226,50 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fr-output" onclick="copyEl('fr-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Funded Account ROI Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the challenge fee</strong> — the amount you paid to attempt the challenge (e.g. $550 for FTMO $100K).</li>
+      <li><strong>Enter account size</strong> — the funded account size you are targeting (e.g. $100,000).</li>
+      <li><strong>Set profit target</strong> — the percentage you need to achieve for each payout cycle (typically 8–10%).</li>
+      <li><strong>Set your profit split</strong> — the percentage of profits you keep (usually 70–90%). FTMO offers up to 90%, most firms start at 80%.</li>
+      <li><strong>Set payout cycles</strong> — how many times you plan to hit the target and request payout. The calculator shows cumulative earnings and break-even point.</li>
+      <li><strong>Compare account sizes</strong> — the bottom section shows ROI for all standard account sizes from $5K to $200K, helping you choose the most cost-effective option.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💡 Fee refund check:</strong> Many firms refund the challenge fee after your first payout. If your firm does this, your net ROI calculation changes dramatically — set fee to $0 for the true ROI after refund.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Prop Firm ROI</h2>
+    <p>The economics of prop firm trading are unlike any other financial instrument. The leverage on your challenge fee is extraordinary — but only if you pass consistently. Understanding the true ROI requires accounting for your pass rate.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💰 Gross Payout</div><div class="edu-card-body">Account Size × Profit Target % = your gross profit each cycle. On a $100K account with 8% target: $8,000 gross per cycle before the firm's cut.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✂️ Net Payout</div><div class="edu-card-body">Your actual payout after the profit split. At 80% split: $8,000 × 80% = $6,400 per cycle. At 90% split: $7,200. The split percentage matters more on larger accounts.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Break-Even Cycles</div><div class="edu-card-body">How many payouts to recover the challenge fee. $550 fee ÷ $6,400 payout = 0.086 — meaning you recover the fee within the first payout. Most challenges break even in 1–2 payouts.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 True ROI</div><div class="edu-card-body">Net earnings over multiple cycles minus the fee, divided by the fee. A $550 fee generating $6,400 on the first payout = 1,064% ROI. Even adjusting for 50% pass rate: 532% expected ROI per attempt.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Scaling Benefits</div><div class="edu-card-body">Many firms offer scaling — increasing your account size as you prove consistent profitability. FTMO scales up to $2,000,000. Each scale-up multiplies your payout proportionally with no additional fee.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Account Size Optimisation</div><div class="edu-card-body">Larger accounts have better ROI on fees. A $200K account often costs less than 2× the $100K fee but earns 2× the payout. Always check the fee-to-account-size ratio before choosing your challenge level.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Maximising Your Prop Firm Income</h2>
+    <h3>Multiple firm strategy</h3>
+    <p>Professional prop traders typically run accounts at 2–4 different firms simultaneously. This diversifies the risk of any single firm's rule changes, payment delays, or closure. It also multiplies income — 3 funded $100K accounts at 80% split generating 8% quarterly each = $57,600/year. This is achievable with disciplined risk management.</p>
+    <h3>Scaling path</h3>
+    <p>Most firms offer scaling plans. FTMO scales your account by 25% every 4 months if you are consistently profitable. Starting at $100K and scaling every 4 months: $100K → $125K → $156K → $195K within a year. The same trading skill generates proportionally more income each cycle.</p>
+    <h3>Compounding challenge fees</h3>
+    <p>Use your first payout to fund your next challenge at a higher account level. First payout of $6,400 comfortably funds a $200K challenge fee ($1,100). The compounding of account size through reinvesting payouts is the fastest path to large funded account sizes.</p>
+    <div class="edu-highlight"><strong>🏦 The funded trader career path:</strong> Year 1 — Pass $100K challenge, earn $25,600/year (4 cycles). Year 2 — Scale to $200K, earn $51,200/year. Year 3 — Multiple firms, earn $100K+/year. The math works — if the trading edge is real and consistent.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Is a prop firm challenge worth the fee?</div>
@@ -268,7 +312,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

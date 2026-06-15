@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -217,7 +231,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Support & Resistance Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pp-output" onclick="copyEl('pp-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Pivot Point Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter yesterday's High</strong> — the highest price reached during the previous trading day (or week for weekly pivots).</li>
+      <li><strong>Enter yesterday's Low</strong> — the lowest price reached during the previous trading day.</li>
+      <li><strong>Enter yesterday's Close</strong> — the closing price at the end of the previous session (usually 5 PM New York time for forex).</li>
+      <li><strong>Select pivot type</strong> — Standard (most common), Fibonacci, Camarilla, or Woodie. Each uses a different formula and has different strengths.</li>
+      <li><strong>Use levels for trade planning</strong> — the central pivot (PP) is the primary level. S1/R1 are first support/resistance. S2/R2 are secondary targets. S3/R3 are extreme levels.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📅 Daily reset:</strong> Pivot points are recalculated each trading day using the previous day's OHLC data. Always update your pivots at the start of each trading session. Most charting platforms (TradingView, MT4) can display these automatically.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Pivot Points</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Standard Pivots</div><div class="edu-card-body">PP = (H+L+C)/3. R1 = 2PP−L. R2 = PP+(H−L). S1 = 2PP−H. S2 = PP−(H−L). The most widely used formula — institutional traders monitor these levels globally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌀 Fibonacci Pivots</div><div class="edu-card-body">Uses Fibonacci ratios (38.2%, 61.8%, 100%) applied to the previous day's range. Favoured by traders who use Fibonacci in their primary analysis — creates natural confluence with Fibonacci retracements.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Camarilla Pivots</div><div class="edu-card-body">Derived from the previous day's close with tighter levels. H3/L3 are the primary trading levels — price often reverses at these. H4/L4 signal breakout conditions. More useful for intraday scalping than standard pivots.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔲 Woodie Pivots</div><div class="edu-card-body">Gives double weight to the closing price: PP = (H+L+2C)/4. More sensitive to the close than standard pivots — useful when close price is considered the most important data point.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Why Institutions Use Them</div><div class="edu-card-body">Pivot points are self-fulfilling — because so many traders and algorithms monitor these levels, price reactions at pivots become reliable. The more traders watch a level, the more likely price reacts to it.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Pivot Timeframes</div><div class="edu-card-body">Daily pivots: most useful for intraday trading. Weekly pivots: used by swing traders for 3–5 day position planning. Monthly pivots: key levels for longer-term traders and position traders.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Trading Strategies with Pivot Points</h2>
+    <h3>Pivot point as market bias</h3>
+    <p>Price trading above the central pivot point (PP) at the start of the session suggests bullish bias — look for long opportunities at support levels (S1, S2). Price below PP suggests bearish bias — look for short opportunities at resistance levels (R1, R2). This simple rule filters trade direction and avoids counter-trend entries.</p>
+    <h3>Combining with price action</h3>
+    <p>Pivot points work best when combined with price action confirmation. A pin bar or engulfing candle at S1 pivot during an uptrend is a high-probability long entry. A pivot level alone — without price action confirmation — is not a sufficient reason to enter. Use pivots to identify where to look, not when to enter.</p>
+    <h3>Multiple timeframe pivot analysis</h3>
+    <p>When a daily S1 pivot aligns with a weekly S1 pivot and a monthly support level, the confluence of three pivot calculations creates an extremely strong support zone. These triple-confluence pivot levels are among the highest-probability support and resistance areas available to traders without complex indicators.</p>
+    <div class="edu-highlight"><strong>📊 Pivot trading rule:</strong> The central pivot point is the most important level of the day. In ranging markets, price tends to oscillate between S1 and R1. In trending markets, price tends to hold above PP (uptrend) or below PP (downtrend) throughout the session. Use this behaviour to filter your directional bias each morning.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are pivot points?</div>
@@ -261,7 +316,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

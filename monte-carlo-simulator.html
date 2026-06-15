@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -363,6 +363,94 @@
     <div class="output-box" id="mc-output" onclick="copyEl('mc-output')"
       style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
   </div>
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <!-- Section 1: How to Use -->
+  <section class="edu-section">
+    <h2>How to Use the Monte Carlo Trading Simulator</h2>
+    <p>This simulator runs hundreds of randomised equity curve simulations based on your trading statistics. Each simulation represents a realistic but different sequence of wins and losses — showing you the full range of outcomes your strategy might produce in live trading.</p>
+
+    <ol class="edu-steps">
+      <li><strong>Enter your win rate</strong> — the percentage of trades that are profitable. If you win 55 out of 100 trades, enter 55. Be honest — use your actual backtested or live trading win rate, not your target.</li>
+      <li><strong>Set risk per trade</strong> — the percentage of your account you risk on each trade. Most professional traders use 0.5%–2%. Prop firm traders typically use 0.5%–1% to protect against drawdown limits.</li>
+      <li><strong>Set your reward ratio</strong> — your average reward relative to risk. A ratio of 1.5 means you make $150 for every $100 you risk (1:1.5 R:R). Higher ratios compensate for lower win rates.</li>
+      <li><strong>Choose number of trades</strong> — how many trades to simulate per equity curve. Use 30 for a prop firm challenge, 100 for a quarter of trading, or 252 for a full trading year.</li>
+      <li><strong>Enable Prop Firm Rules</strong> — tick the Max Drawdown and Profit Target checkboxes and enter your firm's rules (e.g. 10% max DD, 8% target). The simulator will show exactly what percentage of scenarios pass the challenge.</li>
+      <li><strong>Click Run Simulation</strong> — the simulator generates 100–500 equity curves in seconds. Each curve is a different random sequence of wins and losses using your statistics.</li>
+      <li><strong>Hover over the chart</strong> — move your mouse across the chart to see the P10, median, and P90 values at any point in the trade sequence. Download the chart using the Save Chart button.</li>
+    </ol>
+
+    <div class="edu-highlight">
+      <strong>💡 Pro tip:</strong> Run the simulation 3–4 times with the same inputs. The results will vary slightly each time due to randomness — this variance itself is important information. If the pass rate jumps from 40% to 70% between runs, your strategy is sensitive to luck and you need a larger edge or lower risk per trade.
+    </div>
+  </section>
+
+  <!-- Section 2: Understanding Results -->
+  <section class="edu-section">
+    <h2>Understanding Your Monte Carlo Results</h2>
+    <p>The simulator produces several key metrics that professional traders and quant funds use to evaluate strategy robustness. Here is what each one means and how to interpret it.</p>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-card-title">📈 Median Curve (Green Line)</div>
+        <div class="edu-card-body">The middle outcome when all curves are sorted by final balance. Half of all simulations finished above this line and half below. This is your most realistic expected outcome — not the average (which can be skewed by extreme winners) and not the best case.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-title">🔵 P90 — Best 10%</div>
+        <div class="edu-card-body">The blue curves represent the top 10% of outcomes. These are the lucky runs where wins clustered together favourably. Do not plan your trading around P90 outcomes — they represent your best-case scenario, not your expected one.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-title">🔴 P10 — Worst 10%</div>
+        <div class="edu-card-body">The red curves represent the worst 10% of outcomes. Your trading plan must survive these scenarios. If your prop firm has a 10% max drawdown rule and P10 breaches 15%, your risk per trade is too high regardless of your win rate.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-title">📉 Profitable Curves %</div>
+        <div class="edu-card-body">The percentage of all simulated curves that finished above your starting balance. With a genuine positive edge, this should be above 60% for 100 trades. Below 50% means your strategy may not have a real edge, or your sample is too small to be statistically significant.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-title">⚠️ Average Max Drawdown</div>
+        <div class="edu-card-body">The average peak-to-trough decline across all simulated curves. This tells you what kind of drawdown to expect on a typical run. If this exceeds your emotional tolerance or prop firm limits, reduce your risk per trade before attempting live trading.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-title">🚨 Worst Max Drawdown</div>
+        <div class="edu-card-body">The largest drawdown seen across ALL simulations. This is your worst-case scenario given your statistics. Your account must be sized to psychologically and financially survive this drawdown without abandoning your strategy.</div>
+      </div>
+    </div>
+
+    <h3>Reading the Distribution Histogram</h3>
+    <p>Below the equity curves, the histogram shows the distribution of all final balances. Green bars represent profitable outcomes (above starting balance), red bars represent losses. A good strategy shows the histogram skewed to the right with most mass in the green zone. A wide, flat distribution means high variance — your strategy's outcome is heavily luck-dependent and you need more trades or a stronger edge to get consistent results.</p>
+
+    <div class="edu-highlight">
+      <strong>📊 What good results look like:</strong> Profitable curves above 65% · Median return positive · P10 (worst 10%) still above your prop firm's max drawdown limit · Average max drawdown below 8% at 1% risk per trade · Distribution histogram skewed right with a clear peak in profitable territory.
+    </div>
+  </section>
+
+  <!-- Section 3: Why Traders Use Monte Carlo -->
+  <section class="edu-section">
+    <h2>Why Professional Traders Use Monte Carlo Simulation</h2>
+    <p>Monte Carlo simulation is one of the most powerful tools in professional trading and quantitative finance. Hedge funds, prop trading firms, and algorithmic traders use it routinely before deploying capital. Here is why it matters and how to use it effectively.</p>
+
+    <h3>1. Prop Firm Challenge Planning</h3>
+    <p>Before paying for a prop firm challenge (FTMO, MyForexFunds, FundedNext), you should know your real probability of passing — not your hope. Enable the Prop Firm Rules in this simulator, set your firm's exact max drawdown and profit target, and run 500 simulations. If fewer than 50% of curves pass the challenge, your current strategy and risk settings do not justify the challenge fee. Adjust your risk per trade (lower) or improve your win rate before attempting.</p>
+    <p>Many traders fail challenges not because their strategy is bad but because their position sizing is wrong. A 60% win rate with 2% risk per trade is far more dangerous in a challenge context than a 55% win rate with 0.75% risk. Monte Carlo makes this immediately visible.</p>
+
+    <h3>2. Position Sizing Validation</h3>
+    <p>The most common mistake retail traders make is using the same risk percentage regardless of market conditions. Monte Carlo shows you the relationship between risk per trade and worst-case drawdown at your specific win rate and R:R. Run the simulator at 0.5%, 1%, and 2% risk with your actual statistics and compare the worst-case drawdowns. The difference is usually shocking — doubling your risk does not double your drawdown, it often quadruples it due to compounding losses.</p>
+
+    <h3>3. Strategy Validation Before Going Live</h3>
+    <p>A strategy that looks great in backtesting can still fail in live trading due to variance. Monte Carlo tells you how much of your backtested returns are likely due to skill (your actual edge) versus luck (a favourable sequence of wins). If your strategy has a 55% win rate with 1:1.5 R:R, your backtest might show +30% returns — but Monte Carlo reveals that 15% of equally valid random sequences would have produced negative returns with identical statistics. This is not a flaw — it is reality, and knowing it prevents over-confidence.</p>
+
+    <h3>4. Risk Management &amp; Psychology</h3>
+    <p>Seeing your worst-case drawdown visually — watching the red equity curves fall — before it happens in real money is invaluable. Traders who have run Monte Carlo simulations are far less likely to abandon a profitable strategy during a losing streak, because they already know these streaks are statistically expected. If you know your strategy produces 8-trade losing streaks 12% of the time, you will not panic on trade 6. This mental preparation is worth as much as the statistical information itself.</p>
+
+    <h3>5. Comparing Multiple Strategies</h3>
+    <p>Use Monte Carlo to compare strategy variants objectively. Run your current strategy, then run a version with a slightly higher R:R or different risk per trade. The simulator immediately shows which version has better risk-adjusted returns, lower worst-case drawdown, and higher prop firm pass probability. This is how professional quant traders make strategy decisions — with data, not intuition.</p>
+
+    <div class="edu-highlight">
+      <strong>🎯 Bottom line:</strong> Monte Carlo simulation does not predict the future. It shows you the full range of outcomes your strategy can produce given its statistical properties. A good strategy survives its own worst-case scenarios. If it does not, fix the risk management before touching real capital.
+    </div>
+  </section>
 
   <!-- FAQ -->
   <section class="faq-section">

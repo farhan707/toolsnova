@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -253,7 +267,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fp-output" onclick="copyEl('fp-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Forex Profit Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your currency pair</strong> — the calculator uses the correct pip value and contract specifications for each instrument.</li>
+      <li><strong>Enter lot size</strong> — your position size. Use 0.01 for micro lots, 0.1 for mini lots, 1.0 for standard lots.</li>
+      <li><strong>Enter entry and exit prices</strong> — your actual or planned trade prices. The calculator determines direction automatically (profit if exit is above entry for longs).</li>
+      <li><strong>Select trade direction</strong> — Long (Buy) if you expect price to rise, Short (Sell) if you expect price to fall.</li>
+      <li><strong>Review profit/loss</strong> — see your result in pips, dollars, and as a percentage of a reference balance. Use this to plan trades before entering.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📋 Pre-trade planning:</strong> Use this calculator BEFORE entering trades to verify the reward at your take profit level justifies the risk at your stop loss. If the profit at target is not at least 1.5× your risk, the trade does not meet minimum R:R requirements.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Forex P&L</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📈 Long Trade P&L</div><div class="edu-card-body">Profit = (Exit Price − Entry Price) × Lot Size × Contract Size ÷ Current Price. For USD-quote pairs: simpler as (Exit − Entry) × 100,000 × Lots ÷ 1. A 50-pip win on 1 lot EURUSD = $500.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Short Trade P&L</div><div class="edu-card-body">Profit = (Entry Price − Exit Price) × same formula. Selling at a higher price and buying back lower generates profit. A 30-pip win on 0.5 lots = 30 × $10 × 0.5 = $150.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💱 Cross-Currency Conversion</div><div class="edu-card-body">When account currency differs from the quote currency, profit is converted at the current exchange rate. A EURGBP trade generates GBP profit — your broker converts this to USD at the current GBPUSD rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Pips vs Dollars</div><div class="edu-card-body">Focus on dollar P&L rather than pips when comparing trades across different pairs. 50 pips on USDJPY earns less than 50 pips on EURUSD at the same lot size due to different pip values.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Commission Impact</div><div class="edu-card-body">Always subtract broker commission from calculated profit. At $7 per round-trip per standard lot, a 7-pip trade on EURUSD ($70 profit) loses $7 in commission — a 10% cost. High-frequency trading strategies are particularly affected.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Swap on Multi-Day Trades</div><div class="edu-card-body">For trades held overnight, subtract swap costs from calculated profit. A 3-day EURUSD long trade paying $6.50/night swap costs $19.50 in financing — factor this into your minimum profit target.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Maximising Forex Profit Consistency</h2>
+    <h3>The trade planning workflow</h3>
+    <p>Before every trade: 1) Identify entry price from chart. 2) Place stop loss at logical structure level. 3) Identify take profit at next significant level. 4) Use this calculator to verify R:R meets your minimum threshold. 5) Use the lot size calculator to determine position size. Only then enter the trade. This workflow takes 2 minutes and eliminates the majority of impulsive, poorly-planned trades.</p>
+    <h3>Partial profit taking</h3>
+    <p>Many professional traders take partial profits at 1:1 R:R (closing 50% of position) and move stop to break-even. This secures profit while allowing the remaining position to run for larger gains. Calculator this beforehand: on a 1-lot position, closing 0.5 lots at 1:1 secures $X profit while the remaining 0.5 lots has zero risk.</p>
+    <h3>Scaling out vs single target</h3>
+    <p>Scaling out (closing portions at multiple targets) produces more consistent results than single-target approaches, at the cost of sometimes leaving profit on the table during strong trends. Use this calculator to model different scaling scenarios before deciding on your trade management approach.</p>
+    <div class="edu-highlight"><strong>🎯 Profit target discipline:</strong> Set take profit orders before entering every trade. Traders who manage exits manually consistently achieve lower average R:R than those who pre-set targets, due to the psychological tendency to close winning trades too early out of fear of giving back profit.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How is forex profit calculated?</div>
@@ -293,7 +348,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

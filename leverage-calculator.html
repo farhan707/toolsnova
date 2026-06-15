@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link active">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -212,7 +226,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Leverage Analysis <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="lev-output" onclick="copyEl('lev-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Leverage Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter account balance</strong> — your total equity in your trading account.</li>
+      <li><strong>Enter position size in lots</strong> — the size of the position you are planning to open.</li>
+      <li><strong>Select currency pair</strong> — used to determine the correct contract size (standard lot = 100,000 units for forex).</li>
+      <li><strong>Read effective leverage</strong> — the actual multiple of your account balance that you are controlling. This is more meaningful than your broker's available leverage.</li>
+      <li><strong>Compare to safe thresholds</strong> — the calculator shows your effective leverage and whether it is within conservative, moderate, or aggressive risk bands.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔑 Effective vs available leverage:</strong> Your broker may offer 1:500 leverage, but your effective leverage — what you are actually using — should be far lower. A $10,000 account with a 1-lot EURUSD position controls $100,000 in value — 10:1 effective leverage, regardless of the available 500:1.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Leverage</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⚡ What Is Leverage?</div><div class="edu-card-body">Leverage allows you to control a position larger than your account balance using margin as collateral. 1:100 leverage means $1 of margin controls $100 of position. It amplifies both profits and losses proportionally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Effective Leverage</div><div class="edu-card-body">Actual leverage used = Total position value ÷ Account equity. A $20,000 account with 2 standard lots of EURUSD ($200,000 position value) = 10:1 effective leverage. This is the leverage that matters for risk, not the ratio offered by the broker.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💀 Leverage and Ruin</div><div class="edu-card-body">At 100:1 effective leverage, a 1% adverse price move wipes the entire account. At 10:1: 10% move needed. At 2:1: 50% move needed. Effective leverage below 10:1 makes account ruin from price movement extremely unlikely.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Professional Standards</div><div class="edu-card-body">Hedge funds typically operate at 2:1 to 5:1 effective leverage. Retail prop firm traders using 1% risk per trade on a $100K account with 20-pip stops on EURUSD use approximately 2:1–5:1 effective leverage — matching institutional standards.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Regulated Leverage Limits</div><div class="edu-card-body">EU/UK retail: 1:30 maximum for major forex. US retail: 1:50 maximum for major forex. These limits exist because statistical analysis showed retail traders with higher leverage had dramatically worse outcomes. Professional accounts can access higher leverage with demonstrated competence.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Leverage in Prop Firms</div><div class="edu-card-body">Prop firms provide 1:100 leverage but your effective leverage should be 2:1 to 10:1 based on proper position sizing. Higher effective leverage with prop firm capital means you bear the risk of losing the challenge fee if the drawdown limit is hit.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Responsible Leverage Use</h2>
+    <h3>The 2% effective leverage rule</h3>
+    <p>A simple rule: keep effective leverage below 10:1 for forex and below 5:1 for indices and commodities. At these levels, even a 10% adverse price move (nearly impossible in a single day for major forex pairs) produces only a 100% or 50% loss on the margin — and since margin is only 1–3% of account, the account impact is manageable.</p>
+    <h3>Leverage as a tool, not a strategy</h3>
+    <p>New traders treat leverage as a way to make more money with less capital. Professional traders treat leverage as a tool to achieve precise position sizing. The goal is not to maximise leverage — it is to size positions so that losses on losing trades are small and predictable. Leverage enables fine-tuning of this sizing, not amplification for its own sake.</p>
+    <h3>Leverage and volatility</h3>
+    <p>Effective leverage should decrease as asset volatility increases. A 5:1 effective leverage position in stable EURUSD is equivalent in daily P&L volatility to a 2:1 position in highly volatile XAUUSD. Adjust your leverage down when trading more volatile instruments to maintain consistent daily P&L volatility.</p>
+    <div class="edu-highlight"><strong>⚡ Leverage safety check:</strong> Calculate effective leverage for every trade you plan: Position Value ÷ Account Equity. If the result is above 15:1, reduce lot size. This single calculation prevents the majority of catastrophic losses caused by overleveraging.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is leverage in forex trading?</div>
@@ -252,7 +307,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

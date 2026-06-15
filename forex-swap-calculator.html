@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -188,6 +188,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html" class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"         class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -237,7 +238,50 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="swap-output" onclick="copyEl('swap-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Forex Swap Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your currency pair or instrument</strong> — choose from major forex pairs, Gold (XAUUSD), Silver (XAGUSD), indices (US30, NAS100, SPX500), or crypto (BTCUSD).</li>
+      <li><strong>Enter lot size</strong> — the size of your position in standard lots. 1.0 = 1 standard lot. 0.1 = 1 mini lot. 0.01 = 1 micro lot.</li>
+      <li><strong>Select direction</strong> — Long (Buy) or Short (Sell). Swap rates are different for each direction depending on the interest rate differential between the two currencies.</li>
+      <li><strong>Enter days held</strong> — how many nights you plan to hold the position. The calculator shows the total swap cost or earning for that duration.</li>
+      <li><strong>Review both directions</strong> — the results show swap costs for both long and short, helping you choose the lower-cost direction when both are valid trade setups.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Wednesday warning:</strong> The Wednesday overnight swap is 3× the normal rate to compensate for the weekend. If you hold positions into Wednesday evening, your swap cost for that single night equals three normal nights. For longer swing trades, factor this into your weekly cost calculation.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Forex Swap and Rollover</h2>
+    <p>Forex swap (also called rollover or overnight financing) is the interest charged or earned for holding a currency position past the daily cutoff — typically 5 PM New York time. It reflects the interest rate differential between the two currencies in the pair.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💱 How Swap Works</div><div class="edu-card-body">When you buy EURUSD, you are borrowing USD (paying interest) and lending EUR (receiving interest). If EUR interest rates are lower than USD rates, you pay the net difference as swap. If EUR rates are higher, you receive the net difference.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Daily Cutoff</div><div class="edu-card-body">Positions held open at 5 PM New York time (server midnight for most brokers) are subject to overnight swap. Positions closed before this time pay no swap.</div></div>
+      <div class="edu-card"><div class="edu-card-title">3️⃣ Wednesday Triple Swap</div><div class="edu-card-body">To account for the weekend settlement, Wednesday overnight carries 3× the normal swap. This means holding a position from Wednesday to Thursday costs three days of swap in one night.</div></div>
+      <div class="edu-card"><div class="edu-card-title">➕ Positive Swap</div><div class="edu-card-body">You can earn swap by being on the right side of the interest rate differential. Long USDJPY typically earns positive swap because USD has higher interest rates than JPY — this is the basis of carry trading.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💼 Carry Trading</div><div class="edu-card-body">A strategy that deliberately exploits positive swap — buying high-interest-rate currencies against low-interest-rate currencies and holding for weeks or months, earning daily swap as income in addition to any price movement.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Swap vs Spread</div><div class="edu-card-body">For short-term traders holding positions for hours, spread cost dominates. For swing traders holding for days or weeks, swap can become equal to or greater than the initial spread cost. Always factor both into your trade planning.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Swap Strategy for Prop Firm Trading</h2>
+    <h3>Impact on challenge profit targets</h3>
+    <p>Swap costs are often overlooked in challenge planning but can meaningfully impact results. On a $100,000 account trading 1 lot of EURUSD with -$6.50 daily swap on a long position, holding for 20 nights costs $130 — equivalent to 0.13% of account. While seemingly small, this represents 1.6% of an 8% profit target. Over a 30-day challenge with multiple positions, swap becomes significant.</p>
+    <h3>Minimising swap costs</h3>
+    <p>Choose the lower-swap direction when both long and short are valid setups. On EURUSD, the short side often has a lower (or positive) swap compared to long during periods of USD rate advantage. Also consider closing positions before the daily cutoff if the trade is not clearly trending — paying spread to re-enter is sometimes cheaper than overnight swap.</p>
+    <h3>Swap-free accounts</h3>
+    <p>Most prop firms offer Islamic (swap-free) accounts that replace swap charges with administrative fees. For traders holding positions multiple days, swap-free accounts can be significantly cheaper — especially for Gold (XAUUSD) positions where swap rates are typically high. Request swap-free status if your trading style involves holding positions beyond 2–3 days.</p>
+    <div class="edu-highlight"><strong>📋 Pre-trade checklist:</strong> Before entering any position you plan to hold overnight, calculate the expected swap cost using this tool. Add it to your total trade cost alongside spread and commission. If the swap cost represents more than 10% of your expected profit, reconsider the trade duration or direction.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a forex swap?</div>
@@ -286,7 +330,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

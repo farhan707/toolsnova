@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -188,6 +188,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html" class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"         class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +217,51 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="kelly-output" onclick="copyEl('kelly-output')" style="min-height:280px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Kelly Criterion Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your win rate</strong> — use historical data from at least 50 trades. Kelly is sensitive to win rate accuracy — overestimating by 5% can significantly change the recommended size.</li>
+      <li><strong>Enter your R:R ratio</strong> — the average reward relative to risk across your winning trades. If you target 15 pips with a 10 pip stop, enter 1.5.</li>
+      <li><strong>Enter account balance</strong> — optional but enables the calculator to show exact dollar amounts alongside percentages.</li>
+      <li><strong>Read the Kelly outputs</strong> — the calculator shows Full Kelly, Half-Kelly, and Quarter-Kelly percentages with explanations of when to use each.</li>
+      <li><strong>Check the sensitivity table</strong> — see how Kelly changes at different win rates to understand how sensitive your optimal size is to win rate accuracy.</li>
+      <li><strong>Apply to position sizing</strong> — use the Half-Kelly percentage as your risk per trade input in the Position Scaling Calculator for complete trade sizing.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Important:</strong> Never use Full Kelly in live trading. It creates extreme variance — drawdowns of 30–50% are mathematically expected even with a genuine edge. Half-Kelly or Quarter-Kelly is the professional standard.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding the Kelly Criterion</h2>
+    <p>The Kelly Criterion was developed by John L. Kelly Jr. at Bell Labs in 1956 and later adopted by gamblers and investors to calculate the optimal fraction of capital to risk on each bet. Ed Thorp — the mathematician who beat blackjack and later the stock market — popularised its use in financial markets.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 The Formula</div><div class="edu-card-body">Kelly % = Win Rate − (Loss Rate ÷ Reward Ratio). Example: 55% WR, 1:1.5 RR → Kelly = 0.55 − (0.45÷1.5) = 0.55 − 0.30 = 0.25 = 25% per trade.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✅ Positive Kelly</div><div class="edu-card-body">Any positive Kelly value means you have a mathematical edge. The higher the Kelly %, the stronger your edge. Negative Kelly means you have no edge — do not trade this strategy with real money.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ Half-Kelly</div><div class="edu-card-body">Half the Full Kelly amount. Gives approximately 75% of the growth rate with dramatically lower variance. Preferred by professional traders and quantitative funds.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🛡️ Quarter-Kelly</div><div class="edu-card-body">25% of Full Kelly. Very conservative — similar growth to Half-Kelly but with minimal drawdown. Suitable for new strategies where win rate confidence is low.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Growth Maximisation</div><div class="edu-card-body">Full Kelly mathematically maximises the long-run growth rate of capital. However, it also maximises short-term volatility, making it psychologically and practically challenging to stick to during losing streaks.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Kelly Rebalancing</div><div class="edu-card-body">After each trade, the Kelly-optimal size changes as your balance changes. Fixed fractional risk (which is effectively rebalanced Kelly) achieves this automatically.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Kelly Criterion in Practice</h2>
+    <h3>Why traders underperform Kelly</h3>
+    <p>Most traders who attempt to use Full Kelly abandon it after the first significant losing streak. A 25% Kelly with a string of 6 losses can reduce a $10,000 account to $5,000 — mathematically expected but emotionally devastating. Half-Kelly produces slower growth but the drawdowns are survivable, allowing traders to maintain discipline through variance.</p>
+    <h3>Kelly and prop firms</h3>
+    <p>Kelly Criterion is most useful for sizing trades in personal accounts without strict drawdown limits. For prop firm challenges, Kelly should be used as a reference point — then reduced significantly. A Kelly of 8% should translate to 0.5–1% actual risk in a prop firm context where a 10-consecutive-loss streak would breach the account limit.</p>
+    <h3>Kelly with correlated positions</h3>
+    <p>Kelly assumes each bet is independent. In trading, many positions are correlated (especially in forex where USD movement affects multiple pairs simultaneously). When running multiple correlated positions, divide the Kelly size by the number of correlated positions to maintain the intended total exposure.</p>
+    <div class="edu-highlight"><strong>🎯 Practical application:</strong> Use Kelly to confirm you have a positive edge (any positive Kelly%) and to establish a maximum size ceiling. Then use Fixed Fractional at 0.5–1% for actual prop firm trading. Kelly tells you what's mathematically optimal — risk management tells you what's practically sustainable.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the Kelly Criterion?</div>
@@ -265,7 +310,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

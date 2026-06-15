@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -211,7 +225,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Fibonacci Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fib-output" onclick="copyEl('fib-output')" style="min-height:260px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Fibonacci Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the swing high price</strong> — the highest point of the recent price move you want to analyse.</li>
+      <li><strong>Enter the swing low price</strong> — the lowest point of the same price move.</li>
+      <li><strong>Select direction</strong> — Uptrend (retracement pulls back from high to low) or Downtrend (retracement moves up from low to high).</li>
+      <li><strong>Read retracement levels</strong> — the calculator shows all key Fibonacci levels: 23.6%, 38.2%, 50%, 61.8%, 78.6%, and extension levels 127.2%, 161.8%, and 261.8%.</li>
+      <li><strong>Use as trade levels</strong> — the 38.2%, 50%, and 61.8% levels are the primary retracement zones for entries. The 127.2% and 161.8% extension levels are common take profit targets.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🌀 The golden ratio:</strong> 61.8% (the 'golden ratio' or phi) is the most significant Fibonacci level. Price frequently finds strong support or resistance at this level during healthy trends. A clean bounce from the 61.8% retracement in a strong trend is one of the highest-probability trade setups in technical analysis.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Fibonacci in Trading</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🌀 What Are Fibonacci Levels?</div><div class="edu-card-body">Ratios derived from the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, 13...) where each number divided by the next approaches 0.618. These ratios appear throughout nature and financial markets, influencing where price finds support and resistance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Key Retracement Levels</div><div class="edu-card-body">23.6%: shallow retracement — strong trend. 38.2%: moderate retracement — healthy trend. 50%: half retracement — common pause point (not a Fibonacci ratio but widely used). 61.8%: deep retracement — maximum pullback in a healthy trend. 78.6%: very deep — often last support before trend reversal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Extension Levels</div><div class="edu-card-body">127.2%: first extension target after trend continuation. 161.8%: the primary extension target (1.618 × original move). 261.8%: second extension for strong trend moves. Extensions project where price may go after the retracement completes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Why They Work</div><div class="edu-card-body">Fibonacci levels work because professional traders globally use them to identify entry and exit points. This creates self-fulfilling prophecy — enough traders buying at 61.8% creates real buying pressure at that level.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔗 Fibonacci Confluence</div><div class="edu-card-body">The highest-probability setups occur when a Fibonacci level aligns with another technical factor: previous support/resistance, moving average, pivot point, or trend line. Single Fibonacci levels alone are weaker signals.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Swing Selection Matters</div><div class="edu-card-body">Fibonacci accuracy depends entirely on selecting the correct swing high and low. Use significant structural swings — major highs and lows that represent clear directional changes. Applying Fibonacci to minor noise produces unreliable levels.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Fibonacci Trading Strategies</h2>
+    <h3>The Fibonacci retracement entry</h3>
+    <p>The most common Fibonacci strategy: identify a strong trending move, wait for retracement to the 38.2%–61.8% zone, look for price action confirmation (pin bar, engulfing candle) at the level, enter with stop below the 78.6% level (or below the swing low for conservative entries), target the previous high for 1:2+ R:R.</p>
+    <h3>Fibonacci extension targets</h3>
+    <p>After identifying a completed retracement, use extension levels to set take profit targets. The 127.2% extension is the conservative first target. The 161.8% extension is the standard target for trend continuation trades. The 261.8% extension is used for breakout trades in very strong trends. Pre-setting these targets using this calculator before entering eliminates the need for in-trade decision making.</p>
+    <h3>Fibonacci and prop firm challenges</h3>
+    <p>Fibonacci-based entries naturally produce high R:R ratios when set up correctly. An entry at the 61.8% retracement with stop below the swing low (10–20 pips below) and target at the 161.8% extension (often 50–100+ pips away) creates 1:3 to 1:5 R:R opportunities. These setups are ideal for prop firm challenges where high R:R accelerates progress toward the profit target.</p>
+    <div class="edu-highlight"><strong>🌀 Fibonacci rule:</strong> Never trade a Fibonacci level in isolation. Always require at least one confirming factor — price action signal, confluence with another technical level, or alignment with the higher timeframe trend direction. Fibonacci + confirmation = high-probability setup. Fibonacci alone = speculation.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is Fibonacci retracement?</div>
@@ -255,7 +310,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

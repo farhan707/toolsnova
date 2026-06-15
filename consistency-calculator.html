@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -189,6 +189,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -220,7 +221,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="con2-output" onclick="copyEl('con2-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Consistency Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter total profit</strong> — your total profit amount across all trading days so far in the challenge or evaluation period.</li>
+      <li><strong>Enter best single day profit</strong> — the highest profit you made on any single trading day. This is the number prop firms scrutinise most closely.</li>
+      <li><strong>Set consistency threshold</strong> — your firm's rule (usually 30%). FTMO, FundedNext, and MyForexFunds all use 30% as the standard threshold.</li>
+      <li><strong>Check your score</strong> — the calculator shows your consistency percentage and whether you qualify for payout. If your best day is too high, it shows exactly how much more you need to earn to bring the score below 30%.</li>
+      <li><strong>Simulate future days</strong> — the calculator shows how much additional daily profit (at various levels) would bring your consistency score into compliance.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💡 Strategic insight:</strong> If you have a big winning day early in the challenge, do not stop trading — you need to earn MORE on other days to bring your best-day percentage below 30%. Stopping after a big day is the worst thing you can do for consistency compliance.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding the Consistency Rule</h2>
+    <p>The consistency rule exists to prevent traders from getting lucky on one massive trade and passing a challenge on that single result. Firms want to fund traders who can generate profits consistently — not those who bet big once and happened to win.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 What It Measures</div><div class="edu-card-body">The percentage of your total profit that came from your single best trading day. If total profit is $5,000 and best day was $2,000, consistency score = 40% — above the 30% limit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✅ The 30% Rule</div><div class="edu-card-body">Your best single day must not account for more than 30% of total profits. On a $100K account targeting 8% ($8,000), no single day should produce more than $2,400 in profit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔧 How to Fix It</div><div class="edu-card-body">You cannot remove the big day. The only fix is to earn more profit on other days to dilute the percentage. If best day = $2,000 and limit = 30%, total profit must reach at least $6,667.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Common Mistake</div><div class="edu-card-body">Traders hit a big day near the end of the challenge, think they've passed, and stop trading — only to be rejected for consistency. Always check this calculator before requesting evaluation.</div></div>
+    </div>
+    <p>Note that some firms (like The5ers) do not have a consistency rule at all. Always check your specific firm's terms. For firms that do have the rule, it applies to the funded account payouts — not just the challenge phase.</p>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Building a Consistent Trading Record</h2>
+    <h3>Daily profit targeting</h3>
+    <p>The most effective approach for consistency compliance is setting a daily profit target of 0.5–1% and stopping when you hit it. This naturally prevents any single day from dominating your results. It also prevents the emotional rollercoaster of chasing large gains on some days and suffering large losses on others.</p>
+    <h3>Position size discipline</h3>
+    <p>Inconsistency usually comes from variable position sizing — using small sizes on low-confidence trades and large sizes on high-confidence ones. While this feels logical, it creates inconsistent daily results. Professional prop firm traders often use identical position sizes on every trade, letting win rate and R:R create the edge rather than variable sizing.</p>
+    <h3>Session selection</h3>
+    <p>Trading fewer, higher-quality sessions produces more consistent results than trading every available hour. Choose your best performing time window — typically London open or New York open for forex — and focus exclusively there. Consistent session selection leads to consistent statistical outcomes.</p>
+    <div class="edu-highlight"><strong>🎯 The consistency mindset:</strong> Prop firms are funding you for life, not for one challenge. The consistency rule is actually training you to trade the right way — sustainably, with controlled daily exposure. Traders who master consistency in challenges tend to be the most profitable funded traders long-term.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the consistency rule?</div>
@@ -263,7 +306,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

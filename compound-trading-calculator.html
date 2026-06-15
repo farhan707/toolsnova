@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -212,7 +226,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Growth Projection <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ct-output" onclick="copyEl('ct-output')" style="min-height:280px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Compound Trading Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter starting balance</strong> — your initial trading capital.</li>
+      <li><strong>Set monthly return %</strong> — your realistic average monthly return. Be conservative — use half your best month's return as a sustainable estimate.</li>
+      <li><strong>Enter number of months</strong> — the projection period. Use 12 for annual, 24 for 2-year, 60 for 5-year projections.</li>
+      <li><strong>Set withdrawal %</strong> — if you plan to withdraw profits monthly, enter the percentage you will withdraw. 0% for full compounding.</li>
+      <li><strong>Read the projection table</strong> — see month-by-month balance growth including the powerful acceleration effect of compounding in later months.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Realistic returns:</strong> Consistently profitable retail traders average 3–8% per month. Prop traders with scaling plans can target 5–10%. Avoid planning around your best months — plan around your average months. Compounding works powerfully even at conservative 3–5% monthly returns.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Compound Growth in Trading</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔄 What Is Compounding?</div><div class="edu-card-body">Earning returns on previous returns. At 5% monthly: $10,000 → $10,500 month 1 → $11,025 month 2 → $11,576 month 3. The growth accelerates because each month's 5% is applied to a larger base.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 The Power of Time</div><div class="edu-card-body">12 months at 5%/month: $10,000 → $17,959 (79.6% gain). 24 months: $32,251 (222% gain). 36 months: $57,964 (480% gain). The acceleration in years 2–3 is dramatic — patience is the key ingredient.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💸 Withdrawal Impact</div><div class="edu-card-body">Withdrawing 50% of profits each month still grows the account but at a slower rate. This provides income while maintaining account growth. The trade-off between income withdrawal and compounding growth is the central planning decision for funded traders.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Prop Firm Compounding</div><div class="edu-card-body">Scaling plans at prop firms multiply the compounding effect. Starting with $100K account, hitting 8% target every 3 months, getting 25% scale-up every 4 months: within 2 years, the funded account size can reach $400K+.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Risk of Ruin</div><div class="edu-card-body">Compounding losses are equally powerful in reverse. At -5% monthly: $10,000 → $5,987 after 10 months. This is why consistent small gains compound dramatically better than volatile large gains — consistency prevents the devastating reverse compounding of losses.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Realistic Planning</div><div class="edu-card-body">Most traders overestimate monthly returns in projections. The conservative approach: project at 50% of your average monthly return. If your average is 6%, project at 3%. If you outperform, it is a bonus. If you underperform, you are still on track.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Building a Compound Trading Plan</h2>
+    <h3>The funded trader compounding strategy</h3>
+    <p>Phase 1 (months 1–6): Pass challenge, get funded, focus entirely on consistency at 0.5–1% risk. Target 4–6% monthly. Do not withdraw — reinvest all profits into scaling. Phase 2 (months 7–12): Begin scaling, add a second funded account. Total capital under management doubles. Phase 3 (year 2+): Multiple funded accounts across 2–3 firms, withdraw 50% of profits monthly while compounding the rest.</p>
+    <h3>The compounding mindset</h3>
+    <p>The biggest obstacle to compounding is impatience. A trader making 5% monthly feels behind when they see others claiming 50% monthly returns. But the 5% trader compounds to 179% annual returns — far exceeding what most aggressive traders achieve consistently. Focus on monthly consistency, not monthly maximums.</p>
+    <h3>Reinvesting challenge fees</h3>
+    <p>A common mistake: withdrawing all profits and using personal funds for next challenge fees. Instead, keep one payout specifically for funding the next challenge level. This creates a self-funding progression: $100K account → first payout funds $200K challenge → second payout funds $400K challenge. Zero additional personal capital required after the first challenge.</p>
+    <div class="edu-highlight"><strong>🔄 The compound formula:</strong> Balance × (1 + monthly return%)^months. At just 4%/month for 24 months: starting $10,000 becomes $25,633. At 6%/month: $32,071. Consistency at moderate returns beats sporadic high returns every time.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is compounding in trading?</div>
@@ -252,7 +307,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

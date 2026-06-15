@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -243,7 +243,52 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="corr-output" onclick="copyEl('corr-output')" style="min-height:320px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Currency Correlation Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your first pair</strong> — choose the currency pair or instrument you are planning to trade or currently hold.</li>
+      <li><strong>Select the second pair</strong> — choose another pair to compare correlation with your first selection.</li>
+      <li><strong>Read the correlation value</strong> — values range from -1.0 to +1.0. The calculator instantly shows strength, direction, and risk implications.</li>
+      <li><strong>Review the full correlation table</strong> — the bottom section shows how your first pair correlates with all 13 major instruments, sorted by correlation strength.</li>
+      <li><strong>Apply to position sizing</strong> — if correlation is above 0.7, halve your position size on any second correlated trade to maintain your intended total risk exposure.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔑 Key rule:</strong> If you hold EURUSD long and want to also go long GBPUSD (correlation 0.89), you are effectively doubling your USD short exposure. Either skip the second trade or halve both positions. This single insight prevents one of the most common hidden risk errors in retail trading.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Currency Correlation</h2>
+    <p>Currency correlation measures how closely two pairs move in relation to each other over a given time period. A correlation of +1.0 means the pairs move in perfect lockstep. A correlation of -1.0 means they move in exactly opposite directions. A correlation of 0.0 means no relationship.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">+0.7 to +1.0 Strong Positive</div><div class="edu-card-body">Pairs move in the same direction most of the time. Trading both in the same direction doubles your actual exposure. Examples: EURUSD/GBPUSD (0.89), AUDUSD/NZDUSD (0.92), EURJPY/GBPJPY (0.88).</div></div>
+      <div class="edu-card"><div class="edu-card-title">-0.7 to -1.0 Strong Negative</div><div class="edu-card-body">Pairs move in opposite directions. Going long on both effectively creates a partial hedge — they cancel each other out. Example: EURUSD/USDCHF (-0.93). Going long EURUSD and long USDCHF almost neutralises both positions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">0.0 to ±0.3 Low Correlation</div><div class="edu-card-body">Pairs are largely independent. Trading both is genuinely diversified exposure. These combinations are rare in major forex — most major pairs share USD as either base or quote, creating inherent correlation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">±0.3 to ±0.7 Moderate</div><div class="edu-card-body">Partial relationship. Correlated in the same macro direction but with enough independence for both positions to add value. Can be traded simultaneously with normal sizing, but monitor total USD exposure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏱️ Time-Varying</div><div class="edu-card-body">Correlations are not fixed. They change with market regimes, central bank policy changes, and risk-on/risk-off environments. The values shown are approximate 3-month historical averages.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Practical Use</div><div class="edu-card-body">Use correlation to: 1) Avoid doubling risk, 2) Find genuine diversification, 3) Identify hedging opportunities, 4) Confirm breakouts (if EURUSD and GBPUSD both break a level, signal is stronger).</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Using Correlation in Prop Firm Trading</h2>
+    <h3>The hidden risk problem</h3>
+    <p>The most common hidden risk error in prop firm trading is holding multiple highly correlated positions and believing your risk is diversified. A trader long 1 lot EURUSD, 1 lot GBPUSD, and 1 lot AUDUSD with 1% risk each has an actual correlated USD exposure far greater than 3%. If USD spikes strongly (common on NFP, FOMC announcements), all three positions move against simultaneously, creating a drawdown 3× larger than any single position would suggest.</p>
+    <h3>The diversification benefit</h3>
+    <p>True diversification in forex requires choosing pairs with low correlation. EURUSD (correlation with USDJPY = -0.82) and USDJPY in the same direction is better diversification than EURUSD and GBPUSD. Adding Gold (XAUUSD, correlation with EURUSD = 0.65) adds some diversification while staying in familiar instruments.</p>
+    <h3>Correlation-adjusted position sizing</h3>
+    <p>A simple rule: if correlation between two positions is above 0.7, treat them as a single position for risk management purposes. If you want 1% risk per position, use 0.5% on each correlated pair. This maintains your intended total exposure while preserving both trading opportunities.</p>
+    <h3>News event correlation spikes</h3>
+    <p>During major news events (Fed decisions, NFP, CPI releases), correlation between USD pairs temporarily increases toward 1.0 or -1.0 as all pairs react to the same USD shock. Be especially careful holding multiple positions through major news — the correlation risk is at its maximum exactly when market moves are at their largest.</p>
+    <div class="edu-highlight"><strong>🎯 Simple correlation rule for prop firms:</strong> Never have more than 2 highly correlated positions open simultaneously. If you must trade correlated pairs, cut each position to 0.5% risk instead of 1%. Total USD exposure should never exceed 2% of account across all correlated positions combined.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is currency correlation?</div>
@@ -292,7 +337,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -214,7 +228,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Drawdown Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter peak balance</strong> — the highest balance your account reached before the current losing period began.</li>
+      <li><strong>Enter current balance</strong> — your account balance right now.</li>
+      <li><strong>Calculate drawdown</strong> — the calculator shows your current drawdown in both percentage and dollar terms.</li>
+      <li><strong>Check recovery needed</strong> — this is the most important number. The calculator shows the percentage gain required to return to peak. This is always higher than the drawdown percentage.</li>
+      <li><strong>Review the drawdown table</strong> — see recovery requirements for drawdowns from 5% to 90%, illustrating why large drawdowns are so damaging.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ The asymmetry trap:</strong> A 50% drawdown requires a 100% gain to recover. This is why professional traders obsess over maximum drawdown — not because losses are psychologically painful, but because large drawdowns mathematically require disproportionate gains to recover.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Drawdown</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📉 What Is Drawdown?</div><div class="edu-card-body">The percentage decline from a peak balance to a subsequent trough. A $10,000 account that falls to $8,000 has a 20% drawdown. Drawdown is always measured from the most recent peak, not from the starting balance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Recovery Asymmetry</div><div class="edu-card-body">Losses and gains are not symmetrical due to compounding. 10% loss needs 11.1% gain. 20% loss needs 25% gain. 30% loss needs 42.9% gain. 50% loss needs 100% gain. 75% loss needs 300% gain.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Max Drawdown</div><div class="edu-card-body">The largest peak-to-trough decline in account history. This is the key metric for evaluating strategy risk. Most prop firms set their limits based on maximum drawdown (8–12%).</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏱️ Drawdown Duration</div><div class="edu-card-body">How long you stay below a previous peak. Long drawdown durations — even at moderate percentages — cause psychological fatigue that leads to strategy abandonment. Short, sharp drawdowns are often easier to manage than prolonged shallow ones.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Acceptable Drawdown</div><div class="edu-card-body">Most professional traders target maximum drawdowns of 10–20% in personal accounts. Prop firms enforce 8–12% limits. Retail traders who experience 30%+ drawdowns statistically rarely recover — they typically over-leverage trying to recover, compounding the problem.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🛡️ Drawdown Prevention</div><div class="edu-card-body">The most effective drawdown prevention is position sizing. At 1% risk per trade, you need 10 consecutive losses to create a 9.6% drawdown. At 3% risk, 5 consecutive losses creates a 14.1% drawdown. Risk per trade is the primary drawdown control lever.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Managing and Recovering from Drawdown</h2>
+    <h3>The drawdown response plan</h3>
+    <p>Professional traders have predetermined responses to drawdown levels. A common framework: at 5% drawdown, reduce position size by 25%. At 10% drawdown, reduce by 50% and review strategy. At 15% drawdown, stop trading and do a full strategy audit. Having this plan in advance prevents emotional responses to losses.</p>
+    <h3>Never average down</h3>
+    <p>Adding to a losing position — averaging down — is the fastest way to convert a manageable drawdown into an account-destroying one. Each addition increases your average entry price while doubling your exposure. The trade needs to move even further in your favour just to break even. Avoid this in all circumstances.</p>
+    <h3>Drawdown and prop firms</h3>
+    <p>In prop firm accounts, drawdown has a hard external limit — breach it and the account is terminated regardless of your recovery potential. This is fundamentally different from personal accounts where you can theoretically wait out any drawdown. In prop firm trading, capital preservation is always the primary objective and profit is secondary.</p>
+    <div class="edu-highlight"><strong>📋 Recovery rule:</strong> After any drawdown exceeding 5%, do not increase position size to recover faster. Reduce it. Smaller positions give your strategy the space to generate the win rate and R:R that created your edge. Larger positions during recovery mode introduce variance that typically makes the drawdown worse.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is drawdown?</div>
@@ -250,7 +305,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

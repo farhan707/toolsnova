@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -242,7 +256,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result — pip values at all sizes <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pv-output" onclick="copyEl('pv-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Pip Value Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your currency pair</strong> — the pip value differs significantly between pairs depending on the quote currency.</li>
+      <li><strong>Enter lot size</strong> — the position size in standard lots (1.0 = standard, 0.1 = mini, 0.01 = micro).</li>
+      <li><strong>Enter account currency</strong> — if your account is in a currency other than USD, the pip value is converted automatically.</li>
+      <li><strong>Read pip value</strong> — the dollar (or account currency) value of a single pip move at your specified lot size.</li>
+      <li><strong>Use in position sizing</strong> — divide your risk amount by (stop loss pips × pip value per lot) to calculate your lot size.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Quick reference:</strong> For USD-quote pairs (EURUSD, GBPUSD, AUDUSD): 1 pip = $10 per standard lot. For JPY pairs: 1 pip = ~$9.10 per standard lot. For Gold (XAUUSD): 1 pip ($0.01 price move) = $0.10 per standard lot, or 1 full dollar move = $10 per standard lot.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Pip Values</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📏 What Is a Pip?</div><div class="edu-card-body">Pip stands for 'Percentage in Point' — the smallest standard price movement in forex. For most pairs: 0.0001 (4th decimal). For JPY pairs: 0.01 (2nd decimal). For Gold: $0.01 per troy ounce.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💱 USD Quote Pairs</div><div class="edu-card-body">EURUSD, GBPUSD, AUDUSD, NZDUSD — quote currency is USD. 1 pip = exactly $10 per standard lot regardless of current exchange rate. Most consistent for risk calculations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💱 USD Base Pairs</div><div class="edu-card-body">USDJPY, USDCHF, USDCAD — USD is the base currency. Pip value in USD varies with the current exchange rate. At USDJPY 150.00: 1 pip = $10 ÷ 1.50 = $6.67 per standard lot.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💱 Cross Pairs</div><div class="edu-card-body">EURGBP, EURJPY, GBPJPY — neither currency is USD. Pip value must be calculated via the USD conversion rate of the quote currency. Most brokers handle this automatically.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Pipette</div><div class="edu-card-body">Many brokers quote prices to 5 decimal places (pipettes). EURUSD at 1.08523 — the '3' is a pipette (1/10th of a pip). Always confirm whether your broker uses 4 or 5 decimal places when counting pip distances.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Importance for Risk</div><div class="edu-card-body">Pip value is the crucial link between stop loss distance (in pips) and dollar risk. At $10/pip/lot: 20-pip stop with 1 lot = $200 risk. 50-pip stop with 0.5 lots = $250 risk. Understanding pip value prevents position sizing errors.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Pip Value in Risk Management</h2>
+    <h3>Calculating exact dollar risk</h3>
+    <p>Dollar Risk = Lot Size × Pip Value Per Lot × Stop Loss in Pips. Example: 0.5 lots EURUSD, $10 pip value, 30-pip stop = 0.5 × $10 × 30 = $150 risk. This calculation should be done mentally before every trade to confirm your risk amount matches your plan.</p>
+    <h3>Pip value changes with account currency</h3>
+    <p>If your trading account is denominated in GBP, EUR, or another currency, your pip values in account currency change with exchange rates. A prop firm account in EUR trading EURUSD: the pip value in EUR changes daily with the EURUSD rate. Most platforms show pip value in account currency automatically — verify your broker does this correctly.</p>
+    <h3>Pip value for indices and commodities</h3>
+    <p>Indices and commodities use 'points' rather than pips. NAS100: 1 point = $1 per mini lot. US30 (Dow): 1 point = $1 per mini lot. SPX500: 1 point = $10 per standard lot. Crude oil: 1 point = $10 per standard lot. Always verify point values with your specific broker as they can vary.</p>
+    <div class="edu-highlight"><strong>📊 Risk verification habit:</strong> Before clicking 'Buy' or 'Sell', say your risk out loud: 'This trade risks $X at Y pips stop on Z lots.' If this number is higher than your planned risk amount, reduce lot size before entering. This 5-second check prevents most accidental over-risk entries.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a pip?</div>
@@ -287,7 +342,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

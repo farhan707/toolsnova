@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -189,6 +189,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -224,7 +225,50 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="dd-output" onclick="copyEl('dd-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Daily Drawdown Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter start of day balance</strong> — your account balance at the beginning of today's trading session. For most prop firms this is your balance at midnight server time.</li>
+      <li><strong>Enter current balance</strong> — your account balance right now, including any open positions (use equity, not just closed P&L).</li>
+      <li><strong>Set daily DD limit</strong> — your firm's daily drawdown percentage (usually 4–5%). Check your firm's exact rules — FTMO uses 5%, FundedNext uses 4%.</li>
+      <li><strong>Select DD type</strong> — Fixed (from start-of-day balance) or Trailing (from highest balance reached today). Most top firms use trailing — this is stricter.</li>
+      <li><strong>Check your remaining buffer</strong> — the calculator shows exactly how much more you can lose today before breaching. Plan your remaining trades around this number.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Critical rule:</strong> Always check your remaining daily buffer BEFORE opening a new position. If your buffer is $800 and your trade risks $600, you have almost no margin for error. Either reduce position size or wait until tomorrow.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Daily Drawdown Rules</h2>
+    <p>Daily drawdown is the most misunderstood rule in prop firm trading. Traders often focus entirely on the maximum drawdown limit and forget that a single bad day — even one where they recover partially — can end their challenge.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📌 Fixed Daily DD</div><div class="edu-card-body">Calculated from your balance at the start of each trading day. Simple: if you start at $100,000 with 5% daily DD, your floor is $95,000 for the entire day, regardless of profits made during the day.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📌 Trailing Daily DD</div><div class="edu-card-body">Calculated from the HIGHEST balance reached at any point during the day, including unrealised profits. If your balance peaks at $102,000 during the day, your floor becomes $96,900 — even if you close that profit. Used by FTMO and most top firms.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🕐 When It Resets</div><div class="edu-card-body">Most firms reset at midnight CET/EET server time. Positions open through midnight can affect both today's and tomorrow's daily DD calculation. Know your broker's server time.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Equity vs Balance</div><div class="edu-card-body">Some firms calculate DD from equity (including open trades), others from balance (closed trades only). FTMO uses equity — meaning a large open losing position counts against your daily limit even before you close it.</div></div>
+    </div>
+    <h3>The Wednesday triple swap trap</h3>
+    <p>If you hold positions overnight into Wednesday, you pay 3× the normal swap (to cover the weekend). This can unexpectedly reduce your balance and eat into your daily drawdown limit. Factor swap costs into your daily DD calculation when holding overnight.</p>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Daily Drawdown Management Strategies</h2>
+    <h3>The 50% rule</h3>
+    <p>Many professional prop firm traders use a personal daily stop loss of 50% of the firm's limit. If the firm allows 5% daily DD, they stop trading after 2.5% drawdown. This creates a safety buffer for slippage, spread widening, and unexpected news events. It also preserves emotional clarity — losses beyond 50% of the limit often trigger emotional trading that leads to full limit breaches.</p>
+    <h3>Session-based trading</h3>
+    <p>Dividing your daily DD budget by trading session (Asian, London, New York) helps prevent a bad morning session from eliminating all afternoon opportunities. Allocate 40% of your daily budget to your primary session and reserve 60% as a buffer.</p>
+    <h3>Tracking equity in real time</h3>
+    <p>The most important habit for prop firm trading is checking your current equity — not just closed P&L — before every trade. Open losing positions consume your daily DD allowance even before you close them. Use this calculator throughout the trading day, not just at the start.</p>
+    <div class="edu-highlight"><strong>🛡️ Professional approach:</strong> Set a hard rule — if you hit 60% of your daily DD limit, close all positions and stop trading for the day. No exceptions. The challenge is won over 30 days, not recovered in one afternoon session.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Why is daily drawdown so important?</div>
@@ -267,7 +311,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

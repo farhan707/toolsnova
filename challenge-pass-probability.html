@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -189,6 +189,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -229,7 +230,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cpp-output" onclick="copyEl('cpp-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Pass Probability Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your win rate</strong> — use your actual historical win rate from at least 50 trades. Be honest — optimistic win rates produce misleadingly high pass probabilities.</li>
+      <li><strong>Enter risk:reward ratio</strong> — your average R:R across winning trades. If you typically target 20 pips profit with a 10 pip stop, enter 2.0.</li>
+      <li><strong>Set risk per trade</strong> — the percentage of account risked per trade. Lower risk = lower probability of hitting the drawdown limit but also slower progress toward the profit target.</li>
+      <li><strong>Enter number of trades</strong> — how many trades you plan to take during the challenge. 20–50 is typical for swing traders, 50–200 for day traders.</li>
+      <li><strong>Set firm's rules</strong> — enter the profit target % and max drawdown % from your specific firm. The calculator runs 2,000 simulations and shows what percentage pass both conditions.</li>
+      <li><strong>Read the improvement table</strong> — the calculator shows pass rates at slightly higher win rates and R:R ratios, helping you identify the most impactful improvement to make.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎯 Target pass rate:</strong> Aim for at least 60% pass probability before attempting a paid challenge. Below 50% means the fee is likely a losing investment on a per-attempt basis. Improve your edge first, then pay the fee.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Monte Carlo Pass Probability</h2>
+    <p>The pass probability is calculated using Monte Carlo simulation — 2,000 independent random sequences of wins and losses using your exact statistics. Each simulation checks whether the account hit the profit target before breaching the max drawdown limit.</p>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🎲 What 70% Means</div><div class="edu-card-body">70% pass rate means 7 out of 10 challenge attempts with your strategy and risk settings should pass. The other 3 will hit the drawdown limit through bad luck variance, even though your edge is real.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Drawdown Kills</div><div class="edu-card-body">Most failed simulations end from hitting the max drawdown, not from failing to reach the profit target. Reducing risk per trade dramatically increases pass rate by giving your edge more room to play out.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✅ Positive Expectancy First</div><div class="edu-card-body">If the calculator shows negative expectancy (Kelly = negative), pass probability will be below 50% regardless of other factors. Fix your edge before worrying about challenge fees.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 2,000 Simulations</div><div class="edu-card-body">2,000 runs gives statistically stable results — the pass rate percentage changes by only 1–3% between runs. For more precise estimates, switch to 500 curves in the Monte Carlo Simulator.</div></div>
+    </div>
+    <p>An important nuance: pass probability assumes your live win rate exactly matches your historical win rate. In practice, live trading often produces slightly lower win rates due to execution, spread, and psychological factors. Consider subtracting 5% from your historical win rate when calculating challenge probability for a more conservative estimate.</p>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Improving Your Challenge Pass Rate</h2>
+    <h3>The most powerful lever: reduce risk per trade</h3>
+    <p>Cutting risk from 1% to 0.5% per trade typically increases pass probability by 15–25 percentage points. This is because the max drawdown limit (10%) creates a hard ceiling — at 1% risk you breach it after 10 consecutive losses, at 0.5% you need 20 consecutive losses. Losing streaks of 10 are common; losing streaks of 20 are rare.</p>
+    <h3>Increase R:R before increasing win rate</h3>
+    <p>Improving your reward ratio from 1:1.5 to 1:2 is usually easier than improving win rate from 55% to 60%. R:R can often be improved simply by letting winners run further — adding a trailing stop rather than a fixed take profit. Win rate improvement requires finding genuinely better trade setups.</p>
+    <h3>Optimal trade count</h3>
+    <p>More trades allows your edge to express itself more consistently — variance decreases with sample size. However, more trades also means more opportunities to breach the daily drawdown limit. For most strategies, 40–80 trades over a 30-day challenge is the sweet spot — enough to demonstrate the edge, not so many that daily DD becomes unmanageable.</p>
+    <div class="edu-highlight"><strong>📊 Before every challenge:</strong> Run this calculator with your exact strategy statistics. If pass probability is below 55%, do not pay the fee — practice on a demo account for another month and re-run the calculation. The fee money is better used on a challenge you are likely to pass.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is Monte Carlo simulation?</div>
@@ -272,7 +315,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

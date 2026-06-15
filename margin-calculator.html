@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +230,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Margin Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your currency pair</strong> — the calculator uses the correct contract size and currency for each instrument.</li>
+      <li><strong>Enter lot size</strong> — the position size you are planning to open.</li>
+      <li><strong>Enter leverage ratio</strong> — your broker's available leverage (e.g. 1:100, 1:200, 1:500). Check your account settings for your actual leverage.</li>
+      <li><strong>Read required margin</strong> — the amount of capital that will be locked as collateral for this position. This amount is unavailable for other trades while the position is open.</li>
+      <li><strong>Check free margin</strong> — enter your total account balance to see your remaining free margin after opening this position.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Margin call warning:</strong> If your free margin falls below your broker's margin call level (usually 50–100% of required margin), positions are automatically closed at a loss. Always maintain free margin above 200% of your required margin to avoid forced liquidation.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Margin and Leverage</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💳 What Is Margin?</div><div class="edu-card-body">Margin is the deposit required to open a leveraged position. It is not a fee — it is collateral held by your broker. At 1:100 leverage, opening a $100,000 position requires $1,000 margin deposit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Leverage Ratio</div><div class="edu-card-body">Leverage amplifies both gains and losses. 1:100 leverage means a 1% price move creates a 100% return or loss on your margin. Higher leverage increases both profit potential and liquidation risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Margin Level %</div><div class="edu-card-body">Margin Level = (Equity ÷ Used Margin) × 100. Above 200% is safe. Below 100% triggers margin call. Below 50% at most brokers triggers automatic position liquidation (stop out).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔒 Used vs Free Margin</div><div class="edu-card-body">Used margin is locked in open positions. Free margin = Equity − Used Margin. Free margin determines how many additional positions you can open and how much adverse price movement your account can sustain.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Leverage in Prop Firms</div><div class="edu-card-body">Most prop firms provide 1:100 leverage. At proper position sizing (0.5–1% risk), you will never come close to margin call. Margin calls only happen when position sizes are too large relative to account equity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Regulatory Limits</div><div class="edu-card-body">ESMA (EU/UK) limits retail leverage to 1:30 for major forex pairs and 1:20 for gold. US CFTC limits to 1:50. Offshore brokers offer 1:500 or higher but with reduced regulatory protection.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Margin Management in Practice</h2>
+    <h3>The free margin cushion</h3>
+    <p>Professional traders typically keep at least 70% of their account as free margin at all times. This means never using more than 30% of account equity as used margin across all open positions. This cushion absorbs adverse price movements without triggering margin calls and allows additional positions during good setups.</p>
+    <h3>Effective leverage vs nominal leverage</h3>
+    <p>Your broker may offer 1:500 leverage, but your effective leverage — the actual multiple of your account balance you are controlling — should be much lower. A $10,000 account controlling $100,000 in positions is 10:1 effective leverage. Keeping effective leverage below 10:1 in forex and 5:1 in indices provides adequate risk management regardless of available leverage.</p>
+    <h3>Margin and overnight positions</h3>
+    <p>Margin requirements can increase overnight or over weekends, particularly for volatile instruments. Some brokers double or triple margin requirements for positions held through weekend. Check your broker's overnight margin policy before holding positions through the weekend, especially in prop firm accounts where capital preservation is critical.</p>
+    <div class="edu-highlight"><strong>📐 Safe margin rule:</strong> Required margin for any single position should never exceed 5% of account equity. Total used margin across all positions should never exceed 25% of account equity. These limits ensure no single adverse move can trigger a margin call.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is margin?</div>
@@ -252,7 +307,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

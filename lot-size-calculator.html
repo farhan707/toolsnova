@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -217,7 +231,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Lot Size Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your account balance</strong> — your total equity including open positions.</li>
+      <li><strong>Set risk percentage</strong> — the percentage of account to risk on this trade. Use 0.5–1% for prop firm accounts, 1–2% for personal accounts.</li>
+      <li><strong>Enter stop loss in pips</strong> — the distance from your entry price to your stop loss. This is determined by your chart analysis, not by your desired lot size.</li>
+      <li><strong>Select currency pair</strong> — choose your instrument. The calculator uses the correct pip value for each pair automatically.</li>
+      <li><strong>Read your lot size</strong> — the exact position size that risks the percentage you specified. Use this number precisely in your broker's order entry.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔑 Golden rule:</strong> Always calculate lot size AFTER placing your stop loss on the chart. Your stop loss location is determined by market structure — support, resistance, swing highs/lows. Your lot size is then calculated to risk exactly your chosen percentage at that stop distance.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Lot Sizes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📦 Standard Lot</div><div class="edu-card-body">100,000 units of base currency. On EURUSD, 1 standard lot = $10 per pip. This is the largest standard position size — used by institutional traders and well-funded retail accounts.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📦 Mini Lot</div><div class="edu-card-body">10,000 units = 0.1 lots. $1 per pip on EURUSD. Suitable for accounts of $1,000–$10,000 with proper risk management.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📦 Micro Lot</div><div class="edu-card-body">1,000 units = 0.01 lots. $0.10 per pip on EURUSD. Used for very small accounts or for fine-tuning position sizes to the exact cent of risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Pip Value</div><div class="edu-card-body">The dollar value of a 1-pip move per lot. Varies by pair and account currency. EURUSD: $10/pip/lot. USDJPY: ~$9.10/pip/lot. XAUUSD (Gold): $10/pip/lot but pips are $0.01 price moves.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 The Formula</div><div class="edu-card-body">Lot Size = (Account × Risk%) ÷ (Stop Loss Pips × Pip Value Per Lot). Example: $10,000 × 1% ÷ (20 pips × $10) = $100 ÷ $200 = 0.5 lots.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Prop Firm Context</div><div class="edu-card-body">On a $100K prop firm account with 5% daily DD and 1% risk per trade, you can sustain 5 consecutive losing trades before breaching the daily limit. This is why 0.5% risk is recommended — giving 10 losing trades of buffer.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Lot Size and Risk Management</h2>
+    <h3>Why lot size is your most important decision</h3>
+    <p>Every other aspect of trading — entry signals, indicators, news analysis — is secondary to position sizing. A trader with a mediocre strategy and perfect position sizing will outperform a trader with an excellent strategy and poor position sizing over time. Lot size directly controls your survival during losing streaks.</p>
+    <h3>Adjusting for volatility</h3>
+    <p>During high-volatility periods (major news events, market open/close), consider reducing your normal lot size by 30–50%. Wider spreads, slippage, and unpredictable price action mean your actual risk can be significantly higher than your calculated risk. Consistent traders reduce size in uncertain conditions.</p>
+    <h3>Scaling into positions</h3>
+    <p>Some traders split their intended position into 2–3 entries, adding to the position as it moves in their direction. If your normal size is 1 lot, enter 0.5 lots at the initial signal and add 0.5 lots after confirmation. This reduces the risk of full-size entry at a poor price while maintaining upside participation.</p>
+    <div class="edu-highlight"><strong>📊 Simple sizing rule for beginners:</strong> Use 1% risk per trade until you have 100 live trades recorded. After 100 trades, calculate your actual win rate and expectancy. Only then consider adjusting risk percentage based on your proven edge.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a lot in forex?</div>
@@ -254,7 +309,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

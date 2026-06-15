@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +230,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Gold Position Size Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter account balance</strong> — your trading account equity in USD.</li>
+      <li><strong>Set risk percentage</strong> — the percentage to risk. Gold (XAUUSD) is volatile — use 0.5% risk for prop firm accounts, 1% maximum.</li>
+      <li><strong>Enter stop loss in dollars</strong> — the dollar distance from your entry to stop loss. Gold moves in dollars, not pips. A $5 stop means entry at $2,000 and stop at $1,995.</li>
+      <li><strong>Read lot size</strong> — the calculator converts your dollar risk and stop loss distance into the correct lot size for XAUUSD.</li>
+      <li><strong>Verify dollar risk</strong> — confirm the calculated dollar risk matches your intended risk amount before placing the order.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💡 Gold specifics:</strong> XAUUSD has a pip value of $10 per standard lot per $0.01 price move (or $1 per 0.01 move for mini lots). Gold regularly moves $10–$30 in minutes during London and New York sessions. Always use wider stops on Gold than on standard forex pairs.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Gold (XAUUSD) Trading</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🥇 Why Gold Is Different</div><div class="edu-card-body">Gold trades as a commodity priced in USD. Unlike forex pairs, Gold has no base country interest rate — it is driven by risk sentiment, inflation expectations, USD strength, and geopolitical events. It behaves differently from currency pairs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Gold Volatility</div><div class="edu-card-body">Gold's Average True Range (ATR) is typically $15–$40 per day. During major risk events (Fed decisions, geopolitical crises), Gold can move $50–$100 in hours. Position sizing must account for this higher volatility.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Best Trading Times</div><div class="edu-card-body">Gold is most liquid and volatile during London open (3–4 AM EST) and New York open (8–10 AM EST). The overlap between London and New York (8 AM–12 PM EST) produces the largest moves with tightest spreads.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔗 Gold-USD Correlation</div><div class="edu-card-body">Gold has a historically negative correlation with the USD index — when USD strengthens, Gold typically falls. This correlation ranges from -0.5 to -0.8 and shifts with market conditions. Monitoring DXY alongside Gold improves trade timing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Key Gold Levels</div><div class="edu-card-body">Gold respects round numbers ($1,900, $2,000, $2,100, $2,500) as significant support/resistance. Previous all-time highs and monthly highs/lows are also key levels. Institutional order flow clusters around these levels.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Spread Consideration</div><div class="edu-card-body">Gold spreads widen significantly during off-hours and major news. Standard spread is $0.20–$0.50 during peak hours. During news events, spread can widen to $2–$5, immediately putting new positions into loss. Avoid entering Gold positions in the 5 minutes around major US data releases.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Gold Trading Strategy and Risk</h2>
+    <h3>Stop loss placement for Gold</h3>
+    <p>Gold requires wider stops than forex pairs due to its volatility. Minimum viable stop losses for Gold: scalping = $3–$5, day trading = $8–$15, swing trading = $20–$40. Stops tighter than these are typically taken out by normal volatility before any directional move occurs. Tight stops with small lots outperform loose stops with large lots in Gold.</p>
+    <h3>Gold and prop firm challenges</h3>
+    <p>Gold is one of the most popular instruments for prop firm challenges due to its volatility and trend characteristics. However, it is also one of the most common ways traders breach daily drawdown limits. A 1-lot Gold position with a 20-pip stop risks $200, but adverse moves of 50+ pips happen regularly in Gold — triggering stops and consuming large portions of the daily DD limit in a single trade.</p>
+    <h3>Correlation with other positions</h3>
+    <p>Gold has a positive correlation of approximately 0.65 with EURUSD and 0.75 with AUDUSD. Trading Gold long alongside long EURUSD doubles your effective USD short exposure. If you are already long Gold, reduce or avoid long EURUSD positions to prevent correlated risk accumulation.</p>
+    <div class="edu-highlight"><strong>🥇 Gold risk rule:</strong> Never trade more than 0.5% risk on a single Gold position in a prop firm account. Gold's volatility makes 1% risk positions capable of creating significant daily drawdown damage on a single bad trade. The potential reward must justify the volatility risk.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Gold contract spec?</div>
@@ -252,7 +307,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

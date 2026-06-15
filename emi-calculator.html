@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -225,7 +239,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the EMI Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter loan amount</strong> — the total amount you want to borrow or the principal of your loan.</li>
+      <li><strong>Enter interest rate</strong> — the annual interest rate offered by your bank or lender. Enter as a percentage (e.g. 8.5 for 8.5% per year).</li>
+      <li><strong>Set loan tenure</strong> — the repayment period in months or years. Longer tenure means lower EMI but higher total interest paid.</li>
+      <li><strong>Click Calculate</strong> — the calculator shows your monthly EMI, total amount payable, and total interest charged over the loan period.</li>
+      <li><strong>Review the amortisation table</strong> — see exactly how much of each monthly payment goes toward principal vs interest. In early months, most of your EMI pays interest.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💡 Key insight:</strong> Even a small reduction in interest rate saves significantly over a long loan. On a $200,000 mortgage over 20 years, reducing from 8% to 7% saves over $28,000 in total interest. Always compare rates from multiple lenders before committing.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding EMI</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 EMI Formula</div><div class="edu-card-body">EMI = P × r × (1+r)^n ÷ ((1+r)^n − 1). Where P = principal, r = monthly interest rate (annual rate ÷ 12), n = number of months. This ensures equal payments that fully repay the loan at the end of tenure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Principal Component</div><div class="edu-card-body">The portion of each EMI that reduces your outstanding loan balance. In early months this is small — most of your payment covers interest. It grows progressively as the loan balance reduces.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Interest Component</div><div class="edu-card-body">The portion covering the cost of borrowing. Highest in month 1 (calculated on full principal), lowest in the final month. Total interest = (EMI × months) − Principal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Tenure Impact</div><div class="edu-card-body">Doubling tenure roughly halves the EMI but dramatically increases total interest. A $100,000 loan at 8%: 10 years = $1,213 EMI, $45,593 total interest. 20 years = $836 EMI, $100,748 total interest — more than the loan itself.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Prepayment Benefit</div><div class="edu-card-body">Making extra payments toward principal reduces both tenure and total interest dramatically. Even one extra EMI per year can reduce a 20-year mortgage by 3–4 years.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Fixed vs Floating Rate</div><div class="edu-card-body">Fixed rate: same EMI throughout. Floating rate: EMI changes with market rates. Fixed gives certainty; floating can be cheaper if rates fall but riskier if rates rise.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Smart EMI Planning</h2>
+    <h3>The 40% EMI rule</h3>
+    <p>Financial advisors recommend keeping total monthly EMI payments below 40% of your gross monthly income. This ensures you have sufficient cash flow for living expenses, savings, and emergencies. Before taking any loan, calculate whether the EMI fits within this threshold.</p>
+    <h3>Choosing the right tenure</h3>
+    <p>Shorter tenure means higher EMI but significantly less total interest paid. If you can comfortably afford the higher EMI, choose the shortest tenure possible. The total interest saved over a shorter tenure almost always outweighs the convenience of lower monthly payments.</p>
+    <h3>Prepayment strategy</h3>
+    <p>Most loans allow partial prepayment — paying extra amounts toward principal beyond your regular EMI. Even small additional payments made early in the loan term have an outsized impact on reducing total interest. A $500 extra payment in year 1 of a 20-year mortgage saves several times that amount in interest over the loan's lifetime.</p>
+    <div class="edu-highlight"><strong>🏦 Before taking any loan:</strong> Use this calculator to compare three scenarios — minimum tenure you can afford, maximum tenure offered, and a middle option. The total interest difference between minimum and maximum tenure is often shocking and makes the choice clear.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is EMI?</div>
@@ -262,7 +317,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

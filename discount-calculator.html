@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -222,7 +236,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="disc-output" onclick="copyEl('disc-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="disc-chart"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Discount Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter original price</strong> — the full price before any discount is applied.</li>
+      <li><strong>Enter discount percentage</strong> — the percentage being deducted (e.g. 25 for 25% off).</li>
+      <li><strong>Read discounted price</strong> — the final price after applying the discount.</li>
+      <li><strong>Check savings amount</strong> — see exactly how much money you save in dollar terms.</li>
+      <li><strong>Compare multiple discounts</strong> — run the calculator for different discount percentages to find the best deal, or check if a 'buy two get one free' offer is better than a percentage discount.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🛒 Retail math trick:</strong> To calculate discount price mentally — for 20% off, multiply by 0.8. For 30% off, multiply by 0.7. For 15% off, multiply by 0.85. Memorising these shortcuts helps you evaluate deals instantly without a calculator.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Discounts and Pricing</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Percentage Discount</div><div class="edu-card-body">Reduces price by a fixed percentage of the original. 30% off $100 = $30 discount, $70 final price. The saving amount increases with the original price — 30% off $1,000 saves $300.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Fixed Amount Discount</div><div class="edu-card-body">$20 off is better value on a $50 item (40% effective discount) than on a $200 item (10% effective discount). Always convert fixed discounts to percentages to compare their true value.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Successive Discounts</div><div class="edu-card-body">Two successive discounts are not additive. 20% off followed by 10% off ≠ 30% off. Actual combined discount: 100 → 80 → 72 = 28% total, not 30%. Retailers use successive discounts to make offers appear larger than they are.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 BOGO Analysis</div><div class="edu-card-body">'Buy 2 get 1 free' = 33.3% discount per item. 'Buy 3 get 1 free' = 25% discount per item. Compare these to percentage discounts to identify the better deal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Markup vs Margin</div><div class="edu-card-body">Markup: profit as % of cost. Margin: profit as % of selling price. 50% markup = 33% margin. These are often confused in retail. A 50% margin means keeping half of every dollar of revenue — very different from 50% markup.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧮 Reverse Discount</div><div class="edu-card-body">If you know the discounted price and discount %, find the original: Original = Discounted Price ÷ (1 − Discount%). $85 after 15% off: $85 ÷ 0.85 = $100 original price.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Smart Shopping and Business Pricing</h2>
+    <h3>Evaluating deals objectively</h3>
+    <p>Retailers use psychological pricing to make discounts appear larger than they are. 'Was $99.99, now $79.99' uses charm pricing (ending in .99) and an artificially inflated 'was' price. Calculate the actual percentage discount and compare to alternative vendors before deciding. A 20% discount from an overpriced starting point may still be more expensive than a competitor's regular price.</p>
+    <h3>Business discount strategy</h3>
+    <p>For businesses offering discounts: calculate the impact on profit margin before applying. At 40% gross margin, a 10% discount cuts your margin to 33% — a 17.5% reduction in profit per unit. You need to sell 25% more units to maintain the same total profit. Discounts are only worthwhile if they generate sufficient volume increase to compensate for the margin reduction.</p>
+    <h3>Seasonal discount timing</h3>
+    <p>Major discount events (Black Friday, end-of-season sales) offer genuine savings on some items and manufactured discounts on others. Use this calculator to verify that the 'original' price and discount percentage produce a final price that is genuinely competitive versus regular prices from other retailers.</p>
+    <div class="edu-highlight"><strong>🛒 Smart discount evaluation:</strong> 1) Is the original price genuine or inflated? 2) What is the actual percentage saving? 3) Is the discounted price lower than the same item elsewhere at regular price? 4) Is the saving worth the purchase right now, or would waiting for a better deal make sense? These four questions prevent impulse purchases driven by the appearance of a good deal.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I calculate discount percentage?</div>
@@ -262,7 +317,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -225,7 +239,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box" id="tip-output" onclick="copyEl('tip-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Tip Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter bill amount</strong> — the total amount on your restaurant bill before tip.</li>
+      <li><strong>Select tip percentage</strong> — choose a standard percentage or enter a custom amount based on service quality.</li>
+      <li><strong>Enter number of people</strong> — to split the bill and tip evenly among your group.</li>
+      <li><strong>Read per-person amount</strong> — each person's share of the bill including tip.</li>
+      <li><strong>Check quick tip reference</strong> — the calculator shows tip amounts at 10%, 15%, 18%, 20%, and 25% simultaneously for easy comparison.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🍽️ Tipping etiquette by service type:</strong> Sit-down restaurant: 15–20%. Bar: $1–2 per drink or 15–20%. Food delivery: 15–20% (minimum $3–5). Buffet: 10%. Counter service/fast food: optional (10% appreciated). Hotel housekeeping: $2–5 per night.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Tipping Culture</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🌍 Tipping by Country</div><div class="edu-card-body">USA/Canada: Expected 15–20% — servers rely on tips as primary income. UK: 10–15% in restaurants, not expected at pubs. Australia: Not expected, appreciated at 10%. Japan/South Korea: Tipping is considered rude. Europe: 5–10% appreciated, not required.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Why Tip?</div><div class="edu-card-body">In the US, tipped workers are often paid below minimum wage with the expectation that tips make up the difference. Federal tipped minimum wage is $2.13/hour — meaning tips are not optional courtesy but essential income for servers.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Tip on Pre-tax vs Total</div><div class="edu-card-body">Technically correct to tip on pre-tax amount. Practical difference on a $100 bill at 8% tax: tipping on $100 vs $108 = $1.20 difference at 15% tip. Most diners tip on the total for simplicity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Quick Mental Math</div><div class="edu-card-body">15% tip: take 10% (move decimal left one), then add half. $64 bill: $6.40 + $3.20 = $9.60 tip. 20% tip: simply take 10% and double. $64 × 2 = $12.80 tip. Rounding up to the nearest dollar is courteous.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💳 Credit Card Tip Timing</div><div class="edu-card-body">When paying by card, the tip is added after the sale is authorised. The server manually enters your written tip amount. Always ensure your copy shows the correct total including tip — errors and fraud occur in both directions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Tip Pool vs Individual</div><div class="edu-card-body">Some restaurants pool tips and distribute among all staff including kitchen workers. Others allow servers to keep individual tips. Your tip reaches the people who served you in both systems, just distributed differently.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Tip Calculation for Groups</h2>
+    <h3>Splitting bills fairly</h3>
+    <p>For groups with different orders, consider splitting based on what each person ordered rather than equally. Equal splits only work fairly when orders are roughly similar in price. If one person had a $15 meal and another had a $45 meal, equal splitting creates resentment. Many payment apps (Venmo, Splitwise) make item-by-item splitting easy.</p>
+    <h3>The 'round up' culture</h3>
+    <p>Many people round their tip to the nearest dollar for simplicity. On a $47.50 bill with a 20% tip ($9.50), rounding to $10 is a 21% effective tip. Rounding down to $9 is 19%. Rounding up is always appreciated and makes the mental math easier. Some restaurants and apps now pre-fill suggested tip amounts to simplify this decision.</p>
+    <h3>Tipping on takeout</h3>
+    <p>Tipping on takeout is increasingly expected but still optional. If the restaurant prepared your food with care and the order was handled well, 10–15% is appropriate. For large or complex takeout orders, tipping more acknowledges the effort. Digital ordering systems that prompt for tips before you pick up the food have normalised takeout tipping.</p>
+    <div class="edu-highlight"><strong>🍽️ When service is poor:</strong> Rather than leaving no tip (which punishes the server financially), consider leaving 10% and speaking with a manager about the service issue. Many service problems are outside the server's control. If the server was personally responsible for the problem, 10% signals dissatisfaction while still providing some income.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much should I tip at a restaurant?</div>
@@ -264,7 +319,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

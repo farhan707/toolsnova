@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -225,7 +239,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Compound Interest Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter principal amount</strong> — the initial sum of money being invested or borrowed.</li>
+      <li><strong>Set annual interest rate</strong> — the yearly interest rate as a percentage.</li>
+      <li><strong>Choose compounding frequency</strong> — daily, monthly, quarterly, or annually. More frequent compounding produces slightly higher returns.</li>
+      <li><strong>Enter time period</strong> — the number of years the money will grow or the loan will accrue interest.</li>
+      <li><strong>Review compound vs simple interest</strong> — the calculator shows both, highlighting exactly how much extra you earn (or pay) through compounding.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Compounding frequency matters:</strong> $10,000 at 10% for 10 years: annually = $25,937. Monthly = $27,070. Daily = $27,179. Daily compounding earns $1,242 more than annual compounding on the same rate — frequency matters more at higher rates and longer periods.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Compound Interest</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔄 Compound vs Simple</div><div class="edu-card-body">Simple interest: earned only on principal. $10,000 at 10% for 10 years = $10,000 interest. Compound interest: earned on principal AND previous interest. Same scenario = $15,937 interest — 59% more.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 The Formula</div><div class="edu-card-body">A = P × (1 + r/n)^(nt). Where A = final amount, P = principal, r = annual rate, n = compounding periods per year, t = years. The exponent (nt) is what creates the exponential growth curve.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ The Rule of 72</div><div class="edu-card-body">Divide 72 by the interest rate to find how many years it takes to double your money. At 6%: 72÷6 = 12 years. At 12%: 72÷12 = 6 years. At 3%: 72÷3 = 24 years. A quick mental calculation tool.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Compounding Frequency</div><div class="edu-card-body">Annual: once per year. Quarterly: 4 times/year. Monthly: 12 times/year. Daily: 365 times/year. Each period's interest is added to principal and earns interest in the next period. More frequent = slightly higher effective return.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💹 Effective Annual Rate</div><div class="edu-card-body">The actual yearly return accounting for compounding frequency. 10% compounded monthly has an effective annual rate of 10.47%. This is why comparing rates across different compounding frequencies requires converting to EAR.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Compound Interest on Debt</div><div class="edu-card-body">Compound interest works against you on credit cards and loans. A $5,000 credit card balance at 20% APR compounding daily: after 5 years of minimum payments = $8,954 owed. Compound interest is the reason credit card debt is so difficult to eliminate.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Applying Compound Interest Principles</h2>
+    <h3>Einstein's eighth wonder</h3>
+    <p>Albert Einstein reportedly called compound interest the eighth wonder of the world: 'He who understands it, earns it. He who doesn't, pays it.' This dual nature — powerful wealth builder for investors, devastating wealth destroyer for borrowers — makes understanding compound interest the most important financial concept of all.</p>
+    <h3>High-interest debt priority</h3>
+    <p>Before investing for compound growth, eliminate high-interest compound debt. A 20% credit card is compounding against you faster than almost any investment can compound for you. Every dollar used to pay off 20% debt provides a guaranteed 20% return — better than most investment options.</p>
+    <h3>Reinvesting dividends</h3>
+    <p>In stock market investing, reinvesting dividends rather than withdrawing them enables compound growth on the dividend income as well as capital appreciation. Historically, reinvested dividends have accounted for approximately 40% of total stock market returns over long periods. Dividend reinvestment plans (DRIPs) automate this process.</p>
+    <div class="edu-highlight"><strong>🔄 The compound interest mindset:</strong> Time is the most powerful variable. Starting with $1,000 and adding nothing: at 8% for 40 years = $21,725. At 8% for 30 years = $10,063. Those extra 10 years more than double the result. Start investing as early as possible and let time do the work.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is compound interest?</div>
@@ -261,7 +316,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

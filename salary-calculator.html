@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +230,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="sal-output" onclick="copyEl('sal-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="sal-chart"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Salary Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter gross salary</strong> — your total salary before any deductions. This is the CTC (Cost to Company) or the figure on your offer letter.</li>
+      <li><strong>Select pay period</strong> — annual, monthly, or hourly. The calculator converts between all periods automatically.</li>
+      <li><strong>Enter tax information</strong> — your applicable tax rate or tax bracket. The calculator shows take-home pay after income tax.</li>
+      <li><strong>Add deductions</strong> — provident fund, health insurance, professional tax, and other standard deductions that reduce your taxable income.</li>
+      <li><strong>Review take-home pay</strong> — see net salary after all deductions, monthly take-home, and the effective tax rate on your income.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💼 CTC vs Take-Home:</strong> In India, CTC (Cost to Company) includes components that are not cash payments — employer's PF contribution, gratuity provision, and insurance premiums. Your actual take-home is typically 65–75% of CTC. Always ask for the in-hand salary breakdown before accepting an offer.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Salary Structure</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💰 Basic Salary</div><div class="edu-card-body">The fixed core component — typically 40–50% of CTC. Forms the basis for calculating PF contribution, gratuity, and HRA. Higher basic means higher PF deduction but also higher retirement benefit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏠 HRA (House Rent Allowance)</div><div class="edu-card-body">Allowance for accommodation expenses. Tax-exempt up to the least of: actual HRA received, 50% of basic salary (metro) or 40% (non-metro), or actual rent paid minus 10% of basic. Significant tax saving for those paying rent.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚗 Allowances</div><div class="edu-card-body">Transport, medical, leave travel, and special allowances form the variable component. Some are partially or fully tax-exempt up to specified limits. Structuring salary with higher allowances reduces tax liability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Provident Fund (PF)</div><div class="edu-card-body">12% of basic salary contributed by employee + 12% matched by employer. Employee contribution is tax-deductible under Section 80C. Employer contribution is part of CTC but not take-home. PF accumulates at 8.1% p.a. — a guaranteed return.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Income Tax Slabs</div><div class="edu-card-body">India (new regime 2024-25): Up to ₹3L: 0%. ₹3–7L: 5%. ₹7–10L: 10%. ₹10–12L: 15%. ₹12–15L: 20%. Above ₹15L: 30%. Standard deduction of ₹75,000 available under new regime.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎁 Gratuity</div><div class="edu-card-body">5/26 × basic salary × years of service. Payable after 5 years of employment. Employer provisions gratuity as part of CTC but you only receive it upon leaving. Tax-exempt up to ₹20 lakhs.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Maximising Your Take-Home Salary</h2>
+    <h3>Salary restructuring for tax efficiency</h3>
+    <p>The same CTC can produce very different take-home amounts depending on how it is structured. Components like HRA, LTA, food allowance, and telephone reimbursement are partially tax-exempt. Working with your employer's HR to maximise these components within your CTC can increase monthly take-home by 5–15% without any increase in CTC.</p>
+    <h3>80C deductions — the tax saving toolkit</h3>
+    <p>Under the old tax regime, Section 80C allows up to ₹1.5 lakh deduction from taxable income. Eligible investments: PPF, ELSS mutual funds, NSC, tax-saving FD, life insurance premiums, children's tuition fees, and home loan principal repayment. At 30% tax bracket, maximising 80C saves ₹45,000 in tax annually.</p>
+    <h3>Old vs new tax regime</h3>
+    <p>The new tax regime offers lower rates but eliminates most deductions. The old regime allows HRA, 80C, 80D (medical insurance), home loan interest, and other deductions. Generally: if total deductions exceed ₹3–3.5 lakhs, the old regime saves more tax. Use this calculator to model both and choose the more beneficial option.</p>
+    <div class="edu-highlight"><strong>💡 Negotiation tip:</strong> When negotiating salary, ask for the full CTC breakdown including all components before comparing offers. A higher CTC with poor structure (no HRA, all taxable) can result in lower take-home than a lower CTC with efficient structure. Focus on in-hand salary and benefits, not just the headline CTC number.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I convert hourly to annual salary?</div>
@@ -256,7 +311,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

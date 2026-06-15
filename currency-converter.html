@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -279,7 +293,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="cx-output" onclick="copyEl('cx-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div>
   </div>
   <p class="rate-note" id="cx-note"></p>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Currency Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the amount</strong> — the sum you want to convert.</li>
+      <li><strong>Select source currency</strong> — the currency you are converting from.</li>
+      <li><strong>Select target currency</strong> — the currency you are converting to.</li>
+      <li><strong>Read the converted amount</strong> — the equivalent value in the target currency at the current exchange rate.</li>
+      <li><strong>Check the rate</strong> — note the exchange rate used. Compare this to rates offered by banks and exchange services to identify the most favourable option for large transfers.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💱 Rate comparison tip:</strong> The rate shown is the mid-market (interbank) rate — the 'real' rate between currencies. Banks and exchange services add a margin of 1–5% on top. For large transfers, specialist services like Wise (TransferWise) or Revolut often offer rates 2–4% better than traditional banks.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Exchange Rates</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Mid-Market Rate</div><div class="edu-card-body">The midpoint between buy and sell rates — the 'real' exchange rate used between banks. This is the rate shown on financial websites and this calculator. Retail customers never receive this rate — providers add a margin.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💱 Bid-Ask Spread</div><div class="edu-card-body">Banks and exchange services buy currency at the 'bid' rate (lower) and sell at the 'ask' rate (higher). The spread between these is their profit. A 2% spread on a $10,000 transfer means $200 goes to the provider.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Factors Affecting Rates</div><div class="edu-card-body">Interest rate differentials between countries, inflation rates, political stability, trade balances, and market sentiment all influence exchange rates. Major economic announcements can move rates by 1–3% in minutes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Rate Volatility</div><div class="edu-card-body">Exchange rates fluctuate continuously during market hours. The forex market operates 24/5. Major currency pairs (EURUSD, GBPUSD) typically move 0.5–1% daily. Exotic pairs can move 2–5% on volatile days.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Fixed vs Floating Rates</div><div class="edu-card-body">Most major currencies float freely against each other. Some countries peg their currency to another (Saudi Riyal to USD at fixed rate). Pegged currencies offer rate stability but require the country to maintain large foreign exchange reserves.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💳 Real Cost of Currency Exchange</div><div class="edu-card-body">Total cost = Exchange rate margin + transfer fees. A bank charging 3% margin + $15 fee on a $500 transfer costs $30 — 6% total. A specialist service charging 0.5% with no fee costs $2.50. For frequent transfers, the difference is substantial.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Currency Exchange for Travel and Business</h2>
+    <h3>Best ways to exchange currency</h3>
+    <p>From best to worst value: 1) Specialist transfer services (Wise, Revolut) — closest to mid-market rate for transfers. 2) ATM withdrawals abroad — your bank's rate plus ATM fee, but usually better than exchange bureaus. 3) Credit cards with no foreign transaction fee — typically good rates automatically. 4) Airport exchange bureaus — worst rates, typically 8–12% worse than mid-market. 5) Hotel exchanges — similar to airport, avoid for large amounts.</p>
+    <h3>Business currency risk</h3>
+    <p>Businesses with international revenues or expenses face currency risk — the risk that exchange rate movements reduce profits. A UK exporter quoting in USD faces loss if GBP strengthens between quote and payment. Hedging tools like forward contracts (locking in today's rate for future delivery) and currency options protect against adverse rate movements.</p>
+    <h3>Dollar-cost averaging for currency</h3>
+    <p>For large regular currency transfers (e.g. monthly salary in foreign currency, regular overseas payments), transferring fixed amounts at regular intervals averages out exchange rate fluctuations over time. This is equivalent to DCA investing — not trying to time the market, but achieving a reasonable average rate consistently.</p>
+    <div class="edu-highlight"><strong>💱 Transfer checklist:</strong> 1) Compare mid-market rate to offered rate — the difference is your cost. 2) Add all fees to calculate total cost. 3) For amounts above $1,000, compare at least 3 providers. 4) For recurring transfers, set up a rate alert to transfer when rates are favourable. 5) For large transfers ($10,000+), consider forward contracts to lock in favourable rates.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Are the exchange rates live?</div>
@@ -320,7 +375,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

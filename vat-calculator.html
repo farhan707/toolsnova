@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -230,7 +244,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="vat-output" onclick="copyEl('vat-output')" style="min-height:100px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="vat-chart"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the VAT Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the amount</strong> — either the pre-VAT price or the VAT-inclusive price depending on what you know.</li>
+      <li><strong>Enter VAT rate</strong> — the applicable rate for your country and product category. Standard rates vary from 5% to 27% across different countries.</li>
+      <li><strong>Select calculation mode</strong> — Add VAT (to find the price customers pay) or Remove VAT (to find the net price before VAT).</li>
+      <li><strong>Read the result</strong> — see net amount, VAT amount, and gross amount clearly separated.</li>
+      <li><strong>Use for pricing and invoicing</strong> — display VAT-inclusive prices to consumers and VAT-exclusive prices on B2B invoices.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🌍 Global VAT rates:</strong> UK: 20% standard (5% reduced for energy/children's items, 0% for food/books). EU average: 21% (Hungary 27%, Luxembourg 17%). Australia GST: 10%. UAE VAT: 5%. US has no federal VAT — uses state sales tax instead (0–10.25%).</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding VAT</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📋 What Is VAT?</div><div class="edu-card-body">Value Added Tax — a consumption tax applied at each stage of the supply chain on the value added by that stage. Unlike sales tax (applied only at final sale), VAT is collected incrementally at each production and distribution stage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 How VAT Works</div><div class="edu-card-body">Manufacturer sells to wholesaler: charges VAT, remits to government. Wholesaler sells to retailer: charges VAT, claims back VAT paid on purchase, remits the difference. Retailer sells to consumer: same process. Consumer bears full VAT — businesses act as collectors.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Standard vs Reduced Rates</div><div class="edu-card-body">Most countries have multiple VAT rates. UK: 20% standard, 5% reduced (home energy, children's car seats), 0% (food, books, children's clothing). The reduced and zero rates exist for social policy reasons — making essentials more affordable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏢 VAT Registration</div><div class="edu-card-body">Businesses must register for VAT once turnover exceeds the registration threshold. UK threshold: £85,000. EU varies by country (€10,000 to €92,000). Once registered, businesses charge VAT on sales, claim VAT on purchases, and pay the net difference to the government.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 VAT on Digital Services</div><div class="edu-card-body">Digital services sold to consumers in a country are subject to that country's VAT regardless of where the seller is located. Amazon, Netflix, and Google collect local VAT even as foreign companies. This affects freelancers selling digital services internationally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 VAT Returns</div><div class="edu-card-body">VAT-registered businesses file periodic returns (monthly or quarterly) showing VAT collected minus VAT paid, with the net amount due to the tax authority. Accurate record-keeping of all VAT invoices is essential for correct returns.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>VAT for Businesses</h2>
+    <h3>VAT-inclusive vs VAT-exclusive pricing</h3>
+    <p>B2C (business to consumer): always display VAT-inclusive prices. Consumers see the total they pay. B2B (business to business): quote VAT-exclusive prices. Your business customers will claim back the VAT, so they care about the net price. Mixing these conventions creates confusion and potential compliance issues.</p>
+    <h3>Input VAT reclaim</h3>
+    <p>VAT-registered businesses can reclaim VAT paid on business purchases — called input tax. This includes office supplies, equipment, professional services, and business travel. Accurate record-keeping with valid VAT invoices for every business purchase is essential for maximising input tax reclaim and reducing your overall VAT liability.</p>
+    <h3>Partial exemption</h3>
+    <p>Businesses that make both VAT-taxable and VAT-exempt supplies (e.g. a financial services firm that also provides taxable consulting) can only reclaim a proportion of input VAT. This 'partial exemption' calculation is complex and often requires professional accounting advice to calculate correctly and avoid penalties.</p>
+    <div class="edu-highlight"><strong>🧾 Valid VAT invoice requirements:</strong> Unique invoice number, date of issue, supplier's VAT registration number, supplier and customer name and address, description of goods/services, quantity and unit price, VAT rate applied, VAT amount, and total including VAT. Missing any element invalidates the invoice for input tax reclaim purposes.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is VAT?</div>
@@ -270,7 +325,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -224,7 +238,50 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result with amortisation <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="mtg-output" onclick="copyEl('mtg-output')" style="min-height:280px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Mortgage Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter home price</strong> — the total purchase price of the property.</li>
+      <li><strong>Enter down payment</strong> — the upfront amount you will pay. Most mortgages require 10–20%. Enter as amount or percentage.</li>
+      <li><strong>Set loan term</strong> — typically 15 or 30 years. 15-year mortgages have higher monthly payments but significantly lower total interest.</li>
+      <li><strong>Enter interest rate</strong> — the annual interest rate on your mortgage. Check current rates from multiple lenders before using an estimate.</li>
+      <li><strong>Add property costs</strong> — include property tax, homeowner's insurance, and HOA fees for a complete monthly housing cost picture.</li>
+      <li><strong>Review amortisation</strong> — see how your balance reduces over time and the total interest paid over the full loan term.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🏠 The 28% rule:</strong> Your monthly mortgage payment (principal + interest + taxes + insurance) should not exceed 28% of your gross monthly income. Lenders typically enforce this as a qualifying criterion. Use this calculator to verify affordability before making offers on properties.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Mortgages</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🏦 How Mortgages Work</div><div class="edu-card-body">A mortgage is a secured loan where the property serves as collateral. If payments stop, the lender can foreclose and sell the property to recover the debt. This security allows mortgages to have lower interest rates than unsecured loans.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Fixed vs Adjustable Rate</div><div class="edu-card-body">Fixed rate: same interest rate for the entire loan term. Predictable payments. Adjustable rate (ARM): starts lower but adjusts periodically based on market rates. ARMs suit buyers planning to sell before the first adjustment period.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Down Payment Impact</div><div class="edu-card-body">Higher down payment = lower loan amount + lower monthly payment + better interest rate + no PMI (if ≥20%). PMI (Private Mortgage Insurance) adds 0.5–1.5% of loan value annually — $100–$300/month on a $200K loan — until you reach 20% equity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Points</div><div class="edu-card-body">Discount points: upfront fees (1 point = 1% of loan) paid to reduce interest rate. Paying 1 point typically lowers rate by 0.25%. Calculate break-even: point cost ÷ monthly savings = months to break even. Worthwhile if you keep the loan longer than break-even period.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Refinancing</div><div class="edu-card-body">Replacing existing mortgage with a new one at a lower rate or different term. Worthwhile if new rate is at least 0.75–1% lower than current rate and you plan to stay in the home long enough to recoup refinancing costs (typically $2,000–$5,000).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Amortisation</div><div class="edu-card-body">Early mortgage payments are mostly interest with little principal reduction. At 6% on $300K: month 1 payment = $1,799, of which $1,500 is interest and $299 is principal. By year 20, the split reverses — most payment reduces principal.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Mortgage Strategy and Savings</h2>
+    <h3>The 15-year vs 30-year decision</h3>
+    <p>A 30-year mortgage on $300,000 at 6.5%: $1,896/month, $382,560 total interest. A 15-year mortgage at 6.0%: $2,532/month, $155,760 total interest. The 15-year saves $226,800 in interest but costs $636/month more. If the $636 extra monthly payment would cause financial strain, the 30-year with voluntary extra payments is a better strategy — same payoff timeline with the flexibility to revert to lower payments if needed.</p>
+    <h3>Extra payments — the most powerful mortgage tool</h3>
+    <p>Making one extra mortgage payment per year (month 13) reduces a 30-year mortgage by approximately 4–5 years and saves tens of thousands in interest. Dividing your monthly payment by 12 and adding that amount to each monthly payment achieves the same result. This is the most cost-effective mortgage acceleration strategy — no refinancing fees, no commitment, maximum flexibility.</p>
+    <h3>Building equity strategy</h3>
+    <p>Home equity = property value minus outstanding mortgage balance. Equity builds through: mortgage payments (principal portion), property value appreciation, and home improvements that add value. Equity can be accessed through home equity loans or lines of credit for large expenses at mortgage rates — significantly cheaper than personal loans or credit cards.</p>
+    <div class="edu-highlight"><strong>🏠 Total cost of homeownership:</strong> Mortgage payment is only one cost. Add: property tax (1–2% of value annually), homeowner's insurance (0.5–1%), maintenance (1% of value annually), HOA fees (if applicable), and utilities. Total monthly housing cost often runs 1.5–2× the mortgage payment alone. Calculate this full cost before buying.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a mortgage?</div>
@@ -270,7 +327,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -229,7 +243,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="gst-output" onclick="copyEl('gst-output')" style="min-height:140px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="gst-chart"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the GST Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the amount</strong> — either the pre-GST price (to calculate GST and final price) or the GST-inclusive price (to extract the original price).</li>
+      <li><strong>Select GST rate</strong> — choose from standard rates: 5%, 12%, 18%, or 28% for India GST. Or enter a custom percentage for other countries' VAT/GST rates.</li>
+      <li><strong>Choose calculation direction</strong> — Add GST (to find final price including GST) or Remove GST (to find the base price before GST was added).</li>
+      <li><strong>Read the breakdown</strong> — see original amount, GST amount (split into CGST and SGST for India), and final total.</li>
+      <li><strong>Use for invoicing</strong> — copy the calculated values directly into your invoice or tax return.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🇮🇳 India GST structure:</strong> GST is split equally between Central GST (CGST) and State GST (SGST) for intra-state transactions. For inter-state transactions, it becomes IGST (Integrated GST) at the full rate. Always specify which applies on your invoice.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding GST</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📋 What Is GST?</div><div class="edu-card-body">Goods and Services Tax — a unified indirect tax levied on the supply of goods and services. Replaced multiple cascading taxes (VAT, service tax, excise duty) in India from July 2017. Similar systems operate in Australia, Canada, Singapore, and 160+ countries.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 India GST Slabs</div><div class="edu-card-body">0%: Essential goods (food grains, fresh vegetables). 5%: Basic necessities (household goods, economy transport). 12%: Standard goods (processed foods, business class travel). 18%: Most goods and services (electronics, restaurants). 28%: Luxury goods (cars, tobacco, aerated drinks).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Input Tax Credit</div><div class="edu-card-body">Businesses registered for GST can claim credit for GST paid on purchases (input tax) against GST collected on sales (output tax). Only the net amount is paid to the government — preventing tax-on-tax cascading.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 International Equivalents</div><div class="edu-card-body">Australia: 10% GST. UK: 20% VAT. EU: varies 17–27%. Singapore: 9% GST. UAE: 5% VAT. Canada: 5% federal GST + provincial sales tax. The concept is identical — a consumption tax collected at each stage of the supply chain.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 GST Filing</div><div class="edu-card-body">In India, GST returns are filed monthly (GSTR-1 for outward supplies, GSTR-3B for summary return) or quarterly for small businesses. Late filing attracts penalties and interest. Accurate GST calculation at the time of invoicing prevents errors in returns.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Reverse Charge Mechanism</div><div class="edu-card-body">In certain specified cases, the recipient of goods/services pays GST directly to the government instead of the supplier. This applies to specific categories like import of services, purchases from unregistered dealers, and certain notified goods.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>GST for Businesses and Freelancers</h2>
+    <h3>GST registration threshold</h3>
+    <p>In India, GST registration is mandatory if annual turnover exceeds ₹40 lakhs (₹20 lakhs for service providers in special category states). Voluntarily registering below this threshold allows you to claim input tax credit, which can be beneficial if you have significant business purchases.</p>
+    <h3>GST on exports</h3>
+    <p>Exports of goods and services are zero-rated under GST — you charge 0% GST on export invoices and can claim refund of all GST paid on inputs used in production. This makes Indian exports more competitive globally by removing the tax cost from export pricing.</p>
+    <h3>Common GST mistakes</h3>
+    <p>The most frequent GST errors: using wrong GST rate for the goods/services category, failing to issue GST-compliant invoices with all required fields, not reconciling GSTR-2A with purchase records, and missing input tax credit claims. Each error can result in penalties or lost credits.</p>
+    <div class="edu-highlight"><strong>🧾 Invoice requirements:</strong> A valid GST invoice must include: GSTIN of supplier, invoice number and date, recipient details with GSTIN (for B2B), HSN/SAC code, taxable value, applicable GST rate, CGST/SGST/IGST amounts separately, and place of supply. Missing any field invalidates the invoice for input tax credit purposes.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is GST?</div>
@@ -274,7 +329,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

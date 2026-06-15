@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -210,7 +224,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="stx-output" onclick="copyEl('stx-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Sales Tax Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the pre-tax price</strong> — the price of the item before sales tax is added.</li>
+      <li><strong>Enter sales tax rate</strong> — your state and local combined rate. US rates range from 0% (Oregon, Montana, New Hampshire) to over 10% (some cities in Tennessee and Louisiana).</li>
+      <li><strong>Read the tax amount</strong> — the dollar amount of sales tax on this purchase.</li>
+      <li><strong>Check total price</strong> — what you will actually pay at checkout including tax.</li>
+      <li><strong>Reverse calculate</strong> — if you know the tax-inclusive total, enter it and the rate to find the pre-tax price.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🇺🇸 US sales tax complexity:</strong> The US has no federal sales tax. Each state sets its own rate, and cities/counties add additional local taxes. The combined rate varies from 0% to 11.45%. Always use your specific combined state + local rate for accurate calculations — state rate alone is usually insufficient.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Sales Tax</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🏛️ How Sales Tax Works</div><div class="edu-card-body">Collected by sellers at point of sale and remitted to state/local governments. Unlike VAT (which applies at each production stage), US sales tax applies only at the final consumer purchase. Businesses purchasing for resale provide resale certificates to buy tax-free.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 State Sales Tax Rates</div><div class="edu-card-body">No sales tax: Oregon, Montana, New Hampshire, Delaware, Alaska (no state tax, some local). Lowest: Hawaii 4%, Wisconsin 5%. Highest: California 7.25% base (up to 10.25% with local). Tennessee: 7% state + up to 2.75% local. Combined rates vary significantly by city.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏙️ Local Sales Tax</div><div class="edu-card-body">Many cities and counties add their own sales tax on top of the state rate. New York City: 4.5% city + 4% state = 8.875% combined. Chicago: 10.25% combined. Los Angeles: up to 10.25% combined. Always check your specific location's combined rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 Online Sales Tax</div><div class="edu-card-body">Since the 2018 South Dakota v. Wayfair Supreme Court decision, online sellers must collect sales tax in states where they have 'economic nexus' (typically $100,000+ in sales or 200+ transactions). Online purchases are no longer automatically tax-free.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏪 Exempt Items</div><div class="edu-card-body">Many states exempt certain items from sales tax: groceries (most states), prescription medications (all states), clothing under $110 per item (New York), agricultural equipment (most states). Tax holidays (back-to-school, hurricane preparedness) temporarily exempt specific items.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📋 Business Sales Tax</div><div class="edu-card-body">Businesses must collect and remit sales tax in every state where they have nexus (physical presence or economic nexus). Filing frequencies vary: monthly for high-volume sellers, quarterly or annually for smaller businesses. Non-compliance penalties can be severe.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Sales Tax for Businesses and Shoppers</h2>
+    <h3>Sales tax nexus for e-commerce</h3>
+    <p>If you sell products online, you likely have sales tax obligations in multiple states due to economic nexus rules. Most states trigger nexus at $100,000 in sales or 200 transactions annually. Managing multi-state sales tax is complex — most e-commerce businesses use automated tax calculation software (TaxJar, Avalara, or Shopify Tax) rather than manual calculation. Manual errors in sales tax collection or remittance can result in significant back taxes and penalties.</p>
+    <h3>Budgeting for sales tax</h3>
+    <p>When budgeting for major purchases, always calculate the tax-inclusive price. A $2,000 appliance in Los Angeles (10.25% tax) actually costs $2,205. For furniture, electronics, and vehicles — where purchase prices are high — sales tax is a significant additional cost. Include it in comparisons: buying online from a tax-free state (if legally allowed) versus local purchase can save hundreds on large purchases.</p>
+    <h3>Sales tax on services</h3>
+    <p>Most states tax tangible goods but treatment of services varies widely. Some states tax all services, others only specific ones (repairs, digital downloads, SaaS). The expanding digital economy has created significant uncertainty — many states are still legislating how to tax streaming services, software subscriptions, and digital downloads. If you sell services, verify your state's specific rules.</p>
+    <div class="edu-highlight"><strong>🏪 Shopper tip:</strong> Sales tax is not negotiable and must be collected by law. However, the rate varies significantly by location. For large purchases, buying in a lower-tax city or county within the same state (or a different state if you are near a border) can provide meaningful savings. For online purchases, always verify whether the seller collects your state's sales tax or whether you owe 'use tax' on your state return.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is sales tax in the US?</div>
@@ -252,7 +307,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

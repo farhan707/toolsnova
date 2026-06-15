@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -208,7 +222,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Full Breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="nw-output" onclick="copyEl('nw-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem">Add assets and liabilities to calculate net worth.</div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Net Worth Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter all assets</strong> — everything you own with monetary value: cash, investments, retirement accounts, real estate value, vehicles, business equity, valuable personal property.</li>
+      <li><strong>Enter all liabilities</strong> — everything you owe: mortgage balance, car loans, student loans, credit card balances, personal loans, business debts.</li>
+      <li><strong>Calculate net worth</strong> — Assets minus Liabilities = Net Worth. This is your true financial position.</li>
+      <li><strong>Track over time</strong> — calculate monthly or quarterly and record the number. The trend matters more than the absolute figure.</li>
+      <li><strong>Identify improvement areas</strong> — the breakdown shows which assets and liabilities have the most impact on your net worth trajectory.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Net worth benchmarks by age (US median):</strong> Age 25: $10,000. Age 35: $76,000. Age 45: $168,000. Age 55: $290,000. Age 65: $385,000. These are medians — half of people are above, half below. The average (mean) is much higher due to wealthy outliers. Focus on your own trajectory, not comparisons.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Net Worth</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Assets vs Liabilities</div><div class="edu-card-body">Assets: cash, investments, retirement accounts, real estate equity, business value, vehicles (at current market value), valuable items. Liabilities: mortgage balance (not full home value), car loans, student debt, credit cards, personal loans, tax owed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏠 Home Equity</div><div class="edu-card-body">Include only your equity — current market value minus outstanding mortgage. If your home is worth $400,000 and mortgage balance is $280,000, add $120,000 as an asset (not $400,000). Equity is the value you actually own.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Liquid vs Illiquid</div><div class="edu-card-body">Liquid assets (cash, stocks) can be converted to cash quickly. Illiquid assets (real estate, business equity, retirement accounts before 59.5) cannot. Track both but note that illiquid assets cannot cover emergency expenses without selling costs or penalties.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚗 Depreciating Assets</div><div class="edu-card-body">Vehicles, electronics, and most personal property lose value over time. Use current market value (Kelley Blue Book for cars), not purchase price. Overestimating depreciating asset values inflates net worth and creates a misleading picture.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💳 Consumer Debt Impact</div><div class="edu-card-body">Credit card balances are pure liabilities with no corresponding asset. A $5,000 credit card balance at 20% APR costs $1,000/year in interest while reducing net worth by $5,000. Eliminating consumer debt is the highest-return financial move for most people.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Negative Net Worth</div><div class="edu-card-body">Common among young adults with student loans and new mortgages. Not alarming if assets are growing and liabilities are declining. A medical student with $200,000 in student debt but a near-guaranteed $300,000+ future income has negative net worth but strong financial trajectory.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Growing Your Net Worth</h2>
+    <h3>The two levers</h3>
+    <p>Net worth grows by increasing assets or decreasing liabilities — or ideally both simultaneously. The fastest net worth growth combines: investing a fixed percentage of income (increases assets through compound growth), aggressively eliminating high-interest debt (reduces liabilities at guaranteed high return), and avoiding lifestyle inflation as income grows (maintains savings rate as salary increases).</p>
+    <h3>Income vs wealth distinction</h3>
+    <p>High income does not equal high net worth. Many high earners have near-zero or negative net worth due to high spending, high debt, and low savings rates. Net worth is the only true measure of financial health — it accounts for both what you earn and what you keep. Tracking net worth monthly creates accountability that income statements alone cannot provide.</p>
+    <h3>Net worth milestones</h3>
+    <p>Common net worth milestones: $0 (debt-free starting point), $10,000 (first meaningful emergency fund), $100,000 (first significant compounding base — often considered the hardest to reach), $500,000 (semi-financial independence territory), $1,000,000 (traditional millionaire milestone), $25× annual expenses (financial independence).</p>
+    <div class="edu-highlight"><strong>📈 Monthly net worth habit:</strong> On the first of each month, spend 10 minutes updating your net worth calculation. Record it in a spreadsheet. The visual trend of a growing number — even during market downturns when investment values fall but debt is reducing — is one of the most motivating financial tracking habits you can build.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is net worth?</div>
@@ -250,7 +305,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -242,7 +256,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Invoice Preview <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="inv-output" onclick="invCopy()" style="min-height:240px;white-space:pre;cursor:pointer;font-family:var(--mono);font-size:.75rem">Fill in the form above and add items to preview your invoice.</div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Invoice Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your business details</strong> — business name, address, contact information, and tax registration number if applicable.</li>
+      <li><strong>Add client details</strong> — client name, address, and billing contact.</li>
+      <li><strong>Set invoice number and date</strong> — use a sequential numbering system. Include payment due date (typically Net 15, Net 30, or Net 45).</li>
+      <li><strong>Add line items</strong> — each product or service with description, quantity, unit price, and applicable tax rate.</li>
+      <li><strong>Review totals</strong> — subtotal, tax amount, and grand total are calculated automatically.</li>
+      <li><strong>Download or print</strong> — save as PDF for professional delivery via email or print for physical delivery.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📋 Invoice numbering system:</strong> Use a consistent format like INV-2026-001, INV-2026-002. Include year to make filing easier. Never reuse invoice numbers — each must be unique for accounting and legal purposes. Sequential numbers also demonstrate business activity to clients and tax authorities.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Professional Invoicing</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📄 Required Invoice Elements</div><div class="edu-card-body">Business name and address, client name and address, unique invoice number, invoice date, payment due date, itemised list of goods/services, unit prices and quantities, subtotal, tax amount and rate, total due, and payment instructions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Payment Terms</div><div class="edu-card-body">Net 15: payment due 15 days from invoice date. Net 30: 30 days (most common for B2B). Net 45/60: used by larger corporations. Early payment discounts: '2/10 Net 30' means 2% discount if paid within 10 days, otherwise full amount due in 30 days.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💳 Payment Methods</div><div class="edu-card-body">Specify accepted payment methods clearly: bank transfer (include account details), PayPal, credit card, check. Multiple options reduce friction and speed payment. Bank transfer is most common for B2B as it has no transaction fees.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Late Payment Fees</div><div class="edu-card-body">Include late payment terms on every invoice: 'Invoices unpaid after 30 days subject to 1.5% monthly interest charge.' This creates a legal basis for charging interest and provides motivation for timely payment. Rarely enforced but effective as a deterrent.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 International Invoicing</div><div class="edu-card-body">For international clients: specify currency clearly, include SWIFT/IBAN for bank transfers, note which party bears transfer fees, be aware of VAT/GST obligations in the client's country for digital services, and consider exchange rate risk for large invoices.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📁 Record Keeping</div><div class="edu-card-body">Keep copies of all invoices for minimum 7 years (tax authority requirement in most countries). Organise by year and client. Reconcile invoices with bank statements monthly. Unpaid invoices beyond 90 days should be escalated or written off as bad debt.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Getting Paid Faster</h2>
+    <h3>Invoice timing strategy</h3>
+    <p>Send invoices immediately upon completing work — not at the end of the month. Delay in invoicing is the primary cause of delayed payment. Same-day invoicing while the work is fresh in the client's mind also reduces disputes about scope and pricing. For ongoing work, invoice on a set schedule (1st of each month) so clients budget for your payment.</p>
+    <h3>Follow-up system</h3>
+    <p>Implement a standard follow-up process: day 1 — send invoice with read receipt. Day 7 — friendly reminder if unpaid. Day 21 — firm reminder referencing payment terms. Day 35 — formal notice with late payment fee. Day 60+ — collections or legal action. Most payments are resolved by day 21 — consistent follow-up is more effective than any other strategy.</p>
+    <h3>Protecting yourself legally</h3>
+    <p>A signed contract or purchase order before starting work, combined with a professional invoice referencing that contract, creates a legally enforceable payment obligation. For clients over $5,000, always get a signed contract first. For recurring clients, a standing agreement covers all invoices without individual contracts per project.</p>
+    <div class="edu-highlight"><strong>💼 Freelancer invoice checklist:</strong> Unique invoice number ✓. Your full legal name or business name ✓. Client's full legal name ✓. Detailed description of services ✓. Payment due date ✓. Payment instructions ✓. Late payment terms ✓. Tax registration number if applicable ✓. Each missing element can create payment delays or legal complications.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What should be on an invoice?</div>
@@ -284,7 +340,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

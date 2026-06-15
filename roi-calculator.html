@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -204,7 +218,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="roi-output" onclick="copyEl('roi-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the ROI Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter initial investment</strong> — the total amount invested including purchase price, fees, and any setup costs.</li>
+      <li><strong>Enter total return</strong> — the final value of the investment including any income received (dividends, rent, interest).</li>
+      <li><strong>Set time period</strong> — the number of years the investment was held. Used to calculate annualised ROI.</li>
+      <li><strong>Read ROI percentage</strong> — total return as a percentage of initial investment.</li>
+      <li><strong>Compare annualised ROI</strong> — allows fair comparison between investments held for different periods.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 ROI vs Annualised ROI:</strong> A 50% ROI over 5 years sounds impressive but is only 8.4% annualised. A 20% ROI over 1 year is 20% annualised — significantly better. Always compare investments using annualised ROI (CAGR) rather than total ROI to account for time differences.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Return on Investment</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Basic ROI Formula</div><div class="edu-card-body">ROI = (Net Profit ÷ Initial Investment) × 100. Net Profit = Final Value − Initial Investment. A $10,000 investment that grows to $14,000: ROI = ($4,000 ÷ $10,000) × 100 = 40%.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Annualised ROI (CAGR)</div><div class="edu-card-body">CAGR = (Final Value ÷ Initial Value)^(1÷Years) − 1. Converts total return to equivalent annual return. Allows fair comparison between investments held for different time periods.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ What Is Good ROI?</div><div class="edu-card-body">Depends entirely on asset class and risk: savings account 3–5%, bonds 4–7%, real estate 8–12%, stock market 7–10% long-term average, business investment 15–30%, venture capital 20%+. Higher ROI always comes with higher risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💸 ROI Including Costs</div><div class="edu-card-body">Always include ALL costs in investment calculation: purchase fees, management fees, maintenance costs, taxes on gains, transaction costs. Gross ROI before fees often looks excellent; net ROI after all costs reveals the true return.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Return Multiple</div><div class="edu-card-body">Alternative to percentage: Return Multiple = Final Value ÷ Initial Investment. 2× = doubled money. 5× = 5 times initial investment. Common in venture capital and private equity where percentages become unwieldy for large multiples.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Opportunity Cost</div><div class="edu-card-body">ROI must always be compared to the next best alternative (opportunity cost). A 6% ROI on a risky investment is poor if a risk-free government bond offers 5%. A 6% ROI from an index fund is excellent compared to leaving cash in a 0.5% savings account.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Applying ROI Analysis</h2>
+    <h3>Business investment decisions</h3>
+    <p>ROI analysis guides every major business expenditure. Hiring a salesperson: $80,000 salary investment, expected $200,000 additional revenue at 40% margin = $80,000 net profit = 100% ROI. Purchasing equipment: $50,000 investment, $15,000 annual labor savings = 3.3-year payback, 30% annual ROI. The discipline of calculating expected ROI before spending — and comparing actual to expected after — is the foundation of profitable business management.</p>
+    <h3>Marketing ROI</h3>
+    <p>Marketing ROI = (Revenue attributed to marketing − Marketing cost) ÷ Marketing cost × 100. A $5,000 Google Ads campaign generating $20,000 in revenue at 50% margin = $10,000 profit − $5,000 cost = $5,000 net = 100% ROI. Tracking marketing ROI by channel reveals which activities deserve more budget and which should be cut. Most businesses find 80% of marketing ROI comes from 20% of channels.</p>
+    <h3>Real estate ROI</h3>
+    <p>Real estate ROI includes both rental yield and capital appreciation. Rental yield = Annual Rent ÷ Property Value × 100. A $300,000 property renting for $2,000/month: $24,000/year ÷ $300,000 = 8% gross yield. Subtract mortgage interest, property tax, maintenance, and management fees to find net yield — typically 3–5% after costs. Add capital appreciation for total ROI.</p>
+    <div class="edu-highlight"><strong>📊 ROI decision framework:</strong> Calculate ROI for every significant financial decision. If ROI is below your threshold (e.g. 10% minimum), decline or renegotiate. If above threshold, proceed but track actual vs projected ROI. Over time, this discipline produces significantly better financial outcomes than intuition-based decisions.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is ROI?</div>
@@ -242,7 +298,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

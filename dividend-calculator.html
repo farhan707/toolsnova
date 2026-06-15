@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -217,7 +231,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="div-output" onclick="copyEl('div-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Dividend Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter number of shares</strong> — how many shares of the stock you own or plan to purchase.</li>
+      <li><strong>Enter dividend per share</strong> — the dividend amount paid per share per payment period. Find this on the company's investor relations page or financial data sites.</li>
+      <li><strong>Select payment frequency</strong> — most US stocks pay quarterly. Some pay monthly (REITs, some ETFs), semi-annually, or annually.</li>
+      <li><strong>Enter share price</strong> — optional, to calculate dividend yield.</li>
+      <li><strong>Enter growth rate</strong> — the expected annual dividend growth rate. Use the company's 5-year average dividend growth as a starting estimate.</li>
+      <li><strong>Review income projections</strong> — see annual income, monthly equivalent, yield, and 10-year growth projection.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💰 Dividend income reality:</strong> To generate $2,000/month in dividend income at a 4% yield, you need $600,000 invested. At 3% yield: $800,000. At 6% yield (higher risk): $400,000. Building meaningful passive dividend income requires substantial capital — it is a long-term strategy, not a quick-income solution.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Dividend Investing</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💰 Dividend Yield</div><div class="edu-card-body">Annual dividend per share ÷ stock price × 100. A $1/share annual dividend on a $25 stock = 4% yield. As stock price rises, yield falls (if dividend stays constant). As price falls, yield rises — making beaten-down dividend stocks potentially attractive.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Payout Ratio</div><div class="edu-card-body">Dividends paid ÷ earnings per share × 100. A 40% payout ratio means the company pays 40% of earnings as dividends, retaining 60% for growth. Above 80%: dividend may be unsustainable. Below 40%: room for future dividend increases.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Dividend Growth</div><div class="edu-card-body">Companies that consistently grow dividends (Dividend Aristocrats have raised dividends 25+ consecutive years) provide inflation protection and growing income. A 5% dividend growth rate doubles your income every 14 years even without adding capital.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 DRIP Investing</div><div class="edu-card-body">Dividend Reinvestment Plans automatically buy more shares with dividend income. Dramatically accelerates wealth building through compounding. $10,000 at 4% yield with 8% capital appreciation + DRIP grows significantly faster than the same investment with dividends withdrawn as cash.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Dividend Traps</div><div class="edu-card-body">Extremely high yields (above 8–10%) often signal a dividend cut is coming — the stock price has fallen due to business deterioration, mechanically inflating the yield. Research sustainability before buying high-yield stocks purely for income.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏢 Dividend Stock Categories</div><div class="edu-card-body">Blue chips (Coca-Cola, Johnson & Johnson): stable, moderate yield, long growth history. REITs: high yield (4–8%), required to distribute 90%+ of taxable income. MLPs: high yield, complex tax treatment. Utility stocks: moderate yield, regulated, very stable.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Building a Dividend Income Portfolio</h2>
+    <h3>The dividend growth strategy</h3>
+    <p>Rather than chasing the highest yield today, focus on companies with moderate yields (2–4%) and strong dividend growth (8–12% annually). A stock yielding 3% with 10% annual dividend growth will yield 7.8% on your original purchase price in 10 years — without any price appreciation. This 'yield on cost' growth is the core advantage of dividend growth investing over fixed-income alternatives.</p>
+    <h3>Sector diversification for dividend income</h3>
+    <p>A diversified dividend portfolio spans multiple sectors: utilities (3–5% yield, very stable), consumer staples (2–4%, recession-resistant), financials (3–5%, sensitive to interest rates), healthcare (2–4%, demographic tailwind), REITs (4–8%, inflation protection), and industrial companies (2–3%, long dividend history). Concentrating in one sector exposes income to sector-specific risks.</p>
+    <h3>Tax efficiency of dividends</h3>
+    <p>Qualified dividends (from US companies held over 60 days) are taxed at preferential capital gains rates: 0% below $47,025, 15% up to $518,900, 20% above (2024). Ordinary dividends are taxed as income. REITs and foreign stocks often pay non-qualified dividends taxed at higher income rates. Hold high-yield, non-qualified dividend payers in tax-advantaged accounts (IRA, 401k) and qualified dividend payers in taxable accounts for maximum tax efficiency.</p>
+    <div class="edu-highlight"><strong>💰 Dividend income milestone:</strong> Calculate your 'dividend cover ratio' — annual dividend income ÷ annual expenses. At 25% coverage, dividends pay for one quarter of living expenses. At 100% coverage, dividends alone cover all expenses — financial independence. Tracking this ratio monthly shows concrete progress toward income independence.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is dividend yield?</div>
@@ -255,7 +311,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

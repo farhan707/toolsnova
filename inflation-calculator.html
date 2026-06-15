@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -208,7 +222,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="inf-output" onclick="copyEl('inf-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Inflation Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the amount</strong> — the dollar value you want to adjust for inflation.</li>
+      <li><strong>Set the start year</strong> — the year the amount is in 'today's dollars.'</li>
+      <li><strong>Set the end year</strong> — the future year you want to project to, or a past year to see historical purchasing power.</li>
+      <li><strong>Enter inflation rate</strong> — use 3.5% for US historical average, 2% for central bank targets, or your country's actual rate.</li>
+      <li><strong>Review results</strong> — see the inflation-adjusted value and the year-by-year purchasing power erosion table.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💸 Real impact of inflation:</strong> At 3.5% annual inflation, $100,000 today has the purchasing power of only $70,892 in 10 years. In 20 years: $50,257. In 30 years: $35,628. This is why keeping large amounts in low-interest savings accounts is a guaranteed way to lose real purchasing power over time.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Inflation</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 What Causes Inflation?</div><div class="edu-card-body">Too much money chasing too few goods. Primary causes: excessive money supply growth (central bank printing), supply chain disruptions, demand surges, energy price increases, wage growth exceeding productivity, and import price inflation from currency weakness.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Purchasing Power</div><div class="edu-card-body">Inflation reduces what each dollar can buy. At 3% inflation: $1,000 of groceries today costs $1,344 in 10 years. Your salary must increase by at least the inflation rate just to maintain the same standard of living — any raise below inflation is effectively a pay cut.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Central Bank Targets</div><div class="edu-card-body">Most central banks target 2% annual inflation as the ideal rate: low enough to preserve purchasing power, high enough to encourage spending over hoarding and provide a buffer against deflation. The US Fed, ECB, Bank of England, and most major central banks use 2% as their target.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Inflation and Investments</div><div class="edu-card-body">Investments must outpace inflation to generate real returns. A savings account at 2% with 3% inflation produces a -1% real return. Equities historically return 7–10% nominally, or 4–7% in real (inflation-adjusted) terms. Real estate and commodities often serve as inflation hedges.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Hyperinflation</div><div class="edu-card-body">When inflation exceeds 50% monthly, purchasing power collapses rapidly. Historical examples: Zimbabwe (2008: 89.7 sextillion % annually), Venezuela (2018: 1,000,000%+), Weimar Germany (1923). Hyperinflation destroys savings, disrupts commerce, and causes social instability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Deflation Risk</div><div class="edu-card-body">Falling prices sound beneficial but sustained deflation causes consumers to delay purchases (waiting for lower prices), reduces business revenue and employment, and can trigger economic depression. This is why central banks target 2% inflation rather than 0%.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Protecting Against Inflation</h2>
+    <h3>Inflation-beating investments</h3>
+    <p>Historically reliable inflation hedges: equities (companies raise prices with inflation, protecting real earnings), real estate (rental income and property values tend to rise with inflation), commodities including gold (real assets maintain value), TIPS (Treasury Inflation-Protected Securities — principal adjusts with CPI), and I-bonds (US government bonds with inflation-linked interest). Cash and fixed-rate bonds are the worst inflation performers — they guarantee real purchasing power loss at positive inflation rates.</p>
+    <h3>Salary negotiation and inflation</h3>
+    <p>In annual salary reviews, the baseline for any negotiation should be the current inflation rate. A 3% raise in a 4% inflation environment is a 1% real pay cut. Negotiate for at least CPI + your contribution premium. Over a 10-year career, accepting inflation-only raises versus negotiating aggressively for merit raises can result in $200,000–$500,000 in cumulative lifetime earnings difference.</p>
+    <h3>Inflation in retirement planning</h3>
+    <p>Inflation is the biggest risk in retirement planning. A retirement budget of $5,000/month at age 65 requires $6,720/month at age 75 and $9,031/month at age 85 just to maintain the same lifestyle (at 3% inflation). Retirement portfolios must be invested to generate returns above inflation, not just preserve nominal capital.</p>
+    <div class="edu-highlight"><strong>💡 Inflation rule of thumb:</strong> The Rule of 70 — divide 70 by the inflation rate to find how many years it takes for prices to double. At 3.5%: 70÷3.5 = 20 years to double. At 7%: 10 years to double. This simple calculation reveals why inflation that seems small annually has dramatic long-term effects on purchasing power and retirement planning.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is inflation?</div>
@@ -246,7 +302,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

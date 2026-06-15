@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -220,7 +234,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ts-output" onclick="copyEl('ts-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Tip Split Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter total bill amount</strong> — the full restaurant or service bill before tip.</li>
+      <li><strong>Select tip percentage</strong> — choose from standard options or consider service quality: exceptional = 25%, good = 20%, average = 15%, below average = 10%.</li>
+      <li><strong>Set number of people</strong> — how many people are splitting the bill equally.</li>
+      <li><strong>Read per-person amount</strong> — each person's share including their portion of the tip.</li>
+      <li><strong>Check quick reference table</strong> — the calculator shows tip amounts at multiple percentages simultaneously, making it easy to choose the right amount quickly.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🍽️ When to tip more:</strong> Large groups (automatic gratuity of 18–20% is standard for 6+ people). Special requests or modifications. Exceptional service or going above expectations. Holiday dining when staff work special shifts. Splitting bills creates extra work for servers — tip accordingly.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Bill Splitting Strategies</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💰 Equal Split</div><div class="edu-card-body">Simplest method — total including tip ÷ number of people. Fair when everyone ordered similarly priced items. Creates friction when one person had a $15 salad and another had a $55 steak and cocktails.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Itemised Split</div><div class="edu-card-body">Each person pays for what they ordered plus their share of shared items and tip. Most accurate but requires time and calculation. Apps like Splitwise, Tab, and Settle Up simplify this process significantly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Rotating Payer</div><div class="edu-card-body">One person pays the full bill this time, another pays next time. Works well for regular dining groups with similar spending habits. Averages out over multiple meals without per-visit calculation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💳 Card Splitting</div><div class="edu-card-body">Many restaurants will split the bill across multiple cards upon request — just ask the server before ordering. Specify the split clearly: 'Please split evenly across these 4 cards' or 'Please put $X on each card.'</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 Payment Apps</div><div class="edu-card-body">Venmo, PayPal, Cash App, and Zelle make post-meal settlement easy. One person pays the full bill (earning any credit card rewards), others pay their share via app. Faster than splitting cards at the restaurant.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Tipping Internationally</div><div class="edu-card-body">Research local norms before dining abroad. Overtipping in Japan or Korea can cause offence. Under-tipping in the US leaves servers unable to cover their living expenses. Tipping norms are deeply cultural — treat them as such.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Group Dining Economics</h2>
+    <h3>The large group dynamics</h3>
+    <p>Studies show people order more expensive items when splitting bills equally than when paying individually — a phenomenon called the 'shared payment effect.' Each person internalises only their fraction of the marginal cost. At a 10-person equal split, a $20 upgrade to a premium dish costs each person only $2 psychologically, even though the actual cost to them is $2 and the restaurant charges $20. Awareness of this effect helps groups make more mindful ordering decisions.</p>
+    <h3>Handling different dietary needs</h3>
+    <p>When dietary restrictions, alcohol consumption, or significantly different courses create unequal bills, itemised splitting is fairest. The non-drinker who ordered a $15 meal should not subsidise those who ordered $80 in wine and steak. A simple approach: calculate food subtotal, split that equally, then add alcohol costs only for those who drank, plus tip on the full amount.</p>
+    <h3>Automatic gratuity for large groups</h3>
+    <p>Most restaurants automatically add 18–20% gratuity for groups of 6 or more. This appears on the bill as 'service charge' or 'gratuity.' Check your bill carefully — adding a standard tip on top of already-included gratuity results in double-tipping. You are welcome to add more if service was exceptional, but the automatic gratuity is the full intended tip.</p>
+    <div class="edu-highlight"><strong>💡 Simplest group tip calculation:</strong> To calculate 20% tip mentally — double the bill and move the decimal: $87.50 bill × 2 = $175, move decimal = $17.50 tip. Round to $18 for simplicity. For 15%: take 10% ($8.75) + half of that ($4.37) = $13.12. These mental shortcuts eliminate the need for a calculator for standard tip amounts.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much should I tip?</div>
@@ -258,7 +313,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

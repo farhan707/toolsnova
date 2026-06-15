@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -206,7 +220,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="elec-output" onclick="copyEl('elec-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Electricity Cost Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Add your appliances</strong> — click 'Add Appliance' for each device. Include all major power consumers: air conditioning, heating, water heater, refrigerator, washing machine, dryer, TV, computers.</li>
+      <li><strong>Enter wattage</strong> — the power consumption in watts. Find this on the appliance label, manual, or manufacturer website. Air conditioners: 900–5,000W. Refrigerators: 100–400W. LED bulbs: 8–15W.</li>
+      <li><strong>Enter daily hours of use</strong> — realistic average hours per day this appliance runs. Air conditioner in summer: 8–12 hours. Refrigerator: 24 hours (but cycles on/off, so use 8–10 as effective hours).</li>
+      <li><strong>Set electricity rate</strong> — find your rate on your electricity bill (cost per kWh). US average: $0.12–$0.16/kWh. UK: £0.24–£0.28/kWh. Pakistan: approximately $0.04–$0.08/kWh.</li>
+      <li><strong>Review monthly cost</strong> — see which appliances cost the most and identify the biggest savings opportunities.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚡ Biggest power consumers:</strong> Electric water heater (4,500W × 3 hrs = 13.5 kWh/day = $1.62/day = $49/month at $0.12/kWh). Central AC (3,500W × 8 hrs = 28 kWh/day = $3.36/day = $101/month). Electric dryer (5,000W × 1 hr = 5 kWh/day = $0.60/day = $18/month). These three appliances often account for 60–70% of home electricity bills.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Electricity Costs</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⚡ How kWh Is Calculated</div><div class="edu-card-body">kWh = Watts ÷ 1,000 × Hours. A 1,000W appliance running 1 hour = 1 kWh. A 100W bulb for 10 hours = 1 kWh. Your bill charges per kWh consumed — understanding this conversion is the foundation of electricity cost management.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Reading Your Bill</div><div class="edu-card-body">Your electricity bill shows: kWh consumed in the billing period, rate per kWh (often tiered — higher rate for higher consumption), fixed charges (meter rental, grid access), and taxes/levies. The effective cost per kWh = total bill ÷ total kWh consumed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Seasonal Variation</div><div class="edu-card-body">Electricity use typically peaks in summer (air conditioning) and winter (heating). Planning around seasonal peaks helps budget accurately. Solar panels, if installed, often generate peak power in summer — potentially offsetting the highest-cost season.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💡 LED vs Incandescent</div><div class="edu-card-body">LED bulb: 10W = $1.44/year at 8 hrs/day, $0.12/kWh. Equivalent incandescent: 60W = $8.64/year. Replacing 20 incandescent bulbs with LEDs saves $144/year. LEDs also last 25× longer — significantly reducing replacement costs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔌 Standby Power</div><div class="edu-card-body">Devices on standby (TVs, game consoles, phone chargers, microwaves) consume 5–20W each. 10 devices at 10W average = 100W continuous = 72 kWh/month = $8.64/month in wasted electricity. Smart plugs or power strips with switches eliminate standby waste.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Time-of-Use Rates</div><div class="edu-card-body">Many utilities charge more for electricity during peak hours (4–9 PM) and less during off-peak hours (11 PM–7 AM). Running dishwashers, washing machines, and EV charging during off-peak hours can reduce electricity bills by 20–30% without reducing consumption.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Reducing Your Electricity Bill</h2>
+    <h3>The highest-impact changes</h3>
+    <p>Focus electricity saving efforts on high-wattage, high-usage appliances. 1) Thermostat: each 1°C reduction in heating or increase in cooling reduces HVAC costs by 3%. Setting AC to 25°C instead of 22°C saves approximately 9%. 2) Water heater: insulating pipes and setting temperature to 55°C instead of 70°C saves 10–15%. 3) Refrigerator: keeping coils clean and ensuring door seals are airtight reduces consumption by 10–20%. These three changes alone often reduce electricity bills by $50–$100/month.</p>
+    <h3>Solar panel ROI calculation</h3>
+    <p>Use your monthly electricity cost from this calculator to estimate solar ROI. If your bill is $150/month ($1,800/year) and solar installation costs $10,000 after incentives, payback period = $10,000 ÷ $1,800 = 5.6 years. After payback, electricity is essentially free for the remaining 15–20 year panel life. Calculate your specific ROI using your actual consumption and local installation costs.</p>
+    <h3>Smart home energy management</h3>
+    <p>Smart thermostats (Nest, Ecobee) reduce HVAC costs by 10–15% through intelligent scheduling and learning usage patterns — saving $100–$200/year on average. Smart plugs provide per-device consumption data and remote shutoff. Energy monitors (Sense, Emporia) identify unexpected power consumers. Combined, these technologies typically pay for themselves within 1–2 years through energy savings.</p>
+    <div class="edu-highlight"><strong>💡 Monthly electricity audit:</strong> Use this calculator once per month, adjusting usage hours for seasonal changes. Compare the calculated amount to your actual bill — large discrepancies indicate estimation errors or appliances consuming more than expected. Identify the top 3 cost drivers and focus conservation efforts there first.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I calculate electricity cost?</div>
@@ -243,7 +298,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

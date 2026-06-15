@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -204,7 +218,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="be-output" onclick="copyEl('be-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Break-Even Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter fixed costs</strong> — costs that stay the same regardless of sales volume: rent, salaries, insurance, equipment depreciation, software subscriptions.</li>
+      <li><strong>Enter variable cost per unit</strong> — costs that scale with each unit sold: materials, direct labor, packaging, shipping, payment processing fees.</li>
+      <li><strong>Enter selling price per unit</strong> — your price to customers. Must be higher than variable cost per unit to generate any contribution margin.</li>
+      <li><strong>Read break-even units</strong> — the minimum units you must sell to cover all costs. Below this: loss. Above this: profit.</li>
+      <li><strong>Review profit projections</strong> — the calculator shows profit at 0.5×, 1×, 1.25×, 1.5×, and 2× break-even volume.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Break-even formula:</strong> Break-Even Units = Fixed Costs ÷ (Selling Price − Variable Cost). The denominator (Price − Variable Cost) is the Contribution Margin per unit — how much each sale contributes toward covering fixed costs and generating profit.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Break-Even Analysis</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Contribution Margin</div><div class="edu-card-body">Selling price minus variable cost per unit. If you sell at $50 and variable cost is $30, contribution margin = $20. Each unit sold contributes $20 toward fixed costs. After covering all fixed costs, each additional unit generates $20 profit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Break-Even Point</div><div class="edu-card-body">The sales volume where total revenue equals total costs. At exactly break-even: profit = $0. Every unit sold beyond break-even generates pure contribution margin as profit (fixed costs are already covered).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Margin of Safety</div><div class="edu-card-body">Actual sales minus break-even sales = margin of safety. If break-even is 500 units and you sell 700: margin of safety = 200 units (28.6%). This buffer shows how much sales can decline before you start losing money.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Fixed Cost Leverage</div><div class="edu-card-body">High fixed costs create high break-even points but also high profit potential above break-even. Airlines, hotels, and software companies have high fixed costs but near-zero variable costs — once break-even is reached, additional revenue flows almost entirely to profit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Break-Even in Revenue</div><div class="edu-card-body">Break-Even Revenue = Fixed Costs ÷ Contribution Margin Ratio. Where CM Ratio = CM per unit ÷ Selling Price. Useful when selling multiple products at different prices — calculates the total revenue needed to break even across the product mix.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Sensitivity Analysis</div><div class="edu-card-body">Test how changes in price, variable cost, or fixed cost affect break-even. Raising price 10% reduces break-even volume significantly. Cutting fixed costs has a direct 1:1 impact on break-even. Variable cost reductions improve contribution margin and reduce break-even.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Break-Even for Business Decisions</h2>
+    <h3>Pricing decisions</h3>
+    <p>Break-even analysis reveals the pricing floor — the minimum price that allows the business to survive at a given volume. It also shows the trade-off between price and volume: a higher price raises the contribution margin, reducing break-even volume; a lower price requires selling more units to break even. Before setting any price, calculate break-even at that price point to confirm it is achievable given your market size.</p>
+    <h3>New product or venture evaluation</h3>
+    <p>Before launching any new product, business, or service, calculate break-even. If break-even requires capturing an unrealistic market share, the venture is not viable regardless of how compelling the concept seems. Break-even analysis forces concrete thinking about fixed costs, pricing, and required volume that prevents pursuing fundamentally uneconomic ventures.</p>
+    <h3>Cost reduction strategy</h3>
+    <p>Break-even analysis identifies which cost reduction efforts have the greatest impact. Reducing fixed costs lowers break-even directly — every $1,000 reduction in monthly fixed costs lowers the monthly break-even by $1,000 ÷ contribution margin per unit. Reducing variable costs improves contribution margin, making each sale more profitable and reducing break-even volume simultaneously.</p>
+    <div class="edu-highlight"><strong>📊 Break-even reality check:</strong> Calculate break-even before starting any business or launching any product. If break-even requires selling more units than your realistic market allows, the business model needs redesigning before any investment is made. More businesses fail from unrealistic break-even assumptions than from any other cause.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the break-even point?</div>
@@ -242,7 +297,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

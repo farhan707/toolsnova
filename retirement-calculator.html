@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -219,7 +233,50 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Retirement Projection <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ret-output" onclick="copyEl('ret-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Retirement Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter current age</strong> — your age today.</li>
+      <li><strong>Set retirement age</strong> — when you plan to stop working. The earlier you retire, the larger the corpus needed.</li>
+      <li><strong>Enter current savings</strong> — total retirement savings accumulated so far across all accounts.</li>
+      <li><strong>Set monthly contribution</strong> — how much you invest toward retirement each month currently.</li>
+      <li><strong>Enter expected return</strong> — annual investment return during accumulation phase. Use 7–10% for diversified equity portfolios.</li>
+      <li><strong>Set retirement expenses</strong> — estimated monthly expenses in retirement in today's dollars. The calculator adjusts for inflation.</li>
+      <li><strong>Review the projection</strong> — see if your current savings rate will fund your target retirement lifestyle.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 The 4% rule:</strong> Withdraw 4% of your retirement corpus in year 1, adjusting for inflation annually. A corpus of $1,000,000 supports $40,000/year withdrawal. This rule has historically sustained portfolios for 30+ years. Use it as a planning benchmark for corpus size needed.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Retirement Planning</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🎯 Corpus Required</div><div class="edu-card-body">Monthly expenses × 12 ÷ 4% = required corpus. $4,000/month = $48,000/year ÷ 0.04 = $1,200,000 needed. Adjust for pension income, Social Security, or other fixed income by subtracting from monthly expenses before calculating.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Accumulation Phase</div><div class="edu-card-body">The working years when you build your corpus through savings and investment returns. Compound growth during this phase does the heavy lifting — $500/month at 9% from age 25 to 65 = $2,100,000. Starting at 35: $866,000 — 59% less for starting 10 years later.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💸 Distribution Phase</div><div class="edu-card-body">Post-retirement, when you draw down the corpus. Portfolio should shift toward income-generating, lower-volatility assets. Typical allocation: 40–60% bonds, 30–50% dividend stocks, 10–20% growth assets.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Inflation Risk</div><div class="edu-card-body">At 3% inflation, $4,000/month today needs $7,242/month in 20 years to maintain the same purchasing power. Retirement planning must account for inflation — both in corpus size and withdrawal growth.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏥 Healthcare Costs</div><div class="edu-card-body">Healthcare is the largest unplanned retirement expense. Average retiree healthcare costs grow at 5–7% annually — faster than general inflation. Plan for healthcare as a separate, growing expense line item in retirement budgets.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Sequence of Returns Risk</div><div class="edu-card-body">Experiencing poor investment returns early in retirement dramatically increases the chance of running out of money — even if average returns are acceptable. This 'sequence risk' is why maintaining 2–3 years of expenses in cash reduces withdrawal pressure during market downturns.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Building a Retirement Plan</h2>
+    <h3>The savings rate is everything</h3>
+    <p>The percentage of income saved determines retirement timeline more than investment returns. At 10% savings rate, retirement takes approximately 40 years. At 25% savings rate: 32 years. At 50% savings rate: 17 years. At 75% savings rate: 7 years. Increasing savings rate by 5% shaves more years off retirement than increasing investment return by 2%.</p>
+    <h3>Multiple income streams in retirement</h3>
+    <p>The most resilient retirement plans combine multiple income sources: investment portfolio withdrawals, rental property income, Social Security or pension, part-time consulting or freelancing, and dividend income. No single source is vulnerable to failure when income is diversified. Even a small pension dramatically reduces the corpus required from personal savings.</p>
+    <h3>Tax-advantaged accounts first</h3>
+    <p>Maximize tax-advantaged retirement accounts before taxable investing. 401(k) up to employer match (free money), then Roth IRA ($7,000/year limit), then max 401(k) ($23,000/year), then HSA if eligible ($4,150/year), then taxable accounts. Each dollar in tax-advantaged accounts grows to a significantly larger after-tax amount than the equivalent in taxable accounts.</p>
+    <div class="edu-highlight"><strong>🎯 Retirement readiness check:</strong> Are you saving at least 15% of gross income for retirement? Is your retirement corpus target calculated? Do you have contributions automatically invested (removing decision friction)? Are you maximizing tax-advantaged accounts? If all four answers are yes, you are on track regardless of market fluctuations.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much do I need to retire?</div>
@@ -261,7 +318,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -189,6 +189,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -243,7 +244,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ps2-output" onclick="copyEl('ps2-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Position Scaling Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter account balance</strong> — your current total account equity.</li>
+      <li><strong>Set risk per trade %</strong> — the percentage of account you want to risk. Start at 1% for prop firm accounts, 0.5% for challenge phase.</li>
+      <li><strong>Enter stop loss in pips</strong> — the distance from entry to stop loss for your specific trade setup. This is the key variable — it changes with every trade.</li>
+      <li><strong>Select your instrument</strong> — choose from XAUUSD (Gold), major forex pairs, NAS100, or SPX500. Each has a different pip value per lot.</li>
+      <li><strong>Choose scaling method</strong> — Fixed Fractional for consistent risk, Anti-Martingale to scale up during winning streaks, or Half-Kelly for mathematically optimal sizing.</li>
+      <li><strong>Review the comparison table</strong> — the calculator shows position sizes at different risk percentages, letting you instantly compare the dollar risk and lot size at 0.5%, 1%, 2%, and 3%.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Prop firm rule:</strong> Always calculate position size AFTER setting your stop loss, not before. Never set a stop loss to fit a predetermined lot size — this is reverse risk management and leads to stops that are too tight or too wide for the actual market structure.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Position Scaling Methods</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Fixed Fractional</div><div class="edu-card-body">Risk the same percentage of account on every trade. As balance grows, position size grows proportionally. As balance shrinks, position size shrinks — protecting capital during drawdowns. The gold standard for consistent traders.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 Half-Kelly</div><div class="edu-card-body">The mathematically optimal position size based on your win rate and R:R, divided by 2 for safety. More aggressive than fixed fractional when your edge is strong, more conservative when edge is weak. Requires knowing your true win rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Anti-Martingale</div><div class="edu-card-body">Increase position size after winning trades, decrease after losers. Capitalises on winning streaks, protects capital during losing streaks. Popular with trend traders who experience momentum clustering.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Linear Scaling</div><div class="edu-card-body">Increase position size gradually as balance grows, following a predetermined schedule. Less dynamic than other methods but simple to implement and explain to prop firms.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚨 Martingale (Avoid)</div><div class="edu-card-body">Doubles position size after every loss. Mathematically guaranteed to eventually cause account ruin. Absolutely prohibited by most prop firms and lethal in any account with a drawdown limit.</div></div>
+    </div>
+    <p>For prop firm trading, Fixed Fractional at 0.5–1% risk per trade is almost universally the correct choice. The other methods have their place in personal trading where no external drawdown limits apply, but the strict daily and maximum drawdown rules of prop firms make any variable-size method risky.</p>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Advanced Position Sizing Concepts</h2>
+    <h3>The stop loss determines everything</h3>
+    <p>At 1% risk on a $100K account, your risk amount is $1,000. A 10-pip stop on EURUSD ($10/pip/lot) allows 10 lots. A 50-pip stop allows only 2 lots. The wider your stop, the smaller your position — this is mathematically forced, not a choice. Traders who use tight stops to enable larger lots are taking more structural risk, not the same risk.</p>
+    <h3>Scaling during drawdown</h3>
+    <p>Many professional traders reduce their risk percentage during drawdown periods. If the account drops 3% below peak, reduce from 1% to 0.75% risk. At 5% below peak, reduce to 0.5%. This slows the drawdown compounding effect and preserves capital during losing streaks while keeping you in the market.</p>
+    <h3>Position sizing for correlation</h3>
+    <p>If you trade multiple correlated pairs simultaneously (e.g. EURUSD and GBPUSD, which have 0.89 correlation), your actual exposure is much higher than your per-trade risk suggests. When running correlated trades, halve your position size on each to maintain your intended total risk exposure.</p>
+    <div class="edu-highlight"><strong>🔢 The rule of thumb:</strong> Never risk more than 1% on a single trade in a prop firm challenge. Never have more than 2% total open risk at any time. These two rules alone prevent the majority of challenge failures caused by position sizing errors.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is fixed fractional position sizing?</div>
@@ -290,7 +333,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

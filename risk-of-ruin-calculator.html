@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link active">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -208,7 +222,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Strategy Analysis <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ror-output" onclick="copyEl('ror-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Risk of Ruin Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter win rate</strong> — your percentage of winning trades from actual trading history. Minimum 50 trades for reliable data.</li>
+      <li><strong>Enter risk per trade %</strong> — the percentage of account risked on each trade. This is the most sensitive input — small changes create large differences in ruin probability.</li>
+      <li><strong>Set risk of ruin threshold</strong> — the account drawdown percentage you consider 'ruin' (e.g. 20% for prop firm max DD, 50% for personal account destruction).</li>
+      <li><strong>Enter R:R ratio</strong> — your average reward relative to risk.</li>
+      <li><strong>Read ruin probability</strong> — the percentage chance of hitting your ruin threshold before achieving your profit goal. Below 5% is acceptable. Above 10% requires reducing risk.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎯 Target ruin probability:</strong> Professional traders target less than 5% risk of ruin. For prop firm accounts, target less than 3% — the external drawdown limit means ruin ends the account permanently. If your current risk per trade gives over 10% ruin probability, halve your position size immediately.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Risk of Ruin</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💀 What Is Risk of Ruin?</div><div class="edu-card-body">The mathematical probability that a sequence of losses will reduce your account to a defined 'ruin' level — whether that is total account loss, a maximum drawdown breach, or any other threshold you define.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 The Formula</div><div class="edu-card-body">Risk of Ruin = ((1−Edge)/(1+Edge))^(Capital/Risk Per Trade). Where Edge = Win Rate − Loss Rate × (Risk/Reward). Small improvements in edge or small reductions in risk per trade dramatically reduce ruin probability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Sensitivity to Risk %</div><div class="edu-card-body">Risk of ruin is extremely sensitive to risk per trade. Doubling your risk per trade can increase ruin probability from 2% to 40%. This non-linear relationship is why professional traders are so strict about position sizing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎲 Gambler's Ruin</div><div class="edu-card-body">Even with a positive edge, infinite variance means ruin is eventually possible if you trade long enough with fixed risk. This is why all professional traders use a percentage of capital (not fixed dollar amounts) — percentage sizing makes ruin theoretically impossible.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Edge and Ruin</div><div class="edu-card-body">Higher edge (better win rate × better R:R) dramatically reduces ruin probability. But even a strong edge cannot compensate for oversized positions. A 65% win rate with 1:2 R:R at 10% risk per trade still has a significant ruin probability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏦 Institutional Standards</div><div class="edu-card-body">Professional trading firms typically require their traders to have theoretical risk of ruin below 1%. This is why institutional traders use 0.25–0.5% risk per trade on large accounts — not from lack of confidence, but from mathematical discipline.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Eliminating Risk of Ruin</h2>
+    <h3>The position sizing solution</h3>
+    <p>Risk of ruin approaches zero as position size decreases relative to account size. At 0.25% risk per trade with a positive edge, theoretical ruin is essentially impossible over any reasonable number of trades. The trade-off is slower account growth — but slow, consistent growth that compounds beats aggressive trading followed by account-ending drawdowns every time.</p>
+    <h3>Maximum consecutive losses</h3>
+    <p>Calculate the maximum consecutive losing streak you can sustain before hitting your ruin threshold. At 1% risk: 10 losses = 9.6% drawdown. At 0.5% risk: 20 losses = 9.5% drawdown. Losing streaks of 10 happen regularly even to excellent traders. Losing streaks of 20 are rare. Sizing so your ruin threshold requires 20+ consecutive losses creates near-zero ruin probability.</p>
+    <h3>Ruin and prop firm accounts</h3>
+    <p>In prop firm accounts, 'ruin' occurs at the max drawdown limit (typically 10%). This is not catastrophic financially — you lose the challenge fee, not your savings. But repeated ruined challenges waste time and money. Calculating ruin probability before each challenge ensures you only pay for challenges where your statistics give a reasonable probability of survival.</p>
+    <div class="edu-highlight"><strong>🛡️ The anti-ruin formula:</strong> Win Rate > 50% AND Risk per Trade < 1% AND R:R > 1:1.5 = theoretical risk of ruin below 1% over any number of trades. Meet all three conditions and account ruin becomes a mathematical near-impossibility.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is Risk of Ruin?</div>
@@ -248,7 +303,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

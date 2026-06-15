@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -218,7 +232,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Risk:Reward Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your entry price</strong> — the exact price at which you plan to enter the trade.</li>
+      <li><strong>Enter stop loss price</strong> — your stop loss level based on chart structure. The calculator computes the risk in pips automatically.</li>
+      <li><strong>Enter take profit price</strong> — your target price. The calculator shows the reward in pips and the resulting R:R ratio.</li>
+      <li><strong>Set account balance and risk %</strong> — optional but enables the calculator to show exact dollar risk, dollar reward, and position size.</li>
+      <li><strong>Evaluate the R:R ratio</strong> — check if the ratio meets your minimum threshold before taking the trade. Most professional traders require at least 1:1.5 minimum, preferably 1:2 or higher.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📏 Pre-trade checklist:</strong> Before entering any trade, verify three things: 1) Is my stop loss at a logical market structure level? 2) Is my take profit at a realistic target? 3) Is the R:R ratio at least 1:1.5? If any answer is no, skip the trade.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Risk:Reward Ratio</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⚖️ What R:R Means</div><div class="edu-card-body">A 1:2 R:R means you risk $100 to potentially make $200. You need to be right only 34% of the time to break even at this ratio. Higher R:R means you can have a lower win rate and still be profitable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Break-Even Win Rates</div><div class="edu-card-body">1:1 RR → need 50% WR. 1:1.5 RR → need 40% WR. 1:2 RR → need 34% WR. 1:3 RR → need 25% WR. This is why high R:R strategies can be profitable even with low win rates.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Minimum R:R</div><div class="edu-card-body">Most professional traders use a minimum of 1:1.5 for any trade. Below 1:1 means you need above 50% win rate just to break even — mathematically difficult to sustain.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Expected Value</div><div class="edu-card-body">Expected Value = (Win Rate × Reward) − (Loss Rate × Risk). At 50% WR with 1:2 RR: EV = (0.5 × 2) − (0.5 × 1) = +0.5R per trade. Positive EV is the minimum requirement.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 R:R vs Win Rate Trade-off</div><div class="edu-card-body">High R:R (1:3+) allows low win rates (30%) but means most trades are losers — psychologically challenging. Low R:R (1:1.2) requires high win rates (45%+) but provides more frequent wins. Choose based on your personality.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Realistic Targets</div><div class="edu-card-body">Take profit targets must be at realistic market levels — previous highs/lows, round numbers, key resistance. Setting a 1:5 R:R target at an unreachable price produces poor results despite the attractive ratio.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Applying R:R in Real Trading</h2>
+    <h3>The asymmetry principle</h3>
+    <p>The power of risk:reward is asymmetry — you only need to be right a minority of the time to be profitable. A trader with 1:3 R:R who is right just 30% of the time makes: (30 × $300) − (70 × $100) = $9,000 − $7,000 = $2,000 profit over 100 trades. This is why professional traders never chase win rate — they chase R:R.</p>
+    <h3>Moving stop loss to break even</h3>
+    <p>Many traders move their stop loss to entry price (break-even) after the trade moves 1R in their favour. This converts the trade from a loss risk to a free trade. While this reduces the theoretical win rate, it eliminates the possibility of a full loss on a trade that showed initial promise. The effective R:R improves when break-even stops are used consistently.</p>
+    <h3>R:R and prop firm challenges</h3>
+    <p>In a prop firm challenge with 8% profit target and 10% max drawdown, your R:R must be high enough that profitable trades meaningfully advance the profit target while losing trades don't threaten the drawdown limit. At 1% risk per trade, a 1:2 R:R means wins add 2% toward your target while losses subtract only 1%.</p>
+    <div class="edu-highlight"><strong>🎯 The trader's equation:</strong> Win Rate × Reward − Loss Rate × Risk > 0. This must be true for any trading strategy to be profitable over time. Calculate this for every strategy you consider trading with real capital.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is risk-reward ratio?</div>
@@ -263,7 +318,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

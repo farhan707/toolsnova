@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link active">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -241,7 +255,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Stop Loss & Take Profit Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="sl-output" onclick="copyEl('sl-output')" style="min-height:260px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the SL/TP Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter entry price</strong> — your planned trade entry price.</li>
+      <li><strong>Set stop loss distance</strong> — in pips or price distance from entry, based on chart structure (not arbitrary numbers).</li>
+      <li><strong>Set take profit distance</strong> — your target, either in pips or at a specific price level (resistance, Fibonacci, pivot).</li>
+      <li><strong>Enter lot size and balance</strong> — to see exact dollar risk and reward amounts.</li>
+      <li><strong>Review R:R and adjust</strong> — if the calculated R:R is below 1:1.5, move your take profit to a more distant target or skip the trade.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📋 Order of operations:</strong> 1) Identify entry from signal. 2) Set stop loss at logical structure level. 3) Calculate distance to stop. 4) Find take profit at minimum 1.5× that distance. 5) Confirm the TP is at a realistic price level. If no realistic TP exists at 1.5× the stop distance, the setup does not meet criteria — skip it.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Stop Loss Placement</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🛡️ Purpose of Stop Loss</div><div class="edu-card-body">A stop loss converts unlimited potential loss into a defined, manageable loss. Without stops, a single adverse move can exceed your planned risk many times over. Stops are not optional — they are the foundation of professional risk management.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Structure-Based Stops</div><div class="edu-card-body">Place stops at logical market structure levels — below swing lows for longs, above swing highs for shorts, below/above key support/resistance. These levels represent points where the trade thesis is invalidated, not arbitrary pip distances.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Tight Stop Fallacy</div><div class="edu-card-body">Tight stops increase win rate by getting stopped out of trades that later reversed. But they dramatically increase the frequency of losses and reduce average winning trade size. Net result: lower profit factor and lower expectancy.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Take Profit Placement</div><div class="edu-card-body">TP should be at the next significant technical level: previous high/low, round number, Fibonacci extension, pivot point R1/R2. Avoid placing TP in the middle of a ranging zone — price is likely to stall there.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Trailing Stops</div><div class="edu-card-body">Moving your stop loss to lock in profits as price moves in your favour. Locks in gains while allowing winners to run. Best applied after price moves 1:1 R:R in your favour — move stop to break even at minimum.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Stop Hunting</div><div class="edu-card-body">Large operators sometimes push price through obvious stop clusters before reversing. Placing stops at less obvious levels (slightly beyond structure rather than exactly at it) reduces the chance of stop hunts. Add 2–5 pips buffer beyond key levels.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>SL/TP Strategy for Consistent Results</h2>
+    <h3>The break-even stop technique</h3>
+    <p>After a trade moves 1R in your favour (profit equals your initial risk), move your stop loss to the entry price. This converts the trade into a zero-loss scenario — worst case is break even. With this technique, even a 40% win rate produces profitable results if winners average 2R+, because losing trades cost nothing (break even) while winners pay 2R or more.</p>
+    <h3>Multiple take profit levels</h3>
+    <p>Consider splitting your position across two take profit levels. Close 50% at TP1 (1:1.5 R:R) to secure profit, move stop to break even, and let the remaining 50% run to TP2 (1:3 R:R). This approach captures some profit reliably while still participating in larger moves. Calculate both TPs before entering using this calculator.</p>
+    <h3>Stop and target for prop firm challenges</h3>
+    <p>In prop firm challenges, your stop loss must account for the daily drawdown limit. If your daily limit is $5,000 and you want maximum 3 losing trades per day, your stop loss in dollars must be below $1,667 per trade. This ties your stop loss size to your position sizing — they must be calculated together, not independently.</p>
+    <div class="edu-highlight"><strong>🎯 The professional SL/TP approach:</strong> Every trade has a predetermined stop and target before entry. No exceptions. Traders who manage stops manually — moving them further away when price approaches — consistently destroy accounts by converting small planned losses into large unplanned ones. Set it, write it down, and do not move the stop wider.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I set a stop loss?</div>
@@ -286,7 +341,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

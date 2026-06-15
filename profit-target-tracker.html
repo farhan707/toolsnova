@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -189,6 +189,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -225,7 +226,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pt-output" onclick="copyEl('pt-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Profit Target Tracker</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter initial account balance</strong> — your exact starting balance at the beginning of the challenge (e.g. $100,000).</li>
+      <li><strong>Enter current balance</strong> — your account balance right now. Update this daily to see accurate progress and remaining target.</li>
+      <li><strong>Set profit target %</strong> — your firm's required profit percentage. FTMO Phase 1 = 10%, Phase 2 = 5%. Most other firms = 8%.</li>
+      <li><strong>Set total days allowed</strong> — the time limit for your challenge (usually 30 or 60 calendar days, or 30 trading days). Check your firm's specific terms.</li>
+      <li><strong>Enter days used</strong> — how many trading days have passed since you started. The tracker calculates required daily profit from today forward.</li>
+      <li><strong>Monitor pace status</strong> — the tracker shows whether you are on pace, ahead, or behind. If behind, it shows the daily profit needed over remaining days to still pass.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Update daily:</strong> The most valuable habit is updating this tracker every evening after market close. Seeing your progress visually prevents both complacency (when ahead of pace) and panic trading (when behind pace).</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Challenge Progress</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📈 Progress Bar</div><div class="edu-card-body">Shows percentage of profit target achieved. 50% filled means you have made half the required profit. Focus on this — not on the dollar amount — to maintain perspective.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Daily Pace</div><div class="edu-card-body">The minimum daily profit needed to finish on time. This assumes equal profit each day — reality varies. Use it as a guide, not a rigid target.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ On Track Status</div><div class="edu-card-body">Green means your average daily profit to date exceeds the required pace. Red means you are behind — but there is still time to recover through increased frequency (not increased risk).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Days Remaining</div><div class="edu-card-body">The number of trading days left. As this decreases, the required daily profit increases. Check this number weekly to avoid being caught off-guard in the final days.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Still Needed</div><div class="edu-card-body">The exact dollar amount remaining to hit the target. Divide this by days remaining to get your required daily profit going forward.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Scenario Planning</div><div class="edu-card-body">The calculator shows required daily profit for 3, 5, 7, 10, and 14 remaining days — letting you plan for different finishing timelines.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Challenge Pace Strategy</h2>
+    <h3>The first week sets the tone</h3>
+    <p>Traders who build a 30–40% progress buffer in the first week of a challenge significantly improve their pass rate. Early profits give you psychological room to trade your plan in weeks 2–4 without desperation. Aim to have 3–4% profit by end of day 7 on a 10% target challenge.</p>
+    <h3>Never chase the target</h3>
+    <p>The most dangerous time in a challenge is when you are behind pace with few days remaining. The temptation to increase position size or trade more setups leads to the majority of challenge failures. If you are behind pace with 5 days left, accept the outcome and use the remaining days to prove your consistency — this data is valuable for your next attempt.</p>
+    <h3>The 80% rule</h3>
+    <p>Consider stopping active trading once you reach 80% of the profit target with more than 5 days remaining. The risk of losing your progress in the final days often outweighs the benefit of hitting the target faster. Lock in your progress, trade minimal size to maintain the minimum day requirement, and let time pass.</p>
+    <div class="edu-highlight"><strong>🏆 Winning mindset:</strong> A prop firm challenge is a 30-day process, not a single trade. Traders who think in daily percentages (0.3–0.5%/day) consistently outperform those chasing 2–3% days. The tortoise beats the hare in funded trading.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I track my prop firm challenge progress?</div>
@@ -268,7 +311,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

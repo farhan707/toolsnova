@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -188,6 +188,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="win-rate-expectancy-calculator.html" class="nav-link active">Win Rate &amp; Expectancy</a>
     <a href="forex-swap-calculator.html"         class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -224,7 +225,50 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="we-output" onclick="copyEl('we-output')" style="min-height:280px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Win Rate & Expectancy Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter number of wins</strong> — total winning trades in your sample period. Use at least 50 trades for statistical meaning, ideally 100+.</li>
+      <li><strong>Enter number of losses</strong> — total losing trades in the same period. Include partial losses and break-even trades as losses for conservative accuracy.</li>
+      <li><strong>Enter average win amount</strong> — the average profit per winning trade in dollars. Calculate this from your trading journal or broker statement.</li>
+      <li><strong>Enter average loss amount</strong> — the average loss per losing trade in dollars (enter as a positive number). Include commissions and spread in this figure.</li>
+      <li><strong>Set trades to project</strong> — how many future trades to project profitability over. Use 30 for challenge planning, 100 for quarterly projections.</li>
+      <li><strong>Analyse the results</strong> — focus on expectancy per trade and profit factor. These two numbers tell you everything about whether your strategy has a genuine edge.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Minimum sample size:</strong> Below 50 trades, your statistics are dominated by luck rather than skill. A 70% win rate over 20 trades means almost nothing statistically. With 200 trades, a 65% win rate is a highly reliable signal of genuine edge.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Trading Statistics</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📈 Win Rate</div><div class="edu-card-body">The percentage of trades that are profitable. Win rate alone tells you nothing — a 70% win rate with 1:0.5 R:R loses money. Always evaluate win rate alongside R:R and expectancy.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ Risk:Reward Ratio</div><div class="edu-card-body">Average winning trade size divided by average losing trade size. A ratio of 1.5 means wins are 50% larger than losses on average. Higher R:R compensates for lower win rates.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💡 Expectancy</div><div class="edu-card-body">Average profit or loss per trade: (Win Rate × Avg Win) − (Loss Rate × Avg Loss). The single most important number for evaluating a trading strategy. Must be positive for long-term profitability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Profit Factor</div><div class="edu-card-body">Total gross profit divided by total gross loss. Above 1.0 = profitable. 1.5 = good. 2.0+ = excellent. Most consistently profitable strategies have profit factors between 1.4 and 2.5.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Break-Even Win Rate</div><div class="edu-card-body">The minimum win rate needed at your R:R to break even: 1÷(1+RR). At 1:1.5 RR, break-even WR = 40%. At 1:1 RR, break-even WR = 50%. Knowing this floor is essential.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔮 Projected Profit</div><div class="edu-card-body">Expected total profit over N trades = Expectancy × N trades. At $37.50 expectancy over 100 trades = $3,750 expected. Actual results will vary around this expectation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Improving Your Trading Statistics</h2>
+    <h3>Diagnose before optimising</h3>
+    <p>Before trying to improve your win rate or R:R, diagnose which is the weak link. If your win rate is 65% but profit factor is only 1.1, your average win is too small relative to your average loss — you are cutting winners short. If win rate is 35% with 1:3 R:R and profit factor is 1.05, your win rate is too low for the R:R — you are entering too early or with poor setups.</p>
+    <h3>The expectancy journal</h3>
+    <p>The most powerful improvement tool is a trade journal that calculates running expectancy after every 10 trades. This shows whether strategy changes are improving or worsening your edge in near real-time, rather than waiting for a 100-trade sample to evaluate.</p>
+    <h3>Separating setup types</h3>
+    <p>Many traders have a mixed strategy where some setup types are highly profitable and others drag down overall statistics. Calculate expectancy separately for each setup type — trading session, day of week, news vs non-news days. Often, eliminating 2–3 underperforming setup types dramatically improves overall statistics without requiring any fundamental strategy change.</p>
+    <div class="edu-highlight"><strong>🔢 The goal:</strong> A profit factor above 1.5 and positive expectancy of at least $20–$30 per trade (at standard lot sizes) before attempting any prop firm challenge. These thresholds give enough cushion for the natural variance of live trading to still produce profitability.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is trading expectancy?</div>
@@ -273,7 +317,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

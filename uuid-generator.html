@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -224,7 +238,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the UUID Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select UUID version</strong> — Version 4 (random) is the most common for general use. Version 1 (time-based) encodes the generation timestamp and MAC address.</li>
+      <li><strong>Set quantity</strong> — generate 1 to 100 UUIDs at once for batch operations.</li>
+      <li><strong>Choose format</strong> — standard format with hyphens (550e8400-e29b-41d4-a716-446655440000), without hyphens, or uppercase.</li>
+      <li><strong>Copy single or all</strong> — copy individual UUIDs or all generated UUIDs at once for use in databases, code, or configuration.</li>
+      <li><strong>Regenerate</strong> — click again for completely new UUIDs — all generated values are cryptographically random and unique.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎲 UUID collision probability:</strong> With version 4 UUIDs, generating 1 billion UUIDs per second for 100 years, the probability of a single collision is approximately 50%. In practice, even generating millions of UUIDs in an application, collision is for all practical purposes impossible — there are 2^122 possible v4 UUID values.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding UUIDs</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔑 What Is a UUID?</div><div class="edu-card-body">Universally Unique Identifier — a 128-bit label used to uniquely identify information without requiring central coordination. Formatted as 32 hexadecimal digits in 5 groups: 8-4-4-4-12 (e.g. 550e8400-e29b-41d4-a716-446655440000). Standardised in RFC 4122. Also called GUID (Globally Unique Identifier) in Microsoft environments.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎲 Version 4 (Random)</div><div class="edu-card-body">122 bits of cryptographic randomness with 6 bits indicating version and variant. The most commonly used version. No information about when or where it was created is embedded. Suitable for database primary keys, session IDs, file names, and any use case requiring unique identifiers without coordination.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Version 1 (Time-based)</div><div class="edu-card-body">Combines current timestamp (60-bit, 100-nanosecond precision) with the generating machine's MAC address. Guaranteed unique across time and space. Drawback: encodes the MAC address (privacy concern) and timestamps are monotonically increasing (predictable). Rarely used in modern applications.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆔 Version 5 (Name-based)</div><div class="edu-card-body">Deterministic UUID generated from a namespace UUID and a name using SHA-1 hashing. The same namespace+name always produces the same UUID. Useful for generating consistent IDs for known entities (e.g. always the same UUID for 'toolsnova.net' in the 'URL' namespace). Not random — it is a hash.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🗄️ UUID as Primary Key</div><div class="edu-card-body">Using UUIDs as database primary keys instead of auto-increment integers: Advantages — globally unique (safe to generate client-side or across multiple databases), no information leakage (integer IDs reveal record count), easy database merging. Disadvantages — larger storage (16 bytes vs 4–8 bytes), index fragmentation with random v4 UUIDs, less human-readable in logs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ ULID Alternative</div><div class="edu-card-body">Universally Unique Lexicographically Sortable Identifier — a newer alternative to UUID. 128 bits like UUID, but 48 bits are a millisecond timestamp making ULIDs chronologically sortable. This solves the UUID database index fragmentation problem while maintaining uniqueness. Increasingly popular for new applications.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>UUIDs in Application Development</h2>
+    <h3>UUID primary key strategy</h3>
+    <p>For new applications, UUID v4 primary keys are strongly recommended over auto-increment integers. The key benefits: IDs can be generated client-side before database insertion (eliminating round-trips), IDs are safe to expose in URLs (integers reveal total record count to users), and multiple database shards or merged databases never have ID conflicts. The performance difference is negligible in most applications — only at very high scale (billions of rows) do UUID index fragmentation issues warrant special handling.</p>
+    <h3>UUID v7 — the future standard</h3>
+    <p>UUID version 7 (RFC 9562, finalised 2024) combines a Unix timestamp prefix with random bits, making UUIDs chronologically sortable while remaining globally unique. This solves the primary database performance concern with v4 UUIDs (random order causes B-tree index fragmentation) while maintaining the uniqueness and client-side generation benefits. UUID v7 is increasingly supported in modern databases and languages and should be the first choice for new projects.</p>
+    <h3>Session and token generation</h3>
+    <p>UUIDs are commonly used for session IDs, API tokens, and password reset tokens. For these security-sensitive uses, cryptographic randomness is essential — UUID v4 uses cryptographically secure random number generation (CSPRNG) making it suitable. Avoid UUID v1 for tokens as the timestamp and MAC address encoding makes tokens somewhat predictable. For API keys and passwords reset tokens specifically, consider using 32+ bytes of CSPRNG output encoded as hex or base64 rather than UUID format.</p>
+    <div class="edu-highlight"><strong>🔑 UUID quick reference:</strong> General unique ID: UUID v4. Time-sortable ID (new projects): UUID v7. Deterministic ID from known input: UUID v5. Microsoft environments: GUID (same as UUID). JavaScript: crypto.randomUUID() (built-in, v4). Python: uuid.uuid4() (built-in). PostgreSQL: gen_random_uuid() (built-in). These native implementations are always preferred over custom ID generation.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is UUID v4?</div>
@@ -260,9 +315,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

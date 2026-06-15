@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -195,6 +195,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 
@@ -250,7 +264,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the JSON Formatter</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste your JSON</strong> — paste raw, minified, or malformed JSON into the input area. The formatter accepts JSON from APIs, config files, logs, or any source.</li>
+      <li><strong>Click Format / Beautify</strong> — instantly reformats JSON with proper indentation, line breaks, and syntax highlighting.</li>
+      <li><strong>Validate your JSON</strong> — if the JSON contains errors, the tool highlights the exact line and character where the error occurs.</li>
+      <li><strong>Minify if needed</strong> — click Minify to compress JSON by removing all whitespace, reducing file size for production use.</li>
+      <li><strong>Copy the result</strong> — use the Copy button to copy formatted or minified JSON to your clipboard.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔧 Common use case:</strong> API responses are often returned as minified single-line JSON. Paste the response here to instantly make it human-readable for debugging, documentation, or understanding the data structure.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding JSON</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📄 What Is JSON?</div><div class="edu-card-body">JavaScript Object Notation — a lightweight data interchange format. Human-readable text representing data as key-value pairs, arrays, and nested objects. Universally supported across all programming languages. The dominant format for API communication and configuration files.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔤 JSON Data Types</div><div class="edu-card-body">String: "hello". Number: 42 or 3.14. Boolean: true or false. Null: null. Array: [1, 2, 3]. Object: {"key": "value"}. All JSON data must be one of these six types. Strings must use double quotes — single quotes are invalid JSON.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 JSON Syntax Rules</div><div class="edu-card-body">Keys must be strings in double quotes. Values separated from keys by colon. Items in objects and arrays separated by commas. No trailing commas after the last item. No comments allowed in standard JSON. These strict rules are why validation is often necessary.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ JSON vs XML</div><div class="edu-card-body">JSON is more compact, easier to read, and parses faster than XML. A JSON payload is typically 30–40% smaller than equivalent XML. JSON has become the standard for REST APIs, replacing XML which was dominant in the SOAP era. JSON is native to JavaScript but equally usable in Python, Ruby, Go, Java, and all modern languages.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 JSON Schema</div><div class="edu-card-body">JSON Schema validates JSON structure — defining required fields, data types, and allowed values. Like a type system for JSON data. Used in API documentation (OpenAPI/Swagger), configuration validation, and data pipeline quality checks. JSON Schema tools can auto-generate from sample JSON.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 JSON in Practice</div><div class="edu-card-body">Config files (package.json, .eslintrc, tsconfig.json). API request and response bodies. Database storage (MongoDB, PostgreSQL JSONB). Browser localStorage and sessionStorage. Log files and monitoring data. Inter-service communication in microservices architectures.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>JSON Best Practices for Developers</h2>
+    <h3>Consistent naming conventions</h3>
+    <p>Choose one naming convention and use it throughout: camelCase (firstName) is most common in JavaScript APIs. snake_case (first_name) is common in Python and Ruby APIs. kebab-case (first-name) is not valid as a JSON key without quoting. Whatever you choose, document it and enforce it — inconsistent naming across an API causes endless confusion for consumers.</p>
+    <h3>JSON and API design</h3>
+    <p>Well-structured JSON API responses include: a consistent envelope (data, error, meta fields), ISO 8601 dates ("2026-06-15T10:30:00Z" not timestamps), pagination metadata, and versioning information. The JSON:API specification (jsonapi.org) provides a comprehensive standard for JSON API response structure that many teams adopt to avoid designing from scratch.</p>
+    <h3>Performance considerations</h3>
+    <p>Large JSON payloads impact API performance. Strategies: use minified JSON in production (remove whitespace), implement response field selection (allow clients to request only needed fields), use gzip compression (typically reduces JSON size by 70–90%), paginate large arrays rather than returning all records, and consider MessagePack or Protocol Buffers for performance-critical internal APIs.</p>
+    <div class="edu-highlight"><strong>🔧 Developer tip:</strong> Use jq — a command-line JSON processor — for JSON manipulation in scripts and pipelines. jq '.users[] | select(.active == true) | .email' extracts active user emails from a JSON file in a single command. Combined with curl for API calls, jq is an essential terminal tool for any developer working with JSON APIs.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a JSON formatter?</div>
@@ -297,9 +352,9 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

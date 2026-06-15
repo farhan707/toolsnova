@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -195,6 +195,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 
@@ -252,7 +266,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Base64 Encoder/Decoder</h2>
+    <ol class="edu-steps">
+      <li><strong>Choose encode or decode</strong> — Encode converts text/binary to Base64 string. Decode converts a Base64 string back to the original text.</li>
+      <li><strong>Enter your input</strong> — paste the text to encode, or the Base64 string to decode.</li>
+      <li><strong>Select URL-safe mode if needed</strong> — standard Base64 uses + and / characters which are special in URLs. URL-safe Base64 replaces these with - and _ for safe use in URLs and filenames.</li>
+      <li><strong>Copy the result</strong> — use the copy button for the encoded/decoded output.</li>
+      <li><strong>Encode files</strong> — for binary data like images, use the file upload option to encode to Base64 for embedding in HTML or CSS.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📌 Quick reference:</strong> Base64 encoded output is always approximately 33% larger than the input. A 3KB image becomes approximately 4KB in Base64. This size increase is the trade-off for making binary data safe for text-based protocols like email and HTTP headers.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Base64 Encoding</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔢 What Is Base64?</div><div class="edu-card-body">An encoding scheme that converts binary data to a text string using 64 printable ASCII characters (A-Z, a-z, 0-9, +, /). The '64' refers to these 64 characters. It is an encoding scheme, not encryption — Base64 is trivially reversible and provides zero security.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Why Base64 Exists</div><div class="edu-card-body">Many protocols (email, HTTP headers, URLs) were designed for text only. Binary data — images, files, audio — cannot be safely transmitted through these channels. Base64 converts any binary to safe ASCII text, making binary transmission possible over text-only protocols.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 How It Works</div><div class="edu-card-body">Takes 3 bytes (24 bits) of binary input at a time, splits into four 6-bit groups, maps each group to one of 64 characters. Three input bytes → four output characters. This 3:4 ratio creates the ~33% size increase. Padding (=) is added if input length is not divisible by 3.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 URL-Safe Base64</div><div class="edu-card-body">Standard Base64 uses + and / which are special characters in URLs. URL-safe Base64 (Base64url) replaces + with - and / with _ making it safe for URL parameters, filenames, and JWT tokens without percent-encoding.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🖼️ Common Uses</div><div class="edu-card-body">Embedding images in HTML/CSS (data URIs). Email attachments (MIME encoding). Basic Auth HTTP header (username:password encoded). JWT (JSON Web Token) payload encoding. Storing binary data in JSON. Embedding fonts in CSS. API keys and tokens.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Not Encryption</div><div class="edu-card-body">Base64 is frequently confused with encryption. Anyone who sees Base64 output can decode it instantly. It provides no security — only format conversion. Adding Base64 to a string does not make it secret. Use actual encryption (AES, RSA) if security is required.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Base64 in Web Development</h2>
+    <h3>Data URIs for images</h3>
+    <p>Base64 encoding allows embedding images directly in HTML or CSS, eliminating the HTTP request for the image file. `<img src="data:image/png;base64,iVBORw0K...">` — the entire image is inline. Benefits: one fewer HTTP request, works in email clients that block external images. Drawbacks: increases HTML size, not cached separately by browsers. Ideal for small icons (under 2KB); avoid for large images.</p>
+    <h3>JWT tokens</h3>
+    <p>JSON Web Tokens (JWTs) use Base64url encoding for their header and payload sections. A JWT like eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiZmFyaGFuIn0.signature has three Base64url-encoded parts separated by dots. The header and payload are trivially decodable — they are not encrypted. Only the signature verifies authenticity. Never store sensitive data in JWT payloads.</p>
+    <h3>Basic authentication</h3>
+    <p>HTTP Basic Authentication sends credentials as Base64(username:password) in the Authorization header: `Authorization: Basic dXNlcjpwYXNzd29yZA==`. This is not secure on its own — the credentials are trivially decoded. Basic Auth must always be used over HTTPS to prevent credential interception. For production APIs, prefer API keys or OAuth tokens over Basic Auth.</p>
+    <div class="edu-highlight"><strong>🔧 Command line Base64:</strong> Linux/Mac: `echo -n 'hello' | base64` encodes. `echo 'aGVsbG8=' | base64 -d` decodes. Windows PowerShell: `[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('hello'))`. These commands are useful for quick encoding in scripts and CI/CD pipelines without needing a browser tool.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is Base64 encoding?</div>
@@ -294,9 +349,9 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

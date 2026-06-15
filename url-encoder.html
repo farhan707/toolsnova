@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -235,6 +235,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 
@@ -309,7 +323,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the URL Encoder/Decoder</h2>
+    <ol class="edu-steps">
+      <li><strong>Choose encode or decode</strong> — Encode converts special characters to percent-encoded format safe for URLs. Decode converts percent-encoded strings back to readable text.</li>
+      <li><strong>Enter your text or URL</strong> — paste the text to encode or the percent-encoded string to decode.</li>
+      <li><strong>Select encoding type</strong> — Full URL encoding encodes everything except URL-safe characters. Component encoding additionally encodes /, ?, &, = characters — use this for individual query parameter values.</li>
+      <li><strong>Copy the result</strong> — use the encoded URL or decoded text in your application.</li>
+      <li><strong>Verify the result</strong> — test encoded URLs by pasting them into a browser address bar to confirm they work as expected.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🌐 Most common use case:</strong> Encoding query parameters containing special characters: spaces, &, =, +, non-ASCII characters. 'search term' becomes 'search%20term' or 'search+term'. '&' in a value becomes '%26'. Without encoding, special characters break URL parsing and your query parameters will be misread.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding URL Encoding</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔤 Why URLs Need Encoding</div><div class="edu-card-body">URLs can only contain a limited set of ASCII characters. Spaces, non-ASCII characters (accented letters, Chinese, Arabic), and characters with special URL meaning (&, =, ?, /) must be encoded. Percent encoding replaces these characters with %XX where XX is the hexadecimal ASCII or UTF-8 code.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Percent Encoding</div><div class="edu-card-body">Each unsafe character is replaced by a percent sign followed by its two-digit hexadecimal code. Space = %20. & = %26. = = %3D. + = %2B. / = %2F. # = %23. % itself = %25. The full list of reserved and unreserved URL characters is defined in RFC 3986.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆚 %20 vs +</div><div class="edu-card-body">Both represent spaces in URLs but in different contexts. %20 is the correct encoding per RFC 3986 — safe in any URL context. + represents space only in query strings (form submission legacy). Using + in path segments is incorrect and may be interpreted as a literal plus sign. When in doubt, use %20.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Unicode in URLs</div><div class="edu-card-body">Non-ASCII characters (Chinese, Arabic, emojis, accented characters) are encoded by first converting to UTF-8 bytes, then percent-encoding each byte. The Chinese character '中' (UTF-8: E4 B8 AD) becomes %E4%B8%AD in a URL. Modern browsers display international URLs in readable form (Punycode for domains, percent-decoded for paths) while sending the encoded version.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔗 Query String Encoding</div><div class="edu-card-body">Query parameters require careful encoding. The parameter name and value must be separately encoded before being joined with '=', and multiple parameters joined with '&'. 'search=hello world&filter=a&b' should be 'search=hello%20world&filter=a%26b' — the & within the value must be encoded or it will be interpreted as a parameter separator.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Form Submission Encoding</div><div class="edu-card-body">HTML forms with method='GET' submit values as query strings with automatic URL encoding by the browser. Method='POST' with enctype='application/x-www-form-urlencoded' uses the same encoding for the request body. Understanding this encoding is essential for correctly parsing form submissions in server-side code.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>URL Encoding in Development</h2>
+    <h3>API endpoint construction</h3>
+    <p>Building API URLs programmatically requires correct encoding of all variable components. Using string concatenation without encoding is a common security vulnerability — if user input contains &, =, or other special characters, it can manipulate the URL structure. Use language-built-in URL construction libraries: JavaScript's URLSearchParams, Python's urllib.parse.urlencode(), Ruby's URI.encode_www_form(). These handle encoding automatically and prevent URL injection.</p>
+    <h3>Debugging encoded URLs</h3>
+    <p>When URLs appear in logs, error messages, or network inspector, they are often percent-encoded. Decoding reveals the actual parameter values for debugging. A URL like /search?q=hello%20world&category=%E6%8A%80%E6%9C%AF decodes to /search?q=hello world&category=技术 (the Chinese word for 'technology'). This converter makes such debugging immediate.</p>
+    <h3>Deep linking and URL sharing</h3>
+    <p>When generating shareable URLs containing user-entered content (search terms, filters, selected options), ensure all values are properly encoded. Unencoded spaces, apostrophes, or special characters in URLs break when copied between different systems (email clients, messaging apps, social media) that apply their own URL parsing. Always encode at URL generation time and test URLs in multiple sharing contexts.</p>
+    <div class="edu-highlight"><strong>🔧 URL encoding reference:</strong> Space: %20. &: %26. =: %3D. +: %2B. /: %2F. ?: %3F. #: %23. @: %40. !: %21. $: %24. ,: %2C. ;: %3B. :: %3A. Memorise the most common ones (space, &, =) for quick manual debugging without needing a converter.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is URL encoding?</div>
@@ -346,7 +401,7 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 function urlParse() {
   const raw = document.getElementById('url-input')?.value.trim();
@@ -384,7 +439,7 @@ document.getElementById('url-input').addEventListener('input', () => {
 });
 </script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

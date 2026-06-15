@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -214,6 +214,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 
@@ -300,7 +314,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Case Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste or type your text</strong> — enter any text you want to convert.</li>
+      <li><strong>Select the target case</strong> — choose from uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case, or CONSTANT_CASE.</li>
+      <li><strong>Click convert</strong> — the result appears instantly.</li>
+      <li><strong>Copy the result</strong> — use the copy button to copy to clipboard.</li>
+      <li><strong>Batch convert</strong> — paste multiple lines of text for simultaneous conversion of all lines.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⌨️ Keyboard shortcut equivalents:</strong> In most text editors: Ctrl+Shift+U (Linux) or select text then Shift+F3 (Word) toggles case. However, programming-specific cases (camelCase, snake_case, PascalCase) require a dedicated converter like this tool — no keyboard shortcut produces them automatically.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Text Cases in Programming</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🐪 camelCase</div><div class="edu-card-body">First word lowercase, subsequent words capitalised: firstName, getUserById, totalAmountDue. Standard for variables and function names in JavaScript, Java, Swift, Kotlin, and most C-family languages. The most common convention in front-end development.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏛️ PascalCase</div><div class="edu-card-body">Every word capitalised: FirstName, GetUserById, TotalAmountDue. Used for class names, component names, and type names in most languages. React components must be PascalCase. C# uses PascalCase for all public members and methods.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🐍 snake_case</div><div class="edu-card-body">All lowercase with underscores: first_name, get_user_by_id, total_amount_due. Standard in Python (PEP 8 style guide), Ruby, PHP variables, and SQL column names. Database column names almost universally use snake_case.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🍢 kebab-case</div><div class="edu-card-body">All lowercase with hyphens: first-name, get-user-by-id, total-amount-due. Used for HTML attributes, CSS class names, URL slugs, and file names. Cannot be used for programming variable names (hyphen is interpreted as minus sign).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📢 CONSTANT_CASE</div><div class="edu-card-body">All uppercase with underscores: MAX_RETRY_COUNT, API_BASE_URL. Used for constants and environment variables in virtually all programming languages. Makes constants visually distinct from variables at a glance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📖 Title Case</div><div class="edu-card-body">First letter of each major word capitalised: The Quick Brown Fox. Used for headings, titles, and proper names. Rules vary: most prepositions and articles (the, a, in, of) are typically lowercase unless first or last word in the title.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Case Conventions Across Technologies</h2>
+    <h3>Consistency is more important than which convention</h3>
+    <p>The most important rule about naming conventions: pick one and enforce it consistently throughout a codebase. A project using camelCase for some variables and snake_case for others creates cognitive friction for every developer who reads the code. Linters (ESLint, Pylint) can enforce naming conventions automatically — set them up and eliminate manual convention checking from code reviews.</p>
+    <h3>Case conversion in data processing</h3>
+    <p>Data from different sources uses different case conventions. A CSV exported from a database uses snake_case columns. A JavaScript frontend expects camelCase properties. A Python backend uses snake_case internally. Case conversion is a constant reality in data pipelines and API integrations. Libraries handle this automatically: Python's pydantic converts between snake_case and camelCase, JavaScript's lodash provides _.camelCase() and _.snakeCase() utilities.</p>
+    <h3>SEO and URL case</h3>
+    <p>URLs should always use lowercase and kebab-case for separating words: toolsnova.net/json-formatter not toolsnova.net/JsonFormatter or toolsnova.net/json_formatter. Google treats uppercase and lowercase URLs as different pages, potentially splitting link equity. Hyphens are preferred over underscores in URLs — Google treats hyphens as word separators but treats underscores as word joiners (json_formatter = one word 'jsonformatter' to Google).</p>
+    <div class="edu-highlight"><strong>⌨️ IDE case shortcuts:</strong> VS Code: select text, then Ctrl+Shift+P → 'Transform to...' for any case. JetBrains IDEs: Ctrl+Shift+U toggles upper/lower case. Vim: gU (uppercase), gu (lowercase), g~ (toggle case). These shortcuts handle simple case changes; use this converter for programming-specific cases that IDEs don't natively support.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">When should I use camelCase vs PascalCase?</div>
@@ -342,7 +397,7 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 let activeCase = 'upper';
 function caseApply(type, btn) {
@@ -355,7 +410,7 @@ function caseRunActive() { caseConvert(activeCase); }
 window.addEventListener('DOMContentLoaded', () => caseConvert('upper'));
 </script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

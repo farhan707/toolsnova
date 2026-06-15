@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -255,6 +255,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 
@@ -332,7 +346,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Timestamp Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter a Unix timestamp</strong> — paste the numeric timestamp (e.g. 1718438400) to convert to a human-readable date and time.</li>
+      <li><strong>Or enter a date/time</strong> — enter a human-readable date to convert to Unix timestamp.</li>
+      <li><strong>Select timezone</strong> — timestamps are UTC by default. Select your local timezone to display the equivalent local time.</li>
+      <li><strong>Read all formats</strong> — the converter shows the date in multiple formats: ISO 8601, RFC 2822, human-readable, and local time.</li>
+      <li><strong>Use current time</strong> — click 'Now' to see the current Unix timestamp — useful for checking server time or debugging time-sensitive code.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⏰ Unix timestamp fact:</strong> Unix timestamps count seconds since January 1, 1970, 00:00:00 UTC (the Unix Epoch). The timestamp 0 = 1970-01-01 00:00:00 UTC. Current timestamp is approximately 1,718,000,000 (June 2026). Timestamps increase by exactly 1 each second regardless of timezone — that's their primary advantage.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Unix Timestamps</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⏱️ What Is a Unix Timestamp?</div><div class="edu-card-body">An integer representing the number of seconds elapsed since the Unix Epoch (January 1, 1970 00:00:00 UTC). Universally used in programming for storing and comparing dates. Simple arithmetic works: subtract two timestamps to get duration in seconds. Add 86,400 to advance one day.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Timezone Independence</div><div class="edu-card-body">Unix timestamps are always UTC — they have no timezone. 1718438400 represents the same moment everywhere on Earth. Converting to local time is a display-layer concern. Storing timestamps as UTC and converting at display time prevents timezone-related bugs in applications used across regions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Milliseconds vs Seconds</div><div class="edu-card-body">JavaScript Date.now() returns milliseconds since epoch. Most other languages (Python time.time(), PHP time()) return seconds. A common source of bugs: mixing millisecond and second timestamps. If a timestamp looks too large (13 digits vs 10), it is in milliseconds — divide by 1000 to get seconds.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 The 2038 Problem</div><div class="edu-card-body">Unix timestamps stored as 32-bit signed integers overflow on January 19, 2038 03:14:07 UTC. Systems using 32-bit timestamps will either crash or wrap to 1901. Modern systems use 64-bit timestamps (solving this until year 292 billion). Most critical infrastructure has been updated, but embedded systems and legacy code remain at risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 ISO 8601 Standard</div><div class="edu-card-body">The international standard for date/time strings: 2026-06-15T10:30:00Z. The T separates date and time; Z indicates UTC. ISO 8601 sorts correctly as a string (alphabetical = chronological), is unambiguous (unlike 06/07/08 which could be June 7, July 6, or other interpretations), and is human-readable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🗄️ Database Date Storage</div><div class="edu-card-body">Best practice: store dates as Unix timestamps (integer) or ISO 8601 strings in UTC. Never store dates in locale-specific formats (DD/MM/YYYY) in databases. Never store timezone-adjusted times in databases. This ensures consistent behaviour as users access the system from different timezones.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Timestamps in Development</h2>
+    <h3>Debugging time-related bugs</h3>
+    <p>The most common timestamp bugs: mixing timezone-adjusted times with UTC comparisons, using seconds when milliseconds are expected (or vice versa), daylight saving time transitions causing 1-hour gaps or overlaps, and comparing dates without normalising to the same timezone. When debugging time issues, always convert all times to UTC Unix timestamps first, then compare — this eliminates timezone and DST variables from the equation.</p>
+    <h3>Log analysis</h3>
+    <p>Application logs typically contain Unix timestamps or ISO 8601 dates. Converting log timestamps to human-readable local time is the first step in incident investigation. When correlating logs from multiple systems in different timezones, convert all timestamps to UTC for accurate sequence analysis. This converter is useful for quickly checking individual log entries during debugging sessions.</p>
+    <h3>Scheduling and expiry</h3>
+    <p>Token expiry, scheduled jobs, and cache invalidation all rely on timestamp arithmetic. JWT 'exp' claim is a Unix timestamp — this converter verifies if a token is expired. Cache TTL is stored as expiry timestamp (current time + TTL seconds). Cron scheduling translates to specific Unix timestamps. Understanding timestamp arithmetic prevents common scheduling bugs where jobs run at wrong times or tokens expire unexpectedly.</p>
+    <div class="edu-highlight"><strong>⏰ Quick timestamp arithmetic:</strong> 1 minute = 60 seconds. 1 hour = 3,600 seconds. 1 day = 86,400 seconds. 1 week = 604,800 seconds. 30 days = 2,592,000 seconds. 1 year = 31,536,000 seconds. Memorising these makes mental timestamp arithmetic fast: 'token expires in 24 hours' = current timestamp + 86,400.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a Unix timestamp?</div>
@@ -369,7 +424,7 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 function tickNow() {
   const now  = Date.now();
@@ -387,7 +442,7 @@ tickNow();
 setInterval(tickNow, 1000);
 </script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -251,6 +251,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 
@@ -324,7 +338,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Lorem Ipsum Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select output type</strong> — generate paragraphs (for body content), sentences (for specific amounts of text), or words (for precise word count control).</li>
+      <li><strong>Set the amount</strong> — enter the number of paragraphs, sentences, or words to generate.</li>
+      <li><strong>Choose starting text</strong> — toggle whether output starts with the classic 'Lorem ipsum dolor sit amet...' or begins with a random sentence.</li>
+      <li><strong>Copy the output</strong> — click copy to use the placeholder text in your design, document, or template.</li>
+      <li><strong>Regenerate</strong> — click again for different random placeholder text using the same parameters.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎨 Designer tip:</strong> When using placeholder text in designs, choose a length that matches your expected real content. A contact form with a 3-word placeholder will look completely different when filled with a real 50-word address. Always test designs with realistic content lengths, not just tidy placeholder text.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Lorem Ipsum</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📜 The Origin</div><div class="edu-card-body">Lorem ipsum is derived from Cicero's 'de Finibus Bonorum et Malorum' (45 BC), a work on ethics. The standard passage was scrambled and has been used as placeholder text since the 1500s when an unknown printer scrambled it for a type specimen book. It became the industry standard in the desktop publishing era.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎨 Why Placeholder Text?</div><div class="edu-card-body">Readable placeholder text (like actual English) distracts reviewers from evaluating design — they read the content instead. Latin (or scrambled Latin) is visually similar to English in letter distribution and word length but meaningless to English readers, keeping focus on layout, typography, and visual design rather than content.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Character Distribution</div><div class="edu-card-body">Lorem ipsum's character distribution closely mirrors English text — similar ratios of short words, long words, punctuation, and sentence lengths. This makes it better placeholder text than repeating 'placeholder' or 'content goes here,' which produces unrealistic text blocks that distort typographic evaluation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Modern Alternatives</div><div class="edu-card-body">Themed lorem ipsum generators exist for virtually every context: Hipster Ipsum, Corporate Ipsum, Bacon Ipsum, Office Ipsum. These maintain the functional purpose (meaningless placeholder text) while providing entertainment. For real projects, consider using actual sample content from similar projects — it provides more realistic design testing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 Code and APIs</div><div class="edu-card-body">Many development frameworks include lorem ipsum generators. Python: `faker.text()`. JavaScript: `@faker-js/faker` library. These are useful for generating realistic-looking test data programmatically for database seeding, API testing, and UI component development.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📝 When Not to Use Lorem Ipsum</div><div class="edu-card-body">Avoid lorem ipsum in: user research testing (participants may focus on the Latin rather than the design), accessibility reviews (screen reader behaviour with Latin may differ from real content), SEO review (search engines index text — lorem ipsum content going live is a problem), and client presentations where stakeholders may not understand placeholder conventions.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Placeholder Text in Design Workflow</h2>
+    <h3>Content-first vs design-first</h3>
+    <p>There is an ongoing debate in UX and design: should content drive design (content-first), or should designers create layouts filled with placeholder text (design-first)? Content-first produces more accurate designs but requires more upfront content work. Design-first is faster but can produce layouts that force content to fit. The professional consensus has shifted toward content-first for complex projects, with placeholder text used only for detailed visual refinement after content structure is defined.</p>
+    <h3>Realistic placeholder content</h3>
+    <p>When placeholder text should be realistic (user testing, client demos), use actual content from similar real-world examples rather than lorem ipsum. A travel site mockup works better with real destination names and real descriptions. A product listing template is more convincing with real product names and specifications. Tools like Faker.js and Python Faker generate realistic random names, addresses, product names, and other domain-specific placeholder content.</p>
+    <h3>Lorem ipsum and SEO risk</h3>
+    <p>A surprisingly common issue: lorem ipsum placeholder text appearing on live websites because developers forgot to replace it before launch. Google will index this content — lorem ipsum appearing in search results marks a site as incomplete and can signal poor quality. Use automated testing to scan for lorem ipsum text before deployments, or use the staging/production environment distinction to keep placeholder content off the live site.</p>
+    <div class="edu-highlight"><strong>🎨 Lorem ipsum usage guide:</strong> Early wireframes: use placeholder boxes, no text needed. Mid-fidelity mockups: lorem ipsum appropriate for body text. High-fidelity designs for client review: use real or realistic placeholder content. User testing: always use realistic content. Production: never lorem ipsum. This progression ensures design decisions are evaluated with appropriate content realism at each stage.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is Lorem Ipsum?</div>
@@ -362,12 +417,12 @@ gtag('config', 'G-S6PPGS7N63');
 </footer>
 
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 window.addEventListener('DOMContentLoaded', loremGenerate);
 </script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

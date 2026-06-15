@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -211,7 +225,48 @@ gtag('config', 'G-S6PPGS7N63');
         style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
     </div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the JSON to CSV Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste your JSON</strong> — the input must be a JSON array of objects. Each object becomes a CSV row; object keys become column headers.</li>
+      <li><strong>Click Convert</strong> — the tool flattens the JSON array and generates a properly formatted CSV with headers on the first row.</li>
+      <li><strong>Preview the CSV</strong> — check the output to verify columns and data are correctly formatted before downloading.</li>
+      <li><strong>Download the CSV</strong> — save as a .csv file for use in Excel, Google Sheets, or any data tool.</li>
+      <li><strong>Handle nested objects</strong> — deeply nested JSON is flattened using dot notation: {user: {name: 'John'}} becomes a column named 'user.name'.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Input format requirement:</strong> JSON must be an array of objects: [{}, {}, {}]. A single object {} or a simple array [1,2,3] will not convert correctly. If your JSON is a single object, wrap it in an array: [your_object]. If keys vary between objects, missing values are represented as empty cells in the CSV.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding JSON and CSV Formats</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📄 When to Use JSON</div><div class="edu-card-body">JSON excels at representing hierarchical, nested data with varying structure. Ideal for API responses, configuration files, and data with relationships. Supports nested objects and arrays. Human-readable but not optimal for tabular analysis in spreadsheet tools.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 When to Use CSV</div><div class="edu-card-body">CSV excels at flat, tabular data — rows and columns. Perfect for spreadsheet analysis, database imports, data science workflows, and sharing data with non-technical users. Universal compatibility — every data tool reads CSV. No nesting support — all data must be flat.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Conversion Challenges</div><div class="edu-card-body">Nested objects: {address: {city: 'London'}} must be flattened to a city column. Arrays within objects: {tags: ['a','b']} become problematic — either join as string or create multiple rows. Type preservation: JSON has types (number, boolean, null); CSV is text-only. These challenges require decisions about how to handle complex structures.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Data Pipeline Use</div><div class="edu-card-body">JSON→CSV conversion is a fundamental ETL (Extract, Transform, Load) operation. API data arrives as JSON; analytics databases and BI tools prefer CSV or SQL. Data engineers build pipelines that continuously convert API JSON responses to CSV for loading into data warehouses (BigQuery, Snowflake, Redshift).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🐍 Python Conversion</div><div class="edu-card-body">pandas: df = pd.read_json('data.json'); df.to_csv('data.csv', index=False). json library: import json, csv; data = json.load(f); writer = csv.DictWriter(f, fieldnames=data[0].keys()); writer.writeheader(); writer.writerows(data). These two approaches handle 95% of JSON to CSV conversion needs programmatically.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Excel and JSON</div><div class="edu-card-body">Excel cannot natively open JSON files. The JSON→CSV conversion workflow enables Excel analysis of API data. Power Query in Excel 2016+ can import JSON directly, but CSV import is simpler and more compatible across Excel versions. For recurring data, Power Query's JSON connector provides a more automated solution.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Data Conversion in Practice</h2>
+    <h3>API data extraction workflow</h3>
+    <p>Typical workflow: 1) Call API endpoint, receive JSON response. 2) Identify the array of records within the response (often nested: response.data.users). 3) Extract that array. 4) Convert to CSV. 5) Import to spreadsheet or database. This converter handles step 4. For repeated or automated conversions, tools like jq (command line) or Python pandas are more efficient than manual conversion.</p>
+    <h3>Handling inconsistent JSON</h3>
+    <p>Real-world API JSON is rarely clean — some objects may have additional fields, null values, or missing keys. A robust CSV converter handles this by: collecting all unique keys across all objects (not just the first), filling missing values with empty cells, and preserving the order of keys from the first object encountered. Check the generated CSV headers and spot-check a few rows to verify the conversion handled your specific data structure correctly.</p>
+    <h3>Large dataset considerations</h3>
+    <p>Browser-based conversion works well for JSON files up to a few megabytes. For large datasets (10MB+), browser memory limitations may cause issues. For production-scale conversion: Python pandas handles gigabyte-scale JSON effortlessly, streaming JSON parsers process files larger than RAM, and cloud services (AWS Glue, Google Dataflow) handle petabyte-scale ETL. Use this tool for quick conversions and data exploration; use code for production pipelines.</p>
+    <div class="edu-highlight"><strong>🔧 jq command for JSON to CSV:</strong> `jq -r '.["headers"] as $h | $h, (.[] | [.[$h[]]] | @csv)' data.json` — this single command converts a JSON array to CSV in the terminal. For simple cases: `jq -r '.[] | [.name, .email, .age] | @csv' users.json`. jq is available on Linux/Mac via package managers and is essential for any developer working with JSON data pipelines.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How does JSON to CSV work?</div>
@@ -253,9 +308,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

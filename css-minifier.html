@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -210,7 +224,48 @@ gtag('config', 'G-S6PPGS7N63');
         style="min-height:180px;white-space:pre-wrap;cursor:pointer;font-size:.78rem"></div>
     </div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the CSS Minifier</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste your CSS</strong> — paste formatted CSS code with comments, whitespace, and full property names.</li>
+      <li><strong>Click Minify</strong> — removes all unnecessary whitespace, comments, and redundant code while preserving functionality.</li>
+      <li><strong>Check size reduction</strong> — the tool shows original size, minified size, and percentage reduction achieved.</li>
+      <li><strong>Copy minified CSS</strong> — use in production HTML or save as a .min.css file.</li>
+      <li><strong>Beautify (reverse)</strong> — paste minified CSS and click Beautify to restore readable formatting for editing.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚡ Size reduction impact:</strong> CSS minification typically reduces file size by 20–40%. A 50KB stylesheet becomes 30–40KB. With gzip compression (applied by most web servers), the savings are additional — minified + gzipped CSS can be 80–90% smaller than the original formatted file. Both minification and gzip serve different optimisation purposes and should be used together.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding CSS Minification</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📦 What Gets Removed</div><div class="edu-card-body">Comments (/* ... */). Whitespace (spaces, tabs, newlines). Redundant semicolons (last property in rule). Redundant zeros (0.5 → .5, 0px → 0). Long colour names (#ffffff → #fff). Duplicate properties. Empty rules. Vendor prefix duplicates for modern browser targets.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Minification vs Compression</div><div class="edu-card-body">Minification removes redundant characters from source code — reduces file size and removes human readability. Compression (gzip/brotli) applies algorithmic compression to the minified file — further reduces transfer size. These are complementary: minify first, then serve compressed. A 100KB CSS file: after minification ~65KB, after gzip ~15KB.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Source Maps</div><div class="edu-card-body">Minified code is unreadable for debugging. Source maps link minified code back to original source — browser DevTools shows original formatted CSS when debugging, even when serving minified files. Build tools (webpack, Vite, rollup) generate source maps automatically. Essential for debugging production issues without deploying unminified code.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Critical CSS</div><div class="edu-card-body">The CSS needed to render above-the-fold content. Inlining critical CSS in the HTML <head> eliminates the render-blocking CSS request, significantly improving First Contentful Paint (FCP). Tools like Critical extract the critical CSS automatically. Minification is especially important for inlined CSS as it goes directly in the HTML.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏗️ Build Tool Integration</div><div class="edu-card-body">Production CSS minification should be automated in your build pipeline. webpack: css-minimizer-webpack-plugin. Vite: built-in with esbuild. Gulp: gulp-cssnano. PostCSS: cssnano plugin. These tools run automatically on every production build, ensuring minification without manual steps. Manual minification via this tool is useful for quick optimisation or one-off files.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Performance Impact</div><div class="edu-card-body">CSS is render-blocking — the browser cannot display content until all CSS is downloaded and parsed. Smaller CSS files load faster, reducing render-blocking time. On a 3G connection, every 100KB of CSS adds approximately 1–2 seconds of loading time. CSS minification is one of the highest ROI performance optimisations with zero functional impact.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>CSS Optimisation Beyond Minification</h2>
+    <h3>Removing unused CSS</h3>
+    <p>Most websites ship significantly more CSS than they use. A CSS framework like Bootstrap adds 200KB+ of CSS; most sites use less than 10% of it. Tools like PurgeCSS, UnCSS, and Tailwind CSS's purge mode analyse HTML and remove unused CSS selectors. Combined with minification, this can reduce a 200KB framework CSS file to under 10KB — a 95% reduction. Removing unused CSS provides dramatically larger savings than minification alone.</p>
+    <h3>CSS architecture for performance</h3>
+    <p>CSS performance starts at the architecture level. Avoid deeply nested selectors (.nav > ul > li > a > span) — each level adds matching complexity. Use specific class selectors rather than element selectors for frequently-applied styles. Avoid universal selectors (*) in performance-critical contexts. Group and reuse common properties through utility classes (as Tailwind CSS does) to reduce total CSS size. Well-architected CSS is smaller before minification, not just after.</p>
+    <h3>HTTP/2 and CSS file splitting</h3>
+    <p>HTTP/1.1 required bundling all CSS into one file to minimise requests. HTTP/2 (used by most modern servers including Cloudflare) supports multiplexed requests — multiple files load simultaneously without overhead. This enables splitting CSS into logical chunks: critical CSS (inline), above-fold CSS (immediate load), and below-fold CSS (deferred). This approach can improve Time to First Contentful Paint even compared to a single minified CSS file.</p>
+    <div class="edu-highlight"><strong>⚡ CSS performance checklist:</strong> Minify all CSS ✓. Enable gzip/brotli on server ✓. Remove unused CSS (PurgeCSS) ✓. Inline critical CSS ✓. Defer non-critical CSS loading ✓. Use CDN for CSS delivery ✓. Set long cache headers for versioned CSS files ✓. These seven steps together can reduce CSS-related page load time by 70–90% on typical websites.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Why minify CSS?</div>
@@ -252,9 +307,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

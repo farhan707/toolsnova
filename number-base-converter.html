@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -215,7 +229,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="base-output" onclick="copyEl('base-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-family:var(--mono);font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Number Base Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your number</strong> — type the value you want to convert.</li>
+      <li><strong>Select the input base</strong> — choose binary (2), octal (8), decimal (10), hexadecimal (16), or any custom base from 2 to 36.</li>
+      <li><strong>Read all conversions</strong> — see the number expressed in all common bases simultaneously.</li>
+      <li><strong>Convert to custom base</strong> — enter any base from 2 to 36 for specialised conversions.</li>
+      <li><strong>Use for programming</strong> — convert between the four primary programming bases (binary, octal, decimal, hex) for bit manipulation, colour codes, and system programming work.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔢 Base 36 maximum:</strong> Base 36 uses all 10 digits (0-9) plus all 26 letters (A-Z), giving 36 possible characters per position. This is the maximum base that maps cleanly to alphanumeric characters. Base 36 is used for compact identifiers: timestamp in base 36 is shorter than decimal, useful for short URL systems and compact unique IDs.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Positional Number Systems</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 How Bases Work</div><div class="edu-card-body">In any base N, there are N possible digits (0 to N-1). Position value = digit × N^position. Base 10: 234 = 2×100 + 3×10 + 4×1. Base 2: 1010 = 1×8 + 0×4 + 1×2 + 0×1 = 10. Base 16: 1A = 1×16 + 10×1 = 26. Same concept, different N.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 Programming Base Usage</div><div class="edu-card-body">Decimal (base 10): human arithmetic, most calculations. Binary (base 2): bitwise operations, hardware interfaces, boolean logic. Octal (base 8): Unix permissions (chmod 755), legacy systems. Hexadecimal (base 16): colour codes, memory addresses, hash values, byte representation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Conversion Method</div><div class="edu-card-body">To convert any base to decimal: multiply each digit by its position value (base^position) and sum. To convert decimal to any base: repeatedly divide by the base, collect remainders in reverse order. To convert between non-decimal bases: convert to decimal first, then to target base (or use direct algorithms for binary↔hex and binary↔octal).</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Binary ↔ Hex Shortcut</div><div class="edu-card-body">One hex digit = exactly 4 binary bits. Convert by groups of 4: 11001010 in binary = 1100 | 1010 = C | A = CA in hex. Reverse: CA hex = 1100 | 1010 = 11001010 binary. This direct relationship makes hex a convenient shorthand for binary that programmers use constantly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔵 Floating Point</div><div class="edu-card-body">Floating point numbers (decimals) in binary use the IEEE 754 standard. 0.1 in decimal cannot be represented exactly in binary (just as 1/3 cannot be represented exactly in decimal). This causes the infamous 0.1 + 0.2 = 0.30000000000000004 in JavaScript and most languages. Understanding this explains common precision bugs in financial and scientific calculations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Base 64 vs Base 36</div><div class="edu-card-body">Base 64 (used in Base64 encoding) uses uppercase, lowercase, digits, and two special characters (+/). Unlike bases 2-36 which map to standard alphanumeric characters, base 64 is a separate encoding system. Base 36 (0-9, A-Z) is the highest base using only standard alphanumeric characters — useful for compact IDs in URLs and databases.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Number Bases in System Programming</h2>
+    <h3>Bitwise operations and binary</h3>
+    <p>System programmers and embedded developers work in binary constantly. Setting a bit: value |= (1 << bit_position). Clearing a bit: value &= ~(1 << bit_position). Toggling a bit: value ^= (1 << bit_position). Checking a bit: (value >> bit_position) & 1. These operations manipulate individual bits for hardware registers, protocol flags, and packed data structures. Seeing values in binary makes these operations intuitive.</p>
+    <h3>Hex in memory and debugging</h3>
+    <p>Memory dumps, core files, and debugging output use hexadecimal because it is the most compact human-readable representation of binary data. One hex digit = 4 bits = one nibble. Two hex digits = 8 bits = one byte. Four hex digits = 16 bits = one word. Eight hex digits = 32 bits = one double word. A 32-bit memory address like 0x7FFF5FBF8B30 is immediately understandable in size and structure to an experienced developer in a way that its decimal equivalent (140734799208240) is not.</p>
+    <h3>Base conversion in everyday development</h3>
+    <p>Everyday base conversion scenarios: colour manipulation (adding/subtracting from hex colour values), understanding IP addresses and subnet masks in binary, reading HTTP status codes (often referenced in hex in logs), file permission management (octal), hash comparison (hex), and database storage optimisation (storing flags as binary integers rather than boolean columns). Each of these contexts requires comfortable movement between bases.</p>
+    <div class="edu-highlight"><strong>🔢 Base conversion mental shortcuts:</strong> Decimal→Hex: look up each byte in a hex table (00-FF). Hex→Binary: each digit expands to 4 bits (F=1111). Binary→Octal: group bits by 3 from right. Octal→Binary: each digit expands to 3 bits. For anything more complex, use this converter. The shortcuts are useful for quick sanity checks; precise conversions require a tool.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is binary?</div>
@@ -252,9 +307,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

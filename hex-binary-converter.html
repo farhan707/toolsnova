@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -219,7 +233,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">All bases <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="hb-output" onclick="copyEl('hb-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Hex/Binary Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your value</strong> — type a number in decimal (base 10), hexadecimal (base 16), binary (base 2), or octal (base 8).</li>
+      <li><strong>Select input base</strong> — choose which number system your input is in.</li>
+      <li><strong>Read all conversions</strong> — the tool instantly shows the same value in all four number systems simultaneously.</li>
+      <li><strong>Convert colours</strong> — enter a hex colour code (#FF5733) to see RGB values, or enter RGB to get hex.</li>
+      <li><strong>Bit manipulation</strong> — see the binary representation to understand bit patterns for low-level programming and networking.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💡 Quick recognition:</strong> Decimal: digits 0-9 only. Hexadecimal: digits 0-9 and letters A-F (often prefixed with 0x: 0xFF). Binary: only 0s and 1s (often prefixed with 0b: 0b11001100). Octal: digits 0-7 (often prefixed with 0: 0777). Recognising the prefix tells you the number system immediately.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Number Systems</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔢 Decimal (Base 10)</div><div class="edu-card-body">The familiar number system using digits 0–9. Each position represents a power of 10: hundreds, tens, ones. 234 = 2×100 + 3×10 + 4×1. Used for all everyday counting and arithmetic. Computers do not natively use decimal — it is converted to binary for processing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Binary (Base 2)</div><div class="edu-card-body">Uses only 0 and 1. Each digit is a 'bit.' Each position is a power of 2. 1010 in binary = 1×8 + 0×4 + 1×2 + 0×1 = 10 in decimal. Fundamental to computing — transistors have two states (on/off) making binary the natural language of hardware.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔵 Hexadecimal (Base 16)</div><div class="edu-card-body">Uses digits 0-9 and letters A-F (A=10, B=11, C=12, D=13, E=14, F=15). Each hex digit represents exactly 4 binary bits. This makes hex a compact binary representation: FF in hex = 11111111 in binary = 255 in decimal. Used extensively in programming for colour codes, memory addresses, hash values, and MAC addresses.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔴 Octal (Base 8)</div><div class="edu-card-body">Uses digits 0–7. Each octal digit represents 3 binary bits. Less common in modern programming but important for Unix file permissions: chmod 755 = rwxr-xr-x = 111 101 101 in binary. Understanding octal is essential for Unix/Linux system administration.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎨 Hex Colours</div><div class="edu-card-body">CSS colours use hex: #RRGGBB. Each pair of hex digits (00-FF) represents one colour channel (0-255). #FF0000 = red (255,0,0). #00FF00 = green (0,255,0). #0000FF = blue (0,0,255). #FFFFFF = white (255,255,255). #000000 = black (0,0,0). Three-digit shorthand #RGB = #RRGGBB when both digits match: #F05 = #FF0055.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📡 Networking</div><div class="edu-card-body">IPv4 addresses shown in decimal (192.168.1.1) are actually 32 binary bits. IPv6 uses hex (2001:0db8:85a3:0000:0000:8a2e:0370:7334). MAC addresses are 48 bits shown as 6 hex pairs (00:1A:2B:3C:4D:5E). Subnet masks (255.255.255.0 = /24 = 11111111.11111111.11111111.00000000) are understood through binary representation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Number Systems in Development</h2>
+    <h3>Bit manipulation</h3>
+    <p>Low-level programming often uses bitwise operations on binary representations. AND (&): masks bits. OR (|): sets bits. XOR (^): toggles bits. NOT (~): flips all bits. Left shift (<<): multiply by 2. Right shift (>>): divide by 2. Example: checking if a number is even — (n & 1) === 0 checks the last bit (0 = even, 1 = odd). Bit manipulation is faster than arithmetic for these operations and appears frequently in embedded systems, graphics programming, and performance-critical code.</p>
+    <h3>Memory addresses and debugging</h3>
+    <p>Debuggers show memory addresses in hex: 0x7fff5fbff8b0. Hex is compact (one digit per 4 bits) making large addresses readable: 0x1A3F (4 hex digits) vs 6719 (decimal) vs 1101000111111 (13 binary digits). When debugging memory issues, crashes, or reading stack traces, hex addresses are the universal format. Understanding hex-to-binary conversion helps interpret bit patterns in memory dumps and understand alignment requirements.</p>
+    <h3>Unix file permissions</h3>
+    <p>Unix permissions use octal: 755 = rwxr-xr-x. Breaking down: 7 = 111 = rwx (owner: read, write, execute). 5 = 101 = r-x (group: read, execute). 5 = 101 = r-x (others: read, execute). Common permissions: 644 (rw-r--r--) for files, 755 (rwxr-xr-x) for directories and executables, 600 (rw-------) for private files. Understanding the binary representation of these octal values makes permission logic intuitive.</p>
+    <div class="edu-highlight"><strong>🔢 Conversion quick reference:</strong> Decimal→Hex: divide by 16 repeatedly, remainders in reverse. Hex→Binary: each hex digit = 4 binary bits (F=1111, A=1010, 0=0000). Binary→Decimal: sum powers of 2 for each '1' bit. Hex→Decimal: multiply each digit by its power of 16. In practice, this tool eliminates the need for manual conversion — use it and focus on understanding the number systems conceptually.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Why do programmers use hexadecimal?</div>
@@ -261,9 +316,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

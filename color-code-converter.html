@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -204,7 +218,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div style="height:40px;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:0;transition:background .2s" id="cc-swatch"></div>
   <div class="output-box" id="cc-output" onclick="copyEl('cc-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Color Code Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter a color value</strong> — paste any color in HEX (#FF5733), RGB (255,87,51), HSL (11,100%,60%), or color name (tomato).</li>
+      <li><strong>Select input format</strong> — choose which format your input is in.</li>
+      <li><strong>Read all formats</strong> — the converter shows the same color in HEX, RGB, RGBA, HSL, HSLA, HSV, and CSS color name (if applicable).</li>
+      <li><strong>Adjust opacity</strong> — enter an alpha value (0-1) to get RGBA and HSLA values with transparency.</li>
+      <li><strong>Copy any format</strong> — use the format required by your target environment (CSS, design tool, image editor).</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎨 Format by use case:</strong> CSS/HTML: HEX or rgb(). Design tools (Figma, Sketch): HEX or HSL. Image editors (Photoshop): HSB/HSV or RGB 0-255. Android development: #AARRGGBB (alpha first). iOS/Swift: UIColor with RGB 0-1 values. Python Pillow: RGB tuple (255,87,51). Each platform has its preferred format.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Color Formats</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔵 HEX (#RRGGBB)</div><div class="edu-card-body">6 hexadecimal digits: 2 each for red, green, blue. Each pair ranges 00-FF (0-255 decimal). Shorthand: #RGB when both digits match (#FF5500 = #F50). Most common format in web development. Does not support transparency — use 8-digit HEX (#RRGGBBAA) for alpha in modern CSS.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔴 RGB / RGBA</div><div class="edu-card-body">rgb(red, green, blue) where each channel is 0-255. rgba() adds alpha: rgba(255,87,51,0.5) = 50% transparent. Alternative: RGB as percentages rgb(100%,34%,20%). RGBA is the most explicit format for understanding color channels and is widely supported in all browsers and design tools.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌈 HSL / HSLA</div><div class="edu-card-body">Hue (0-360°), Saturation (0-100%), Lightness (0-100%). Most intuitive for designers: hue is the color wheel position, saturation controls color intensity, lightness controls brightness. Easier to reason about than RGB: 'make it 20% lighter' = increase L by 20. hsla() adds alpha transparency.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔶 HSV / HSB</div><div class="edu-card-body">Hue, Saturation, Value (also called Brightness). Similar to HSL but different lightness model. At 100% Value/100% Saturation: pure vivid color. At 0% Value: black. At 0% Saturation: greyscale. Photoshop and most image editors use HSB. Not a native CSS format but important for understanding Photoshop color picker behavior.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🖥️ Platform Color Formats</div><div class="edu-card-body">CSS: #hex, rgb(), hsl(), oklch(). Android: #AARRGGBB (XML) or Color.rgb(r,g,b) (Kotlin). iOS Swift: UIColor(red:0.9,green:0.2,blue:0.1,alpha:1.0). Flutter: Color(0xFFFF5733). React Native: same as CSS. Unity: new Color(1f,0.34f,0.2f). Each platform requires the color in its own format.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆕 Modern CSS Colors</div><div class="edu-card-body">CSS Color Level 4 introduces: oklch() — perceptually uniform, works for HDR displays. color() — access wide gamut display-p3 and other color spaces. color-mix() — mix two colors. light-dark() — automatic dark mode. These modern functions are increasingly important for advanced CSS color work on wide-gamut displays.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Color Conversion in Design and Development</h2>
+    <h3>Design-to-development handoff</h3>
+    <p>Design tools (Figma, Sketch, Adobe XD) export colors in HEX or RGB. CSS needs HEX or rgb(). Android needs ARGB hex. iOS needs float RGB. React Native accepts CSS-style colors. The design-to-development handoff often requires converting the designer's color specification to the format required by the target platform. This converter eliminates the mental arithmetic of manual conversion and reduces the risk of transcription errors that cause subtle color mismatches between design and implementation.</p>
+    <h3>Color systems and design tokens</h3>
+    <p>Production applications use color tokens rather than raw values: --color-primary: #7fff6f. When a brand color changes, one token update propagates everywhere. Color tokens exist at multiple levels: primitive (--green-400: #7fff6f), semantic (--color-success: var(--green-400)), and component (--button-background: var(--color-success)). This three-level system enables global theme changes, dark mode, and brand variations with minimal code changes.</p>
+    <h3>Color in data visualisation</h3>
+    <p>Data visualisation libraries (D3.js, Chart.js, Plotly) have their own color format requirements and built-in palettes. D3 accepts any CSS color string. Sequential palettes (light-to-dark) show quantity. Diverging palettes (two-hue) show positive/negative deviation. Categorical palettes (distinct hues) differentiate categories. Colourblind-safe palettes (avoiding red/green combinations) ensure accessibility. The Viridis, Plasma, and ColorBrewer palettes are designed specifically for data visualisation accessibility.</p>
+    <div class="edu-highlight"><strong>🎨 Color conversion formula reference:</strong> HEX to RGB: convert each 2-digit hex pair to decimal. RGB to HEX: convert each 0-255 value to 2-digit hex. RGB to HSL: complex formula (use this tool). HSL to RGB: complex formula (use this tool). HSL to HSV: L and S values differ between models — requires formula. For all complex conversions, this tool is faster and more accurate than manual calculation.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is HEX colour format?</div>
@@ -241,9 +296,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

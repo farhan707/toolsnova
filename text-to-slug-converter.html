@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -207,7 +221,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Slug output <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box" id="slug-output" onclick="copyEl('slug-output')" style="min-height:50px;font-family:var(--mono);font-size:.9rem;cursor:pointer;word-break:break-all"></div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Text to Slug Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your text</strong> — paste a title, heading, or phrase you want to convert to a URL-friendly slug.</li>
+      <li><strong>Configure options</strong> — choose separator (hyphen is standard, underscore is an alternative), case (lowercase is recommended), and whether to remove stop words.</li>
+      <li><strong>Read the slug</strong> — see the URL-safe version of your text instantly.</li>
+      <li><strong>Copy the slug</strong> — use in your CMS URL field, file name, HTML id attribute, or database record identifier.</li>
+      <li><strong>Test variations</strong> — try the same title with different options to find the cleanest, most readable URL slug.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔗 Slug best practices:</strong> Use hyphens not underscores (Google treats hyphens as word separators, underscores as word joiners — 'json-formatter' = two words, 'json_formatter' = one word 'jsonformatter' to Google). Keep under 75 characters. Include primary keyword. Remove stop words (the, a, an, in, of) for shorter, cleaner URLs.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding URL Slugs</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔗 What Is a Slug?</div><div class="edu-card-body">A URL-friendly identifier for a web page. Derived from the content title, formatted for URLs: lowercase, words separated by hyphens, special characters removed. 'How to Use JSON Formatter in 2026' becomes 'how-to-use-json-formatter-in-2026'. Used in blog posts, product pages, categories, and any URL that should be human-readable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 URL Structure</div><div class="edu-card-body">A URL has components: https://toolsnova.net/blog/how-to-use-json-formatter. Protocol: https. Domain: toolsnova.net. Path: /blog/. Slug: how-to-use-json-formatter. The slug is the final path segment identifying the specific resource. Good slugs are descriptive, concise, and contain target keywords.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 SEO Value of Slugs</div><div class="edu-card-body">URL slugs appear in search results and influence click-through rates. A descriptive slug (toolsnova.net/regex-tester) outperforms a generic one (toolsnova.net/tool?id=42) in both user trust and SEO. Keywords in slugs have a small but real impact on ranking. Keep slugs under 75 characters — longer URLs may be truncated in search results.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Slug Permanence</div><div class="edu-card-body">Once a URL slug is published and indexed by Google, changing it creates a 301 redirect need. Changing slugs without proper redirects breaks inbound links and loses accumulated SEO authority. Choose slugs carefully before publication. If a slug must change, implement a 301 permanent redirect from old to new URL to preserve link equity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 International Slugs</div><div class="edu-card-body">Non-ASCII characters (Chinese, Arabic, accented Latin) must be transliterated for slugs. 'Üniversität' becomes 'universitat'. '技术' might become 'ji-shu' or 'technology'. Most CMS systems handle transliteration automatically. Alternatively, use the English translation for international content served to English-speaking audiences.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆔 Slugs as IDs</div><div class="edu-card-body">Slugs serve as human-readable identifiers alongside numeric IDs. /blog/1234 (ID-only) vs /blog/how-to-format-json (slug-only) vs /blog/1234/how-to-format-json (both). The last pattern is common: numeric ID for backend routing, slug for display. Some systems use slug-only with a unique constraint in the database.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Slugs in CMS and Development</h2>
+    <h3>Auto-generating slugs</h3>
+    <p>Most CMS platforms (WordPress, Drupal, Ghost, Strapi) auto-generate slugs from titles. The generation logic: lowercase, replace spaces with hyphens, remove special characters, truncate to maximum length. Developers building custom systems should implement this server-side to ensure consistency: Python's python-slugify library, JavaScript's slugify package, Ruby on Rails' parameterize method. Never rely on client-side slug generation alone — always validate and normalise server-side.</p>
+    <h3>Handling slug conflicts</h3>
+    <p>Two articles titled 'Introduction to Python' would generate the same slug. Solutions: append a number (introduction-to-python-2), append the date (introduction-to-python-2026-06), use category prefix (beginners/introduction-to-python), or force manual disambiguation. The slug conflict strategy should be decided upfront and implemented consistently — ad-hoc handling leads to inconsistent URL patterns.</p>
+    <h3>Slug migration</h3>
+    <p>When migrating from one CMS to another, slug preservation is critical for SEO. Map old URLs to new URLs, implement 301 redirects for any changes, and submit an updated sitemap to Google Search Console. Test all redirects before the migration goes live. Post-migration, monitor Google Search Console for crawl errors indicating broken redirects. A well-executed slug migration preserves most SEO authority; a poorly executed one can cause significant ranking drops.</p>
+    <div class="edu-highlight"><strong>🔗 Slug generation algorithm:</strong> 1) Lowercase the entire string. 2) Replace accented characters with ASCII equivalents. 3) Replace all non-alphanumeric characters with hyphens. 4) Replace multiple consecutive hyphens with a single hyphen. 5) Remove leading and trailing hyphens. 6) Truncate to maximum length (75 characters recommended). 7) Optionally remove stop words. This 7-step process produces clean, consistent slugs for any input.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a URL slug?</div>
@@ -245,9 +300,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

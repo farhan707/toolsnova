@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -233,7 +247,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Body fat results <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="bf-output" onclick="copyEl('bf-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Body Fat Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your measurements</strong> — waist, neck, and hip circumference (for females). Measure at the correct anatomical points: waist at the narrowest point, neck just below the larynx, hips at the widest point.</li>
+      <li><strong>Enter height</strong> — in cm or inches. Height is used alongside circumferences in the US Navy formula.</li>
+      <li><strong>Select gender</strong> — the formula differs for males (waist, neck) and females (waist, neck, hips).</li>
+      <li><strong>Read body fat percentage</strong> — and compare to the classification table to understand where you fall.</li>
+      <li><strong>Track over time</strong> — measure monthly under consistent conditions (same time of day, same measurement technique) to track body composition changes.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📏 Measurement accuracy tips:</strong> Measure in the morning before eating or drinking. Keep the tape parallel to the floor. Pull snug but not tight — the tape should not compress skin. Take 3 measurements at each site and use the average. Consistent technique matters more than absolute accuracy — you are tracking change over time.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Body Fat Percentage</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Body Fat Categories (Men)</div><div class="edu-card-body">Essential fat: 2–5%. Athletic: 6–13%. Fitness: 14–17%. Average: 18–24%. Obese: 25%+. Essential fat is the minimum needed for physiological function. Below this, organ function and hormone production are compromised.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Body Fat Categories (Women)</div><div class="edu-card-body">Essential fat: 10–13%. Athletic: 14–20%. Fitness: 21–24%. Average: 25–31%. Obese: 32%+. Women have higher essential fat due to reproductive hormones and supporting reproductive function. Lower is not always better.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Measurement Methods</div><div class="edu-card-body">DEXA scan: gold standard, most accurate (±1–2%). Hydrostatic weighing: very accurate (±2–3%). BodPod: accurate, non-invasive (±2–3%). Skin callipers: accurate with trained operator (±3–5%). BIA scales/devices: convenient but variable accuracy (±5–8%). Navy tape method: good estimate for tracking (±3–5%).</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ Fat Mass vs Lean Mass</div><div class="edu-card-body">Total weight = Fat Mass + Lean Mass. Lean mass includes muscle, bone, organs, water, and connective tissue. As body fat decreases, lean mass percentage increases even if absolute lean mass stays constant. This is why scale weight can be misleading — track lean mass and fat mass separately.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏃 Performance and Body Fat</div><div class="edu-card-body">Athletic performance generally improves as body fat decreases toward the athletic range — less mass to move. However, below essential fat levels, hormonal disruption, immune suppression, and cognitive impairment occur. Professional athletes and physique competitors approach essential fat only briefly under professional supervision.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Age and Body Fat</div><div class="edu-card-body">Body fat naturally increases with age even if scale weight remains constant — a phenomenon called 'sarcopenic obesity.' Muscle mass decreases from age 30 at approximately 3–8% per decade without resistance training. Maintaining muscle mass through strength training is the most effective anti-aging body composition strategy.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Improving Body Composition</h2>
+    <h3>Fat loss vs weight loss distinction</h3>
+    <p>The goal of any physique improvement program should be fat loss with muscle preservation — not simply weight loss. Weight loss without attention to muscle preservation often results in losing significant muscle alongside fat, resulting in a smaller but not leaner or more athletic appearance. High protein intake and resistance training are the two non-negotiable elements of fat loss programs that preserve muscle.</p>
+    <h3>Rate of fat loss</h3>
+    <p>Maximum sustainable fat loss rate is approximately 0.5–1% of bodyweight per week. Faster rates increasingly sacrifice muscle tissue. At 80kg, this means 0.4–0.8 kg per week loss is the maximum beneficial rate. Slower is often better — research shows slower fat loss rates produce superior body composition results (more fat lost, less muscle lost) compared to aggressive cutting.</p>
+    <h3>Body fat measurement frequency</h3>
+    <p>Monthly measurement is ideal for tracking trends while avoiding day-to-day noise. Body fat measured by any method shows significant daily variation due to hydration, food volume, and measurement technique. Weekly or daily measurement creates misleading data. A monthly data point eliminates this noise and shows the true trend line of body composition change.</p>
+    <div class="edu-highlight"><strong>🎯 Body composition goal setting:</strong> For men: targeting 12–15% body fat produces an athletic, defined appearance while maintaining performance and hormonal health. For women: 20–24% produces a fit, healthy appearance. These ranges are achievable, maintainable, and health-promoting for the vast majority of people without extreme dietary measures.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How accurate is the US Navy method?</div>
@@ -275,9 +330,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

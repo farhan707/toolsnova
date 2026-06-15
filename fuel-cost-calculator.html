@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -220,7 +234,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="fuel-output" onclick="copyEl('fuel-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Fuel Cost Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter distance</strong> — the trip distance in km or miles.</li>
+      <li><strong>Enter fuel efficiency</strong> — your vehicle's fuel consumption. Find this in your owner's manual, on the dashboard display, or from previous fuel fill-up calculations.</li>
+      <li><strong>Enter fuel price</strong> — the current price per litre or gallon at your local station.</li>
+      <li><strong>Read fuel cost</strong> — total cost for the trip.</li>
+      <li><strong>Compare vehicles</strong> — run the calculator for different fuel efficiency values to compare the real cost difference between vehicles over your typical driving patterns.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⛽ Calculate your real fuel efficiency:</strong> Fill tank completely. Record mileage. Drive normally. Fill tank again — note litres added and mileage driven. Real efficiency = Litres ÷ (km ÷ 100). Manufacturer figures are often 15–25% better than real-world consumption.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Fuel Costs and Efficiency</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⛽ Fuel Efficiency Units</div><div class="edu-card-body">L/100km (Europe, most of world): lower = more efficient. 5L/100km is very efficient, 12L/100km is poor. MPG (US/UK): higher = more efficient. 50 MPG is very efficient, 20 MPG is poor. To convert: L/100km = 235 ÷ MPG (US).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Real vs Advertised MPG</div><div class="edu-card-body">Manufacturer fuel economy figures are measured under controlled test conditions. Real-world consumption is typically 15–25% worse due to: highway speeds above test conditions, air conditioning use, cold engine starts, payload (passengers/cargo), terrain, and driving style.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚗 Factors Affecting Consumption</div><div class="edu-card-body">Speed: fuel consumption increases dramatically above 90 km/h — at 120 km/h consumption is 20–30% higher than at 90 km/h. Air conditioning: adds 5–20% to consumption. Tyres: under-inflated tyres add 3% per 10 PSI below recommended pressure. Roof racks: empty roof rack adds 5%, loaded adds 15–40%.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Annual Fuel Cost</div><div class="edu-card-body">Annual cost = (Annual km ÷ 100) × Fuel efficiency (L/100km) × Fuel price. At 15,000 km/year, 8L/100km, $1.50/litre: (15,000 ÷ 100) × 8 × 1.50 = $1,800/year. This calculation makes vehicle fuel efficiency differences tangible in dollar terms.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔋 EV Cost Comparison</div><div class="edu-card-body">Electric vehicle equivalent: (km ÷ 100) × kWh per 100km × electricity price. A Tesla Model 3 using 15 kWh/100km at $0.15/kWh costs $0.0225/km versus a petrol car at 8L/100km at $1.50/litre costing $0.12/km. EVs cost approximately 80% less per kilometre to fuel.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Carbon Cost</div><div class="edu-card-body">Burning 1 litre of petrol produces approximately 2.31 kg of CO2. At 8L/100km for 15,000 km/year: 15,000 × 0.08 × 2.31 = 2,772 kg CO2 annually. Carbon offset costs approximately $15–50 per tonne — so roughly $42–140 per year to offset average car emissions.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Reducing Fuel Costs</h2>
+    <h3>Driving technique</h3>
+    <p>Smooth acceleration and braking reduces fuel consumption by 15–30% compared to aggressive driving. Anticipate traffic flow — coast to red lights rather than accelerating then braking. Maintain steady speed on highways — cruise control reduces fuel consumption by 7–14% on flat roads. Combined, these technique changes can cut fuel bills by $200–$400 per year for average drivers.</p>
+    <h3>Vehicle selection economics</h3>
+    <p>When comparing vehicles, calculate the 5-year total fuel cost difference. A vehicle getting 30 MPG versus 20 MPG saves 33% on fuel. At $1,500/year fuel cost, that's $500/year or $2,500 over 5 years. This real-world cost difference often justifies paying more for a more efficient vehicle — use this calculator with your actual driving distance to make the comparison concrete.</p>
+    <h3>Fuel price timing</h3>
+    <p>Fuel prices follow weekly patterns in many markets — typically lowest on Tuesday and Wednesday, highest on weekends and holidays. Filling up mid-week can save 3–8 cents per litre versus weekend prices. Over a year of weekly fill-ups, this difference amounts to $50–$150 in savings for average drivers — genuine savings for minimal effort.</p>
+    <div class="edu-highlight"><strong>⛽ Fuel saving checklist:</strong> Tyre pressure correct (check monthly) ✓. Air filter clean (replace every 15,000–30,000 km) ✓. Remove roof rack when not in use ✓. Use recommended fuel grade (premium in non-premium engine wastes money) ✓. Service on schedule (dirty oil increases consumption 5–15%) ✓. These maintenance items together reduce fuel consumption by 10–20%.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is L/100km?</div>
@@ -257,9 +312,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -206,7 +220,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ht-output" onclick="copyEl('ht-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Height Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your height value</strong> — in any format: centimetres (175), metres (1.75), inches (69), decimal feet (5.75), or feet and inches (5ft 9in or 5'9").</li>
+      <li><strong>Select your input unit</strong> — choose from cm, metres, inches, feet (decimal), or feet+inches.</li>
+      <li><strong>Read all conversions</strong> — the calculator shows your height in all common units simultaneously: cm, metres, inches, total feet, and feet+inches format.</li>
+      <li><strong>Use the reference chart</strong> — common heights in both systems are shown for quick comparison without calculation.</li>
+      <li><strong>Share the result</strong> — copy the output for profiles, medical forms, or international communication.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🌍 Why height conversion matters:</strong> The US, Liberia, and Myanmar are the only countries that primarily use the imperial system (feet and inches). Every other country uses metric (centimetres and metres). International travel, dating profiles, medical consultations abroad, and online shopping for clothing all commonly require height conversion.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Height Measurement Systems</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📏 Metric System (cm/m)</div><div class="edu-card-body">The international standard. 1 metre = 100 centimetres. Average adult height: men ~171cm globally, women ~159cm globally. Used in all medical and scientific contexts worldwide except the US. Simple decimal system makes calculations straightforward.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📏 Imperial System (ft/in)</div><div class="edu-card-body">Primarily used in the United States. 1 foot = 12 inches. 1 yard = 3 feet. Average US adult height: men ~5'9" (175cm), women ~5'4" (163cm). The foot-and-inch system requires conversion to decimal feet or total inches for most calculations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Key Conversion Facts</div><div class="edu-card-body">1 inch = 2.54 centimetres exactly. 1 foot = 30.48 cm. 1 metre = 3.28084 feet = 39.3701 inches. Common heights: 5'0" = 152.4cm. 5'6" = 167.6cm. 5'9" = 175.3cm. 6'0" = 182.9cm. 6'3" = 190.5cm.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏥 Medical Context</div><div class="edu-card-body">Medical records use metric in most countries. Drug dosing, BMI calculation, and growth chart percentiles all require metric measurements. When visiting doctors abroad or using international health apps, knowing your height in both systems prevents confusion and potential errors.</div></div>
+      <div class="edu-card"><div class="edu-card-title">👗 Clothing and Shopping</div><div class="edu-card-body">Online clothing retailers from different countries use different size systems. European sizes use cm for height in trouser length and sleeve length. US clothing uses inches for inseam. Converting between systems ensures correct fit when buying internationally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏀 Sports Context</div><div class="edu-card-body">Basketball player heights are reported in feet/inches in the NBA, cm in European leagues. The same player is 6'7" in US media and 200cm in European reports. Understanding both systems is necessary for following international sports.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Height in Health and Context</h2>
+    <h3>Height and health</h3>
+    <p>Height itself is not a modifiable health factor for adults — it is genetically determined and completed by early adulthood. However, height measurements are important for calculating BMI, medication dosing, assessing growth in children, and tracking growth disorders. Accurate height measurement requires: standing straight against a flat wall, heels together touching the wall, looking straight ahead, measuring at the top of the head without shoes.</p>
+    <h3>Children's height tracking</h3>
+    <p>In children, height tracking on growth charts is an important health monitoring tool. Pediatricians plot height and weight at each visit to track growth percentiles. A child consistently at the 50th percentile for height is average. Significant drops in percentile rank over time may indicate growth disorders, nutritional deficiencies, or other health conditions warranting evaluation.</p>
+    <h3>Average heights globally</h3>
+    <p>Global variation in average height is significant. Tallest countries: Netherlands (men avg 182.9cm), Montenegro, Denmark, Norway. Shortest average heights: Indonesia, Bolivia, Philippines (men avg ~160cm). These differences reflect genetic factors, nutrition, and healthcare access across generations. Average heights have increased dramatically in most countries over the past century due to improved nutrition.</p>
+    <div class="edu-highlight"><strong>📏 Quick conversion reference:</strong> 5'0" = 152cm · 5'3" = 160cm · 5'6" = 168cm · 5'9" = 175cm · 6'0" = 183cm · 6'3" = 191cm. For a quick mental conversion: height in feet × 30 gives approximate centimetres (5 × 30 = 150cm vs actual 152cm — close enough for everyday use).</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I convert cm to feet and inches?</div>
@@ -244,9 +299,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

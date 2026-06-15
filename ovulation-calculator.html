@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -208,7 +222,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ov-output" onclick="copyEl('ov-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Ovulation Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter first day of last period</strong> — the first day of bleeding of your most recent menstrual period.</li>
+      <li><strong>Select cycle length</strong> — the number of days from the first day of one period to the first day of the next. Average is 28 days but normal range is 21–35 days.</li>
+      <li><strong>Read your fertile window</strong> — the 6-day window including the 5 days before ovulation and ovulation day itself.</li>
+      <li><strong>Note peak ovulation day</strong> — marked with ⭐. This is the highest-fertility day when the egg is released.</li>
+      <li><strong>View upcoming cycles</strong> — the calculator shows fertile windows for your next 3 cycles for advance planning.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⭐ The fertile window:</strong> Pregnancy is only possible during a 6-day window per cycle — the 5 days before ovulation and ovulation day itself. Sperm survive up to 5 days in the reproductive tract, while an egg survives only 12–24 hours after release. The highest conception probability is from 2 days before to 1 day after ovulation.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding the Menstrual Cycle</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📅 Cycle Phases</div><div class="edu-card-body">Follicular phase (days 1–14): menstruation then follicle development, estrogen rises. Ovulation (around day 14): LH surge triggers egg release. Luteal phase (days 15–28): progesterone rises, preparing uterus for implantation. If no fertilisation, progesterone drops and menstruation begins.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🥚 Ovulation Timing</div><div class="edu-card-body">Ovulation occurs approximately 14 days BEFORE the next period — not 14 days after the last period (which is only accurate for 28-day cycles). For a 35-day cycle, ovulation is around day 21. For a 21-day cycle, ovulation is around day 7. Cycle length varies; ovulation day varies accordingly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Cycle Variability</div><div class="edu-card-body">Most women have cycle-to-cycle variation of 2–4 days even with 'regular' cycles. Stress, illness, travel, significant weight changes, and intensive exercise can delay ovulation. The luteal phase (after ovulation) is relatively fixed at 12–16 days; the follicular phase (before ovulation) is where most variability occurs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ BBT Tracking</div><div class="edu-card-body">Basal body temperature rises 0.2–0.5°C after ovulation due to progesterone. Tracking BBT daily (same time, before getting up) confirms ovulation occurred and helps identify your personal ovulation pattern over multiple cycles. BBT confirms past ovulation — it cannot predict upcoming ovulation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💊 OPK Tests</div><div class="edu-card-body">Ovulation predictor kits detect the LH surge that occurs 24–36 hours before ovulation. More predictive than calendar methods. Digital OPKs show high fertility (rising estrogen) and peak fertility (LH surge). Most useful for cycle lengths that are irregular or significantly different from 28 days.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Factors Affecting Ovulation</div><div class="edu-card-body">Regular ovulation can be disrupted by: PCOS (polycystic ovary syndrome), thyroid disorders, significant weight loss or gain, excessive exercise, high stress, hormonal contraceptives (fertility typically returns within 1–3 months after stopping). Irregular cycles warrant medical evaluation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Conception and Cycle Tracking</h2>
+    <h3>Maximising conception chances</h3>
+    <p>The most evidence-based approach: have intercourse every 1–2 days throughout the fertile window rather than trying to pinpoint the exact ovulation day. This approach is less stressful, accounts for ovulation prediction uncertainty, and ensures sperm are present when the egg is released. For couples trying to conceive, daily or every-other-day intercourse from cycle day 10 to day 18 (for a 28-day cycle) covers the fertile window regardless of exact ovulation timing.</p>
+    <h3>When to see a doctor</h3>
+    <p>Seek medical evaluation if: no pregnancy after 12 months of regular unprotected intercourse (6 months if over 35), cycles are consistently irregular (shorter than 21 days or longer than 35), periods are absent (more than 3 months without pregnancy), or known fertility concerns exist. Early evaluation identifies treatable conditions — the majority of fertility issues have effective medical solutions.</p>
+    <h3>Cycle tracking apps</h3>
+    <p>Apps like Clue, Flo, Natural Cycles, and Kindara combine calendar prediction with BBT and symptom tracking for more accurate ovulation prediction. After 3–6 months of data, apps learn individual cycle patterns and provide increasingly personalised predictions. No app replaces OPK tests or medical evaluation for clinical accuracy, but they provide excellent day-to-day cycle awareness.</p>
+    <div class="edu-highlight"><strong>📅 For conception planning:</strong> Track 3–6 cycles before trying to conceive to understand your personal cycle length and ovulation timing. This data makes this calculator's predictions significantly more accurate for your individual pattern. Record cycle length monthly and use the average for best results.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">When do I ovulate?</div>
@@ -245,9 +300,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

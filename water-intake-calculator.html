@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -219,7 +233,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Daily water intake <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="wt-output" onclick="copyEl('wt-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Water Intake Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your body weight</strong> — in kg or lbs. Larger bodies require more water for the same level of hydration.</li>
+      <li><strong>Select activity level</strong> — exercise significantly increases water needs through sweat loss.</li>
+      <li><strong>Enter climate</strong> — hot or humid environments dramatically increase water requirements even at rest.</li>
+      <li><strong>Note any special factors</strong> — pregnancy, breastfeeding, illness, or high altitude all increase water needs.</li>
+      <li><strong>Read your daily target</strong> — in litres and equivalent glasses (250ml each). Use this as a minimum target, drinking more as needed.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💧 The 8×8 myth:</strong> The popular '8 glasses of water per day' rule has no scientific basis. Individual water needs vary dramatically by body size, activity, climate, and diet. The calculator provides a personalised estimate based on your specific factors — far more accurate than a universal rule.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Hydration</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💧 Why Water Matters</div><div class="edu-card-body">Water comprises 60% of adult body weight. Functions: temperature regulation through sweating, nutrient transport, waste elimination via urine, joint lubrication, cognitive function, and cellular metabolism. Even mild dehydration (1–2% of body weight) impairs cognitive performance and physical endurance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Hydration Calculation</div><div class="edu-card-body">Basic formula: 35ml per kg of bodyweight. A 70kg person needs approximately 2.45 litres/day as a baseline. Add 500ml per hour of moderate exercise. Add 500ml in hot weather. Subtract water from food (fruits, vegetables, soups contribute 20–30% of total water intake).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Signs of Dehydration</div><div class="edu-card-body">Mild: dark yellow urine, thirst, headache, reduced concentration. Moderate: very dark urine, dizziness, fatigue, dry mouth. Severe: confusion, rapid heartbeat, fainting. Urine colour is the simplest hydration indicator — pale yellow indicates good hydration; dark yellow or amber indicates need for more water.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Sports Hydration</div><div class="edu-card-body">During exercise: drink 500ml 2 hours before, 250ml every 15–20 minutes during exercise, 500–750ml per lb of body weight lost through sweat after. Electrolytes (sodium, potassium) are needed alongside water for exercise lasting over 60 minutes to prevent hyponatremia (dangerous overhydration).</div></div>
+      <div class="edu-card"><div class="edu-card-title">☕ Caffeine and Hydration</div><div class="edu-card-body">Moderate caffeine (200–400mg/day) does not cause net dehydration — the diuretic effect is less than the fluid provided by the caffeinated drink itself. A cup of coffee does contribute to daily fluid intake. This myth has been consistently disproven in hydration research.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🍎 Water in Food</div><div class="edu-card-body">Many foods contribute significantly to hydration. Cucumber: 96% water. Celery: 95%. Tomatoes: 94%. Watermelon: 92%. Yoghurt: 85%. Including water-rich foods means actual water intake requirements from drinks alone may be lower than calculator estimates suggest.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Building Better Hydration Habits</h2>
+    <h3>Practical hydration strategies</h3>
+    <p>Keep a water bottle visible at your desk — presence cues drinking. Set hourly reminders on your phone during the first week until it becomes habitual. Drink a full glass upon waking (you lose approximately 500ml overnight through breathing and sweating). Have a glass with every meal. These four habits alone achieve 1.5–2 litres of intake without any conscious effort.</p>
+    <h3>Hydration and performance</h3>
+    <p>Even mild dehydration of 1–2% of body weight (1.4–2.8 litres for a 70kg person — achievable in hot weather or during exercise) reduces aerobic performance by 10–20%, strength by 5–8%, and cognitive function measurably. Arriving at any training session or important work task well-hydrated produces meaningfully better performance than starting dehydrated and catching up.</p>
+    <h3>Overhydration risk</h3>
+    <p>While rare, drinking excessive water (several litres in a few hours) can cause hyponatremia — dangerously low sodium levels. Most common in endurance athletes drinking plain water without electrolytes during prolonged exercise. The fix: drink to thirst during exercise rather than forcing maximum intake, and include electrolytes for sessions over 60 minutes.</p>
+    <div class="edu-highlight"><strong>💧 Simple hydration check:</strong> Check urine colour once in the morning and once in the afternoon. Pale yellow (like lemonade) = well hydrated. Dark yellow (like apple juice) = drink more water. Clear = possibly overhydrated for some people but generally fine. This 2-second daily check is more accurate than counting glasses.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much water should I drink per day?</div>
@@ -261,9 +316,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

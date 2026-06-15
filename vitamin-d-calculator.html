@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -218,7 +232,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="vd-output" onclick="copyEl('vd-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Vitamin D Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your skin tone</strong> — lighter skin produces vitamin D more efficiently from sunlight. Fair skin produces approximately 5× more than very dark skin in the same sun exposure.</li>
+      <li><strong>Choose your latitude</strong> — closer to the equator = stronger UV radiation = more vitamin D production. Above 50° latitude (most of UK, Canada, Northern Europe), vitamin D production from sun is minimal November through February.</li>
+      <li><strong>Enter sun exposure time</strong> — minutes spent outdoors with arms and legs exposed during midday (10 AM–3 PM). Glass blocks UVB rays — sitting by a window does not produce vitamin D.</li>
+      <li><strong>Enter your age</strong> — vitamin D production decreases with age. People over 70 produce approximately 25% of the vitamin D that younger adults do from the same sun exposure.</li>
+      <li><strong>Review recommendations</strong> — see estimated IU from sun, recommended daily intake for your age, and food sources.</li>
+    </ol>
+    <div class="edu-highlight"><strong>☀️ UVB and sunscreen:</strong> SPF 30 sunscreen reduces vitamin D production by approximately 95–99%. For vitamin D synthesis, brief unprotected sun exposure before applying sunscreen (10–15 minutes) is often recommended. After this window, apply sunscreen to prevent skin damage while maintaining sun safety.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Vitamin D</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">☀️ Vitamin D Synthesis</div><div class="edu-card-body">UVB radiation (280–315nm wavelength) converts 7-dehydrocholesterol in skin to pre-vitamin D3, which becomes vitamin D3. This process requires UVB rays that are blocked by glass, clouds, pollution, and sunscreen. Production is highest at midday, in summer, closer to the equator, with more skin exposed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Types of Vitamin D</div><div class="edu-card-body">Vitamin D2 (ergocalciferol): found in plants, some fortified foods, available as supplements. Vitamin D3 (cholecalciferol): produced by skin, found in animal foods, generally considered more effective at raising blood levels than D2. Both are converted to 25-hydroxyvitamin D (25-OH D) in the liver — this is what blood tests measure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Deficiency Prevalence</div><div class="edu-card-body">Vitamin D deficiency affects approximately 1 billion people worldwide. Higher risk groups: people with limited sun exposure, dark skin tone, obesity, malabsorption conditions, liver or kidney disease, elderly (reduced production capacity), and those living at high latitudes, especially in winter.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🦴 Why Vitamin D Matters</div><div class="edu-card-body">Calcium absorption for bone health (deficiency causes rickets in children, osteomalacia in adults, contributes to osteoporosis). Immune function — deficiency associated with increased respiratory infection risk. Muscle function — deficiency causes weakness and pain. Research suggests roles in mood regulation, cardiovascular health, and cancer prevention.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💊 Supplementation</div><div class="edu-card-body">If sun exposure is limited, supplementation is recommended. Most health authorities recommend 400–2,000 IU daily for adults. Upper safe limit generally considered 4,000 IU/day. Vitamin D is fat-soluble — take with a meal containing fat for best absorption. Vitamin K2 (MK-7 form) is often recommended alongside D3 to direct calcium to bones.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🩺 Testing</div><div class="edu-card-body">Blood test measures 25-hydroxyvitamin D. Deficient: below 20 ng/mL. Insufficient: 20–29 ng/mL. Sufficient: 30–60 ng/mL. Optimal for most health outcomes: 40–60 ng/mL. Potentially toxic: above 100 ng/mL. Testing recommended for high-risk groups and before starting high-dose supplementation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Optimising Vitamin D Levels</h2>
+    <h3>The sun exposure balance</h3>
+    <p>The key challenge with vitamin D and sun is balancing production against skin cancer risk. The recommendation: brief, regular, unprotected sun exposure to arms and legs during midday produces meaningful vitamin D with low skin cancer risk. 10–15 minutes for fair skin, 20–30 minutes for darker skin, in summer at temperate latitudes is the general guidance. Prolonged unprotected exposure beyond this window increases cancer risk without meaningfully increasing vitamin D production (synthesis plateaus).</p>
+    <h3>Dietary sources</h3>
+    <p>While sun is the most efficient source, dietary vitamin D supplements the total intake. Best food sources: fatty fish (salmon 447–600 IU/100g, mackerel 250 IU/100g, sardines 193 IU/100g), egg yolks (37 IU each), fortified milk (120 IU/cup), fortified orange juice (100 IU/cup), fortified cereals (40–100 IU/serving), UV-exposed mushrooms (variable, up to 400 IU/100g). Diet alone rarely provides sufficient vitamin D without supplementation.</p>
+    <h3>Winter supplementation strategy</h3>
+    <p>At latitudes above 40° (most of Europe, Canada, northern US), vitamin D synthesis from October to April is minimal — UVB angle is too low. Winter supplementation of 1,000–2,000 IU daily is recommended for most adults in these regions. Test levels in spring (after winter) and autumn (after summer) to calibrate personal supplementation needs based on actual 25-OH D levels.</p>
+    <div class="edu-highlight"><strong>☀️ Practical vitamin D strategy:</strong> Summer (May–September, temperate latitudes): 15–30 min midday sun exposure on large skin areas, arms and legs, 3–4 times per week. Winter: supplement 1,000–2,000 IU D3 daily with fat-containing meal. Test blood levels once per year if high-risk. This approach maintains sufficient levels year-round without excessive sun exposure risk.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much sun do I need for vitamin D?</div>
@@ -255,9 +310,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

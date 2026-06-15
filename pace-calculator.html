@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -226,7 +240,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="pace-output" onclick="copyEl('pace-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Pace Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Choose calculation mode</strong> — calculate Pace (from distance and time), Time (from distance and pace), or Distance (from time and pace).</li>
+      <li><strong>Enter your known values</strong> — distance in km or miles, time in hours:minutes:seconds, or pace in minutes per km/mile.</li>
+      <li><strong>Select unit system</strong> — metric (km, min/km) or imperial (miles, min/mile).</li>
+      <li><strong>Read the result</strong> — the calculator also shows equivalent speeds in km/h and mph for reference.</li>
+      <li><strong>Use the race predictor</strong> — enter a recent race result to predict equivalent performance at other distances.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🏃 Common race paces:</strong> Beginner 5K: 8–10 min/km. Intermediate 5K: 5–7 min/km. Elite 5K: 3–4 min/km. Marathon world record pace: 2:50 min/km (Kelvin Kiptum, 2023). Half marathon average finisher: approximately 6:30 min/km. Use these benchmarks to understand where your pace fits.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Running Pace</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📏 Pace vs Speed</div><div class="edu-card-body">Pace = time per unit distance (min/km or min/mile). Speed = distance per unit time (km/h or mph). They are reciprocals: 6 min/km = 10 km/h. 5 min/km = 12 km/h. 4 min/km = 15 km/h. Most runners prefer pace; cyclists and swimmers typically use speed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏁 Race Distance Guide</div><div class="edu-card-body">5K = 5 km. 10K = 10 km. Half Marathon = 21.1 km. Marathon = 42.2 km. Ultramarathon = 50K, 100K, or beyond. Each distance requires different pacing strategy and training. The marathon is approximately 4× harder than the half marathon, not 2×, due to the glycogen depletion threshold around 30km.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Training Pace Zones</div><div class="edu-card-body">Easy (Zone 1–2): 65–75% max HR, conversational pace, base building. Tempo (Zone 3): 80–85% max HR, comfortably hard, improves lactate threshold. Interval (Zone 4–5): 85–95% max HR, quality speed work. Most training should be 80% easy/20% hard for optimal adaptation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Riegel Formula</div><div class="edu-card-body">Predicts race times at different distances: T2 = T1 × (D2/D1)^1.06. If you run 5K in 25 minutes: predicted 10K = 25 × (10/5)^1.06 = 25 × 2.085 = 52:08. The exponent (1.06) accounts for the fact that longer distances require proportionally slower paces.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Heat and Altitude</div><div class="edu-card-body">Running pace slows significantly in heat and humidity. Each 10°C above 10°C slows pace by approximately 1.5–3%. At altitude above 1,500m, reduced oxygen availability slows pace by 1% per 100m of elevation gain. Adjust race pace goals for environmental conditions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💧 Pacing Strategy</div><div class="edu-card-body">Even pacing (same pace throughout) or slight negative splits (second half faster than first) consistently produce better race times than positive splits (starting too fast). The first kilometre of any race should feel almost too easy — excitement causes most runners to start too fast and suffer later.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Training with Pace Data</h2>
+    <h3>The 80/20 training principle</h3>
+    <p>Research by exercise scientist Stephen Seiler shows elite endurance athletes spend approximately 80% of training at low intensity (easy pace) and 20% at high intensity. Most recreational runners do the opposite — running most miles at a moderate 'junk miles' pace that is too hard to recover from but too easy to produce adaptation. Committing to genuinely easy paces on easy days (which often means slower than feels comfortable) significantly improves overall training quality.</p>
+    <h3>Calculating easy pace</h3>
+    <p>Your easy training pace should be 60–90 seconds per kilometre slower than your 5K race pace. For a 25-minute 5K (5:00 min/km), easy pace is 6:00–6:30 min/km. Using a heart rate monitor to ensure easy runs stay below 75% of maximum heart rate is more accurate than pace alone, especially in heat or on hills.</p>
+    <h3>Progressive overload in running</h3>
+    <p>The primary driver of running improvement is gradually increasing weekly mileage. The 10% rule — increasing total weekly distance by no more than 10% per week — prevents the overuse injuries that sideline most runners. Pace improvements follow naturally from increased volume at easy intensity. Attempting to force pace improvement through more speed work at lower mileage produces inferior results and higher injury rates.</p>
+    <div class="edu-highlight"><strong>🏃 Race day pacing advice:</strong> Start at goal pace or slightly slower for the first 20% of the race. Negative split (finish faster than you start) is the single most consistent predictor of faster race times. If you feel you are going too slowly in the first kilometre, you are probably going exactly the right pace.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is running pace?</div>
@@ -264,9 +319,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

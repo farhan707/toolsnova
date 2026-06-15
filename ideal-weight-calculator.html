@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -214,7 +228,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Ideal weight results <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="iw-output" onclick="copyEl('iw-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Ideal Weight Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your height</strong> — in feet/inches or centimetres.</li>
+      <li><strong>Select your gender</strong> — ideal weight formulas differ slightly between males and females due to differences in muscle mass and bone density.</li>
+      <li><strong>Read the ideal weight range</strong> — the calculator shows results from multiple medical formulas (Devine, Robinson, Miller, Hamwi) alongside the healthy BMI range.</li>
+      <li><strong>Consider your frame size</strong> — small-framed individuals should target the lower end of the range, large-framed the upper end.</li>
+      <li><strong>Use as a guide, not a goal</strong> — ideal weight ranges are population averages. Athletic individuals with high muscle mass are often 'overweight' by these measures while being exceptionally healthy.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Important context:</strong> Ideal weight formulas were developed in the 1960s–70s for insurance actuarial purposes — not as health targets. They do not account for muscle mass, bone density, age, or ethnicity. A muscular athlete and a sedentary person of the same height get the same 'ideal weight' despite dramatically different body compositions and health profiles.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Ideal Weight Metrics</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Devine Formula</div><div class="edu-card-body">Most widely used in clinical settings. Male: 50 + 2.3kg per inch above 5 feet. Female: 45.5 + 2.3kg per inch above 5 feet. Developed for medication dosing calculations — gives a single number rather than a range.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Healthy BMI Range</div><div class="edu-card-body">BMI 18.5–24.9 corresponds to a weight range for any height. A 175cm person: healthy weight = 56.7–76.3 kg. This range is broader than formula-based 'ideal weights' and more appropriate for most people.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏋️ Muscle Mass Factor</div><div class="edu-card-body">BMI and ideal weight formulas cannot distinguish muscle from fat. Elite athletes often have BMIs of 27–30 (technically 'overweight') with very low body fat percentages. Conversely, 'normal weight obesity' — normal BMI with high body fat — is a recognised health risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📏 Frame Size</div><div class="edu-card-body">Wrist circumference relative to height indicates frame size. Small frame = lower end of ideal weight range. Medium frame = middle. Large frame = upper end. Frame size accounts for differences in bone density and structure that affect healthy weight.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Ethnic Variations</div><div class="edu-card-body">Standard ideal weight ranges were developed primarily from Caucasian populations. Asian populations have higher health risks at lower BMIs — many health organisations recommend lower thresholds for Asian populations. The WHO has proposed adjusted BMI cut-offs for Asian populations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ Body Composition Priority</div><div class="edu-card-body">For health and appearance, body fat percentage is more meaningful than scale weight. A 175cm man at 80kg with 15% body fat is healthier and looks better than the same man at 72kg with 28% body fat — even though 72kg is closer to 'ideal weight.'</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Setting Realistic Weight Goals</h2>
+    <h3>Weight vs body composition</h3>
+    <p>The most common mistake in weight management is focusing on scale weight rather than body composition. During resistance training programs, people often lose fat while gaining muscle — resulting in little or no scale weight change despite significant body transformation. Progress photos, body measurements, and how clothes fit are often more informative than scale weight during body recomposition.</p>
+    <h3>Setting a realistic target</h3>
+    <p>Rather than targeting a specific 'ideal weight' number, target a body fat percentage: 10–18% for men (athletic to healthy), 18–28% for women (athletic to healthy). These targets are achievable, health-promoting, and independent of muscle mass. They also provide clearer guidance on diet and exercise intensity needed to reach the goal.</p>
+    <h3>Weight maintenance is the hardest part</h3>
+    <p>Research consistently shows that reaching a goal weight is far easier than maintaining it. Approximately 80% of people who lose significant weight regain most of it within 5 years. Sustainable weight management requires permanent lifestyle changes — not temporary diets. Building habits you can maintain indefinitely matters more than reaching an 'ideal' number quickly.</p>
+    <div class="edu-highlight"><strong>🎯 Healthier goal framework:</strong> Instead of 'I want to weigh X kg,' try 'I want to lose 1 inch from my waist' or 'I want to run 5km without stopping' or 'I want to do 10 pull-ups.' Performance and measurement goals create better habits and produce better body composition results than scale-weight targets.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Why do different formulas give different results?</div>
@@ -252,9 +307,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

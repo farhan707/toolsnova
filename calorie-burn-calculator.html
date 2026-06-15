@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -226,7 +240,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cb-output" onclick="copyEl('cb-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Calorie Burn Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your body weight</strong> — heavier individuals burn more calories doing the same activity due to greater mass being moved.</li>
+      <li><strong>Select your activity</strong> — choose from 14 common activities ranging from walking to jump rope.</li>
+      <li><strong>Enter duration</strong> — how many minutes you performed the activity.</li>
+      <li><strong>Select weight unit</strong> — kg or lbs. The calculator converts automatically.</li>
+      <li><strong>Read calories burned</strong> — and compare to all 14 activities at your weight and duration to find the most efficient exercise for your goals.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔥 Calorie burn reality:</strong> Exercise burns fewer calories than most people think and fewer than fitness trackers typically report. A 70kg person burns approximately 300 calories in a 30-minute run — easily replaced by a 300ml glass of fruit juice. Exercise is essential for health and body composition, but weight management primarily happens through diet.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Exercise and Calorie Burn</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 MET Values</div><div class="edu-card-body">Metabolic Equivalent of Task — measures exercise intensity relative to rest. Sitting = 1 MET. Walking = 3.5 MET. Running = 9.8 MET. HIIT = 10 MET. Calories burned = MET × weight (kg) × time (hours). This calculator uses published MET values from the Compendium of Physical Activities.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ EPOC Effect</div><div class="edu-card-body">Excess Post-exercise Oxygen Consumption — elevated calorie burning that continues after exercise ends. High-intensity exercise (HIIT, heavy resistance training) produces greater EPOC (lasting hours) than low-intensity exercise. A 30-minute HIIT session may burn 250 calories during exercise but 100–150 additional calories over 24 hours through EPOC.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏋️ Cardio vs Resistance Training</div><div class="edu-card-body">Cardio burns more calories during the session. Resistance training burns fewer during the session but builds muscle — increasing resting metabolic rate permanently. 5kg of additional muscle burns approximately 50 extra calories per day at rest — accumulating to 18,250 calories per year, or approximately 5 lbs of fat.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Calorie Compensation</div><div class="edu-card-body">After exercise, appetite often increases. Studies show people typically compensate for 30–50% of exercise calories burned through increased food intake. This 'compensation' is why exercise alone rarely produces significant weight loss — dietary change is the more powerful lever.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Exercise for Health vs Weight</div><div class="edu-card-body">Exercise provides enormous health benefits independent of weight loss: cardiovascular fitness, bone density, muscle mass maintenance, metabolic health, cognitive function, mood regulation. Even without weight loss, regular exercise dramatically reduces risk of heart disease, type 2 diabetes, and depression. These benefits justify exercise regardless of calorie burn.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⌚ Fitness Tracker Accuracy</div><div class="edu-card-body">Most fitness trackers overestimate calorie burn by 27–93% according to Stanford University research. The Fitbit Surge overestimated calories by 52% on average. Use tracker data as a relative measure (comparing days to each other) rather than absolute calorie counts for dietary planning.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Building an Effective Exercise Plan</h2>
+    <h3>The minimum effective dose</h3>
+    <p>WHO physical activity guidelines: 150–300 minutes of moderate-intensity or 75–150 minutes of vigorous-intensity aerobic activity per week, plus muscle-strengthening activities 2+ days per week. Meeting these minimums provides the vast majority of health benefits — additional exercise provides diminishing returns for health (though more is generally better for fitness performance). Three 50-minute moderate sessions per week satisfies all guidelines.</p>
+    <h3>Highest calorie-burning activities</h3>
+    <p>For maximum calorie burn per minute: jump rope (12 MET), HIIT (10 MET), running at 10 km/h (9.8 MET), swimming vigorous (9.8 MET), cycling vigorous (10 MET). These high-intensity activities burn 2–3× more calories per minute than walking. However, sustainability matters more than intensity — a daily 30-minute walk is more beneficial long-term than occasional intense sessions followed by days of soreness and avoidance.</p>
+    <h3>Zone 2 training for fat burning</h3>
+    <p>Zone 2 cardio (60–70% of maximum heart rate) — a comfortable pace where you can hold a conversation — burns the highest percentage of calories from fat (as opposed to glycogen). While total calorie burn is lower than high-intensity work, Zone 2 is sustainable daily, improves mitochondrial density and fat-burning capacity over time, and has minimal recovery demands. Endurance athletes and longevity-focused exercisers prioritise Zone 2 for these reasons.</p>
+    <div class="edu-highlight"><strong>🏃 Exercise hierarchy for body composition:</strong> 1) Resistance training 2–3 days/week (preserves and builds muscle). 2) Daily walking 7,000–10,000 steps (high NEAT contribution with minimal recovery cost). 3) 1–2 cardio sessions per week (cardiovascular health). 4) Adequate sleep (7–9 hours — poor sleep increases appetite hormones and reduces fat loss from deficits). This hierarchy outperforms more intense but less consistent approaches.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How are calories burned calculated?</div>
@@ -264,9 +319,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -236,7 +250,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Results <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cal-output" onclick="copyEl('cal-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Calorie Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your age, gender, and height</strong> — these factors determine your baseline metabolic rate.</li>
+      <li><strong>Enter your current weight</strong> — in kg or lbs. Use your actual weight, not your target weight.</li>
+      <li><strong>Select activity level</strong> — be honest. Most people overestimate activity. Sedentary = desk job with no exercise. Lightly active = 1–3 days of exercise per week.</li>
+      <li><strong>Set your goal</strong> — lose weight, maintain, or gain weight. Each goal adjusts your daily calorie target accordingly.</li>
+      <li><strong>Read your daily calorie target</strong> — eat below this to lose weight, at this level to maintain, above to gain.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🍎 Calorie deficit rule:</strong> 1 pound of fat = approximately 3,500 calories. A daily deficit of 500 calories produces approximately 1 pound of fat loss per week. A 1,000 calorie deficit = 2 pounds per week — the maximum recommended for sustainable fat loss without muscle loss.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Calories and Metabolism</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔥 BMR (Basal Metabolic Rate)</div><div class="edu-card-body">Calories burned at complete rest — just to maintain breathing, circulation, and organ function. For a 70kg, 175cm, 30-year-old male: approximately 1,750 calories/day. This is the absolute minimum your body needs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ TDEE (Total Daily Energy)</div><div class="edu-card-body">BMR × Activity Multiplier. Sedentary: BMR × 1.2. Lightly active: BMR × 1.375. Moderately active: BMR × 1.55. Very active: BMR × 1.725. This is your true daily calorie need including all movement.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Calorie Quality</div><div class="edu-card-body">Not all calories are equal metabolically. 100 calories of chicken breast (protein) has different hormonal and satiety effects than 100 calories of sugar. However, for body weight management, total calorie balance remains the primary driver — quality matters for health and satiety, quantity determines weight.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏃 Exercise Calories</div><div class="edu-card-body">Exercise adds calories burned beyond TDEE. A 70kg person burns approximately 400 calories running for 30 minutes at moderate pace. However, exercise often increases appetite — many people inadvertently eat back most exercise calories. Weight loss primarily happens in the kitchen, not the gym.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Metabolism Adaptation</div><div class="edu-card-body">Sustained calorie restriction reduces metabolic rate by 10–20% through adaptive thermogenesis. This is why weight loss slows over time and why periodic diet breaks (eating at maintenance for 1–2 weeks) can reset metabolic rate and improve long-term results.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💪 Muscle and Metabolism</div><div class="edu-card-body">Muscle tissue burns approximately 6 calories/lb/day at rest versus 2 calories/lb/day for fat. Building or maintaining muscle through resistance training is the most effective long-term metabolism booster — more impactful than any supplement or diet strategy.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Practical Calorie Management</h2>
+    <h3>The sustainable deficit</h3>
+    <p>A deficit of 300–500 calories per day produces 0.5–1 pound of weekly loss — sustainable and unlikely to cause muscle loss or metabolic adaptation. Larger deficits (1,000+ calories) produce faster initial results but trigger stronger adaptive responses, muscle loss, and are rarely maintainable long-term. Slow, consistent deficits produce better body composition results than aggressive cutting.</p>
+    <h3>Calorie cycling</h3>
+    <p>Eating higher calories on training days and lower calories on rest days while maintaining the same weekly average can improve both fat loss and muscle retention. This approach aligns fuel intake with demand — more fuel when you need it for training, less when you don't. The weekly average is what determines weight change, not any single day.</p>
+    <h3>Tracking accuracy</h3>
+    <p>Studies show people underestimate calorie intake by 30–50% on average. The most impactful tracking improvement is weighing food rather than estimating portions. A 'tablespoon' of peanut butter estimated visually is often 1.5–2 tablespoons — a 100-150 calorie error. For just one month, weighing food reveals actual consumption patterns and dramatically improves estimation accuracy thereafter.</p>
+    <div class="edu-highlight"><strong>🎯 Calorie target summary:</strong> Weight loss: TDEE minus 300–500 cal/day. Maintenance: TDEE. Muscle gain: TDEE plus 200–300 cal/day (lean bulk) or 500+ cal/day (faster bulk with more fat gain). Adjust every 2–3 weeks based on actual results — calculators provide estimates, reality provides data.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is BMR?</div>
@@ -283,9 +339,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

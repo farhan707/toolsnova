@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -214,7 +228,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Macro breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="mac-output" onclick="copyEl('mac-output')" style="min-height:260px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Macro Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your TDEE</strong> — use the TDEE Calculator first to get your daily calorie need, then adjust for your goal.</li>
+      <li><strong>Select your goal</strong> — fat loss, muscle gain, or maintenance. Each preset adjusts protein, carb, and fat ratios accordingly.</li>
+      <li><strong>Set protein target</strong> — typically 0.7–1g per pound of bodyweight (1.6–2.2g per kg). Higher end for active people in a calorie deficit.</li>
+      <li><strong>Adjust carbs and fats</strong> — the remaining calories after protein are split between carbs and fat based on preference and activity level.</li>
+      <li><strong>Read gram targets</strong> — use these daily targets with a food tracking app (MyFitnessPal, Cronometer) to hit your macros consistently.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🥩 Protein is the priority macro:</strong> Of the three macronutrients, protein has the most impact on body composition. It preserves muscle during fat loss, supports muscle growth, provides the highest satiety per calorie, and has the highest thermic effect. Get protein right first — carbs and fats are flexible within your remaining calories.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Macronutrients</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🥩 Protein (4 cal/g)</div><div class="edu-card-body">Essential for muscle repair and growth, immune function, enzyme production, and hormone synthesis. Cannot be stored like fat or glycogen — must be consumed daily. Sources: meat, fish, eggs, dairy, legumes, tofu. Target: 1.6–2.2g per kg of bodyweight.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🍞 Carbohydrates (4 cal/g)</div><div class="edu-card-body">Primary fuel source for high-intensity exercise and brain function. Stored as glycogen in muscles and liver. Not essential (body can produce glucose from protein/fat) but performance and energy suffer without adequate carbs for active people. Sources: grains, fruits, vegetables, legumes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🥑 Fats (9 cal/g)</div><div class="edu-card-body">Essential for hormone production (testosterone, estrogen), fat-soluble vitamin absorption (A, D, E, K), brain function, and joint health. Cannot be eliminated — minimum 20% of calories should come from fat. Sources: oils, nuts, avocado, fatty fish, dairy.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Macro Ratios by Goal</div><div class="edu-card-body">Fat loss: 35–40% protein, 30–35% carbs, 25–30% fat. Muscle gain: 25–30% protein, 45–50% carbs, 25% fat. Endurance athlete: 20% protein, 55–60% carbs, 20–25% fat. These are starting points — individual response varies significantly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Flexible Dieting (IIFYM)</div><div class="edu-card-body">'If It Fits Your Macros' — any food is acceptable as long as daily macro targets are met. Research shows similar body composition results to 'clean eating' when total macros and calories are matched. Provides psychological flexibility that improves long-term adherence.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Timing Matters Less</div><div class="edu-card-body">The research on nutrient timing (eating carbs before/after training, protein within 30 minutes) shows modest effects. Total daily intake matters far more than timing. If precise timing is stressful, prioritise hitting daily targets and worry about timing only after consistency is established.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Hitting Your Macros Consistently</h2>
+    <h3>Building a macro-friendly meal structure</h3>
+    <p>Structure meals around protein first. Choose a protein source for each meal (chicken, fish, eggs, Greek yogurt, legumes), then add carbohydrates and fats to reach calorie targets. This approach naturally achieves high-protein intake without constant calculation. 3–4 meals with 30–40g protein each easily hits daily protein targets for most people.</p>
+    <h3>High protein food list</h3>
+    <p>Chicken breast (31g/100g), tuna (29g/100g), Greek yogurt (10g/100g), cottage cheese (11g/100g), eggs (13g/100g), beef (26g/100g), lentils (9g/100g cooked), tofu (8g/100g). These protein-dense foods form the backbone of any macro-optimised diet regardless of overall dietary pattern.</p>
+    <h3>Tracking without obsessing</h3>
+    <p>Track macros precisely for 4–6 weeks to build accurate food knowledge, then transition to intuitive eating using the patterns learned. Most people who track for this period develop accurate enough portion estimation that they no longer need daily tracking. Return to tracking during diet phases or when results stall.</p>
+    <div class="edu-highlight"><strong>🎯 Macro priority order:</strong> 1) Hit total calories (weight management). 2) Hit protein target (body composition). 3) Hit fat minimum (hormonal health). 4) Fill remaining with carbs (performance and preference). Following this priority order means even imperfect macro days still achieve the most important goals.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are macronutrients?</div>
@@ -256,9 +311,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

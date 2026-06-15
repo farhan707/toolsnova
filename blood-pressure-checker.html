@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -200,7 +214,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="bp-output" onclick="copyEl('bp-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Blood Pressure Checker</h2>
+    <ol class="edu-steps">
+      <li><strong>Measure blood pressure correctly first</strong> — sit quietly for 5 minutes, feet flat on floor, arm at heart level, no talking during measurement. Use a validated home monitor or pharmacy machine.</li>
+      <li><strong>Enter systolic pressure</strong> — the top number, representing pressure when your heart beats (contracts).</li>
+      <li><strong>Enter diastolic pressure</strong> — the bottom number, representing pressure between heartbeats when the heart rests.</li>
+      <li><strong>Read your category</strong> — the checker classifies your reading against AHA (American Heart Association) guidelines.</li>
+      <li><strong>Track over time</strong> — single readings are less meaningful than trends. Check at the same time daily for 1 week for a reliable picture of your average blood pressure.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📏 Accurate measurement rules:</strong> Avoid caffeine, exercise, and smoking for 30 minutes before measuring. Empty bladder first. Rest 5 minutes seated. Take 2–3 readings 1 minute apart and average them. Measure at the same time each day (morning before medication is standard). Home readings are often more representative than clinical readings affected by 'white coat hypertension.'</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Blood Pressure</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">❤️ What Blood Pressure Measures</div><div class="edu-card-body">The force exerted by circulating blood on artery walls. Systolic: peak pressure during heartbeat. Diastolic: minimum pressure between beats. Written as systolic/diastolic (e.g. 120/80 mmHg). Both numbers matter — elevated diastolic alone indicates risk even with normal systolic.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 AHA Blood Pressure Categories</div><div class="edu-card-body">Normal: below 120/80. Elevated: 120–129 / below 80. Stage 1 Hypertension: 130–139 / 80–89. Stage 2 Hypertension: 140+/90+. Hypertensive Crisis: above 180/120. Each category has different treatment recommendations from lifestyle changes to medication.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Why Hypertension Is Called Silent Killer</div><div class="edu-card-body">High blood pressure typically has no symptoms until complications occur. Damage accumulates silently over years — increasing risk of heart attack, stroke, kidney disease, and vision loss. Many people discover hypertension only after a cardiovascular event. Regular screening is essential.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ White Coat Hypertension</div><div class="edu-card-body">Blood pressure elevated in clinical settings due to anxiety, but normal at home. Affects 15–30% of people. Home monitoring and 24-hour ambulatory monitoring (worn during daily activities) provides more accurate assessment than single clinic readings. Genuine white coat hypertension may not require treatment.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Blood Pressure Variation</div><div class="edu-card-body">Normal variation throughout the day: lowest during sleep, rises sharply upon waking (morning surge), varies with activity, emotion, and temperature. Single high reading does not diagnose hypertension — sustained elevation over multiple readings on multiple occasions is required for diagnosis.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💊 Medication Impact</div><div class="edu-card-body">Many common medications can raise blood pressure: NSAIDs (ibuprofen, naproxen), decongestants, hormonal contraceptives, stimulants, and some antidepressants. Always inform your doctor of all medications and supplements when discussing blood pressure management.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Managing Blood Pressure Naturally</h2>
+    <h3>The DASH diet</h3>
+    <p>Dietary Approaches to Stop Hypertension — the most evidence-backed dietary intervention for blood pressure. Emphasises fruits, vegetables, whole grains, lean protein, and low-fat dairy while limiting sodium, saturated fat, and added sugar. Reduces systolic BP by 8–14 mmHg — equivalent to some medications. The sodium reduction alone (below 1,500–2,300 mg/day) accounts for 4–6 mmHg of this reduction.</p>
+    <h3>Lifestyle interventions and their impact</h3>
+    <p>Evidence-based reductions in systolic blood pressure: Weight loss (10kg): -5 to -20 mmHg. DASH diet: -8 to -14 mmHg. Sodium reduction: -4 to -6 mmHg. Aerobic exercise (150 min/week): -4 to -9 mmHg. Limiting alcohol: -2 to -4 mmHg. Quitting smoking: -2 to -4 mmHg. Combined lifestyle changes can produce reductions equivalent to antihypertensive medication.</p>
+    <h3>When to seek immediate care</h3>
+    <p>Seek emergency care immediately if: blood pressure above 180/120 with symptoms (chest pain, shortness of breath, severe headache, vision changes, confusion, nausea). This represents hypertensive crisis — a medical emergency. Seek urgent (same day) care for readings consistently above 180/120 even without symptoms.</p>
+    <div class="edu-highlight"><strong>❤️ Blood pressure monitoring schedule:</strong> Normal BP (under 120/80): check every 1–2 years. Elevated (120–129): check every 6 months. Stage 1 (130–139/80–89): home monitoring daily for 1 week, then weekly. Stage 2 or higher: see doctor within 1 week. Hypertensive crisis (180/120+): seek immediate care.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What do the blood pressure numbers mean?</div>
@@ -238,9 +294,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

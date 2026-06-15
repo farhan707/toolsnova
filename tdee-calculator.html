@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -214,7 +228,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">TDEE at all activity levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="tdee-output" onclick="copyEl('tdee-output')" style="min-height:280px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the TDEE Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your stats</strong> — age, gender, height, and weight. Use current measurements, not goals.</li>
+      <li><strong>Select activity level carefully</strong> — this is the most important and most commonly over-estimated input. If you sit at a desk all day and go to the gym 3 times a week, you are 'Lightly Active,' not 'Moderately Active.'</li>
+      <li><strong>Read your TDEE</strong> — this is how many calories your body burns daily with your current lifestyle.</li>
+      <li><strong>Set your calorie target</strong> — subtract 300–500 for fat loss, add 200–300 for lean muscle gain, eat at TDEE to maintain weight.</li>
+      <li><strong>Recalculate monthly</strong> — as your weight changes, your TDEE changes. Recalculate every 4 weeks to keep targets accurate.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Most common TDEE mistake:</strong> Selecting 'Very Active' or 'Extremely Active' when actual daily movement is moderate. This overestimates TDEE by 300–500 calories, making it impossible to create the deficit needed for weight loss. When in doubt, choose one level lower than you think — you can always adjust upward based on results.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding TDEE Components</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔥 BMR (60–70% of TDEE)</div><div class="edu-card-body">Your resting metabolic rate — the largest component. Determined primarily by body size, muscle mass, age, and gender. Cannot be changed quickly but increases with muscle gain over months.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚶 NEAT (15–30% of TDEE)</div><div class="edu-card-body">Non-Exercise Activity Thermogenesis — all movement outside formal exercise: walking, fidgeting, standing, household chores. Highly variable between individuals. People with active jobs can have NEAT 1,000+ calories higher than sedentary office workers.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏋️ EAT (5–10% of TDEE)</div><div class="edu-card-body">Exercise Activity Thermogenesis — deliberate exercise. Smaller than most people think as a percentage of total energy expenditure. 1 hour of moderate exercise = 300–500 calories for most people.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🍽️ TEF (8–10% of TDEE)</div><div class="edu-card-body">Thermic Effect of Food — energy used to digest and process food. Protein has the highest TEF (20–30% of calories), carbs moderate (5–10%), fat lowest (0–3%). High protein diets have a metabolic advantage through higher TEF.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Harris-Benedict vs Mifflin</div><div class="edu-card-body">Two common BMR formulas. Mifflin-St Jeor is generally considered more accurate for modern populations. Harris-Benedict tends to slightly overestimate. This calculator uses Mifflin-St Jeor for more precise results.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Adaptive Thermogenesis</div><div class="edu-card-body">During prolonged calorie restriction, TDEE decreases beyond what weight loss alone explains — the body reduces NEAT and BMR to conserve energy. This is why calorie targets need periodic adjustment and why diet breaks help maintain metabolic rate.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Using TDEE for Body Composition Goals</h2>
+    <h3>TDEE for fat loss</h3>
+    <p>Create a deficit of 300–500 calories below TDEE for sustainable fat loss. This produces 0.5–1 lb per week loss. Track actual weight weekly (morning, after bathroom, before eating) and adjust calorie target if results don't match expectations after 3 weeks. Weight loss is rarely linear — weekly averages are more informative than daily readings.</p>
+    <h3>TDEE for muscle gain</h3>
+    <p>To build muscle, eat 200–300 calories above TDEE (lean bulk) or 400–500 above (standard bulk). The muscle-building process is slow — natural trainees gain 1–2 lbs of muscle per month maximum. Eating excessively above TDEE accelerates fat gain without meaningfully increasing muscle gain rate. Patience and consistent training matter more than calorie surplus size.</p>
+    <h3>TDEE for body recomposition</h3>
+    <p>Eating at or near TDEE while following a high-protein diet and progressive resistance training can simultaneously reduce fat and build muscle — called body recomposition. Progress is slower than dedicated cutting or bulking phases but achieves both goals simultaneously. Ideal for beginners, people returning from a break, or those who dislike the bulk/cut cycle.</p>
+    <div class="edu-highlight"><strong>📊 TDEE tracking system:</strong> Week 1–2: eat at calculated TDEE. Week 3: compare actual weight change to expected. If losing weight at TDEE, true TDEE is higher — adjust up. If gaining weight at TDEE, true TDEE is lower — adjust down. Real-world data always overrides calculator estimates.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is TDEE and why does it matter?</div>
@@ -256,9 +311,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -207,7 +221,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="preg-output" onclick="copyEl('preg-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Pregnancy Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select calculation method</strong> — Last Menstrual Period (LMP) is most common as most women know this date. If you know your conception date, use that option instead.</li>
+      <li><strong>Enter your date</strong> — the first day of your last menstrual period, or your confirmed conception date.</li>
+      <li><strong>Read your due date</strong> — calculated at 280 days (40 weeks) from LMP using Naegele's Rule.</li>
+      <li><strong>Check current status</strong> — see how many weeks and days pregnant you are today, which trimester you are in, and days remaining.</li>
+      <li><strong>Review key milestones</strong> — the calculator shows important dates: end of first trimester, anatomy scan, viability milestone, full term date.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📅 Due dates are estimates:</strong> Only 5% of babies are born on their exact due date. 80% are born within 2 weeks either side. A due date is a planning target, not a precise delivery prediction. Full term is considered 37–42 weeks — any birth in this range is medically normal.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Pregnancy Stages</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🌱 First Trimester (Weeks 1–12)</div><div class="edu-card-body">Most critical period for fetal development. All major organs form during weeks 3–8. Risk of miscarriage is highest (10–15% of known pregnancies). Common symptoms: nausea, fatigue, breast tenderness, frequent urination. First prenatal appointment typically at 8–10 weeks.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💛 Second Trimester (Weeks 13–26)</div><div class="edu-card-body">Often called the 'honeymoon trimester' — nausea typically improves, energy returns, baby movements become felt (quickening at 16–25 weeks). Anatomy scan at 18–22 weeks checks development. Baby's sex can usually be determined. Rapid growth phase.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💙 Third Trimester (Weeks 27–40+)</div><div class="edu-card-body">Final growth and preparation phase. Baby gains most weight. Braxton Hicks contractions begin. Increased discomfort from baby's size. Group B Strep test at 35–37 weeks. Baby descends (lightening) in final weeks. Full term at 37 weeks.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Gestational Age</div><div class="edu-card-body">Counted from LMP, not conception. At LMP (week 0), you are not yet pregnant. Conception occurs around week 2. This makes gestational age approximately 2 weeks more than developmental age. Ultrasound may adjust dates — this is normal and reflects individual variation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏥 Key Appointments</div><div class="edu-card-body">8–10 weeks: first prenatal, blood tests, due date confirmation. 11–14 weeks: nuchal translucency scan. 18–22 weeks: anatomy scan. 24–28 weeks: glucose challenge test. 35–37 weeks: Group B Strep test. 36+ weeks: weekly appointments until delivery.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Signs of Preterm Labour</div><div class="edu-card-body">Before 37 weeks: regular contractions (more than 4 per hour), low back pain that comes and goes, pressure in pelvis, change in vaginal discharge, fluid leaking. These warrant immediate medical attention as preterm birth carries health risks for the baby.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Preparing for Your Due Date</h2>
+    <h3>First trimester checklist</h3>
+    <p>Confirm pregnancy with healthcare provider. Start prenatal vitamins with folic acid (400–800mcg) — ideally begin before conception. Avoid alcohol, smoking, raw fish, unpasteurised dairy, and high-mercury fish. Discuss any medications with your doctor. Schedule genetic screening if desired. Begin researching healthcare providers and birth settings if not already chosen.</p>
+    <h3>Preparing your support network</h3>
+    <p>Discuss parental leave plans with employer as early as comfortable — leave arrangements often require advance notice. Identify your labour support team. Research childbirth classes — most run 6–8 weeks and are best attended in the second trimester. Begin researching childcare options early — quality childcare in many areas has long waitlists.</p>
+    <h3>Birth plan considerations</h3>
+    <p>A birth plan communicates preferences to your healthcare team for your delivery. Key considerations: preferred pain management (unmedicated, epidural, nitrous oxide), position preferences during labour, who will be present, delayed cord clamping preference, skin-to-skin contact immediately after birth, and breastfeeding versus formula feeding. Birth plans should be flexible — labour rarely follows a script.</p>
+    <div class="edu-highlight"><strong>🤰 Most important first trimester action:</strong> Start prenatal vitamins immediately if not already taking them. Folic acid in the first 28 days after conception (often before pregnancy is confirmed) dramatically reduces the risk of neural tube defects. Many doctors recommend all women of childbearing age take folic acid as standard, as many pregnancies are unplanned.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How is the due date calculated?</div>
@@ -245,9 +301,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

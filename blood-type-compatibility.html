@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -205,7 +219,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="bt-output" onclick="copyEl('bt-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Blood Type Compatibility Tool</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your blood type</strong> — choose from all 8 ABO/Rh combinations: O-, O+, A-, A+, B-, B+, AB-, AB+.</li>
+      <li><strong>Read donation compatibility</strong> — which blood types can receive your blood (who you can donate to).</li>
+      <li><strong>Read reception compatibility</strong> — which blood types you can receive blood from.</li>
+      <li><strong>Review the compatibility facts</strong> — universal donor and recipient information, and blood type frequency statistics.</li>
+      <li><strong>Share or save</strong> — copy the result for medical records or emergency information cards.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🩸 Know your blood type:</strong> Your blood type should be on your medical records. If unknown, your doctor can order a simple blood test. In an emergency, O- blood (universal donor) is given when type is unknown — but knowing your type allows more precise matching and preserves the limited O- supply for those who truly need it.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Blood Types</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🧬 The ABO System</div><div class="edu-card-body">Blood type is determined by antigens (proteins) on red blood cell surfaces. Type A: A antigens + B antibodies. Type B: B antigens + A antibodies. Type AB: both antigens, no antibodies. Type O: no antigens, both antibodies. Transfusing incompatible blood triggers immune attack — potentially fatal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔴 The Rh Factor</div><div class="edu-card-body">The Rh factor (Rh antigen) creates the + or − designation. Rh positive (Rh+): Rh antigen present on red blood cells. Rh negative (Rh-): no Rh antigen. Rh- individuals can receive Rh- blood only. Rh+ individuals can receive both Rh+ and Rh- blood.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Blood Type Frequency</div><div class="edu-card-body">O+: ~38% (most common). A+: ~34%. B+: ~9%. AB+: ~3.4%. O-: ~7% (universal donor, critically important). A-: ~6%. B-: ~2%. AB-: ~1% (rarest common type). Frequencies vary significantly by ethnicity and region.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Universal Donors and Recipients</div><div class="edu-card-body">O- red blood cells: universal donor for emergency transfusions (no A, B, or Rh antigens to react with). AB+ plasma: universal donor for plasma transfusions. AB+: universal recipient for red blood cells (has A, B, and Rh antigens — no antibodies to react). O-: most restricted recipient (can only receive O-).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🤰 Rh and Pregnancy</div><div class="edu-card-body">If an Rh- mother carries an Rh+ baby (inherited from father), the mother may develop Rh antibodies after first exposure. Subsequent Rh+ pregnancies risk haemolytic disease of the newborn. Rh immunoglobulin (RhIg/RhoGAM) injections at 28 weeks and after delivery prevent this sensitisation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏥 Blood Type Beyond Transfusion</div><div class="edu-card-body">Blood type is associated (weakly) with risk profiles for certain diseases. Type O: lower risk of heart disease, higher risk of stomach ulcers. Type A: higher risk of stomach cancer. These associations are weak and do not justify medical decisions. 'Blood type diets' promoting different diets for different blood types have no scientific support.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Blood Donation and Compatibility</h2>
+    <h3>Why blood donation matters</h3>
+    <p>Blood cannot be manufactured — it must come from donors. Every 2 seconds, someone in the US needs blood. One donation can save up to 3 lives (red cells, platelets, and plasma are separated and used independently). O- blood is in constant critical shortage — needed for emergency situations and newborn transfusions. Regular donations (every 56 days for whole blood) maintain supply for surgical patients, cancer treatment, trauma victims, and people with blood disorders.</p>
+    <h3>Donation eligibility basics</h3>
+    <p>General requirements: age 17+ (16 with parental consent in some states), weight 110+ lbs, good general health, no certain medications or recent tattoos/piercings, no recent travel to certain regions. HIV, hepatitis, and certain other conditions may disqualify donation. Visit your national blood service website for complete eligibility criteria — many temporary disqualifications exist that donors are unaware of.</p>
+    <h3>Plasma and platelet donation</h3>
+    <p>Beyond whole blood donation, plasma and platelet donations are often in greater need. Plasma can be donated every 28 days (whole blood every 56 days). AB plasma is universal — AB blood type donors are uniquely valuable for plasma. Platelet donation uses apheresis technology that returns red cells and plasma to the donor — taking only platelets, which are critical for cancer patients and surgery. Platelet donors can donate up to 24 times per year.</p>
+    <div class="edu-highlight"><strong>🩸 Blood donation facts:</strong> A donation takes 8–10 minutes. You have about 10 pints of blood — you donate 1 pint. Your body replenishes plasma within 24 hours. Red blood cells take 4–6 weeks to fully regenerate. One donation can save up to 3 lives. You can donate whole blood every 56 days. Finding a donation centre: visit RedCrossBlood.org (US) or your national blood service website.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are the 8 blood types?</div>
@@ -242,9 +297,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

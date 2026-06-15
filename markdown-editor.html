@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -208,7 +222,48 @@ gtag('config', 'G-S6PPGS7N63');
     <strong style="color:var(--text2)">Syntax:</strong>
     # H1 &nbsp;## H2 &nbsp;**bold** &nbsp;*italic* &nbsp;~~strike~~ &nbsp;`code` &nbsp;```code block``` &nbsp;[link](url) &nbsp;- list &nbsp;&gt; quote
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Markdown Editor</h2>
+    <ol class="edu-steps">
+      <li><strong>Type or paste Markdown</strong> — write using Markdown syntax in the left panel.</li>
+      <li><strong>See live preview</strong> — the right panel renders your Markdown as formatted HTML in real time.</li>
+      <li><strong>Use the toolbar</strong> — click formatting buttons for bold, italic, headings, lists, links, and code without remembering syntax.</li>
+      <li><strong>Copy HTML output</strong> — copy the rendered HTML for use in web pages, email templates, or CMS systems.</li>
+      <li><strong>Copy raw Markdown</strong> — copy the Markdown source for use in GitHub, Notion, documentation systems, or any Markdown-supporting platform.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📝 Markdown is everywhere:</strong> GitHub README files, GitHub Issues and PRs, Notion, Obsidian, Confluence, Slack (partial), Discord, Reddit, Stack Overflow, Jekyll/Hugo static sites, Jupyter notebooks, VS Code documentation, API documentation (Swagger/OpenAPI), and virtually all modern developer tools support Markdown.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Markdown</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📝 What Is Markdown?</div><div class="edu-card-body">A lightweight markup language created by John Gruber in 2004. Plain text format that converts to HTML. The philosophy: Markdown should be readable as-is without rendering. A #heading and **bold** are readable in source form unlike <h1>heading</h1> and <strong>bold</strong>. Written in a text editor, rendered anywhere.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Common Syntax</div><div class="edu-card-body"># H1, ## H2, ### H3 for headings. **bold** or __bold__. *italic* or _italic_. `inline code`. ```code block```. - or * for bullet lists. 1. for numbered lists. [link text](URL). ![alt text](image URL). > for blockquotes. --- for horizontal rule.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔀 Markdown Flavours</div><div class="edu-card-body">Original Markdown has many extensions. CommonMark: strict specification for consistent parsing. GitHub Flavored Markdown (GFM): adds tables, task lists, strikethrough, autolinks. MultiMarkdown: adds footnotes, tables, citations. MDX: Markdown with JSX for React documentation. Each platform may support different flavours.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Markdown vs HTML</div><div class="edu-card-body">Markdown is easier to write and read in source form than HTML. HTML provides complete control over rendering. Markdown converts to HTML, so you can mix HTML into Markdown when needed. Most Markdown parsers pass through raw HTML unchanged — useful for complex layouts or special elements not supported by Markdown.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📁 README Files</div><div class="edu-card-body">GitHub README.md files are the first thing visitors see on any repository. A good README includes: project description, installation instructions, usage examples with code blocks, screenshots or demos, contribution guidelines, and licence information. Well-written README files significantly increase project adoption and contribution rates.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Tables in Markdown</div><div class="edu-card-body">GFM table syntax: | Column 1 | Column 2 | followed by | --- | --- | (alignment row) then data rows. Align columns: :--- (left), :---: (centre), ---: (right). Tables are not in the original Markdown spec but supported by GitHub, GitLab, Notion, and most modern platforms.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Markdown in Developer Workflows</h2>
+    <h3>Documentation as code</h3>
+    <p>Modern development teams treat documentation like code: stored in the same repository, reviewed in pull requests, versioned alongside code changes. Markdown is the natural format for this approach. When code changes require documentation updates, the PR includes both — documentation stays synchronised with the code it describes. Tools like Docusaurus, MkDocs, and Sphinx build documentation websites directly from Markdown files in the repository.</p>
+    <h3>Technical writing best practices</h3>
+    <p>Effective technical Markdown: use code blocks with language hints for syntax highlighting (```javascript not just ```). Include practical examples — abstract descriptions without examples are rarely helpful. Use headings to create navigable structure — GitHub renders a table of contents from headings. Keep paragraphs short for readability. Use lists for steps and options. Include callout blocks (> Note: ...) for important information.</p>
+    <h3>Markdown in note-taking and PKM</h3>
+    <p>Personal Knowledge Management (PKM) tools like Obsidian, Logseq, and Roam Research use Markdown as their storage format — notes are plain text files on your filesystem. This approach prevents vendor lock-in (notes are accessible in any text editor), enables version control with Git, and makes notes portable and future-proof. Many knowledge workers have thousands of interconnected Markdown notes forming a searchable personal knowledge base.</p>
+    <div class="edu-highlight"><strong>📝 Essential Markdown cheatsheet:</strong> # Heading 1 through ###### Heading 6. **bold** *italic* ~~strikethrough~~. `code` and ```code block```. [text](URL) for links. ![alt](URL) for images. - item for lists. 1. item for ordered. > quote. --- divider. | col | col | for tables. <!-- comment --> for comments. Mastering these 15 patterns covers 95% of Markdown use cases.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is Markdown?</div>
@@ -250,9 +305,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

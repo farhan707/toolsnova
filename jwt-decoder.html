@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -199,7 +213,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Decoded Output <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="jwt-output" onclick="copyEl('jwt-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.8rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the JWT Decoder</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste your JWT token</strong> — a JWT looks like: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</li>
+      <li><strong>Read the decoded header</strong> — shows the algorithm (alg) and token type (typ). Common algorithms: HS256 (HMAC-SHA256), RS256 (RSA-SHA256).</li>
+      <li><strong>Read the decoded payload</strong> — the claims: sub (subject/user ID), iat (issued at), exp (expiry), and any custom claims.</li>
+      <li><strong>Check expiry</strong> — the tool converts the exp timestamp to a human-readable date so you can see if the token is still valid.</li>
+      <li><strong>Verify structure</strong> — the tool validates the JWT format and alerts you if the token is malformed or expired.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ Security reminder:</strong> This tool decodes JWT payloads but CANNOT verify the signature without the secret key. A decoded JWT shows the claims, but you cannot trust those claims without signature verification. Never trust a JWT's claims in your application code without verifying the signature using the correct secret or public key.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding JSON Web Tokens</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔑 JWT Structure</div><div class="edu-card-body">Three Base64url-encoded parts separated by dots. Header: {alg: 'HS256', typ: 'JWT'}. Payload: the claims (user ID, roles, expiry). Signature: HMAC or RSA signature of header.payload using the secret key. Only the signature depends on the secret — header and payload are readable by anyone.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📋 Standard Claims</div><div class="edu-card-body">iss (issuer): who issued the token. sub (subject): who the token is about (usually user ID). aud (audience): intended recipient. exp (expiration): Unix timestamp when token expires. iat (issued at): when token was created. nbf (not before): earliest valid time. jti (JWT ID): unique token identifier for revocation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔐 HS256 vs RS256</div><div class="edu-card-body">HS256 (HMAC-SHA256): symmetric — same secret key signs and verifies. Simple but the secret must be shared between issuer and verifier. RS256 (RSA-SHA256): asymmetric — private key signs, public key verifies. Server publishes public key; anyone can verify tokens without the private key. RS256 is preferred for distributed systems.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Token Expiry</div><div class="edu-card-body">JWTs should have short expiry times (15 minutes to 24 hours depending on security requirements). Short expiry limits damage if a token is stolen. Use refresh tokens (longer-lived, stored securely) to obtain new access tokens without re-login. The refresh token pattern is the standard for balancing security and user experience.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚫 JWT Revocation Challenge</div><div class="edu-card-body">JWTs are stateless — the server doesn't store them. Revoking a JWT before expiry requires either a token blocklist (defeats some stateless benefits) or short expiry with refresh token rotation. Token rotation: each use of a refresh token issues a new refresh token and invalidates the old one — providing limited revocation capability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🛡️ Common JWT Vulnerabilities</div><div class="edu-card-body">Algorithm confusion: if the server accepts 'alg: none', attackers can forge tokens. Always specify and enforce the expected algorithm. Weak secrets: HS256 with short secrets are brute-forceable. Use 256+ bit secrets. Storing in localStorage: vulnerable to XSS. Prefer httpOnly cookies. Not validating claims: always check exp, iss, and aud.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>JWT in Authentication Systems</h2>
+    <h3>Stateless authentication flow</h3>
+    <p>1. User logs in with credentials. 2. Server verifies credentials, generates JWT signed with secret. 3. Server returns JWT to client. 4. Client stores JWT (localStorage, sessionStorage, or httpOnly cookie). 5. Client includes JWT in Authorization header: 'Bearer eyJ...' for each request. 6. Server verifies signature and extracts claims — no database lookup needed. This stateless verification scales horizontally without shared session storage.</p>
+    <h3>JWT vs sessions</h3>
+    <p>Traditional sessions store a session ID cookie, with session data in server-side storage (database, Redis). JWTs store all information client-side. Sessions advantages: instant revocation, smaller cookie, no sensitive data exposure. JWT advantages: stateless scaling, works across domains (CORS), no shared storage needed. For most web applications, sessions (especially with Redis) are simpler and more secure. JWTs shine in microservices and API authentication where statelessness is essential.</p>
+    <h3>Debugging authentication with JWT decoder</h3>
+    <p>The most common debugging use: pasting a JWT from an API request to verify the claims being sent. Common issues discovered: token expired (exp in the past), wrong audience (aud doesn't match), wrong user ID (sub is unexpected value), missing required claims. This decoder shows all claims instantly without needing to write decode code or fire up a debugger. Essential tool for any developer working with JWT-based auth systems.</p>
+    <div class="edu-highlight"><strong>🔑 JWT security checklist:</strong> Always verify signature before trusting claims ✓. Enforce specific algorithm (reject 'none') ✓. Validate exp, iss, aud claims ✓. Use short expiry (15 min to 1 hour for access tokens) ✓. Store tokens in httpOnly cookies for web apps ✓. Use 256-bit minimum secret for HS256 ✓. Implement refresh token rotation ✓. These practices prevent the most common JWT security vulnerabilities.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a JWT?</div>
@@ -245,9 +300,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

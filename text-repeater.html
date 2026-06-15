@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -180,6 +180,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -229,7 +243,48 @@ gtag('config', 'G-S6PPGS7N63');
       onclick="this.select();copyEl('tr-output')"
       aria-label="Repeated text output"></textarea>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Text Repeater</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your text</strong> — type or paste the text, character, or phrase you want to repeat.</li>
+      <li><strong>Set repeat count</strong> — enter how many times to repeat the text.</li>
+      <li><strong>Choose separator</strong> — select what appears between repetitions: newline (each repeat on its own line), comma, space, custom separator, or no separator.</li>
+      <li><strong>Generate and copy</strong> — click generate to see the repeated text and copy it to clipboard.</li>
+      <li><strong>Use for testing</strong> — generate repeated text of specific length to test UI, database fields, or input validation.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💻 Developer use cases:</strong> Testing how a UI handles long input. Filling database fields to test storage limits. Generating test data. Creating separator lines (======). Building repeated HTML elements for mockups. Stress testing text wrapping in responsive designs.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Text Repetition in Development</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🧪 Testing with Repeated Text</div><div class="edu-card-body">UI components must gracefully handle both short and long text. A button that looks fine with 'Submit' may break with 'Submit Form and Continue to Next Step.' Repeating a word 50 times generates long test input without manually typing. Essential for testing overflow handling, text truncation, and responsive wrapping.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 String Padding</div><div class="edu-card-body">Repeated characters create padding patterns. Repeated '=' or '-' creates visual separators in plain text outputs, CLI tools, and documentation. Repeated spaces create alignment in monospace contexts. Repeated zeros create zero-padding for numeric formats. All of these are common text manipulation needs in development.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🗃️ Test Data Generation</div><div class="edu-card-body">Seeding databases with test data often requires generating strings of specific lengths. A user profile field with a 255-character limit should be tested with exactly 255, 256, and 1,000 characters. Text repeater generates these boundary test values instantly without counting characters manually.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 String Methods</div><div class="edu-card-body">Every programming language has string repetition built in. Python: 'abc' * 3 = 'abcabcabc'. JavaScript: 'abc'.repeat(3) = 'abcabcabc'. Java: 'abc'.repeat(3). Ruby: 'abc' * 3. Bash: printf 'abc%.0s' {1..3}. These language-native methods handle programmatic repetition; this tool handles manual/visual repetition needs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📝 Document Templates</div><div class="edu-card-body">Repeated text patterns appear in formatted documents: table rows, list items, placeholder content. When designing document templates, repeated placeholder text helps visualise how the layout will look when populated with real variable-length content from a database or user input.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Performance Testing</div><div class="edu-card-body">Sending repeated strings of various lengths to APIs, databases, or web forms tests how systems handle large inputs. SQL injection and buffer overflow vulnerabilities are sometimes triggered by unexpectedly long inputs. Security testing includes sending very long strings to all input fields to verify safe handling.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Practical Applications</h2>
+    <h3>Lorem ipsum alternative</h3>
+    <p>For quickly generating filler content of a specific length without lorem ipsum: repeat a short word or phrase until the desired length is reached. 'content ' repeated 50 times gives approximately 350 characters of placeholder text. Unlike lorem ipsum which has fixed paragraph sizes, repeated text gives precise control over the output length — useful when testing character-limited fields.</p>
+    <h3>CLI and terminal output formatting</h3>
+    <p>Command-line tools and scripts often use repeated characters for visual formatting: a line of 80 '=' characters creates a visual section divider in terminal output. Repeated '-' creates table separators. Python developers use `print('=' * 60)` constantly for debug output formatting. This tool provides the visual equivalent without needing to fire up a Python shell.</p>
+    <h3>Accessibility testing</h3>
+    <p>Accessibility testing requires verifying that screen readers and assistive technologies handle long, repetitive text correctly. ARIA labels, alt text, and form labels should be tested with both minimal and very long content. Repeating text to generate long strings enables this testing without manually typing test inputs. Additionally, testing that repeated patterns don't confuse screen readers (which read aloud) is an important accessibility check.</p>
+    <div class="edu-highlight"><strong>🧪 Stress test checklist using text repeater:</strong> Test your UI input fields with: 1 character, 10 characters, 100 characters, 255 characters (common DB limit), 1,000 characters, 10,000 characters. For each length, verify the UI handles overflow gracefully, the database stores or rejects appropriately, and error messages are clear. This 6-point test catches the majority of input handling bugs.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a text repeater used for?</div>
@@ -264,10 +319,10 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

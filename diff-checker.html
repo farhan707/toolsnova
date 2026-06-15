@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -180,6 +180,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +230,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
     <div class="diff-output" id="diff-output"></div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Diff Checker</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste original text</strong> — the 'before' version of your content in the left panel.</li>
+      <li><strong>Paste modified text</strong> — the 'after' version in the right panel.</li>
+      <li><strong>Click Compare</strong> — differences are highlighted: red for deleted lines, green for added lines, yellow for changed lines.</li>
+      <li><strong>Review changes</strong> — scroll through the diff to see exactly what changed between the two versions.</li>
+      <li><strong>Use for code, documents, or any text</strong> — works with source code, configuration files, prose documents, CSV data, or any text-based content.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📋 Most common use cases:</strong> Comparing two versions of a document before and after editing. Checking what changed between two API responses. Reviewing configuration file changes. Comparing code snippets when debugging. Verifying that a copy-paste preserved all content correctly.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Text Diffing</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔍 How Diff Works</div><div class="edu-card-body">The diff algorithm (typically Myers diff or Patience diff) finds the Longest Common Subsequence (LCS) between two texts. Lines in the LCS are unchanged. Everything else is classified as added (in new only) or deleted (in original only). This produces the minimal set of changes needed to transform original into modified text.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Diff Output Formats</div><div class="edu-card-body">Unified diff: the standard format used by git — shows context lines around changes with + and - prefixes. Side-by-side: original and modified shown in parallel columns. Inline: changes shown within a single text flow with markup. This tool uses visual highlighting for human readability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Line vs Character Diff</div><div class="edu-card-body">Line-level diff shows which lines changed — fast and readable for most purposes. Character-level (or word-level) diff shows exactly which characters within a changed line are different — useful for spotting subtle changes like a single wrong letter in a long line. Both views are valuable depending on the nature of the changes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📁 Git and Version Control</div><div class="edu-card-body">Git uses diff algorithms internally for every commit. `git diff` shows unstaged changes. `git diff --staged` shows staged changes. `git diff commit1 commit2` compares any two commits. Understanding diff output is essential for effective Git use — it is the primary way to review changes before committing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧩 Three-Way Merge</div><div class="edu-card-body">When two people edit the same file, a three-way merge compares: original version, person A's version, person B's version. Changes that don't conflict are merged automatically. Conflicting changes (both modified the same lines differently) require manual resolution. This is how Git merge, GitHub pull requests, and collaborative editing work.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Diff in CI/CD</div><div class="edu-card-body">Automated diff checking in CI/CD pipelines: snapshot testing compares rendered UI screenshots or output strings against stored snapshots, failing if anything changed unexpectedly. Infrastructure-as-code tools (Terraform plan) diff current vs desired infrastructure state before applying changes. Diff-based change detection makes automated testing more robust.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Diff Tools in Development Workflow</h2>
+    <h3>Code review best practices</h3>
+    <p>Effective code review relies entirely on reading diffs. Focus on: logic changes (not formatting), security implications of changed code, test coverage for new/changed logic, and whether the change is minimal (no unrelated modifications mixed in). The best pull requests have small, focused diffs that are easy to review. Large diffs (thousands of lines) are reviewed poorly — split large changes into sequential smaller pull requests.</p>
+    <h3>Configuration management</h3>
+    <p>Infrastructure and application configuration changes are high-risk — small errors can cause outages. Diff checking before applying configuration changes is essential: compare new config against current running config before deployment, use configuration management tools (Ansible, Chef, Puppet) that show diffs before applying, and maintain configuration in version control so every change has an associated diff and author.</p>
+    <h3>Content editing workflow</h3>
+    <p>Writers and editors use diff tools to track document changes across revisions, collaborate on edits without losing original content, and review what changed between draft versions. For legal and compliance documents where exact wording matters, diff checking is essential before finalising any revised version. The diff captures the editorial history in a way that 'Track Changes' in word processors aims to replicate.</p>
+    <div class="edu-highlight"><strong>🔧 Diff in the terminal:</strong> `diff file1.txt file2.txt` — basic line diff. `diff -u file1.txt file2.txt` — unified format (git-style). `diff -y file1.txt file2.txt` — side by side. `diff -r dir1/ dir2/` — recursive directory diff. `git diff HEAD~1` — compare current to previous commit. These commands work on any text file without needing a web tool.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a diff checker?</div>
@@ -256,10 +311,10 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

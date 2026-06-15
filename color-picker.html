@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -180,6 +180,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -243,7 +257,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 
   <div id="cp-contrast" style="font-size:.72rem;color:var(--text2);background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:.5rem .8rem;font-family:var(--mono)"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Color Picker</h2>
+    <ol class="edu-steps">
+      <li><strong>Pick a color visually</strong> — click anywhere on the color gradient to select a hue and saturation.</li>
+      <li><strong>Adjust brightness</strong> — use the brightness slider to make the selected color lighter or darker.</li>
+      <li><strong>Enter a color value</strong> — type directly in HEX (#FF5733), RGB (255,87,51), or HSL (11,100%,60%) format to jump to a specific color.</li>
+      <li><strong>Copy in any format</strong> — copy the color value as HEX, RGB, RGBA, HSL, or CSS color name.</li>
+      <li><strong>Use the eyedropper</strong> — if supported by your browser, use the eyedropper tool to sample a color from anywhere on your screen.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎨 Quick color formats:</strong> HEX (#FF5733) — used in HTML/CSS, most common. RGB (255,87,51) — used in image editors and some CSS. HSL (11°,100%,60%) — most intuitive for designers (hue, saturation, lightness). RGBA/HSLA — same as RGB/HSL with added alpha (opacity) channel from 0 to 1.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Color in Web Design</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🎨 HEX Color Format</div><div class="edu-card-body">#RRGGBB — 6 hexadecimal digits representing red, green, blue channels (0-255 each). #FF0000 = pure red. #00FF00 = pure green. #0000FF = pure blue. #000000 = black. #FFFFFF = white. Shorthand #RGB available when both digits in each pair are identical: #FF5533 = #F53.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔴 RGB Color Model</div><div class="edu-card-body">Red, Green, Blue — the additive color model used by screens. Each channel 0–255. rgb(255,0,0) = red. rgb(0,0,0) = black. rgb(255,255,255) = white. rgba() adds alpha transparency: rgba(255,0,0,0.5) = 50% transparent red. The model reflects how screens physically produce light.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌈 HSL Color Model</div><div class="edu-card-body">Hue (0–360°), Saturation (0–100%), Lightness (0–100%). More intuitive than RGB: hue is the 'color wheel position,' saturation is color intensity (0% = grey), lightness is brightness (0% = black, 50% = full color, 100% = white). Easier to reason about: 'make it lighter' = increase L value.</div></div>
+      <div class="edu-card"><div class="edu-card-title">♿ Color Contrast and Accessibility</div><div class="edu-card-body">WCAG 2.1 requires minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text (18pt+ or 14pt+ bold). Contrast ratio is calculated from relative luminance of foreground and background colors. Poor contrast makes text unreadable for people with low vision. Tools like WebAIM Contrast Checker verify compliance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Color Psychology</div><div class="edu-card-body">Red: urgency, danger, passion (sale buttons, error states). Blue: trust, calm, professional (banks, tech companies). Green: success, nature, health (confirmation states, eco brands). Yellow: warning, optimism, attention. Orange: energy, creativity, calls to action. Purple: luxury, creativity. Color choices affect user perception and conversion rates.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🖌️ CSS Color Functions</div><div class="edu-card-body">Modern CSS supports: color-mix(in srgb, red 50%, blue) for mixing. oklch() for perceptually uniform color space. color() for wide-gamut display P3 colors. light-dark() for automatic dark mode colors. These new functions are increasingly supported and provide more powerful color manipulation than traditional HEX/RGB.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Color in Development and Design</h2>
+    <h3>Design token systems</h3>
+    <p>Rather than using raw color values throughout a codebase, design systems define named color tokens: --color-primary: #7fff6f; --color-error: #ff4444; --color-background: #0c0c0e. These semantic names (primary, error, background) are used in components instead of raw hex values. When the brand color changes, updating one token updates the entire application. Tailwind CSS, Material Design, and all modern design systems use this token approach.</p>
+    <h3>Dark mode color strategy</h3>
+    <p>Dark mode requires rethinking color for each theme. Strategies: avoid pure black (#000) — use near-black (#0c0c0e, #121212) for reduced eye strain. Reduce saturation of accent colors — vivid colors appear harsher on dark backgrounds. Don't simply invert colors — lightness values need redesigning, not just flipping. CSS custom properties make dual-theme implementation clean: define all colors as variables, swap variable values with a data-theme attribute or prefers-color-scheme media query.</p>
+    <h3>Color accessibility checklist</h3>
+    <p>Never rely on color alone to convey information — colourblind users (8% of males, 0.5% of females) cannot distinguish red/green or blue/yellow combinations. Always accompany color cues with text, icons, or patterns. Test designs with colorblindness simulators (Coblis, Stark plugin). Check all text/background combinations with a contrast ratio tool. WCAG AA (4.5:1 ratio) is the legal requirement in many jurisdictions for public-facing digital products.</p>
+    <div class="edu-highlight"><strong>🎨 Essential color tools:</strong> Coolors.co — generate and explore color palettes. Paletton.com — complementary/analogous palette generator. Adobe Color — harmony rules. WebAIM Contrast Checker — accessibility validation. ColorZilla browser extension — eyedropper for any webpage. These tools complement the color picker for professional design work.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the difference between HEX, RGB, and HSL?</div>
@@ -282,10 +337,10 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -180,6 +180,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -242,7 +256,49 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div id="rx-info" style="font-size:.72rem;color:var(--text3);margin-top:-4px"></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Regex Tester</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your regex pattern</strong> — type or paste your regular expression in the pattern field (without surrounding slashes).</li>
+      <li><strong>Set flags</strong> — common flags: g (global — find all matches, not just first), i (case-insensitive), m (multiline — ^ and $ match line starts/ends).</li>
+      <li><strong>Paste your test string</strong> — enter the text you want to match against in the test string area.</li>
+      <li><strong>See matches highlighted</strong> — all matches are highlighted in the test string. Match groups are shown separately.</li>
+      <li><strong>Test edge cases</strong> — add multiple lines including edge cases (empty strings, special characters, boundary conditions) to ensure your regex works correctly.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚡ Regex quick start:</strong> \d = any digit. \w = word character (letter/digit/underscore). \s = whitespace. . = any character. * = zero or more. + = one or more. ? = zero or one. ^ = start of string. $ = end of string. [abc] = character class. (abc) = capture group. | = or.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Regular Expressions</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔤 Character Classes</div><div class="edu-card-body">\d matches 0-9. \D matches non-digits. \w matches [a-zA-Z0-9_]. \W matches non-word characters. \s matches whitespace (space, tab, newline). [aeiou] matches any vowel. [^aeiou] matches any non-vowel. [a-z] matches any lowercase letter.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Quantifiers</div><div class="edu-card-body">* = zero or more (greedy). + = one or more (greedy). ? = zero or one. {n} = exactly n times. {n,} = n or more times. {n,m} = between n and m times. Adding ? after quantifier makes it lazy (matches as few as possible): *? +? {n,m}?</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚓ Anchors</div><div class="edu-card-body">^ matches start of string (or line with m flag). $ matches end of string (or line with m flag). \b matches word boundary (between \w and \W). \B matches non-word boundary. These zero-width assertions match positions, not characters.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Groups and Captures</div><div class="edu-card-body">(abc) creates a capture group — the matched text is captured and available as a back-reference. (?:abc) is a non-capturing group — groups without capturing, useful for applying quantifiers. (?<name>abc) named capture group. Back-references: \1 refers to first capture group in the pattern.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔍 Lookahead/Lookbehind</div><div class="edu-card-body">(?=abc) positive lookahead — matches position followed by 'abc'. (?!abc) negative lookahead. (?<=abc) positive lookbehind — matches position preceded by 'abc'. (?<!abc) negative lookbehind. These are zero-width assertions — they check context without consuming characters.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Greedy vs Lazy</div><div class="edu-card-body">By default, quantifiers are greedy — they match as much as possible. Pattern .+ on 'aXbXc' matches 'aXbXc' (entire string). Lazy .+? matches 'a' (minimum). Greedy is usually what you want for simple patterns; lazy is needed when you want to stop at the first occurrence of a delimiter.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Practical Regex Applications</h2>
+    <h3>Common validated patterns</h3>
+    <p>Email validation: `/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/`. URL matching: `/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/`. Phone (flexible): `/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/`. IP address: `/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/`. These patterns cover most common validation needs.</p>
+    <h3>Regex in text processing pipelines</h3>
+    <p>Command line: `grep -E 'pattern' file` extracts matching lines. `sed 's/pattern/replacement/g'` performs find-and-replace. `awk '/pattern/{print}'` filters and processes. These tools make regex essential for log analysis, data extraction, and text transformation in Unix pipelines. A single regex command can process millions of log lines in seconds — tasks that would take hours in a GUI.</p>
+    <h3>Performance considerations</h3>
+    <p>Poorly written regex can cause catastrophic backtracking — exponential time complexity for certain inputs. The classic example: `(a+)+` on a string like 'aaaaaaaaaaaaaab' can take seconds or minutes. This vulnerability is called ReDoS (Regular Expression Denial of Service). Avoid nested quantifiers on the same character class. Test regex performance with edge cases including strings that almost match. Tools like regex101.com show match steps to identify backtracking issues.</p>
+    <div class="edu-highlight"><strong>🔧 Regex debugging tips:</strong> Use regex101.com for step-by-step explanation of how your pattern matches. Start simple and build up complexity incrementally — test each addition before continuing. Include tests for empty strings, boundary cases, and strings that should NOT match. Comment complex regex using the verbose mode (/pattern/x in some languages) which allows whitespace and # comments.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a regular expression?</div>
@@ -286,10 +342,10 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

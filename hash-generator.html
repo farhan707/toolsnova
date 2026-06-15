@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -223,7 +237,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Hash Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your input text</strong> — paste any text, password, file content, or string you want to hash.</li>
+      <li><strong>Select hash algorithm</strong> — MD5 for legacy compatibility, SHA-1 for checksums, SHA-256 for security, SHA-512 for maximum security.</li>
+      <li><strong>Read the hash output</strong> — the hash is displayed as a hexadecimal string. Even a single character change in input produces a completely different hash.</li>
+      <li><strong>Verify data integrity</strong> — hash a file or string, then hash it again later. Identical hashes confirm the data has not changed.</li>
+      <li><strong>Compare hashes</strong> — paste two hashes to check if they match, useful for verifying downloaded files against published checksums.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔒 One-way only:</strong> Hash functions are one-directional — you can hash data, but you cannot reverse a hash back to the original input. This is by design. If someone claims to 'decrypt' an MD5 hash, they are using a pre-computed lookup table (rainbow table), not reversing the hash mathematically.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Cryptographic Hash Functions</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔢 What Is a Hash?</div><div class="edu-card-body">A fixed-length output produced by running input data through a mathematical function. SHA-256 always produces a 256-bit (64 hex character) output regardless of input size. 'hello' and a 10GB file both produce 64-character SHA-256 hashes. The same input always produces the same output.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Key Properties</div><div class="edu-card-body">Deterministic: same input → same hash always. Fast to compute. One-way: cannot reverse hash to input. Avalanche effect: changing one bit of input changes approximately 50% of output bits. Collision resistant: practically impossible to find two different inputs with the same hash.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Algorithm Comparison</div><div class="edu-card-body">MD5: 128-bit, fast, BROKEN — collisions found, do not use for security. SHA-1: 160-bit, broken for security purposes. SHA-256: 256-bit, current standard for most security uses. SHA-512: 512-bit, slower but higher security margin. SHA-3: newest standard, different mathematical approach.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✅ File Integrity Verification</div><div class="edu-card-body">Download a file, then compare its SHA-256 hash against the hash published on the official website. If they match, the file is authentic and unmodified. If they differ, the file was corrupted during download or is a malicious substitute. Linux/Mac: `sha256sum filename`. Windows: `Get-FileHash filename`.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔐 Password Hashing</div><div class="edu-card-body">Never store plain text passwords. Hash them with a password-specific algorithm: bcrypt, Argon2, or scrypt. These are intentionally slow (preventing brute force) and include a salt (preventing rainbow table attacks). Do NOT use MD5 or SHA for passwords — they are too fast and vulnerable to brute force attacks.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔏 HMAC</div><div class="edu-card-body">Hash-based Message Authentication Code — combines a hash with a secret key to verify both data integrity AND authenticity. HMAC-SHA256 ensures the message was not modified AND was sent by someone with the secret key. Used in API authentication, JWT signing, and webhook verification.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Hash Functions in Development</h2>
+    <h3>API request signing</h3>
+    <p>Many APIs require request signing using HMAC — hashing the request body with a shared secret key. The sender computes HMAC-SHA256(request_body, secret_key) and includes it in the request header. The server recomputes the same HMAC and compares — if they match, the request is authentic and unmodified. This prevents both tampering and replay attacks. AWS Signature Version 4, Stripe webhook verification, and most modern API authentication systems use this pattern.</p>
+    <h3>Content addressing and caching</h3>
+    <p>Content-Addressable Storage (CAS) uses hashes as file identifiers. Git stores every file and commit as its SHA-1 hash. Docker uses SHA-256 hashes for image layers. This approach guarantees: identical content has identical address (perfect deduplication), any modification produces a new address (perfect cache invalidation), and the address itself verifies integrity. The hash IS the content identity.</p>
+    <h3>Data deduplication</h3>
+    <p>Hashing enables efficient deduplication: hash each file, store the hash in a database, check before storing new files. If the hash already exists, the file is a duplicate — reference the existing copy instead of storing another. Dropbox, Google Drive, and cloud backup services use this approach to massively reduce storage requirements. A 10GB video uploaded by 1,000 users is stored once, referenced 1,000 times.</p>
+    <div class="edu-highlight"><strong>🔒 Algorithm selection guide:</strong> Password storage: Argon2id or bcrypt (never MD5/SHA). File integrity: SHA-256. Digital signatures: SHA-256 or SHA-3. API request signing: HMAC-SHA256. Checksums for non-security uses: MD5 (fast, sufficient for error detection). Blockchain/cryptocurrency: SHA-256. Git commits: SHA-1 (being migrated to SHA-256). When in doubt: SHA-256.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">MD5, SHA-1, SHA-256, SHA-512 — what's the difference?</div>
@@ -259,9 +314,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

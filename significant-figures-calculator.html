@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -206,7 +220,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="sf-output" onclick="copyEl('sf-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Significant Figures Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your number</strong> — type any number including scientific notation (1.23e-4).</li>
+      <li><strong>Select rounding level</strong> — choose how many significant figures to round to (1–5).</li>
+      <li><strong>Read sig fig count</strong> — the calculator counts the significant figures in your input.</li>
+      <li><strong>See rounded results</strong> — all rounding levels (1–5 sig figs) shown simultaneously for comparison.</li>
+      <li><strong>Apply sig fig rules</strong> — the calculator explains which rules apply to your specific number.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔬 Sig fig counting rules:</strong> 1) All non-zero digits are significant (1-9). 2) Zeros between non-zeros are significant (1001 = 4 sig figs). 3) Leading zeros are NOT significant (0.004 = 1 sig fig). 4) Trailing zeros after decimal point ARE significant (2.50 = 3 sig figs). 5) Trailing zeros in integers are ambiguous (1500 could be 2, 3, or 4 sig figs — use scientific notation to clarify).</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Significant Figures</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔬 What Are Sig Figs?</div><div class="edu-card-body">Significant figures indicate the precision of a measurement. If you measure 28.4 cm, you have 3 sig figs — you are confident in the tens (20), units (8), and tenths (0.4) digits. Claiming 28.40 cm implies you also know the hundredths — only valid if your measuring instrument is that precise.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📏 Measurement Precision</div><div class="edu-card-body">Every measurement has limited precision based on the measuring instrument. A ruler marked in mm can measure to ±0.5mm. A balance reading to 0.01g is precise to ±0.005g. Significant figures communicate this precision. Reporting more sig figs than your instrument provides implies false precision.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Calculations with Sig Figs</div><div class="edu-card-body">Multiplication/division: result has same sig figs as the least precise input. 3.14 × 2.1 = 6.594 → round to 6.6 (2 sig figs). Addition/subtraction: result has same decimal places as the least precise input. 12.5 + 1.234 = 13.734 → round to 13.7. These rules prevent false precision from propagating through calculations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔭 Scientific Notation</div><div class="edu-card-body">Scientific notation removes sig fig ambiguity for large numbers. 1500 is ambiguous (2, 3, or 4 sig figs). 1.5 × 10³ = 2 sig figs. 1.50 × 10³ = 3 sig figs. 1.500 × 10³ = 4 sig figs. Scientists always use scientific notation for measurements to make precision unambiguous.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚗️ Lab Report Standards</div><div class="edu-card-body">In chemistry and physics lab reports, every numerical result must have appropriate sig figs. Reporting 9.81234 m/s² for gravitational acceleration from a 2-sig-fig measurement is incorrect — the result should be 9.8 m/s². Instructors specifically check sig figs in lab reports as a measure of scientific understanding.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏭 Engineering Tolerances</div><div class="edu-card-body">Manufacturing tolerances express allowable variation in measurements. A bolt specified as 10.0mm diameter (3 sig figs, ±0.05mm) has different meaning than 10mm (2 sig figs, ±0.5mm). The number of sig figs in a specification directly communicates the required manufacturing precision and affects cost — tighter tolerances require more precise (expensive) manufacturing processes.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Sig Figs in Science and Engineering</h2>
+    <h3>Why significant figures matter</h3>
+    <p>Significant figures prevent two fundamental errors in scientific reporting. Over-precision: reporting 9.81234 m/s² when your data only supports 9.8 m/s² implies a level of certainty you don't have — misleading readers about measurement quality. Under-precision: rounding 9.81234 to 10 m/s² discards valid information your measurement captured. Correct sig figs communicate exactly what you measured and how confidently.</p>
+    <h3>Significant figures in chemistry</h3>
+    <p>Chemistry calculations chain multiple measurements: mass (±0.001g), volume (±0.1mL), temperature (±0.1°C). Each measurement introduces its own precision limit. The final calculated result (concentration, yield, reaction rate) cannot be more precise than the least precise measurement in the chain. Tracking sig figs through multi-step chemistry calculations prevents reporting false precision in final results — a common error that leads to incorrect analysis.</p>
+    <h3>Digital displays and sig figs</h3>
+    <p>Calculator and computer displays show many decimal places regardless of input precision. A calculator showing 6.594 for 3.14 × 2.1 does not mean the result is known to 4 sig figs — the calculator doesn't know the precision of your inputs. The scientist must apply sig fig rules to round the calculator output appropriately. This disconnect between calculator precision and measurement precision causes consistent errors in student lab reports and applied calculations.</p>
+    <div class="edu-highlight"><strong>🔬 Sig fig calculation rules summary:</strong> Multiplication/division → sig figs of result = sig figs of least precise factor. Addition/subtraction → decimal places of result = decimal places of least precise term. Exact numbers (counting: 12 eggs, defined: 1 km = 1000 m) have infinite sig figs — don't limit your result. Mixed operations → apply each rule at each step, keeping one extra sig fig until final answer.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are significant figures?</div>
@@ -243,9 +298,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

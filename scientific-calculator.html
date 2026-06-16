@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -231,7 +245,49 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="margin-top:10px;font-size:.72rem;color:var(--text3);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.5rem .8rem;font-family:var(--mono)">
     Tip: Use ^ for powers (2^10), ! for factorial (5!), π for pi, e for Euler's number
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Scientific Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter numbers and operations</strong> — use the numeric keypad and operation buttons for standard calculations.</li>
+      <li><strong>Use scientific functions</strong> — access sin, cos, tan, log, ln, √, x², xⁿ, and constants (π, e) via the function buttons.</li>
+      <li><strong>Switch degree/radian mode</strong> — trigonometric functions need the correct angle mode. Degrees for everyday angles, radians for calculus and advanced math.</li>
+      <li><strong>Use memory functions</strong> — M+ stores values, MR recalls them, MC clears memory. Useful for multi-step calculations.</li>
+      <li><strong>Read the display carefully</strong> — the calculator shows the full expression and current result. Use parentheses to control order of operations.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ BODMAS/PEMDAS order:</strong> Brackets/Parentheses first. Orders/Exponents second. Division and Multiplication left-to-right. Addition and Subtraction left-to-right. 2 + 3 × 4 = 14 (not 20). Always use parentheses when in doubt about order: (2+3) × 4 = 20 vs 2 + (3×4) = 14.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Scientific Calculator Functions</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Trigonometric Functions</div><div class="edu-card-body">sin(θ): opposite/hypotenuse. cos(θ): adjacent/hypotenuse. tan(θ): opposite/adjacent. For right triangles. Inverse functions: sin⁻¹(0.5) = 30° (find angle from ratio). Values cycle every 360° (degrees) or 2π (radians). Essential for geometry, physics, and engineering.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Logarithms</div><div class="edu-card-body">log (base 10): how many times multiply 10 to get the number. log(1000) = 3. ln (natural log, base e): fundamental in calculus and growth/decay problems. ln(e²) = 2. Relationship: ln(x) = log(x)/log(e) ≈ log(x)/0.4343. Used in pH calculation, earthquake magnitude (Richter scale), and exponential decay.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Exponents and Roots</div><div class="edu-card-body">xⁿ: x raised to power n. x² shortcut for squaring. √x: square root. ⁿ√x: nth root = x^(1/n). Scientific notation: 6.022 × 10²³ entered as 6.022 EE 23 (Avogadro's number). Large/small numbers in physics and chemistry always use scientific notation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔵 Constants</div><div class="edu-card-body">π (pi) = 3.14159265... Ratio of circumference to diameter, appears in circles, waves, and statistics. e (Euler's number) = 2.71828... Base of natural logarithm, appears in growth, decay, and compound interest. These constants appear in formulas across all sciences.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Degree vs Radian</div><div class="edu-card-body">Degrees: full circle = 360°. Radians: full circle = 2π ≈ 6.283. Conversion: radians = degrees × π/180. sin(90°) = sin(π/2) = 1 (same value, different input). Radians are the natural unit for calculus (derivatives of trig functions are clean in radians). Engineers use degrees for structural angles; mathematicians use radians for calculus.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Calculator Hierarchy</div><div class="edu-card-body">Basic (4 operations). Scientific (trig, log, exponents). Graphing (plot functions, solve equations visually). CAS (Computer Algebra System — solves symbolically, factors, differentiates). This tool provides scientific calculation. For graphing and symbolic math: Desmos (free, online), GeoGebra, Wolfram Alpha, or dedicated calculators (TI-84, Casio FX series).</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Scientific Calculation in Practice</h2>
+    <h3>Trigonometry in real life</h3>
+    <p>Trigonometric functions appear constantly in applied fields. Architecture: sin and cos calculate roof pitch, staircase angles, and structural loads. Navigation: bearing calculations use atan2 for angle from coordinates. Electrical engineering: AC circuit analysis uses complex numbers and trigonometry. Sound waves: sine functions model audio waveforms. GPS calculations: spherical trigonometry for distances on Earth's curved surface. The scientific calculator is the essential tool for all these applications.</p>
+    <h3>Logarithms in science</h3>
+    <p>Logarithms compress enormous ranges into manageable numbers. pH = −log[H⁺] — a pH difference of 1 represents a 10× change in acidity. Richter scale: each unit increase = 10× more ground motion. Decibels: dB = 10·log(P₂/P₁). Musical notes: frequency doubles each octave, so note relationships are logarithmic. Information theory: bits = log₂(outcomes). The common thread: logarithms represent multiplicative relationships on an additive scale.</p>
+    <h3>Order of operations errors</h3>
+    <p>The most common calculator error: entering expressions without understanding order of operations. `2 + 3 × 4` entered sequentially on a basic calculator gives 20 (wrong). A scientific calculator gives 14 (correct, applying multiplication before addition). Always verify complex expressions by breaking them into steps or using parentheses explicitly. For multi-step physics or chemistry problems, calculate sub-expressions separately and combine to avoid accumulated errors.</p>
+    <div class="edu-highlight"><strong>🔢 Scientific calculator essentials:</strong> Always set angle mode (DEG/RAD) before trig calculations. Use parentheses liberally — they are free and prevent errors. ANS button recalls last result for chained calculations. EE button for scientific notation (2.5 × 10⁸ = 2.5 EE 8). Check significant figures in final answer. These habits prevent the most common scientific calculator errors.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What functions does this calculator support?</div>
@@ -273,9 +329,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

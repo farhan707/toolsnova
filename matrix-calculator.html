@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -214,7 +228,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="mat-output" onclick="copyEl('mat-output')" style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Matrix Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter Matrix A</strong> — type rows separated by new lines, values separated by spaces or commas. Example: '1 2 3' on line 1, '4 5 6' on line 2 for a 2×3 matrix.</li>
+      <li><strong>Enter Matrix B</strong> — required for addition, subtraction, and multiplication. Not needed for transpose or determinant.</li>
+      <li><strong>Select operation</strong> — choose from addition (A+B), subtraction (A−B), multiplication (A×B), transpose, or determinant.</li>
+      <li><strong>Click Calculate</strong> — the result matrix appears with formatted alignment.</li>
+      <li><strong>Check dimensions</strong> — addition/subtraction require identical dimensions. Multiplication requires columns of A = rows of B. Determinant requires square matrix.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Dimension rule for multiplication:</strong> If A is m×n and B is n×p, then A×B is m×p. The inner dimensions must match. A 2×3 matrix multiplied by a 3×4 matrix gives a 2×4 result. A 3×2 times 2×3 gives 3×3. A 2×3 times 2×3 is IMPOSSIBLE — inner dimensions (3 and 2) don't match.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Matrix Operations</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Matrix Basics</div><div class="edu-card-body">A matrix is a rectangular array of numbers arranged in rows and columns. An m×n matrix has m rows and n columns. A 2×3 matrix has 2 rows and 3 columns (6 elements total). Matrices represent systems of equations, linear transformations, data tables, and relationships between variables.</div></div>
+      <div class="edu-card"><div class="edu-card-title">➕ Addition and Subtraction</div><div class="edu-card-body">Only possible for matrices of identical dimensions. Add/subtract corresponding elements: (A+B)ᵢⱼ = Aᵢⱼ + Bᵢⱼ. The result has the same dimensions as the inputs. Commutative: A+B = B+A. Not commutative for multiplication: generally AB ≠ BA.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✖️ Matrix Multiplication</div><div class="edu-card-body">A×B: each element of the result is the dot product of a row from A and a column from B. (A×B)ᵢⱼ = Σ Aᵢₖ × Bₖⱼ. NOT commutative (AB ≠ BA in general). Associative: (AB)C = A(BC). Represents applying transformations in sequence.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Transpose</div><div class="edu-card-body">Flips matrix over its diagonal — rows become columns. (Aᵀ)ᵢⱼ = Aⱼᵢ. A 2×3 matrix transposed becomes 3×2. Used in linear algebra proofs, machine learning (normal equations), and rotation matrices. (AB)ᵀ = BᵀAᵀ (note reversed order).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Determinant</div><div class="edu-card-body">A scalar value calculated from a square matrix. det(A) ≠ 0: matrix is invertible (non-singular). det(A) = 0: matrix is singular (no inverse). Geometrically: |det(A)| represents the scaling factor of area/volume under the linear transformation A. Used in Cramer's rule, eigenvalue calculation, and change of variables in integrals.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔀 Matrix Inverse</div><div class="edu-card-body">A⁻¹ exists only when det(A) ≠ 0. A × A⁻¹ = I (identity matrix). Used to solve systems of equations: Ax = b → x = A⁻¹b. For 2×2 matrix [[a,b],[c,d]]: inverse = (1/det) × [[d,−b],[−c,a]]. For larger matrices, Gaussian elimination or LU decomposition is used.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Matrices in Science and Technology</h2>
+    <h3>Systems of equations</h3>
+    <p>A system of n linear equations in n unknowns can be written as Ax = b where A is the coefficient matrix, x is the unknown vector, and b is the constants vector. For 2x + 3y = 7 and x − y = 1: A = [[2,3],[1,−1]], b = [7,1]. Solving by matrix inversion: x = A⁻¹b. This matrix approach scales to thousands of equations in computational physics, engineering simulation, and economic modelling where manual solving is impossible.</p>
+    <h3>Machine learning and data science</h3>
+    <p>Machine learning is fundamentally matrix operations. Training data is stored as a matrix (rows = samples, columns = features). Neural network layers apply matrix multiplication to transform inputs. Linear regression solution: θ = (XᵀX)⁻¹Xᵀy (the normal equation — involves matrix multiplication, transpose, and inverse). Principal Component Analysis (PCA) uses matrix decomposition. Understanding matrix operations is prerequisite knowledge for machine learning implementation.</p>
+    <h3>Computer graphics transformations</h3>
+    <p>Every transformation in 3D graphics is a matrix multiplication. Translation, rotation, scaling, and projection are all 4×4 matrices. Composing transformations: multiply their matrices together. A scene with 1 million vertices transformed by a combined model-view-projection matrix requires 1 million matrix-vector multiplications per frame — modern GPUs are optimised specifically for this parallel matrix computation. Game engines and 3D software expose these as matrix operations.</p>
+    <div class="edu-highlight"><strong>📐 Matrix operation quick reference:</strong> Same dimensions required: A+B, A−B. Columns of A = rows of B required: A×B. Square matrix required: det(A), A⁻¹. Any matrix: Aᵀ. Identity matrix I: any matrix × I = original matrix (like multiplying by 1). Zero matrix O: any matrix + O = original (like adding 0). These rules govern all matrix arithmetic.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I enter a matrix?</div>
@@ -251,9 +306,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

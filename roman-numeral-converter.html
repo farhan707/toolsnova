@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +230,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="rom-output" onclick="copyEl('rom-output')" style="min-height:120px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Roman Numeral Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter a number or Roman numeral</strong> — type an integer (1–3999) to convert to Roman numerals, or type Roman numerals to convert to decimal.</li>
+      <li><strong>The conversion is instant</strong> — results appear as you type without needing to click a button.</li>
+      <li><strong>Check the breakdown</strong> — see how the Roman numeral is built symbol by symbol with the value each symbol contributes.</li>
+      <li><strong>Copy the result</strong> — use the copy button for use in documents, titles, or code.</li>
+      <li><strong>Use the reference table</strong> — see all Roman numeral symbols and their values for quick reference.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🏛️ Roman numeral limit:</strong> Standard Roman numerals represent 1–3999. The number 4000 would require MMMM (four M's) — ancient Romans used a bar over a symbol to multiply by 1000 (V̄ = 5000) but this convention is rarely used today. For most modern uses (chapter numbers, years, copyright dates), the 1–3999 range covers all practical needs.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Roman Numerals</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔢 The Seven Symbols</div><div class="edu-card-body">I = 1. V = 5. X = 10. L = 50. C = 100. D = 500. M = 1000. These seven symbols form all Roman numerals. The system is additive (III = 3) and subtractive (IV = 4, not IIII). Subtractive notation uses a smaller symbol before a larger one to indicate subtraction.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 Subtractive Rules</div><div class="edu-card-body">Only six subtractive combinations are valid: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900. Rules: I can precede V and X only. X can precede L and C only. C can precede D and M only. Never: IIV (illegal), VX (illegal). IIII appears on clock faces (traditionalist convention) but IV is standard.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Additive Construction</div><div class="edu-card-body">Add symbols from largest to smallest: 2024 = MM (2000) + XX (20) + IV (4) = MMXXIV. 1999 = M (1000) + CM (900) + XC (90) + IX (9) = MCMXCIX. Read by adding values left-to-right, except for the six subtractive pairs where you subtract the first value from the second.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏛️ Historical Context</div><div class="edu-card-body">Developed by ancient Romans over centuries, evolving from earlier Etruscan numerals. Used throughout the Roman Empire for commerce, architecture, and record-keeping. Replaced for arithmetic by Hindu-Arabic numerals (0-9) in medieval Europe because Roman numerals make arithmetic (especially multiplication and division) extremely difficult — no place value system.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Modern Uses</div><div class="edu-card-body">Clock faces (I-XII). Copyright years (© MMXXVI). Movie sequels and editions (Star Wars Episode IV). Book chapters and volumes (Chapter XII). Super Bowl numbers (Super Bowl LVIII). Outlines and lists. Page numbers in book front matter. Monarchs and popes (Henry VIII, Pope Francis I). Centuries (XXI century).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Other Numeral Systems</div><div class="edu-card-body">Roman (Latin): I, V, X, L, C, D, M. Greek: α, β, γ... (used for page numbers). Arabic-Indic: ١,٢,٣ (used in Arabic-script countries). Devanagari: १,२,३ (used for Hindi). Chinese: 一,二,三. Eastern Arabic: ٠,١,٢. All represent the same decimal values using different symbols.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Roman Numerals in Modern Context</h2>
+    <h3>Copyright year dating</h3>
+    <p>Films and television programmes traditionally display copyright dates in Roman numerals during end credits — a practice that historically made it difficult for viewers to easily identify the production year. MCMXCIX (1999) and MMXXIV (2024) take more effort to decode than the decimal equivalents. This convention persists as tradition despite its practical obscurity. When reading credits, understanding Roman numeral conversion allows you to instantly identify when content was produced — useful for assessing how current the information might be.</p>
+    <h3>Clocks and the IIII convention</h3>
+    <p>Many clock faces use IIII for 4 rather than the standard IV. Several explanations exist: aesthetic symmetry with VIII on the opposite side, historical convention predating the subtractive rule standardisation, distinction between IIII and the letters IV (beginning of IVPITER/Jupiter, considered disrespectful on sundials). The IIII convention on clock faces is one of the most visible departures from standard Roman numeral rules in everyday life.</p>
+    <h3>Roman numerals in programming</h3>
+    <p>Roman numeral conversion is a classic programming exercise that tests understanding of conditionals, loops, and string manipulation. The algorithm: greedily subtract the largest symbol value that fits the remaining number, appending the symbol. Values to process in order: 1000 (M), 900 (CM), 500 (D), 400 (CD), 100 (C), 90 (XC), 50 (L), 40 (XL), 10 (X), 9 (IX), 5 (V), 4 (IV), 1 (I). This greedy approach correctly handles all subtractive combinations.</p>
+    <div class="edu-highlight"><strong>🏛️ Roman numeral quick conversion:</strong> MMXXVI = 2026. MCMXCIX = 1999. MMMDCCCLXXXVIII = 3888 (longest standard Roman numeral). MMMCMXCIX = 3999 (largest standard Roman numeral). I = 1. IV = 4. IX = 9. XL = 40. XC = 90. CD = 400. CM = 900. M = 1000. Memorising these 10 values and 6 subtractive pairs allows converting any Roman numeral.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are Roman numerals?</div>
@@ -257,9 +312,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -203,7 +217,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result with formula <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pe-output" onclick="copyEl('pe-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Percentage Error Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter experimental value</strong> — the value you measured or calculated in your experiment.</li>
+      <li><strong>Enter theoretical value</strong> — the accepted, true, or expected value from literature or theory.</li>
+      <li><strong>Click Calculate</strong> — see percentage error, absolute error, and relative error.</li>
+      <li><strong>Interpret the result</strong> — lower percentage error indicates more accurate measurement. What constitutes 'acceptable' depends on the field and precision of your instruments.</li>
+      <li><strong>Use for lab reports</strong> — include percentage error in your analysis section to evaluate experimental accuracy.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Formula:</strong> Percentage Error = |Experimental − Theoretical| / |Theoretical| × 100%. The absolute value ensures positive percentage regardless of whether measurement was above or below the true value. This differs from percentage difference (between two measured values) and percentage change (before vs after).</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Measurement Error</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Types of Error</div><div class="edu-card-body">Systematic error: consistent bias in one direction — faulty instrument calibration, environmental effects. Cannot be reduced by repeating measurements. Random error: unpredictable variation — appears as scatter around true value. Reduced by averaging multiple measurements. Human error: misreading instruments, calculation mistakes — eliminated by careful technique and checking.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📏 Accuracy vs Precision</div><div class="edu-card-body">Accuracy: how close to the true value. Precision: how consistent/reproducible the measurements are. High accuracy + high precision: ideal (small percentage error, low scatter). High precision + low accuracy: consistent but wrong (systematic error present). Low precision + high accuracy: scattered around true value (random error dominant). Low precision + low accuracy: scattered and far from true value.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Percentage Error vs Difference</div><div class="edu-card-body">Percentage error: compare to known true value. Percentage difference: compare two measurements of unknown true value = |A−B|/((A+B)/2) × 100%. Percentage change: compare before and after = (New−Old)/Old × 100%. Each formula serves a different purpose — using the wrong one misrepresents the data.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧪 Acceptable Error Ranges</div><div class="edu-card-body">General chemistry lab: 1–5% acceptable. Analytical chemistry: <1%. Physics experiments: 1–10% depending on complexity. Engineering measurements: 0.1–1%. Medical devices: <1% for critical parameters. Teaching labs: 5–10% often acceptable as learning experiences. Always compare to published standards for your specific field.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Propagation of Error</div><div class="edu-card-body">When multiple measurements are combined in a calculation, errors compound. For addition/subtraction: add absolute errors. For multiplication/division: add relative errors (as fractions). For powers: multiply relative error by the exponent. Understanding error propagation explains why complex multi-step experiments have larger percentage errors than simple single-measurement experiments.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Improving Experimental Accuracy</div><div class="edu-card-body">Use calibrated instruments. Repeat measurements and average (reduces random error). Control environmental variables (temperature, humidity). Use blind measurements (person doesn't know expected result). Compare results to multiple reference values. Apply systematic corrections for known biases. Document and report all error sources in lab reports.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Error Analysis in Science</h2>
+    <h3>Lab report error analysis</h3>
+    <p>A complete experimental error analysis includes: percentage error calculation, identification of error sources (systematic and random), assessment of instrument precision limits, discussion of how errors might be reduced, and comparison to published values if available. Common lab report error analysis mistakes: not mentioning error sources beyond percentage error number, attributing all error to 'human error' without specifics, claiming accuracy without comparing to true value.</p>
+    <h3>Percentage error in engineering</h3>
+    <p>Engineering specifications use tolerance ranges rather than percentage error, but the underlying concept is identical. A resistor rated 100Ω ±5% is acceptable anywhere from 95Ω to 105Ω. If the actual resistance is 103Ω, percentage error = |103−100|/100 × 100% = 3% — within tolerance. Engineering quality control checks that manufactured components have percentage deviations within their specified tolerances. Instruments used to measure these components must have percentage errors significantly smaller than the tolerances being measured.</p>
+    <h3>Statistical approach to error</h3>
+    <p>In rigorous experimental science, single measurement percentage error is supplemented by statistical analysis of multiple measurements. Calculate mean and standard deviation of repeated measurements. Express result as mean ± standard deviation. Calculate standard error of mean (SD/√n). This statistical approach quantifies both systematic error (mean differs from true value) and random error (spread of measurements) separately, providing a complete picture of measurement quality.</p>
+    <div class="edu-highlight"><strong>🔬 Error analysis checklist for lab reports:</strong> Calculate percentage error using correct formula ✓. Identify at least 3 sources of error ✓. Classify each error as systematic or random ✓. Assess which error source had largest impact ✓. Suggest specific improvements for each error source ✓. Compare percentage error to field standards ✓. This structured approach transforms percentage error from a number into genuine scientific analysis.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is percentage error?</div>
@@ -244,9 +299,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

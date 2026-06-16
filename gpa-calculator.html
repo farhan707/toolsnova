@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -204,7 +218,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">GPA Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="gpa-output" onclick="copyEl('gpa-output')" style="min-height:160px;white-space:pre;cursor:pointer">Add courses above to calculate your GPA.</div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the GPA Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Add your courses</strong> — enter each course name, the grade received (A, B+, C, etc.), and the number of credit hours.</li>
+      <li><strong>Set your grade scale</strong> — choose between standard 4.0 scale or your institution's specific scale.</li>
+      <li><strong>Add all courses for the semester</strong> — the calculator weights each grade by credit hours automatically.</li>
+      <li><strong>Read semester GPA</strong> — see your calculated GPA, total credit hours, and total quality points.</li>
+      <li><strong>Calculate cumulative GPA</strong> — enter your previous CGPA and credit hours to see the updated cumulative GPA after this semester.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 GPA calculation:</strong> Multiply each grade's point value by its credit hours to get quality points. Sum all quality points, divide by total credit hours. Example: A (4.0) in 3-credit course = 12 quality points. B+ (3.3) in 4-credit course = 13.2 quality points. Total: 25.2 quality points ÷ 7 credit hours = 3.6 GPA.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding GPA Calculation</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Grade to Points</div><div class="edu-card-body">A+/A = 4.0. A− = 3.7. B+ = 3.3. B = 3.0. B− = 2.7. C+ = 2.3. C = 2.0. C− = 1.7. D+ = 1.3. D = 1.0. F = 0.0. Some institutions give A+ = 4.3 or use pass/fail for certain courses. Always use your institution's specific grade-to-point conversion table.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Credit Hour Weighting</div><div class="edu-card-body">Not all courses contribute equally to GPA. A 4-credit engineering lab has twice the GPA impact of a 2-credit elective. Laboratory courses, project courses, and capstone courses are often high-credit — getting strong grades in these has outsized GPA impact. Strategic course selection considers both interest and GPA implications.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Grade Replacement</div><div class="edu-card-body">Some institutions allow grade replacement (grade forgiveness) — repeating a course with the old grade replaced or averaged. Check your institution's policy before repeating courses. Grade replacement can significantly improve GPA but only counts for academic purposes — transcripts often still show both attempts, which graduate schools and employers may see.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Semester vs Cumulative</div><div class="edu-card-body">Semester GPA: average for one term. CGPA: weighted average of all semesters. A strong final semester cannot easily rescue a poor CGPA built over 3 years, but consistently improving semester GPAs demonstrate a positive trend that admissions committees and employers notice positively even when CGPA is below ideal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎓 Academic Standing</div><div class="edu-card-body">Good Standing: typically CGPA ≥ 2.0. Academic Probation: CGPA falls below threshold (usually 2.0). Dismissal: remaining on probation for 1-2 consecutive semesters. Dean's List: typically semester GPA ≥ 3.5 with minimum credit hours. Graduation requirement: most programs require CGPA ≥ 2.0 (minimum); honours may require 3.0+.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💡 GPA Strategy</div><div class="edu-card-body">First two years: establish strong foundation — early CGPA impacts are largest. Junior year: take challenging courses needed for graduate school/career. Senior year: balance course load for strong final CGPA while managing job search. Strategic planning of when to take difficult vs easier courses smooths GPA trajectory.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Academic Performance Optimisation</h2>
+    <h3>The early semester advantage</h3>
+    <p>The first two semesters have disproportionate GPA impact because they represent 100% of earned credit hours at the time. A 3.8 first semester establishes a strong CGPA baseline that is difficult to damage later. A 2.0 first semester sets a ceiling that is difficult to raise significantly. Students who start strong have mathematical GPA protection; those who start poorly have a much harder recovery path. Academic support, tutoring, and smaller course loads in the first semester pay compound dividends.</p>
+    <h3>GPA vs skills in hiring</h3>
+    <p>GPA matters most for: graduate school admissions, consulting and finance recruiting (strict GPA cutoffs), government positions, and entry-level positions at large corporations with formal GPA requirements. GPA matters less for: startups, technical roles where portfolio/projects demonstrate skills, experienced hires (3+ years experience), and entrepreneurship. For technical roles, demonstrated project work and internship experience increasingly substitutes for GPA at many companies.</p>
+    <h3>Communicating GPA on applications</h3>
+    <p>If GPA is below 3.0 on a 4.0 scale: consider including only your major GPA if significantly higher (3.2 Major GPA vs 2.8 Overall — many applications have a separate major GPA field). Include GPA if above 3.0, omit if below 3.0 (unless required). Address a low GPA proactively in cover letters by highlighting achievements, trends (improving GPA each semester), and relevant experience that demonstrates capability beyond the GPA number.</p>
+    <div class="edu-highlight"><strong>📊 GPA impact calculation:</strong> To calculate target semester GPA needed for a desired cumulative GPA: Target Semester GPA = (Target CGPA × Total Credits − Current CGPA × Current Credits) ÷ Upcoming Credits. Example: Want 3.5 CGPA after 120 total credits, currently 3.4 on 90 credits: (3.5×120 − 3.4×90) ÷ 30 = (420−306) ÷ 30 = 3.8 needed this semester.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is GPA?</div>
@@ -246,9 +302,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

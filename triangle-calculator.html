@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -220,7 +234,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="tri-output" onclick="copyEl('tri-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Triangle Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your known values</strong> — choose SSS (3 sides), SAS (2 sides + included angle), or ASA (2 angles + included side) based on what you know.</li>
+      <li><strong>Enter the known values</strong> — sides in any consistent unit (cm, m, inches), angles in degrees.</li>
+      <li><strong>Click Calculate</strong> — the solver finds all remaining sides, angles, area, and perimeter.</li>
+      <li><strong>Read the full solution</strong> — see all triangle properties including type classification (equilateral, isosceles, scalene).</li>
+      <li><strong>Verify the triangle inequality</strong> — a valid triangle requires each side to be less than the sum of the other two sides.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Triangle inequality:</strong> For sides a, b, c: a + b > c, b + c > a, a + c > b. If any condition fails, no triangle exists. Example: sides 2, 3, 6 cannot form a triangle because 2 + 3 = 5 < 6. Always check this before solving — it prevents wasted calculation on impossible triangles.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Triangle Solving Methods</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Law of Cosines</div><div class="edu-card-body">For SSS: cos(A) = (b²+c²−a²)/2bc. Finds any angle from all three sides. For SAS: a² = b²+c²−2bc·cos(A). Finds the third side from two sides and the included angle. Generalises the Pythagorean theorem — when A=90°, cos(90°)=0 and the formula reduces to a²=b²+c².</div></div>
+      <div class="edu-card"><div class="edu-card-title">📏 Law of Sines</div><div class="edu-card-body">a/sin(A) = b/sin(B) = c/sin(C). Ratio of each side to the sine of its opposite angle is constant for any triangle. Used for ASA and AAS cases. The ambiguous case (SSA): may produce 0, 1, or 2 valid triangles depending on whether the given side is long enough to reach the opposite angle.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Heron's Formula</div><div class="edu-card-body">Area = √(s(s−a)(s−b)(s−c)) where s = (a+b+c)/2 (semi-perimeter). Calculates area from three sides alone — no height needed. Named after Hero of Alexandria (10–70 AD). The most general area formula, applicable to any triangle given all three sides.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔺 Triangle Types</div><div class="edu-card-body">By sides: Equilateral (all sides equal, all angles 60°). Isosceles (two sides equal, two base angles equal). Scalene (all sides different). By angles: Acute (all angles < 90°). Right (one angle = 90°). Obtuse (one angle > 90°). These classifications affect which solving methods apply and what properties hold.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Right Triangle Shortcuts</div><div class="edu-card-body">For right triangles, Pythagorean theorem (a²+b²=c²) and basic trigonometry (sin, cos, tan) are simpler than the general laws. SOH-CAH-TOA: sin(θ)=opposite/hypotenuse, cos(θ)=adjacent/hypotenuse, tan(θ)=opposite/adjacent. Pythagorean triples: 3-4-5, 5-12-13, 8-15-17 — recognising these speeds up calculations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Real Applications</div><div class="edu-card-body">Surveying and navigation (triangulation to find distances). Architecture (roof structures, load analysis). Engineering (force vector decomposition). GPS positioning (trilateration from satellite distances). Computer graphics (all 3D objects are triangles). Astronomy (stellar distance measurement via parallax triangles).</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Triangle Geometry in the Real World</h2>
+    <h3>Triangulation for distance measurement</h3>
+    <p>Surveyors use triangulation to measure distances without physically reaching remote points. From two known positions (baseline), measure angles to a target point. The triangle formed by the baseline and two sight lines allows calculating the distance to the target using the Law of Sines. This technique measures heights of mountains, widths of rivers, and distances to stars — all from geometry alone. GPS trilateration uses three-dimensional versions of the same principle.</p>
+    <h3>Structural triangles in engineering</h3>
+    <p>Triangles are the only polygon that maintains its shape under load — other polygons deform when force is applied. This is why trusses, bridges, and towers are built from triangular frameworks. The Eiffel Tower, suspension bridge cables, and geodesic domes all rely on triangular stability. Engineers calculate forces in each triangle member using the Law of Cosines and Sines to ensure structures can bear their design loads.</p>
+    <h3>Computer graphics and triangle meshes</h3>
+    <p>All 3D graphics — every game, movie, and animation — represents surfaces as triangle meshes. Triangles are chosen because: any three non-collinear points define a unique plane (ensuring flat faces), triangles are always convex (simplifying rendering algorithms), and triangle calculation is extremely efficient. A modern game renders millions of triangles per frame using the triangle calculations this tool performs.</p>
+    <div class="edu-highlight"><strong>📐 Triangle solving decision chart:</strong> Know 3 sides (SSS)? → Law of Cosines for all angles. Know 2 sides + included angle (SAS)? → Law of Cosines for third side, then Law of Sines. Know 2 angles + any side (AAS/ASA)? → Third angle = 180°−A−B, then Law of Sines for sides. Know 2 sides + non-included angle (SSA)? → Check ambiguous case — may have 0, 1, or 2 solutions.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is SSS, SAS, ASA?</div>
@@ -254,9 +309,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

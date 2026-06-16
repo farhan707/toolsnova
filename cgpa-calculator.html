@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -205,7 +219,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cgpa-output" onclick="copyEl('cgpa-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the CGPA Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your CGPA</strong> — your cumulative grade point average as shown on your transcript.</li>
+      <li><strong>Select your GPA scale</strong> — choose 4.0 (US/UK standard), 5.0, 7.0, or 10.0 (common in India/Pakistan).</li>
+      <li><strong>Read percentage equivalent</strong> — see your CGPA converted to percentage using the standard formula for your scale.</li>
+      <li><strong>Check letter grade</strong> — see the letter grade equivalent (A+, A, B, C, D, F).</li>
+      <li><strong>See scale conversions</strong> — the calculator shows your equivalent GPA on all other scales simultaneously.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎓 India/Pakistan conversion:</strong> Most universities use Percentage = CGPA × 9.5 (on a 10.0 scale). So 8.5 CGPA = 8.5 × 9.5 = 80.75%. Some universities use different multipliers — always verify with your institution's official conversion policy, especially for job applications and graduate school admissions where the exact formula matters.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding GPA and CGPA</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 GPA vs CGPA</div><div class="edu-card-body">GPA (Grade Point Average): average for one semester. CGPA (Cumulative GPA): weighted average across all completed semesters. CGPA = Total Grade Points Earned ÷ Total Credit Hours Attempted. CGPA carries more weight in academic evaluations than any single semester GPA.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 4.0 Scale Grades</div><div class="edu-card-body">A+ = 4.0, A = 4.0, A− = 3.7, B+ = 3.3, B = 3.0, B− = 2.7, C+ = 2.3, C = 2.0, C− = 1.7, D = 1.0, F = 0.0. Grade points × credit hours = quality points for that course. Sum of quality points ÷ sum of credit hours = GPA. A grade conversion can vary slightly between institutions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Scale Differences</div><div class="edu-card-body">US/UK: 4.0 scale most common. India: 10.0 scale (UGC standard) or 7.0 scale (some engineering universities). Pakistan: 4.0 scale (NUST, LUMS, IBA) or 5.0 scale (some public universities). Germany: 1.0 (best) to 5.0 (fail) — reversed direction. Always specify scale when sharing GPA internationally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎓 Academic Honours</div><div class="edu-card-body">4.0 scale: Summa Cum Laude (≥3.9), Magna Cum Laude (≥3.7), Cum Laude (≥3.5). 10.0 scale: Distinction (≥8.5 or 75%), Merit (≥7.0 or 60%), Pass (≥5.0 or 45%). Requirements vary by institution — check your university's specific thresholds for honours classification.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💼 Employer Requirements</div><div class="edu-card-body">Most companies: 2.5+ on 4.0 (or 60%+ on 10.0). Good companies: 3.0+/65%+. Top companies (Big 4, FAANG, investment banks): typically 3.5+/75%+. Pakistan/India: 3.0/10.0 or 60% for most private sector. Civil service: varies by ministry and post. Research and academia: typically 3.5+/75%+ required.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎓 Graduate School</div><div class="edu-card-body">US Master's programs: typically 3.0 minimum, competitive programs 3.5+. PhD programs: 3.5+ common requirement. UK postgraduate: typically 2:1 (second-class upper) equivalent, roughly 3.3+ on 4.0 or 65%+. Australian postgraduate: Credit average (65%+) minimum, often Distinction (75%+) for competitive programs.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Improving and Interpreting CGPA</h2>
+    <h3>The CGPA recovery strategy</h3>
+    <p>A poor early-semester CGPA is recoverable because CGPA is a weighted cumulative average. If you scored 2.5 GPA in your first two semesters (50% of credit hours), scoring 3.8 in your remaining semesters (50% of credit hours) results in a final CGPA of approximately (2.5+3.8)/2 = 3.15. The weight of early poor performance decreases with each additional semester. Focus on maximising GPA in every remaining semester — recovery is mathematically possible.</p>
+    <h3>Course credit weighting</h3>
+    <p>Higher credit-hour courses impact CGPA more than lower credit-hour courses. A 4-credit-hour course contributes twice as much to CGPA as a 2-credit-hour course. Strategic implication: prioritise performance in high-credit-hour major courses. A strong grade in a 4-credit core course compensates for a weaker grade in a 1-credit elective. Understanding this weighting helps prioritise study effort allocation across different courses.</p>
+    <h3>CGPA in international applications</h3>
+    <p>When applying internationally, your CGPA must be translated to the target country's scale. WES (World Education Services), NACES, and ICES are credential evaluation services that officially convert international GPAs for US universities and employers. These evaluations are required for most US graduate school applications from international students. Knowing your converted equivalent in advance helps assess competitiveness before applying.</p>
+    <div class="edu-highlight"><strong>🎓 CGPA conversion formulas (approximate):</strong> 10.0 scale → percentage: ×9.5. 10.0 scale → 4.0 scale: ×0.4. 4.0 scale → percentage: ×25. 4.0 scale → 10.0 scale: ×2.5. These are standard conversions — some institutions use slightly different multipliers. For official purposes (job applications, admissions), obtain the conversion formula directly from your university's registrar's office.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I convert CGPA to percentage?</div>
@@ -243,9 +298,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -205,7 +219,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Grade Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="grade-output" onclick="copyEl('grade-output')" style="min-height:180px;white-space:pre;cursor:pointer">Add assignments above to calculate your grade.</div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Grade Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter assessment scores</strong> — add each graded component: assignments, tests, midterm, final exam.</li>
+      <li><strong>Set weightings</strong> — enter the percentage weight each component contributes to the final grade.</li>
+      <li><strong>Verify weights sum to 100%</strong> — the calculator warns if weights don't add up correctly.</li>
+      <li><strong>Read your current grade</strong> — see weighted average and letter grade equivalent.</li>
+      <li><strong>Use the 'what-if' feature</strong> — enter hypothetical scores for remaining assessments to calculate what grade you need to achieve a target final grade.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 What grade do I need?</strong> Required score = (Target grade − Current weighted score) ÷ Remaining weight. Example: Need 80% overall, currently at 75% weighted average with 30% of grade remaining: Required = (80 − 75×0.70) ÷ 0.30 = (80 − 52.5) ÷ 0.30 = 91.7%. You need 91.7% on the remaining work to achieve 80% overall.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Grade Weighting</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Weighted vs Unweighted</div><div class="edu-card-body">Unweighted: simple average of all scores. Weighted: each score multiplied by its contribution percentage. If tests are worth 60% and homework 40%: Final = (Test avg × 0.60) + (Homework avg × 0.40). Weighted systems appropriately reflect the relative importance of different assessments in measuring learning.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Assessment Types</div><div class="edu-card-body">Formative: low-stakes (participation, homework) measuring ongoing learning. Summative: high-stakes (exams, projects) measuring final achievement. Most grading systems weight summative assessments more heavily. Final exams often worth 30-40% — a single assessment that can significantly shift the final grade.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Grade Distribution</div><div class="edu-card-body">Common letter grade cutoffs: A ≥ 90%, B ≥ 80%, C ≥ 70%, D ≥ 60%, F < 60%. Some institutions use +/− grades: A− ≥ 90%, A ≥ 93%, A+ ≥ 97%. Plus/minus grading affects GPA more than simple letter grades. Know your institution's exact cutoffs for accurate grade planning.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Extra Credit</div><div class="edu-card-body">Extra credit opportunities can provide a grade buffer without affecting other students' grades (unlike curving). Even small amounts of extra credit can be decisive when a grade is borderline. Always pursue extra credit if offered — the upside is real grade improvement; the downside is only time spent.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Dropped Scores</div><div class="edu-card-body">Many courses drop the lowest quiz score, homework, or lab report. Know your course policy and factor dropped scores into grade calculations. A consistently poor performer on early assignments may benefit significantly from a dropped score policy — it provides a safety net for learning curve adjustment.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 International Grading</div><div class="edu-card-body">UK: First (70%+), Upper Second 2:1 (60-69%), Lower Second 2:2 (50-59%), Third (40-49%), Fail (<40%). Australia: High Distinction (85%+), Distinction (75-84%), Credit (65-74%), Pass (50-64%), Fail (<50%). Germany: 1.0 (excellent) through 5.0 (fail). These systems require conversion when applying internationally.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Grade Planning and Academic Strategy</h2>
+    <h3>Calculating required exam scores</h3>
+    <p>Students frequently need to know 'what do I need on the final?' This calculation: Required Final Score = (Target Grade − Current Weighted Average × (1 − Final Weight)) ÷ Final Weight. If target is 85%, current weighted average is 82%, and final is worth 40%: Required = (85 − 82×0.60) ÷ 0.40 = (85 − 49.2) ÷ 0.40 = 89.5% needed. Knowing this number weeks before the final allows focused preparation on specific topics rather than general review.</p>
+    <h3>Strategic assessment prioritisation</h3>
+    <p>Not all assignments deserve equal effort. A 5-point homework with 10% weight deserves less time than a 100-point exam with 40% weight. Calculate the grade impact of each remaining assessment: a 10-point improvement on a 40%-weighted exam is worth 4% on the final grade; a 10-point improvement on a 5%-weighted quiz is worth only 0.5%. Allocate study time proportional to grade impact, not proportional to upcoming deadline.</p>
+    <h3>Communicating with instructors</h3>
+    <p>If a borderline grade calculation shows you are within 1-2% of the next grade boundary, discussing your situation with the instructor is worthwhile — especially if you can demonstrate consistent effort and improvement. Instructors have discretion in borderline cases and often respond positively to students who demonstrate self-awareness about their performance and genuine engagement with the material. Never ask for a grade change without a specific academic justification.</p>
+    <div class="edu-highlight"><strong>📊 Grade calculation essentials:</strong> Know every assessment's weight (adds to 100%). Track all scores as they are returned. Calculate current weighted average weekly. Compute required scores for target grade after each assessment. Prioritise study time by grade impact × remaining opportunity. Check if dropped scores apply. Confirm exact grade cutoffs for +/− grades. These habits eliminate grade surprises at semester end.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a weighted grade?</div>
@@ -243,9 +298,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

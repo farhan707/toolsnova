@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -204,7 +218,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="quad-output" onclick="copyEl('quad-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Quadratic Equation Solver</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter coefficient a</strong> — the number multiplying x². Must not be zero (if a=0, the equation is linear, not quadratic).</li>
+      <li><strong>Enter coefficient b</strong> — the number multiplying x. Can be zero.</li>
+      <li><strong>Enter coefficient c</strong> — the constant term. Can be zero.</li>
+      <li><strong>Click Solve</strong> — the calculator shows the discriminant, roots, and full step-by-step working.</li>
+      <li><strong>Interpret the result</strong> — two real roots (discriminant > 0), one repeated root (discriminant = 0), or two complex roots (discriminant < 0).</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Quick formula:</strong> x = (-b ± √(b²-4ac)) / 2a. The ± gives two solutions: one using + and one using −. The expression b²-4ac under the square root is the discriminant — it determines how many real solutions exist before you do any calculation.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Quadratic Equations</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Standard Form</div><div class="edu-card-body">ax² + bx + c = 0 where a ≠ 0. The highest power of x is 2 — this is what makes it quadratic (from Latin quadratus = square). Every quadratic has exactly 2 solutions in the complex number system, though they may be equal or non-real.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 The Discriminant</div><div class="edu-card-body">b² − 4ac determines the nature of roots. Positive: two distinct real roots. Zero: one repeated real root (the parabola touches the x-axis at exactly one point). Negative: two complex conjugate roots (the parabola never crosses the x-axis). Calculating discriminant first reveals the solution type instantly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Factoring Method</div><div class="edu-card-body">When ac is small and integer roots exist, factoring is faster: x² − 5x + 6 = (x−2)(x−3) = 0, so x=2 or x=3. Find two numbers that multiply to c and add to b. For x² − 5x + 6: numbers that multiply to 6 and add to −5 are −2 and −3. Factoring only works when integer or simple fraction roots exist.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌀 Completing the Square</div><div class="edu-card-body">Transforms ax² + bx + c into a(x+h)² + k form. Divide by a, move c to right side, add (b/2a)² to both sides, factor left side. Produces the vertex form of the parabola. The quadratic formula is derived by completing the square on the general form ax² + bx + c = 0.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Parabola Connection</div><div class="edu-card-body">y = ax² + bx + c is a parabola. The roots are where the parabola crosses the x-axis (y=0). Two roots: crosses twice. One root: touches x-axis at vertex. No real roots: parabola entirely above or below x-axis. The vertex is at x = −b/2a, y = c − b²/4a.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Real Applications</div><div class="edu-card-body">Projectile motion: h = −16t² + v₀t + h₀ (height vs time, find when object hits ground). Area problems: room of area 24m² where length is 2m more than width: w(w+2)=24. Profit maximisation: P = −x² + 40x − 300 (find maximum profit). Engineering stress calculations. Computer graphics curve generation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Quadratic Equations in Practice</h2>
+    <h3>Choosing the right method</h3>
+    <p>For simple equations with small integer coefficients: try factoring first (fastest when it works). For equations where the discriminant is a perfect square: factoring or quadratic formula both work cleanly. For equations with irrational or complex roots: quadratic formula is the only practical method. For understanding the geometry: completing the square gives vertex form directly. The quadratic formula always works regardless of coefficient values — it is the universal fallback.</p>
+    <h3>Complex roots in engineering</h3>
+    <p>Complex roots (when discriminant < 0) appear in electrical engineering (AC circuit analysis), control systems (stability analysis), and signal processing (filter design). Complex roots x = a ± bi indicate oscillatory behaviour in physical systems. The real part (a) represents decay/growth rate; the imaginary part (b) represents oscillation frequency. Engineers regularly work with quadratics that produce complex roots.</p>
+    <h3>Checking your answers</h3>
+    <p>Always verify quadratic solutions by substituting back into the original equation. If x=3 is a root of x² − 5x + 6 = 0: 3² − 5(3) + 6 = 9 − 15 + 6 = 0 ✓. For complex roots: substitute the complex number and verify the result is zero using complex arithmetic. This verification step catches calculation errors and builds confidence in the solution.</p>
+    <div class="edu-highlight"><strong>📐 Discriminant decision tree:</strong> Calculate b²−4ac first. If > 0 → two real roots (use quadratic formula or factor). If = 0 → one root: x = −b/2a (no ± needed). If < 0 → complex roots: real part = −b/2a, imaginary part = √(|discriminant|)/2a. This decision saves calculation time by identifying the solution type upfront.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a quadratic equation?</div>
@@ -242,9 +298,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

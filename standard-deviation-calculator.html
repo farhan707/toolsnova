@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -199,7 +213,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="std-output" onclick="copyEl('std-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Standard Deviation Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your data</strong> — paste numbers separated by commas, spaces, or new lines. No limit on dataset size.</li>
+      <li><strong>Click Calculate</strong> — instantly see mean, median, standard deviation (sample and population), variance, range, and min/max.</li>
+      <li><strong>Choose sample or population</strong> — if your data is a sample from a larger population, use sample SD (divides by n−1). If your data is the entire population, use population SD (divides by n).</li>
+      <li><strong>Try the preset datasets</strong> — click the example buttons to see how the statistics change with different data distributions.</li>
+      <li><strong>Copy the full result</strong> — all statistics are available to copy for use in reports or further analysis.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Sample vs Population:</strong> If you measured 50 students from a school of 1,000 — your 50 values are a sample. Use sample SD (n−1). If you have data for all 1,000 students — that's the population. Use population SD (n). When in doubt about which to use, sample SD is almost always the correct choice for real-world data analysis.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Statistical Measures</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Mean (Average)</div><div class="edu-card-body">Sum of all values divided by count. The balance point of the data. Sensitive to outliers — one extreme value pulls the mean significantly. A dataset of {1,2,3,4,100} has mean 22 but median 3. When data is skewed, median better represents the 'typical' value.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📏 Standard Deviation</div><div class="edu-card-body">Measures average distance of data points from the mean. Low SD: data clustered tightly around mean. High SD: data widely spread. Same unit as original data. The most important measure of spread in statistics — fundamental to hypothesis testing, quality control, and financial risk measurement.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Variance</div><div class="edu-card-body">The square of standard deviation. Useful in mathematical calculations because variances of independent variables can be added (standard deviations cannot). The formula: σ² = Σ(x−μ)²/n. For sample variance, divide by n−1 (Bessel's correction), which corrects bias in small samples.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Normal Distribution</div><div class="edu-card-body">The 68-95-99.7 rule: in a normal distribution, 68% of data falls within 1 SD of the mean, 95% within 2 SD, 99.7% within 3 SD. This allows calculating probabilities directly from mean and SD. IQ scores (mean 100, SD 15): 68% of people score between 85-115, 95% between 70-130.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Coefficient of Variation</div><div class="edu-card-body">CV = (SD/Mean) × 100%. Expresses SD as a percentage of the mean — enabling comparison of variability between datasets with different units or scales. A stock with mean return 10% and SD 20% has CV 200% (high volatility). A stock with mean 10% and SD 5% has CV 50% (lower relative volatility).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Z-Score</div><div class="edu-card-body">Z = (x − mean) / SD. Measures how many standard deviations a specific value is from the mean. Z=0: exactly average. Z=1: one SD above average. Z=−2: two SD below average. Enables comparing values from different distributions on a common scale — essential for standardised testing, quality control, and anomaly detection.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Statistics in Real Applications</h2>
+    <h3>Quality control in manufacturing</h3>
+    <p>Statistical Process Control (SPC) uses mean and standard deviation to monitor manufacturing quality. A process producing bolts with target diameter 10mm and SD 0.1mm should produce 99.7% of bolts between 9.7mm and 10.3mm (±3 SD). Control charts alert operators when measurements drift outside expected bounds. Six Sigma quality methodology aims to reduce process SD until defects occur less than 3.4 times per million — requiring the process mean to be at least 6 SD from specification limits.</p>
+    <h3>Financial risk measurement</h3>
+    <p>Standard deviation is the primary measure of investment volatility. A stock with annual SD of 15% has 'typical' year-to-year variation of ±15% around its average return. Portfolio construction uses SD and correlations between assets to minimise total portfolio volatility for a given expected return (Modern Portfolio Theory). Value at Risk (VaR) — the standard risk metric for banks — is calculated directly from the SD of portfolio returns.</p>
+    <h3>A/B testing and statistical significance</h3>
+    <p>When testing two versions of a webpage or product feature, standard deviation is used to determine if observed differences are statistically significant or due to random variation. A treatment group showing 5% higher conversion with high SD (high variability) may not be significantly different from the control. The same 5% difference with low SD may be highly significant. T-tests and other statistical tests use SD to calculate p-values that determine significance.</p>
+    <div class="edu-highlight"><strong>📊 Quick statistics interpretation:</strong> SD close to 0 → data very consistent. SD > mean → high variability, possibly skewed data. Mean ≈ median → roughly symmetric distribution. Mean >> median → positive skew (outliers on high end). Mean << median → negative skew (outliers on low end). These quick checks reveal data distribution shape without plotting.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is standard deviation?</div>
@@ -236,9 +292,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

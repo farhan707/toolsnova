@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -244,7 +258,49 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="len-output" onclick="copyEl('len-output')" aria-label="Conversion result"></div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Length Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your measurement</strong> — type any length value including decimals.</li>
+      <li><strong>Select the input unit</strong> — choose from metres, centimetres, millimetres, kilometres, inches, feet, yards, or miles.</li>
+      <li><strong>Read all conversions</strong> — see your length expressed in all units simultaneously.</li>
+      <li><strong>Use for practical applications</strong> — height conversion, distance conversion, fabric measurement, screen sizes, and construction measurements.</li>
+      <li><strong>Chain conversions</strong> — convert the output value to further units by entering it as a new input.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📏 The most useful conversion to memorise:</strong> 1 inch = 2.54 centimetres exactly. This single fact enables all other length conversions: 1 foot = 30.48 cm, 1 yard = 91.44 cm, 1 mile = 1.60934 km. Knowing 1 inch = 2.54 cm is the foundation of imperial-to-metric length conversion.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Length Units</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📏 Metric System</div><div class="edu-card-body">Built on powers of 10 for easy conversion. Base unit: metre (m). Kilometre (km) = 1,000 m. Centimetre (cm) = 0.01 m. Millimetre (mm) = 0.001 m. Micrometre (μm) = 0.000001 m. Nanometre (nm) = 0.000000001 m. The prefix system (kilo, centi, milli, micro, nano) makes conversion trivial: just move the decimal point.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 Imperial/US Customary</div><div class="edu-card-body">12 inches = 1 foot. 3 feet = 1 yard. 1,760 yards = 1 mile. 5,280 feet = 1 mile. These non-decimal relationships make mental conversion difficult. The system originated from body parts: inch (thumb width), foot (foot length), yard (nose to outstretched hand), mile (1,000 Roman double-paces). Still primary in US, UK (for roads and heights), and some other contexts.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Global Usage</div><div class="edu-card-body">Metric (SI): scientific use worldwide, everyday use in ~97% of countries. Imperial/US: everyday use in US, Myanmar, Liberia. UK: hybrid — metric for most purposes but miles for road distances, feet/inches for personal height, pints for beer. Aviation: feet for altitude worldwide (including metric countries). Maritime: nautical miles and knots globally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Nautical Units</div><div class="edu-card-body">Nautical mile = 1,852 metres = 1.151 statute miles. Defined as 1 minute of arc of latitude — directly tied to Earth's geometry. Knot = 1 nautical mile per hour. Used in aviation and maritime navigation globally. A ship travelling at 20 knots covers 20 nautical miles per hour = 37 km/h = 23 mph.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Scientific Lengths</div><div class="edu-card-body">Angstrom (Å) = 10⁻¹⁰ m: atomic and molecular distances. Nanometre (nm): visible light wavelengths (400–700 nm). Micrometre/micron (μm): bacteria size, chip features. Light-year: 9.461 × 10¹⁵ metres — distance light travels in one year. Parsec = 3.086 × 10¹⁶ m = 3.26 light-years: used for stellar distances.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 Screen Measurement</div><div class="edu-card-body">Screen sizes (phones, TVs, monitors) are measured diagonally in inches — even in metric countries. A '6.7-inch phone' has a 6.7-inch diagonal screen regardless of country. TV sizes follow the same convention. This industry-wide use of inches persists globally despite metric adoption elsewhere, requiring conversion for precise physical planning.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Length Conversion in Practice</h2>
+    <h3>Construction and architecture</h3>
+    <p>Building plans in the US use feet and inches; international projects use metres. Converting between systems requires precision — a 2.54 cm error per metre compounds over 10 metres to 25.4 cm. Architectural drawings typically include both unit systems on international projects. Lumber dimensions add another complication: a '2×4' piece of lumber is actually 1.5×3.5 inches (38×89 mm) — the nominal size differs from the actual size due to planing. Always verify actual dimensions, not nominal labels.</p>
+    <h3>Fabric and clothing measurements</h3>
+    <p>Clothing sizes across countries use different measurement systems and size labels. US/UK uses inches for waist, chest, and inseam measurements. European sizing uses centimetres. 'Medium' in one brand may not equal 'Medium' in another — always convert to body measurements in cm or inches for accurate sizing. Online international shopping requires careful size conversion — a US size 10 dress is approximately a UK size 14 and a European size 40.</p>
+    <h3>Athletic and fitness conversions</h3>
+    <p>Running distances are a common conversion need: 5K = 3.107 miles. 10K = 6.214 miles. Half marathon = 13.109 miles = 21.098 km. Marathon = 26.219 miles = 42.195 km. Swimming pool lengths vary: 25-metre pools (most club pools), 50-metre pools (Olympic), 25-yard pools (US). Gym equipment mixes units: treadmill speeds often in km/h, race paces in min/mile. Athletes who train internationally constantly need these conversions.</p>
+    <div class="edu-highlight"><strong>📏 Essential length conversions:</strong> 1 inch = 2.54 cm. 1 foot = 30.48 cm. 1 yard = 91.44 cm. 1 mile = 1.60934 km. 1 km = 0.62137 miles. 1 metre = 3.28084 feet = 39.3701 inches. 1 cm = 0.3937 inches. For quick mental conversion: km to miles → multiply by 0.6 (approximate). Miles to km → multiply by 1.6. These shortcuts are accurate to within 3% for everyday use.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How many kilometres in a mile?</div>
@@ -283,9 +339,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=16"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

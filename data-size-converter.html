@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -242,7 +256,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="dt-output" onclick="copyEl('dt-output')" aria-label="Conversion result"></div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Data Size Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your data size value</strong> — type the number of bytes, kilobytes, megabytes, or any unit.</li>
+      <li><strong>Select the input unit</strong> — choose from bits, bytes, kilobytes, megabytes, gigabytes, terabytes, or petabytes.</li>
+      <li><strong>Choose binary or decimal</strong> — 1 KB = 1,024 bytes (binary, used by operating systems) or 1 KB = 1,000 bytes (decimal, used by storage manufacturers). This difference matters for large drives.</li>
+      <li><strong>Read all conversions</strong> — see your data size expressed in all units simultaneously.</li>
+      <li><strong>Use for storage planning</strong> — calculate how many files fit on a drive, compare file sizes, or understand download times.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ The 1 TB hard drive confusion:</strong> Hard drive manufacturers use decimal (1 TB = 1,000,000,000,000 bytes). Your operating system uses binary (1 TiB = 1,099,511,627,776 bytes). A '1 TB' drive shows as ~931 GB in Windows/macOS. This is not a defect — it's a unit definition difference. The drive contains exactly 1,000,000,000,000 bytes; Windows just displays it in binary gigabytes.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Data Size Units</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💾 Bits and Bytes</div><div class="edu-card-body">Bit: the smallest unit of digital information — 0 or 1. Byte = 8 bits: the standard unit for data storage (one ASCII character = 1 byte). All storage sizes are multiples of bytes. Network speeds are often in bits per second (Mbps, Gbps) while file sizes are in bytes (MB, GB) — causing confusion: a 100 Mbps connection transfers 100/8 = 12.5 MB per second.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Binary vs Decimal</div><div class="edu-card-body">Binary (IEC standard): 1 KiB = 1,024 bytes (2¹⁰). Used by OS file systems, RAM. Decimal (SI standard): 1 KB = 1,000 bytes (10³). Used by storage manufacturers, network speeds. For small files, difference is negligible. For large drives: 1 TB (decimal) = 0.909 TiB (binary) — explaining why a 1 TB drive shows as ~931 GB in Windows.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Size Scale</div><div class="edu-card-body">1 Byte = 8 bits. 1 KB ≈ 1 thousand bytes. 1 MB ≈ 1 million bytes. 1 GB ≈ 1 billion bytes. 1 TB ≈ 1 trillion bytes. 1 PB ≈ 1 quadrillion bytes. 1 EB ≈ 1 quintillion bytes. 1 ZB ≈ 1 sextillion bytes. Global internet traffic now measured in zettabytes per year. Total data generated by humanity: estimated at 120 zettabytes by 2025.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 File Size Reference</div><div class="edu-card-body">SMS message: ~0.1–0.2 KB. Email (text): ~20 KB. Web page: 1–5 MB average. MP3 song (128 kbps, 4 min): ~4 MB. HD photo (DSLR): 5–25 MB. 4K video (1 min): 350–400 MB. DVD: 4.7 GB. Blu-ray: 25–50 GB. Operating system: 5–20 GB. Modern video game: 50–200 GB.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Network Speed vs Storage</div><div class="edu-card-body">Network speeds: bits per second (bps, Kbps, Mbps, Gbps). File sizes: bytes (KB, MB, GB). Converting: download time (seconds) = file size (bytes) ÷ speed (bytes/second) = file size (MB) ÷ (speed Mbps ÷ 8). A 1 GB file on 100 Mbps connection: 1,000 MB ÷ (100 ÷ 8) = 1,000 ÷ 12.5 = 80 seconds. ISPs advertise in Mbps; you experience downloads in MB/s.</div></div>
+      <div class="edu-card"><div class="edu-card-title">☁️ Cloud Storage Context</div><div class="edu-card-body">Free tiers: Google Drive 15 GB, iCloud 5 GB, Dropbox 2 GB, OneDrive 5 GB. Paid: typically $2–10/month per 100 GB–2 TB. Mobile data plans: 5–100 GB/month (cellular). The average smartphone user generates 3–5 GB of photos/year. A 4K movie is 15–25 GB. Understanding sizes helps evaluate whether storage plans meet actual needs.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Data Size in Technology</h2>
+    <h3>Understanding internet speeds</h3>
+    <p>'100 Mbps broadband' means 100 megabits per second — not megabytes. Divide by 8 to get megabytes per second: 100 Mbps = 12.5 MB/s. Practical download speeds: a 1 GB game update at 100 Mbps takes approximately 80 seconds (assuming no overhead). Gigabit internet (1 Gbps) provides 125 MB/s — downloading that 1 GB game in 8 seconds. Upload speeds are typically 10–30% of download speeds on asymmetric connections like cable or DSL; fibre broadband often offers symmetrical speeds.</p>
+    <h3>Storage planning for photography and video</h3>
+    <p>Professional photographers and videographers need to plan storage carefully. RAW photos: 20–45 MB each depending on camera. A 1-day professional shoot: 500–2,000 photos = 10–90 GB. 4K video: 4–8 GB per hour (H.264), 20–50 GB per hour (ProRes). A wedding videographer shooting 8 hours at 4K: 30–400 GB of footage. Best practice: 3-2-1 backup rule — 3 copies of data, on 2 different media types, with 1 offsite. For 100 GB of photos: local drive + external drive + cloud = 3 copies total.</p>
+    <h3>Data centre and enterprise scale</h3>
+    <p>Modern data centres operate at petabyte and exabyte scale. Facebook stores approximately 250 billion photos (approximately 100 petabytes). YouTube receives 500 hours of video per minute. The entire printed collection of the US Library of Congress is approximately 10 TB. All human speech ever spoken is estimated at approximately 5 exabytes. Understanding the scale from bytes to zettabytes contextualises both individual file management decisions and the infrastructure requirements of large-scale digital services.</p>
+    <div class="edu-highlight"><strong>💾 Data size quick reference:</strong> 1 KB = 1,024 bytes (binary). 1 MB = 1,048,576 bytes. 1 GB = 1,073,741,824 bytes. 1 TB = 1,099,511,627,776 bytes. Network: 1 Mbps = 0.125 MB/s. Common: 1 GB file at 10 Mbps = 800 seconds. 1 TB drive = 931 GB displayed in Windows. A typical smartphone holds 64–256 GB. Average photo: 3–8 MB (JPEG), 20–40 MB (RAW). These reference points make data size decisions intuitive.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How many MB in a GB?</div>
@@ -282,9 +337,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=16"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -236,7 +250,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="sp-output" onclick="copyEl('sp-output')" aria-label="Conversion result"></div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Speed Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your speed value</strong> — type the speed you want to convert.</li>
+      <li><strong>Select the input unit</strong> — choose from km/h, mph, m/s, knots, or Mach number.</li>
+      <li><strong>Read all conversions</strong> — see your speed in all units simultaneously.</li>
+      <li><strong>Use the reference table</strong> — common speeds (walking, driving, sound, light) provide context for your conversion.</li>
+      <li><strong>Convert Mach numbers</strong> — Mach 1 varies with altitude and temperature; the converter uses standard conditions (sea level, 20°C = 343 m/s).</li>
+    </ol>
+    <div class="edu-highlight"><strong>🚗 Most common conversion:</strong> km/h to mph — multiply by 0.621 (or divide by 1.609). mph to km/h — multiply by 1.609. Quick check: 100 km/h ≈ 62 mph. 60 mph ≈ 97 km/h. Speed limits in the UK are in mph; continental Europe uses km/h — drivers crossing the Channel need this conversion constantly.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Speed Units</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🚗 km/h and mph</div><div class="edu-card-body">Kilometres per hour (km/h): standard in ~90% of countries for road speed. Miles per hour (mph): used in US, UK, and a few others. Conversion: 1 mph = 1.60934 km/h. Common limits: 30 mph = 48 km/h (residential). 60 mph = 97 km/h (rural). 70 mph = 113 km/h (UK motorway). 100 km/h = 62 mph (European motorway). 130 km/h = 81 mph (French autoroute).</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Metres per Second (m/s)</div><div class="edu-card-body">The SI unit of speed. Used in physics and engineering. Walking: ~1.4 m/s. Running: ~3–6 m/s. Car 100 km/h = 27.8 m/s. Speed of sound: 343 m/s. Conversion: 1 m/s = 3.6 km/h. Divide km/h by 3.6 to get m/s. Multiply m/s by 3.6 to get km/h. Used in physics equations: kinetic energy = ½mv² requires speed in m/s.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚓ Knots</div><div class="edu-card-body">1 knot = 1 nautical mile per hour = 1.852 km/h = 1.151 mph. Used globally in aviation and maritime navigation — a rare example of a non-metric unit adopted universally including in metric countries. Airspeed is always reported in knots (for international consistency). Ocean current speeds, wind speeds at sea, and ship speeds all use knots.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✈️ Mach Number</div><div class="edu-card-body">Ratio of object speed to local speed of sound. Mach 1 = speed of sound (343 m/s at 20°C sea level, 295 m/s at cruise altitude where air is colder). Subsonic: < Mach 0.8. Transonic: Mach 0.8–1.2. Supersonic: > Mach 1.2. Hypersonic: > Mach 5. Commercial jets cruise at Mach 0.85. Concorde cruised at Mach 2. SR-71 Blackbird: Mach 3.3.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Speed of Light</div><div class="edu-card-body">c = 299,792,458 m/s = 1,079,252,848 km/h = 670,616,629 mph. The universal speed limit — nothing with mass can reach or exceed it. Light takes 8.3 minutes to travel from Sun to Earth (150 million km). Light takes 1.3 seconds to travel Earth-Moon distance (384,400 km). Distance in light-seconds, light-minutes, and light-years are practical units for astronomical distances.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏃 Human Speed Reference</div><div class="edu-card-body">Walking: 5 km/h = 3.1 mph. Running: 12–15 km/h = 7.5–9.3 mph. Sprint world record: 44.72 km/h = 27.8 mph (Usain Bolt). Cycling: 20–30 km/h casual, 50+ km/h competitive. Swimming: 7–9 km/h world-class. Cheetah (fastest land animal): 112–120 km/h = 70–75 mph. Peregrine falcon (fastest animal): 389 km/h = 242 mph in a dive.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Speed in Transportation and Physics</h2>
+    <h3>Road speed conversions for travellers</h3>
+    <p>International drivers need speed conversions constantly. UK uses mph with metric distances (confusingly, road signs show miles but fuel is sold in litres). Europe uses km/h. US uses mph. Hiring a car abroad: speedometer may be in different units to road signs. GPS navigation typically allows unit selection. Key conversions to remember: 50 km/h = 31 mph (urban limit in most of Europe). 90 km/h = 56 mph (rural roads). 130 km/h = 81 mph (motorway). 25 mph = 40 km/h. 55 mph = 89 km/h. 65 mph = 105 km/h (US interstate speed limit).</p>
+    <h3>Aviation speed conventions</h3>
+    <p>Aviation uses multiple speed definitions that serve different purposes. Indicated Airspeed (IAS): what the airspeed indicator shows — used for aircraft handling. True Airspeed (TAS): actual speed through the air — increases with altitude as air density decreases. Ground Speed: actual speed over the ground — TAS adjusted for wind. Mach number: ratio to local speed of sound — used at high altitude. All reported in knots internationally. A commercial airliner cruising at 550 knots true airspeed at 35,000 feet (Mach 0.85) may have a ground speed of 500–600 knots depending on winds.</p>
+    <h3>Speed in physics calculations</h3>
+    <p>Physics equations require consistent units. Kinetic energy: KE = ½mv² — speed must be in m/s and mass in kg for energy in Joules. Momentum: p = mv — same units. Velocity in Newton's second law: F = ma, where a = Δv/Δt in m/s². Converting between speed units before plugging into physics equations is essential — a car's 100 km/h must become 27.78 m/s for physics calculations. The SI system (m, kg, s) is universal for physics precisely because all derived units are consistent.</p>
+    <div class="edu-highlight"><strong>🚗 Speed conversion quick reference:</strong> 1 mph = 1.609 km/h. 1 km/h = 0.621 mph. 1 knot = 1.852 km/h = 1.151 mph. 1 m/s = 3.6 km/h = 2.237 mph. Mach 1 (sea level) = 343 m/s = 1,235 km/h = 767 mph. Common: 60 mph = 96.6 km/h. 100 km/h = 62.1 mph. 30 mph = 48.3 km/h. 50 km/h = 31.1 mph. Speed of sound: 343 m/s. Speed of light: 299,792,458 m/s.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I convert mph to km/h?</div>
@@ -275,9 +330,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=16"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

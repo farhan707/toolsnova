@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -240,7 +254,49 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="wt-output" onclick="copyEl('wt-output')" aria-label="Conversion result"></div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Weight Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your weight or mass value</strong> — type any number including decimals.</li>
+      <li><strong>Select the input unit</strong> — choose from kilograms, grams, pounds, ounces, stone, metric tonnes, or US tons.</li>
+      <li><strong>Read all conversions</strong> — see the weight expressed in all common units simultaneously.</li>
+      <li><strong>Use for everyday applications</strong> — body weight, cooking ingredients, shipping weights, luggage limits, and fitness tracking.</li>
+      <li><strong>Note mass vs weight</strong> — technically, mass (kilograms) and weight (Newtons) are different. In everyday use, they are treated as equivalent assuming Earth gravity.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚖️ The key conversion:</strong> 1 kilogram = 2.20462 pounds. For quick mental conversion: multiply kg by 2.2 to get approximate pounds (accurate to within 0.2%). Example: 70 kg × 2.2 = 154 lbs. Reverse: divide pounds by 2.2 to get kg. 154 lbs ÷ 2.2 = 70 kg.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Weight and Mass Units</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⚖️ Metric Units</div><div class="edu-card-body">Gram (g): base unit, mass of 1 cm³ of water at 4°C. Kilogram (kg) = 1,000 g: SI base unit of mass, everyday body weight and food. Tonne/Metric ton = 1,000 kg: industrial and commercial weights. Milligram (mg) = 0.001 g: medication dosages, small measurements. Microgram (μg) = 0.000001 g: trace elements, pharmacology.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ Imperial/US Units</div><div class="edu-card-body">Ounce (oz) = 28.3495 g. Pound (lb) = 16 oz = 453.592 g. Stone = 14 lbs = 6.35 kg (UK body weight). US Ton (short ton) = 2,000 lbs = 907.185 kg. UK Ton (long ton) = 2,240 lbs = 1,016.05 kg. Metric Tonne = 1,000 kg = 2,204.62 lbs. The three 'ton' definitions cause constant confusion in international shipping.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Weight in Daily Life</div><div class="edu-card-body">Body weight: kg in most countries, stones and pounds in UK, pounds in US. Cooking: grams and kg in metric countries, cups/ounces in US. Luggage: airline limits in kg globally (even US airlines use kg internationally). Shipping: typically kg metric, though US domestic shipping uses pounds. Jewellery: troy ounce (31.1 g) for precious metals, different from avoirdupois ounce (28.3 g).</div></div>
+      <div class="edu-card"><div class="edu-card-title">💊 Medical Weight</div><div class="edu-card-body">Drug dosages are calculated by body weight in mg/kg. A medication prescribed at 10 mg/kg for a 70 kg patient = 700 mg dose. Paediatric dosing is particularly weight-dependent — accurate weight conversion is clinically critical. IV fluid rates are also weight-based. Medical records use kg globally even in US hospitals (though patients often know their weight in lbs).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏋️ The Stone (UK)</div><div class="edu-card-body">14 pounds = 1 stone — a uniquely British unit for body weight. A person weighing 11 stone 6 lbs weighs 160 lbs = 72.6 kg. Many British people know their weight in stones and pounds but not kg. The unit persists culturally despite metric adoption because changing how people express body weight requires cultural not just official change. Bathroom scales in the UK often show all three: kg, stone/lb, and lb.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚗️ Mass vs Weight</div><div class="edu-card-body">Mass: amount of matter, measured in kg, constant everywhere. Weight: gravitational force on mass, measured in Newtons, varies with gravity. On the Moon (1/6 Earth gravity): your mass is 70 kg but you weigh only 115 N (vs 686 N on Earth). In everyday speech, 'weight' means mass — scales measure force but are calibrated in mass units assuming Earth gravity.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Weight Conversion in Real Applications</h2>
+    <h3>International shipping and customs</h3>
+    <p>Shipping weights affect costs and customs declarations. Most international carriers (DHL, FedEx, UPS) use kg. Dimensional weight (volumetric weight) = length × width × height (cm) ÷ 5,000 for international air — the greater of actual weight or dimensional weight is charged. US domestic shipping uses pounds. Customs declarations require accurate weight in the importing country's preferred unit. Overweight airline baggage fees are calculated per kg over the limit.</p>
+    <h3>Cooking weight conversions</h3>
+    <p>US recipes use cups and ounces; most international recipes use grams. Volume-to-weight conversion depends on ingredient density: 1 cup flour ≈ 120–130g (varies by sifting and packing). 1 cup sugar = 200g. 1 cup butter = 227g. 1 cup water = 237ml = 237g. Kitchen scales using grams produce more consistent results than volume measurements because ingredient density varies. Professional baking recipes worldwide use gram measurements — the global industry standard for precision.</p>
+    <h3>Fitness and nutrition tracking</h3>
+    <p>Food nutrition labels show values per 100g (international standard) or per serving (varies). Protein targets are expressed in g/kg of bodyweight (1.6–2.2 g/kg for muscle building). Calorie tracking apps allow unit selection but typically store in grams internally. Converting between US nutrition labels (ounces) and international standards (grams) is a constant need for anyone following plans from different countries. The universal language of nutrition is grams per kilogram of bodyweight.</p>
+    <div class="edu-highlight"><strong>⚖️ Weight conversion quick reference:</strong> 1 kg = 2.205 lbs. 1 lb = 453.6 g = 0.4536 kg. 1 oz = 28.35 g. 1 stone = 6.35 kg = 14 lbs. 1 metric tonne = 1,000 kg = 2,205 lbs. Common body weights: 50 kg = 110 lbs. 60 kg = 132 lbs. 70 kg = 154 lbs. 80 kg = 176 lbs. 90 kg = 198 lbs. 100 kg = 220 lbs. Memorising a few reference points makes estimation fast.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How many pounds in a kilogram?</div>
@@ -280,9 +336,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=16"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

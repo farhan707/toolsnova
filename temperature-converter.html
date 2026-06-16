@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -226,7 +240,49 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result — all scales <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="temp-output" onclick="copyEl('temp-output')" aria-label="Temperature conversion result"></div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Temperature Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your temperature value</strong> — type any number including decimals and negative values.</li>
+      <li><strong>Select the input unit</strong> — choose Celsius (°C), Fahrenheit (°F), or Kelvin (K).</li>
+      <li><strong>Read all conversions</strong> — the result shows your temperature in all three scales simultaneously.</li>
+      <li><strong>Use reference points</strong> — the converter shows common temperature benchmarks (water freezing/boiling, body temperature) for context.</li>
+      <li><strong>Convert negative values</strong> — works for sub-zero temperatures, including temperatures below absolute zero detection (Kelvin cannot go below 0).</li>
+    </ol>
+    <div class="edu-highlight"><strong>🌡️ Quick mental conversions:</strong> °C to °F: multiply by 1.8, add 32. °F to °C: subtract 32, divide by 1.8. A useful shortcut: double the Celsius temperature and add 30 gives an approximate Fahrenheit value (accurate within a few degrees for everyday temperatures).</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Temperature Scales</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🌡️ Celsius (°C)</div><div class="edu-card-body">Created by Anders Celsius in 1742. Based on water: 0°C = freezing point, 100°C = boiling point (at sea level). Used by virtually every country in the world for everyday temperature. Also called Centigrade (100 gradations between freezing and boiling). The standard scale for scientific work alongside Kelvin.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Fahrenheit (°F)</div><div class="edu-card-body">Created by Daniel Fahrenheit in 1724. Originally based on brine (salt water) freezing (0°F) and human body temperature (96°F, later recalibrated to 98.6°F). Water freezes at 32°F, boils at 212°F. Used primarily in the United States, its territories, and a few other countries for everyday temperature.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Kelvin (K)</div><div class="edu-card-body">The SI base unit of temperature. Absolute zero (0 K) = −273.15°C — the theoretical point where all molecular motion ceases. No degree symbol used (just K, not °K). Used exclusively in science and engineering. Conversion: K = °C + 273.15. Kelvin and Celsius degrees are the same size; Kelvin just starts at absolute zero.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Conversion Formulas</div><div class="edu-card-body">°F = (°C × 9/5) + 32. °C = (°F − 32) × 5/9. K = °C + 273.15. °C = K − 273.15. °F = (K − 273.15) × 9/5 + 32. K = (°F − 32) × 5/9 + 273.15. The Celsius-Fahrenheit relationship is linear but has different starting points and scale factors.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Reference Temperatures</div><div class="edu-card-body">Absolute zero: 0 K / −273.15°C / −459.67°F. Water freezes: 273.15 K / 0°C / 32°F. Room temperature: ~293 K / ~20°C / ~68°F. Body temperature: 310 K / 37°C / 98.6°F. Water boils: 373.15 K / 100°C / 212°F. Sun surface: ~5778 K / ~5505°C / ~9941°F.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚗️ Rankine Scale</div><div class="edu-card-body">A fourth temperature scale: Rankine (°R or °Ra). Like Kelvin, starts at absolute zero, but uses Fahrenheit-sized degrees. 0°R = absolute zero. Water freezes at 491.67°R, boils at 671.67°R. Used in some US engineering fields (thermodynamics, aerospace). °R = °F + 459.67. Rarely encountered outside specialised US engineering contexts.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Temperature in Science and Daily Life</h2>
+    <h3>Why the US uses Fahrenheit</h3>
+    <p>The United States adopted the Fahrenheit scale before the metric system was established and never made the switch that most other countries completed in the 20th century. Fahrenheit has the psychological advantage of providing more granularity in the common human comfort range: 0–100°F (−18–38°C) roughly spans 'very cold' to 'very hot' in human experience — easy to intuitively grasp. The Celsius range for the same human experience is 0–40°C — requiring more decimal precision to describe small changes. Despite this intuitive advantage, Fahrenheit is isolated internationally, creating conversion needs constantly.</p>
+    <h3>Temperature in cooking</h3>
+    <p>Ovens in the US use Fahrenheit; ovens in most of the world use Celsius. Common conversions: 325°F = 163°C (slow oven). 350°F = 177°C (moderate oven — most cake recipes). 375°F = 191°C. 400°F = 204°C (hot oven — roasting). 425°F = 218°C. 450°F = 232°C (very hot — pizza). A simple rule: subtract 32 from °F and divide by 2 gives approximate °C (slightly high but useful for cooking where precision is less critical than in science).</p>
+    <h3>Absolute zero and quantum physics</h3>
+    <p>Absolute zero (0 K, −273.15°C) is the theoretical minimum temperature where all classical molecular motion stops. It is theoretically unreachable — as you approach it, the energy required to cool further approaches infinity. The coldest temperatures achieved by humans are within billionths of a degree above absolute zero, in physics laboratories studying quantum phenomena. At these temperatures, matter behaves in extraordinary ways: superconductivity (zero electrical resistance) and superfluidity (zero viscosity) emerge, enabling applications in MRI machines, quantum computers, and particle accelerators.</p>
+    <div class="edu-highlight"><strong>🌡️ Temperature conversion quick reference:</strong> −40°C = −40°F (the only point where both scales are equal). 0°C = 32°F. 20°C = 68°F. 37°C = 98.6°F. 100°C = 212°F. For Kelvin: add 273 to °C. Common mistake: confusing a temperature difference (ΔT) with an absolute temperature — a 1°C difference = 1.8°F difference, but 1°C absolute ≠ 1.8°F absolute.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I convert Celsius to Fahrenheit?</div>
@@ -270,9 +326,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=16"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

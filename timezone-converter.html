@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -179,6 +179,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -249,7 +263,48 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="pane-label">Result — all timezones <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="tz-output" onclick="copyEl('tz-output')" aria-label="Time zone conversion result"></div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Timezone Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your time</strong> — type the time you want to convert in HH:MM format.</li>
+      <li><strong>Select source timezone</strong> — choose the timezone the time is currently in.</li>
+      <li><strong>Select target timezone</strong> — choose the timezone you want to convert to.</li>
+      <li><strong>Read the converted time</strong> — see the equivalent time in the target timezone.</li>
+      <li><strong>Account for date changes</strong> — the converter shows if the converted time falls on the previous or next day, which matters for scheduling across the International Date Line.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🌍 DST warning:</strong> Daylight Saving Time changes happen on different dates in different countries — and some countries don't observe DST at all. A time difference that is 5 hours in winter may be 4 or 6 hours in spring/autumn during the transition period. Always verify current offset for important meetings during DST transition weeks.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Time Zones</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🌐 UTC — The Reference</div><div class="edu-card-body">Coordinated Universal Time (UTC) is the global time standard — replaced GMT in 1972 but both terms are still used interchangeably in common usage (technically UTC is atomic-clock based, GMT is astronomical). All time zones are defined as UTC offsets: UTC+5 (Pakistan), UTC+5:30 (India), UTC+0 (UK in winter), UTC-5 (US Eastern in winter). UTC never observes DST.</div></div>
+      <div class="edu-card"><div class="edu-card-title">☀️ Daylight Saving Time</div><div class="edu-card-body">Clocks advance 1 hour in spring ('spring forward') and return in autumn ('fall back') in many countries. Purpose: shift daylight to evening hours when people are active. US: second Sunday March to first Sunday November. EU: last Sunday March to last Sunday October. Some countries never observe DST: India, China, Japan, most of Africa. Russia abolished DST in 2014.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🗺️ Half and Quarter Hour Offsets</div><div class="edu-card-body">Most time zones are whole hours from UTC. Exceptions: India UTC+5:30, Nepal UTC+5:45, Iran UTC+3:30, Afghanistan UTC+4:30, Australia (South) UTC+9:30, New Zealand's Chatham Islands UTC+12:45. These unusual offsets require care in scheduling — a 'one hour' difference assumption fails for these zones.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 International Date Line</div><div class="edu-card-body">The 180° meridian in the Pacific Ocean where the date changes. Crossing westward: gain a day. Crossing eastward: lose a day. Not a straight line — it deviates to keep island nations in the same date zone. Flying from Los Angeles to Tokyo crosses the IDL — you arrive the next calendar day having 'lost' a day westward, regained when returning eastward.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🕐 Unix Timestamp</div><div class="edu-card-body">Unix timestamps store time as seconds since January 1, 1970, 00:00:00 UTC — completely timezone-independent. The same Unix timestamp represents the same moment everywhere. Timezone conversion is applied only when displaying to the user. This approach eliminates timezone bugs in databases — store UTC, display local. Converting between timezones: the Unix timestamp doesn't change, only the displayed representation changes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏢 Business Time Zone Management</div><div class="edu-card-body">Global businesses must manage overlapping business hours across time zones. UTC−5 to UTC+5:30 (New York to Mumbai): 10.5-hour difference — minimal overlap. New York 9 AM = Mumbai 7:30 PM — marginal for synchronous communication. Finding the 'golden hour' — when working hours overlap between regions — is critical for scheduling. Some companies use UTC internally for all timestamps and schedules to eliminate confusion.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Time Zones in Global Work and Travel</h2>
+    <h3>Remote work and distributed teams</h3>
+    <p>Distributed teams across multiple time zones face scheduling challenges that compound with team size. Best practices: establish a 'core hours' window where all team members are available (typically 4 hours). Rotate meeting times rather than always disadvantaging the same timezone. Use UTC for all internal scheduling references. Record all synchronous meetings for asynchronous review. Document decisions in writing immediately after synchronous discussions. Tools like World Time Buddy, Every Time Zone, and Calendly with timezone detection automate the conversion and scheduling overhead.</p>
+    <h3>Air travel and jet lag</h3>
+    <p>Jet lag occurs when your circadian rhythm (internal clock) misaligns with local time after crossing time zones. Westward travel (gaining time) is easier than eastward travel (losing time) — our circadian rhythm naturally runs slightly longer than 24 hours, making it easier to stay up later than to sleep earlier. Recovery time: approximately 1 day per time zone crossed for full circadian adjustment. Strategies: adjust sleep schedule toward destination time before departure, seek morning light at destination (most powerful circadian reset signal), avoid alcohol and caffeine for 24 hours before and during flights.</p>
+    <h3>Financial markets and time zones</h3>
+    <p>Global financial markets operate in specific time windows that traders must track across time zones. NYSE: 9:30 AM–4 PM Eastern (14:30–21:00 UTC). London Stock Exchange: 8 AM–4:30 PM GMT (8:00–16:30 UTC). Tokyo Stock Exchange: 9 AM–3 PM JST (0:00–6:00 UTC). Forex market: 24/5 operation with overlapping sessions — the London-New York overlap (8 AM–12 PM Eastern / 13:00–17:00 UTC) is the most liquid period. For traders in Pakistan (UTC+5): London open = 1 PM PKT, New York open = 6 PM PKT.</p>
+    <div class="edu-highlight"><strong>🌍 Key UTC offsets for reference:</strong> UTC−8: Los Angeles (PST). UTC−5: New York (EST). UTC+0: London (GMT winter). UTC+1: Paris, Berlin (CET). UTC+3: Dubai, Moscow. UTC+4: Abu Dhabi. UTC+5: Karachi (PKT). UTC+5:30: Mumbai. UTC+8: Singapore, Beijing. UTC+9: Tokyo. UTC+10: Sydney (AEST). UTC+12: Auckland. Note: these are standard offsets — DST shifts apply in many regions seasonally.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is UTC?</div>
@@ -293,9 +348,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=16"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -1,17 +1,15 @@
 /* ================================================================
-   ToolsNova Service Worker v4
+   ToolsNova Service Worker v5
    - HTML pages: Network First (always fresh)
-   - Assets (JS/CSS/fonts): Cache First (fast loading)
-   - Never intercepts /index.html (Cloudflare handles redirect)
+   - JS/CSS: Network First (version numbers in URL handle cache)
+   - Fonts/images: Cache First (never change)
+   - Never intercepts /index.html
    ================================================================ */
 
-const CACHE_NAME = 'toolsnova-v4';
-const ASSETS_CACHE = 'toolsnova-assets-v4';
+const CACHE_NAME = 'toolsnova-v5';
+const ASSETS_CACHE = 'toolsnova-assets-v5';
 
-// Only cache static assets on install — NOT HTML pages
 const CORE_ASSETS = [
-  '/app.js',
-  '/style.css',
   '/favicon.svg',
   '/manifest.json',
 ];
@@ -32,7 +30,7 @@ self.addEventListener('activate', event => {
       .then(keys => Promise.all(
         keys.filter(k => k !== CACHE_NAME && k !== ASSETS_CACHE)
             .map(k => {
-              console.log('[SW v4] Deleting old cache:', k);
+              console.log('[SW v5] Deleting old cache:', k);
               return caches.delete(k);
             })
       ))
@@ -69,42 +67,53 @@ self.addEventListener('fetch', event => {
   }
 
   // ── HTML pages: NETWORK FIRST ──────────────────────────────────
-  // Always fetch fresh HTML — fall back to cache only if offline
   if (url.pathname.endsWith('.html') ||
       url.pathname === '/' ||
       url.pathname === '') {
     event.respondWith(
       fetch(event.request)
         .then(networkRes => {
-          // Got fresh response — update cache and return
           if (networkRes && networkRes.ok) {
-            const toCache = networkRes.clone();
             caches.open(CACHE_NAME).then(cache =>
-              cache.put(event.request, toCache)
+              cache.put(event.request, networkRes.clone())
             );
           }
           return networkRes;
         })
-        .catch(() => {
-          // Offline — serve from cache
-          return caches.match(event.request)
-            .then(cached => cached || caches.match('/'));
-        })
+        .catch(() => caches.match(event.request)
+          .then(cached => cached || caches.match('/')))
     );
     return;
   }
 
-  // ── JS / CSS / fonts / images: CACHE FIRST ────────────────────
-  // These have version numbers (?v=15) so cache is safe
-  if (url.pathname.match(/\.(js|css|svg|png|jpg|ico|woff2?)$/)) {
+  // ── JS and CSS: NETWORK FIRST ──────────────────────────────────
+  // Always fetch fresh JS/CSS — version query strings (?v=16) prevent
+  // browser cache reuse, but SW cache could still serve old versions
+  if (url.pathname.endsWith('.js') || url.pathname.endsWith('.css')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(networkRes => {
+          if (networkRes && networkRes.ok) {
+            caches.open(CACHE_NAME).then(cache =>
+              cache.put(event.request, networkRes.clone())
+            );
+          }
+          return networkRes;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // ── Static assets (images, icons, fonts): CACHE FIRST ─────────
+  if (url.pathname.match(/\.(svg|png|jpg|ico|woff2?)$/)) {
     event.respondWith(
       caches.match(event.request).then(cached => {
         if (cached) return cached;
         return fetch(event.request).then(networkRes => {
           if (networkRes && networkRes.ok) {
-            const toCache = networkRes.clone();
             caches.open(ASSETS_CACHE).then(cache =>
-              cache.put(event.request, toCache)
+              cache.put(event.request, networkRes.clone())
             );
           }
           return networkRes;

@@ -550,7 +550,9 @@ function calcAge() {
   const out = document.getElementById('age-output');
   if (!out) return;
   if (!dob) { out.textContent=''; out.className='output-box'; return; }
-  const birth = new Date(dob);
+  // Parse directly from YYYY-MM-DD to avoid timezone shift
+  const [by,bm,bd] = dob.split('-').map(Number);
+  const birth = new Date(by, bm-1, bd);
   const today = new Date();
   if (isNaN(birth) || birth>today) { out.textContent='Please enter a valid past date.'; out.className='output-box error'; return; }
   let years=today.getFullYear()-birth.getFullYear();
@@ -4449,10 +4451,12 @@ function zodiacCalc() {
   if (!out) return;
   if (!dob) { out.textContent='Select your date of birth.'; out.className='output-box'; return; }
 
-  const date  = new Date(dob);
-  const month = date.getMonth()+1;
-  const day   = date.getDate();
-  const year  = date.getFullYear();
+  // Parse date parts directly from YYYY-MM-DD (HTML date input format)
+  // Avoids timezone shifts that cause getDate() to return wrong day
+  const parts = dob.split('-');
+  const year  = parseInt(parts[0]);
+  const month = parseInt(parts[1]);
+  const day   = parseInt(parts[2]);
 
   const SIGNS = [
     {sign:'Capricorn', symbol:'♑', date:'Dec 22 – Jan 19', el:'Earth',  rule:'Saturn',  trait:'Ambitious, disciplined, patient'},
@@ -5350,11 +5354,11 @@ function pregnancyCalc() {
   if (mode==='lmp') {
     const d = document.getElementById('preg-lmp')?.value;
     if (!d) { out.textContent='Enter your last menstrual period date.'; out.className='output-box'; return; }
-    lmp = new Date(d);
+    const [y1,m1,d1]=d.split('-').map(Number); lmp=new Date(y1,m1-1,d1);
   } else {
     const d = document.getElementById('preg-conception')?.value;
     if (!d) { out.textContent='Enter conception date.'; out.className='output-box'; return; }
-    lmp = new Date(d);
+    const [y2,m2,d2]=d.split('-').map(Number); lmp=new Date(y2,m2-1,d2);
     lmp.setDate(lmp.getDate()-14);
   }
   const due = new Date(lmp); due.setDate(due.getDate()+280);
@@ -5397,7 +5401,7 @@ function ovulationCalc() {
   const out    = document.getElementById('ov-output');
   if (!out) return;
   if (!lmpStr) { out.textContent='Enter your last period date.'; out.className='output-box'; return; }
-  const lmp = new Date(lmpStr);
+  const [oy,om,od]=lmpStr.split('-').map(Number); const lmp=new Date(oy,om-1,od);
   const ovulation = new Date(lmp); ovulation.setDate(lmp.getDate()+cycle-14);
   const fertStart = new Date(ovulation); fertStart.setDate(ovulation.getDate()-5);
   const fertEnd   = new Date(ovulation); fertEnd.setDate(ovulation.getDate()+1);

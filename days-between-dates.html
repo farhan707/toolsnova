@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -203,7 +217,49 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="dbd-output" onclick="copyEl('dbd-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Days Between Dates Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter start date</strong> — select or type the beginning date of your date range.</li>
+      <li><strong>Enter end date</strong> — select or type the ending date.</li>
+      <li><strong>Click Calculate</strong> — see the exact number of days, weeks, months, and years between the two dates.</li>
+      <li><strong>Include or exclude endpoints</strong> — toggle whether to count the start date, end date, or both in the total.</li>
+      <li><strong>Read business days</strong> — the calculator shows weekdays only (excluding weekends) for business-relevant date calculations.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📅 Common uses:</strong> Calculating age in days. Days until a deadline, event, or vacation. Days since a significant date. Contract duration calculation. Days between historical events. Rental period billing. Loan term calculation. Project timeline planning. Any situation requiring precise counting of calendar days.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Calendar Calculations</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📅 Why Day Counting Is Complex</div><div class="edu-card-body">Months have different lengths (28–31 days). Leap years add a day every 4 years (with exceptions for century years not divisible by 400). Time zones affect 'which day' it is simultaneously. Business day calculations must account for weekends and public holidays (which vary by country). These factors make manual day counting error-prone for anything beyond a few weeks.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🗓️ The Gregorian Calendar</div><div class="edu-card-body">The current standard calendar, introduced by Pope Gregory XIII in 1582. Corrects Julian calendar's slight overestimation of year length. Rules: leap year if divisible by 4, EXCEPT century years (1800, 1900), UNLESS divisible by 400 (2000). This produces an average year of 365.2425 days — matching Earth's actual orbit period with an error of 1 day per 3,030 years.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Business Days vs Calendar Days</div><div class="edu-card-body">Business days (working days) exclude weekends (Saturday and Sunday in most Western countries), public/bank holidays (varying by country and region). Contract terms often specify 'business days' — 5 business days is not 5 calendar days. For international contracts, specify which country's business day calendar applies. Payment terms in many countries are always in business days (invoices: Net-30 business days).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🕐 Inclusive vs Exclusive Counting</div><div class="edu-card-body">Ambiguity in date counting: 'from Monday to Friday.' Exclusive: Monday to Friday is 4 days (Mon, Tue, Wed, Thu). Inclusive: 5 days (Mon through Fri). The difference matters for legal contracts, billing periods, and deadline calculation. Always specify whether endpoints are included. Many legal contracts explicitly state 'the first day shall be counted as day zero.'</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Historical Date Calculation</div><div class="edu-card-body">Comparing dates across calendar system changes is complex. Britain switched from Julian to Gregorian calendar in September 1752 (11 days were 'lost'). Different countries switched at different times. George Washington's birthday was February 11 (Julian) = February 22 (Gregorian) — both dates are 'correct' depending on calendar context. Historical date calculations require specifying which calendar system.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Day Counting in Finance</div><div class="edu-card-body">Finance uses specific day count conventions affecting interest calculations: Actual/365: divide actual days by 365 (UK gilt bonds). Actual/360: actual days by 360 (US money market). 30/360: assumes every month is 30 days (US corporate bonds). These conventions produce different results for the same period — knowing which convention applies is essential for accurate interest calculation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Practical Date Calculation Applications</h2>
+    <h3>Project and deadline management</h3>
+    <p>Accurate date calculation prevents project overruns and missed deadlines. Count forward from start date to delivery date to confirm sufficient time. Count backward from deadline to today to see how many days remain. Calculate working days (excluding weekends) for realistic workload planning — a project assigned on Friday due in '5 days' is due Wednesday, not Tuesday. For international teams, holiday calendars differ — a 10-business-day timeline may actually be 2+ calendar weeks when accounting for holidays in all team members' countries.</p>
+    <h3>Legal and financial date counting</h3>
+    <p>Legal documents specify exact date calculation methods. Statute of limitations begins from the date of injury or discovery — calculating whether a claim is time-barred requires exact day counting. Lease agreements: notice periods (typically 30 or 60 days) start from the day after notice is given, not the day of notice. Credit card payment due dates are calendar dates, but 'grace periods' are often business days. Always calculate critical legal and financial dates carefully — errors can have significant consequences.</p>
+    <h3>Historical duration analysis</h3>
+    <p>Days between dates enables historical duration analysis: how long did a war last (World War II: September 1, 1939 to September 2, 1945 = 2,193 days). How old was a historical figure when they achieved something. How long between scientific discoveries. How much time has passed since a historical event. These calculations provide context that 'approximately X years' doesn't capture — a 2,193-day war has different texture than '6 years.'</p>
+    <div class="edu-highlight"><strong>📅 Quick date calculation reference:</strong> 1 week = 7 days. 1 month ≈ 30.44 days (average). 1 quarter = 91–92 days. 1 year = 365 days (366 in leap years). 1 decade = 3,652 or 3,653 days. 1 century = 36,524 days (36,525 if includes a century leap year like 2000). 1,000 days ≈ 2 years 8.5 months. 10,000 days ≈ 27.4 years. 1 million seconds ≈ 11.6 days. These conversions enable quick mental date estimation.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How are days between dates calculated?</div>
@@ -241,9 +297,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -212,7 +226,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="ar-output" onclick="copyEl('ar-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Aspect Ratio Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter original dimensions</strong> — width and height of your image, video, or design element.</li>
+      <li><strong>Lock one dimension</strong> — enter either the target width or height, and the other is calculated automatically to maintain the ratio.</li>
+      <li><strong>Read the ratio</strong> — see the simplified ratio (e.g. 16:9, 4:3, 1:1) and the calculated missing dimension.</li>
+      <li><strong>Calculate for multiple sizes</strong> — the tool shows common sizes at your ratio (thumbnails, social media, print sizes).</li>
+      <li><strong>Use for responsive design</strong> — calculate the padding-top percentage for CSS aspect ratio padding trick.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Common aspect ratios:</strong> 16:9 — widescreen video, YouTube, TV, most monitors. 4:3 — old TV, standard photography. 1:1 — Instagram square, profile pictures. 9:16 — vertical video, Stories, TikTok, Reels. 3:2 — DSLR camera sensor, 35mm film. 2.39:1 — cinemascope wide film. Knowing these helps you size media correctly for every platform.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Aspect Ratios</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 What Is Aspect Ratio?</div><div class="edu-card-body">The proportional relationship between width and height, expressed as W:H. A 1920×1080 image has a 16:9 ratio (1920/120 : 1080/120 = 16:9). The ratio is simplified by dividing both numbers by their GCD. Maintaining aspect ratio when resizing prevents distortion — stretching or squishing an image makes it look wrong.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📺 Screen Aspect Ratios</div><div class="edu-card-body">4:3 (1.33:1): Standard definition TV, old monitors, VGA. 16:9 (1.78:1): HD/4K TV, YouTube, most modern monitors — now universal for video. 16:10 (1.6:1): older widescreen monitors, MacBook Pro displays. 21:9 (2.33:1): ultrawide monitors, cinematic gaming. 32:9 (3.56:1): super ultrawide, dual monitor simulation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📷 Photography Ratios</div><div class="edu-card-body">3:2 (1.5:1): 35mm film, most DSLR and mirrorless sensors — standard for photography. 4:3 (1.33:1): Micro Four Thirds cameras, older digital cameras. 1:1: square format, Hasselblad medium format, Instagram. 16:9: video mode, cropped from sensor. Prints: 4×6 (3:2), 5×7 (7:5), 8×10 (5:4), A4 (√2:1).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎬 Video and Film Ratios</div><div class="edu-card-body">1.33:1 (4:3): pre-1950s academy ratio. 1.85:1: American widescreen theatrical. 2.39:1: anamorphic scope (cinematicscope). 2.76:1: ultra panavision (Ben-Hur, Hateful Eight). 9:16: vertical video for mobile. The black bars (letterbox for widescreen on TV, pillarbox for standard on widescreen) appear when screen and content ratios don't match.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 CSS Aspect Ratio</div><div class="edu-card-body">CSS aspect-ratio property (modern): `aspect-ratio: 16/9`. Padding hack (legacy): padding-top: (height/width × 100)%. For 16:9: 9/16 × 100 = 56.25% padding-top. This creates a responsive container that maintains aspect ratio at any width. Essential for responsive video embeds and image placeholders that maintain proportions across screen sizes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 Social Media Sizes</div><div class="edu-card-body">Facebook post: 1200×630 (1.91:1). Instagram square: 1080×1080 (1:1). Instagram portrait: 1080×1350 (4:5). Instagram story: 1080×1920 (9:16). Twitter/X image: 1200×675 (16:9). LinkedIn post: 1200×627. YouTube thumbnail: 1280×720 (16:9). Pinterest pin: 1000×1500 (2:3). These sizes and ratios are platform specifications that affect how images display in feeds.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Aspect Ratio in Design and Media</h2>
+    <h3>Responsive image design</h3>
+    <p>Responsive web design requires images that adapt to any screen size without distortion. CSS `object-fit: cover` fills a container while maintaining aspect ratio (crops if necessary). `object-fit: contain` fits the entire image within a container (may leave space). The `aspect-ratio` CSS property creates containers that maintain proportion at any width. Understanding aspect ratios is prerequisite for implementing these responsive image techniques correctly — mismatched ratios between container and image cause unexpected cropping or distortion.</p>
+    <h3>Video production for multiple platforms</h3>
+    <p>Modern content creators produce the same video in multiple aspect ratios for different platforms. A talking-head video shot in 16:9 for YouTube can be reframed to 9:16 for Instagram Stories, 1:1 for Facebook feed, and 4:5 for Instagram feed — all from the same footage by choosing which portion of the frame to use. Planning composition with this in mind (keeping the subject centered, important content away from edges) enables efficient multi-platform publishing from a single shoot.</p>
+    <h3>Print and digital size relationship</h3>
+    <p>Screen pixels don't directly translate to print dimensions without considering DPI (dots per inch). A 1920×1080 pixel image at 72 DPI (screen resolution) is 26.7×15 inches — looks great on screen. At print-quality 300 DPI, it prints at only 6.4×3.6 inches. For a full-page 8.5×11 print at 300 DPI, you need 2550×3300 pixels. Understanding this relationship and calculating required pixel dimensions from print size (using DPI) prevents the common error of printing low-resolution digital images that look blurry.</p>
+    <div class="edu-highlight"><strong>📐 Aspect ratio quick reference:</strong> New width from height: Width = Height × (original width / original height). New height from width: Height = Width × (original height / original width). Example: resizing 1920×1080 image to 800px wide: Height = 800 × (1080/1920) = 800 × 0.5625 = 450px. Result: 800×450 — maintains 16:9 ratio. This formula is all you need for any aspect ratio calculation.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is aspect ratio?</div>
@@ -249,9 +304,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

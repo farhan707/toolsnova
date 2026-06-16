@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -204,7 +218,48 @@ gtag('config', 'G-S6PPGS7N63');
     style="width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);padding:.75rem;font-family:var(--mono);font-size:.82rem;resize:vertical;outline:none"
     oninput="wordFreqCalc()" aria-label="Text for word frequency analysis"></textarea>
   <div class="output-box" id="wf-output" onclick="copyEl('wf-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.75rem;font-family:var(--mono)"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Word Frequency Counter</h2>
+    <ol class="edu-steps">
+      <li><strong>Paste your text</strong> — enter any text: article, essay, document, speech, or book chapter.</li>
+      <li><strong>Set minimum frequency</strong> — filter to show only words appearing more than N times to focus on significant patterns.</li>
+      <li><strong>Toggle stop words</strong> — exclude common words (the, a, is, in) to reveal the meaningful content words.</li>
+      <li><strong>Read the frequency table</strong> — see each unique word and how many times it appears, sorted by frequency.</li>
+      <li><strong>Use for analysis</strong> — identify overused words to vary vocabulary, find keyword density for SEO, or analyse writing style.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📊 Stop words matter:</strong> In typical English text, the 10 most common words (the, be, to, of, and, a, in, that, have, it) account for approximately 25% of all word occurrences. Filtering these out reveals the actual topic and vocabulary of the text. Always exclude stop words when analysing content or keyword usage.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Word Frequency Analysis</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Zipf's Law</div><div class="edu-card-body">Word frequency follows Zipf's Law: the most common word appears approximately twice as often as the second most common, three times as often as the third, etc. In English, 'the' appears in about 7% of words. The 100 most common words account for approximately 50% of all text. This power law distribution is remarkably consistent across languages and text types.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔍 Keyword Density for SEO</div><div class="edu-card-body">Keyword density = (keyword occurrences / total words) × 100%. Historical SEO targeted 1–3% density. Modern SEO: natural language with semantic variation matters more than exact density. Word frequency analysis reveals whether target keywords appear naturally throughout content or are over/under-used. Also identifies related terms that could be incorporated for semantic SEO coverage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📝 Writing Style Analysis</div><div class="edu-card-body">Authors have distinctive word frequency fingerprints — the relative frequency of function words (the, a, of, by) reveals authorship more reliably than content words. Forensic linguistics uses word frequency to identify authors of disputed texts. Stylometric analysis of the Federalist Papers used word frequency to attribute disputed essays to Hamilton vs Madison. Every writer has habitual word choices visible in frequency data.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎓 Vocabulary Richness</div><div class="edu-card-body">Type-Token Ratio (TTR) = unique words / total words. Higher TTR indicates greater vocabulary variety. A TTR of 0.7 (70% unique words) indicates diverse vocabulary. A TTR of 0.3 indicates high repetition. For short texts, TTR is meaningful; for very long texts, TTR naturally decreases as common words repeat. The measure reflects both writer's vocabulary and text type (technical texts have lower TTR than literary texts).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Corpus Linguistics</div><div class="edu-card-body">Word frequency analysis of large text collections (corpora) reveals language patterns at scale. Google Books Ngram Viewer tracks word frequency across millions of books from 1800 to present — revealing cultural and linguistic trends. Frequency lists inform language learning (focus on most common words first), dictionary ordering, and NLP (Natural Language Processing) model training.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 Text Mining</div><div class="edu-card-body">Word frequency is the foundation of text mining techniques. Term Frequency-Inverse Document Frequency (TF-IDF): measures word importance by balancing how often it appears in a document against how common it is across all documents. High TF-IDF indicates a word is important to this specific document. Used in search engines, recommendation systems, and document classification.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Practical Applications of Word Frequency</h2>
+    <h3>Content editing with frequency data</h3>
+    <p>Word frequency reveals editing opportunities invisible to casual reading. Common findings: the same connector word (however, therefore, additionally) appearing every paragraph, making writing feel formulaic. A key concept word appearing only twice in a 2,000-word article about it, suggesting underdevelopment. A filler phrase (in order to, it is important to note that) appearing 15 times, adding length without value. Word frequency turns vague editing instincts ('this feels repetitive') into specific, actionable data ('you used therefore 12 times').</p>
+    <h3>SEO content gap analysis</h3>
+    <p>Comparing word frequency between your content and top-ranking competitor pages reveals semantic gaps. If competitors' top-ranking articles frequently mention 'risk management' and 'position sizing' alongside 'forex trading' but your article doesn't, this is a semantic gap that may limit your ranking potential for related searches. Word frequency analysis of competitor content guides content expansion and internal linking strategy — identifying conceptually related terms that should appear in comprehensive coverage of a topic.</p>
+    <h3>Language learning applications</h3>
+    <p>Frequency-based vocabulary learning is the most efficient path to reading comprehension in a new language. The most common 1,000 words in any language cover approximately 85% of everyday speech. The most common 3,000 words cover approximately 95% of written text. Learning vocabulary in frequency order rather than thematically or alphabetically maximises the percentage of text you can comprehend per word learned. Word frequency lists for most languages are freely available — frequency analysis of texts you want to read reveals which words to prioritise for your specific learning goals.</p>
+    <div class="edu-highlight"><strong>📊 Word frequency analysis workflow:</strong> 1) Paste text and exclude stop words. 2) Identify top 10 content words — do they reflect the intended topic focus? 3) Check for over-used words (appearing 5×+ more than expected). 4) Look for key topic words with surprisingly low frequency (underdeveloped concepts). 5) Calculate type-token ratio for vocabulary richness assessment. 6) Compare to competitor content for SEO gap identification. This systematic approach extracts maximum insight from frequency data.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is word frequency analysis?</div>
@@ -242,9 +297,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

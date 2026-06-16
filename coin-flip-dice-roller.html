@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -221,7 +235,49 @@ gtag('config', 'G-S6PPGS7N63');
       <div class="output-box" id="dice-output" style="min-height:60px;margin-top:8px;white-space:pre;font-size:.78rem"></div>
     </div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Coin Flip & Dice Roller</h2>
+    <ol class="edu-steps">
+      <li><strong>Coin flip</strong> — click Flip for a random heads or tails result. Each flip is independent with 50/50 probability.</li>
+      <li><strong>Dice roller</strong> — select dice type (d4, d6, d8, d10, d12, d20, d100) and number of dice, then roll.</li>
+      <li><strong>Multiple dice</strong> — rolling multiple dice simultaneously shows each result and the total — useful for RPG games requiring multiple dice.</li>
+      <li><strong>Roll history</strong> — see the sequence of recent results to verify randomness or track game progress.</li>
+      <li><strong>Custom dice</strong> — enter any number of sides for custom dice (d3, d30, d36, etc.) for unusual game systems.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎲 True randomness:</strong> This tool uses JavaScript's crypto.getRandomValues() — a cryptographically secure random number generator. Unlike physical dice that can be biased by manufacturing imperfections or throwing technique, digital dice provide true uniform distribution. Every face has exactly equal probability on every roll, regardless of previous results.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Probability and Randomness</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🪙 Coin Flip Probability</div><div class="edu-card-body">Each flip: 50% heads, 50% tails. These probabilities never change regardless of previous flips — coins have no memory. After 10 tails in a row, the next flip is still exactly 50/50. The 'gambler's fallacy' is believing that past results influence future independent random events — a universal human cognitive error.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎲 Dice Probability</div><div class="edu-card-body">d6: each face 1/6 = 16.7%. d20: each face 5%. Multiple dice: sum probabilities create bell curves. Rolling 2d6: values 2–12, with 7 most common (6 combinations out of 36 = 16.7%), 2 and 12 rarest (1 combination each = 2.8%). More dice = more bell-shaped distribution with results clustering around average.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Expected Value</div><div class="edu-card-body">The mathematical average outcome. Single d6: (1+2+3+4+5+6)/6 = 3.5. Single d20: (1+...+20)/20 = 10.5. 2d6: 7 (3.5 × 2). 3d6 (ability scores in D&D): 10.5 (3.5 × 3). Expected value helps compare game mechanics: a d12 (EV 6.5) produces lower average than 2d6 (EV 7) but has higher maximum (12 vs 12) and higher minimum (1 vs 2) and flatter distribution.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎮 RPG Dice Systems</div><div class="edu-card-body">D&D 5e: d20 for most checks and attacks, 2d6 for damage (many weapons), d8/d10/d12 for larger weapon damage. Pathfinder: similar. World of Darkness: pools of d10s, counting successes. Fate RPG: 4dF (Fate dice with +, blank, −). Each system creates different probability curves and feels of play. Understanding the probability distributions helps players appreciate game balance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔀 Advantage/Disadvantage</div><div class="edu-card-body">D&D 5e mechanic: Advantage = roll 2d20, take higher. Disadvantage = roll 2d20, take lower. Average roll with advantage: approximately 13.8 (vs 10.5 normal). With disadvantage: 7.2. This elegant mechanic represents situational bonuses/penalties without fixed modifiers. The probability change is most dramatic around the middle values — advantage dramatically increases the chance of rolling 11–15.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Physical vs Digital Dice</div><div class="edu-card-body">Physical dice can be biased by: manufacturing imperfections, wear patterns from use, surface texture of rolling area, throwing technique. Premium dice (metal, precision machined) minimise bias. Digital dice with CSPRNG are perfectly unbiased. For casual games, either is fine. For gambling or high-stakes games, certified physical dice or audited digital random number generators are preferred.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Probability in Games and Decisions</h2>
+    <h3>Understanding the gambler's fallacy</h3>
+    <p>The gambler's fallacy — one of the most pervasive human cognitive errors — is the belief that independent random events are connected by some balancing force. 'This coin has come up heads 5 times in a row; tails is due!' In reality, each coin flip is completely independent. The coin has no memory. The probability of tails on the 6th flip is exactly 50% regardless of the previous 5 results. This fallacy costs gamblers enormous sums and affects many non-gambling decisions — recognising it is one of the most practically valuable insights in probability.</p>
+    <h3>Decision-making with dice and coins</h3>
+    <p>Random tools have legitimate decision-making applications beyond games. When genuinely indifferent between options: flip a coin. If you feel relief or disappointment at the result, your emotional reaction reveals your actual preference. Assign options to dice faces when choosing between more than 2 alternatives randomly. Random selection removes social friction when choosing (who goes first, which suggestion to try) and eliminates the appearance of favouritism. Many fair allocation problems (jury selection, audit targets, benefit lottery) use certified random selection for fairness.</p>
+    <h3>Law of large numbers</h3>
+    <p>While individual random events are unpredictable, averages over many trials converge to expected values. A fair coin flipped 10 times may land heads 7 times (70%). Flipped 10,000 times: very close to 50%. Casinos rely on this law — each bet is unpredictable, but millions of bets reliably produce the expected house edge. Insurance companies rely on the same law — individual claims are unpredictable, but large pools of policyholders produce predictable total claims. The law of large numbers is the mathematical foundation of both gambling businesses and financial risk management.</p>
+    <div class="edu-highlight"><strong>🎲 Probability quick reference:</strong> Coin flip: 50/50. d6: 16.7% per face. d20: 5% per face. Rolling 7 on 2d6: 16.7% (most likely sum). Rolling 2 or 12 on 2d6: 2.8% each (least likely). D&D advantage: ~13.8 average (vs 10.5 normal). D&D disadvantage: ~7.2 average. Probability of rolling 20 on d20: 5%. Rolling 20 twice in a row: 0.25%. Three times: 0.0125%. These quick reference values help evaluate game balance and plan decisions.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Is a coin flip truly random?</div>
@@ -257,9 +313,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

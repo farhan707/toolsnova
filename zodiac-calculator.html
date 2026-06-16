@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -195,7 +209,48 @@ gtag('config', 'G-S6PPGS7N63');
     <input type="date" id="zod-dob" class="b2-input" oninput="zodiacCalc()" aria-label="Date of birth" style="max-width:260px">
   </div>
   <div class="output-box" id="zod-output" onclick="copyEl('zod-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Zodiac Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your date of birth</strong> — select day, month, and year.</li>
+      <li><strong>Read your sun sign</strong> — the Western zodiac sign corresponding to your birth date.</li>
+      <li><strong>See your Chinese zodiac</strong> — your animal sign based on birth year in the 12-year cycle.</li>
+      <li><strong>Read personality traits</strong> — traditional astrology descriptions associated with your sign.</li>
+      <li><strong>Explore compatibility</strong> — see which signs are traditionally considered compatible with yours.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⭐ Sun sign vs full chart:</strong> Your 'zodiac sign' (Aries, Taurus, etc.) is your Sun sign — the zodiac constellation the Sun was in at birth. A full astrological birth chart includes Moon sign (emotional nature), Rising sign/Ascendant (outward personality), and positions of all planets. Astrologers consider the Sun sign alone an incomplete picture of a person's astrological profile.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Zodiac Systems</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⭐ Western Zodiac</div><div class="edu-card-body">12 signs based on the Sun's apparent position through the year: Aries (Mar 21–Apr 19), Taurus (Apr 20–May 20), Gemini (May 21–Jun 20), Cancer (Jun 21–Jul 22), Leo (Jul 23–Aug 22), Virgo (Aug 23–Sep 22), Libra (Sep 23–Oct 22), Scorpio (Oct 23–Nov 21), Sagittarius (Nov 22–Dec 21), Capricorn (Dec 22–Jan 19), Aquarius (Jan 20–Feb 18), Pisces (Feb 19–Mar 20).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🐉 Chinese Zodiac</div><div class="edu-card-body">12-year cycle, each year associated with an animal: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig. Repeating cycle: born in 2000 (Dragon), 2012 (Dragon), 2024 (Dragon). Also includes elements (Wood, Fire, Earth, Metal, Water) in a 60-year cycle. Unlike Western astrology, based on year not month of birth.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌙 Vedic Astrology</div><div class="edu-card-body">Indian astrological system (Jyotish). Uses sidereal zodiac (actual star positions) vs Western tropical zodiac (based on seasons). This creates an approximately 23-degree difference — most Western Aries are Vedic Pisces. Vedic astrology places more emphasis on Moon sign (Rashi) than Sun sign, and on the rising sign (Lagna) for overall chart interpretation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Scientific Status</div><div class="edu-card-body">Controlled studies consistently find: astrologers cannot predict personality traits, life events, or compatibility beyond chance levels. The Mars Effect (claimed planetary position influence on sports champions) has not been replicated under controlled conditions. Astrology fails the test of falsifiability — it cannot be proven wrong because interpretations are always post-hoc adjustable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧠 Psychology of Astrology</div><div class="edu-card-body">People believe in astrology partly due to the Barnum/Forer Effect — personality descriptions are written vaguely enough to feel personally accurate to almost everyone. 'You have a tendency to be critical of yourself' is true of nearly all people. The tendency to seek and remember information that confirms existing beliefs (confirmation bias) reinforces the sense that astrological descriptions are accurate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Cultural Significance</div><div class="edu-card-body">Astrology is culturally significant in ways independent of scientific validity. Horoscopes provide structure for self-reflection. Zodiac signs provide social shorthand ('typical Scorpio'). In India, Vedic astrology influences marriage timing, business decisions, and naming. In China, birth year zodiac influences career choices and relationship decisions. Understanding these cultural dimensions matters for cross-cultural interaction.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Astrology as Cultural Practice</h2>
+    <h3>Self-reflection through astrological frameworks</h3>
+    <p>Many people find value in astrological frameworks not as literal predictions but as prompts for self-reflection. Reading your sign's described traits and asking 'Does this resonate? Why or why not?' can surface genuine self-insight — not because the stars determined those traits, but because the reflection process itself generates insight. Journaling in response to horoscopes, thinking about which described qualities you want to develop, and discussing personality traits through the zodiac framework can be valuable regardless of astrological belief.</p>
+    <h3>Zodiac compatibility in social contexts</h3>
+    <p>'What's your sign?' functions as a low-stakes social question that opens personality discussions without feeling invasive. The compatibility framework ('Aries and Leo are fire signs, naturally compatible') provides a structured way to discuss interpersonal dynamics. Whether or not you believe the compatibility is literally true, having a shared cultural framework for discussing personality and relationships creates social connection. The zodiac serves a social function analogous to personality type systems like MBTI — providing vocabulary for discussing psychological differences.</p>
+    <h3>When cultural practices conflict with science</h3>
+    <p>The tension between astrology's cultural significance and scientific invalidity represents a broader challenge in relating to traditional practices. The useful approach: distinguish between the cultural/psychological value of a practice and its literal truth claims. Astrology can provide meaningful frameworks for self-reflection, social connection, and cultural continuity without requiring belief that planetary positions literally cause personality traits. Engaging with astrology as a cultural practice while maintaining scientific literacy is a common and reasonable position.</p>
+    <div class="edu-highlight"><strong>⭐ Western zodiac date ranges:</strong> Aries: Mar 21–Apr 19. Taurus: Apr 20–May 20. Gemini: May 21–Jun 20. Cancer: Jun 21–Jul 22. Leo: Jul 23–Aug 22. Virgo: Aug 23–Sep 22. Libra: Sep 23–Oct 22. Scorpio: Oct 23–Nov 21. Sagittarius: Nov 22–Dec 21. Capricorn: Dec 22–Jan 19. Aquarius: Jan 20–Feb 18. Pisces: Feb 19–Mar 20. Note: exact dates shift slightly by year due to leap years.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are the 12 zodiac signs?</div>
@@ -236,9 +291,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

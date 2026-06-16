@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -202,7 +216,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="lucky-output" onclick="copyEl('lucky-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Lucky Number Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your name</strong> — the generator uses your name's letters to calculate your numerology life path number.</li>
+      <li><strong>Enter your birth date</strong> — birth date calculation is the other traditional numerology method for personal numbers.</li>
+      <li><strong>Generate random lucky numbers</strong> — for lottery-style games, generate truly random numbers within your required range.</li>
+      <li><strong>Read your numerology number</strong> — see your life path number (1–9, or master numbers 11, 22, 33) and its traditional meaning.</li>
+      <li><strong>Try different inputs</strong> — experiment with nicknames, middle names, or different date formats to explore numerological interpretations.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎲 Random vs meaningful:</strong> For lottery games, use truly random number generation — any number is equally likely to be drawn, and no numerology system improves lottery odds. The lucky numbers from name/birth-date calculations are for personal meaning and fun, not statistical advantage in games of chance.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Numerology</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔢 Life Path Number</div><div class="edu-card-body">The most significant number in numerology. Calculated by reducing birthdate to a single digit (or master number). Example: born November 14, 1990: 11 + 14 + 1990 = 2015. Reduce: 2+0+1+5 = 8. Life path 8. Each number (1–9) and master numbers (11, 22, 33) have traditional personality and destiny meanings in numerology.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📛 Name Numbers</div><div class="edu-card-body">Each letter is assigned a number (A=1, B=2... I=9, then cycle: J=1, K=2...). Sum all letters, reduce to single digit. Expression number: full birth name. Soul Urge number: vowels only. Personality number: consonants only. These are traditional numerological calculations — their significance is a matter of personal belief.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Cultural Significance</div><div class="edu-card-body">Lucky and unlucky numbers vary by culture. Chinese: 8 (sounds like 'prosperity'), 6 (smooth), 9 (longevity). Unlucky: 4 (sounds like 'death'). Western: 7 (widely considered lucky), 13 (unlucky). Indian: 1, 3, 9 (auspicious). Japanese: 4 and 9 (unlucky). Israeli: 18 (chai = life). These cultural beliefs influence significant decisions in many communities.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎰 Lottery Numbers</div><div class="edu-card-body">All lottery numbers are drawn with equal probability — no number is 'luckier' than another mathematically. In practice, many people avoid numbers above 31 (birthday numbers) meaning higher numbers are less chosen — making them statistically better to pick for split jackpots (you're less likely to share a win). But all numbers have equal probability of being drawn.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌟 Belief and Psychology</div><div class="edu-card-body">Belief in lucky numbers is ubiquitous across cultures and provides psychological benefits: reduced decision anxiety (the number 'decides'), sense of personal agency, and social connection through shared cultural beliefs. Lucky charms and rituals have been shown to improve performance through increased confidence — the benefit is psychological, not metaphysical.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Pseudoscience vs Entertainment</div><div class="edu-card-body">Numerology has no scientific basis — there is no mechanism by which name letters or birth dates influence personality or destiny. Studies comparing numerological predictions to outcomes find no better than chance agreement. This does not mean numerology is without value — as a framework for self-reflection, cultural practice, and entertainment, it can be meaningful. The key is understanding it as such.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Numbers, Luck, and Decision Making</h2>
+    <h3>The psychology of lucky numbers</h3>
+    <p>Belief in lucky numbers persists because of confirmation bias — we remember the times our lucky number appeared in positive contexts and forget the times it didn't. If 7 is your lucky number, you notice and remember every positive event where 7 appeared (lottery ticket ending in 7, born on the 7th, met your partner on the 7th) while discounting the many events where 7 had no significance. This selective memory creates the subjective experience of a lucky number without any objective pattern.</p>
+    <h3>Using numbers for decisions</h3>
+    <p>When genuinely uncertain between options, assigning numbers to choices and using a random generator can be a rational decision aid. If you flip a mental coin and feel relief or disappointment at the result, that emotional response reveals your actual preference — use this information. Numerical decision aids are most valuable as preference-revelation tools: they force you to confront options directly and often clarify which choice you actually wanted through your reaction to the result.</p>
+    <h3>Cultural numerology in business</h3>
+    <p>Lucky numbers have real economic significance in cultures where they are taken seriously. Chinese businesses pay premiums for phone numbers, license plates, and addresses with 8s. Hong Kong licence plate 8888 sold for HK$640,000. Beijing Olympic Games opened on 08/08/08 at 8:08 PM. Apartment 8 commands higher prices than apartment 4 in Chinese real estate. These premium prices reflect real market demand driven by cultural beliefs — making cultural numerology a legitimate economic factor even without metaphysical validity.</p>
+    <div class="edu-highlight"><strong>🎲 Lucky number quick reference by culture:</strong> Western: 7 (lucky), 13 (unlucky). Chinese: 8 (very lucky), 6 (lucky), 4 (unlucky). Japanese: 7 (lucky), 4 and 9 (unlucky). Indian: 1, 3, 9 (auspicious). Italian: 13 (lucky), 17 (unlucky). French: 13 (unlucky). Understanding these cultural associations is valuable for international business, gift-giving, and avoiding unintentional offence in cross-cultural contexts.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a life path number?</div>
@@ -239,9 +294,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

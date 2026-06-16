@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -216,7 +230,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="sr-output" onclick="copyEl('sr-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Screen Resolution Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Detect your screen</strong> — click Detect to automatically read your device's current resolution and pixel density.</li>
+      <li><strong>Enter custom dimensions</strong> — manually enter any resolution to calculate PPI (pixels per inch) and other properties.</li>
+      <li><strong>Enter screen size</strong> — diagonal screen size in inches, required to calculate PPI from resolution.</li>
+      <li><strong>Read PPI and display class</strong> — see pixels per inch and whether the display qualifies as Retina/HiDPI.</li>
+      <li><strong>Compare resolutions</strong> — the calculator shows how common display standards compare to your screen.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📺 PPI matters for perception:</strong> The human eye cannot distinguish individual pixels above approximately 300 PPI at normal viewing distance (30cm/12 inches). Apple coined 'Retina display' for screens exceeding this threshold — pixels become imperceptible. Smartphone screens at 400-500 PPI far exceed this threshold. Desktop monitors at 100-160 PPI are below it — individual pixels are sometimes visible, especially for text.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Screen Resolutions</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Common Resolutions</div><div class="edu-card-body">HD: 1280×720 (720p). Full HD: 1920×1080 (1080p). QHD/2K: 2560×1440 (1440p). 4K UHD: 3840×2160. 8K: 7680×4320. iPhone 15 Pro: 2556×1179 (460 PPI). MacBook Pro 14": 3024×1964 (254 PPI). These resolutions represent the pixel grid — more pixels produce sharper images.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 What Is PPI?</div><div class="edu-card-body">Pixels Per Inch — how many pixels fit in one inch of screen. PPI = √(width² + height²) / diagonal screen size in inches. A 27-inch 1080p monitor: √(1920²+1080²)/27 = √(4,665,600)/27 = 2160/27 = 81.6 PPI (low clarity). A 27-inch 4K monitor: √(3840²+2160²)/27 = 163 PPI (good clarity). More PPI = sharper image.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🍎 Retina Display</div><div class="edu-card-body">Apple's marketing term for displays where pixels are imperceptible at normal use distance. iPhone Retina: >300 PPI (held ~30cm away). MacBook Retina: >200 PPI (used ~50cm away). iMac Retina: >100 PPI (used ~80cm away). The threshold changes with viewing distance — a 100 PPI TV is fine at 2 metres but poor at 50cm. Same principle, different distance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 Display Scaling</div><div class="edu-card-body">High-DPI displays use scaling to make content readable. A 4K monitor at 100% scaling shows everything tiny (physical pixels). At 200% scaling (Retina mode): macOS renders at 2× pixel density, showing content at same physical size as 1080p but with 4× the sharpness. Windows calls this DPI scaling. Web developers must handle HiDPI with CSS device-pixel-ratio media queries and high-resolution image assets.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎮 Gaming Resolution Impact</div><div class="edu-card-body">Higher resolution requires more GPU power. 1080p gaming: runs smoothly on mid-range GPU. 1440p: requires mid-to-high GPU. 4K: requires high-end GPU. Resolution directly impacts frame rate — dropping from 4K to 1440p can increase FPS by 40-50% on the same GPU. Gamers often prefer higher frame rate at lower resolution over lower frame rate at higher resolution for competitive play.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 Mobile Resolution</div><div class="edu-card-body">Modern smartphones have resolutions of 1080×2400 or higher on 6-inch screens — producing 400+ PPI. This far exceeds the human perception threshold. The high PPI enables crisp text at small font sizes and high-detail photography. However, actual rendering resolution is often half the physical resolution (logical pixels) due to OS scaling — the hardware resolution is used for anti-aliasing to improve perceived sharpness.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Screen Resolution in Design and Development</h2>
+    <h3>Designing for multiple resolutions</h3>
+    <p>Web and app designers must target screens from 320px wide (small phones) to 3840px wide (4K monitors) — a 12× range. Responsive design handles this through: fluid grids (percentage widths rather than fixed pixels), flexible images (max-width: 100%), and media query breakpoints that adjust layout at common device widths. The standard breakpoints: 320–480px (mobile), 481–768px (large mobile/small tablet), 769–1024px (tablet), 1025–1200px (small desktop), 1201px+ (large desktop). Understanding actual device resolutions helps choose appropriate breakpoints.</p>
+    <h3>HiDPI images for sharp displays</h3>
+    <p>On Retina/HiDPI displays, a standard 1× image appears blurry because each logical pixel maps to 4 physical pixels. Solution: provide 2× resolution images (srcset 2x) for high-density displays, or use SVG (infinitely scalable vector format) for graphics and logos. CSS media query for HiDPI: `@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)`. Failing to provide HiDPI assets makes logos and graphics look blurry on Retina Macs and high-end smartphones.</p>
+    <h3>Video resolution for different screens</h3>
+    <p>Upload video at the highest resolution you have — platforms (YouTube, Vimeo) transcode to multiple resolutions for different viewers. For your own web video, 1080p is sufficient for most desktop and mobile viewers. 4K video is only meaningful on 4K displays and requires significantly more bandwidth. Adaptive bitrate streaming (HLS, DASH) automatically selects the appropriate resolution based on viewer connection speed and screen size — the standard for professional video delivery.</p>
+    <div class="edu-highlight"><strong>📺 Resolution quick reference:</strong> 720p (1280×720): HD, streaming minimum quality. 1080p (1920×1080): Full HD, standard quality. 1440p (2560×1440): 2K/QHD, excellent clarity. 4K (3840×2160): UHD, maximum clarity for large screens. For web images: design at 2× physical display size for Retina sharpness. For video: always use 1080p minimum; offer 4K for flagship content.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is screen resolution?</div>
@@ -258,9 +313,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

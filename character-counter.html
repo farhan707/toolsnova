@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -194,7 +208,48 @@ gtag('config', 'G-S6PPGS7N63');
     style="width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);padding:.75rem;font-family:var(--mono);font-size:.82rem;resize:vertical;outline:none"
     oninput="charCount()" aria-label="Text to count"></textarea>
   <div class="output-box" id="char-output" onclick="copyEl('char-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Character Counter</h2>
+    <ol class="edu-steps">
+      <li><strong>Type or paste your text</strong> — the counter updates instantly with every keystroke.</li>
+      <li><strong>Read character counts</strong> — see total characters (with spaces), characters without spaces, words, sentences, paragraphs, and lines.</li>
+      <li><strong>Check platform limits</strong> — the tool shows how your text compares to Twitter (280), SMS (160), meta description (160), and other common limits.</li>
+      <li><strong>Copy statistics</strong> — use the copy button to capture all counts for reporting or documentation.</li>
+      <li><strong>Clear and start fresh</strong> — the clear button resets all counts for a new text.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📏 Character vs word count:</strong> Character counting is more precise than word counting for platform limits. Twitter's 280-character limit counts each character (including spaces and punctuation) — not words. A 50-word tweet with many long words may exceed 280 characters; a 60-word tweet with short words may be under. Always use character count for platform compliance, not word count.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Character Limits Across Platforms</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🐦 Social Media Limits</div><div class="edu-card-body">Twitter/X: 280 characters. Instagram caption: 2,200 characters (but truncated at ~125 in feed). LinkedIn post: 3,000 characters. Facebook post: 63,206 characters (effective limit). Pinterest description: 500 characters. YouTube title: 100 characters (60 shown in search). YouTube description: 5,000 characters (157 shown in search without expanding).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 Messaging Limits</div><div class="edu-card-body">SMS: 160 characters per segment (GSM-7 encoding). Messages over 160 are split into segments, costing more. Unicode SMS (emoji, non-Latin characters): 70 characters per segment. WhatsApp: 65,536 characters. iMessage: no practical limit. Understanding SMS encoding is important for marketing campaigns billed per segment.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔍 SEO Character Limits</div><div class="edu-card-body">Title tag: 50–60 characters (longer truncated in search results). Meta description: 150–160 characters. URL slug: under 75 characters. H1 heading: no technical limit but 20–70 characters for clarity. Alt text: under 125 characters (screen reader limit). These limits affect how content appears in search results — exceeding them causes truncation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💻 Database Field Limits</div><div class="edu-card-body">VARCHAR(255): common database field limit — 255 characters. VARCHAR(50): username fields. CHAR(2): country codes. TEXT: up to 65,535 characters. MEDIUMTEXT: 16.7 million characters. Knowing database limits is essential for form validation — client-side character counting prevents server-side rejection of too-long input.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📧 Email Subject Lines</div><div class="edu-card-body">Gmail displays approximately 77 characters on desktop, 42 on mobile. Outlook: 73 characters on desktop. Email marketing best practice: 40–50 characters for subject lines that display fully on mobile. Preheader text: 40–100 characters (shown after subject line in inbox view). Character counting prevents subject line truncation that hides your call-to-action.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📝 Writing and Editing</div><div class="edu-card-body">Character counting aids concise writing. Elevator pitch: 30 seconds ≈ 150 words ≈ 900 characters. Bio: 160 characters (Twitter bio format). Abstract: 250 words ≈ 1,500 characters. Executive summary: 10% of report length. Knowing character and word targets from the start focuses writing on the most essential content.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Character Counting in Development</h2>
+    <h3>Input validation and UX</h3>
+    <p>Good form UX includes real-time character counting for limited fields. Show current count approaching the limit (green), at 80% (yellow), at limit (red). Display as '45/280' (used/total) rather than '235 remaining' — showing used characters helps users understand how much they have written, not just how much space is left. Disable form submission when over limit with a clear error message. Twitter's character counter is the gold standard UX pattern for this — visible, colour-coded, and non-blocking until the limit is reached.</p>
+    <h3>SMS marketing character counting</h3>
+    <p>SMS marketing requires precise character management for cost control and deliverability. GSM-7 characters (standard Latin alphabet, digits, basic punctuation): 160 per segment. Unicode characters (emoji, accented characters, non-Latin scripts): 70 per segment. Adding a single emoji to a 159-character message doesn't just add 1 character — it switches the entire message to Unicode encoding, reducing capacity from 160 to 70 and potentially splitting into multiple segments. Character counting tools that identify encoding type are essential for SMS marketing campaigns.</p>
+    <h3>Multilingual character considerations</h3>
+    <p>Character counting varies by language encoding. ASCII: 1 byte per character (English, basic symbols). UTF-8: 1–4 bytes per character (most languages). CJK characters (Chinese, Japanese, Korean): 3 bytes in UTF-8. Emoji: 4 bytes, but many platforms count them as 2 characters. Arabic and Hebrew (right-to-left): same byte count as Latin but display direction differs. For international platforms, character limits in the platform may be based on different counting rules than simple character count — always test with actual multilingual content.</p>
+    <div class="edu-highlight"><strong>📏 Platform character limit quick reference:</strong> Tweet: 280. SMS segment: 160 (70 with emoji). Instagram caption: 2,200 (125 visible). Meta description: 155–160. Page title: 50–60. LinkedIn post: 3,000. YouTube title: 60 visible. Email subject: 40–50 for mobile. Username fields: typically 20–50. Password fields: typically 8–128. These limits guide content creation and form validation design across all digital platforms.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the Twitter/X character limit?</div>
@@ -232,9 +287,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -275,7 +289,48 @@ gtag('config', 'G-S6PPGS7N63');
       <a href="https://palworldbreedingcalc.com" target="_blank" rel="noopener" style="color:var(--accent)">palworldbreedingcalc.com</a> — reverse lookup and version tracking
     </div>
   </div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Palworld Breeding Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select parent Pals</strong> — choose the two Pals you want to breed from the dropdown lists.</li>
+      <li><strong>Read the offspring prediction</strong> — the calculator shows the most likely offspring based on Palworld's breeding power system.</li>
+      <li><strong>Check breeding power values</strong> — each Pal has a breeding power number; the offspring is determined by averaging parent breeding powers.</li>
+      <li><strong>Plan breeding chains</strong> — use the results to plan multi-generation breeding toward a specific target Pal.</li>
+      <li><strong>Find parent combinations</strong> — use the reverse lookup to find which Pal pairs can produce a specific target offspring.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎮 Breeding mechanics:</strong> In Palworld, offspring Pal type is determined by averaging the breeding power values of both parents and finding the closest match. Passive skills (traits) are inherited randomly from both parents — breeding for specific passive combinations requires multiple generations and luck. Some legendary Pals have unique breeding recipes that override the power system.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Palworld Breeding</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🥚 Breeding Basics</div><div class="edu-card-body">Two Pals of opposite gender in a Breeding Farm produce an egg after a set time. The egg hatches after incubation. Offspring type is calculated from parent breeding power values (each Pal has a unique number). The average of the two parents' breeding powers determines offspring, with the game selecting the closest matching Pal from the power table.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Passive Skills</div><div class="edu-card-body">Pals have up to 4 passive skill slots. When breeding, each passive skill from both parents has a chance to be inherited by the offspring (up to 4 total). Additional random passives can appear. Breeding for 4 specific passives on one Pal requires: both parents to have the desired passives, reducing the chance of random passives displacing desired ones.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏆 Legendary Passives</div><div class="edu-card-body">The most valuable passive skills: Legend (increases all stats significantly), Musclehead (greatly increases attack), Swift (greatly increases movement speed), Lucky (increases drop rate). Obtaining Legendary passive requires catching or breeding Pals that have it, then breeding that passive into your target Pal through generations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Breeding Chains</div><div class="edu-card-body">Breeding the exact Pal you want often requires multiple generations. Example: want a Jetragon with Musclehead, Swift, Legend, and Ferocious. Generation 1: breed two Pals to create a Jetragon. Generation 2: breed Jetragon with a Pal carrying desired passives. Generation 3: combine passive carriers. Each generation requires managing passive inheritance probabilities.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🥚 Egg Incubation</div><div class="edu-card-body">Different egg types have different incubation requirements: temperature and time. Rocky eggs need warm/hot environments. Frozen eggs need cold environments. The incubation facility temperature must match the egg type. Incubation time ranges from 10 minutes to several hours depending on egg rarity. Electric Pals in the base can power incubators.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Breeding Power Table</div><div class="edu-card-body">Every Pal has a unique breeding power value (50 to 1500). Rarer, stronger Pals have higher values. The offspring is determined by: (Parent1_Power + Parent2_Power) / 2 = Target_Power. The game then selects the Pal whose breeding power is closest to this target. Special unique combinations (like Anubis + Anubis = Anubis) override the formula.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Advanced Breeding Strategies</h2>
+    <h3>Four-passive breeding route</h3>
+    <p>Breeding a Pal with four specific legendary passives requires systematic planning. The probability of inheriting any specific passive from parents is approximately 40–50%. With two parents each having 2 of the 4 desired passives: roughly 15–20% chance of the offspring inheriting all 4. This means 5–7 attempts on average. For 4 legendary passives (requiring parents that already have 2 each), you first need to breed intermediate Pals carrying 2 passives each — a breeding chain of 3–5 generations is typical for optimal 4-passive Pals.</p>
+    <h3>Base productivity breeding</h3>
+    <p>Beyond combat passives, breeding Pals for base work efficiency has significant impact on progression speed. Work Suitability passives (Artisan for crafting speed, Serious for work efficiency) dramatically increase base production rates. Breeding high-work-efficiency Pals for each job category (mining, planting, watering, handiwork) enables production rates impossible with unoptimised Pals. The investment in breeding productive base workers pays off through significantly faster resource accumulation.</p>
+    <h3>Unique breeding combinations</h3>
+    <p>Several Pals have specific required parent combinations regardless of breeding power: Anubis (Anubis + Anubis), Shadowbeak (Kitsun + Astegon), Frostallion Noct (Frostallion + Helzephyr), and others. These unique recipes take priority over the breeding power formula. Knowing these special combinations allows efficient planning — rather than discovering them through trial and error, you can work backward from the desired offspring to identify the specific parent pair required.</p>
+    <div class="edu-highlight"><strong>🎮 Breeding efficiency tips:</strong> Always build multiple Breeding Farms to run parallel breeding attempts. Keep a spreadsheet of Pals with their passive skills for efficient pair selection. Prioritise breeding passive carriers (Pals with 2+ desired passives) before final combination. Use the calculator's reverse lookup to find the most accessible parent pair for any target. Remember: Cake is required for breeding — ensure consistent Cake production from your base before starting intensive breeding programs.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the Palworld breeding formula?</div>
@@ -340,7 +395,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 
 <script>
 const PAL_POWER = {"Lamball": 10, "Cattiva": 20, "Chikipi": 30, "Lifmunk": 40, "Foxparks": 50, "Fuack": 60, "Sparkit": 70, "Tanzee": 80, "Rooby": 90, "Pengullet": 100, "Penking": 110, "Jolthog": 120, "Gumoss": 130, "Vixy": 140, "Hoocrates": 150, "Teafant": 160, "Depresso": 170, "Cremis": 180, "Daedream": 190, "Rushoar": 200, "Nox": 210, "Fuddler": 220, "Killamari": 230, "Mau": 240, "Cinnamoth": 470, "Univolt": 570, "Foxcicle": 580, "Pyrin": 280, "Reindrix": 290, "Rayhound": 300, "Kitsun": 310, "Dazzi": 320, "Lunaris": 330, "Dinossom": 340, "Surfent": 350, "Gobfin": 360, "Suzaku": 370, "Grizzbolt": 380, "Lyleen": 390, "Leezpunk": 400, "Blazehowl": 410, "Relaxaurus": 420, "Broncherry": 430, "Petallia": 440, "Sibelyx": 750, "Incineram": 460, "Arsox": 480, "Dumud": 490, "Cawgnito": 500, "Jormuntide": 510, "Nitewing": 520, "Ribbuny": 530, "Swee": 540, "Sweepa": 550, "Chillet": 560, "Elphidran": 590, "Kelpsea": 600, "Azurobe": 610, "Cryolinx": 620, "Blazehowl Noct": 630, "Felbat": 640, "Pyrin Noct": 650, "Mammorest": 660, "Wumpo": 670, "Warsect": 680, "Fenglope": 690, "Bushi": 700, "Beakon": 710, "Ragnahawk": 720, "Katress": 730, "Vaelet": 740, "Elphidran Aqua": 760, "Croajiro": 770, "Neuvillette": 780, "Shadowbeak": 790, "Paladius": 800, "Necromus": 810, "Frostallion": 820, "Frostallion Noct": 830, "Jetragon": 840, "Anubis": 850, "Jormuntide Ignis": 860, "Mammorest Cryst": 870, "Lyleen Noct": 880, "Relaxaurus Lux": 890, "Mau Cryst": 900, "Kingpaca": 910, "Kingpaca Cryst": 920, "Wumpo Botan": 930, "Verdash": 940, "Amorphous": 950};
@@ -417,7 +472,7 @@ function pwFindParents() {
 document.addEventListener('DOMContentLoaded', buildSelects);
 </script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

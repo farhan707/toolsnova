@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -206,7 +220,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div class="output-box" id="rw-output" onclick="rwCopy()" style="min-height:160px;white-space:pre;cursor:pointer;font-family:var(--mono)"></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Random Word Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Set word count</strong> — choose how many random words to generate (1 to 100).</li>
+      <li><strong>Select word type</strong> — all words, nouns only, verbs only, adjectives only, or mixed parts of speech.</li>
+      <li><strong>Choose complexity</strong> — common words (everyday vocabulary), advanced words (broader vocabulary), or mixed.</li>
+      <li><strong>Generate</strong> — click Generate for a new random set. Each click produces completely different words.</li>
+      <li><strong>Copy the words</strong> — use the copy button to use generated words in your project, game, or creative exercise.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎲 Use cases:</strong> Creative writing prompts (write a story using these 5 words). Vocabulary building (look up unfamiliar words). Game development (random item names, character traits). Brainstorming (random stimulus for lateral thinking). Password creation (random word passphrases). Naming (product names, project codenames). Each click opens new creative possibilities.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Randomness in Language</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🎲 True Randomness vs Patterns</div><div class="edu-card-body">Human-generated 'random' word selections are not truly random — we unconsciously favour familiar, recently encountered, or emotionally significant words. Algorithmic random selection draws from a vocabulary list with equal probability for each word, producing genuine statistical randomness. This absence of pattern is valuable for creative exercises, game design, and testing — contexts where human bias would undermine the purpose.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📚 Word Categories</div><div class="edu-card-body">Nouns: people, places, things, ideas (book, mountain, justice). Verbs: actions and states (run, think, become). Adjectives: modify nouns (blue, enormous, careful). Adverbs: modify verbs/adjectives (quickly, very, often). Prepositions: relationships (in, on, under, between). Conjunctions: connectors (and, but, because). Content words (nouns, verbs, adjectives, adverbs) carry meaning; function words (prepositions, conjunctions, articles) provide grammar structure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧠 Creative Stimulus</div><div class="edu-card-body">Random words trigger associative thinking by forcing unexpected connections. Lateral thinking pioneer Edward de Bono called this 'random entry' — an external random stimulus breaks habitual thinking patterns and opens new creative pathways. Advertising agencies, design studios, and innovation teams use random stimulus techniques to generate novel ideas that structured brainstorming would not produce.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎮 Game Applications</div><div class="edu-card-body">Taboo and Articulate: describe a word without using forbidden words. Word association chains. Exquisite Corpse writing (each person adds using a random word). Scrabble practice. Crossword clue generation. RPG character trait randomisation. Procedural world name generation. Game designers use random word lists to ensure variety and unpredictability in generated content.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔑 Password Passphrases</div><div class="edu-card-body">A passphrase of 4+ random words (correct-horse-battery-staple) is both memorable and highly secure. Each word from a 2,048-word list adds 11 bits of entropy. Four random words: 44 bits of entropy — equivalent to a random 7-character password but far more memorable. This tool generates random words for passphrase construction — select 4–6 unrelated words for a strong, memorable passphrase.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 NLP and Machine Learning</div><div class="edu-card-body">Random word sampling is fundamental to NLP tasks. Word2Vec and similar models learn word relationships from co-occurrence patterns in large corpora. Random word sampling during training prevents models from over-fitting to word order. Negative sampling (randomly selecting words that should NOT appear near a target word) is a key training technique for word embedding models.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Creative Applications</h2>
+    <h3>Writing prompts and exercises</h3>
+    <p>Random words as writing prompts overcome blank page paralysis. Exercise: generate 5 random words, then write a 200-word story incorporating all five. The constraints (five specific words must appear) paradoxically increase creativity by limiting choice — the writer must find creative solutions to incorporate unexpected words rather than following familiar narrative paths. This technique is used in creative writing classes, NaNoWriMo warm-ups, and professional writing workshops to develop flexibility and associative thinking.</p>
+    <h3>Brainstorming with random stimuli</h3>
+    <p>Random word brainstorming process: 1) Define the problem clearly. 2) Generate 5 random words. 3) For each random word, list all associations (literal and abstract). 4) Force connections between the associations and the problem. 5) Evaluate generated ideas for practical application. This process, called 'random input' in lateral thinking methodology, generates ideas that conventional analysis would never produce. The randomness ensures exploration of solution spaces outside habitual thinking patterns.</p>
+    <h3>Vocabulary building strategy</h3>
+    <p>Daily random word learning: generate one random word, look it up (definition, etymology, usage examples), use it in three original sentences, and try to use it naturally in conversation that day. This spaced, active engagement with new vocabulary produces far better retention than reading word lists. Connecting new words to existing knowledge through associations and example sentences activates deeper memory encoding than passive exposure. Over a year of daily practice, this builds vocabulary by 300+ new words with strong retention.</p>
+    <div class="edu-highlight"><strong>🎲 Random word activities:</strong> Daily writing prompt: 3 words → 150-word story. Vocabulary building: 1 word/day → look up, use in sentences. Brainstorming: 5 words → forced connections to problem. Game night: Taboo, Articulate, or Pictionary using generated words. Passphrase: 4–6 words → memorable secure password. Character naming: adjective + noun combinations. Each application uses randomness differently — the common thread is breaking habitual patterns to discover new possibilities.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What can I use random words for?</div>
@@ -240,9 +295,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

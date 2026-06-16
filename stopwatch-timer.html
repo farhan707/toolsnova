@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -222,7 +236,49 @@ gtag('config', 'G-S6PPGS7N63');
       </div>
     </div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Stopwatch and Timer</h2>
+    <ol class="edu-steps">
+      <li><strong>Stopwatch mode</strong> — click Start to begin counting up. Click Lap to record split times without stopping. Click Stop to pause, Resume to continue, Reset to clear.</li>
+      <li><strong>Timer mode</strong> — enter hours, minutes, and seconds. Click Start to count down. An alert sounds when time expires.</li>
+      <li><strong>Record lap times</strong> — in stopwatch mode, each Lap press records the elapsed time and the split time since the last lap. Useful for tracking intervals in training.</li>
+      <li><strong>Use keyboard shortcuts</strong> — Space to start/stop, L for lap, R to reset. Faster than clicking during timed activities.</li>
+      <li><strong>Keep the tab open</strong> — the timer continues running even if you switch browser tabs, but may pause if the device sleeps.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⏱️ Precision note:</strong> Browser-based timers are accurate to within 10–50 milliseconds — sufficient for most practical uses but not for scientific measurement requiring millisecond precision. For competitive sports timing requiring certified accuracy, use dedicated timing hardware. For training, cooking, presentations, and productivity, browser accuracy is perfectly adequate.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Time Measurement</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⏱️ Stopwatch vs Timer</div><div class="edu-card-body">Stopwatch: counts up from zero — measures how long something takes. Timer (countdown): counts down from a set time — alerts when a period ends. Both measure the same thing differently. Use stopwatch when you don't know how long something will take. Use timer when you want to limit time on an activity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏃 Sports and Training</div><div class="edu-card-body">Lap times reveal pace consistency. Running 4 laps with times 2:00, 2:05, 2:00, 1:55 shows negative split (getting faster — good pacing). Times 1:55, 2:00, 2:05, 2:15 show positive split (slowing down — went out too fast). Consistent lap times indicate good pacing strategy. Coaches analyse lap splits to optimise training and race strategy.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🍳 Kitchen Timing</div><div class="edu-card-body">Cooking timers require reliability rather than precision. Multiple concurrent timers (roast at 90 min, vegetables at 20 min, sauce at 10 min) need clear labelling. This tool handles sequential single-timer needs. For kitchen use with multiple simultaneous timers, dedicated kitchen timer apps or smart speaker timers provide better multi-timer management.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Productivity Timing</div><div class="edu-card-body">Pomodoro technique uses 25-minute timers. Time-boxing: allocating fixed time to tasks prevents overrun. Meeting timers enforce time limits. Presentation practice uses stopwatch to verify timing. Many professionals time their daily activities for a week to identify where time actually goes — different from where they think it goes.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Circadian Timing</div><div class="edu-card-body">Human alertness follows ultradian rhythms — approximately 90-120 minute cycles of high and low alertness. Timing focused work during high-alertness periods and breaks during low-alertness periods optimises productivity. Morning people (chronotypes) have early alertness peaks; evening people have later peaks. Paying attention to your natural energy cycles and timing important work accordingly can significantly improve output quality.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔬 Scientific Timing</div><div class="edu-card-body">Scientific experiments require precise timing: reaction rates, material testing, biological assays. Stopwatches with ±0.01 second accuracy are used in labs. Atomic clocks achieve 10⁻¹⁸ second precision — used for GPS satellites, scientific experiments, and defining the second. The SI unit of time (second) is defined by atomic transitions in caesium-133 atoms rather than astronomical observation.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Time Management Techniques</h2>
+    <h3>Time boxing for productivity</h3>
+    <p>Time boxing assigns fixed time budgets to tasks regardless of completion status — preventing perfectionism and scope creep. Allocate 2 hours to a report, then stop at 2 hours with whatever is done. This creates urgency (Parkinson's Law: work expands to fill available time), forces prioritisation of content within the box, and prevents one task from consuming a disproportionate portion of the workday. Used systematically across a week, time boxing reveals actual time costs of different work types and improves future estimation accuracy.</p>
+    <h3>Meeting time management</h3>
+    <p>The average professional spends 35–50% of their workday in meetings, with over half of meeting time considered unproductive. Timer-enforced meeting structures address this: strict start and end times (timer started at meeting time, not when last person arrives). Time-boxed agenda items (5 min for updates, 15 min for decision, 10 min for planning). Visible countdown timer shared with all participants creates natural time pressure that keeps discussion focused. Research shows meetings with visible timers run 25–30% shorter than those without.</p>
+    <h3>The two-minute rule</h3>
+    <p>GTD (Getting Things Done) methodology's two-minute rule: if a task takes less than two minutes, do it immediately rather than scheduling it. The overhead of adding it to a to-do list, reviewing the list, and returning to the task often exceeds the task duration. A stopwatch helps calibrate the two-minute threshold — time common tasks to develop accurate intuition for what truly takes under two minutes. This prevents both premature execution of longer tasks and unnecessary scheduling of trivial ones.</p>
+    <div class="edu-highlight"><strong>⏱️ Timer use cases by duration:</strong> 2 minutes: GTD rule threshold, email responses. 5 minutes: short breaks, quick reviews. 10 minutes: reading, planning. 25 minutes: Pomodoro work session, focused writing. 45–90 minutes: deep work sessions aligned with ultradian rhythms. 5–10 seconds: reaction time tests. 60 seconds: breathing exercises (box breathing: 4 in, 4 hold, 4 out, 4 hold). Each duration has specific practical applications.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the difference between a stopwatch and a countdown timer?</div>
@@ -259,9 +315,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

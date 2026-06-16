@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -178,6 +178,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -205,7 +219,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Sleep schedule <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="slp-output" onclick="copyEl('slp-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Sleep Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your wake time</strong> — what time you need to wake up tomorrow.</li>
+      <li><strong>Or enter your bedtime</strong> — when you plan to go to sleep, to see recommended wake times.</li>
+      <li><strong>Include sleep onset time</strong> — the average person takes 10–20 minutes to fall asleep. Add this to calculate when to get into bed.</li>
+      <li><strong>Read optimal wake times</strong> — the calculator shows times aligned with complete 90-minute sleep cycles.</li>
+      <li><strong>Choose your cycle count</strong> — 5 cycles (7.5 hours) is ideal for most adults. 6 cycles (9 hours) for recovery. 4 cycles (6 hours) minimum for function.</li>
+    </ol>
+    <div class="edu-highlight"><strong>😴 Why sleep cycles matter:</strong> Waking mid-cycle causes sleep inertia — the groggy, disoriented feeling that can last hours. Waking at the end of a complete 90-minute cycle allows natural emergence from light sleep, making you feel alert immediately. The difference between waking at the right vs wrong point in a cycle can determine your entire day's cognitive function.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Sleep Science</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🌙 Sleep Cycles</div><div class="edu-card-body">Sleep occurs in approximately 90-minute cycles, each containing: N1 (light sleep, transition), N2 (true sleep, body temperature drops, heart rate slows), N3 (deep sleep/slow wave sleep, most restorative physically), and REM (rapid eye movement, dreams, memory consolidation, emotional processing). Early cycles have more deep sleep; later cycles have more REM.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Sleep Stages</div><div class="edu-card-body">N1 (5% of sleep): falling asleep, hypnic jerks are common. N2 (45%): sleep spindles and K-complexes appear in EEG; memory consolidation begins. N3 (25%): slow wave sleep; growth hormone released; immune system strengthened; hardest to wake from. REM (25%): brain activity similar to waking; muscle paralysis prevents acting out dreams; creativity and emotional memory processed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Chronotypes</div><div class="edu-card-body">Morning larks (morning chronotype): naturally wake early, peak alertness in morning. Evening owls (evening chronotype): naturally sleep late, peak alertness in evening/night. Genetics determine chronotype (PER3 gene variants). Approximately 25% early chronotype, 25% late, 50% intermediate. Chronotype shifts with age: teenagers naturally shift later, shift back in adulthood, shift earlier in older age.</div></div>
+      <div class="edu-card"><div class="edu-card-title">😴 Sleep Deprivation Effects</div><div class="edu-card-body">17 hours without sleep: cognitive impairment equivalent to 0.05% BAC (legal driving limit in many countries). 24 hours: 0.10% BAC equivalent. Chronic mild deprivation (6 hours/night): cumulative deficit that subjective adaptation masks. People sleeping 6 hours believe they are performing normally but show measurable cognitive deficits. Sleep debt cannot be fully repaid — chronic deprivation causes lasting effects.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧠 Sleep and Memory</div><div class="edu-card-body">Memory consolidation during sleep: hippocampal memories transfer to cortical storage during deep sleep. REM sleep processes emotional memories and enables creative connections between unrelated concepts. 'Sleep on it' advice is scientifically validated — problems are genuinely more solvable after sleep due to unconscious memory processing. Students who sleep after studying perform significantly better on tests than those who stay awake.</div></div>
+      <div class="edu-card"><div class="edu-card-title">☕ Caffeine and Sleep</div><div class="edu-card-body">Caffeine blocks adenosine receptors (adenosine causes sleepiness). Half-life of caffeine: approximately 5–6 hours. A 3 PM coffee still has 25% of its caffeine at 11 PM — disrupting sleep onset and deep sleep quality. Caffeine consumed after 2 PM consistently reduces total deep sleep by 20% even when sleep onset is not affected. The sleepiness returns when caffeine clears, often as afternoon crash.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Optimising Sleep Quality</h2>
+    <h3>Sleep hygiene fundamentals</h3>
+    <p>Evidence-based sleep hygiene practices: consistent sleep/wake schedule (even weekends — the most important factor for circadian rhythm stability). Dark, cool room (18–19°C/65–67°F optimal core body temperature for sleep). No screens 1 hour before bed (blue light suppresses melatonin by up to 3 hours). No caffeine after 2 PM. No alcohol close to bedtime (alcohol induces sleep but suppresses REM, causing fragmented second-half sleep). Regular exercise (but not within 2–3 hours of bedtime). These practices consistently improve sleep quality across population studies.</p>
+    <h3>Napping strategy</h3>
+    <p>Strategic napping improves afternoon alertness and performance. Optimal nap duration: 10–20 minutes (power nap — enters N2, avoids deep sleep that causes grogginess). 90-minute nap (one full cycle) is also effective but requires appropriate scheduling. Timing: 1–3 PM aligns with natural post-lunch circadian dip. Caffeine nap: drink coffee, nap immediately for 20 minutes — caffeine takes 20–30 minutes to be absorbed, so you wake just as it takes effect. NASA research showed 26-minute naps improved pilot performance by 34% and alertness by 100%.</p>
+    <h3>Sleep disorders and when to seek help</h3>
+    <p>Common sleep disorders: insomnia (difficulty falling/staying asleep, affects 30% of adults occasionally, 10% chronically). Sleep apnoea (breathing interruptions during sleep — affects 24% of men, 9% of women, mostly undiagnosed). Restless leg syndrome. Narcolepsy. Circadian rhythm disorders. Signs warranting medical evaluation: consistently taking over 30 minutes to fall asleep, waking multiple times per night, feeling unrefreshed despite adequate hours, snoring loudly (partner report), excessive daytime sleepiness despite 7–9 hours of sleep. CBT-I (Cognitive Behavioural Therapy for Insomnia) is the first-line treatment for insomnia — more effective than sleep medication long-term.</p>
+    <div class="edu-highlight"><strong>😴 Optimal sleep schedule calculation:</strong> Work backward from required wake time. Subtract 15 minutes for sleep onset. Count back in 90-minute increments: 5 cycles (7.5 hours) = ideal, 6 cycles (9 hours) = recovery night, 4 cycles (6 hours) = minimum. Example: 7 AM wake, 5 cycles: get into bed by 7:00 AM − 7h30m − 15min = 11:15 PM. Set alarm for 7:00 AM. This calculation maximises the chance of waking at the end of a complete cycle.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How long is a sleep cycle?</div>
@@ -246,9 +302,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

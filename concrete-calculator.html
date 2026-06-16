@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -211,7 +225,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="con-output" onclick="copyEl('con-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Concrete Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select unit system</strong> — feet (with depth in inches) for US/imperial projects, metres for metric projects.</li>
+      <li><strong>Enter length and width</strong> — the horizontal dimensions of the area to be filled.</li>
+      <li><strong>Enter depth/thickness</strong> — for slabs, the thickness in inches (imperial) or metres (metric). A standard driveway is 4 inches; a patio is 3–4 inches; a structural slab is 6+ inches.</li>
+      <li><strong>Click Calculate</strong> — see volume in cubic yards, cubic feet, cubic metres, and the number of 60lb and 80lb bags needed.</li>
+      <li><strong>Add 10% for waste</strong> — the calculator automatically adds a 10% overage. Always buy slightly more than calculated — running short means a second trip and potential colour/batch mismatch.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🏗️ Ready-mix vs bags:</strong> For projects under 0.5 cubic yards (small repairs, fence posts), bags are practical. For 0.5–1 cubic yard, bags are cheaper but labour-intensive. For over 1 cubic yard, ready-mix concrete delivered by truck is faster, more consistent, and often more economical despite minimum delivery charges (typically 1 cubic yard minimum).</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Concrete</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🧱 What Is Concrete?</div><div class="edu-card-body">A mixture of Portland cement (binding agent), sand (fine aggregate), gravel/crushed stone (coarse aggregate), and water. The cement reacts chemically with water (hydration) to form a hard crystalline structure that bonds the aggregates together. Concrete is strong in compression but weak in tension — steel reinforcement (rebar) compensates for tensile weakness.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Concrete Mix Ratios</div><div class="edu-card-body">Standard mix (1:2:3): 1 part cement, 2 parts sand, 3 parts aggregate by volume. Strong mix (1:1.5:3): more cement for higher strength. For 2,500 PSI (typical residential): 1:2:3. For 3,500 PSI (driveways, structural): 1:1.5:3. For 5,000 PSI (heavy structures): specialist mixes. Bagged concrete (Quikrete, Sakrete) has the correct proportions pre-mixed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Setting vs Curing</div><div class="edu-card-body">Setting: concrete stiffens within 2–8 hours (depending on temperature and mix). Curing: the strength-gaining process continues for 28 days. At 7 days, concrete reaches approximately 70% design strength. At 28 days: 100% design strength. At 1 year: 110–115%. Never load concrete before 7 days; avoid vehicle traffic for 28 days on driveways.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌡️ Temperature Effects</div><div class="edu-card-body">Cold weather: water freezes before hydration completes, causing permanent weakness. Do not pour concrete below 40°F (4°C) without cold-weather precautions (heated enclosures, warm water, insulating blankets). Hot weather: water evaporates too quickly, weakening the surface. Pour in early morning, keep moist during curing with wet burlap or curing compound.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💧 Water-Cement Ratio</div><div class="edu-card-body">The single most important factor in concrete strength: lower water-cement ratio = stronger concrete. A ratio of 0.45 produces strong concrete; 0.65 produces weaker concrete but is more workable. Never add extra water to improve workability — use admixtures (plasticisers) instead. Each additional gallon of water per bag reduces compressive strength by 200–300 PSI.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔧 Reinforcement</div><div class="edu-card-body">Rebar: steel bars wired together before pouring. Provides tensile strength concrete lacks. Minimum 2 inches of concrete cover over rebar. Wire mesh: welded wire fabric for slabs — controls crack width but provides less structural reinforcement than rebar. Fibre reinforcement: synthetic or steel fibres mixed in for crack control in non-structural applications.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Concrete Project Planning</h2>
+    <h3>Slab thickness guide</h3>
+    <p>Thickness directly affects concrete volume and structural capacity. Sidewalk (pedestrian only): 3–4 inches minimum. Patio (furniture, light use): 3–4 inches. Driveway (passenger cars): 4 inches minimum, 5 inches for SUVs and trucks. Garage floor: 4–6 inches. Foundation/structural slab: 6+ inches with rebar. Each additional inch of thickness increases material cost by 25% for the same area — correct thickness selection balances cost with structural requirements.</p>
+    <h3>Estimating and ordering</h3>
+    <p>Always order 5–10% more concrete than calculated volume. Concrete cannot be easily returned once ordered and wastage from forms, uneven subgrade, and spillage is inevitable. For ready-mix: concrete is sold by the cubic yard and has minimum order quantities (typically 1 yard). Partial loads incur short-load fees. For bags: one 80lb bag makes approximately 0.60 cubic feet (0.022 cubic yards). At 45 bags per cubic yard, a 1-yard pour requires 45 bags — time-consuming to mix manually.</p>
+    <h3>Site preparation is critical</h3>
+    <p>The concrete itself is only part of a successful slab. Subgrade preparation determines long-term performance. Remove organic matter (soil settles and compresses). Compact subgrade to prevent differential settling. Add 4–6 inches of compacted gravel base for drainage and stable support. Install vapour barrier (6-mil plastic) for indoor slabs to prevent moisture migration. Set forms at correct height and level. These preparation steps prevent the cracking and settling that account for most concrete failures.</p>
+    <div class="edu-highlight"><strong>🏗️ Concrete project checklist:</strong> Subgrade compacted and level ✓. Gravel base installed (4–6 inches) ✓. Forms set at correct height ✓. Rebar or wire mesh positioned ✓. Concrete ordered with 10% overage ✓. Tools ready (screed, float, edger, broom) ✓. Curing compound or wet burlap available ✓. Weather checked (no rain or frost within 24 hours) ✓. These eight steps prevent the most common concrete project failures.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much concrete do I need?</div>
@@ -249,9 +305,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

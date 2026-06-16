@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -217,7 +231,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fl-output" onclick="copyEl('fl-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Flooring Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter room dimensions</strong> — length and width in feet. For irregular rooms, calculate each rectangular section separately and add them.</li>
+      <li><strong>Select waste factor</strong> — 10% for straight lay, 15% for diagonal installation or complex patterns, 20% for herringbone or intricate designs.</li>
+      <li><strong>Enter price per square foot</strong> — optional, for total cost calculation including the waste factor.</li>
+      <li><strong>Enter box coverage</strong> — how many square feet one box covers. This information is on the product packaging.</li>
+      <li><strong>Read boxes needed</strong> — the calculator rounds up to whole boxes since partial boxes cannot be returned in most cases.</li>
+      <li><strong>Always verify</strong> — confirm measurements twice before purchasing. Returns on opened flooring boxes are often not accepted.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📦 Buy extra, match the batch:</strong> Purchase 10–15% more flooring than calculated and keep leftover boxes. Flooring is manufactured in batches — dye lots vary between production runs. If you need to repair or extend the floor later, flooring from a different batch may not match. Leftover boxes are also useful for replacing damaged boards years later.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Flooring Types</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🪵 Hardwood Flooring</div><div class="edu-card-body">Solid hardwood: actual wood throughout, can be sanded and refinished 5–7 times, 25–100+ year lifespan. Engineered hardwood: real wood veneer over plywood core, more stable in humid conditions, can be refinished 1–3 times. Best for: living areas, bedrooms, dining rooms. Avoid: bathrooms, basements with moisture. Most expensive but longest-lasting option.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏠 Luxury Vinyl Plank (LVP)</div><div class="edu-card-body">100% waterproof, realistic wood appearance, click-lock installation (DIY-friendly), 15–25 year lifespan. More comfortable underfoot than tile, warmer than stone. Suitable for: any room including bathrooms and basements. Cannot be refinished — replace when worn. Fastest-growing flooring category — combines practicality with appearance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔲 Ceramic and Porcelain Tile</div><div class="edu-card-body">Extremely durable, waterproof, ideal for wet areas. Porcelain (fired at higher temperature) is harder and more water-resistant than ceramic. Cold and hard underfoot — consider radiant floor heating underneath. Grout requires periodic sealing and cleaning. Lifespan: 50+ years with proper installation. Requires perfectly flat subfloor — any flex causes cracking.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏡 Laminate Flooring</div><div class="edu-card-body">Photographic image of wood/stone over fibreboard core. Less expensive than hardwood or LVP. Cannot be refinished. Water-resistant but not waterproof — avoid wet areas. Click-lock installation is DIY-friendly. 15–25 year lifespan. The technology has improved significantly — quality laminate is now difficult to distinguish visually from hardwood.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🧶 Carpet</div><div class="edu-card-body">Softest, warmest option — ideal for bedrooms. Absorbs sound. Requires professional cleaning to maintain appearance. Lifespan: 5–15 years depending on quality and traffic. Poor choice for allergy sufferers — traps allergens. Sold by square yard (multiply sq ft by 1.111 to get sq yards). Cut pile (plush, frieze) and loop pile (Berber) are main types.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📦 Installation Methods</div><div class="edu-card-body">Glue-down: permanently adhered to subfloor, most stable. Nail/staple-down: traditional hardwood method, requires wood subfloor. Floating: click-lock planks not attached to subfloor — most DIY-friendly, allows seasonal movement, slight hollow sound. Each method has different subfloor requirements and tools needed.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Flooring Installation Planning</h2>
+    <h3>Subfloor preparation</h3>
+    <p>The subfloor is the foundation of any flooring installation — skipping preparation causes failures regardless of flooring quality. Critical checks: flatness (max 3/16 inch variation per 10 feet for most flooring), levelness (slope less than 1/8 inch per foot), moisture content (wood subfloor should be below 12% moisture content for hardwood installation). Sand down high spots, fill low spots with floor levelling compound. Fix any squeaks by screwing down loose subfloor panels. Proper subfloor preparation prevents the cracking, gapping, and squeaking that cause premature flooring failure.</p>
+    <h3>Acclimation requirements</h3>
+    <p>Solid hardwood must acclimate in the installation space for 3–5 days before installation — wood expands and contracts with humidity changes. If installed before acclimation, the flooring can cup, buckle, or gap as it adjusts to the room's humidity. Engineered hardwood requires 48 hours acclimation. LVP and laminate: 48 hours minimum. Tile: no acclimation required. Stack boxes in the room (not the garage or truck) and open them on the second day to allow proper climate adjustment.</p>
+    <h3>Layout and cutting planning</h3>
+    <p>Floor layout planning prevents awkward cuts and ensures balanced appearance. Start by finding the centre of the room and working outward — this ensures cut pieces on opposite walls are equal width (avoiding a 3-inch strip on one side and full planks on the other). For diagonal installation, chalk a 45° reference line. For patterned tile, dry-lay the pattern before any adhesive is applied. Always cut away from the finished area to avoid dust contamination. Plan the layout direction: planks run perpendicular to joists for structural reasons and parallel to the longest wall for visual effect.</p>
+    <div class="edu-highlight"><strong>🪵 Flooring cost comparison (installed, per sq ft):</strong> Carpet: $3–$8. Laminate: $4–$8. Luxury Vinyl Plank: $5–$12. Engineered Hardwood: $8–$15. Solid Hardwood: $10–$20. Ceramic Tile: $7–$15. Porcelain Tile: $10–$20. Natural Stone: $15–$30+. These ranges reflect wide quality variation within each category — mid-range products in each category typically offer the best value for durability per dollar spent.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much extra flooring should I buy?</div>
@@ -254,9 +310,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

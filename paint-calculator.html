@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -203,7 +217,48 @@ gtag('config', 'G-S6PPGS7N63');
   <button class="btn" onclick="paintAddRoom()" style="width:100%;margin-bottom:10px">+ Add another room</button>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="paint-output" onclick="copyEl('paint-output')" style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Paint Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Add rooms</strong> — click 'Add Room' for each room you are painting. Enter length, width, and ceiling height for each.</li>
+      <li><strong>Enter doors and windows</strong> — the calculator subtracts door area (approximately 21 sq ft each) and window area (approximately 15 sq ft each) from the paintable wall area.</li>
+      <li><strong>Set number of coats</strong> — 2 coats is standard. Going from dark to light colour or painting bare drywall may require 3 coats.</li>
+      <li><strong>Set coverage rate</strong> — standard latex paint covers 350–400 sq ft per gallon. Premium paints: 400–450 sq ft. Budget paints: 300–350 sq ft. Check the paint can label for the specific product's coverage.</li>
+      <li><strong>Read gallons needed</strong> — the calculator shows gallons required and recommends rounding up to the nearest whole gallon, plus 10% extra for touch-ups and overages.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🎨 Primer consideration:</strong> If painting bare drywall, new plaster, or making a dramatic colour change (dark to light), primer is needed as a separate step with its own gallon calculation. Good primer improves coverage, saves paint, and produces a more durable finish. One coat of primer + one coat of paint often looks better than two coats of paint without primer.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Paint Types and Coverage</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🎨 Paint Finish Types</div><div class="edu-card-body">Flat/Matte: no sheen, hides imperfections, not washable — ideal for ceilings and low-traffic walls. Eggshell: slight sheen, slightly washable — most popular for living rooms and bedrooms. Satin: moderate sheen, washable — good for family rooms, hallways. Semi-gloss: noticeable sheen, very washable — ideal for trim, doors, kitchens, bathrooms. Gloss: high sheen, most durable — trim, cabinets, high-traffic surfaces.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Coverage Variables</div><div class="edu-card-body">Rough or textured surfaces absorb more paint — add 10–20% to coverage estimate. Painting over dark colours requires more coats. New/unpainted surfaces (drywall, wood) require more paint than repaint. High humidity increases drying time and may affect coverage. Multiple colours require calculating each colour separately.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💧 Oil vs Latex Paint</div><div class="edu-card-body">Latex (water-based): easy clean-up, fast drying (1–4 hours), low VOC, flexible. Modern latex has matched or exceeded oil paint in durability for most applications. Oil-based: longer dry time (8–24 hours), solvent clean-up, better adhesion on glossy surfaces, still preferred for some trim applications. Most interior residential painting uses latex exclusively.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Paint Calculation Formula</div><div class="edu-card-body">Wall area = 2 × (length + width) × height. Subtract door area (21 sq ft × count) and window area (15 sq ft × count). Divide by coverage per gallon. Multiply by number of coats. Add 10% for waste and future touch-ups. Round up to nearest gallon or half-gallon.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌿 Low VOC and Zero VOC</div><div class="edu-card-body">VOC (Volatile Organic Compounds) in paint evaporate as it dries, causing strong smell and health concerns. Low VOC: <50g/L. Zero VOC: <5g/L. Most major brands (Benjamin Moore, Sherwin-Williams, Behr) offer low/zero VOC lines in all colours. Recommended for bedrooms, nurseries, and spaces with limited ventilation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Paint Quality vs Cost</div><div class="edu-card-body">Premium paints ($50–$80/gallon) typically provide better coverage (fewer coats needed), better colour retention, better washability, and longer life than budget paints ($20–$35/gallon). The extra cost per gallon is often offset by needing fewer gallons and having better long-term results. For high-traffic or high-visibility areas, premium paint is cost-effective over a 5–10 year horizon.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Professional Painting Techniques</h2>
+    <h3>Preparation is 80% of the job</h3>
+    <p>Professional painters spend more time on preparation than painting. Fill holes and cracks with spackling compound; sand smooth when dry. Sand existing glossy paint for better adhesion. Clean walls with TSP solution or sugar soap to remove grease and dirt. Tape around trim, windows, and ceiling with painter's tape. Use drop cloths on all floors and furniture. Proper preparation eliminates paint failure, brush marks on adjacent surfaces, and touch-up work that doubles labour time.</p>
+    <h3>Painting order for professional results</h3>
+    <p>Paint in this sequence for clean results: 1) Ceiling first (roller, working edge to edge). 2) Walls second (cut in edges with brush, then roll). 3) Trim and doors last (semi-gloss or gloss, brush only). This sequence lets ceiling paint drips onto unpainted walls, and wall paint spills onto unpainted trim — each subsequent step covers previous drips from earlier steps. Cutting in (painting the edge with a brush before rolling) should be done in sections, keeping a wet edge to prevent lap marks.</p>
+    <h3>How much paint to buy for future touch-ups</h3>
+    <p>Always buy slightly more paint than calculated and save it in a labelled container with the date, colour name, and room it was used in. Scuffs, dings, and nail holes requiring touch-up are inevitable over years of living in a space. Paint that is even 1 year old may not perfectly match due to colour drift during storage. Record the exact paint colour code from the can (most retailers can re-mix from the code). For major renovations, consider mixing all same-room paint together in a larger container to ensure consistent colour throughout.</p>
+    <div class="edu-highlight"><strong>🎨 Paint buying guide:</strong> Calculate wall area correctly (subtract doors and windows). Add 10% for waste and touch-ups. One coat on previously painted same colour: standard calculation. New colour or new surface: add 25% and consider primer. Ceiling: calculate separately, usually 1 coat. Trim: approximately 1 quart per 150 linear feet. Buy same batch number (printed on can) if buying multiple cans — colour can vary slightly between batches.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How much paint do I need per room?</div>
@@ -240,9 +295,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

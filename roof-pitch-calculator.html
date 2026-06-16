@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -200,7 +214,48 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="rp-output" onclick="copyEl('rp-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Roof Pitch Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter run</strong> — the horizontal distance from the wall to the peak (half the building width for a symmetrical roof), typically measured in inches.</li>
+      <li><strong>Enter rise</strong> — the vertical height from the top of the wall plate to the roof peak, also in inches.</li>
+      <li><strong>Click Calculate</strong> — see pitch in X:12 format, angle in degrees, and slope multiplier.</li>
+      <li><strong>Use the slope multiplier</strong> — multiply your flat roof area (footprint) by the slope multiplier to get actual roof surface area for material ordering.</li>
+      <li><strong>Check the pitch classification</strong> — flat, low, standard, steep, or extreme. Different roofing materials have minimum pitch requirements.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🏠 Pitch notation:</strong> Roof pitch is expressed as rise:run per 12 inches of run. A 6:12 pitch rises 6 inches for every 12 inches of horizontal distance. This is also written as 6/12 or '6 in 12.' The '12' is always the run unit — only the rise number changes. A 4:12 pitch = 18.4° angle. A 12:12 pitch = 45° angle.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Roof Pitch</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Pitch Classifications</div><div class="edu-card-body">Flat (0:12–2:12): requires special waterproofing membrane. Low pitch (2:12–4:12): limited roofing material options, good for modern/contemporary architecture. Standard pitch (4:12–6:12): most common residential, suitable for most roofing materials. Steep (7:12–12:12): excellent drainage, some installation difficulty. Very steep (12:12+): structural considerations, ladder safety requirements.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Roofing Material Requirements</div><div class="edu-card-body">Asphalt shingles: minimum 2:12 (special installation) or 4:12 (standard). Metal roofing: 1:12 minimum for standing seam. Clay/concrete tile: 4:12 minimum. Wood shakes: 4:12 minimum. Slate: 4:12 minimum. Built-up roofing (BUR): flat to 3:12. Each material has minimum pitch requirements for proper water shedding and warranty validity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Slope Multiplier Calculation</div><div class="edu-card-body">Slope multiplier = √(1 + (rise/12)²). A 6:12 pitch: √(1 + 0.25) = √1.25 = 1.118. A 12×20 foot building footprint area = 240 sq ft. Actual roof area = 240 × 1.118 × 2 (two sides) = 536 sq ft. The slope multiplier converts flat footprint area to actual sloped surface area for accurate material ordering.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏠 Pitch and Climate</div><div class="edu-card-body">High-pitch roofs shed snow and rain more quickly — preferred in high-precipitation and high-snow regions. Low-pitch roofs collect snow loads that can exceed structural capacity in heavy snow areas. Steep pitches create more attic space. Very low pitches require more frequent maintenance and waterproofing checks. Climate should influence pitch selection in new construction.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💨 Wind Resistance</div><div class="edu-card-body">Steeper roofs create more wind surface area and wind uplift forces. In hurricane and high-wind zones, moderate pitches (4:12–6:12) often perform better than very steep pitches. Building codes in hurricane zones specify minimum fastener counts and connection requirements that increase with pitch. Roof overhangs (eaves) also affect wind resistance — shorter eaves handle high winds better.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔧 Rafter Length Calculation</div><div class="edu-card-body">Rafter length = Run × slope multiplier. For a 12-foot run with 6:12 pitch: 12 × 1.118 = 13.4 feet rafter length (before adding overhang). This calculation is essential for ordering lumber — incorrect rafter length wastes expensive lumber or requires splicing. Ridge board length = building length. Hip roof rafter calculations are more complex, involving 45° angles.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Roof Construction and Planning</h2>
+    <h3>Calculating roofing materials</h3>
+    <p>Roofing is sold by the 'square' — 100 square feet of roof area. To calculate squares needed: measure building footprint (length × width), multiply by slope multiplier, divide by 100, add 10–15% for waste, hip/valley cuts, and starter strips. A 40×30 foot building with 6:12 pitch: footprint = 1,200 sq ft. Roof area = 1,200 × 1.118 × 2 sides = 2,683 sq ft. Squares needed = 2,683 ÷ 100 = 26.83 squares + 15% waste = 31 squares. Always round up to full squares.</p>
+    <h3>Ridge and valley calculations</h3>
+    <p>Hips and valleys complicate roof area calculation significantly. A hip roof has four sloped sides; a gable roof has two. Each hip adds complexity and waste. Valley intersections where two roof planes meet require valley flashing and create diagonal cut shingles with significant waste. Most professional estimators add 20–25% for hip roofs versus 10–15% for simple gable roofs. This calculator handles simple gable roof calculations; complex hip and valley roofs may require professional measurement or roofing estimating software.</p>
+    <h3>Attic ventilation and pitch</h3>
+    <p>Proper attic ventilation is critical for roof longevity and home energy efficiency. Most building codes require 1 square foot of ventilation per 150 square feet of attic floor area (or 1:300 with vapour barrier). Higher pitch roofs have more attic volume requiring more ventilation. Ventilation calculation: attic sq ft ÷ 150 = required net free area of vents. Balance intake vents (soffit) with exhaust vents (ridge, gable) for natural convection. Insufficient ventilation causes moisture damage, ice dams, and premature shingle failure.</p>
+    <div class="edu-highlight"><strong>🏠 Roof pitch quick reference:</strong> 4:12 = 18.4° = multiplier 1.054. 5:12 = 22.6° = multiplier 1.083. 6:12 = 26.6° = multiplier 1.118. 7:12 = 30.3° = multiplier 1.158. 8:12 = 33.7° = multiplier 1.202. 9:12 = 36.9° = multiplier 1.250. 10:12 = 39.8° = multiplier 1.302. 12:12 = 45.0° = multiplier 1.414. Multiply footprint area by multiplier to get actual roof surface area.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is roof pitch?</div>
@@ -237,9 +292,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

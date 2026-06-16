@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -176,6 +176,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -222,7 +236,49 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="sqft-output" onclick="copyEl('sqft-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Square Footage Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select shape</strong> — rectangle/room (most common), circle, or triangle.</li>
+      <li><strong>Choose measurement unit</strong> — feet, inches, metres, centimetres, or yards. The calculator converts all inputs to square feet automatically.</li>
+      <li><strong>Enter dimensions</strong> — length and width for rectangles, diameter for circles, base and height for triangles.</li>
+      <li><strong>Enter price per square foot</strong> — optional, to calculate total material cost for flooring, paint, tile, or any area-based pricing.</li>
+      <li><strong>Read area in all units</strong> — see square feet, square metres, square yards, and acres simultaneously for the same area.</li>
+    </ol>
+    <div class="edu-highlight"><strong>📐 Irregular rooms:</strong> Divide L-shaped or irregular rooms into rectangular sections, calculate each section separately, then add them together. An L-shaped room can be divided into two rectangles. A room with a bay window adds a small rectangle to the main rectangle. This approach handles any polygon-shaped space accurately.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Area Measurement</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Square Foot Basics</div><div class="edu-card-body">1 square foot = a square with sides of 1 foot (12 inches). Area = length × width. A 12×10 foot room = 120 square feet. Converting: 1 square metre = 10.764 square feet. 1 square yard = 9 square feet. 1 acre = 43,560 square feet. 1 hectare = 107,639 square feet.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏠 Room Size Reference</div><div class="edu-card-body">Small bedroom: 100–120 sq ft. Average bedroom: 120–150 sq ft. Master bedroom: 200–300 sq ft. Living room: 250–400 sq ft. Open plan: 500+ sq ft. Average US home: 2,261 sq ft (2022). Average UK home: 818 sq ft. Average Indian apartment: 650–1,000 sq ft.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 Area-Based Pricing</div><div class="edu-card-body">Flooring: $2–$15/sq ft installed depending on material. Paint: 1 gallon covers 350–400 sq ft per coat. Tile: $5–$20/sq ft installed. Carpet: $3–$8/sq ft installed. Roofing: sold by 'square' (100 sq ft). Lawn care: $30–$80 per 1,000 sq ft. Knowing exact square footage prevents over-ordering expensive materials.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Measurement Accuracy</div><div class="edu-card-body">Measure twice, calculate once. For flooring, measure at the widest points — furniture will be moved but the floor area is fixed. Include closets, alcoves, and bay windows in flooring calculations. Exclude fixed features (built-in cabinets, islands) only if flooring genuinely will not go under them.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 International Units</div><div class="edu-card-body">US, UK (informal): square feet. Scientific and most international: square metres. Land area (international): hectares. Land area (US): acres. Real estate in India: often quoted in square feet despite metric standards. Always clarify which unit is being used in international property transactions to avoid order-of-magnitude misunderstandings.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Waste Factor by Material</div><div class="edu-card-body">Hardwood flooring straight lay: 10% waste. Diagonal lay: 15% waste. Herringbone/chevron: 15–20% waste. Tile straight lay: 10%. Tile diagonal: 15%. Carpet: 10% for most rooms, more for irregular shapes. Vinyl plank: 10%. Always buy more than calculated — running short requires matching batches that may differ.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Square Footage in Real Estate and Construction</h2>
+    <h3>How square footage is measured in real estate</h3>
+    <p>Gross Living Area (GLA) — the standard for residential real estate — includes all finished, heated living space above grade. Excluded from GLA: unfinished basements, garages, unfinished attics, enclosed porches that are not conditioned space. Methods vary: exterior measurement (most common in US, gives larger number because it includes wall thickness), interior measurement (Europe, gives smaller number). Always clarify measurement method when comparing properties internationally — a 100m² European flat may be listed as 1,250 sq ft (exterior) or 1,076 sq ft (interior).</p>
+    <h3>Calculating material quantities</h3>
+    <p>Square footage is the foundation of all material estimation for construction and renovation. The workflow: measure each area, calculate square footage, add waste factor, divide by unit coverage of the material, round up to purchasable unit (box, bundle, gallon). Errors in square footage measurement cascade through the entire estimate — a 10% measurement error means 10% too much or too little material ordered. Always verify key measurements twice with a tape measure before finalising material orders for large projects.</p>
+    <h3>Property tax and HOA implications</h3>
+    <p>In many jurisdictions, property tax assessment is based partly on square footage. Incorrect square footage in official records can result in overpaying (or underpaying) property taxes for years. If you believe your property's recorded square footage is incorrect, a certified appraisal or professional measurement can be used to challenge the assessment. HOA fees are also sometimes based on unit square footage — verifying the accuracy of recorded measurements can have ongoing financial implications.</p>
+    <div class="edu-highlight"><strong>📐 Quick area conversions:</strong> 1 sq metre = 10.764 sq feet. 1 sq foot = 0.0929 sq metres. 1 acre = 43,560 sq feet = 4,047 sq metres = 0.4047 hectares. 1 hectare = 10,000 sq metres = 107,639 sq feet = 2.471 acres. 1 sq yard = 9 sq feet = 0.836 sq metres. For real estate: multiply sq metres by 10.764 to get sq feet (approximately ×10 for quick mental calculation).</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I calculate square footage?</div>
@@ -259,9 +315,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered'))

@@ -4511,7 +4511,7 @@ function zodiacCalc() {
 
   out.className = 'output-box success';
   out.textContent =
-    `Date of Birth: ${date.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}\n\n` +
+    `Date of Birth: ${new Date(year,month-1,day).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}\n\n` +
     `── Western Zodiac ────────────────────\n` +
     `  Sign:         ${s.symbol} ${s.sign}\n` +
     `  Dates:        ${s.date}\n` +

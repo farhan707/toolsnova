@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -182,6 +182,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -225,7 +239,48 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </section>
 
-<section class="faq-section">
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the BMI Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your height</strong> — in feet/inches or centimetres.</li>
+      <li><strong>Enter your weight</strong> — in pounds or kilograms.</li>
+      <li><strong>Click Calculate</strong> — see your BMI score and category (underweight, normal, overweight, obese).</li>
+      <li><strong>Read the healthy weight range</strong> — the calculator shows the weight range considered healthy for your height.</li>
+      <li><strong>Check the BMI table</strong> — see all BMI categories with their ranges for reference.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚠️ BMI limitations:</strong> BMI does not measure body fat directly. A muscular athlete and an overweight sedentary person of the same height and weight get identical BMI scores but have very different health profiles. BMI is a population-level screening tool, not an individual health diagnosis. Always interpret BMI alongside other health indicators.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding BMI</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 BMI Formula</div><div class="edu-card-body">BMI = weight(kg) / height(m)². Imperial: BMI = 703 × weight(lbs) / height(inches)². A 70kg person who is 1.75m tall: 70 / (1.75²) = 70 / 3.0625 = 22.9. Created by Belgian mathematician Adolphe Quetelet in the 1830s as a population statistics tool — not originally intended as an individual health metric.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 BMI Categories (WHO)</div><div class="edu-card-body">Underweight: < 18.5. Normal weight: 18.5–24.9. Overweight: 25.0–29.9. Obese Class I: 30.0–34.9. Obese Class II: 35.0–39.9. Obese Class III (severe): ≥ 40. These thresholds were established for populations of European descent and may not apply equally to all ethnic groups.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Ethnic Adjustments</div><div class="edu-card-body">Asian populations have higher health risks at lower BMIs than European populations — the same BMI correlates with more body fat and greater metabolic risk. Many health organisations recommend lower thresholds for Asian populations: overweight at 23 (not 25), obese at 27.5 (not 30). South Asian populations have particularly elevated cardiovascular risk at lower BMIs.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💪 The Muscle Problem</div><div class="edu-card-body">BMI cannot distinguish muscle from fat. A 6'0" professional bodybuilder at 220lbs has BMI 29.8 (overweight) despite minimal body fat. A 6'0" sedentary person at 220lbs may have BMI 29.8 but very high body fat. BMI misclassifies approximately 30% of people when compared to direct body fat measurement.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 BMI and Health Risk</div><div class="edu-card-body">Despite limitations, population studies consistently show BMI correlates with health outcomes at a population level. Higher BMI is associated with increased risk of type 2 diabetes, cardiovascular disease, certain cancers, sleep apnoea, joint problems, and all-cause mortality. The correlation is strong at population level even if individual BMI is imprecise.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Better Alternatives</div><div class="edu-card-body">Waist circumference: men >40 inches (102cm), women >35 inches (88cm) indicates increased risk. Waist-to-hip ratio: >0.90 for men, >0.85 for women indicates risk. Waist-to-height ratio: >0.5 indicates risk (same threshold regardless of sex). Body fat percentage (from DEXA, BodPod, or Navy formula) is most accurate but least accessible.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>BMI in Health Context</h2>
+    <h3>BMI as a starting point, not endpoint</h3>
+    <p>Use BMI as an initial screening tool, then investigate further if the result raises concerns. A BMI in the overweight range warrants checking waist circumference (better visceral fat indicator), blood pressure, fasting glucose, and lipid panel. These metabolic markers together with BMI provide a much more complete health picture than BMI alone. Many people with 'overweight' BMI have completely healthy metabolic profiles; some people with 'normal' BMI have poor metabolic health — a phenomenon called 'normal weight obesity.'</p>
+    <h3>BMI in children</h3>
+    <p>BMI assessment in children uses age and sex-specific percentile charts rather than fixed thresholds — because healthy BMI changes with age and differs between boys and girls during development. A BMI that is 'healthy' for a 5-year-old is 'underweight' for a 15-year-old. Paediatricians plot BMI on CDC or WHO growth charts and assess percentile rank rather than absolute BMI value. Parental BMI is also relevant context for paediatric BMI assessment.</p>
+    <h3>Weight management beyond BMI</h3>
+    <p>If BMI indicates overweight or obesity and metabolic markers confirm elevated risk, the evidence-based approach to weight management: sustained calorie deficit through dietary change (most impactful for weight), regular physical activity (most impactful for metabolic health independent of weight), adequate sleep (poor sleep increases appetite hormones), and stress management (chronic stress elevates cortisol, promoting fat storage). No single approach works for everyone — personalised plans with healthcare provider guidance produce the best outcomes.</p>
+    <div class="edu-highlight"><strong>📊 BMI quick reference by height:</strong> 5'4" (163cm): healthy = 108–145 lbs (49–66 kg). 5'7" (170cm): healthy = 118–159 lbs (54–72 kg). 5'10" (178cm): healthy = 129–173 lbs (59–79 kg). 6'0" (183cm): healthy = 136–183 lbs (62–83 kg). 6'2" (188cm): healthy = 144–194 lbs (65–88 kg). These ranges are BMI 18.5–24.9 converted to weight for common heights.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is BMI?</div>
@@ -260,9 +315,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -180,6 +180,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -258,7 +272,49 @@ gtag('config', 'G-S6PPGS7N63');
       </div>
     </div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the Image Compressor</h2>
+    <ol class="edu-steps">
+      <li><strong>Upload your image</strong> — drag and drop or click to select. Supports JPEG, PNG, WebP, and GIF formats.</li>
+      <li><strong>Set quality level</strong> — 80–85% quality is the sweet spot: visually indistinguishable from the original while reducing file size by 60–80%.</li>
+      <li><strong>Choose output format</strong> — keep original format, or convert to WebP for best compression (30–40% smaller than JPEG at same quality).</li>
+      <li><strong>Preview the result</strong> — compare original and compressed side-by-side before downloading.</li>
+      <li><strong>Download compressed image</strong> — the file processes entirely in your browser. No image is uploaded to any server.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🖼️ All processing is local:</strong> Your images never leave your device. Compression happens entirely in your browser using JavaScript. This means complete privacy for sensitive images and no file size limits imposed by server upload restrictions.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Image Compression</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Lossy vs Lossless</div><div class="edu-card-body">Lossy compression (JPEG, WebP lossy): permanently removes some image data to achieve smaller files. Smaller file, slightly reduced quality. Lossless compression (PNG, WebP lossless): compresses without removing data — file is smaller but can be perfectly reconstructed. PNG files compressed with tools like PNGCrush are smaller but pixel-perfect identical to original.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🖼️ Image Format Guide</div><div class="edu-card-body">JPEG: best for photographs, lossy, no transparency. PNG: best for graphics with text/logos, lossless, supports transparency. WebP: Google format, 25–35% smaller than JPEG/PNG at same quality, supports both lossy and lossless, transparency — best modern choice. GIF: animations only (use WebP or APNG instead for better quality). SVG: vector graphics, infinitely scalable, use for logos and icons.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 File Size Impact</div><div class="edu-card-body">An uncompressed 4000×3000 photo from a modern camera: 36MB+ (RAW) or 6–15MB (JPEG straight from camera). After compression to 80% quality: 500KB–2MB. For web use, target under 200KB for hero images, under 100KB for thumbnails. Large images are the single biggest cause of slow-loading web pages.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌐 Web Performance Impact</div><div class="edu-card-body">Google's PageSpeed Insights identifies oversized images as the most common performance issue on websites. Each second of load time reduces conversions by approximately 7%. Images typically represent 50–70% of a web page's total download size. Optimising images is the highest-ROI web performance improvement available — free, immediate, and dramatic.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 Responsive Images</div><div class="edu-card-body">The same image does not need to be the same size for mobile (375px wide) and desktop (1440px wide). Serving a 1400px image to a mobile user wastes 90% of the download. HTML srcset attribute and CSS media queries enable serving appropriately sized images per device. Image CDNs (Cloudinary, imgix) can resize and compress automatically on delivery.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔧 EXIF Data</div><div class="edu-card-body">Camera photos contain EXIF metadata: GPS location, camera model, settings, date/time. This data adds file size and raises privacy concerns when sharing photos online. Stripping EXIF reduces file size slightly and protects location privacy. Most image compression tools offer EXIF removal — enable this when sharing photos publicly.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Image Optimisation for Web</h2>
+    <h3>Target file sizes for web</h3>
+    <p>Hero/banner images (full width): 200–400KB maximum. Product images: 100–200KB. Thumbnails: 20–50KB. Blog post images: 100–200KB. Background images: as small as possible, consider CSS gradients instead. Icon and logo SVGs: typically under 10KB. These targets ensure pages load in under 3 seconds on average mobile connections — the threshold after which most users abandon. Multiply image file size by the number of images on a page to understand total image payload.</p>
+    <h3>Modern image formats</h3>
+    <p>WebP provides 25–35% smaller files than JPEG at equivalent quality and is now supported by all modern browsers (Chrome, Firefox, Safari 14+, Edge). AVIF is newer (2019), provides 50% smaller files than JPEG, supported by Chrome and Firefox but not yet Safari. The migration path: JPEG/PNG → WebP (safe for all modern browsers) → AVIF with JPEG fallback (for cutting-edge compression with older browser support). This tool generates WebP output for best web compression.</p>
+    <h3>Batch optimisation workflow</h3>
+    <p>For websites with many images, manual compression is impractical. Automated solutions: build tools (webpack, Vite with image plugins) compress images during the build process. CDNs with image processing (Cloudflare Images, Fastly) compress on-the-fly. CMS plugins (Smush for WordPress, Short Pixel) automatically compress uploaded images. For ToolsNova or any static site, compressing images before upload is the simplest approach — this tool handles individual images; shell scripts using ImageMagick or cwebp handle batches.</p>
+    <div class="edu-highlight"><strong>🖼️ Image optimisation checklist:</strong> Compress all images before upload ✓. Use WebP format for web images ✓. Size images to maximum display dimensions (no larger) ✓. Use lazy loading (loading='lazy' attribute) for below-fold images ✓. Strip EXIF data from photos ✓. Use CSS for simple graphics instead of images ✓. These steps together typically reduce total page image weight by 70–85%.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What image formats does this support?</div>
@@ -301,9 +357,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

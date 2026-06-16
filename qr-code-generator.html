@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -180,6 +180,20 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
     <a href="leverage-calculator.html" class="nav-link">Leverage</a>
     <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
   </nav>
 </header>
 <div class="page-hero">
@@ -244,7 +258,49 @@ gtag('config', 'G-S6PPGS7N63');
       <button class="btn" onclick="qrDownloadSVG()">⬇ Download SVG</button>
     </div>
   </div>
-<section class="faq-section">
+
+  
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the QR Code Generator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your content</strong> — URL (most common), plain text, contact information (vCard), Wi-Fi credentials, or any text up to 4,296 characters.</li>
+      <li><strong>Set error correction level</strong> — Low (7% recovery), Medium (15%), Quartile (25%), High (30%). Higher levels make QR codes larger but scannable even when partially damaged.</li>
+      <li><strong>Choose size</strong> — larger QR codes scan more reliably from a distance. Minimum 2cm × 2cm for print; larger for posters and outdoor signage.</li>
+      <li><strong>Generate and preview</strong> — scan the preview with your phone camera to verify it works before using.</li>
+      <li><strong>Download as PNG or SVG</strong> — PNG for digital use, SVG for print (scales to any size without pixelation).</li>
+    </ol>
+    <div class="edu-highlight"><strong>📱 Always test before printing:</strong> Scan your generated QR code with multiple devices (iPhone camera, Android camera, dedicated QR app) before using on printed materials. A QR code that cannot be scanned is worse than no QR code — it creates a dead end for users. Test at the final printed size, not just on screen.</div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding QR Codes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📱 What Is a QR Code?</div><div class="edu-card-body">Quick Response code — a 2D barcode developed by Denso Wave (Japan) in 1994 for automotive parts tracking. Contains data encoded in black and white squares arranged in a grid. Can store up to 4,296 alphanumeric characters or 7,089 numeric characters. Scanned by smartphone cameras, which are now universal QR readers without needing a separate app.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔷 QR Code Structure</div><div class="edu-card-body">Finder patterns: three corner squares that help scanners locate and orient the code. Timing patterns: alternating squares that define the grid. Alignment patterns: additional squares in larger codes for distortion correction. Data modules: the remaining squares encoding the actual content. Quiet zone: white border around the code (essential — do not remove it).</div></div>
+      <div class="edu-card"><div class="edu-card-title">🛡️ Error Correction</div><div class="edu-card-body">QR codes use Reed-Solomon error correction allowing partial damage recovery. Level L (Low): 7% recovery. Level M (Medium): 15%. Level Q (Quartile): 25%. Level H (High): 30%. Higher levels create more complex codes (larger). Use H for QR codes on products likely to get dirty or worn. Use L for digital-only QR codes where damage is impossible.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 QR Code Versions</div><div class="edu-card-body">Version 1 (21×21 modules) to Version 40 (177×177 modules). More content requires higher version (larger code). A URL like https://toolsnova.net fits in Version 3 or 4. A full vCard contact with all fields may require Version 10+. More complex = harder to scan at small sizes — keep content concise when QR codes will be small.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎨 QR Code Design</div><div class="edu-card-body">QR codes can be styled: custom colours (foreground must be darker than background — not reversed). Embedded logos (keep under 30% of code area, use high error correction). Rounded corners. Custom patterns. However, aesthetic customisation reduces scan reliability — always test thoroughly after styling. Keep at least 4 module quiet zone border.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📱 Dynamic vs Static</div><div class="edu-card-body">Static QR codes: content is encoded in the code itself — cannot be changed after printing. Dynamic QR codes: redirect through a URL shortener, allowing destination to be changed without reprinting. Dynamic QR codes also provide scan analytics (scan count, location, device type). Useful for marketing where campaign destinations may change.</div></div>
+    </div>
+
+  </section>
+
+  <section class="edu-section">
+    <h2>QR Codes in Business and Marketing</h2>
+    <h3>High-impact QR code applications</h3>
+    <p>Restaurant menus: QR codes replaced physical menus during COVID and many restaurants retained them for easy updating. Business cards: QR code linking to digital contact card (vCard) allows recipients to save contact details without manual entry. Product packaging: links to instruction videos, extended warranty registration, authentication verification. Event tickets: QR codes for entry scanning. Retail price tags: links to product reviews, specifications, and inventory. Payment (WeChat Pay, PayPal, UPI): encode payment URLs for contactless transactions.</p>
+    <h3>QR code print specifications</h3>
+    <p>Minimum printable size: 2cm × 2cm for codes scanned from 20cm distance. Business card QR code: 2.5–3cm recommended. Flyer QR code: 3–5cm. Poster QR code: 5–10cm. Outdoor signage: 10cm minimum, larger for distance scanning. Maximum scanning distance is approximately 10× the code width — a 5cm code scans from up to 50cm. Always include sufficient quiet zone (white border) of at least 4 module widths around all sides.</p>
+    <h3>QR code security awareness</h3>
+    <p>'Quishing' (QR code phishing) is an emerging security threat — malicious QR codes in emails, on posters, or placed over legitimate codes redirect to phishing sites. Security best practices: in email, be suspicious of QR codes from unknown senders (legitimate companies rarely require QR code scanning from email). In physical locations, check that QR code stickers haven't been placed over original codes. Preview the URL before opening in your browser. Use a QR scanner app that shows the destination URL before opening rather than auto-opening.</p>
+    <div class="edu-highlight"><strong>📱 QR code content types:</strong> URL: most common, starts with https://. Email: mailto:address@example.com. Phone: tel:+1234567890. SMS: smsto:+1234567890:message. Wi-Fi: WIFI:S:NetworkName;T:WPA;P:Password;;. vCard: structured contact data. Plain text: any text up to 4,296 characters. Calendar event: VEVENT format. Each type triggers different actions in the smartphone scanner app.</div>
+
+  </section>
+
+  <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What can I encode in a QR code?</div>
@@ -287,9 +343,9 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

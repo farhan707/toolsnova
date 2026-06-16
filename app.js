@@ -4480,15 +4480,23 @@ function zodiacCalc() {
   };
 
   // Better sign lookup
+  // Each entry = [month, day, sign that STARTS on this date]
+  // If date is before this boundary, return the PREVIOUS sign
   const boundaries = [
     [1,20,'Aquarius'],[2,19,'Pisces'],[3,21,'Aries'],[4,20,'Taurus'],
     [5,21,'Gemini'],[6,21,'Cancer'],[7,23,'Leo'],[8,23,'Virgo'],
     [9,23,'Libra'],[10,23,'Scorpio'],[11,22,'Sagittarius'],[12,22,'Capricorn']
   ];
+  // Signs in order — when date is before a boundary, use the previous sign
+  const signOrder = ['Capricorn','Aquarius','Pisces','Aries','Taurus','Gemini',
+                     'Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn'];
   let signName = 'Capricorn';
-  for (const [bm, bd, bsign] of boundaries) {
-    if (month < bm || (month === bm && day < bd)) { signName = bsign; break; }
-    signName = bsign;
+  for (let i = 0; i < boundaries.length; i++) {
+    const [bm, bd] = boundaries[i];
+    if (month < bm || (month === bm && day < bd)) {
+      signName = signOrder[i]; break;
+    }
+    signName = boundaries[i][2];
   }
   const s = SIGNS.find(x=>x.sign===signName) || SIGNS[0];
 

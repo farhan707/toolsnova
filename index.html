@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=19">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -55,6 +55,7 @@ gtag('config', 'G-S6PPGS7N63');
 <body>
 <header class="site-header">
   <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
   <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
   <nav class="site-nav">
     <span class="nav-category-label">Developer</span>
@@ -210,7 +211,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
     <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
-  </nav>
+    </nav>
 </header>
 
 <section class="hero">
@@ -441,9 +442,9 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="terms.html">Terms</a>
   </nav>
 </footer>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=19"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))

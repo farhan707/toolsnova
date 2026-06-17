@@ -1,31 +1,3 @@
-/* ════════════════════════════════════════════
-   THEME SYSTEM — Light / Dark
-   ════════════════════════════════════════════ */
-(function() {
-  // Apply saved theme immediately (before page renders) to avoid flash
-  const saved = localStorage.getItem('tn-theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
-  // Update button icon once DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    _updateToggleIcon(saved);
-  });
-})();
-
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('tn-theme', next);
-  _updateToggleIcon(next);
-}
-
-function _updateToggleIcon(theme) {
-  const btn = document.getElementById('theme-toggle');
-  if (!btn) return;
-  btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-  btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-}
-
 /* ═══════════════════════════════════════════════════════
    app.js — ToolsNova shared logic
    Domain: https://toolsnova.net/

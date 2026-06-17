@@ -3814,10 +3814,16 @@ function jwtClear() {
 
 /* ── MARKDOWN EDITOR / PREVIEWER ── */
 function mdRender() {
-  const src = document.getElementById('md-input')?.value || '';
+  const raw = document.getElementById('md-input')?.value || '';
   const out = document.getElementById('md-preview');
   if (!out) return;
-  if (!src.trim()) { out.innerHTML = '<p style="color:var(--text3);font-size:.8rem">Preview will appear here as you type…</p>'; return; }
+  if (!raw.trim()) { out.innerHTML = '<p style="color:var(--text3);font-size:.8rem">Preview will appear here as you type…</p>'; return; }
+
+  // Sanitise raw input first — escape HTML special chars, then apply markdown
+  const src = raw
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
 
   let html = src
     // Headings
@@ -3832,8 +3838,8 @@ function mdRender() {
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
     // Code blocks
     .replace(/```(\w*)\n([\s\S]*?)```/g, (m,lang,code)=>`<pre><code class="lang-${lang}">${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`)
-    // Inline code
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Inline code — escape HTML inside backticks to prevent XSS
+    .replace(/`([^`]+)`/g, (_,c)=>`<code>${c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code>`)
     // Bold + italic
     .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
@@ -3842,9 +3848,15 @@ function mdRender() {
     .replace(/_(.+?)_/g, '<em>$1</em>')
     // Strikethrough
     .replace(/~~(.+?)~~/g, '<del>$1</del>')
-    // Links and images
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%">')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    // Links and images — URLs sanitised to prevent open redirect and JS injection
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_,alt,src)=>{
+      const safeSrc = src.match(/^https?:\/\//) ? src : '#';
+      return `<img src="${safeSrc}" alt="${alt.replace(/</g,'&lt;').replace(/>/g,'&gt;')}" style="max-width:100%">`;
+    })
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_,txt,href)=>{
+      const safeHref = href.match(/^https?:\/\//) ? href : '#';
+      return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${txt.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</a>`;
+    })
     // Unordered lists
     .replace(/^[-*+] (.+)$/gm, '<li>$1</li>')
     // Ordered lists

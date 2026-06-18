@@ -1,3 +1,39 @@
+/* ════════════════════════════════════════════
+   THEME SYSTEM — Light / Dark
+   ════════════════════════════════════════════ */
+// Theme applied in <head> inline script to prevent flash.
+// Just update the button icon once DOM is ready.
+document.addEventListener('DOMContentLoaded', () => {
+  // Read from html element — already set by inline <head> script, no localStorage needed
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  _updateToggleIcon(current);
+});
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('tn-theme', next);
+  _updateToggleIcon(next);
+}
+
+function _updateToggleIcon(theme) {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+  btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  // Update fixed button colours for light/dark
+  if (theme === 'light') {
+    btn.style.background = '#ffffff';
+    btn.style.color = '#111112';
+    btn.style.border = '2px solid rgba(26,138,10,0.4)';
+  } else {
+    btn.style.background = '#141416';
+    btn.style.color = '#f0f0f2';
+    btn.style.border = '2px solid rgba(127,255,111,0.4)';
+  }
+}
+
 /* ═══════════════════════════════════════════════════════
    app.js — ToolsNova shared logic
    Domain: https://toolsnova.net/

@@ -1,154 +1,35 @@
 /* ================================================================
    ToolsNova Service Worker v7
-   - PRE-CACHES all 137 pages + core assets on install
-   - HTML: Network First → serves fresh when online, cached when offline
-   - JS/CSS: Network First → always fresh, falls back to cache offline
-   - Assets: Cache First → fonts/icons cached permanently
-   - Clean URL support: /tool-name (not /tool-name.html)
+   Strategy:
+   - Pre-cache core assets + top 15 pages on install
+   - Dynamically cache ALL other pages as user visits them
+   - Network First for pages/JS/CSS (always fresh when online)
+   - Cache First for images/fonts (never change)
+   - Full offline support for any visited page
    ================================================================ */
 
-const CACHE_NAME    = 'toolsnova-v7';
-const ASSETS_CACHE  = 'toolsnova-assets-v7';
+const CACHE_NAME   = 'toolsnova-v7';
+const ASSETS_CACHE = 'toolsnova-assets-v7';
 
-// ── All 137 pages pre-cached on install for offline support ────────
-const ALL_PAGES = [
-  '/about',
-  '/age-calculator',
-  '/aspect-ratio-calculator',
-  '/auto-loan-calculator',
-  '/base64-encoder',
-  '/blood-pressure-checker',
-  '/blood-type-compatibility',
-  '/bmi-calculator',
-  '/body-fat-calculator',
-  '/break-even-calculator',
-  '/calorie-burn-calculator',
-  '/calorie-calculator',
-  '/case-converter',
-  '/cgpa-calculator',
-  '/challenge-pass-probability',
-  '/character-counter',
-  '/coin-flip-dice-roller',
-  '/color-code-converter',
-  '/color-picker',
-  '/compound-interest-calculator',
-  '/compound-trading-calculator',
-  '/concrete-calculator',
-  '/consistency-calculator',
-  '/contact',
-  '/cron-expression-builder',
-  '/css-minifier',
-  '/currency-converter',
-  '/currency-correlation-calculator',
-  '/daily-drawdown-calculator',
-  '/data-size-converter',
-  '/days-between-dates',
-  '/diff-checker',
-  '/discount-calculator',
-  '/dividend-calculator',
-  '/drawdown-calculator',
-  '/electricity-cost-calculator',
-  '/emi-calculator',
-  '/fibonacci-calculator',
-  '/flooring-calculator',
-  '/forex-profit-calculator',
-  '/forex-swap-calculator',
-  '/fraction-calculator',
-  '/fuel-cost-calculator',
-  '/funded-account-roi-calculator',
-  '/gold-position-size-calculator',
-  '/gpa-calculator',
-  '/grade-calculator',
-  '/gst-calculator',
-  '/hash-generator',
-  '/height-converter',
-  '/hex-binary-converter',
-  '/html-encoder-decoder',
-  '/ideal-weight-calculator',
-  '/image-compressor',
+// ── Pre-cache these on install (top traffic pages) ─────────────────
+const PRE_CACHE_PAGES = [
   '/',
-  '/inflation-calculator',
-  '/invoice-generator',
   '/json-formatter',
-  '/json-to-csv-converter',
-  '/jwt-decoder',
-  '/kelly-criterion-calculator',
-  '/length-converter',
-  '/leverage-calculator',
-  '/lorem-ipsum',
-  '/lot-size-calculator',
-  '/love-calculator',
-  '/lucky-number-generator',
-  '/macro-calculator',
-  '/margin-calculator',
-  '/markdown-editor',
-  '/matrix-calculator',
-  '/meeting-time-zone-planner',
-  '/monte-carlo-simulator',
-  '/mortgage-calculator',
-  '/net-worth-calculator',
-  '/number-base-converter',
-  '/number-to-words',
-  '/ovulation-calculator',
-  '/pace-calculator',
-  '/paint-calculator',
-  '/palworld-breeding-calculator',
-  '/password-generator',
-  '/password-strength-checker',
-  '/percentage-calculator',
-  '/percentage-error-calculator',
-  '/pip-value-calculator',
-  '/pivot-point-calculator',
-  '/pomodoro-timer',
-  '/position-scaling-calculator',
-  '/pregnancy-due-date-calculator',
-  '/privacy-policy',
-  '/profit-target-tracker',
+  '/forex-swap-calculator',
   '/prop-firm-challenge-calculator',
-  '/qr-code-generator',
-  '/quadratic-equation-solver',
-  '/random-number-generator',
-  '/random-word-generator',
+  '/monte-carlo-simulator',
   '/regex-tester',
-  '/retirement-calculator',
-  '/risk-of-ruin-calculator',
-  '/risk-reward-calculator',
-  '/roi-calculator',
-  '/roman-numeral-converter',
-  '/roof-pitch-calculator',
-  '/salary-calculator',
-  '/sales-tax-calculator',
-  '/scientific-calculator',
-  '/screen-resolution-calculator',
-  '/significant-figures-calculator',
-  '/sip-calculator',
-  '/sleep-calculator',
-  '/speed-converter',
-  '/square-footage-calculator',
-  '/standard-deviation-calculator',
-  '/stop-loss-take-profit-calculator',
-  '/stopwatch-timer',
-  '/tdee-calculator',
-  '/temperature-converter',
-  '/terms',
-  '/text-repeater',
-  '/text-to-slug-converter',
-  '/timestamp-converter',
-  '/timezone-converter',
-  '/tip-calculator',
-  '/tip-split-calculator',
-  '/triangle-calculator',
-  '/typing-speed-test',
-  '/url-encoder',
-  '/uuid-generator',
-  '/vat-calculator',
-  '/vitamin-d-calculator',
-  '/water-intake-calculator',
-  '/weight-converter',
-  '/win-rate-expectancy-calculator',
   '/word-counter',
-  '/word-frequency-counter',
-  '/zodiac-calculator'
+  '/age-calculator',
+  '/bmi-calculator',
+  '/percentage-calculator',
+  '/password-generator',
+  '/base64-encoder',
+  '/qr-code-generator',
+  '/timestamp-converter',
+  '/uuid-generator',
+  '/about',
+  '/contact',
 ];
 
 // ── Core assets always needed ──────────────────────────────────────
@@ -159,27 +40,40 @@ const CORE_ASSETS = [
   '/manifest.json',
 ];
 
-// ── INSTALL: pre-cache everything ─────────────────────────────────
+// ── INSTALL: pre-cache priority pages + core assets ────────────────
 self.addEventListener('install', event => {
   event.waitUntil(
     Promise.all([
-      // Cache all pages
-      caches.open(CACHE_NAME).then(cache => {
-        console.log('[SW v7] Pre-caching all pages...');
-        return cache.addAll(ALL_PAGES);
+      // Cache top pages — use individual try/catch so one failure
+      // doesn't break the entire install
+      caches.open(CACHE_NAME).then(async cache => {
+        console.log('[SW v7] Pre-caching priority pages...');
+        for (const page of PRE_CACHE_PAGES) {
+          try {
+            await cache.add(page);
+          } catch(e) {
+            console.warn('[SW v7] Failed to pre-cache:', page, e);
+          }
+        }
       }),
       // Cache core assets
-      caches.open(ASSETS_CACHE).then(cache => {
-        return cache.addAll(CORE_ASSETS);
+      caches.open(ASSETS_CACHE).then(async cache => {
+        for (const asset of CORE_ASSETS) {
+          try {
+            await cache.add(asset);
+          } catch(e) {
+            console.warn('[SW v7] Failed to cache asset:', asset, e);
+          }
+        }
       })
     ]).then(() => {
-      console.log('[SW v7] All pages cached for offline use');
+      console.log('[SW v7] Install complete');
       return self.skipWaiting();
     })
   );
 });
 
-// ── ACTIVATE: delete old caches ───────────────────────────────────
+// ── ACTIVATE: delete old caches ────────────────────────────────────
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
@@ -209,7 +103,7 @@ self.addEventListener('fetch', event => {
           cache.match(event.request).then(cached => {
             if (cached) return cached;
             return fetch(event.request).then(res => {
-              if (res.ok) cache.put(event.request, res.clone());
+              if (res && res.ok) cache.put(event.request, res.clone());
               return res;
             }).catch(() => cached);
           })
@@ -219,18 +113,19 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // ── HTML pages & clean URLs: Network First ─────────────────────
+  // ── Detect page requests (HTML or clean URLs) ──────────────────
   const isPage = url.pathname.endsWith('.html')
                || url.pathname === '/'
                || url.pathname === ''
                || (!url.pathname.includes('.') && url.pathname.length > 1);
 
+  // ── Pages: Network First → cache on visit → serve offline ──────
   if (isPage) {
     event.respondWith(
       fetch(event.request)
         .then(networkRes => {
           if (networkRes && networkRes.ok) {
-            // Update cache with fresh version
+            // Dynamically cache every page the user visits
             caches.open(CACHE_NAME).then(cache =>
               cache.put(event.request, networkRes.clone())
             );
@@ -238,19 +133,47 @@ self.addEventListener('fetch', event => {
           return networkRes;
         })
         .catch(() => {
-          // Offline — serve from cache
+          // Offline — serve from cache (pre-cached or previously visited)
           return caches.match(event.request)
-            .then(cached => cached || caches.match('/'))
-            .then(cached => cached || new Response(
-              '<h1>Offline</h1><p>Please connect to the internet to use ToolsNova.</p>',
-              {headers: {'Content-Type': 'text/html'}}
-            ));
+            .then(cached => {
+              if (cached) return cached;
+              // Try homepage as fallback
+              return caches.match('/').then(home => {
+                if (home) return home;
+                // Last resort — friendly offline message
+                return new Response(`
+                  <!DOCTYPE html>
+                  <html lang="en">
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width,initial-scale=1">
+                    <title>Offline — ToolsNova</title>
+                    <style>
+                      body { font-family: sans-serif; display: flex; flex-direction: column;
+                             align-items: center; justify-content: center; min-height: 100vh;
+                             margin: 0; background: #0c0c0e; color: #f0f0f2; text-align: center; padding: 2rem; }
+                      h1 { color: #7fff6f; font-size: 2rem; margin-bottom: 0.5rem; }
+                      p  { color: #aaa; max-width: 320px; line-height: 1.6; }
+                      a  { color: #7fff6f; }
+                    </style>
+                  </head>
+                  <body>
+                    <h1>📡 You're Offline</h1>
+                    <p>This page wasn't cached yet. Visit it once with internet to use it offline.</p>
+                    <p>Pages you've already visited will work offline.</p>
+                    <p><a href="/">← Go to Homepage</a></p>
+                  </body>
+                  </html>`,
+                  { headers: { 'Content-Type': 'text/html; charset=utf-8' }}
+                );
+              });
+            });
         })
     );
     return;
   }
 
-  // ── JS and CSS: Network First ──────────────────────────────────
+  // ── JS and CSS: Network First → cache for offline ──────────────
   if (url.pathname.endsWith('.js') || url.pathname.endsWith('.css')) {
     event.respondWith(
       fetch(event.request)
@@ -267,7 +190,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // ── Static assets: Cache First ─────────────────────────────────
+  // ── Images/icons/fonts: Cache First ────────────────────────────
   if (url.pathname.match(/\.(svg|png|jpg|jpeg|ico|woff2?|gif|webp)$/)) {
     event.respondWith(
       caches.match(event.request).then(cached => {

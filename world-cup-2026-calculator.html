@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Group Table Calculator — Live Points & Standings</title>
+<meta name="description" content="Calculate FIFA World Cup 2026 group standings instantly. Enter match scores, see points tables, goal difference, and who qualifies from all 12 groups. Free live calculator.">
+<link rel="canonical" href="https://toolsnova.net/world-cup-2026-calculator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=19">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
+<meta property="og:title" content="World Cup 2026 Group Table Calculator — Live Points & Standings">
+<meta property="og:description" content="Calculate FIFA World Cup 2026 group standings instantly. Enter match scores, see who qualifies. All 12 groups, 48 teams.">
+<meta property="og:url" content="https://toolsnova.net/world-cup-2026-calculator">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"World Cup 2026 Group Table Calculator","url":"https://toolsnova.net/world-cup-2026-calculator","description":"Calculate FIFA World Cup 2026 group standings. Enter match scores and see live points tables for all 12 groups.","applicationCategory":"SportsApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S6PPGS7N63');
+</script>
+<style>
+/* ── World Cup specific styles ── */
+.wc-hero {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.wc-hero h1 { font-size: 1.6rem; color: var(--accent); margin: 0 0 .4rem; }
+.wc-hero p  { color: var(--text2); margin: 0; font-size: .9rem; }
+.wc-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #0c0c0e;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: .6rem;
+  letter-spacing: .05em;
+}
+/* Group selector */
+.group-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+}
+.group-tab {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 6px;
+  padding: .35rem .7rem;
+  cursor: pointer;
+  font-size: .85rem;
+  font-family: var(--mono);
+  font-weight: 600;
+  transition: all .15s;
+}
+.group-tab:hover { background: var(--surface3); color: var(--text); }
+.group-tab.active {
+  background: var(--accent);
+  color: #0c0c0e;
+  border-color: var(--accent);
+}
+/* Match score inputs */
+.matches-grid {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  margin-bottom: 1.2rem;
+}
+.match-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: .5rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem .8rem;
+}
+.match-team {
+  font-size: .85rem;
+  color: var(--text);
+  font-weight: 600;
+}
+.match-team.home { text-align: right; }
+.match-team.away { text-align: left; }
+.score-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+.score-input {
+  width: 44px;
+  height: 38px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--mono);
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 0;
+}
+.score-input:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.score-dash { color: var(--text3); font-weight: 700; font-family: var(--mono); }
+.match-flag { font-size: 1.1rem; }
+/* Standings table */
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+  margin-bottom: 1rem;
+}
+.standings-table th {
+  background: var(--surface2);
+  color: var(--text3);
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: .5rem .6rem;
+  text-align: center;
+  border-bottom: 2px solid var(--border2);
+}
+.standings-table th:first-child { text-align: left; padding-left: .8rem; }
+.standings-table td {
+  padding: .55rem .6rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+}
+.standings-table td:first-child {
+  text-align: left;
+  padding-left: .8rem;
+  font-family: var(--sans);
+  font-weight: 600;
+}
+.standings-table tr:last-child td { border-bottom: none; }
+.pos-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: .75rem;
+  font-weight: 700;
+  margin-right: 6px;
+  font-family: var(--mono);
+}
+.pos-1 { background: var(--accent); color: #0c0c0e; }
+.pos-2 { background: #4a9eff; color: #0c0c0e; }
+.pos-3 { background: var(--surface3); color: var(--text2); }
+.pos-4 { background: var(--surface2); color: var(--text3); }
+.qualified-marker {
+  font-size: .68rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-left: 4px;
+}
+.maybe-qualified { color: #4a9eff; }
+/* Points info box */
+.points-info {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .8rem 1rem;
+  margin-bottom: 1rem;
+  font-size: .82rem;
+  color: var(--text2);
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.points-info span { display: flex; align-items: center; gap: 5px; }
+.pts-badge {
+  background: var(--accent);
+  color: #0c0c0e;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--mono);
+}
+/* Reset btn */
+.wc-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  border-radius: 6px;
+  padding: .4rem .9rem;
+  cursor: pointer;
+  font-size: .82rem;
+  font-family: var(--mono);
+  transition: all .15s;
+}
+.wc-btn:hover { background: var(--surface3); color: var(--text); }
+.wc-btn.primary {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.section-actions {
+  display: flex;
+  gap: .6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/* Match status */
+.match-status {
+  font-size: .68rem;
+  color: var(--text3);
+  text-align: center;
+  margin-top: 2px;
+  font-family: var(--mono);
+}
+.match-played .score-input { border-color: var(--accent); }
+/* Tiebreaker note */
+.tiebreaker-note {
+  font-size: .78rem;
+  color: var(--text3);
+  margin-top: .6rem;
+  padding: .6rem .8rem;
+  border-left: 3px solid var(--border2);
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="site-logo">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" stroke="#7fff6f" stroke-width="1.5"/>
+      <path d="M16 4 L16 28 M4 16 L28 16" stroke="#7fff6f" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="4" fill="#7fff6f"/>
+    </svg>
+    <span>Tools<span class="logo-nova">Nova</span></span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <a href="world-cup-2026-calculator.html" class="nav-link">⚽ World Cup 2026</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+  </nav>
+  <button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+</header>
+
+<main class="tool-main">
+  <div class="wc-hero">
+    <div class="wc-badge">⚽ LIVE NOW — June 11 to July 19, 2026</div>
+    <h1>World Cup 2026 Group Table Calculator</h1>
+    <p>Enter match scores → see live standings for all 12 groups. 48 teams, 104 matches, 3 nations hosting.</p>
+  </div>
+
+  <!-- Group Selector -->
+  <div class="group-tabs" id="groupTabs"></div>
+
+  <!-- Points System Info -->
+  <div class="points-info">
+    <span><span class="pts-badge">3</span> Win</span>
+    <span><span class="pts-badge">1</span> Draw</span>
+    <span><span class="pts-badge">0</span> Loss</span>
+    <span style="color:var(--accent)">✅ Top 2 qualify automatically</span>
+    <span style="color:#4a9eff">🔵 Best 8 third-place teams also qualify</span>
+  </div>
+
+  <!-- Main Tool Area -->
+  <div class="tool-grid-2">
+    <!-- Left: Match Scores -->
+    <div class="tool-card">
+      <div class="section-actions">
+        <h3 id="groupTitle" style="margin:0;flex:1;font-size:1rem">Group A — Match Scores</h3>
+        <button class="wc-btn" onclick="resetGroup()">↺ Reset</button>
+      </div>
+      <div class="matches-grid" id="matchesGrid"></div>
+    </div>
+
+    <!-- Right: Standings Table -->
+    <div class="tool-card">
+      <h3 style="margin:0 0 .8rem;font-size:1rem">📊 Standings</h3>
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>P</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GD</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody id="standingsBody"></tbody>
+      </table>
+      <div class="tiebreaker-note">
+        🔢 <strong>Tiebreakers:</strong> Points → GD → Goals Scored → Head-to-Head → Fair Play → FIFA ranking
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATIONAL CONTENT -->
+
+  <section class="edu-section">
+    <h2>How to Use the World Cup 2026 Group Table Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Select a group</strong> — click any group tab from A to L. Each group contains 4 teams playing 3 matches each in a round-robin format.</li>
+      <li><strong>Enter match scores</strong> — type the goals scored by each team in every match. Scores update the standings table instantly as you type.</li>
+      <li><strong>Read the standings</strong> — the table shows Points (Pts), Wins (W), Draws (D), Losses (L), Goals For (GF), Goals Against (GA), and Goal Difference (GD) for all 4 teams.</li>
+      <li><strong>Check qualification status</strong> — ✅ Q marks teams that qualify automatically (top 2). 🔵 Maybe marks third-place teams that could qualify as one of the 8 best third-place teams across all groups.</li>
+      <li><strong>Try all 12 groups</strong> — switch between groups A–L to track the full tournament. Each group is calculated independently.</li>
+      <li><strong>Reset and recalculate</strong> — click the Reset button to clear scores for any group and try different score scenarios.</li>
+    </ol>
+    <div class="edu-highlight"><strong>⚽ New in 2026:</strong> This is the first 48-team World Cup in history, up from 32 teams in Qatar 2022. The expanded format adds 12 new groups (A–L instead of A–H), a brand new Round of 32 knockout stage, and 8 third-place qualifiers across all groups — making it the most complex World Cup qualification system ever used.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding the 2026 FIFA World Cup Format</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🏟️ Tournament Overview</div><div class="edu-card-body">48 teams compete across 3 host nations (USA, Canada, Mexico). 12 groups of 4 teams each. 72 group stage matches total. 104 matches in the entire tournament. Group stage runs June 11–27, 2026. Final is July 19, 2026 at MetLife Stadium, New Jersey.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Points System</div><div class="edu-card-body">Win = 3 points. Draw = 1 point each. Loss = 0 points. Each team plays 3 group matches. Maximum possible points = 9 (3 wins). A team with 7 points (2 wins, 1 draw) has virtually guaranteed qualification in all previous World Cups.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✅ Who Qualifies</div><div class="edu-card-body">Top 2 teams from each of 12 groups = 24 teams qualify automatically. Best 8 third-place teams across all 12 groups = 8 more teams qualify. Total: 32 teams advance to the Round of 32. Two-thirds of all 48 teams are eliminated in the group stage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔢 Tiebreaker Rules</div><div class="edu-card-body">When teams are level on points: 1) Goal difference. 2) Goals scored. 3) Head-to-head points. 4) Head-to-head goal difference. 5) Head-to-head goals scored. 6) Fair play points (yellow/red cards). 7) FIFA world ranking. Head-to-head results are the critical third tiebreaker.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔵 Best Third-Place Rule</div><div class="edu-card-body">The 8 best third-place finishers from all 12 groups advance. Ranking uses the same criteria: points → goal difference → goals scored. A third-place team with 4 points and +2 GD will almost always qualify. Teams with only 1 point (0W-1D-2L) rarely make it as third place.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📅 Tournament Schedule</div><div class="edu-card-body">Group stage: June 11–27. Round of 32: June 28–July 3. Round of 16: July 4–7. Quarter-finals: July 9–11. Semi-finals: July 14–15. Third-place play-off: July 18. Final: July 19, 2026 at MetLife Stadium, New York/New Jersey.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>World Cup 2026 — All 12 Groups and Teams</h2>
+    <h3>Group breakdown at a glance</h3>
+    <p>Group A: Mexico 🇲🇽, South Korea 🇰🇷, South Africa 🇿🇦, Czech Republic 🇨🇿. Group B: Canada 🇨🇦, Switzerland 🇨🇭, Qatar 🇶🇦, Bosnia 🇧🇦. Group C: Brazil 🇧🇷, Morocco 🇲🇦, Haiti 🇭🇹, Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿. Group D: United States 🇺🇸, Paraguay 🇵🇾, Australia 🇦🇺, Turkey 🇹🇷. Group E: Germany 🇩🇪, Ecuador 🇪🇨, Côte d'Ivoire 🇨🇮, Curaçao 🇨🇼. Group F: Netherlands 🇳🇱, Japan 🇯🇵, Tunisia 🇹🇳, Sweden 🇸🇪.</p>
+    <h3>Groups G through L</h3>
+    <p>Group G: Belgium 🇧🇪, Egypt 🇪🇬, Iran 🇮🇷, New Zealand 🇳🇿. Group H: Spain 🇪🇸, Uruguay 🇺🇾, Saudi Arabia 🇸🇦, Cabo Verde 🇨🇻. Group I: France 🇫🇷, Senegal 🇸🇳, Norway 🇳🇴, Iraq 🇮🇶. Group J: Argentina 🇦🇷, Algeria 🇩🇿, Austria 🇦🇹, Jordan 🇯🇴. Group K: Portugal 🇵🇹, Colombia 🇨🇴, Uzbekistan 🇺🇿, DR Congo 🇨🇩. Group L: England 🏴󠁧󠁢󠁥󠁮󠁧󠁿, Croatia 🇭🇷, Ghana 🇬🇭, Panama 🇵🇦. The three host nations — Mexico (Group A), Canada (Group B), and USA (Group D) — are all in different groups as per FIFA seeding rules.</p>
+    <h3>Key matches and group predictions</h3>
+    <p>Group J is the most watched group globally: Argentina (defending champions) face Algeria, Austria, and Jordan. Lionel Messi's final World Cup. Group H features world number 1 Spain against Uruguay, Saudi Arabia, and Cabo Verde. Group I has France — 2018 champions — against Senegal, Norway, and Iraq. Group K: Ronaldo's Portugal face Colombia, Uzbekistan, and DR Congo in what may be his final World Cup. Group L: England face Croatia (their 2018 semi-final opponent), Ghana, and Panama. Groups C and D feature all three host nations playing in front of their home fans.</p>
+    <div class="edu-highlight"><strong>🏆 Title favourites for 2026:</strong> Argentina (defending champions, Messi-led), France (2018 champions, deep squad), Spain (world #1, dominant tiki-taka), England (perennial contenders), Brazil (5-time champions, always dangerous), Germany (4-time champions, rebuilt under Nagelsmann). This calculator lets you simulate any scenario — what if Argentina draw their opener? What if France go out in the group stage? Enter any scores and find out instantly.</div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How does the 2026 World Cup qualification work?</div>
+      <div class="faq-a">Each group has 4 teams playing 3 matches each (round-robin). The top 2 teams from each of the 12 groups qualify automatically — that's 24 teams. Additionally, the 8 best third-place teams across all groups also qualify, bringing the total to 32 teams advancing to the Round of 32 knockout stage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many points do you need to qualify?</div>
+      <div class="faq-a">There is no fixed points requirement. You need to finish in the top 2 of your group (which typically requires 4–7 points) or be among the 8 best third-place teams. In a 4-team group with 3 matches each, 6 points (2 wins) almost guarantees qualification. 4 points is often enough for 2nd place.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What are the World Cup 2026 tiebreaker rules?</div>
+      <div class="faq-a">When teams are level on points: 1) Goal difference, 2) Goals scored, 3) Head-to-head points, 4) Head-to-head goal difference, 5) Head-to-head goals scored, 6) Fair play points (yellow/red cards), 7) FIFA ranking. This calculator applies the first three tiebreakers automatically.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Which teams are in the 2026 World Cup?</div>
+      <div class="faq-a">48 teams compete in 2026 — the largest World Cup ever. Groups: A (Mexico, South Korea, South Africa, Czech Republic), B (Canada, Switzerland, Qatar, Bosnia), C (Brazil, Morocco, Haiti, Scotland), D (USA, Paraguay, Australia, Turkey), E (Germany, Ecuador, Côte d'Ivoire, Curaçao), F (Netherlands, Japan, Tunisia, Sweden), G (Belgium, Egypt, Iran, New Zealand), H (Spain, Uruguay, Saudi Arabia, Cabo Verde), I (France, Senegal, Norway, Iraq), J (Argentina, Algeria, Austria, Jordan), K (Portugal, Colombia, Uzbekistan, DR Congo), L (England, Croatia, Ghana, Panama).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Where is the 2026 World Cup being held?</div>
+      <div class="faq-a">The 2026 FIFA World Cup is co-hosted by three countries: United States, Canada, and Mexico — a first in World Cup history. 16 stadiums across 16 cities host the 104 matches. The final takes place on July 19, 2026 at MetLife Stadium (New York/New Jersey). Group stage runs June 11–27, with the knockout rounds from June 28 to July 19.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script src="app.js?v=19"></script>
+<script>
+// ════════════════════════════════════════════
+// WORLD CUP 2026 — GROUP TABLE CALCULATOR
+// ════════════════════════════════════════════
+
+const GROUPS = {
+  A: { name: 'Group A', teams: ['Mexico 🇲🇽', 'South Korea 🇰🇷', 'South Africa 🇿🇦', 'Czech Republic 🇨🇿'] },
+  B: { name: 'Group B', teams: ['Canada 🇨🇦', 'Switzerland 🇨🇭', 'Qatar 🇶🇦', 'Bosnia 🇧🇦'] },
+  C: { name: 'Group C', teams: ['Brazil 🇧🇷', 'Morocco 🇲🇦', 'Haiti 🇭🇹', 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿'] },
+  D: { name: 'Group D', teams: ['United States 🇺🇸', 'Paraguay 🇵🇾', 'Australia 🇦🇺', 'Turkey 🇹🇷'] },
+  E: { name: 'Group E', teams: ['Germany 🇩🇪', 'Ecuador 🇪🇨', "Côte d'Ivoire 🇨🇮", 'Curaçao 🇨🇼'] },
+  F: { name: 'Group F', teams: ['Netherlands 🇳🇱', 'Japan 🇯🇵', 'Tunisia 🇹🇳', 'Sweden 🇸🇪'] },
+  G: { name: 'Group G', teams: ['Belgium 🇧🇪', 'Egypt 🇪🇬', 'Iran 🇮🇷', 'New Zealand 🇳🇿'] },
+  H: { name: 'Group H', teams: ['Spain 🇪🇸', 'Uruguay 🇺🇾', 'Saudi Arabia 🇸🇦', 'Cabo Verde 🇨🇻'] },
+  I: { name: 'Group I', teams: ['France 🇫🇷', 'Senegal 🇸🇳', 'Norway 🇳🇴', 'Iraq 🇮🇶'] },
+  J: { name: 'Group J', teams: ['Argentina 🇦🇷', 'Algeria 🇩🇿', 'Austria 🇦🇹', 'Jordan 🇯🇴'] },
+  K: { name: 'Group K', teams: ['Portugal 🇵🇹', 'Colombia 🇨🇴', 'Uzbekistan 🇺🇿', 'DR Congo 🇨🇩'] },
+  L: { name: 'Group L', teams: ['England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'Croatia 🇭🇷', 'Ghana 🇬🇭', 'Panama 🇵🇦'] }
+};
+
+// Generate all 6 match combinations for 4 teams
+function getMatches(teams) {
+  const m = [];
+  for (let i = 0; i < teams.length; i++)
+    for (let j = i+1; j < teams.length; j++)
+      m.push([i, j]);
+  return m; // [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]]
+}
+
+// State: scores per group
+const scores = {};
+Object.keys(GROUPS).forEach(g => { scores[g] = {}; });
+
+let currentGroup = 'A';
+
+// ── Build group tabs ──────────────────────────────────────
+function buildTabs() {
+  const container = document.getElementById('groupTabs');
+  container.innerHTML = Object.keys(GROUPS).map(g =>
+    `<button class="group-tab${g===currentGroup?' active':''}" onclick="selectGroup('${g}')">${g}</button>`
+  ).join('');
+}
+
+// ── Select group ──────────────────────────────────────────
+function selectGroup(g) {
+  currentGroup = g;
+  buildTabs();
+  renderMatches();
+  renderStandings();
+}
+
+// ── Render match score inputs ─────────────────────────────
+function renderMatches() {
+  const group = GROUPS[currentGroup];
+  const matches = getMatches(group.teams);
+  document.getElementById('groupTitle').textContent = `${group.name} — Enter Scores`;
+
+  const grid = document.getElementById('matchesGrid');
+  grid.innerHTML = matches.map(([i, j], idx) => {
+    const key = `${currentGroup}_${i}_${j}`;
+    const s = scores[currentGroup][key] || { h: '', a: '' };
+    const played = s.h !== '' && s.a !== '';
+    return `
+    <div class="match-row${played?' match-played':''}">
+      <div class="match-team home">${group.teams[i]}</div>
+      <div class="score-inputs">
+        <input class="score-input" type="number" min="0" max="99" placeholder="—"
+               value="${s.h}"
+               oninput="setScore('${currentGroup}',${i},${j},'h',this.value)"
+               onchange="setScore('${currentGroup}',${i},${j},'h',this.value)">
+        <span class="score-dash">:</span>
+        <input class="score-input" type="number" min="0" max="99" placeholder="—"
+               value="${s.a}"
+               oninput="setScore('${currentGroup}',${i},${j},'a',this.value)"
+               onchange="setScore('${currentGroup}',${i},${j},'a',this.value)">
+      </div>
+      <div class="match-team away">${group.teams[j]}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Update score ──────────────────────────────────────────
+function setScore(g, i, j, side, val) {
+  const key = `${g}_${i}_${j}`;
+  if (!scores[g][key]) scores[g][key] = { h: '', a: '' };
+  scores[g][key][side] = val === '' ? '' : parseInt(val) || 0;
+  renderStandings();
+  // Update match row class
+  const s = scores[g][key];
+  if (s.h !== '' && s.a !== '') {
+    renderMatches(); // re-render to show played state
+  }
+}
+
+// ── Calculate standings ───────────────────────────────────
+function calcStandings(g) {
+  const group = GROUPS[g];
+  const matches = getMatches(group.teams);
+  const table = group.teams.map((name, idx) => ({
+    name, idx, p:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0
+  }));
+
+  matches.forEach(([i, j]) => {
+    const key = `${g}_${i}_${j}`;
+    const s = scores[g][key];
+    if (!s || s.h === '' || s.a === '') return;
+    const hg = parseInt(s.h), ag = parseInt(s.a);
+    table[i].p++; table[j].p++;
+    table[i].gf += hg; table[i].ga += ag;
+    table[j].gf += ag; table[j].ga += hg;
+    if (hg > ag) { table[i].w++; table[i].pts+=3; table[j].l++; }
+    else if (hg < ag) { table[j].w++; table[j].pts+=3; table[i].l++; }
+    else { table[i].d++; table[i].pts++; table[j].d++; table[j].pts++; }
+  });
+
+  table.forEach(t => t.gd = t.gf - t.ga);
+
+  // Sort: pts → gd → gf → name
+  table.sort((a,b) =>
+    b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || a.name.localeCompare(b.name)
+  );
+
+  return table;
+}
+
+// ── Render standings table ────────────────────────────────
+function renderStandings() {
+  const table = calcStandings(currentGroup);
+  const tbody = document.getElementById('standingsBody');
+  tbody.innerHTML = table.map((t, pos) => {
+    const posClass = `pos-${pos+1}`;
+    let qualifier = '';
+    if (pos === 0) qualifier = '<span class="qualified-marker">✅ Q</span>';
+    else if (pos === 1) qualifier = '<span class="qualified-marker">✅ Q</span>';
+    else if (pos === 2) qualifier = '<span class="qualified-marker maybe-qualified">🔵 Maybe</span>';
+
+    const gd = t.gd > 0 ? `+${t.gd}` : t.gd;
+    return `<tr>
+      <td><span class="pos-badge ${posClass}">${pos+1}</span>${t.name}${qualifier}</td>
+      <td>${t.p}</td>
+      <td>${t.w}</td>
+      <td>${t.d}</td>
+      <td>${t.l}</td>
+      <td>${t.gf}</td>
+      <td>${t.ga}</td>
+      <td>${gd}</td>
+      <td><strong>${t.pts}</strong></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Reset current group ───────────────────────────────────
+function resetGroup() {
+  scores[currentGroup] = {};
+  renderMatches();
+  renderStandings();
+}
+
+// ── INIT ──────────────────────────────────────────────────
+buildTabs();
+renderMatches();
+renderStandings();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

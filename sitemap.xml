@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://toolsnova.net</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://toolsnova.net/world-cup-2026-calculator</loc>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
@@ -207,7 +207,7 @@
   </url>
   <url>
     <loc>https://toolsnova.net/forex-swap-calculator</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
@@ -276,6 +276,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://toolsnova.net</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://toolsnova.net/inflation-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -287,7 +292,7 @@
   </url>
   <url>
     <loc>https://toolsnova.net/json-formatter</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
@@ -362,7 +367,7 @@
   </url>
   <url>
     <loc>https://toolsnova.net/monte-carlo-simulator</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
@@ -462,7 +467,7 @@
   </url>
   <url>
     <loc>https://toolsnova.net/prop-firm-challenge-calculator</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>

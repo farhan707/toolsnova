@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Match Schedule — Convert to Your Time Zone</title>
+<meta name="description" content="FIFA World Cup 2026 full match schedule with time zone converter. See all 104 matches in your local time — Pakistan, UK, India, Australia and 400+ time zones. Free.">
+<link rel="canonical" href="https://toolsnova.net/world-cup-2026-schedule">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=19">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="World Cup 2026 Match Schedule — Convert to Your Time Zone">
+<meta property="og:description" content="See all 104 World Cup 2026 matches in your local time. Pakistan, UK, India, US and 400+ zones supported.">
+<meta property="og:url" content="https://toolsnova.net/world-cup-2026-schedule">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"World Cup 2026 Match Schedule Timezone Converter","url":"https://toolsnova.net/world-cup-2026-schedule","description":"Full FIFA World Cup 2026 schedule with automatic time zone conversion. See all 104 matches in your local time.","applicationCategory":"SportsApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<style>
+.wc-hero{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center}
+.wc-hero h1{font-size:1.6rem;color:var(--accent);margin:0 0 .4rem}
+.wc-hero p{color:var(--text2);margin:0;font-size:.9rem}
+.wc-badge{display:inline-block;background:var(--accent);color:#0c0c0e;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:.6rem;letter-spacing:.05em}
+.tz-bar{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem}
+.tz-bar label{color:var(--text2);font-size:.85rem;font-weight:600;white-space:nowrap}
+.tz-select{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:6px;padding:.4rem .6rem;font-size:.85rem}
+.filter-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
+.filter-tab{background:var(--surface2);border:1px solid var(--border);color:var(--text2);border-radius:6px;padding:.3rem .7rem;cursor:pointer;font-size:.8rem;font-family:var(--mono);transition:all .15s}
+.filter-tab:hover{background:var(--surface3);color:var(--text)}
+.filter-tab.active{background:var(--accent);color:#0c0c0e;border-color:var(--accent)}
+.match-day{margin-bottom:1.2rem}
+.match-day-header{font-size:.8rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;padding:.4rem .8rem;background:var(--surface2);border-radius:6px;margin-bottom:.5rem;border-left:3px solid var(--accent)}
+.match-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.8rem;padding:.65rem .8rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:.4rem;transition:border-color .15s}
+.match-item:hover{border-color:var(--border2)}
+.match-item.today{border-color:var(--accent)}
+.match-time{font-family:var(--mono);font-size:.85rem;font-weight:700;color:var(--accent);min-width:70px;text-align:center}
+.match-time.result{color:var(--text2);font-size:.8rem}
+.match-teams{display:flex;flex-direction:column;gap:2px}
+.match-teams-row{font-size:.88rem;font-weight:600;color:var(--text)}
+.match-meta{font-size:.72rem;color:var(--text3);margin-top:2px}
+.match-group{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:.7rem;font-family:var(--mono);color:var(--text3);white-space:nowrap;text-align:right}
+.match-result{font-family:var(--mono);font-size:.9rem;font-weight:700;color:var(--text);white-space:nowrap;text-align:right}
+.match-result.finished{color:var(--text2)}
+.today-badge{background:var(--accent);color:#0c0c0e;font-size:.65rem;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:6px}
+.no-matches{text-align:center;color:var(--text3);padding:2rem;font-size:.9rem}
+.search-box{width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:8px;padding:.6rem .8rem;font-size:.9rem;margin-bottom:1rem}
+.search-box:focus{outline:2px solid var(--accent)}
+.stage-badge{font-size:.68rem;padding:1px 5px;border-radius:3px;font-weight:700;font-family:var(--mono)}
+.stage-group{background:rgba(127,255,111,.1);color:var(--accent)}
+.stage-r32{background:rgba(74,158,255,.15);color:#4a9eff}
+.stage-r16{background:rgba(255,180,0,.15);color:#ffb400}
+.stage-qf{background:rgba(255,100,0,.15);color:#ff6400}
+.stage-sf{background:rgba(255,50,50,.15);color:#ff3232}
+.stage-final{background:rgba(255,215,0,.2);color:#ffd700}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="site-logo">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#7fff6f" stroke-width="1.5"/><path d="M16 4 L16 28 M4 16 L28 16" stroke="#7fff6f" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="#7fff6f"/></svg>
+    <span>Tools<span class="logo-nova">Nova</span></span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">⚽ World Cup 2026</span>
+    <a href="world-cup-2026-calculator.html" class="nav-link">Group Calculator</a>
+    <a href="world-cup-2026-schedule.html" class="nav-link">Match Schedule</a>
+    <a href="world-cup-2026-prize-money.html" class="nav-link">Prize Money</a>
+    <a href="world-cup-2026-quiz.html" class="nav-link">WC Quiz</a>
+    <a href="world-cup-2026-third-place.html" class="nav-link">3rd Place Tracker</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html" class="nav-link">Word Counter</a>
+    <a href="password-generator.html" class="nav-link">Password Generator</a>
+    <a href="regex-tester.html" class="nav-link">Regex Tester</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+  <button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+</header>
+
+<main class="tool-main">
+  <div class="wc-hero">
+    <div class="wc-badge">⚽ LIVE — June 11 to July 19, 2026</div>
+    <h1>World Cup 2026 Match Schedule</h1>
+    <p>All 104 matches converted to your local time zone. Group stage, knockouts and the Final.</p>
+  </div>
+
+  <!-- Timezone Selector -->
+  <div class="tz-bar">
+    <label>🌍 Your Time Zone:</label>
+    <select class="tz-select" id="tzSelect" onchange="renderSchedule()">
+      <optgroup label="🇵🇰 Pakistan / South Asia">
+        <option value="Asia/Karachi">Pakistan (PKT) UTC+5</option>
+        <option value="Asia/Kolkata">India (IST) UTC+5:30</option>
+        <option value="Asia/Dhaka">Bangladesh (BST) UTC+6</option>
+      </optgroup>
+      <optgroup label="🌍 Middle East">
+        <option value="Asia/Dubai">UAE/Dubai (GST) UTC+4</option>
+        <option value="Asia/Riyadh">Saudi Arabia (AST) UTC+3</option>
+        <option value="Asia/Baghdad">Iraq/Baghdad UTC+3</option>
+      </optgroup>
+      <optgroup label="🇬🇧 Europe">
+        <option value="Europe/London">UK (BST) UTC+1</option>
+        <option value="Europe/Paris">France/Germany (CEST) UTC+2</option>
+        <option value="Europe/Madrid">Spain (CEST) UTC+2</option>
+      </optgroup>
+      <optgroup label="🇺🇸 Americas">
+        <option value="America/New_York">US Eastern (ET) UTC-4</option>
+        <option value="America/Chicago">US Central (CT) UTC-5</option>
+        <option value="America/Los_Angeles">US Pacific (PT) UTC-7</option>
+        <option value="America/Toronto">Canada Eastern UTC-4</option>
+        <option value="America/Mexico_City">Mexico City UTC-5</option>
+        <option value="America/Sao_Paulo">Brazil (BRT) UTC-3</option>
+      </optgroup>
+      <optgroup label="🌏 Asia Pacific">
+        <option value="Asia/Tokyo">Japan (JST) UTC+9</option>
+        <option value="Asia/Seoul">South Korea (KST) UTC+9</option>
+        <option value="Asia/Shanghai">China (CST) UTC+8</option>
+        <option value="Asia/Singapore">Singapore UTC+8</option>
+        <option value="Australia/Sydney">Australia Sydney (AEST) UTC+10</option>
+      </optgroup>
+      <optgroup label="🌍 Africa">
+        <option value="Africa/Cairo">Egypt (EET) UTC+2</option>
+        <option value="Africa/Lagos">Nigeria/West Africa UTC+1</option>
+        <option value="Africa/Johannesburg">South Africa (SAST) UTC+2</option>
+      </optgroup>
+    </select>
+    <div id="tzNow" style="font-family:var(--mono);font-size:.8rem;color:var(--text3);white-space:nowrap"></div>
+  </div>
+
+  <!-- Search -->
+  <input class="search-box" type="text" id="searchBox" placeholder="🔍 Search team, group or venue..." oninput="renderSchedule()">
+
+  <!-- Stage filters -->
+  <div class="filter-tabs">
+    <button class="filter-tab active" data-stage="all" onclick="setFilter(this,'all')">All 104</button>
+    <button class="filter-tab" data-stage="today" onclick="setFilter(this,'today')">Today</button>
+    <button class="filter-tab" data-stage="upcoming" onclick="setFilter(this,'upcoming')">Upcoming</button>
+    <button class="filter-tab" data-stage="group" onclick="setFilter(this,'group')">Group Stage</button>
+    <button class="filter-tab" data-stage="r32" onclick="setFilter(this,'r32')">Round of 32</button>
+    <button class="filter-tab" data-stage="r16" onclick="setFilter(this,'r16')">Round of 16</button>
+    <button class="filter-tab" data-stage="qf" onclick="setFilter(this,'qf')">Quarter-finals</button>
+    <button class="filter-tab" data-stage="sf" onclick="setFilter(this,'sf')">Semi-finals</button>
+    <button class="filter-tab" data-stage="final" onclick="setFilter(this,'final')">Final</button>
+  </div>
+
+  <!-- Schedule Output -->
+  <div id="scheduleOut"></div>
+
+  <!-- Educational Content -->
+  <section class="edu-section">
+    <h2>How to Use the World Cup 2026 Schedule Converter</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your time zone</strong> — choose your country from the dropdown. The schedule instantly converts all 104 match times to your local time.</li>
+      <li><strong>Filter by stage</strong> — click Today for matches happening now, Upcoming for future matches, or filter by tournament round.</li>
+      <li><strong>Search for your team</strong> — type a team name (e.g. "England", "Argentina") to see only that team's matches.</li>
+      <li><strong>Check the match time</strong> — the green time shown is already in your selected local time zone. No calculation needed.</li>
+      <li><strong>Results shown automatically</strong> — completed matches show the final score instead of a kickoff time.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🇵🇰 Pakistan time guide:</strong> Most evening ET matches (3 PM ET) kick off at midnight PKT (12:00 AM). Late evening ET matches (8 PM ET) kick off at 5 AM PKT next morning. The World Cup Final on July 19 at 3:00 PM ET = midnight PKT (00:00 July 20). Set your alarm!</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>World Cup 2026 Schedule Key Facts</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📅 Tournament Dates</div><div class="edu-card-body">Starts June 11, 2026 (Mexico vs South Africa). Ends July 19, 2026 (Final at MetLife Stadium). 39 days of football. 104 total matches — 40 more than the 2022 World Cup in Qatar.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏟️ 16 Host Venues</div><div class="edu-card-body">USA: 11 venues (Atlanta, Boston, Dallas, Houston, Kansas City, Los Angeles, Miami, New York, Philadelphia, San Francisco, Seattle). Mexico: 3 (Mexico City, Guadalajara, Monterrey). Canada: 2 (Toronto, Vancouver).</div></div>
+      <div class="edu-card"><div class="edu-card-title">⏰ Kickoff Time Pattern</div><div class="edu-card-body">Group stage matches: 12:00 PM, 3:00 PM, 6:00 PM, 9:00 PM, 11:00 PM ET. Most matches in the evening ET — meaning morning or late night for most of the world. The Final kicks off at 3:00 PM ET (8:00 PM UK, midnight PKT).</div></div>
+      <div class="edu-card"><div class="edu-card-title">📺 How to Watch</div><div class="edu-card-body">USA: FOX (70 games), FS1 (34 games) in English. Telemundo/Universo in Spanish. Peacock streaming. UK: ITV and BBC split coverage. Available in 100+ countries via national broadcasters and streaming platforms.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆕 New Round of 32</div><div class="edu-card-body">A brand new knockout round never seen before at a World Cup. Runs June 28–July 3. 32 teams compete — the 24 automatic qualifiers plus 8 best third-place teams. Creates 16 extra matches and extends the knockout stage by a full week.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏆 Road to the Final</div><div class="edu-card-body">Group Stage (72 matches) → Round of 32 (16 matches) → Round of 16 (8 matches) → Quarter-finals (4 matches) → Semi-finals (2 matches) → Third-place play-off → Final. Teams must win 6 matches from the Round of 32 to lift the trophy.</div></div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What time is the World Cup 2026 Final in Pakistan?</div>
+      <div class="faq-a">The World Cup 2026 Final takes place on July 19, 2026 at 3:00 PM ET (Eastern Time). In Pakistan Standard Time (PKT, UTC+5), this is midnight on July 20, 2026 (00:00 PKT). Set your alarm for late night! The match is at MetLife Stadium, East Rutherford, New Jersey, USA.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What time is the World Cup 2026 Final in the UK?</div>
+      <div class="faq-a">The World Cup 2026 Final on July 19, 2026 kicks off at 3:00 PM ET, which is 8:00 PM BST (British Summer Time). This is a perfect prime-time viewing slot for UK fans — one of the most convenient World Cup Finals in terms of UK timing in recent history.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What time does the World Cup start in India?</div>
+      <div class="faq-a">India is on IST (UTC+5:30), which is 9.5 hours ahead of ET. A 12:00 PM ET match kicks off at 9:30 PM IST — a good prime-time slot. A 3:00 PM ET match is 12:30 AM IST next day. Late evening ET matches (8–11 PM ET) fall in the early morning hours in India (5:30–8:30 AM IST), which may require late-night viewing or early morning rising.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many matches are in the 2026 World Cup?</div>
+      <div class="faq-a">There are 104 total matches at the 2026 FIFA World Cup — up from 64 matches in 2022. The breakdown: 72 group stage matches (12 groups × 6 matches per group), 16 matches in the new Round of 32, 8 in the Round of 16, 4 quarter-finals, 2 semi-finals, 1 third-place play-off, and 1 final. The tournament runs across 39 days from June 11 to July 19, 2026.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">When do group stage matches finish?</div>
+      <div class="faq-a">The group stage runs from June 11 to June 27, 2026. The final group stage matches on June 27 are played simultaneously within each group (both matches in a group kick off at the same time) to ensure fairness. The Round of 32 knockout stage begins June 28, 2026.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a><a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script src="app.js?v=19"></script>
+<script>
+// All 104 matches — ET times (UTC-4 during DST)
+// Format: { date: 'YYYY-MM-DD', time: 'HH:MM', home, away, result, venue, group, stage }
+const MATCHES = [
+  // ── GROUP STAGE ────────────────────────────────────────
+  // June 11
+  {d:'2026-06-11',t:'13:00',h:'Mexico',a:'South Africa',r:'2–0',v:'Estadio Azteca, Mexico City',g:'A',s:'group'},
+  {d:'2026-06-11',t:'16:00',h:'South Korea',a:'Czech Republic',r:'2–1',v:'Estadio Akron, Guadalajara',g:'A',s:'group'},
+  // June 12
+  {d:'2026-06-12',t:'15:00',h:'Canada',a:'Bosnia',r:'1–1',v:'Toronto Stadium',g:'B',s:'group'},
+  {d:'2026-06-12',t:'21:00',h:'USA',a:'Paraguay',r:'4–1',v:'Los Angeles Stadium',g:'D',s:'group'},
+  // June 13
+  {d:'2026-06-13',t:'12:00',h:'Qatar',a:'Switzerland',r:'1–1',v:"Levi's Stadium, San Francisco",g:'B',s:'group'},
+  {d:'2026-06-13',t:'15:00',h:'Brazil',a:'Morocco',r:'1–1',v:'MetLife Stadium, New York',g:'C',s:'group'},
+  {d:'2026-06-13',t:'18:00',h:'Haiti',a:'Scotland',r:'0–1',v:'Gillette Stadium, Boston',g:'C',s:'group'},
+  // June 14
+  {d:'2026-06-14',t:'12:00',h:'Australia',a:'Turkey',r:'2–0',v:'BC Place, Vancouver',g:'D',s:'group'},
+  {d:'2026-06-14',t:'15:00',h:'Germany',a:'Curaçao',r:'7–1',v:'NRG Stadium, Houston',g:'E',s:'group'},
+  {d:'2026-06-14',t:'15:00',h:'Netherlands',a:'Japan',r:'2–2',v:'AT&T Stadium, Dallas',g:'F',s:'group'},
+  {d:'2026-06-14',t:'18:00',h:"Côte d'Ivoire",a:'Ecuador',r:'1–0',v:'Lincoln Financial Field, Philadelphia',g:'E',s:'group'},
+  {d:'2026-06-14',t:'21:00',h:'Sweden',a:'Tunisia',r:'5–1',v:'Estadio BBVA, Monterrey',g:'F',s:'group'},
+  // June 15
+  {d:'2026-06-15',t:'12:00',h:'Spain',a:'Cabo Verde',r:'0–0',v:'Mercedes-Benz Stadium, Atlanta',g:'H',s:'group'},
+  {d:'2026-06-15',t:'15:00',h:'Belgium',a:'Egypt',r:'1–1',v:'Lumen Field, Seattle',g:'G',s:'group'},
+  {d:'2026-06-15',t:'18:00',h:'Saudi Arabia',a:'Uruguay',r:'1–1',v:'Hard Rock Stadium, Miami',g:'H',s:'group'},
+  {d:'2026-06-15',t:'21:00',h:'Iran',a:'New Zealand',r:'2–2',v:'SoFi Stadium, Los Angeles',g:'G',s:'group'},
+  // June 16
+  {d:'2026-06-16',t:'12:00',h:'France',a:'Senegal',r:'3–1',v:'MetLife Stadium, New York',g:'I',s:'group'},
+  {d:'2026-06-16',t:'15:00',h:'Iraq',a:'Norway',r:'1–4',v:'Gillette Stadium, Boston',g:'I',s:'group'},
+  {d:'2026-06-16',t:'18:00',h:'Argentina',a:'Algeria',r:'3–0',v:'Arrowhead Stadium, Kansas City',g:'J',s:'group'},
+  // June 17
+  {d:'2026-06-17',t:'12:00',h:'Austria',a:'Jordan',r:'3–1',v:"Levi's Stadium, San Francisco",g:'J',s:'group'},
+  {d:'2026-06-17',t:'15:00',h:'Portugal',a:'DR Congo',r:'1–1',v:'NRG Stadium, Houston',g:'K',s:'group'},
+  {d:'2026-06-17',t:'18:00',h:'England',a:'Croatia',r:'4–2',v:'AT&T Stadium, Dallas',g:'L',s:'group'},
+  {d:'2026-06-17',t:'21:00',h:'Ghana',a:'Panama',r:'1–0',v:'BMO Field, Toronto',g:'L',s:'group'},
+  {d:'2026-06-17',t:'21:00',h:'Uzbekistan',a:'Colombia',r:'1–3',v:'Estadio Azteca, Mexico City',g:'K',s:'group'},
+  // June 18
+  {d:'2026-06-18',t:'12:00',h:'Czech Republic',a:'South Africa',r:'1–1',v:'Mercedes-Benz Stadium, Atlanta',g:'A',s:'group'},
+  {d:'2026-06-18',t:'15:00',h:'Switzerland',a:'Bosnia',r:'4–1',v:'SoFi Stadium, Los Angeles',g:'B',s:'group'},
+  {d:'2026-06-18',t:'18:00',h:'Canada',a:'Qatar',r:'',v:'BC Place, Vancouver',g:'B',s:'group'},
+  {d:'2026-06-18',t:'21:00',h:'Mexico',a:'South Korea',r:'',v:'Estadio Akron, Guadalajara',g:'A',s:'group'},
+  // June 19
+  {d:'2026-06-19',t:'15:00',h:'USA',a:'Australia',r:'',v:'Lumen Field, Seattle',g:'D',s:'group'},
+  {d:'2026-06-19',t:'18:00',h:'Scotland',a:'Morocco',r:'',v:'Gillette Stadium, Boston',g:'C',s:'group'},
+  {d:'2026-06-19',t:'20:30',h:'Brazil',a:'Haiti',r:'',v:'Lincoln Financial Field, Philadelphia',g:'C',s:'group'},
+  {d:'2026-06-19',t:'23:00',h:'Turkey',a:'Paraguay',r:'',v:"Levi's Stadium, San Francisco",g:'D',s:'group'},
+  // June 20
+  {d:'2026-06-20',t:'13:00',h:'Netherlands',a:'Sweden',r:'',v:'NRG Stadium, Houston',g:'F',s:'group'},
+  {d:'2026-06-20',t:'16:00',h:'Germany',a:"Côte d'Ivoire",r:'',v:'BMO Field, Toronto',g:'E',s:'group'},
+  {d:'2026-06-20',t:'20:00',h:'Ecuador',a:'Curaçao',r:'',v:'Arrowhead Stadium, Kansas City',g:'E',s:'group'},
+  // June 21
+  {d:'2026-06-21',t:'00:00',h:'Tunisia',a:'Japan',r:'',v:'Estadio BBVA, Monterrey',g:'F',s:'group'},
+  {d:'2026-06-21',t:'12:00',h:'Spain',a:'Saudi Arabia',r:'',v:'Mercedes-Benz Stadium, Atlanta',g:'H',s:'group'},
+  {d:'2026-06-21',t:'15:00',h:'Belgium',a:'Iran',r:'',v:'SoFi Stadium, Los Angeles',g:'G',s:'group'},
+  {d:'2026-06-21',t:'18:00',h:'Uruguay',a:'Cabo Verde',r:'',v:'Hard Rock Stadium, Miami',g:'H',s:'group'},
+  {d:'2026-06-21',t:'21:00',h:'New Zealand',a:'Egypt',r:'',v:'BC Place, Vancouver',g:'G',s:'group'},
+  // June 22
+  {d:'2026-06-22',t:'13:00',h:'Argentina',a:'Austria',r:'',v:'AT&T Stadium, Dallas',g:'J',s:'group'},
+  {d:'2026-06-22',t:'17:00',h:'France',a:'Iraq',r:'',v:'Lincoln Financial Field, Philadelphia',g:'I',s:'group'},
+  {d:'2026-06-22',t:'20:00',h:'Norway',a:'Senegal',r:'',v:'MetLife Stadium, New York',g:'I',s:'group'},
+  {d:'2026-06-22',t:'23:00',h:'Jordan',a:'Algeria',r:'',v:"Levi's Stadium, San Francisco",g:'J',s:'group'},
+  // June 23
+  {d:'2026-06-23',t:'13:00',h:'Portugal',a:'Uzbekistan',r:'',v:'NRG Stadium, Houston',g:'K',s:'group'},
+  {d:'2026-06-23',t:'16:00',h:'England',a:'Ghana',r:'',v:'Gillette Stadium, Boston',g:'L',s:'group'},
+  {d:'2026-06-23',t:'19:00',h:'Panama',a:'Croatia',r:'',v:'BMO Field, Toronto',g:'L',s:'group'},
+  {d:'2026-06-23',t:'22:00',h:'Colombia',a:'DR Congo',r:'',v:'Estadio Akron, Guadalajara',g:'K',s:'group'},
+  // June 24 (simultaneous)
+  {d:'2026-06-24',t:'15:00',h:'Switzerland',a:'Canada',r:'',v:'BC Place, Vancouver',g:'B',s:'group'},
+  {d:'2026-06-24',t:'15:00',h:'Bosnia',a:'Qatar',r:'',v:'Lumen Field, Seattle',g:'B',s:'group'},
+  {d:'2026-06-24',t:'18:00',h:'Scotland',a:'Brazil',r:'',v:'Hard Rock Stadium, Miami',g:'C',s:'group'},
+  {d:'2026-06-24',t:'18:00',h:'Morocco',a:'Haiti',r:'',v:'Mercedes-Benz Stadium, Atlanta',g:'C',s:'group'},
+  // June 25
+  {d:'2026-06-25',t:'15:00',h:'USA',a:'Turkey',r:'',v:'AT&T Stadium, Dallas',g:'D',s:'group'},
+  {d:'2026-06-25',t:'15:00',h:'Paraguay',a:'Australia',r:'',v:'Arrowhead Stadium, Kansas City',g:'D',s:'group'},
+  {d:'2026-06-25',t:'18:00',h:'Germany',a:'Ecuador',r:'',v:'Lincoln Financial Field, Philadelphia',g:'E',s:'group'},
+  {d:'2026-06-25',t:'18:00',h:'Curaçao',a:"Côte d'Ivoire",r:'',v:'Estadio Azteca, Mexico City',g:'E',s:'group'},
+  {d:'2026-06-25',t:'21:00',h:'Sweden',a:'Japan',r:'',v:'NRG Stadium, Houston',g:'F',s:'group'},
+  {d:'2026-06-25',t:'21:00',h:'Tunisia',a:'Netherlands',r:'',v:'MetLife Stadium, New York',g:'F',s:'group'},
+  // June 26
+  {d:'2026-06-26',t:'15:00',h:'Belgium',a:'New Zealand',r:'',v:'SoFi Stadium, Los Angeles',g:'G',s:'group'},
+  {d:'2026-06-26',t:'15:00',h:'Egypt',a:'Iran',r:'',v:'BC Place, Vancouver',g:'G',s:'group'},
+  {d:'2026-06-26',t:'18:00',h:'Spain',a:'Uruguay',r:'',v:'Mercedes-Benz Stadium, Atlanta',g:'H',s:'group'},
+  {d:'2026-06-26',t:'18:00',h:'Cabo Verde',a:'Saudi Arabia',r:'',v:'Hard Rock Stadium, Miami',g:'H',s:'group'},
+  // June 27
+  {d:'2026-06-27',t:'15:00',h:'France',a:'Norway',r:'',v:'Gillette Stadium, Boston',g:'I',s:'group'},
+  {d:'2026-06-27',t:'15:00',h:'Senegal',a:'Iraq',r:'',v:'BMO Field, Toronto',g:'I',s:'group'},
+  {d:'2026-06-27',t:'18:00',h:'Argentina',a:'Jordan',r:'',v:'Arrowhead Stadium, Kansas City',g:'J',s:'group'},
+  {d:'2026-06-27',t:'18:00',h:'Algeria',a:'Austria',r:'',v:'AT&T Stadium, Dallas',g:'J',s:'group'},
+  {d:'2026-06-27',t:'21:00',h:'Portugal',a:'Colombia',r:'',v:'NRG Stadium, Houston',g:'K',s:'group'},
+  {d:'2026-06-27',t:'21:00',h:'DR Congo',a:'Uzbekistan',r:'',v:'Estadio BBVA, Monterrey',g:'K',s:'group'},
+  {d:'2026-06-27',t:'21:00',h:'England',a:'Panama',r:'',v:'Lincoln Financial Field, Philadelphia',g:'L',s:'group'},
+  {d:'2026-06-27',t:'21:00',h:'Croatia',a:'Ghana',r:'',v:'SoFi Stadium, Los Angeles',g:'L',s:'group'},
+  {d:'2026-06-27',t:'21:00',h:'South Korea',a:'South Africa',r:'',v:'Estadio Akron, Guadalajara',g:'A',s:'group'},
+  {d:'2026-06-27',t:'21:00',h:'Czech Republic',a:'Mexico',r:'',v:'Estadio Azteca, Mexico City',g:'A',s:'group'},
+  // ── ROUND OF 32 ─────────────────────────────────────────
+  {d:'2026-06-28',t:'15:00',h:'1A',a:'3rd C/E/F/H/I/J',r:'',v:'MetLife Stadium, New York',g:'',s:'r32'},
+  {d:'2026-06-28',t:'21:00',h:'1B',a:'3rd A/E/F/G/I/J',r:'',v:'Mercedes-Benz Stadium, Atlanta',g:'',s:'r32'},
+  {d:'2026-06-29',t:'15:00',h:'1C',a:'3rd A/D/F/G/H/J',r:'',v:'SoFi Stadium, Los Angeles',g:'',s:'r32'},
+  {d:'2026-06-29',t:'21:00',h:'1D',a:'3rd A/B/G/H/I/J',r:'',v:'AT&T Stadium, Dallas',g:'',s:'r32'},
+  {d:'2026-06-30',t:'15:00',h:'2A',a:'2B',r:'',v:'Gillette Stadium, Boston',g:'',s:'r32'},
+  {d:'2026-06-30',t:'21:00',h:'1E',a:'3rd B/C/D/G/H/J',r:'',v:'NRG Stadium, Houston',g:'',s:'r32'},
+  {d:'2026-07-01',t:'15:00',h:'1F',a:'3rd A/B/C/D/H/I',r:'',v:'Lincoln Financial Field, Philadelphia',g:'',s:'r32'},
+  {d:'2026-07-01',t:'21:00',h:'2C',a:'2D',r:'',v:'Lumen Field, Seattle',g:'',s:'r32'},
+  {d:'2026-07-02',t:'15:00',h:'1G',a:'3rd A/B/C/D/E/J',r:'',v:'Hard Rock Stadium, Miami',g:'',s:'r32'},
+  {d:'2026-07-02',t:'21:00',h:'1H',a:'3rd A/B/C/D/E/F',r:'',v:'BC Place, Vancouver',g:'',s:'r32'},
+  {d:'2026-07-03',t:'15:00',h:'2E',a:'2F',r:'',v:'Arrowhead Stadium, Kansas City',g:'',s:'r32'},
+  {d:'2026-07-03',t:'15:00',h:'2G',a:'2H',r:'',v:'BMO Field, Toronto',g:'',s:'r32'},
+  {d:'2026-07-03',t:'21:00',h:'1I',a:'3rd B/C/D/E/F/G',r:'',v:'Estadio Azteca, Mexico City',g:'',s:'r32'},
+  {d:'2026-07-03',t:'21:00',h:'1J',a:'3rd B/C/D/E/F/H',r:'',v:'Estadio Akron, Guadalajara',g:'',s:'r32'},
+  {d:'2026-07-03',t:'21:00',h:'2K',a:'2L',r:'',v:'Estadio BBVA, Monterrey',g:'',s:'r32'},
+  {d:'2026-07-03',t:'21:00',h:'1K',a:'1L',r:'',v:'NRG Stadium, Houston',g:'',s:'r32'},
+  // ── ROUND OF 16 ─────────────────────────────────────────
+  {d:'2026-07-04',t:'15:00',h:'W49',a:'W50',r:'',v:'MetLife Stadium, New York',g:'',s:'r16'},
+  {d:'2026-07-04',t:'21:00',h:'W51',a:'W52',r:'',v:'Mercedes-Benz Stadium, Atlanta',g:'',s:'r16'},
+  {d:'2026-07-05',t:'15:00',h:'W53',a:'W54',r:'',v:'SoFi Stadium, Los Angeles',g:'',s:'r16'},
+  {d:'2026-07-05',t:'21:00',h:'W55',a:'W56',r:'',v:'AT&T Stadium, Dallas',g:'',s:'r16'},
+  {d:'2026-07-06',t:'15:00',h:'W57',a:'W58',r:'',v:'Hard Rock Stadium, Miami',g:'',s:'r16'},
+  {d:'2026-07-06',t:'21:00',h:'W59',a:'W60',r:'',v:'Gillette Stadium, Boston',g:'',s:'r16'},
+  {d:'2026-07-07',t:'15:00',h:'W61',a:'W62',r:'',v:'Lincoln Financial Field, Philadelphia',g:'',s:'r16'},
+  {d:'2026-07-07',t:'21:00',h:'W63',a:'W64',r:'',v:'Lumen Field, Seattle',g:'',s:'r16'},
+  // ── QUARTER-FINALS ──────────────────────────────────────
+  {d:'2026-07-09',t:'15:00',h:'W65',a:'W66',r:'',v:'MetLife Stadium, New York',g:'',s:'qf'},
+  {d:'2026-07-09',t:'21:00',h:'W67',a:'W68',r:'',v:'Mercedes-Benz Stadium, Atlanta',g:'',s:'qf'},
+  {d:'2026-07-11',t:'15:00',h:'W69',a:'W70',r:'',v:'SoFi Stadium, Los Angeles',g:'',s:'qf'},
+  {d:'2026-07-11',t:'21:00',h:'W71',a:'W72',r:'',v:'AT&T Stadium, Dallas',g:'',s:'qf'},
+  // ── SEMI-FINALS ─────────────────────────────────────────
+  {d:'2026-07-14',t:'15:00',h:'W73',a:'W74',r:'',v:'MetLife Stadium, New York',g:'',s:'sf'},
+  {d:'2026-07-15',t:'15:00',h:'W75',a:'W76',r:'',v:'AT&T Stadium, Dallas',g:'',s:'sf'},
+  // ── THIRD PLACE ─────────────────────────────────────────
+  {d:'2026-07-18',t:'15:00',h:'L SF1',a:'L SF2',r:'',v:'Hard Rock Stadium, Miami',g:'',s:'3rd'},
+  // ── FINAL ───────────────────────────────────────────────
+  {d:'2026-07-19',t:'15:00',h:'W SF1',a:'W SF2',r:'',v:'MetLife Stadium, New York/New Jersey',g:'',s:'final'},
+];
+
+const STAGE_LABELS = {
+  group:'Group Stage', r32:'Round of 32', r16:'Round of 16',
+  qf:'Quarter-final', sf:'Semi-final', '3rd':'Third Place', final:'⭐ FINAL'
+};
+const STAGE_BADGE_CLASS = {
+  group:'stage-group', r32:'stage-r32', r16:'stage-r16',
+  qf:'stage-qf', sf:'stage-sf', '3rd':'stage-sf', final:'stage-final'
+};
+
+let currentFilter = 'all';
+
+function setFilter(el, f) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentFilter = f;
+  renderSchedule();
+}
+
+function toLocalTime(dateStr, timeStr, tz) {
+  // dateStr: 'YYYY-MM-DD', timeStr: 'HH:MM' in ET (UTC-4)
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const [hh,mm] = timeStr.split(':').map(Number);
+  // Create UTC time (ET = UTC-4)
+  const utc = new Date(Date.UTC(y, m-1, d, hh+4, mm));
+  return utc.toLocaleString('en-GB', {
+    timeZone: tz,
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+}
+
+function getLocalDate(dateStr, timeStr, tz) {
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const [hh,mm] = timeStr.split(':').map(Number);
+  const utc = new Date(Date.UTC(y, m-1, d, hh+4, mm));
+  return utc.toLocaleDateString('en-GB', { timeZone: tz, weekday:'long', day:'numeric', month:'long', year:'numeric' });
+}
+
+function isToday(dateStr, timeStr, tz) {
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const [hh,mm] = timeStr.split(':').map(Number);
+  const utc = new Date(Date.UTC(y, m-1, d, hh+4, mm));
+  const now = new Date();
+  const localDate = utc.toLocaleDateString('en-CA', { timeZone: tz });
+  const todayLocal = now.toLocaleDateString('en-CA', { timeZone: tz });
+  return localDate === todayLocal;
+}
+
+function isUpcoming(dateStr, timeStr) {
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const [hh,mm] = timeStr.split(':').map(Number);
+  const utc = new Date(Date.UTC(y, m-1, d, hh+4, mm));
+  return utc > new Date();
+}
+
+function renderSchedule() {
+  const tz = document.getElementById('tzSelect').value;
+  const search = document.getElementById('searchBox').value.toLowerCase();
+  const out = document.getElementById('scheduleOut');
+
+  // Update current time display
+  document.getElementById('tzNow').textContent = '🕐 Now: ' +
+    new Date().toLocaleTimeString('en-GB', { timeZone: tz, hour:'2-digit', minute:'2-digit' });
+
+  // Filter matches
+  let filtered = MATCHES.filter(m => {
+    // Stage filter
+    if (currentFilter === 'today' && !isToday(m.d, m.t, tz)) return false;
+    if (currentFilter === 'upcoming' && !isUpcoming(m.d, m.t)) return false;
+    if (!['all','today','upcoming'].includes(currentFilter) && m.s !== currentFilter) return false;
+    // Search filter
+    if (search && !`${m.h} ${m.a} ${m.v} ${m.g} ${m.s}`.toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    out.innerHTML = '<div class="no-matches">No matches found. Try a different filter or search term.</div>';
+    return;
+  }
+
+  // Group by local date
+  const byDate = {};
+  filtered.forEach(m => {
+    const localDate = getLocalDate(m.d, m.t, tz);
+    if (!byDate[localDate]) byDate[localDate] = [];
+    byDate[localDate].push(m);
+  });
+
+  let html = '';
+  Object.entries(byDate).forEach(([date, matches]) => {
+    const todayMark = matches.some(m => isToday(m.d, m.t, tz));
+    html += `<div class="match-day">
+      <div class="match-day-header">${date}${todayMark ? '<span class="today-badge">TODAY</span>' : ''}</div>`;
+    matches.forEach(m => {
+      const localTime = toLocalTime(m.d, m.t, tz);
+      const timeOnly = localTime.split(', ').pop();
+      const isFinished = m.r !== '';
+      const upcoming = isUpcoming(m.d, m.t);
+      const todayMatch = isToday(m.d, m.t, tz);
+      const stageBadge = `<span class="stage-badge ${STAGE_BADGE_CLASS[m.s]}">${STAGE_LABELS[m.s]}</span>`;
+      const groupBadge = m.g ? `<span style="font-family:var(--mono);font-size:.7rem;color:var(--text3)">Grp ${m.g}</span>` : '';
+
+      html += `<div class="match-item${todayMatch?' today':''}">
+        <div class="${isFinished?'match-time result':'match-time'}">${isFinished ? m.r : (upcoming ? timeOnly : '⏳')}</div>
+        <div class="match-teams">
+          <div class="match-teams-row">${m.h} <span style="color:var(--text3);font-weight:400">vs</span> ${m.a}</div>
+          <div class="match-meta">${m.v} &nbsp;•&nbsp; ${stageBadge} ${groupBadge}</div>
+        </div>
+        <div class="match-group">${isFinished ? '✅ FT' : (upcoming ? '⚽' : '🔴 LIVE')}</div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+
+  out.innerHTML = html;
+}
+
+// Auto-detect user timezone
+try {
+  const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const sel = document.getElementById('tzSelect');
+  for (let o of sel.options) {
+    if (o.value === userTz) { o.selected = true; break; }
+  }
+} catch(e) {}
+
+// Initial render
+renderSchedule();
+
+// Update clock every minute
+setInterval(() => {
+  const tz = document.getElementById('tzSelect').value;
+  document.getElementById('tzNow').textContent = '🕐 Now: ' +
+    new Date().toLocaleTimeString('en-GB', { timeZone: tz, hour:'2-digit', minute:'2-digit' });
+}, 60000);
+</script>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

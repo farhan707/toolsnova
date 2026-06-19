@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Third Place Qualifier Tracker — Best 8 Third-Place Teams</title>
+<meta name="description" content="Track which third-place teams qualify for the World Cup 2026 Round of 32. Enter all 12 group results and instantly see which 8 best third-place teams advance. Free tracker.">
+<link rel="canonical" href="https://toolsnova.net/world-cup-2026-third-place">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=19">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="World Cup 2026 Third Place Qualifier Tracker">
+<meta property="og:description" content="Which 8 third-place teams qualify for the Round of 32? Enter group results and find out instantly. All 12 groups tracked.">
+<meta property="og:url" content="https://toolsnova.net/world-cup-2026-third-place">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"World Cup 2026 Third Place Tracker","url":"https://toolsnova.net/world-cup-2026-third-place","description":"Track which 8 best third-place teams qualify from all 12 groups at the 2026 FIFA World Cup.","applicationCategory":"SportsApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<style>
+.wc-hero{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center}
+.wc-hero h1{font-size:1.6rem;color:var(--accent);margin:0 0 .4rem}
+.wc-hero p{color:var(--text2);margin:0;font-size:.9rem}
+.wc-badge{display:inline-block;background:var(--accent);color:#0c0c0e;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:.6rem;letter-spacing:.05em}
+.third-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;margin-bottom:1.2rem}
+.group-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem}
+.group-card-title{font-family:var(--mono);font-weight:700;font-size:.82rem;color:var(--text2);margin-bottom:.7rem;display:flex;justify-content:space-between;align-items:center}
+.mini-row{display:grid;grid-template-columns:auto 1fr auto auto auto;align-items:center;gap:.4rem;padding:.3rem 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.mini-row:last-child{border-bottom:none}
+.mini-pos{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;font-family:var(--mono)}
+.pos1{background:var(--accent);color:#0c0c0e}
+.pos2{background:#4a9eff;color:#0c0c0e}
+.pos3{background:var(--surface3);color:var(--text)}
+.pos4{background:var(--surface2);color:var(--text3)}
+.mini-team{font-size:.78rem;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mini-pts{font-family:var(--mono);font-size:.78rem;font-weight:700;color:var(--text)}
+.mini-input{width:38px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;text-align:center;font-size:.78rem;font-family:var(--mono);color:var(--text);padding:2px}
+.mini-input:focus{outline:1px solid var(--accent)}
+.third-tracker{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:1rem}
+.third-tracker h3{margin:0 0 .8rem;font-size:.95rem}
+.third-row{display:grid;grid-template-columns:auto 1fr auto auto auto auto;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:6px;margin-bottom:.3rem;font-size:.82rem}
+.third-row.qualifies{background:rgba(127,255,111,.08);border:1px solid rgba(127,255,111,.2)}
+.third-row.eliminated{background:var(--surface);border:1px solid var(--border);opacity:.6}
+.third-rank{font-family:var(--mono);font-weight:700;font-size:.85rem;color:var(--accent);min-width:24px}
+.third-team{font-weight:600}
+.third-stat{font-family:var(--mono);font-size:.78rem;color:var(--text3);text-align:center;min-width:28px}
+.third-status{font-size:.7rem;font-weight:700;padding:2px 6px;border-radius:3px}
+.status-q{background:rgba(127,255,111,.15);color:var(--accent)}
+.status-x{background:rgba(255,50,50,.12);color:#ff5555}
+.status-tbd{background:var(--surface3);color:var(--text3)}
+.cutline{border:1px dashed rgba(74,158,255,.4);border-radius:6px;padding:.4rem .6rem;text-align:center;font-size:.75rem;color:#4a9eff;margin:.4rem 0}
+.info-bar{display:flex;gap:1rem;flex-wrap:wrap;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;margin-bottom:1rem;font-size:.82rem;color:var(--text2)}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="site-logo">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#7fff6f" stroke-width="1.5"/><path d="M16 4 L16 28 M4 16 L28 16" stroke="#7fff6f" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="#7fff6f"/></svg>
+    <span>Tools<span class="logo-nova">Nova</span></span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">⚽ World Cup 2026</span>
+    <a href="world-cup-2026-calculator.html" class="nav-link">Group Calculator</a>
+    <a href="world-cup-2026-schedule.html" class="nav-link">Match Schedule</a>
+    <a href="world-cup-2026-prize-money.html" class="nav-link">Prize Money</a>
+    <a href="world-cup-2026-quiz.html" class="nav-link">WC Quiz</a>
+    <a href="world-cup-2026-third-place.html" class="nav-link">3rd Place Tracker</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="password-generator.html" class="nav-link">Password Generator</a>
+    <a href="regex-tester.html" class="nav-link">Regex Tester</a>
+  </nav>
+  <button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+</header>
+
+<main class="tool-main">
+  <div class="wc-hero">
+    <div class="wc-badge">🔵 NEW — UNIQUE TO 2026</div>
+    <h1>World Cup 2026 Third-Place Qualifier Tracker</h1>
+    <p>Which 8 third-place teams advance from 12 groups? Enter points, GD & goals to see the live cut line.</p>
+  </div>
+
+  <div class="info-bar">
+    <span>📋 Enter each group's 3rd-place team stats</span>
+    <span>🔵 Top 8 of 12 advance to Round of 32</span>
+    <span>📊 Ranked by: Pts → GD → GF → Alphabetical</span>
+  </div>
+
+  <div class="tool-grid-2">
+    <!-- Left: Group inputs -->
+    <div>
+      <h3 style="margin:0 0 .8rem;font-size:1rem">Enter 3rd-Place Team Stats Per Group</h3>
+      <div id="groupInputs"></div>
+    </div>
+
+    <!-- Right: Live ranking -->
+    <div>
+      <div class="third-tracker">
+        <h3>🏆 Live Third-Place Rankings</h3>
+        <div id="thirdRanking"></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-size:.8rem;color:var(--text3)">
+        <strong style="color:var(--text2)">Tiebreaker order:</strong><br>
+        1. Points → 2. Goal Difference → 3. Goals Scored → 4. Alphabetical (team name)
+      </div>
+    </div>
+  </div>
+
+  <!-- Educational content -->
+  <section class="edu-section">
+    <h2>How the Best Third-Place Rule Works in 2026</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter the 3rd-place team's stats</strong> — for each group (A–L), enter the third-place team's name, points, goal difference, and goals scored after all 3 group matches are played.</li>
+      <li><strong>See the live ranking</strong> — all 12 third-place teams are ranked automatically. The top 8 qualify for the Round of 32.</li>
+      <li><strong>Check the cut line</strong> — a dotted line shows exactly where the 8th qualifying spot ends and the 9th eliminated spot begins.</li>
+      <li><strong>Simulate scenarios</strong> — adjust the numbers to see how different results in other groups affect whether your team qualifies.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🔵 The most confusing rule in 2026:</strong> For the first time ever, 8 of the 12 third-place teams advance to the knockout stage — not just the best 4 (as in the 24-team World Cups from 1986–1994). This means 32 teams reach the Round of 32 total (24 automatic qualifiers + 8 third-place teams). A team can finish third in their group and still advance — making qualification significantly more forgiving than ever before.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding Third-Place Qualification in the 48-Team Format</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔵 Why 8 Teams?</div><div class="edu-card-body">With 12 groups and the top 2 advancing automatically (24 teams), FIFA needs 8 more teams to reach 32 for the Round of 32 bracket. Rather than extra play-offs, FIFA takes the 8 best third-place finishers from the 12 groups — a simple, fair system that rewards third-place performance across all groups.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Ranking Criteria</div><div class="edu-card-body">All 12 third-place teams are ranked together by: 1) Points (W=3, D=1, L=0 across 3 matches). 2) Goal difference. 3) Goals scored. 4) Fair play points (fewer cards = better). 5) FIFA world ranking. The 8 teams with the highest ranking advance to the Round of 32 knockout stage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Typical Qualifying Points</div><div class="edu-card-body">Historical third-place qualifying thresholds (based on past expanded World Cups): 6 points (2 wins) = certain to qualify. 4 points (1W 1D 1L) = very likely. 3 points (1W 2L or 3D) = borderline. 1–2 points = extremely unlikely to qualify as best third. 0 points = eliminated from third-place race.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏟️ What Happens Next</div><div class="edu-card-body">Third-place qualifiers enter the Round of 32 bracket. Their specific opponent depends on which groups they came from — FIFA has a pre-determined bracket assignment table that maps third-place team sources to specific Round of 32 slots. The opponent is determined only after all group stages are complete.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚽ Groups with Most Upsets</div><div class="edu-card-body">In 2026, groups with stronger third-place teams may push the cut line higher. Groups with dominant favorites (Group J: Argentina; Group H: Spain; Group I: France) may produce weaker third-place teams. Groups where all four teams are competitive could produce a strong third-place team with 4–5 points.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆚 vs Previous World Cups</div><div class="edu-card-body">1986–1994 (24 teams, 6 groups): best 4 of 6 third-place teams advanced. 1998–2022 (32 teams, 8 groups): no third-place qualification — only top 2 per group. 2026 (48 teams, 12 groups): best 8 of 12 third-place teams advance. This is the most third-place-friendly World Cup format since 1994.</div></div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many third-place teams qualify at World Cup 2026?</div>
+      <div class="faq-a">8 third-place teams qualify from the 12 groups at the 2026 World Cup. These are the 8 teams with the best record among all 12 groups' third-place finishers. They join the 24 automatic qualifiers (top 2 from each group) to make 32 teams in the Round of 32.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How are the best third-place teams determined?</div>
+      <div class="faq-a">All 12 third-place teams are ranked together. Ranking criteria in order: 1) Points (most wins = most points). 2) Goal difference (goals scored minus goals conceded). 3) Goals scored. 4) Fair play record (yellow/red card discipline). 5) FIFA world ranking. The 8 teams ranked highest by these criteria qualify.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many points does a third-place team need to qualify?</div>
+      <div class="faq-a">There is no fixed minimum — it depends on results across all groups. Historically in expanded World Cups: 4 points (1 win, 1 draw, 1 loss) is usually enough. 3 points (1 win, 2 losses) is borderline depending on goal difference. 6 points (2 wins, 1 loss) virtually guarantees qualification. Use this tracker to calculate the exact cut line based on actual results.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">When are third-place qualifiers announced?</div>
+      <div class="faq-a">Third-place qualifiers are determined only after all group stage matches are complete — June 27, 2026. The final matchday for each group is played simultaneously, and only after all 12 groups have played their third matches can the 12 third-place teams be compared and the 8 qualifiers confirmed.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a><a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script src="app.js?v=19"></script>
+<script>
+const GROUPS = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+const DEFAULT_3RD = {
+  A:'South Africa 🇿🇦', B:'Qatar 🇶🇦', C:'Haiti 🇭🇹', D:'Turkey 🇹🇷',
+  E:"Curaçao 🇨🇼", F:'Tunisia 🇹🇳', G:'New Zealand 🇳🇿', H:'Cabo Verde 🇨🇻',
+  I:'Iraq 🇮🇶', J:'Jordan 🇯🇴', K:'Uzbekistan 🇺🇿', L:'Panama 🇵🇦'
+};
+
+// State for each group's 3rd place
+const state = {};
+GROUPS.forEach(g => {
+  state[g] = { team: DEFAULT_3RD[g], pts: 0, gd: 0, gf: 0 };
+});
+
+function buildInputs() {
+  const container = document.getElementById('groupInputs');
+  container.innerHTML = GROUPS.map(g => `
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;margin-bottom:.5rem">
+      <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap">
+        <span style="font-family:var(--mono);font-weight:700;font-size:.82rem;color:var(--accent);min-width:60px">Group ${g}</span>
+        <input type="text" value="${state[g].team}" placeholder="Team name"
+          style="flex:1;min-width:120px;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:5px;padding:.3rem .5rem;font-size:.8rem"
+          oninput="setState('${g}','team',this.value)">
+        <input type="number" value="${state[g].pts}" min="0" max="9" placeholder="Pts"
+          style="width:46px;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:5px;padding:.3rem;font-size:.8rem;text-align:center"
+          oninput="setState('${g}','pts',+this.value)" title="Points">
+        <input type="number" value="${state[g].gd}" min="-20" max="20" placeholder="GD"
+          style="width:46px;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:5px;padding:.3rem;font-size:.8rem;text-align:center"
+          oninput="setState('${g}','gd',+this.value)" title="Goal Difference">
+        <input type="number" value="${state[g].gf}" min="0" max="20" placeholder="GF"
+          style="width:46px;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:5px;padding:.3rem;font-size:.8rem;text-align:center"
+          oninput="setState('${g}','gf',+this.value)" title="Goals For">
+        <span style="font-size:.68rem;color:var(--text3)">Pts / GD / GF</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setState(g, key, val) {
+  state[g][key] = key === 'team' ? val : (isNaN(val) ? 0 : val);
+  renderRanking();
+}
+
+function renderRanking() {
+  const teams = GROUPS.map(g => ({
+    group: g,
+    team: state[g].team || `Group ${g} 3rd`,
+    pts: +state[g].pts || 0,
+    gd: +state[g].gd || 0,
+    gf: +state[g].gf || 0,
+  }));
+
+  // Sort: pts → gd → gf → name
+  teams.sort((a, b) =>
+    b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || a.team.localeCompare(b.team)
+  );
+
+  let html = '';
+  teams.forEach((t, i) => {
+    const rank = i + 1;
+    const qualifies = rank <= 8;
+    const gd = t.gd >= 0 ? `+${t.gd}` : t.gd;
+
+    if (rank === 9) {
+      html += `<div class="cutline">── CUT LINE — Teams below do NOT qualify ──</div>`;
+    }
+
+    html += `<div class="third-row ${qualifies ? 'qualifies' : 'eliminated'}">
+      <div class="third-rank">${rank}</div>
+      <div class="third-team">${t.team} <span style="font-size:.7rem;color:var(--text3)">(Grp ${t.group})</span></div>
+      <div class="third-stat">${t.pts}pts</div>
+      <div class="third-stat">${gd}</div>
+      <div class="third-stat">${t.gf}gf</div>
+      <div class="third-status ${qualifies ? 'status-q' : 'status-x'}">${qualifies ? '✅ IN' : '❌ OUT'}</div>
+    </div>`;
+  });
+
+  document.getElementById('thirdRanking').innerHTML = html;
+}
+
+buildInputs();
+renderRanking();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

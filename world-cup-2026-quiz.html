@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Quiz — Test Your Football Knowledge</title>
+<meta name="description" content="Test your FIFA World Cup 2026 knowledge with 20 questions. Groups, teams, history, format, records and more. Free online football quiz with instant scoring.">
+<link rel="canonical" href="https://toolsnova.net/world-cup-2026-quiz">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=19">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="World Cup 2026 Quiz — How Well Do You Know the Tournament?">
+<meta property="og:description" content="20 questions about FIFA World Cup 2026. Groups, teams, history, records. Free quiz with instant answers and scoring.">
+<meta property="og:url" content="https://toolsnova.net/world-cup-2026-quiz">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"World Cup 2026 Knowledge Quiz","url":"https://toolsnova.net/world-cup-2026-quiz","description":"Test your FIFA World Cup 2026 knowledge with 20 questions about groups, teams, history and format.","applicationCategory":"SportsApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<style>
+.wc-hero{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center}
+.wc-hero h1{font-size:1.6rem;color:var(--accent);margin:0 0 .4rem}
+.wc-hero p{color:var(--text2);margin:0;font-size:.9rem}
+.wc-badge{display:inline-block;background:var(--accent);color:#0c0c0e;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:.6rem;letter-spacing:.05em}
+.quiz-progress{background:var(--surface2);border-radius:8px;height:8px;margin-bottom:1rem;overflow:hidden}
+.quiz-progress-bar{height:100%;background:var(--accent);border-radius:8px;transition:width .3s}
+.quiz-meta{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text3);font-family:var(--mono);margin-bottom:1rem}
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem;margin-bottom:1rem}
+.question-num{font-size:.75rem;font-weight:700;color:var(--accent);font-family:var(--mono);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em}
+.question-text{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+@media(max-width:480px){.options{grid-template-columns:1fr}}
+.option-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:.65rem .9rem;cursor:pointer;font-size:.88rem;text-align:left;transition:all .15s;line-height:1.4}
+.option-btn:hover:not(:disabled){background:var(--surface3);border-color:var(--border2)}
+.option-btn.correct{background:rgba(127,255,111,.15);border-color:var(--accent);color:var(--accent)}
+.option-btn.wrong{background:rgba(255,50,50,.12);border-color:#ff5555;color:#ff5555}
+.option-btn:disabled{cursor:default}
+.explanation{margin-top:.8rem;padding:.7rem .9rem;background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;font-size:.82rem;color:var(--text2);line-height:1.6;display:none}
+.explanation.show{display:block}
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.quiz-btn{background:var(--accent);color:#0c0c0e;border:none;border-radius:8px;padding:.6rem 1.4rem;cursor:pointer;font-size:.9rem;font-weight:700;transition:opacity .15s}
+.quiz-btn:hover{opacity:.85}
+.quiz-btn.secondary{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.score-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center}
+.score-big{font-size:3rem;font-weight:700;font-family:var(--mono);color:var(--accent);margin:.5rem 0}
+.score-label{font-size:1rem;color:var(--text2);margin-bottom:1rem}
+.score-grade{font-size:1.5rem;margin-bottom:.5rem}
+.score-msg{color:var(--text2);font-size:.9rem;margin-bottom:1.5rem}
+.difficulty-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:.7rem;font-weight:700;font-family:var(--mono);margin-left:.5rem}
+.easy{background:rgba(127,255,111,.15);color:var(--accent)}
+.medium{background:rgba(255,180,0,.15);color:#ffb400}
+.hard{background:rgba(255,100,0,.15);color:#ff6400}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="site-logo">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#7fff6f" stroke-width="1.5"/><path d="M16 4 L16 28 M4 16 L28 16" stroke="#7fff6f" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="#7fff6f"/></svg>
+    <span>Tools<span class="logo-nova">Nova</span></span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">⚽ World Cup 2026</span>
+    <a href="world-cup-2026-calculator.html" class="nav-link">Group Calculator</a>
+    <a href="world-cup-2026-schedule.html" class="nav-link">Match Schedule</a>
+    <a href="world-cup-2026-prize-money.html" class="nav-link">Prize Money</a>
+    <a href="world-cup-2026-quiz.html" class="nav-link">WC Quiz</a>
+    <a href="world-cup-2026-third-place.html" class="nav-link">3rd Place Tracker</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="password-generator.html" class="nav-link">Password Generator</a>
+  </nav>
+  <button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+</header>
+
+<main class="tool-main">
+  <div class="wc-hero">
+    <div class="wc-badge">🧠 20 QUESTIONS</div>
+    <h1>World Cup 2026 Football Quiz</h1>
+    <p>How well do you know the 2026 FIFA World Cup? Groups, teams, history, records and format. Find out now!</p>
+  </div>
+
+  <div id="quizApp"></div>
+
+  <!-- Educational content -->
+  <section class="edu-section" id="eduSection">
+    <h2>About This World Cup 2026 Quiz</h2>
+    <ol class="edu-steps">
+      <li><strong>20 questions</strong> — covering all aspects of the 2026 World Cup: groups and teams, tournament format, host cities and venues, historical records, and World Cup trivia.</li>
+      <li><strong>Three difficulty levels</strong> — Easy (basic facts), Medium (specific knowledge), Hard (expert trivia). Mixed throughout the quiz for a varied experience.</li>
+      <li><strong>Instant explanations</strong> — after each answer, a detailed explanation tells you why the correct answer is right. Learn even when you answer correctly.</li>
+      <li><strong>Score and grade</strong> — at the end, see your score out of 20 and receive a grade from Novice Fan to World Cup Expert.</li>
+      <li><strong>Play again</strong> — questions are shuffled each time for a different experience on repeat plays.</li>
+    </ol>
+    <div class="edu-highlight"><strong>🏆 Perfect score challenge:</strong> Score 20/20 to earn the "World Cup Expert" title. The hardest questions test specific knowledge: Which group has Messi? How many matches are played in the group stage? What year did the World Cup last have 48 teams? (Never — 2026 is the first time.) Can you get them all right?</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>World Cup 2026 Key Facts — Cheat Sheet</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📅 Key Dates</div><div class="edu-card-body">Tournament: June 11 – July 19, 2026. Opening match: Mexico vs South Africa, June 11. Group stage ends: June 27. Round of 32: June 28–July 3. Final: July 19 at MetLife Stadium, New Jersey.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏟️ Host Countries</div><div class="edu-card-body">Three co-hosts: USA (78 matches, 11 venues), Mexico (13 matches, 3 venues), Canada (13 matches, 2 venues). 16 total stadiums. This is the first World Cup with 3 host nations. The USA last hosted the World Cup in 1994.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Teams & Format</div><div class="edu-card-body">48 teams (up from 32 in 2022). 12 groups of 4. 104 total matches. 72 group stage + 32 knockout matches. New Round of 32 never seen before. 4 debut nations: Cabo Verde, Curaçao, Jordan, Uzbekistan.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⭐ Star Players</div><div class="edu-card-body">Argentina (Group J): Messi — his final World Cup. Portugal (Group K): Ronaldo — potentially his last World Cup too. France (Group I): Mbappé. England (Group L): Bellingham. Germany (Group E): Müller. Spain (Group H): Yamal — the 2024 Euro star.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏆 Defending Champion</div><div class="edu-card-body">Argentina — won the 2022 Qatar World Cup by beating France on penalties in the final. Lionel Messi finally won his World Cup trophy. Argentina is in Group J with Algeria, Austria, and Jordan. They are one of the top favourites to retain the title.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 World Cup Records</div><div class="edu-card-body">Most wins: Brazil (5). Most finals appearances: Germany and Brazil (8 each). Highest single match score: Hungary 10–1 El Salvador (1982). Fastest goal: Hakan Şükür, 11 seconds (Turkey vs South Korea, 2002). Most goals in one tournament: Just Fontaine, 13 goals (France 1958).</div></div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Which country has won the most World Cups?</div>
+      <div class="faq-a">Brazil has won the most FIFA World Cups with 5 titles (1958, 1962, 1970, 1994, 2002). Germany and Italy are tied second with 4 titles each. Argentina and France have won 2 each. Uruguay, England, and Spain have won 1 each. Brazil are the only nation to have played in every World Cup.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many teams are in the 2026 World Cup?</div>
+      <div class="faq-a">48 teams compete at the 2026 FIFA World Cup — the most in the tournament's history. This is an expansion from 32 teams that competed from 1998 to 2022. The 48 teams are divided into 12 groups of 4, with the top 2 from each group plus the 8 best third-place teams (32 total) advancing to the knockout Round of 32.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Who is in Group J at the 2026 World Cup?</div>
+      <div class="faq-a">Group J at the 2026 World Cup contains Argentina (defending champions), Algeria, Austria, and Jordan. This is one of the most watched groups as it features Lionel Messi in what is expected to be his final World Cup. Argentina are heavy favourites to win the group.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Where is the 2026 World Cup Final?</div>
+      <div class="faq-a">The 2026 FIFA World Cup Final takes place on July 19, 2026 at MetLife Stadium in East Rutherford, New Jersey (near New York City). FIFA renamed the stadium "New York New Jersey Stadium" for the tournament. The stadium has a capacity of 82,500, making it one of the largest World Cup final venues in history.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a><a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script src="app.js?v=19"></script>
+<script>
+const ALL_QUESTIONS = [
+  {
+    q: "How many teams compete at the 2026 FIFA World Cup?",
+    opts: ["32 teams","40 teams","48 teams","64 teams"],
+    ans: 2,
+    diff: "easy",
+    exp: "The 2026 World Cup is the first ever with 48 teams, up from 32 teams in 2022 Qatar. The expansion creates 12 groups of 4 and 104 total matches — 40 more than the previous format."
+  },
+  {
+    q: "Which three countries are co-hosting the 2026 World Cup?",
+    opts: ["USA, Mexico, Brazil","USA, Canada, Mexico","Canada, UK, USA","Mexico, Canada, Argentina"],
+    ans: 1,
+    diff: "easy",
+    exp: "The 2026 World Cup is co-hosted by the United States, Canada, and Mexico — the first World Cup with three host nations. The USA hosts 78 of 104 matches including all games from the quarter-finals onward."
+  },
+  {
+    q: "Which group contains Argentina and Lionel Messi?",
+    opts: ["Group H","Group J","Group K","Group A"],
+    ans: 1,
+    diff: "easy",
+    exp: "Argentina are in Group J alongside Algeria, Austria, and Jordan. Lionel Messi, the 2022 World Cup winner, is expected to make his final World Cup appearance in 2026 with Argentina as the defending champions."
+  },
+  {
+    q: "Where is the 2026 World Cup Final being held?",
+    opts: ["Los Angeles Stadium","AT&T Stadium Dallas","MetLife Stadium New York","Mercedes-Benz Stadium Atlanta"],
+    ans: 2,
+    diff: "easy",
+    exp: "The 2026 World Cup Final takes place on July 19, 2026 at MetLife Stadium in East Rutherford, New Jersey (near New York). FIFA renamed it 'New York New Jersey Stadium' for the tournament. Capacity: 82,500."
+  },
+  {
+    q: "How many matches are played in total at the 2026 World Cup?",
+    opts: ["64 matches","80 matches","96 matches","104 matches"],
+    ans: 3,
+    diff: "easy",
+    exp: "104 matches are played at the 2026 World Cup — 72 in the group stage and 32 in the knockout rounds. This compares to 64 matches at the 2022 Qatar World Cup, an increase of 40 matches due to the expanded 48-team format."
+  },
+  {
+    q: "How many groups are there at the 2026 World Cup?",
+    opts: ["8 groups","10 groups","12 groups","16 groups"],
+    ans: 2,
+    diff: "easy",
+    exp: "There are 12 groups (A through L) at the 2026 World Cup, each with 4 teams. This is an expansion from 8 groups in previous 32-team World Cups. The top 2 from each group (24 teams) plus the 8 best third-place teams qualify for the Round of 32."
+  },
+  {
+    q: "What is the new knockout round introduced at the 2026 World Cup?",
+    opts: ["Round of 48","Round of 32","Play-off round","Super round"],
+    ans: 1,
+    diff: "medium",
+    exp: "The Round of 32 is a brand new knockout stage never seen at any previous World Cup. 32 teams compete (24 group qualifiers + 8 best third-place teams), playing 16 matches from June 28 to July 3. Teams must then win through Round of 16, quarter-finals, semi-finals, and the final."
+  },
+  {
+    q: "Which country is the defending World Cup champion entering 2026?",
+    opts: ["France","Brazil","Germany","Argentina"],
+    ans: 3,
+    diff: "easy",
+    exp: "Argentina won the 2022 Qatar World Cup, beating France in the final on penalties. It was Lionel Messi's first World Cup title. Argentina are in Group J at the 2026 tournament as defending champions."
+  },
+  {
+    q: "How much is the total FIFA World Cup 2026 prize pool?",
+    opts: ["$440 million","$655 million","$727 million","$871 million"],
+    ans: 3,
+    diff: "medium",
+    exp: "The 2026 World Cup total prize pool is $871 million — nearly double the $440 million at Qatar 2022. FIFA revised the figure upward twice, finalising at $871M after the May 2026 FIFA Council Meeting in Vancouver, reflecting record broadcasting revenue."
+  },
+  {
+    q: "Which group contains both Portugal (Ronaldo) and Colombia?",
+    opts: ["Group I","Group J","Group K","Group L"],
+    ans: 2,
+    diff: "medium",
+    exp: "Group K contains Portugal, Colombia, Uzbekistan, and DR Congo. The Portugal vs Colombia match is one of the most anticipated group stage games, with Cristiano Ronaldo potentially making his final World Cup appearance for Portugal."
+  },
+  {
+    q: "How many third-place teams qualify for the Round of 32?",
+    opts: ["4 teams","6 teams","8 teams","All 12 teams"],
+    ans: 2,
+    diff: "medium",
+    exp: "The 8 best third-place teams from all 12 groups qualify for the Round of 32. They are ranked together by points, goal difference, and goals scored. This is different from the 1994 World Cup where only the best 4 of 6 third-place teams advanced."
+  },
+  {
+    q: "How many matches does each team play in the group stage?",
+    opts: ["2 matches","3 matches","4 matches","Depends on group"],
+    ans: 1,
+    diff: "easy",
+    exp: "Every team plays exactly 3 group stage matches in a round-robin format within their group of 4 teams. Each team plays once against each of the other 3 teams in their group. Maximum 9 points available from 3 matches."
+  },
+  {
+    q: "Which nation has won the most FIFA World Cups?",
+    opts: ["Germany","Italy","Argentina","Brazil"],
+    ans: 3,
+    diff: "easy",
+    exp: "Brazil has won the most FIFA World Cups with 5 titles (1958, 1962, 1970, 1994, 2002). Germany and Italy are tied second with 4 titles each. Brazil are the only nation to have qualified for every World Cup since the competition began."
+  },
+  {
+    q: "Which group contains England at the 2026 World Cup?",
+    opts: ["Group J","Group K","Group L","Group H"],
+    ans: 2,
+    diff: "medium",
+    exp: "England are in Group L alongside Croatia, Ghana, and Panama. England vs Croatia is a rematch of their 2018 World Cup semi-final (which Croatia won 2-1). England won their opening 2026 match against Croatia 4-2."
+  },
+  {
+    q: "How many debut nations are competing at the 2026 World Cup for the first time?",
+    opts: ["2 nations","4 nations","6 nations","8 nations"],
+    ans: 1,
+    diff: "hard",
+    exp: "4 nations are making their World Cup debut in 2026: Cabo Verde (Group H), Curaçao (Group E), Jordan (Group J), and Uzbekistan (Group K). The expanded 48-team format created room for nations that had never previously qualified."
+  },
+  {
+    q: "What is the prize money for the 2026 World Cup champion?",
+    opts: ["$33 million","$42 million","$50 million","$65 million"],
+    ans: 2,
+    diff: "medium",
+    exp: "The 2026 World Cup champion earns $50 million in prize money plus $2.5 million preparation fee = $52.5 million total. This is $8 million more than Argentina earned winning the 2022 World Cup ($44 million total)."
+  },
+  {
+    q: "The 2026 World Cup opening match is Mexico vs South Africa. Which city hosted it?",
+    opts: ["Guadalajara","Monterrey","Mexico City","Toronto"],
+    ans: 2,
+    diff: "hard",
+    exp: "The opening match of the 2026 World Cup — Mexico vs South Africa — was held at Estadio Azteca in Mexico City on June 11, 2026. Mexico won 2-0. The Azteca is one of the most historic stadiums in football, having hosted the 1970 and 1986 World Cup finals."
+  },
+  {
+    q: "Which group contains France at the 2026 World Cup?",
+    opts: ["Group H","Group I","Group J","Group K"],
+    ans: 1,
+    diff: "medium",
+    exp: "France are in Group I alongside Senegal, Norway, and Iraq. France won their opening match 3-1 against Senegal. As 2018 World Cup winners and 2022 runners-up, France are one of the top title favourites in 2026."
+  },
+  {
+    q: "How many points does a team earn for a win in the World Cup group stage?",
+    opts: ["1 point","2 points","3 points","All results decided by GD"],
+    ans: 2,
+    diff: "easy",
+    exp: "A win earns 3 points in the World Cup group stage. A draw earns 1 point each. A loss earns 0 points. This 3-1-0 system has been used at the World Cup since 1994, replacing the old 2-1-0 system to incentivise attacking play and victories."
+  },
+  {
+    q: "Which famous stadium is hosting the 2026 World Cup Final?",
+    opts: ["Rose Bowl","MetLife Stadium","AT&T Stadium","Gillette Stadium"],
+    ans: 1,
+    diff: "medium",
+    exp: "MetLife Stadium in East Rutherford, New Jersey hosts the 2026 World Cup Final on July 19. FIFA renamed it 'New York New Jersey Stadium' for the tournament. It is home to the NFL's New York Giants and Jets and has a capacity of approximately 82,500."
+  },
+];
+
+let questions = [];
+let current = 0;
+let score = 0;
+let answered = false;
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function startQuiz() {
+  questions = shuffle([...ALL_QUESTIONS]);
+  current = 0;
+  score = 0;
+  answered = false;
+  document.getElementById('eduSection') && (document.getElementById('eduSection').style.display = 'none');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  if (current >= questions.length) {
+    renderResult();
+    return;
+  }
+
+  const q = questions[current];
+  const pct = (current / questions.length * 100).toFixed(0);
+  const diffClass = q.diff;
+  const diffLabel = q.diff.charAt(0).toUpperCase() + q.diff.slice(1);
+
+  answered = false;
+
+  document.getElementById('quizApp').innerHTML = `
+    <div class="quiz-progress"><div class="quiz-progress-bar" style="width:${pct}%"></div></div>
+    <div class="quiz-meta">
+      <span>Question ${current + 1} of ${questions.length}</span>
+      <span>Score: ${score}/${current}</span>
+    </div>
+    <div class="question-card">
+      <div class="question-num">Question ${current + 1} <span class="difficulty-badge ${diffClass}">${diffLabel}</span></div>
+      <div class="question-text">${q.q}</div>
+      <div class="options">
+        ${q.opts.map((opt, i) =>
+          `<button class="option-btn" onclick="answer(${i})" id="opt${i}">${opt}</button>`
+        ).join('')}
+      </div>
+      <div class="explanation" id="explanation">💡 ${q.exp}</div>
+    </div>
+    <div class="quiz-nav">
+      <span style="font-size:.8rem;color:var(--text3)">${current + 1} / ${questions.length}</span>
+      <button class="quiz-btn" id="nextBtn" onclick="nextQuestion()" style="display:none">
+        ${current + 1 >= questions.length ? '🏆 See Results' : 'Next Question →'}
+      </button>
+    </div>
+  `;
+}
+
+function answer(idx) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[current];
+  const isCorrect = idx === q.ans;
+  if (isCorrect) score++;
+
+  // Highlight answers
+  for (let i = 0; i < q.opts.length; i++) {
+    const btn = document.getElementById(`opt${i}`);
+    btn.disabled = true;
+    if (i === q.ans) btn.classList.add('correct');
+    else if (i === idx && !isCorrect) btn.classList.add('wrong');
+  }
+
+  // Show explanation
+  document.getElementById('explanation').classList.add('show');
+
+  // Show next button
+  document.getElementById('nextBtn').style.display = 'block';
+}
+
+function nextQuestion() {
+  current++;
+  renderQuestion();
+}
+
+function renderResult() {
+  const pct = Math.round(score / questions.length * 100);
+  let grade, emoji, msg;
+
+  if (pct >= 90) {
+    grade = '🏆 World Cup Expert'; emoji = '🌟';
+    msg = "Outstanding! You know everything about the 2026 World Cup. True football expert!";
+  } else if (pct >= 75) {
+    grade = '⭐ Football Enthusiast'; emoji = '😄';
+    msg = "Great result! You know your World Cup 2026 facts very well.";
+  } else if (pct >= 55) {
+    grade = '⚽ Casual Fan'; emoji = '🙂';
+    msg = "Good effort! You know the basics but there's more to learn about the 2026 tournament.";
+  } else if (pct >= 35) {
+    grade = '📺 Occasional Watcher'; emoji = '🤔';
+    msg = "You caught some facts but missed quite a few. Try again after watching more matches!";
+  } else {
+    grade = '🔰 New to Football'; emoji = '😅';
+    msg = "This tournament has a lot to learn! Check out our other World Cup 2026 tools to get up to speed.";
+  }
+
+  document.getElementById('quizApp').innerHTML = `
+    <div class="score-card">
+      <div style="font-size:3rem">${emoji}</div>
+      <div class="score-grade">${grade}</div>
+      <div class="score-big">${score} / ${questions.length}</div>
+      <div class="score-label">${pct}% correct</div>
+      <div class="score-msg">${msg}</div>
+      <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap">
+        <button class="quiz-btn" onclick="startQuiz()">🔄 Play Again</button>
+        <a href="world-cup-2026-calculator.html" class="quiz-btn secondary" style="text-decoration:none;padding:.6rem 1.2rem">📊 Group Calculator</a>
+        <a href="world-cup-2026-schedule.html" class="quiz-btn secondary" style="text-decoration:none;padding:.6rem 1.2rem">📅 Match Schedule</a>
+      </div>
+    </div>
+  `;
+
+  // Show edu section again after quiz
+  const edu = document.getElementById('eduSection');
+  if (edu) edu.style.display = '';
+}
+
+// Start quiz immediately
+startQuiz();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

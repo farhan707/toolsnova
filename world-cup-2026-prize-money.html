@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Prize Money Calculator — How Much Does Each Team Earn?</title>
+<meta name="description" content="FIFA World Cup 2026 prize money breakdown. $871 million total pool. Calculate how much every team earns at each stage — group stage to the final. Free calculator.">
+<link rel="canonical" href="https://toolsnova.net/world-cup-2026-prize-money">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=19">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="World Cup 2026 Prize Money Calculator — $871M Total Pool">
+<meta property="og:description" content="How much does each team earn at World Cup 2026? $871M total prize pool. Calculate earnings by round from group stage to the final.">
+<meta property="og:url" content="https://toolsnova.net/world-cup-2026-prize-money">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"World Cup 2026 Prize Money Calculator","url":"https://toolsnova.net/world-cup-2026-prize-money","description":"Calculate FIFA World Cup 2026 prize money for each team. $871 million total pool breakdown by round.","applicationCategory":"SportsApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<style>
+.wc-hero{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center}
+.wc-hero h1{font-size:1.6rem;color:var(--accent);margin:0 0 .4rem}
+.wc-hero p{color:var(--text2);margin:0;font-size:.9rem}
+.wc-badge{display:inline-block;background:var(--accent);color:#0c0c0e;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:.6rem;letter-spacing:.05em}
+.prize-table{width:100%;border-collapse:collapse;margin-bottom:1.2rem}
+.prize-table th{background:var(--surface2);color:var(--text3);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.6rem .8rem;text-align:left;border-bottom:2px solid var(--border2)}
+.prize-table td{padding:.65rem .8rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.prize-table tr:last-child td{border-bottom:none}
+.prize-table tr:hover td{background:var(--surface2)}
+.prize-row-final td{background:rgba(255,215,0,.06) !important}
+.prize-bar{height:8px;border-radius:4px;background:var(--accent);min-width:4px;transition:width .3s}
+.prize-amount{font-family:var(--mono);font-weight:700;font-size:.95rem;color:var(--accent)}
+.prize-total{font-family:var(--mono);font-size:.82rem;color:var(--text3)}
+.round-badge{display:inline-block;padding:3px 8px;border-radius:5px;font-size:.78rem;font-weight:700;font-family:var(--mono)}
+.team-calc{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin-bottom:1rem}
+.team-select{width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:6px;padding:.5rem .7rem;font-size:.9rem;margin-bottom:.8rem}
+.round-btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.round-btn{background:var(--surface);border:1px solid var(--border2);color:var(--text2);border-radius:6px;padding:.4rem .8rem;cursor:pointer;font-size:.82rem;transition:all .15s}
+.round-btn:hover{background:var(--surface3);color:var(--text)}
+.round-btn.active{background:var(--accent);color:#0c0c0e;border-color:var(--accent)}
+.prize-result{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.prize-big{font-size:2rem;font-weight:700;font-family:var(--mono);color:var(--accent);margin:.3rem 0}
+.prize-breakdown{font-size:.8rem;color:var(--text3);line-height:1.8}
+.pool-stat{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;text-align:center}
+.pool-stat-value{font-size:1.4rem;font-weight:700;font-family:var(--mono);color:var(--accent)}
+.pool-stat-label{font-size:.78rem;color:var(--text3);margin-top:2px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin-bottom:1.2rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="site-logo">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#7fff6f" stroke-width="1.5"/><path d="M16 4 L16 28 M4 16 L28 16" stroke="#7fff6f" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="#7fff6f"/></svg>
+    <span>Tools<span class="logo-nova">Nova</span></span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">⚽ World Cup 2026</span>
+    <a href="world-cup-2026-calculator.html" class="nav-link">Group Calculator</a>
+    <a href="world-cup-2026-schedule.html" class="nav-link">Match Schedule</a>
+    <a href="world-cup-2026-prize-money.html" class="nav-link">Prize Money</a>
+    <a href="world-cup-2026-quiz.html" class="nav-link">WC Quiz</a>
+    <a href="world-cup-2026-third-place.html" class="nav-link">3rd Place Tracker</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="password-generator.html" class="nav-link">Password Generator</a>
+    <a href="regex-tester.html" class="nav-link">Regex Tester</a>
+  </nav>
+  <button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+</header>
+
+<main class="tool-main">
+  <div class="wc-hero">
+    <div class="wc-badge">💰 $871,000,000 TOTAL PRIZE POOL</div>
+    <h1>World Cup 2026 Prize Money Calculator</h1>
+    <p>How much does each team earn? Select a team and their finishing round to see the exact payout.</p>
+  </div>
+
+  <!-- Key Stats -->
+  <div class="stats-grid">
+    <div class="pool-stat"><div class="pool-stat-value">$871M</div><div class="pool-stat-label">Total Prize Pool</div></div>
+    <div class="pool-stat"><div class="pool-stat-value">$50M</div><div class="pool-stat-label">Champion Earns</div></div>
+    <div class="pool-stat"><div class="pool-stat-value">$9M</div><div class="pool-stat-label">Group Stage Exit</div></div>
+    <div class="pool-stat"><div class="pool-stat-value">$2.5M</div><div class="pool-stat-label">Every Team Gets</div></div>
+    <div class="pool-stat"><div class="pool-stat-value">48</div><div class="pool-stat-label">Teams Paid</div></div>
+    <div class="pool-stat"><div class="pool-stat-value">2×</div><div class="pool-stat-label">More than 2022</div></div>
+  </div>
+
+  <div class="tool-grid-2">
+    <!-- Calculator -->
+    <div class="tool-card">
+      <h3 style="margin:0 0 .8rem;font-size:1rem">🧮 Team Earnings Calculator</h3>
+      <div class="team-calc">
+        <label style="font-size:.82rem;color:var(--text2);display:block;margin-bottom:.4rem">Select a team:</label>
+        <select class="team-select" id="teamSelect" onchange="calcPrize()">
+          <optgroup label="Group A">
+            <option>Mexico 🇲🇽</option><option>South Korea 🇰🇷</option>
+            <option>South Africa 🇿🇦</option><option>Czech Republic 🇨🇿</option>
+          </optgroup>
+          <optgroup label="Group B">
+            <option>Canada 🇨🇦</option><option>Switzerland 🇨🇭</option>
+            <option>Qatar 🇶🇦</option><option>Bosnia 🇧🇦</option>
+          </optgroup>
+          <optgroup label="Group C">
+            <option>Brazil 🇧🇷</option><option>Morocco 🇲🇦</option>
+            <option>Haiti 🇭🇹</option><option>Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿</option>
+          </optgroup>
+          <optgroup label="Group D">
+            <option>United States 🇺🇸</option><option>Paraguay 🇵🇾</option>
+            <option>Australia 🇦🇺</option><option>Turkey 🇹🇷</option>
+          </optgroup>
+          <optgroup label="Group E">
+            <option>Germany 🇩🇪</option><option>Ecuador 🇪🇨</option>
+            <option>Côte d'Ivoire 🇨🇮</option><option>Curaçao 🇨🇼</option>
+          </optgroup>
+          <optgroup label="Group F">
+            <option>Netherlands 🇳🇱</option><option>Japan 🇯🇵</option>
+            <option>Tunisia 🇹🇳</option><option>Sweden 🇸🇪</option>
+          </optgroup>
+          <optgroup label="Group G">
+            <option>Belgium 🇧🇪</option><option>Egypt 🇪🇬</option>
+            <option>Iran 🇮🇷</option><option>New Zealand 🇳🇿</option>
+          </optgroup>
+          <optgroup label="Group H">
+            <option>Spain 🇪🇸</option><option>Uruguay 🇺🇾</option>
+            <option>Saudi Arabia 🇸🇦</option><option>Cabo Verde 🇨🇻</option>
+          </optgroup>
+          <optgroup label="Group I">
+            <option>France 🇫🇷</option><option>Senegal 🇸🇳</option>
+            <option>Norway 🇳🇴</option><option>Iraq 🇮🇶</option>
+          </optgroup>
+          <optgroup label="Group J">
+            <option>Argentina 🇦🇷</option><option>Algeria 🇩🇿</option>
+            <option>Austria 🇦🇹</option><option>Jordan 🇯🇴</option>
+          </optgroup>
+          <optgroup label="Group K">
+            <option>Portugal 🇵🇹</option><option>Colombia 🇨🇴</option>
+            <option>Uzbekistan 🇺🇿</option><option>DR Congo 🇨🇩</option>
+          </optgroup>
+          <optgroup label="Group L">
+            <option>England 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option><option>Croatia 🇭🇷</option>
+            <option>Ghana 🇬🇭</option><option>Panama 🇵🇦</option>
+          </optgroup>
+        </select>
+
+        <label style="font-size:.82rem;color:var(--text2);display:block;margin-bottom:.5rem">Finishing round:</label>
+        <div class="round-btns" id="roundBtns">
+          <button class="round-btn active" data-round="group" onclick="selectRound(this)">Group Stage</button>
+          <button class="round-btn" data-round="r32" onclick="selectRound(this)">Round of 32</button>
+          <button class="round-btn" data-round="r16" onclick="selectRound(this)">Round of 16</button>
+          <button class="round-btn" data-round="qf" onclick="selectRound(this)">Quarter-final</button>
+          <button class="round-btn" data-round="4th" onclick="selectRound(this)">4th Place</button>
+          <button class="round-btn" data-round="3rd" onclick="selectRound(this)">3rd Place</button>
+          <button class="round-btn" data-round="runner" onclick="selectRound(this)">Runner-up</button>
+          <button class="round-btn" data-round="champion" onclick="selectRound(this)">🏆 Champion</button>
+        </div>
+
+        <div class="prize-result" id="prizeResult">
+          <div style="font-size:.85rem;color:var(--text2);margin-bottom:.3rem" id="teamLabel">Mexico 🇲🇽 — Group Stage Exit</div>
+          <div class="prize-big" id="totalPrize">$11.5M</div>
+          <div class="prize-breakdown" id="prizeBreakdown">
+            $2.5M preparation fee + $9M group stage prize = $11.5M total
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Prize Table -->
+    <div class="tool-card">
+      <h3 style="margin:0 0 .8rem;font-size:1rem">📊 Complete Prize Money Table</h3>
+      <table class="prize-table" id="prizeTable"></table>
+    </div>
+  </div>
+
+  <!-- Educational Content -->
+  <section class="edu-section">
+    <h2>Understanding World Cup 2026 Prize Money</h2>
+    <ol class="edu-steps">
+      <li><strong>Select your team</strong> — choose from all 48 participating nations across Groups A–L.</li>
+      <li><strong>Select finishing round</strong> — click the round where the team is eliminated or wins the tournament.</li>
+      <li><strong>Read total earnings</strong> — see the exact amount including preparation fee and prize money.</li>
+      <li><strong>Compare to the table</strong> — the full prize money table on the right shows all rounds at a glance with visual bars showing the relative size of each payout.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💰 Key fact:</strong> The $871 million total prize pool for 2026 is nearly double the $440 million distributed at the 2022 Qatar World Cup. Every team that qualifies receives a $2.5 million preparation fee regardless of results. Even a team that loses all three group stage matches walks away with $11.5 million — more than most clubs earn in a season.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>How FIFA Distributes World Cup 2026 Prize Money</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💰 $871M Total Pool</div><div class="edu-card-body">FIFA revised the prize pool upward twice during planning — originally $655M in December 2025, then $727M, then finally $871M after the May 2026 FIFA Council Meeting in Vancouver. The increase came from better-than-expected broadcasting rights revenue. This is the largest prize pool in team sports history.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏛️ Money Goes to Federations</div><div class="edu-card-body">Prize money is paid to national football associations (federations), not directly to players. Each federation then decides how to distribute it — typically with bonuses for players and coaching staff. Player bonus agreements vary widely: some federations pay 20–30% to the squad, others more. The split is negotiated before the tournament and varies by country.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Preparation Grant</div><div class="edu-card-body">All 48 teams receive a $2.5 million preparation grant before the tournament begins — regardless of results. This covers training camps, preparation matches, and travel. Added to the performance-based prize, every team earns a minimum of $11.5 million ($2.5M prep + $9M group stage) just for qualifying and competing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🆕 Round of 32 Payout</div><div class="edu-card-body">The new Round of 32 — a stage that never existed at any previous World Cup — pays $11 million to teams eliminated there. This creates an extra $2 million incentive beyond the $9 million group stage payout, making qualification from the group stage financially significant even for smaller nations with limited football budgets.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏆 Champion's $50M</div><div class="edu-card-body">The 2026 World Cup winner earns $50 million in prize money plus $2.5 million preparation fee = $52.5 million total. This is $8 million more than Argentina earned winning the 2022 World Cup. The runner-up earns $33 million. The difference between winning and losing the final is $17 million — the most financially significant moment in team sports.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Historical Growth</div><div class="edu-card-body">World Cup prize money growth: 2010 South Africa $420M → 2014 Brazil $576M → 2018 Russia $400M (reduced) → 2022 Qatar $440M → 2026 USA/Mexico/Canada $871M. The 2026 pool represents a 98% increase from 2022. FIFA projects the 2030 World Cup (Morocco/Spain/Portugal) to exceed $1 billion for the first time.</div></div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How much does the World Cup 2026 winner earn?</div>
+      <div class="faq-a">The FIFA World Cup 2026 champion earns $50 million in prize money plus $2.5 million in preparation fees, for a total of $52.5 million. This is paid to the national football association. Player bonuses are negotiated separately by each federation — typically players receive 20–30% of the total prize money, though this varies significantly by country.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How much does a team get for qualifying to the World Cup 2026?</div>
+      <div class="faq-a">Every team that qualifies for the 2026 World Cup receives a $2.5 million preparation grant. If they are eliminated in the group stage, they earn an additional $9 million in prize money. Total minimum earnings: $11.5 million per team regardless of results in the tournament itself.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How much bigger is the 2026 World Cup prize pool vs 2022?</div>
+      <div class="faq-a">The 2026 World Cup prize pool of $871 million is almost exactly double the $440 million distributed at the 2022 Qatar World Cup. The increase reflects both the expanded 48-team format (more teams competing) and record-breaking broadcasting rights revenue generated by the expanded tournament.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Do players get the prize money directly?</div>
+      <div class="faq-a">No. FIFA pays prize money directly to the national football federation (association) of each country, not to individual players or coaches. The federation then distributes it according to pre-agreed bonus structures with the squad. These agreements vary significantly — some federations are more generous with players than others. The entire prize money goes to the federation's bank account first.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a><a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<script src="app.js?v=19"></script>
+<script>
+const PRIZES = {
+  group:    { label:'Group Stage Exit',  prize:9,  prep:2.5 },
+  r32:      { label:'Round of 32 Exit',  prize:11, prep:2.5 },
+  r16:      { label:'Round of 16 Exit',  prize:15, prep:2.5 },
+  qf:       { label:'Quarter-final Exit',prize:19, prep:2.5 },
+  '4th':    { label:'4th Place',         prize:27, prep:2.5 },
+  '3rd':    { label:'3rd Place',         prize:29, prep:2.5 },
+  runner:   { label:'Runner-up',         prize:33, prep:2.5 },
+  champion: { label:'🏆 Champion',       prize:50, prep:2.5 },
+};
+
+let selectedRound = 'group';
+
+function selectRound(el) {
+  document.querySelectorAll('.round-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedRound = el.dataset.round;
+  calcPrize();
+}
+
+function calcPrize() {
+  const team = document.getElementById('teamSelect').value;
+  const p = PRIZES[selectedRound];
+  const total = p.prize + p.prep;
+
+  document.getElementById('teamLabel').textContent = `${team} — ${p.label}`;
+  document.getElementById('totalPrize').textContent = `$${total}M`;
+  document.getElementById('prizeBreakdown').innerHTML =
+    `$${p.prep}M preparation fee<br>+ $${p.prize}M ${p.label.toLowerCase()} prize<br>= <strong>$${total}M total</strong>`;
+
+  // Per player estimate (23-man squad, ~25% to players)
+  const perPlayer = ((total * 1000000 * 0.25) / 23 / 1000).toFixed(0);
+  document.getElementById('prizeBreakdown').innerHTML +=
+    `<br><span style="color:var(--text3);font-size:.75rem">Estimated per player (25% to squad ÷ 23): ~$${perPlayer}K</span>`;
+}
+
+function buildTable() {
+  const max = 52.5;
+  let html = `<thead><tr>
+    <th>Round</th><th>Prize</th><th>+ Prep</th><th>Total</th><th style="width:80px">Scale</th>
+  </tr></thead><tbody>`;
+
+  Object.entries(PRIZES).forEach(([key, p]) => {
+    const total = p.prize + p.prep;
+    const pct = (total / max * 100).toFixed(0);
+    const isChamp = key === 'champion';
+    html += `<tr class="${isChamp?'prize-row-final':''}">
+      <td style="font-size:.82rem;font-weight:600">${p.label}</td>
+      <td><span class="prize-amount">$${p.prize}M</span></td>
+      <td style="font-size:.78rem;color:var(--text3)">+$${p.prep}M</td>
+      <td><span class="prize-amount">$${total}M</span></td>
+      <td><div class="prize-bar" style="width:${pct}%"></div></td>
+    </tr>`;
+  });
+
+  html += '</tbody>';
+  document.getElementById('prizeTable').innerHTML = html;
+}
+
+buildTable();
+calcPrize();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

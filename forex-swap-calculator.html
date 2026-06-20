@@ -190,11 +190,11 @@ gtag('config', 'G-S6PPGS7N63');
     <a href="forex-swap-calculator.html"         class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
     <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
-  </nav>
+    </nav>
 </header>
 <div class="page-hero">
   <h1>Forex Swap Calculator</h1>
-  <p>Calculate the overnight swap (rollover) cost or earning for any forex pair, gold, or index. Shows daily, weekly, and monthly costs for long and short positions.</p>
+  <p>Enter your broker's exact swap rates from MT4/MT5 for 100% accurate results — or use reference estimates. Shows daily, weekly, monthly and yearly swap costs.</p>
 </div>
 <main>
   <div class="toolbar">
@@ -202,9 +202,27 @@ gtag('config', 'G-S6PPGS7N63');
     <button class="btn" onclick="copyEl('swap-output')">Copy</button>
     <span class="status-badge" id="swap-status">select pair and enter lot size</span>
   </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
+  <!-- Mode toggle -->
+  <div style="background:var(--surface2);border:1px solid var(--accent);border-radius:var(--radius);padding:.8rem 1rem;margin-bottom:.6rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <span style="font-size:.82rem;font-weight:700;color:var(--accent)">⚡ Mode:</span>
+    <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.85rem">
+      <input type="radio" name="swapMode" id="swap-mode-manual" value="manual" checked onchange="swapModeToggle()">
+      <span><strong>Manual</strong> — enter your broker's exact rates (✅ accurate)</span>
+    </label>
+    <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.85rem">
+      <input type="radio" name="swapMode" id="swap-mode-estimate" value="estimate" onchange="swapModeToggle()">
+      <span><strong>Estimate</strong> — use reference rates (⚠️ approximate only)</span>
+    </label>
+  </div>
+
+  <!-- How to find rates (manual mode tip) -->
+  <div id="swap-howto" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.6rem 1rem;margin-bottom:.6rem;font-size:.8rem;color:var(--text2)">
+    📋 <strong>How to get your rates:</strong> In MT4/MT5 → Right-click pair in Market Watch → Specification → copy <em>Swap Long</em> and <em>Swap Short</em> values
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px">
     <div>
-      <div class="pane-label">Currency pair / instrument</div>
+      <div class="pane-label">Pair / Instrument</div>
       <select id="swap-pair" class="mode-select" style="width:100%" onchange="forexSwapCalc()">
           <option value="EURUSD" selected>EURUSD</option>
           <option value="GBPUSD">GBPUSD</option>
@@ -216,14 +234,30 @@ gtag('config', 'G-S6PPGS7N63');
           <option value="EURGBP">EURGBP</option>
           <option value="EURJPY">EURJPY</option>
           <option value="GBPJPY">GBPJPY</option>
-          <option value="XAUUSD">XAUUSD</option>
-          <option value="US30">US30</option>
+          <option value="XAUUSD">XAUUSD (Gold)</option>
+          <option value="XAGUSD">XAGUSD (Silver)</option>
+          <option value="BTCUSD">BTCUSD</option>
+          <option value="US30">US30 (Dow)</option>
           <option value="NAS100">NAS100</option>
+          <option value="SPX500">SPX500</option>
       </select>
+    </div>
+    <!-- Manual mode: broker swap rate inputs -->
+    <div id="field-long-rate">
+      <div class="pane-label">Long swap (pips) <span style="color:var(--accent);font-size:.7em">from MT4/MT5</span></div>
+      <input type="number" id="swap-long-rate" placeholder="e.g. -6.5" step="0.1" class="b2-input" oninput="forexSwapCalc()">
+    </div>
+    <div id="field-short-rate">
+      <div class="pane-label">Short swap (pips) <span style="color:var(--accent);font-size:.7em">from MT4/MT5</span></div>
+      <input type="number" id="swap-short-rate" placeholder="e.g. 1.2" step="0.1" class="b2-input" oninput="forexSwapCalc()">
+    </div>
+    <div id="field-pip-val">
+      <div class="pane-label">Pip value ($/pip/lot)</div>
+      <input type="number" id="swap-pip-val" placeholder="e.g. 10" value="10" step="0.1" class="b2-input" oninput="forexSwapCalc()">
     </div>
     <div>
       <div class="pane-label">Lot size</div>
-      <input type="number" id="swap-lots" placeholder="e.g. 1.5" class="b2-input" oninput="forexSwapCalc()">
+      <input type="number" id="swap-lots" placeholder="e.g. 0.1" class="b2-input" oninput="forexSwapCalc()">
     </div>
     <div>
       <div class="pane-label">Direction</div>
@@ -237,6 +271,18 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="swap-days" placeholder="e.g. 5" value="1" class="b2-input" oninput="forexSwapCalc()">
     </div>
   </div>
+  <script>
+  function swapModeToggle() {
+    const isManual = document.getElementById('swap-mode-manual').checked;
+    document.getElementById('swap-mode').value = isManual ? 'manual' : 'estimate';
+    document.getElementById('field-long-rate').style.display = isManual ? '' : 'none';
+    document.getElementById('field-short-rate').style.display = isManual ? '' : 'none';
+    document.getElementById('field-pip-val').style.display = isManual ? '' : 'none';
+    document.getElementById('swap-howto').style.display = isManual ? '' : 'none';
+    forexSwapCalc();
+  }
+  </script>
+  <input type="hidden" id="swap-mode" value="manual">
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="swap-output" onclick="copyEl('swap-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
@@ -333,7 +379,7 @@ gtag('config', 'G-S6PPGS7N63');
 <div class="copy-toast" id="toast"></div>
 <script src="app.js?v=19"></script>
 <script>
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js');
   });
@@ -341,6 +387,5 @@ if ('serviceWorker' in navigator) {
 </script>
 <!-- Fixed theme toggle - always visible regardless of CSS -->
 <button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
-<!-- Fixed theme toggle - always visible regardless of CSS -->
 </body>
 </html>

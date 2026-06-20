@@ -6534,73 +6534,115 @@ function winRateCalc() {
 }
 
 /* ── FOREX SWAP/ROLLOVER CALCULATOR ── */
+// MODE 1: User enters their own broker swap rates (accurate)
+// MODE 2: Use reference rates as estimates only
 function forexSwapCalc() {
-  const pair   = document.getElementById('swap-pair')?.value || 'EURUSD';
-  const lots   = parseFloat(document.getElementById('swap-lots')?.value);
-  const days   = parseInt(document.getElementById('swap-days')?.value) || 1;
-  const dir    = document.getElementById('swap-dir')?.value || 'long';
-  const out    = document.getElementById('swap-output');
+  const out = document.getElementById('swap-output');
   if (!out) return;
-  if (isNaN(lots)||lots<=0) {
-    out.textContent='Enter lot size.'; out.className='output-box error'; return;
+
+  const mode = document.getElementById('swap-mode')?.value || 'manual';
+
+  if (mode === 'manual') {
+    // ── MANUAL MODE: user enters broker swap rates ────────────────
+    const longRate  = parseFloat(document.getElementById('swap-long-rate')?.value);
+    const shortRate = parseFloat(document.getElementById('swap-short-rate')?.value);
+    const pipVal    = parseFloat(document.getElementById('swap-pip-val')?.value) || 10;
+    const lots      = parseFloat(document.getElementById('swap-lots')?.value);
+    const days      = parseInt(document.getElementById('swap-days')?.value) || 1;
+    const dir       = document.getElementById('swap-dir')?.value || 'long';
+    const pair      = document.getElementById('swap-pair')?.value || 'EURUSD';
+
+    if (isNaN(lots)||lots<=0) { out.textContent='Enter lot size.'; out.className='output-box error'; return; }
+    if (isNaN(longRate)||isNaN(shortRate)) { out.textContent='Enter your broker swap rates from MT4/MT5.'; out.className='output-box error'; return; }
+
+    const swapPips   = dir==='long' ? longRate : shortRate;
+    const dailyCost  = swapPips * pipVal * lots;
+    const wednCost   = dailyCost * 3;
+    const weeklyCost = dailyCost * 5;
+    const monthlyCost= dailyCost * 22;
+    const annualCost = dailyCost * 252;
+    const totalCost  = dailyCost * days;
+    const isEarned   = dailyCost > 0;
+
+    out.className = isEarned ? 'output-box success' : 'output-box error';
+    out.textContent =
+      `Pair: ${pair}  |  ${lots} lots  |  ${dir.toUpperCase()}\n`+
+      `Pip value: $${pipVal}/pip per lot\n\n`+
+      `── Your broker swap rates ────────────\n`+
+      `Long swap:      ${longRate} pips = $${formatCur(Math.abs(longRate*pipVal*lots))}/night\n`+
+      `Short swap:     ${shortRate} pips = $${formatCur(Math.abs(shortRate*pipVal*lots))}/night\n\n`+
+      `── Active direction: ${dir.toUpperCase()} ─────────────────\n`+
+      `Daily swap:     ${swapPips} pips = $${formatCur(Math.abs(dailyCost))} ${isEarned?'(EARNED)':'(COST)'}/night\n`+
+      `Wednesday:      $${formatCur(Math.abs(wednCost))} (3× swap night)\n\n`+
+      `── Your position (${days} day${days!==1?'s':''}) ─────────────────\n`+
+      `Total swap:     $${formatCur(Math.abs(totalCost))} ${totalCost>0?'EARNED':'COST'}\n\n`+
+      `── Period projections ────────────────\n`+
+      `Per week:       $${formatCur(Math.abs(weeklyCost))} ${weeklyCost>0?'earned':'cost'}\n`+
+      `Per month:      $${formatCur(Math.abs(monthlyCost))} ${monthlyCost>0?'earned':'cost'}\n`+
+      `Per year:       $${formatCur(Math.abs(annualCost))} ${annualCost>0?'earned':'cost'}\n\n`+
+      `── 📋 How to get these numbers ───────\n`+
+      `MT4/MT5: Right-click pair in Market Watch\n`+
+      `→ Specification → Swap Long / Swap Short\n`+
+      `✅ These results use YOUR broker's exact rates.`;
+    setStatus('swap-status', isEarned?'ok':'err',
+      `$${formatCur(Math.abs(dailyCost))}/night ${isEarned?'earned':'cost'}`);
+
+  } else {
+    // ── ESTIMATE MODE: reference rates (approximate only) ─────────
+    const pair   = document.getElementById('swap-pair')?.value || 'EURUSD';
+    const lots   = parseFloat(document.getElementById('swap-lots')?.value);
+    const days   = parseInt(document.getElementById('swap-days')?.value) || 1;
+    const dir    = document.getElementById('swap-dir')?.value || 'long';
+
+    if (isNaN(lots)||lots<=0) { out.textContent='Enter lot size.'; out.className='output-box error'; return; }
+
+    // Reference swap rates — approximate industry averages
+    // These WILL differ from your broker. Use manual mode for accuracy.
+    const SWAPS = {
+      'EURUSD': [-6.5,  1.2,  10],  'GBPUSD': [-4.8,  0.8,  10],
+      'USDJPY': [ 1.8, -7.2,  9.1], 'USDCHF': [ 1.5, -6.8,  10],
+      'AUDUSD': [-3.2, -0.5,  10],  'USDCAD': [ 0.8, -5.5,  10],
+      'NZDUSD': [-2.8, -0.2,  10],  'EURGBP': [-2.5, -0.8,  10],
+      'EURJPY': [-4.5, -2.1,  9.1], 'GBPJPY': [-3.8, -3.2,  9.1],
+      'XAUUSD': [-4.2, -1.8,  10],  'XAGUSD': [-2.5, -0.8,  50],
+      'BTCUSD': [-15,  -12,    1],  'US30':   [-3.5, -2.5,   1],
+      'NAS100': [-4.2, -3.1,   1],  'SPX500': [-3.8, -2.8,  10],
+    };
+
+    const data = SWAPS[pair] || [-3, -1, 10];
+    const [longSwap, shortSwap, pipVal] = data;
+    const swapPips   = dir==='long' ? longSwap : shortSwap;
+    const dailyCost  = swapPips * pipVal * lots;
+    const wednCost   = dailyCost * 3;
+    const weeklyCost = dailyCost * 5;
+    const monthlyCost= dailyCost * 22;
+    const annualCost = dailyCost * 252;
+    const totalCost  = dailyCost * days;
+    const isEarned   = dailyCost > 0;
+
+    out.className = isEarned ? 'output-box success' : 'output-box error';
+    out.textContent =
+      `Pair: ${pair}  |  ${lots} lots  |  ${dir.toUpperCase()}\n\n`+
+      `── Reference swap rates (ESTIMATES) ─\n`+
+      `Long swap:      ${longSwap} pips = $${formatCur(Math.abs(longSwap*pipVal*lots))}/night\n`+
+      `Short swap:     ${shortSwap} pips = $${formatCur(Math.abs(shortSwap*pipVal*lots))}/night\n\n`+
+      `── Active direction: ${dir.toUpperCase()} ─────────────────\n`+
+      `Daily swap:     ${swapPips} pips = $${formatCur(Math.abs(dailyCost))} ${isEarned?'(EARNED)':'(COST)'}/night\n`+
+      `Wednesday:      $${formatCur(Math.abs(wednCost))} (3× swap night)\n\n`+
+      `── Your position (${days} day${days!==1?'s':''}) ─────────────────\n`+
+      `Total swap:     $${formatCur(Math.abs(totalCost))} ${totalCost>0?'EARNED':'COST'}\n\n`+
+      `── Period projections ────────────────\n`+
+      `Per week:       $${formatCur(Math.abs(weeklyCost))} ${weeklyCost>0?'earned':'cost'}\n`+
+      `Per month:      $${formatCur(Math.abs(monthlyCost))} ${monthlyCost>0?'earned':'cost'}\n`+
+      `Per year:       $${formatCur(Math.abs(annualCost))} ${annualCost>0?'earned':'cost'}\n\n`+
+      `── ⚠️ ESTIMATES ONLY ─────────────────\n`+
+      `Rates differ by broker, account type,\n`+
+      `and change daily with interest rates.\n`+
+      `For exact costs: use Manual mode above\n`+
+      `(enter rates from MT4/MT5 Specification).`;
+    setStatus('swap-status', isEarned?'ok':'err',
+      `~$${formatCur(Math.abs(dailyCost))}/night (estimate)`);
   }
-
-  // Approximate swap rates (pips per lot per night) — typical 2025 broker values
-  // Format: [long swap pips, short swap pips, pip value per lot]
-  const SWAPS = {
-    'EURUSD':  [-6.5,  1.2,  10],
-    'GBPUSD':  [-4.8,  0.8,  10],
-    'USDJPY':  [ 1.8, -7.2,  9.1],
-    'USDCHF':  [ 1.5, -6.8,  10],
-    'AUDUSD':  [-3.2, -0.5,  10],
-    'USDCAD':  [ 0.8, -5.5,  10],
-    'NZDUSD':  [-2.8, -0.2,  10],
-    'EURGBP':  [-2.5, -0.8,  10],
-    'EURJPY':  [-4.5, -2.1,  9.1],
-    'GBPJPY':  [-3.8, -3.2,  9.1],
-    'XAUUSD':  [-4.2, -1.8,  10],
-    'XAGUSD':  [-2.5, -0.8,  50],
-    'BTCUSD':  [-15,  -12,    1],
-    'US30':    [-3.5, -2.5,   1],
-    'NAS100':  [-4.2, -3.1,   1],
-    'SPX500':  [-3.8, -2.8,  10],
-  };
-
-  const data = SWAPS[pair] || [-3, -1, 10];
-  const [longSwap, shortSwap, pipVal] = data;
-  const swapPips = dir==='long' ? longSwap : shortSwap;
-  const dailyCost = swapPips * pipVal * lots;
-  const weeklyCost= dailyCost * 5; // 5 trading days (Wed triple swap = 3x)
-  const wednesdayCost = dailyCost * 3;
-  const monthlyCost= dailyCost * 22;
-  const annualCost = dailyCost * 252;
-  const totalCost  = dailyCost * days;
-
-  // Wednesday triple swap
-  const hasWednesday = days >= 3;
-
-  out.className = dailyCost<=0 ? 'output-box error' : 'output-box success';
-  out.textContent=
-    `Pair: ${pair}  |  ${lots} lots  |  ${dir.toUpperCase()}\n\n`+
-    `── Swap rate ─────────────────────────\n`+
-    `Daily swap:     ${swapPips} pips = $${formatCur(Math.abs(dailyCost))} ${dailyCost<0?'(cost)':'(earn)'}/night\n`+
-    `Wednesday:      $${formatCur(Math.abs(wednesdayCost))} (3× swap night)\n\n`+
-    `── Your position (${days} day${days!==1?'s':''}) ────────────────\n`+
-    `Total swap:     $${formatCur(Math.abs(totalCost))} ${totalCost<0?'COST':'EARNED'}\n\n`+
-    `── Period projections ────────────────\n`+
-    `Per week:       $${formatCur(Math.abs(weeklyCost))} ${weeklyCost<0?'cost':'earned'}\n`+
-    `Per month:      $${formatCur(Math.abs(monthlyCost))} ${monthlyCost<0?'cost':'earned'}\n`+
-    `Per year:       $${formatCur(Math.abs(annualCost))} ${annualCost<0?'cost':'earned'}\n\n`+
-    `── Both directions ───────────────────\n`+
-    `Long swap:  ${data[0]} pips = $${formatCur(Math.abs(data[0]*pipVal*lots))}/night\n`+
-    `Short swap: ${data[1]} pips = $${formatCur(Math.abs(data[1]*pipVal*lots))}/night\n\n`+
-    `── ⚠ Important notes ─────────────────\n`+
-    `Swap rates change daily with interest rates.\n`+
-    `Wednesday swap is 3× (covers weekend).\n`+
-    `Rates above are estimates — check your broker.`;
-  setStatus('swap-status',
-    dailyCost<=0?'err':'ok',
-    `$${formatCur(Math.abs(dailyCost))}/night ${dailyCost<0?'cost':'earned'}`);
 }
 
 /* ── CURRENCY CORRELATION CALCULATOR ── */

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Document Readability Analyzer — Word Counter & Clarity Score | ToolsNova</title>
+  <meta name="description" content="Free legal document analyzer. Count words, sentences, and clauses. Get Flesch-Kincaid readability score, passive voice detection, legal jargon alerts, and plain English suggestions for contracts and legal documents.">
+  <meta name="keywords" content="legal document readability, contract readability checker, legal text analyzer, flesch kincaid legal, plain english checker, legal word counter, contract analyzer, legal jargon detector">
+  <link rel="canonical" href="https://toolsnova.net/legal-document-analyzer">
+
+  <meta property="og:title" content="Legal Document Readability Analyzer — Word Counter & Clarity Score">
+  <meta property="og:description" content="Analyze legal documents for readability, passive voice, jargon, sentence complexity, and plain English clarity — free and instant.">
+  <meta property="og:url" content="https://toolsnova.net/legal-document-analyzer">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolsNova">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Legal Document Readability Analyzer | ToolsNova">
+  <meta name="twitter:description" content="Free tool to analyze legal documents for readability, jargon, passive voice and clarity score.">
+
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S6PPGS7N63');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Legal Document Readability Analyzer",
+    "url": "https://toolsnova.net/legal-document-analyzer",
+    "description": "Free tool to analyze legal documents for readability score, passive voice, legal jargon, sentence complexity, and plain English clarity.",
+    "applicationCategory": "LegalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Flesch-Kincaid readability score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Flesch-Kincaid Reading Ease score rates text on a scale of 0 to 100. Higher scores mean easier to read. Scores of 60–70 are considered plain English (understood by 13–15 year olds). Most legal documents score below 30, meaning they require a college education or higher to understand. Legal documents ideally should aim for 40–60 for client-facing materials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is readability important in legal documents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Readability in legal documents affects enforceability, compliance, and client trust. Plain language laws in many jurisdictions (USA, UK, Australia) require consumer contracts to be written clearly. Unreadable contracts can be challenged in court. Studies show that clients who understand their contracts are more likely to comply with them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is passive voice and why is it a problem in legal writing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Passive voice obscures who is responsible for an action. For example, 'The payment shall be made' does not specify who must pay. Legal drafting guides recommend active voice to assign responsibility clearly. Excessive passive voice increases ambiguity and can create disputes about obligations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What legal jargon should be simplified?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common legal jargon that can be simplified includes: 'hereinafter' (use 'from now on'), 'notwithstanding' (use 'even though' or 'despite'), 'pursuant to' (use 'under' or 'following'), 'in the event that' (use 'if'), 'prior to' (use 'before'), 'subsequent to' (use 'after'), 'shall' (use 'must' or 'will')."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the average reading level of a legal contract?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most legal contracts require a post-graduate reading level (grade 16+) according to Flesch-Kincaid Grade Level analysis. Standard legal documents average 30–40 words per sentence, well above the recommended 15–20 words for clear writing. The Plain Language movement advocates for legal documents that can be understood by the average adult (grade 8 reading level for consumer documents)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my legal document text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All analysis runs entirely in your browser using JavaScript. Your document text is never uploaded to any server, stored, or transmitted anywhere. It is completely private and secure."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .calc-container { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    .tool-header { margin-bottom: 1.5rem; }
+    .tool-header h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .tool-header p { color: var(--text2); font-size: 0.95rem; }
+
+    .privacy-note {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.75rem; font-weight: 600;
+      background: rgba(127,255,111,.15); color: var(--accent);
+      padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .main-layout { grid-template-columns: 1fr; } }
+
+    #docText {
+      width: 100%; min-height: 300px;
+      padding: 14px; font-size: 0.875rem;
+      font-family: var(--font-sans, sans-serif);
+      border: 1px solid var(--border);
+      border-radius: 12px; resize: vertical;
+      box-sizing: border-box;
+      background: var(--surface2);
+      color: var(--text);
+      line-height: 1.7; transition: border-color 0.15s;
+    }
+    #docText:focus { outline: none; border-color: var(--text); }
+    #docText::placeholder { color: var(--text2); }
+
+    .textarea-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .btn-sm {
+      padding: 6px 14px; font-size: 0.8rem; font-weight: 500;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: transparent; cursor: pointer; color: var(--text2);
+      transition: background 0.15s;
+    }
+    .btn-sm:hover { background: var(--surface, var(--surface2)); }
+    .btn-primary {
+      padding: 6px 16px; font-size: 0.8rem; font-weight: 600;
+      border: none; border-radius: 8px;
+      background: #2563eb; cursor: pointer; color: var(--surface);
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+
+    .sidebar { display: flex; flex-direction: column; gap: 12px; }
+
+    .score-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px;
+      text-align: center;
+    }
+    .score-ring-wrap { position: relative; width: 100px; height: 100px; margin: 0 auto 10px; }
+    .score-ring-wrap svg { width: 100px; height: 100px; transform: rotate(-90deg); }
+    .score-ring-bg { fill: none; stroke: var(--border); stroke-width: 8; }
+    .score-ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.6s ease; }
+    .score-number {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--text);
+    }
+    .score-label { font-size: 0.75rem; color: var(--text3); margin-bottom: 4px; }
+    .score-grade {
+      font-size: 0.85rem; font-weight: 600;
+      padding: 3px 12px; border-radius: 20px; display: inline-block;
+    }
+
+    .section-title {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat-mini {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 12px;
+    }
+    .stat-mini .sm-val { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+    .stat-mini .sm-label { font-size: 0.7rem; color: var(--text3); margin-top: 2px; }
+
+    .metric-bar-wrap {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px;
+    }
+    .metric-bar-row { margin-bottom: 12px; }
+    .metric-bar-row:last-child { margin-bottom: 0; }
+    .metric-bar-top {
+      display: flex; justify-content: space-between;
+      font-size: 0.78rem; margin-bottom: 4px;
+    }
+    .metric-bar-top .m-name { color: var(--text); font-weight: 500; }
+    .metric-bar-top .m-val { color: var(--text3); }
+    .bar-bg { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
+    .bar-good { background: #10b981; }
+    .bar-warn { background: var(--surface2); }
+    .bar-bad  { background: var(--surface2); }
+
+    .issues-panel {
+      margin-top: 1.5rem;
+    }
+    .issues-panel h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+
+    .issue-tabs { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
+    .issue-tab {
+      padding: 6px 14px; font-size: 0.8rem; font-weight: 500;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: transparent; cursor: pointer;
+      color: var(--text2); transition: all 0.15s;
+    }
+    .issue-tab.active { background: #2563eb; color: var(--surface); border-color: var(--text); }
+
+    .issue-list { display: flex; flex-direction: column; gap: 8px; }
+    .issue-item {
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .issue-item.jargon  { border-left: 3px solid #f59e0b; }
+    .issue-item.passive { border-left: 3px solid #8b5cf6; }
+    .issue-item.long    { border-left: 3px solid #ef4444; }
+    .issue-item.clause  { border-left: 3px solid #3b82f6; }
+
+    .issue-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px;
+      background: var(--surface2);
+    }
+    .issue-type {
+      font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px;
+    }
+    .type-jargon  { background: rgba(255,180,0,.1); color: var(--text2); }
+    .type-passive { background: var(--surface2); color: var(--text2); }
+    .type-long    { background: rgba(255,50,50,.1); color: var(--text2); }
+    .type-clause  { background: #dbeafe; color: var(--text); }
+
+    .issue-text {
+      padding: 10px 14px; font-size: 0.82rem;
+      color: var(--text); line-height: 1.6;
+    }
+    .issue-text mark {
+      background: rgba(255,180,0,.1); color: var(--text2);
+      border-radius: 3px; padding: 1px 3px;
+    }
+    .issue-text mark.passive-mark { background: var(--surface2); color: var(--text2); }
+    .issue-text mark.long-mark    { background: rgba(255,50,50,.1); color: var(--text2); }
+    .issue-suggestion {
+      padding: 0 14px 10px;
+      font-size: 0.78rem; color: var(--text2);
+    }
+    .issue-suggestion strong { color: var(--text); }
+
+    .empty-state {
+      text-align: center; padding: 2rem;
+      color: var(--text2); font-size: 0.875rem;
+    }
+
+    .summary-bar {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.25rem;
+    }
+    .summary-pill {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.78rem; font-weight: 500;
+      padding: 4px 12px; border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .pill-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    .edu-section { margin-top: 3rem; }
+    .edu-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .edu-section p { font-size: 0.9rem; color: var(--text2); line-height: 1.75; margin-bottom: 1rem; }
+    .edu-section h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+
+    .jargon-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.75rem; }
+    .jargon-table th { text-align: left; padding: 7px 10px; background: var(--surface2); border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text2); }
+    .jargon-table td { padding: 7px 10px; border-bottom: 1px solid var(--border)); color: var(--text); }
+    .jargon-table tr:last-child td { border-bottom: none; }
+    .plain-word { color: var(--text); font-weight: 500; }
+
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; padding: 14px 16px; background: var(--surface2); border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .faq-q .arrow { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 12px 16px 14px; font-size: 0.875rem; color: var(--text2); line-height: 1.7; border-top: 1px solid var(--border); background: var(--surface2); }
+    .faq-a.open { display: block; }
+  
+/* ── Dark theme FAQ fix for 6 new tools ── */
+.faq-q {
+  color: var(--text) !important;
+  background: var(--surface2) !important;
+}
+.faq-q:hover {
+  background: var(--surface3) !important;
+}
+.faq-a {
+  color: var(--text2) !important;
+  background: var(--surface) !important;
+}
+.faq-item {
+  border-color: var(--border) !important;
+}
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <a href="loan-emi-comparison.html"            class="nav-link">Loan EMI Comparison</a>
+    <a href="mortgage-affordability-calculator.html" class="nav-link">Mortgage Affordability</a>
+    <a href="solar-panel-roi-calculator.html"       class="nav-link">Solar Panel ROI</a>
+    <a href="islamic-mortgage-calculator.html"      class="nav-link">Islamic Mortgage</a>
+    <a href="ai-token-counter.html"                class="nav-link">AI Token Counter</a>
+    <a href="legal-document-analyzer.html"         class="nav-link">Legal Document Analyzer</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+  <main class="tool-main">
+
+    <div class="tool-header">
+      <div class="privacy-note">&#128274; 100% private — runs in your browser, never uploaded</div>
+      <h1>Legal document readability analyzer</h1>
+      <p>Paste any contract, agreement, or legal text. Get instant readability score, jargon detection, passive voice analysis, and plain English suggestions.</p>
+    </div>
+
+    <div class="main-layout">
+
+      <div>
+        <textarea id="docText" placeholder="Paste your legal document, contract, terms of service, or any legal text here...&#10;&#10;The tool will analyze readability, detect legal jargon, flag passive voice, and identify overly long sentences."></textarea>
+        <div class="textarea-actions">
+          <button class="btn-sm" onclick="clearDoc()">Clear</button>
+          <button class="btn-sm" onclick="loadSample()">Load sample contract</button>
+          <button class="btn-primary" onclick="analyze()">Analyze document</button>
+        </div>
+      </div>
+
+      <div class="sidebar">
+
+        <div class="score-card">
+          <div class="score-label">Readability score</div>
+          <div class="score-ring-wrap">
+            <svg viewBox="0 0 100 100">
+              <circle class="score-ring-bg" cx="50" cy="50" r="40"/>
+              <circle class="score-ring-fill" id="scoreRing" cx="50" cy="50" r="40"
+                stroke="#10b981"
+                stroke-dasharray="251.2"
+                stroke-dashoffset="251.2"/>
+            </svg>
+            <div class="score-number" id="scoreNum">—</div>
+          </div>
+          <div class="score-grade" id="scoreGrade" style="background:#f3f4f6;color:#888">Paste text to analyze</div>
+        </div>
+
+        <div>
+          <div class="section-title">Document stats</div>
+          <div class="stat-grid">
+            <div class="stat-mini"><div class="sm-val" id="statWords">0</div><div class="sm-label">Words</div></div>
+            <div class="stat-mini"><div class="sm-val" id="statSents">0</div><div class="sm-label">Sentences</div></div>
+            <div class="stat-mini"><div class="sm-val" id="statAvgWords">0</div><div class="sm-label">Avg words/sentence</div></div>
+            <div class="stat-mini"><div class="sm-val" id="statClauses">0</div><div class="sm-label">Clauses detected</div></div>
+            <div class="stat-mini"><div class="sm-val" id="statChars">0</div><div class="sm-label">Characters</div></div>
+            <div class="stat-mini"><div class="sm-val" id="statParas">0</div><div class="sm-label">Paragraphs</div></div>
+          </div>
+        </div>
+
+        <div class="metric-bar-wrap">
+          <div class="section-title">Analysis breakdown</div>
+          <div class="metric-bar-row">
+            <div class="metric-bar-top">
+              <span class="m-name">Jargon density</span>
+              <span class="m-val" id="jargonPct">0%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill bar-warn" id="jargonBar" style="width:0%"></div></div>
+          </div>
+          <div class="metric-bar-row">
+            <div class="metric-bar-top">
+              <span class="m-name">Passive voice</span>
+              <span class="m-val" id="passivePct">0%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill bar-bad" id="passiveBar" style="width:0%"></div></div>
+          </div>
+          <div class="metric-bar-row">
+            <div class="metric-bar-top">
+              <span class="m-name">Long sentences</span>
+              <span class="m-val" id="longPct">0%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill bar-bad" id="longBar" style="width:0%"></div></div>
+          </div>
+          <div class="metric-bar-row">
+            <div class="metric-bar-top">
+              <span class="m-name">Plain language score</span>
+              <span class="m-val" id="plainPct">0%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill bar-good" id="plainBar" style="width:0%"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="issues-panel" id="issuesPanel" style="display:none">
+      <h2>Detailed findings</h2>
+
+      <div class="summary-bar" id="summaryBar"></div>
+
+      <div class="issue-tabs" id="issueTabs"></div>
+      <div class="issue-list" id="issueList"></div>
+    </div>
+
+    <div class="edu-section">
+      <h2>Why readability matters in legal documents</h2>
+      <p>Legal documents are notorious for dense, complex language that even educated readers struggle to understand. But readability is not just a nicety — in many jurisdictions it is a legal requirement. Plain language laws in the USA (Plain Writing Act 2010), UK, Australia, and EU mandate that consumer-facing legal documents be written clearly.</p>
+      <h3>The Flesch-Kincaid score explained</h3>
+      <p>The Flesch Reading Ease score (0–100) measures how easy text is to read based on average sentence length and average syllables per word. Scores of 60–70 represent plain English. Most legal contracts score below 30, equivalent to a post-graduate reading level. Client-facing contracts should aim for at least 40–50.</p>
+      <h3>Common legal jargon and plain English alternatives</h3>
+      <table class="jargon-table">
+        <thead><tr><th>Legal jargon</th><th>Plain English</th></tr></thead>
+        <tbody>
+          <tr><td>Hereinafter</td><td class="plain-word">From now on / referred to as</td></tr>
+          <tr><td>Notwithstanding</td><td class="plain-word">Despite / even though</td></tr>
+          <tr><td>Pursuant to</td><td class="plain-word">Under / following / as required by</td></tr>
+          <tr><td>In the event that</td><td class="plain-word">If</td></tr>
+          <tr><td>Prior to</td><td class="plain-word">Before</td></tr>
+          <tr><td>Subsequent to</td><td class="plain-word">After</td></tr>
+          <tr><td>Shall</td><td class="plain-word">Must / will</td></tr>
+          <tr><td>Forthwith</td><td class="plain-word">Immediately</td></tr>
+          <tr><td>Heretofore</td><td class="plain-word">Until now / previously</td></tr>
+          <tr><td>Indemnify and hold harmless</td><td class="plain-word">Protect from claims / compensate</td></tr>
+          <tr><td>Force majeure</td><td class="plain-word">Unforeseeable circumstances</td></tr>
+          <tr><td>Inter alia</td><td class="plain-word">Among other things</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the Flesch-Kincaid readability score? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">The Flesch-Kincaid Reading Ease score rates text on a scale of 0 to 100. Higher scores mean easier to read. Scores of 60–70 are plain English. Most legal documents score below 30, requiring a college education to understand. Client-facing legal materials should aim for 40–60.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Why is readability important in legal documents? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Plain language laws in many jurisdictions require consumer contracts to be clearly written. Unreadable contracts can be challenged in court. Clients who understand their contracts are more likely to comply with them, reducing disputes.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is passive voice and why is it a problem in legal writing? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Passive voice obscures who is responsible. "The payment shall be made" does not specify who pays. Legal drafting guides recommend active voice to assign responsibility clearly. Passive voice increases ambiguity and can create disputes about obligations.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the average reading level of a legal contract? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Most legal contracts require a post-graduate reading level (grade 16+). Standard legal documents average 30–40 words per sentence, well above the recommended 15–20 for clear writing. The Plain Language movement advocates for grade 8 reading level for consumer documents.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does this tool store my legal document? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">No. All analysis runs entirely in your browser. Your document text is never uploaded to any server, stored, or transmitted. It is completely private and secure.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What legal jargon should be simplified? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Common jargon to simplify: "hereinafter" → "from now on", "notwithstanding" → "despite", "pursuant to" → "under", "in the event that" → "if", "prior to" → "before", "subsequent to" → "after", "shall" → "must". This tool detects all of these and more.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="related-tools-section">
+    <h2 class="related-title">Related tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="ai-token-counter.html">
+        <div class="rc-icon">🤖</div>
+        <div class="rc-name">AI token counter</div>
+        <div class="rc-desc">Count tokens & estimate API costs for GPT-4o, Claude, Gemini and more</div>
+      </a>
+      <a class="related-card" href="mortgage-affordability-calculator.html">
+        <div class="rc-icon">🏠</div>
+        <div class="rc-name">Mortgage affordability calculator</div>
+        <div class="rc-desc">Find out how much house you can afford on your salary</div>
+      </a>
+      <a class="related-card" href="islamic-mortgage-calculator.html">
+        <div class="rc-icon">🕌</div>
+        <div class="rc-name">Islamic mortgage calculator</div>
+        <div class="rc-desc">Halal home financing — Murabaha, Musharakah & Ijarah. Multi-currency.</div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+  <script src="app.js?v=19"></script>
+  <script>
+    const JARGON = [
+      { word: /\bhereinafter\b/gi,            plain: 'from now on / referred to as' },
+      { word: /\bnotwithstanding\b/gi,         plain: 'despite / even though' },
+      { word: /\bpursuant to\b/gi,             plain: 'under / following' },
+      { word: /\bin the event that\b/gi,       plain: 'if' },
+      { word: /\bprior to\b/gi,                plain: 'before' },
+      { word: /\bsubsequent to\b/gi,           plain: 'after' },
+      { word: /\bforthwith\b/gi,               plain: 'immediately' },
+      { word: /\bheretofore\b/gi,              plain: 'until now / previously' },
+      { word: /\bhereby\b/gi,                  plain: 'by this / with this' },
+      { word: /\bherein\b/gi,                  plain: 'in this document' },
+      { word: /\bthereof\b/gi,                 plain: 'of it / of that' },
+      { word: /\btherein\b/gi,                 plain: 'in that / in it' },
+      { word: /\bwhereas\b/gi,                 plain: 'because / since / given that' },
+      { word: /\binter alia\b/gi,              plain: 'among other things' },
+      { word: /\bforce majeure\b/gi,           plain: 'unforeseeable events beyond control' },
+      { word: /\bindemnify\b/gi,               plain: 'compensate / protect from loss' },
+      { word: /\bhold harmless\b/gi,           plain: 'protect from claims' },
+      { word: /\bin witness whereof\b/gi,      plain: 'signed to confirm' },
+      { word: /\bmutatis mutandis\b/gi,        plain: 'with necessary changes' },
+      { word: /\bpari passu\b/gi,              plain: 'equally / at the same rate' },
+      { word: /\bab initio\b/gi,               plain: 'from the beginning' },
+      { word: /\bbona fide\b/gi,               plain: 'genuine / in good faith' },
+      { word: /\bde facto\b/gi,                plain: 'in practice / in reality' },
+      { word: /\bipso facto\b/gi,              plain: 'by that fact itself' },
+      { word: /\bsalvage\b.*?\bprovision\b/gi, plain: 'keeping remaining parts valid' },
+      { word: /\bseverability\b/gi,            plain: 'if one part is invalid, the rest still applies' },
+      { word: /\bwaiver\b/gi,                  plain: 'giving up a right' },
+      { word: /\bindemnification\b/gi,         plain: 'protection from losses or claims' },
+      { word: /\bliability\b/gi,               plain: 'legal responsibility' },
+      { word: /\bshall\b/gi,                   plain: 'must / will' },
+    ];
+
+    const PASSIVE_PATTERNS = [
+      /\b(is|are|was|were|be|been|being)\s+([\w]+ed)\b/gi,
+      /\b(is|are|was|were|be|been|being)\s+(\w+en)\b/gi,
+      /\bshall be\s+\w+ed\b/gi,
+      /\bmust be\s+\w+ed\b/gi,
+      /\bwill be\s+\w+ed\b/gi,
+      /\bhas been\s+\w+ed\b/gi,
+      /\bhave been\s+\w+ed\b/gi,
+      /\bhad been\s+\w+ed\b/gi,
+    ];
+
+    const CLAUSE_MARKERS = [
+      'provided that', 'subject to', 'notwithstanding', 'in accordance with',
+      'pursuant to', 'except as', 'unless otherwise', 'to the extent that',
+      'in the event', 'for the avoidance of doubt', 'without prejudice to',
+      'save as', 'other than', 'where applicable'
+    ];
+
+    function countSyllables(word) {
+      word = word.toLowerCase().replace(/[^a-z]/g, '');
+      if (word.length <= 3) return 1;
+      word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+      word = word.replace(/^y/, '');
+      const m = word.match(/[aeiouy]{1,2}/g);
+      return m ? m.length : 1;
+    }
+
+    function splitSentences(text) {
+      return text.match(/[^.!?]+[.!?]+/g) || (text.trim() ? [text.trim()] : []);
+    }
+
+    function fleschScore(text) {
+      const sentences = splitSentences(text);
+      const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+      if (!sentences.length || !words.length) return 0;
+      const totalSyllables = words.reduce((s, w) => s + countSyllables(w), 0);
+      const asl = words.length / sentences.length;
+      const asw = totalSyllables / words.length;
+      const score = 206.835 - 1.015 * asl - 84.6 * asw;
+      return Math.max(0, Math.min(100, Math.round(score)));
+    }
+
+    function gradeFromScore(score) {
+      if (score >= 90) return { label: 'Very easy', color: '#10b981', bg: '#d1fae5' };
+      if (score >= 70) return { label: 'Easy', color: '#10b981', bg: '#d1fae5' };
+      if (score >= 60) return { label: 'Plain English', color: '#059669', bg: '#d1fae5' };
+      if (score >= 50) return { label: 'Fairly difficult', color: '#f59e0b', bg: '#fef3c7' };
+      if (score >= 30) return { label: 'Difficult', color: '#f59e0b', bg: '#fef3c7' };
+      if (score >= 10) return { label: 'Very difficult', color: '#ef4444', bg: '#fee2e2' };
+      return { label: 'Expert only', color: '#ef4444', bg: '#fee2e2' };
+    }
+
+    function findJargon(text) {
+      const issues = [];
+      for (const j of JARGON) {
+        const matches = [...text.matchAll(j.word)];
+        for (const m of matches) {
+          const start = Math.max(0, m.index - 60);
+          const end = Math.min(text.length, m.index + m[0].length + 60);
+          const snippet = text.slice(start, end);
+          issues.push({
+            type: 'jargon',
+            matched: m[0],
+            snippet: snippet,
+            suggestion: j.plain
+          });
+        }
+      }
+      return issues;
+    }
+
+    function findPassive(text) {
+      const issues = [];
+      for (const pat of PASSIVE_PATTERNS) {
+        const matches = [...text.matchAll(pat)];
+        for (const m of matches) {
+          const start = Math.max(0, m.index - 50);
+          const end = Math.min(text.length, m.index + m[0].length + 50);
+          issues.push({
+            type: 'passive',
+            matched: m[0],
+            snippet: text.slice(start, end),
+            suggestion: 'Rewrite in active voice to clearly assign responsibility.'
+          });
+        }
+      }
+      return issues;
+    }
+
+    function findLongSentences(text) {
+      const sentences = splitSentences(text);
+      const issues = [];
+      for (const s of sentences) {
+        const words = s.trim().split(/\s+/).filter(w => w.length > 0);
+        if (words.length > 35) {
+          issues.push({
+            type: 'long',
+            matched: words.length + '-word sentence',
+            snippet: s.trim().slice(0, 160) + (s.length > 160 ? '...' : ''),
+            suggestion: 'Break into shorter sentences (aim for under 25 words each).'
+          });
+        }
+      }
+      return issues;
+    }
+
+    function findClauses(text) {
+      const issues = [];
+      const lower = text.toLowerCase();
+      for (const marker of CLAUSE_MARKERS) {
+        let idx = lower.indexOf(marker);
+        while (idx !== -1) {
+          const start = Math.max(0, idx - 30);
+          const end = Math.min(text.length, idx + marker.length + 80);
+          issues.push({
+            type: 'clause',
+            matched: marker,
+            snippet: text.slice(start, end),
+            suggestion: 'Consider whether this clause can be simplified or broken out separately.'
+          });
+          idx = lower.indexOf(marker, idx + 1);
+        }
+      }
+      return issues;
+    }
+
+    let allIssues = [];
+    let activeTab = 'all';
+
+    function analyze() {
+      const text = document.getElementById('docText').value.trim();
+      if (!text) return;
+
+      const words = text.split(/\s+/).filter(w => w.length > 0);
+      const sentences = splitSentences(text);
+      const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+      const avgWords = sentences.length ? Math.round(words.length / sentences.length) : 0;
+
+      let clauseCount = 0;
+      const lower = text.toLowerCase();
+      for (const m of CLAUSE_MARKERS) {
+        let i = lower.indexOf(m);
+        while (i !== -1) { clauseCount++; i = lower.indexOf(m, i + 1); }
+      }
+
+      document.getElementById('statWords').textContent   = words.length.toLocaleString();
+      document.getElementById('statSents').textContent   = sentences.length.toLocaleString();
+      document.getElementById('statAvgWords').textContent = avgWords;
+      document.getElementById('statClauses').textContent  = clauseCount;
+      document.getElementById('statChars').textContent   = text.length.toLocaleString();
+      document.getElementById('statParas').textContent   = paragraphs.length;
+
+      const score = fleschScore(text);
+      const grade = gradeFromScore(score);
+
+      document.getElementById('scoreNum').textContent = score;
+      document.getElementById('scoreGrade').textContent = grade.label;
+      document.getElementById('scoreGrade').style.background = grade.bg;
+      document.getElementById('scoreGrade').style.color = grade.color;
+
+      const circ = 2 * Math.PI * 40;
+      const offset = circ - (score / 100) * circ;
+      const ring = document.getElementById('scoreRing');
+      ring.style.strokeDashoffset = offset.toFixed(1);
+      ring.style.stroke = grade.color;
+
+      const jargonIssues  = findJargon(text);
+      const passiveIssues = findPassive(text);
+      const longIssues    = findLongSentences(text);
+      const clauseIssues  = findClauses(text);
+      allIssues = [...jargonIssues, ...passiveIssues, ...longIssues, ...clauseIssues];
+
+      const jPct   = Math.min(100, Math.round((jargonIssues.length  / Math.max(1, words.length / 50)) * 100));
+      const pPct   = Math.min(100, Math.round((passiveIssues.length / Math.max(1, sentences.length)) * 100));
+      const lPct   = Math.min(100, Math.round((longIssues.length    / Math.max(1, sentences.length)) * 100));
+      const plainP = Math.max(0, Math.round(100 - (jPct * 0.3 + pPct * 0.4 + lPct * 0.3)));
+
+      document.getElementById('jargonPct').textContent  = jPct + '%';
+      document.getElementById('passivePct').textContent = pPct + '%';
+      document.getElementById('longPct').textContent    = lPct + '%';
+      document.getElementById('plainPct').textContent   = plainP + '%';
+
+      const jBar = document.getElementById('jargonBar');
+      jBar.style.width = jPct + '%';
+      jBar.className   = 'bar-fill ' + (jPct > 30 ? 'bar-bad' : jPct > 10 ? 'bar-warn' : 'bar-good');
+
+      const pBar = document.getElementById('passiveBar');
+      pBar.style.width = pPct + '%';
+      pBar.className   = 'bar-fill ' + (pPct > 40 ? 'bar-bad' : pPct > 20 ? 'bar-warn' : 'bar-good');
+
+      const lBar = document.getElementById('longBar');
+      lBar.style.width = lPct + '%';
+      lBar.className   = 'bar-fill ' + (lPct > 40 ? 'bar-bad' : lPct > 20 ? 'bar-warn' : 'bar-good');
+
+      document.getElementById('plainBar').style.width = plainP + '%';
+
+      document.getElementById('issuesPanel').style.display = '';
+      document.getElementById('summaryBar').innerHTML = `
+        <div class="summary-pill"><div class="pill-dot" style="background:#f59e0b"></div>${jargonIssues.length} jargon terms</div>
+        <div class="summary-pill"><div class="pill-dot" style="background:#8b5cf6"></div>${passiveIssues.length} passive phrases</div>
+        <div class="summary-pill"><div class="pill-dot" style="background:#ef4444"></div>${longIssues.length} long sentences</div>
+        <div class="summary-pill"><div class="pill-dot" style="background:#3b82f6"></div>${clauseIssues.length} complex clauses</div>
+      `;
+
+      activeTab = 'all';
+      buildTabs(jargonIssues.length, passiveIssues.length, longIssues.length, clauseIssues.length);
+      renderIssues('all');
+    }
+
+    function buildTabs(j, p, l, c) {
+      const tabs = [
+        { key:'all',     label:`All (${j+p+l+c})` },
+        { key:'jargon',  label:`Jargon (${j})` },
+        { key:'passive', label:`Passive (${p})` },
+        { key:'long',    label:`Long sentences (${l})` },
+        { key:'clause',  label:`Clauses (${c})` },
+      ];
+      document.getElementById('issueTabs').innerHTML = tabs.map(t =>
+        `<button class="issue-tab ${t.key===activeTab?'active':''}" onclick="setTab('${t.key}')">${t.label}</button>`
+      ).join('');
+    }
+
+    function setTab(key) {
+      activeTab = key;
+      document.querySelectorAll('.issue-tab').forEach(t => {
+        t.classList.toggle('active', t.textContent.startsWith(key==='all'?'All':key.charAt(0).toUpperCase()+key.slice(1)));
+      });
+      renderIssues(key);
+    }
+
+    function highlight(text, matched, cls) {
+      const escaped = matched.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return text.replace(new RegExp('(' + escaped + ')', 'gi'),
+        `<mark class="${cls}">$1</mark>`);
+      }
+
+    function renderIssues(filter) {
+      const list = filter === 'all' ? allIssues : allIssues.filter(i => i.type === filter);
+      if (!list.length) {
+        document.getElementById('issueList').innerHTML = `<div class="empty-state">No issues found in this category.</div>`;
+        return;
+      }
+      const shown = list.slice(0, 30);
+      document.getElementById('issueList').innerHTML = shown.map(issue => {
+        const typeLabel = { jargon:'Legal jargon', passive:'Passive voice', long:'Long sentence', clause:'Complex clause' }[issue.type];
+        const typeClass = { jargon:'type-jargon', passive:'type-passive', long:'type-long', clause:'type-clause' }[issue.type];
+        const markCls   = { jargon:'', passive:'passive-mark', long:'long-mark', clause:'' }[issue.type];
+        const snip = highlight(escapeHtml(issue.snippet), issue.matched, markCls);
+        return `
+          <div class="issue-item ${issue.type}">
+            <div class="issue-header">
+              <span class="issue-type ${typeClass}">${typeLabel}</span>
+              <span style="font-size:0.75rem;color:var(--text3)">"${escapeHtml(issue.matched.slice(0,40))}"</span>
+            </div>
+            <div class="issue-text">...${snip}...</div>
+            <div class="issue-suggestion">&#8594; <strong>Suggestion:</strong> ${issue.suggestion}</div>
+          </div>`;
+      }).join('');
+      if (list.length > 30) {
+        document.getElementById('issueList').innerHTML +=
+          `<div class="empty-state" style="font-size:0.8rem">Showing first 30 of ${list.length} issues.</div>`;
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function clearDoc() {
+      document.getElementById('docText').value = '';
+      document.getElementById('issuesPanel').style.display = 'none';
+      document.getElementById('scoreNum').textContent = '—';
+      document.getElementById('scoreGrade').textContent = 'Paste text to analyze';
+      document.getElementById('scoreGrade').style.background = '#f3f4f6';
+      document.getElementById('scoreGrade').style.color = '#888';
+      document.getElementById('scoreRing').style.strokeDashoffset = '251.2';
+      ['statWords','statSents','statAvgWords','statClauses','statChars','statParas']
+        .forEach(id => document.getElementById(id).textContent = '0');
+      ['jargonPct','passivePct','longPct','plainPct']
+        .forEach(id => document.getElementById(id).textContent = '0%');
+      ['jargonBar','passiveBar','longBar','plainBar']
+        .forEach(id => document.getElementById(id).style.width = '0%');
+    }
+
+    function loadSample() {
+      document.getElementById('docText').value = `SERVICES AGREEMENT
+
+This Services Agreement ("Agreement") is entered into as of the date last signed below, by and between ToolsNova Ltd., a company incorporated under the laws of England and Wales ("Company"), and the undersigned client ("Client").
+
+WHEREAS, the Company desires to provide certain services to the Client, and the Client desires to obtain such services from the Company, subject to the terms and conditions set forth hereinafter;
+
+NOW, THEREFORE, in consideration of the mutual covenants and agreements contained herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:
+
+1. SERVICES. Pursuant to the terms and conditions of this Agreement, the Company shall provide to the Client the services described in Schedule A attached hereto and incorporated herein by reference (the "Services"). The Company shall have the right, in its sole and absolute discretion, to determine the manner, means, and method by which the Services are performed, subject to the requirement that the Services shall be performed in a professional and workmanlike manner consistent with industry standards.
+
+2. PAYMENT. The Client shall pay to the Company the fees set forth in Schedule B attached hereto. In the event that payment is not received within thirty (30) days of the invoice date, interest shall accrue on the outstanding balance at a rate of 1.5% per month, or the maximum rate permitted by applicable law, whichever is less. Notwithstanding the foregoing, the Company reserves the right to suspend the Services forthwith upon failure by the Client to make timely payment.
+
+3. INDEMNIFICATION. The Client shall indemnify, defend, and hold harmless the Company and its officers, directors, employees, agents, successors, and assigns from and against any and all claims, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to: (a) the Client's use of the Services; (b) any breach by the Client of any representation, warranty, or obligation under this Agreement; or (c) the negligence or willful misconduct of the Client.
+
+4. LIMITATION OF LIABILITY. In no event shall either party be liable to the other for any indirect, incidental, special, consequential, or punitive damages, regardless of the cause of action or the theory of liability, even if such party has been advised of the possibility of such damages. The aggregate liability of the Company to the Client for any and all claims arising under or related to this Agreement shall not exceed the total fees paid by the Client to the Company during the three (3) month period immediately preceding the event giving rise to such liability.`;
+      analyze();
+    }
+
+    function toggleFaq(btn) {
+      const ans = btn.nextElementSibling;
+      const isOpen = ans.classList.contains('open');
+      btn.classList.toggle('open', !isOpen);
+      ans.classList.toggle('open', !isOpen);
+    }
+  </script>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

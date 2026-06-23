@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan EMI Comparison Calculator — Compare Multiple Loans Side by Side | ToolsNova</title>
+  <meta name="description" content="Free loan EMI comparison tool. Compare up to 4 loans side by side. Calculate monthly installments, total interest, and total payable for home loans, car loans, and personal loans across multiple banks and rates.">
+  <meta name="keywords" content="loan EMI comparison, EMI calculator, compare loan EMI, home loan EMI calculator, car loan EMI, personal loan EMI, bank loan comparison, monthly installment calculator, loan interest comparison">
+  <link rel="canonical" href="https://toolsnova.net/loan-emi-comparison">
+
+  <meta property="og:title" content="Loan EMI Comparison Calculator — Compare Multiple Loans Side by Side">
+  <meta property="og:description" content="Compare up to 4 loans side by side. See monthly EMI, total interest, and total payable instantly. Supports all loan types and currencies.">
+  <meta property="og:url" content="https://toolsnova.net/loan-emi-comparison">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolsNova">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Loan EMI Comparison Calculator | ToolsNova">
+  <meta name="twitter:description" content="Compare up to 4 loans side by side — EMI, total interest, total payable. Free and instant.">
+
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S6PPGS7N63');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Loan EMI Comparison Calculator",
+    "url": "https://toolsnova.net/loan-emi-comparison",
+    "description": "Compare up to 4 loans side by side. Calculate and compare monthly EMI, total interest, and total payable for home loans, car loans, and personal loans.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is EMI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EMI stands for Equated Monthly Installment. It is the fixed monthly payment you make to a bank or lender to repay a loan over a specified period. Each EMI consists of two components: principal repayment and interest. In early months, a larger portion goes toward interest; later months have more principal repayment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is EMI calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EMI is calculated using the formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the principal loan amount, r is the monthly interest rate (annual rate divided by 12), and n is the loan tenure in months. This tool uses this standard formula for all calculations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between flat rate and reducing balance interest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In a flat rate loan, interest is calculated on the full principal for the entire tenure. In a reducing balance loan (standard EMI), interest is calculated on the outstanding principal each month, which decreases as you repay. Reducing balance results in lower total interest paid and is the standard method used by most banks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which loan is best — lower EMI or shorter tenure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A longer tenure gives you a lower monthly EMI but results in significantly higher total interest paid. A shorter tenure means higher EMI but much lower total cost. If you can afford it, choosing a shorter tenure saves considerable money. Use this comparison tool to see exactly how much you save by adjusting the tenure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much home loan can I get on my salary?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most banks allow a maximum EMI of 40–50% of your monthly net income. For example, if your monthly salary is PKR 100,000, your maximum EMI should be around PKR 40,000–50,000. You can use this calculator to find which loan amount and tenure combination keeps your EMI within that range."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good interest rate for a home loan in Pakistan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Home loan interest rates in Pakistan typically range from 18% to 24% per annum depending on the bank, loan tenure, and borrower profile. Islamic home finance (Murabaha or Diminishing Musharakah) rates are usually similar. Rates fluctuate with the State Bank of Pakistan policy rate."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .calc-container { max-width: 980px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    .tool-header { margin-bottom: 1.5rem; }
+    .tool-header h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .tool-header p { color: var(--text2); font-size: 0.95rem; }
+
+    .top-controls {
+      display: flex; align-items: center; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .top-controls label { font-size: 0.85rem; color: var(--text2); font-weight: 500; }
+    .top-controls select, .top-controls input {
+      padding: 7px 12px; font-size: 0.875rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface2); color: var(--text);
+    }
+    .top-controls select:focus, .top-controls input:focus { outline: none; border-color: var(--text); }
+
+    .loans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    .loan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .loan-card.best { border: 2px solid #10b981; }
+    .loan-card.worst { border: 1px solid #ef4444; }
+
+    .loan-card-header {
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface,var(--surface2));
+    }
+    .loan-name-input {
+      font-size: 0.875rem; font-weight: 600;
+      border: none; background: transparent;
+      color: var(--text); width: 100%;
+      outline: none;
+    }
+    .best-badge {
+      font-size: 0.65rem; font-weight: 700;
+      background: rgba(127,255,111,.15); color: var(--accent);
+      padding: 2px 8px; border-radius: 20px;
+      white-space: nowrap; margin-left: 6px;
+    }
+    .worst-badge {
+      font-size: 0.65rem; font-weight: 700;
+      background: rgba(255,50,50,.1); color: var(--text2);
+      padding: 2px 8px; border-radius: 20px;
+      white-space: nowrap; margin-left: 6px;
+    }
+
+    .loan-card-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+    .field { display: flex; flex-direction: column; gap: 3px; }
+    .field label { font-size: 0.72rem; color: var(--text3); font-weight: 500; }
+    .field input {
+      padding: 8px 10px; font-size: 0.9rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface2); color: var(--text);
+      width: 100%; box-sizing: border-box; transition: border-color 0.15s;
+    }
+    .field input:focus { outline: none; border-color: var(--text); }
+
+    .loan-card-results { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 8px; }
+
+    .res-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem;
+    }
+    .res-row .r-label { color: var(--text2); }
+    .res-row .r-val   { font-weight: 600; color: var(--text); }
+    .res-row .r-val.emi    { font-size: 1.1rem; color: var(--text); }
+    .res-row .r-val.interest { color: #f59e0b; }
+    .res-row .r-val.total  { color: var(--text); }
+    .res-row .r-val.saving { color: var(--text); }
+
+    .divider-line { height: 0.5px; background: var(--border); margin: 4px 0; }
+
+    .comparison-section { margin-top: 2rem; }
+    .section-title {
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .compare-table-wrap { overflow-x: auto; }
+    .compare-table {
+      width: 100%; border-collapse: collapse; font-size: 0.82rem;
+      min-width: 500px;
+    }
+    .compare-table th {
+      text-align: left; padding: 9px 12px;
+      background: var(--surface,var(--surface2));
+      border-bottom: 1px solid var(--border);
+      font-weight: 600; color: var(--text2); font-size: 0.75rem;
+    }
+    .compare-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr.best-row td  { background: var(--surface2); }
+    .compare-table tr.worst-row td { background: var(--surface)7f7; }
+    .val-best  { color: var(--text); font-weight: 700; }
+    .val-worst { color: #ef4444; font-weight: 700; }
+
+    .bar-compare-section { margin-top: 1.5rem; }
+    .bar-group { margin-bottom: 14px; }
+    .bar-group-label { font-size: 0.78rem; color: var(--text2); margin-bottom: 6px; font-weight: 500; }
+    .bar-track { height: 28px; background: var(--surface,var(--surface2)); border-radius: 8px; overflow: hidden; position: relative; }
+    .bar-segment {
+      height: 100%; display: inline-block;
+      transition: width 0.4s ease;
+    }
+    .bar-label-row { display: flex; gap: 12px; margin-top: 4px; flex-wrap: wrap; }
+    .bar-legend { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--text3); }
+    .bar-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+    .amort-section { margin-top: 2rem; }
+    .amort-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .amort-select {
+      padding: 7px 12px; font-size: 0.875rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface2); color: var(--text);
+      margin-bottom: 10px;
+    }
+    .amort-select:focus { outline: none; border-color: var(--text); }
+    .amort-table-wrap { overflow-x: auto; max-height: 320px; overflow-y: auto; border: 1px solid var(--border); border-radius: 10px; }
+    .amort-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; min-width: 420px; }
+    .amort-table th { position: sticky; top: 0; text-align: right; padding: 8px 10px; background: var(--surface,var(--surface2)); border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text2); font-size: 0.72rem; }
+    .amort-table th:first-child { text-align: center; }
+    .amort-table td { text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text); }
+    .amort-table td:first-child { text-align: center; color: var(--text3); }
+    .amort-table tr:last-child td { border-bottom: none; }
+    .amort-table tr:nth-child(even) td { background: var(--surface,#fafafa); }
+
+    .edu-section { margin-top: 3rem; }
+    .edu-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .edu-section p  { font-size: 0.9rem; color: var(--text2); line-height: 1.75; margin-bottom: 1rem; }
+    .edu-section h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+
+    .formula-box {
+      background: var(--surface,var(--surface2)); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px; font-family: var(--font-mono,monospace);
+      font-size: 0.9rem; color: var(--text); margin: 0.75rem 0;
+      line-height: 1.8;
+    }
+
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; padding: 14px 16px; background: var(--surface2); border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .faq-q .arrow { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 12px 16px 14px; font-size: 0.875rem; color: var(--text2); line-height: 1.7; border-top: 1px solid var(--border); background: var(--surface2); }
+    .faq-a.open { display: block; }
+
+    @media (max-width: 600px) {
+      .loans-grid { grid-template-columns: 1fr; }
+    }
+  
+/* ── Dark theme FAQ fix for 6 new tools ── */
+.faq-q {
+  color: var(--text) !important;
+  background: var(--surface2) !important;
+}
+.faq-q:hover {
+  background: var(--surface3) !important;
+}
+.faq-a {
+  color: var(--text2) !important;
+  background: var(--surface) !important;
+}
+.faq-item {
+  border-color: var(--border) !important;
+}
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <a href="loan-emi-comparison.html"            class="nav-link">Loan EMI Comparison</a>
+    <a href="mortgage-affordability-calculator.html" class="nav-link">Mortgage Affordability</a>
+    <a href="solar-panel-roi-calculator.html"       class="nav-link">Solar Panel ROI</a>
+    <a href="islamic-mortgage-calculator.html"      class="nav-link">Islamic Mortgage</a>
+    <a href="ai-token-counter.html"                class="nav-link">AI Token Counter</a>
+    <a href="legal-document-analyzer.html"         class="nav-link">Legal Document Analyzer</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+  <main class="tool-main">
+
+    <div class="tool-header">
+      <h1>Loan EMI comparison calculator</h1>
+      <p>Compare up to 4 loans side by side. See monthly EMI, total interest, and total payable instantly — home loans, car loans, personal loans.</p>
+    </div>
+
+    <div class="top-controls">
+      <label>Currency</label>
+      <select id="currency" onchange="calcAll()">
+        <option value="PKR">PKR — Pakistani Rupee</option>
+        <option value="USD">USD — US Dollar</option>
+        <option value="INR">INR — Indian Rupee</option>
+        <option value="AED">AED — UAE Dirham</option>
+        <option value="GBP">GBP — British Pound</option>
+        <option value="SAR">SAR — Saudi Riyal</option>
+        <option value="BDT">BDT — Bangladeshi Taka</option>
+        <option value="MYR">MYR — Malaysian Ringgit</option>
+      </select>
+      <label>Loan type preset</label>
+      <select id="preset" onchange="applyPreset()">
+        <option value="custom">Custom</option>
+        <option value="home">Home loan</option>
+        <option value="car">Car loan</option>
+        <option value="personal">Personal loan</option>
+        <option value="business">Business loan</option>
+      </select>
+      <label>Show loans</label>
+      <select id="loanCount" onchange="renderCards()">
+        <option value="2">2 loans</option>
+        <option value="3" selected>3 loans</option>
+        <option value="4">4 loans</option>
+      </select>
+    </div>
+
+    <div class="loans-grid" id="loansGrid"></div>
+
+    <div class="comparison-section">
+      <div class="section-title">Side-by-side comparison</div>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable"></table>
+      </div>
+    </div>
+
+    <div class="bar-compare-section">
+      <div class="section-title">Visual comparison</div>
+      <div id="barCharts"></div>
+    </div>
+
+    <div class="amort-section">
+      <h3>Amortization schedule</h3>
+      <select class="amort-select" id="amortSelect" onchange="renderAmort()"></select>
+      <div class="amort-table-wrap">
+        <table class="amort-table" id="amortTable"></table>
+      </div>
+    </div>
+
+    <div class="edu-section">
+      <h2>How EMI is calculated</h2>
+      <p>EMI (Equated Monthly Installment) is a fixed payment made by a borrower to a lender each month. It includes both principal repayment and interest, calculated so that the loan is fully repaid by the end of the tenure.</p>
+      <div class="formula-box">
+        EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)<br><br>
+        P = Principal loan amount<br>
+        r = Monthly interest rate (annual rate ÷ 12 ÷ 100)<br>
+        n = Loan tenure in months
+      </div>
+      <h3>Principal vs interest breakdown</h3>
+      <p>In the early months of a loan, a larger share of each EMI goes toward interest. As the outstanding principal decreases, the interest component shrinks and the principal component grows. This is called an amortizing loan. The amortization schedule below shows this breakdown month by month.</p>
+      <h3>Tips to reduce total interest</h3>
+      <p>Making a larger down payment reduces the principal and therefore total interest paid. Choosing a shorter tenure increases monthly EMI but significantly reduces total interest cost. Even one extra EMI per year (prepayment) can shorten your loan by 2–3 years. Compare loans using this tool to find the optimal balance between affordable monthly payments and lowest total cost.</p>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is EMI? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">EMI stands for Equated Monthly Installment — the fixed monthly payment you make to repay a loan. Each EMI covers both principal and interest. Early payments are interest-heavy; later payments are mostly principal repayment.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How is EMI calculated? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is the tenure in months. This is the reducing balance method used by most banks.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Which loan is best — lower EMI or shorter tenure? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">A longer tenure gives lower monthly EMI but much higher total interest. A shorter tenure means higher EMI but significantly lower total cost. If you can afford it, a shorter tenure always saves money. Use this tool to see the exact difference.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the difference between flat rate and reducing balance? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Flat rate calculates interest on the full original principal throughout the tenure. Reducing balance calculates interest only on the outstanding principal each month, which decreases over time. Reducing balance results in lower total interest and is the standard method used by most banks.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much home loan can I get on my salary? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Most banks allow a maximum EMI of 40–50% of your monthly net income. If your monthly salary is PKR 100,000, your maximum EMI should be around PKR 40,000–50,000. Use this calculator to find which loan amount and tenure keeps your EMI within that range.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a good interest rate for a home loan in Pakistan? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Home loan rates in Pakistan typically range from 18% to 24% per annum depending on the bank, tenure, and borrower profile. Rates fluctuate with the State Bank of Pakistan policy rate. Compare multiple bank rates using this tool to find the best deal.</div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="related-tools-section">
+    <h2 class="related-title">Related finance tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="mortgage-affordability-calculator.html">
+        <div class="rc-icon">🏠</div>
+        <div class="rc-name">Mortgage affordability calculator</div>
+        <div class="rc-desc">Find out how much house you can afford on your salary</div>
+      </a>
+      <a class="related-card" href="islamic-mortgage-calculator.html">
+        <div class="rc-icon">🕌</div>
+        <div class="rc-name">Islamic mortgage calculator</div>
+        <div class="rc-desc">Halal home financing — Murabaha, Musharakah & Ijarah. Multi-currency.</div>
+      </a>
+      <a class="related-card" href="solar-panel-roi-calculator.html">
+        <div class="rc-icon">☀️</div>
+        <div class="rc-name">Solar panel ROI calculator</div>
+        <div class="rc-desc">Calculate payback period and lifetime savings for solar</div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+  <script src="app.js?v=19"></script>
+  <script>
+    const SYMBOLS = { PKR:'Rs ', USD:'$', INR:'₹', AED:'AED ', GBP:'£', SAR:'SAR ', BDT:'৳', MYR:'RM ' };
+    const COLORS  = ['#2563eb','#10b981','#f59e0b','#8b5cf6'];
+    const PRESETS = {
+      home:     [{ name:'Bank A', amount:5000000, rate:20, tenure:20 }, { name:'Bank B', amount:5000000, rate:21.5, tenure:20 }, { name:'Bank C', amount:5000000, rate:19, tenure:15 }],
+      car:      [{ name:'Bank A', amount:1500000, rate:18, tenure:5  }, { name:'Bank B', amount:1500000, rate:19.5, tenure:5  }, { name:'Bank C', amount:1500000, rate:17, tenure:4  }],
+      personal: [{ name:'Bank A', amount:500000,  rate:24, tenure:3  }, { name:'Bank B', amount:500000,  rate:26,   tenure:3  }, { name:'Bank C', amount:500000,  rate:22, tenure:2  }],
+      business: [{ name:'Bank A', amount:2000000, rate:22, tenure:5  }, { name:'Bank B', amount:2000000, rate:23.5, tenure:5  }, { name:'Bank C', amount:2000000, rate:21, tenure:7  }],
+    };
+
+    let loans = [
+      { name:'Loan A', amount:3000000, rate:20,   tenure:10 },
+      { name:'Loan B', amount:3000000, rate:21.5, tenure:10 },
+      { name:'Loan C', amount:3000000, rate:19,   tenure:8  },
+    ];
+
+    function fmt(n) {
+      const sym = SYMBOLS[document.getElementById('currency').value] || '';
+      if (n >= 10000000) return sym + (n/10000000).toFixed(2) + ' Cr';
+      if (n >= 100000)   return sym + (n/100000).toFixed(2) + ' L';
+      return sym + Math.round(n).toLocaleString();
+    }
+    function fmtFull(n) {
+      const sym = SYMBOLS[document.getElementById('currency').value] || '';
+      return sym + Math.round(n).toLocaleString();
+    }
+
+    function calcEMI(amount, annualRate, tenureYears) {
+      const r = annualRate / 100 / 12;
+      const n = tenureYears * 12;
+      if (r === 0) return { emi: amount / n, total: amount, interest: 0, n };
+      const emi   = amount * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
+      const total = emi * n;
+      return { emi, total, interest: total - amount, n };
+    }
+
+    function getCount() { return parseInt(document.getElementById('loanCount').value); }
+
+    function renderCards() {
+      const count = getCount();
+      while (loans.length < count) loans.push({ name:'Loan ' + String.fromCharCode(65 + loans.length), amount:3000000, rate:20, tenure:10 });
+      const grid = document.getElementById('loansGrid');
+      grid.innerHTML = '';
+      const results = loans.slice(0, count).map(l => calcEMI(l.amount, l.rate, l.tenure));
+      const emis    = results.map(r => r.emi);
+      const bestIdx = emis.indexOf(Math.min(...emis));
+      const worstIdx= emis.indexOf(Math.max(...emis));
+
+      for (let i = 0; i < count; i++) {
+        const l = loans[i];
+        const r = results[i];
+        const isBest  = i === bestIdx;
+        const isWorst = i === worstIdx && count > 1;
+        const saving  = i !== bestIdx ? r.emi - results[bestIdx].emi : null;
+
+        const card = document.createElement('div');
+        card.className = 'loan-card' + (isBest ? ' best' : isWorst ? ' worst' : '');
+        card.innerHTML = `
+          <div class="loan-card-header">
+            <input class="loan-name-input" value="${escHtml(l.name)}" oninput="loans[${i}].name=this.value; updateComparisons()" style="color:${COLORS[i]}">
+            ${isBest  ? '<span class="best-badge">&#10003; Best</span>'   : ''}
+            ${isWorst ? '<span class="worst-badge">&#8593; Most costly</span>' : ''}
+          </div>
+          <div class="loan-card-body">
+            <div class="field">
+              <label>Loan amount</label>
+              <input type="number" value="${l.amount}" min="1" oninput="loans[${i}].amount=+this.value; calcAll()">
+            </div>
+            <div class="field">
+              <label>Annual interest rate (%)</label>
+              <input type="number" value="${l.rate}" min="0.1" max="100" step="0.1" oninput="loans[${i}].rate=+this.value; calcAll()">
+            </div>
+            <div class="field">
+              <label>Loan tenure (years)</label>
+              <input type="number" value="${l.tenure}" min="1" max="30" step="1" oninput="loans[${i}].tenure=+this.value; calcAll()">
+            </div>
+          </div>
+          <div class="loan-card-results">
+            <div class="divider-line"></div>
+            <div class="res-row"><span class="r-label">Monthly EMI</span><span class="r-val emi">${fmtFull(r.emi)}</span></div>
+            <div class="res-row"><span class="r-label">Total interest</span><span class="r-val interest">${fmtFull(r.interest)}</span></div>
+            <div class="res-row"><span class="r-label">Total payable</span><span class="r-val total">${fmtFull(r.total)}</span></div>
+            ${saving !== null ? `<div class="res-row"><span class="r-label">Extra vs best</span><span class="r-val" style="color:#ef4444">+${fmtFull(saving)}/mo</span></div>` : ''}
+          </div>`;
+        grid.appendChild(card);
+      }
+      updateComparisons();
+    }
+
+    function updateComparisons() {
+      const count   = getCount();
+      const results = loans.slice(0, count).map((l,i) => ({ ...calcEMI(l.amount, l.rate, l.tenure), name: l.name, color: COLORS[i] }));
+      const emis    = results.map(r => r.emi);
+      const totals  = results.map(r => r.total);
+      const ints    = results.map(r => r.interest);
+      const bestEMI = Math.min(...emis);
+      const maxEMI  = Math.max(...emis);
+      const maxTotal= Math.max(...totals);
+      const maxInt  = Math.max(...ints);
+
+      document.getElementById('compareTable').innerHTML = `
+        <thead>
+          <tr>
+            <th>Metric</th>
+            ${results.map((r,i) => `<th style="color:${r.color}">${escHtml(r.name)}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:500;color:var(--text2)">Monthly EMI</td>
+            ${results.map(r => `<td class="${r.emi===bestEMI?'val-best':r.emi===maxEMI&&count>1?'val-worst':''}">${fmtFull(r.emi)}</td>`).join('')}
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:var(--text2)">Total interest</td>
+            ${results.map(r => `<td class="${r.interest===Math.min(...ints)?'val-best':r.interest===maxInt&&count>1?'val-worst':''}">${fmtFull(r.interest)}</td>`).join('')}
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:var(--text2)">Total payable</td>
+            ${results.map(r => `<td class="${r.total===Math.min(...totals)?'val-best':r.total===maxTotal&&count>1?'val-worst':''}">${fmtFull(r.total)}</td>`).join('')}
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:var(--text2)">Tenure (months)</td>
+            ${results.map(r => `<td>${r.n}</td>`).join('')}
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:var(--text2)">Interest ratio</td>
+            ${results.map(r => { const ratio = loans[results.indexOf(r)] ? (r.interest/loans[results.indexOf(r)].amount*100).toFixed(1)+'%' : '—'; return `<td>${ratio}</td>`; }).join('')}
+          </tr>
+        </tbody>`;
+
+      const barSection = document.getElementById('barCharts');
+      const metrics = [
+        { label:'Monthly EMI',    vals: emis,    max: maxEMI   },
+        { label:'Total interest', vals: ints,    max: maxInt   },
+        { label:'Total payable',  vals: totals,  max: maxTotal },
+      ];
+      barSection.innerHTML = metrics.map(m => `
+        <div class="bar-group">
+          <div class="bar-group-label">${m.label}</div>
+          <div class="bar-track">
+            ${results.map((r,i) => {
+              const pct = m.max > 0 ? (m.vals[i] / m.max * 100).toFixed(1) : 0;
+              return `<div class="bar-segment" style="width:${pct}%;background:${r.color};opacity:0.85" title="${r.name}: ${fmtFull(m.vals[i])}"></div>`;
+            }).join('')}
+          </div>
+          <div class="bar-label-row">
+            ${results.map((r,i) => `
+              <div class="bar-legend">
+                <div class="bar-dot" style="background:${r.color}"></div>
+                ${escHtml(r.name)}: ${fmtFull(m.vals[i])}
+              </div>`).join('')}
+          </div>
+        </div>`).join('');
+
+      const amortSel = document.getElementById('amortSelect');
+      const prev = amortSel.value;
+      amortSel.innerHTML = results.map((r,i) => `<option value="${i}">${escHtml(r.name)}</option>`).join('');
+      if (prev && parseInt(prev) < count) amortSel.value = prev;
+      renderAmort();
+    }
+
+    function renderAmort() {
+      const idx    = parseInt(document.getElementById('amortSelect').value) || 0;
+      const l      = loans[idx];
+      if (!l) return;
+      const r      = l.rate / 100 / 12;
+      const n      = l.tenure * 12;
+      const emi    = calcEMI(l.amount, l.rate, l.tenure).emi;
+      let balance  = l.amount;
+      let rows     = '<thead><tr><th>#</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>';
+      for (let m = 1; m <= n; m++) {
+        const intPart  = balance * r;
+        const prinPart = emi - intPart;
+        balance       -= prinPart;
+        rows += `<tr>
+          <td>${m}</td>
+          <td>${fmtFull(emi)}</td>
+          <td>${fmtFull(prinPart)}</td>
+          <td>${fmtFull(intPart)}</td>
+          <td>${fmtFull(Math.max(0, balance))}</td>
+        </tr>`;
+      }
+      rows += '</tbody>';
+      document.getElementById('amortTable').innerHTML = rows;
+    }
+
+    function calcAll() {
+      // Update only results — do NOT rebuild cards (would lose focus)
+      const count   = getCount();
+      const results = loans.slice(0, count).map(l => calcEMI(l.amount, l.rate, l.tenure));
+      const emis    = results.map(r => r.emi);
+      const bestIdx = emis.indexOf(Math.min(...emis));
+      const worstIdx= emis.indexOf(Math.max(...emis));
+
+      // Update each card's result section without touching inputs
+      const cards = document.querySelectorAll('.loan-card');
+      cards.forEach((card, i) => {
+        if (i >= count) return;
+        const r = results[i];
+        const isBest  = i === bestIdx;
+        const isWorst = i === worstIdx && count > 1;
+        const saving  = i !== bestIdx ? r.emi - results[bestIdx].emi : null;
+
+        // Update card class (best/worst border)
+        card.className = 'loan-card' + (isBest ? ' best' : isWorst ? ' worst' : '');
+
+        // Update best/worst badges
+        const header = card.querySelector('.loan-card-header');
+        let badge = header.querySelector('.best-badge, .worst-badge');
+        if (badge) badge.remove();
+        if (isBest)  { const b = document.createElement('span'); b.className='best-badge';  b.innerHTML='&#10003; Best';       header.appendChild(b); }
+        if (isWorst) { const b = document.createElement('span'); b.className='worst-badge'; b.innerHTML='&#8593; Most costly'; header.appendChild(b); }
+
+        // Update result values
+        card.querySelector('.r-val.emi').textContent      = fmtFull(r.emi);
+        card.querySelector('.r-val.interest').textContent  = fmtFull(r.interest);
+        card.querySelector('.r-val.total').textContent     = fmtFull(r.total);
+
+        // Update "extra vs best" row
+        let extraRow = card.querySelector('.extra-row');
+        if (saving !== null) {
+          if (!extraRow) {
+            extraRow = document.createElement('div');
+            extraRow.className = 'res-row extra-row';
+            card.querySelector('.loan-card-results').appendChild(extraRow);
+          }
+          extraRow.innerHTML = `<span class="r-label">Extra vs best</span><span class="r-val" style="color:#ef4444">+${fmtFull(saving)}/mo</span>`;
+        } else if (extraRow) {
+          extraRow.remove();
+        }
+      });
+
+      updateComparisons();
+    }
+
+    function applyPreset() {
+      const key = document.getElementById('preset').value;
+      if (key === 'custom') return;
+      const p = PRESETS[key];
+      loans = p.map(x => ({ ...x }));
+      document.getElementById('loanCount').value = loans.length;
+      renderCards();
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function toggleFaq(btn) {
+      const ans = btn.nextElementSibling;
+      const open = ans.classList.contains('open');
+      btn.classList.toggle('open', !open);
+      ans.classList.toggle('open', !open);
+    }
+
+    renderCards();
+  </script>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

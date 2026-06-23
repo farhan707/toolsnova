@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamic Mortgage Calculator — Murabaha, Musharakah & Ijarah | ToolsNova</title>
+  <meta name="description" content="Free Islamic mortgage calculator supporting Murabaha, Diminishing Musharakah, and Ijarah modes. Calculate halal home financing with no riba (interest). Multi-currency support.">
+  <meta name="keywords" content="islamic mortgage calculator, murabaha calculator, diminishing musharakah calculator, ijarah calculator, halal home loan, islamic finance calculator, sharia mortgage">
+  <link rel="canonical" href="https://toolsnova.net/islamic-mortgage-calculator">
+
+  <meta property="og:title" content="Islamic Mortgage Calculator — Murabaha, Musharakah & Ijarah">
+  <meta property="og:description" content="Calculate Sharia-compliant home financing instantly. Supports Murabaha, Diminishing Musharakah, and Ijarah with multi-currency output.">
+  <meta property="og:url" content="https://toolsnova.net/islamic-mortgage-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolsNova">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Islamic Mortgage Calculator | ToolsNova">
+  <meta name="twitter:description" content="Free halal mortgage calculator — Murabaha, Musharakah, Ijarah. No riba. Multi-currency.">
+
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S6PPGS7N63');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Islamic Mortgage Calculator",
+    "url": "https://toolsnova.net/islamic-mortgage-calculator",
+    "description": "Sharia-compliant mortgage calculator supporting Murabaha, Diminishing Musharakah, and Ijarah financing modes with multi-currency support.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolsNova",
+      "url": "https://toolsnova.net"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Murabaha mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In a Murabaha arrangement, the bank purchases the property on your behalf and resells it to you at a higher, pre-agreed price payable in installments. The profit margin is fixed upfront and does not compound, making it Sharia-compliant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Diminishing Musharakah work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Diminishing Musharakah, you and the bank co-own the property. You make regular payments to buy out the bank's share gradually, while also paying rent on the portion still owned by the bank. Over time your ownership increases until you own 100% of the property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is an Ijarah home finance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ijarah is a lease-to-own arrangement. The bank buys the property and leases it to you for a fixed term. At the end of the lease period, ownership transfers to you. You pay rent instead of interest, and the rent amount is agreed upfront."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Islamic mortgage more expensive than a conventional mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Islamic mortgages can have slightly higher total costs in some markets due to the bank's additional transactional steps, but they avoid compounding interest. The total profit paid is fixed and transparent from the start, unlike conventional loans where interest compounds over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which currencies does this Islamic mortgage calculator support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator supports PKR (Pakistani Rupee), USD (US Dollar), AED (UAE Dirham), GBP (British Pound), SAR (Saudi Riyal), BDT (Bangladeshi Taka), INR (Indian Rupee), and MYR (Malaysian Ringgit)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the minimum down payment for an Islamic mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Minimum down payment requirements vary by country and institution, but typically range from 10% to 30% of the property value. In Pakistan, Islamic banks generally require 20–30%. In the UK and UAE, requirements may vary. You can adjust the down payment percentage in this calculator to see its impact on your monthly installments."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .calc-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+    .tool-header {
+      margin-bottom: 1.5rem;
+    }
+    .tool-header h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .tool-header p {
+      color: var(--text2);
+      font-size: 0.95rem;
+    }
+    .halal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(127,255,111,.15);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .tabs {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 11px 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text2);
+      transition: background 0.15s, color 0.15s;
+    }
+    .tab-btn:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+    .tab-btn.active {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .mode-desc {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      color: var(--text2);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 500px) {
+      .field-grid { grid-template-columns: 1fr; }
+      .tab-btn { font-size: 0.75rem; padding: 10px 4px; }
+    }
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text2);
+      margin-bottom: 5px;
+    }
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: var(--surface2);
+      color: var(--text);
+      box-sizing: border-box;
+      transition: border-color 0.15s;
+    }
+    .field input:focus,
+    .field select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .result-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .result-card .r-label {
+      font-size: 0.75rem;
+      color: var(--text3);
+      margin-bottom: 5px;
+    }
+    .result-card .r-value {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .result-card.highlight .r-value {
+      color: var(--text);
+    }
+    .result-card.warn .r-value {
+      color: #d97706;
+    }
+    .result-card.primary {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .result-card.primary .r-value {
+      color: var(--accent);
+    }
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--text3);
+      line-height: 1.6;
+      padding: 12px 14px;
+      background: var(--surface2);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .faq-section {
+      margin-top: 3rem;
+    }
+    .faq-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      background: var(--surface2);
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .faq-q .arrow {
+      font-size: 1rem;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-q.open .arrow {
+      transform: rotate(180deg);
+    }
+    .faq-a {
+      display: none;
+      padding: 12px 16px 14px;
+      font-size: 0.875rem;
+      color: var(--text2);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      background: var(--surface2);
+    }
+    .faq-a.open {
+      display: block;
+    }
+    .edu-section {
+      margin-top: 3rem;
+    }
+    .edu-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .edu-section p {
+      font-size: 0.9rem;
+      color: var(--text2);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .edu-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.25rem 0 0.5rem;
+    }
+  
+/* ── Dark theme FAQ fix for 6 new tools ── */
+.faq-q {
+  color: var(--text) !important;
+  background: var(--surface2) !important;
+}
+.faq-q:hover {
+  background: var(--surface3) !important;
+}
+.faq-a {
+  color: var(--text2) !important;
+  background: var(--surface) !important;
+}
+.faq-item {
+  border-color: var(--border) !important;
+}
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+  <main class="tool-main">
+
+    <div class="tool-header">
+      <div class="halal-badge">&#10003; Sharia-compliant</div>
+      <h1>Islamic mortgage calculator</h1>
+      <p>Calculate halal home financing with no riba (interest). Supports Murabaha, Diminishing Musharakah, and Ijarah modes across 8 currencies.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchMode('murabaha', this)">Murabaha</button>
+      <button class="tab-btn" onclick="switchMode('musharakah', this)">Dim. Musharakah</button>
+      <button class="tab-btn" onclick="switchMode('ijarah', this)">Ijarah</button>
+    </div>
+
+    <div id="desc-murabaha" class="mode-desc">
+      <strong>Murabaha</strong> — The bank purchases the property and sells it to you at a pre-agreed marked-up price, payable in fixed installments. The profit is disclosed upfront and does not compound.
+    </div>
+    <div id="desc-musharakah" class="mode-desc" style="display:none">
+      <strong>Diminishing Musharakah</strong> — You and the bank jointly own the property. You gradually purchase the bank's share while paying rent on the portion still owned by the bank, until full ownership transfers to you.
+    </div>
+    <div id="desc-ijarah" class="mode-desc" style="display:none">
+      <strong>Ijarah (Lease-to-Own)</strong> — The bank buys the property and leases it to you for an agreed term. You pay rent throughout the period, and ownership transfers to you at the end.
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <label for="currency">Currency</label>
+        <select id="currency" onchange="calc()">
+          <option value="PKR">PKR — Pakistani Rupee</option>
+          <option value="USD">USD — US Dollar</option>
+          <option value="AED">AED — UAE Dirham</option>
+          <option value="GBP">GBP — British Pound</option>
+          <option value="SAR">SAR — Saudi Riyal</option>
+          <option value="BDT">BDT — Bangladeshi Taka</option>
+          <option value="INR">INR — Indian Rupee</option>
+          <option value="MYR">MYR — Malaysian Ringgit</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="propVal">Property / asset value</label>
+        <input type="number" id="propVal" value="5000000" min="1" oninput="calc()">
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <label for="downPct">Down payment (%)</label>
+        <input type="number" id="downPct" value="20" min="0" max="99" step="1" oninput="calc()">
+      </div>
+      <div class="field">
+        <label for="profitRate" id="rate-label">Profit rate (% per year)</label>
+        <input type="number" id="profitRate" value="12" min="0.1" max="50" step="0.1" oninput="calc()">
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <label for="termYrs">Financing term (years)</label>
+        <input type="number" id="termYrs" value="10" min="1" max="30" step="1" oninput="calc()">
+      </div>
+      <div class="field" id="field-rentadj" style="display:none">
+        <label for="rentAdj">Annual rent adjustment (%)</label>
+        <input type="number" id="rentAdj" value="0" min="0" max="20" step="0.5" oninput="calc()">
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="results-grid" id="results"></div>
+
+    <div class="disclaimer">
+      Results are estimates for planning purposes only. Actual terms, profit rates, and conditions vary by financial institution and country. Please consult a certified Islamic finance advisor or your bank before making any financial decision.
+    </div>
+
+    <div class="edu-section">
+      <h2>Understanding Islamic home financing</h2>
+      <p>Islamic mortgages are Sharia-compliant alternatives to conventional home loans. They avoid riba (interest), which is prohibited in Islam, and instead use trade, leasing, or partnership structures to facilitate home ownership.</p>
+      <h3>Murabaha</h3>
+      <p>The bank buys the property outright and sells it to the buyer at a higher price, with the profit margin agreed upfront. The buyer repays in equal installments over the agreed period. Because the price is fixed at the start, there is no compounding — making it one of the most transparent Islamic finance structures.</p>
+      <h3>Diminishing Musharakah</h3>
+      <p>This is the most common Islamic mortgage structure in Pakistan, the UK, and Malaysia. The bank and buyer co-own the property from day one. The buyer pays monthly rent (for the bank's share) plus a portion to buy out the bank's equity. As the bank's ownership shrinks, the rent component decreases — making payments more equitable over time.</p>
+      <h3>Ijarah (lease-to-own)</h3>
+      <p>The bank purchases the property and leases it to the buyer for a fixed term. Monthly rent is paid throughout the period. At the end of the contract, ownership is transferred to the buyer via a separate gift or sale agreement at a nominal value. Ijarah is widely used in GCC countries and Malaysia.</p>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is a Murabaha mortgage? <span class="arrow">&#8964;</span>
+        </button>
+        <div class="faq-a">
+          In a Murabaha arrangement, the bank purchases the property on your behalf and resells it to you at a higher, pre-agreed price payable in installments. The profit margin is fixed upfront and does not compound, making it fully Sharia-compliant.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How does Diminishing Musharakah work? <span class="arrow">&#8964;</span>
+        </button>
+        <div class="faq-a">
+          In Diminishing Musharakah, you and the bank co-own the property. You make regular payments to buy out the bank's share gradually, while also paying rent on the portion still owned by the bank. Over time your ownership increases until you own 100% of the property.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is an Ijarah home finance? <span class="arrow">&#8964;</span>
+        </button>
+        <div class="faq-a">
+          Ijarah is a lease-to-own arrangement. The bank buys the property and leases it to you for a fixed term. At the end of the lease period, ownership transfers to you. You pay rent instead of interest, and the rent amount is agreed upfront — no surprises.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is Islamic mortgage more expensive than a conventional mortgage? <span class="arrow">&#8964;</span>
+        </button>
+        <div class="faq-a">
+          Islamic mortgages can have slightly higher total costs in some markets due to the bank's additional transactional steps. However, the total profit paid is fixed and transparent from the start — unlike conventional loans where interest compounds over time and can balloon unpredictably.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Which currencies does this calculator support? <span class="arrow">&#8964;</span>
+        </button>
+        <div class="faq-a">
+          This calculator supports PKR (Pakistani Rupee), USD (US Dollar), AED (UAE Dirham), GBP (British Pound), SAR (Saudi Riyal), BDT (Bangladeshi Taka), INR (Indian Rupee), and MYR (Malaysian Ringgit).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the minimum down payment for an Islamic mortgage? <span class="arrow">&#8964;</span>
+        </button>
+        <div class="faq-a">
+          Minimum down payment requirements vary by country and institution, typically ranging from 10% to 30%. In Pakistan, Islamic banks generally require 20–30%. You can adjust the down payment percentage in this calculator to see its direct impact on your monthly installment.
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="related-tools-section">
+    <h2 class="related-title">Related finance tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="mortgage-affordability-calculator.html">
+        <div class="rc-icon">🏠</div>
+        <div class="rc-name">Mortgage affordability calculator</div>
+        <div class="rc-desc">Find out how much house you can afford on your salary</div>
+      </a>
+      <a class="related-card" href="loan-emi-comparison.html">
+        <div class="rc-icon">📊</div>
+        <div class="rc-name">Loan EMI comparison</div>
+        <div class="rc-desc">Compare up to 4 loans side by side — EMI, interest, amortisation</div>
+      </a>
+      <a class="related-card" href="solar-panel-roi-calculator.html">
+        <div class="rc-icon">☀️</div>
+        <div class="rc-name">Solar panel ROI calculator</div>
+        <div class="rc-desc">Calculate payback period and lifetime savings for solar</div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+  <script src="app.js?v=19"></script>
+  <script>
+    const symbols = {
+      PKR: 'Rs ', USD: '$', AED: 'AED ', GBP: '£',
+      SAR: 'SAR ', BDT: '৳', INR: '₹', MYR: 'RM '
+    };
+
+    let mode = 'murabaha';
+
+    function switchMode(m, el) {
+      mode = m;
+      document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      ['murabaha', 'musharakah', 'ijarah'].forEach(x => {
+        document.getElementById('desc-' + x).style.display = x === m ? '' : 'none';
+      });
+      const lbl = document.getElementById('rate-label');
+      const rentAdj = document.getElementById('field-rentadj');
+      if (m === 'murabaha')    { lbl.textContent = 'Profit rate (% per year)';  rentAdj.style.display = 'none'; }
+      if (m === 'musharakah')  { lbl.textContent = 'Rental yield (% per year)'; rentAdj.style.display = ''; }
+      if (m === 'ijarah')      { lbl.textContent = 'Lease rate (% per year)';   rentAdj.style.display = 'none'; }
+      calc();
+    }
+
+    function fmt(n) {
+      const sym = symbols[document.getElementById('currency').value] || '';
+      return sym + Math.round(n).toLocaleString();
+    }
+
+    function calc() {
+      const prop       = parseFloat(document.getElementById('propVal').value)    || 0;
+      const downPct    = parseFloat(document.getElementById('downPct').value)    || 0;
+      const rate       = parseFloat(document.getElementById('profitRate').value) || 0;
+      const years      = parseFloat(document.getElementById('termYrs').value)    || 1;
+      const down       = prop * downPct / 100;
+      const financed   = prop - down;
+      const months     = years * 12;
+
+      let monthly = 0, totalProfit = 0, totalPayable = 0;
+
+      if (mode === 'murabaha') {
+        totalProfit   = financed * (rate / 100) * years;
+        totalPayable  = financed + totalProfit;
+        monthly       = totalPayable / months;
+      }
+
+      if (mode === 'musharakah') {
+        const r = rate / 100 / 12;
+        if (r === 0) {
+          monthly = financed / months;
+        } else {
+          monthly = financed * r * Math.pow(1 + r, months) / (Math.pow(1 + r, months) - 1);
+        }
+        totalPayable = monthly * months;
+        totalProfit  = totalPayable - financed;
+      }
+
+      if (mode === 'ijarah') {
+        totalProfit   = financed * (rate / 100) * years;
+        totalPayable  = financed + totalProfit;
+        monthly       = totalPayable / months;
+      }
+
+      const profitPct = financed > 0 ? (totalProfit / financed * 100).toFixed(1) : '0.0';
+
+      document.getElementById('results').innerHTML = `
+        <div class="result-card">
+          <div class="r-label">Down payment</div>
+          <div class="r-value">${fmt(down)}</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">Amount financed</div>
+          <div class="r-value">${fmt(financed)}</div>
+        </div>
+        <div class="result-card primary">
+          <div class="r-label">Monthly installment</div>
+          <div class="r-value">${fmt(monthly)}</div>
+        </div>
+        <div class="result-card warn">
+          <div class="r-label">Total profit / cost</div>
+          <div class="r-value">${fmt(totalProfit)}</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">Total amount payable</div>
+          <div class="r-value">${fmt(totalPayable)}</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="r-label">Effective profit %</div>
+          <div class="r-value">${profitPct}%</div>
+        </div>
+      `;
+    }
+
+    function toggleFaq(btn) {
+      const ans = btn.nextElementSibling;
+      const isOpen = ans.classList.contains('open');
+      btn.classList.toggle('open', !isOpen);
+      ans.classList.toggle('open', !isOpen);
+    }
+
+    calc();
+  </script>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

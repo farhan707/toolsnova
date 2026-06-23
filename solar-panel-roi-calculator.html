@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Panel ROI Calculator — Payback Period & Savings Estimator | ToolsNova</title>
+  <meta name="description" content="Free solar panel ROI calculator. Calculate payback period, lifetime savings, CO2 offset, and return on investment for residential and commercial solar installations. Supports Pakistan, India, UAE, UK, USA and more.">
+  <meta name="keywords" content="solar panel ROI calculator, solar payback period, solar savings calculator, solar panel cost calculator, solar energy savings, solar investment return, solar system calculator Pakistan, solar panel calculator India">
+  <link rel="canonical" href="https://toolsnova.net/solar-panel-roi-calculator">
+
+  <meta property="og:title" content="Solar Panel ROI Calculator — Payback Period & Savings Estimator">
+  <meta property="og:description" content="Calculate your solar panel payback period, lifetime savings, CO2 offset, and ROI instantly. Supports multiple countries and currencies.">
+  <meta property="og:url" content="https://toolsnova.net/solar-panel-roi-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolsNova">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Solar Panel ROI Calculator | ToolsNova">
+  <meta name="twitter:description" content="Free solar ROI calculator — payback period, savings, CO2 offset. Multi-country support.">
+
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S6PPGS7N63');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Solar Panel ROI Calculator",
+    "url": "https://toolsnova.net/solar-panel-roi-calculator",
+    "description": "Calculate solar panel return on investment, payback period, lifetime savings, and CO2 offset for residential and commercial installations.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take for solar panels to pay for themselves?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The average solar panel payback period ranges from 5 to 12 years depending on system cost, electricity rates, daily sunlight hours, and available subsidies. In countries with high electricity tariffs and good sun exposure like Pakistan and India, payback periods can be as short as 4-6 years."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good ROI for solar panels?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A good solar panel ROI is typically 10-20% per year, better than most fixed-income investments. Over a 25-year system lifespan, most residential solar installations return 2-4 times the initial investment in electricity savings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does a 5kW solar system cost in Pakistan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 5kW on-grid solar system in Pakistan typically costs between PKR 700,000 and PKR 1,200,000 depending on panel brand and inverter type. With current NEPRA electricity rates, most 5kW systems achieve payback in 4-7 years."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many solar panels do I need for my home?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide your daily electricity consumption (kWh) by peak sun hours in your area, then add 20% for system losses. A home using 20 kWh/day in Pakistan (5 peak sun hours) needs 20 divided by 5 times 1.2 equals 4.8 kW, or approximately 10-12 panels of 400W each."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is net metering and how does it affect solar ROI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Net metering allows you to export excess solar electricity back to the grid and receive credit on your bill. This significantly improves solar ROI as it monetizes energy you cannot use immediately. Pakistan, India, UAE, and most developed countries support net metering for residential solar installations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much CO2 does a solar panel system offset?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On average, 1 kWh of solar electricity offsets approximately 0.5 kg of CO2. A 5kW solar system generating 25 kWh per day offsets roughly 4-5 tonnes of CO2 per year, equivalent to planting approximately 180-220 trees annually."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .calc-container { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    .tool-header { margin-bottom: 1.5rem; }
+    .tool-header h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .tool-header p { color: var(--text2); font-size: 0.95rem; }
+
+    .preset-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: center; }
+    .preset-bar span { font-size: 0.8rem; color: var(--text3); }
+    .preset-btn {
+      padding: 7px 16px; font-size: 0.8rem; font-weight: 500;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: transparent; cursor: pointer; color: var(--text2);
+      transition: all 0.15s;
+    }
+    .preset-btn:hover, .preset-btn.active { background: rgba(255,180,0,.1); color: var(--text2); border-color: #f59e0b; }
+
+    .main-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; align-items: start;
+    }
+    @media (max-width: 680px) { .main-layout { grid-template-columns: 1fr; } }
+
+    .input-card {
+      background: var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px; margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 0.78rem; font-weight: 600; color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px;
+    }
+
+    .field { margin-bottom: 12px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 0.75rem; color: var(--text3); font-weight: 500; margin-bottom: 4px; }
+    .field input, .field select {
+      padding: 9px 12px; font-size: 0.9rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface2); color: var(--text);
+      width: 100%; box-sizing: border-box; transition: border-color 0.15s;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: #f59e0b; }
+
+    .slider-field { margin-bottom: 14px; }
+    .slider-top { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 5px; }
+    .slider-top .sl-label { color: var(--text3); font-weight: 500; }
+    .slider-top .sl-val { font-weight: 600; color: var(--text); }
+    .slider-field input[type=range] { width: 100%; accent-color: #f59e0b; }
+
+    .results-panel { display: flex; flex-direction: column; gap: 12px; }
+
+    .roi-hero {
+      background: var(--surface)beb; border: 1px solid #f59e0b;
+      border-radius: 14px; padding: 20px; text-align: center;
+    }
+    .roi-hero .rh-label { font-size: 0.78rem; color: var(--text2); font-weight: 500; margin-bottom: 4px; }
+    .roi-hero .rh-value { font-size: 2.2rem; font-weight: 700; color: var(--text2); line-height: 1.1; }
+    .roi-hero .rh-sub { font-size: 0.78rem; color: #b45309; margin-top: 5px; line-height: 1.5; }
+
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .metric-card {
+      background: var(--surface,var(--surface2));
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 14px;
+    }
+    .metric-card .mc-label { font-size: 0.7rem; color: var(--text3); margin-bottom: 3px; }
+    .metric-card .mc-val { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+    .mc-green { color: var(--text) !important; }
+    .mc-blue  { color: var(--text) !important; }
+    .mc-amber { color: #d97706 !important; }
+
+    .co2-card {
+      background: var(--surface2); border: 1px solid #86efac;
+      border-radius: 12px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .co2-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .co2-main { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .co2-sub  { font-size: 0.75rem; color: var(--text); margin-top: 2px; }
+
+    .chart-section { margin-top: 1.75rem; }
+    .section-title {
+      font-size: 0.78rem; font-weight: 600; color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;
+    }
+    .chart-legend { display: flex; gap: 16px; margin-top: 6px; font-size: 12px; color: var(--text3); flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+    .legend-dot { width: 12px; height: 3px; border-radius: 2px; }
+    .chart-wrap { position: relative; width: 100%; height: 220px; }
+
+    .year-table-wrap {
+      overflow-x: auto; max-height: 280px; overflow-y: auto;
+      border: 1px solid var(--border); border-radius: 10px; margin-top: 1rem;
+    }
+    .year-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; min-width: 480px; }
+    .year-table th {
+      position: sticky; top: 0; text-align: right; padding: 8px 10px;
+      background: var(--surface,var(--surface2)); border-bottom: 1px solid var(--border);
+      font-weight: 600; color: var(--text2); font-size: 0.72rem;
+    }
+    .year-table th:first-child { text-align: center; }
+    .year-table td { text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--border)); color: var(--text); }
+    .year-table td:first-child { text-align: center; color: var(--text3); }
+    .year-table tr.payback-row td { background: var(--surface)beb; font-weight: 600; }
+    .year-table tr:last-child td { border-bottom: none; }
+    .year-table tr:nth-child(even):not(.payback-row) td { background: var(--surface,#fafafa); }
+
+    .edu-section { margin-top: 3rem; }
+    .edu-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .edu-section p { font-size: 0.9rem; color: var(--text2); line-height: 1.75; margin-bottom: 1rem; }
+    .edu-section h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+
+    .country-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.75rem; }
+    .country-table th { text-align: left; padding: 8px 10px; background: var(--surface,var(--surface2)); border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text2); font-size: 0.75rem; }
+    .country-table td { padding: 8px 10px; border-bottom: 1px solid var(--border)); color: var(--text); }
+    .country-table tr:last-child td { border-bottom: none; }
+    .c-good { color: var(--text); font-weight: 600; }
+    .c-warn { color: #f59e0b; font-weight: 600; }
+
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; padding: 14px 16px; background: var(--surface2); border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .faq-q .arrow { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 12px 16px 14px; font-size: 0.875rem; color: var(--text2); line-height: 1.7; border-top: 1px solid var(--border); background: var(--surface2); }
+    .faq-a.open { display: block; }
+  
+/* ── Dark theme FAQ fix for 6 new tools ── */
+.faq-q {
+  color: var(--text) !important;
+  background: var(--surface2) !important;
+}
+.faq-q:hover {
+  background: var(--surface3) !important;
+}
+.faq-a {
+  color: var(--text2) !important;
+  background: var(--surface) !important;
+}
+.faq-item {
+  border-color: var(--border) !important;
+}
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+  <main class="tool-main">
+
+    <div class="tool-header">
+      <h1>Solar panel ROI calculator</h1>
+      <p>Calculate payback period, lifetime savings, annual ROI, and CO2 offset for your solar installation. Supports residential and commercial systems across multiple countries.</p>
+    </div>
+
+    <div class="preset-bar">
+      <span>Quick presets:</span>
+      <button class="preset-btn" onclick="applyPreset('pk5',this)">Pakistan 5kW</button>
+      <button class="preset-btn" onclick="applyPreset('pk10',this)">Pakistan 10kW</button>
+      <button class="preset-btn" onclick="applyPreset('in5',this)">India 5kW</button>
+      <button class="preset-btn" onclick="applyPreset('uae5',this)">UAE 5kW</button>
+      <button class="preset-btn" onclick="applyPreset('uk4',this)">UK 4kW</button>
+      <button class="preset-btn" onclick="applyPreset('us6',this)">USA 6kW</button>
+    </div>
+
+    <div class="main-layout">
+
+      <div>
+        <div class="input-card">
+          <div class="card-title">System details</div>
+          <div class="field">
+            <label>Currency</label>
+            <select id="currency" onchange="calc()">
+              <option value="PKR">PKR — Pakistani Rupee</option>
+              <option value="USD">USD — US Dollar</option>
+              <option value="INR">INR — Indian Rupee</option>
+              <option value="AED">AED — UAE Dirham</option>
+              <option value="GBP">GBP — British Pound</option>
+              <option value="SAR">SAR — Saudi Riyal</option>
+              <option value="BDT">BDT — Bangladeshi Taka</option>
+              <option value="MYR">MYR — Malaysian Ringgit</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>System size (kW)</label>
+            <input type="number" id="systemKw" value="5" min="0.5" max="1000" step="0.5" oninput="calc()">
+          </div>
+          <div class="field">
+            <label>Total installation cost</label>
+            <input type="number" id="installCost" value="900000" min="1" oninput="calc()">
+          </div>
+          <div class="field">
+            <label>Government subsidy / incentive</label>
+            <input type="number" id="subsidy" value="0" min="0" oninput="calc()">
+          </div>
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Peak sun hours per day</span>
+              <span class="sl-val" id="sunLabel">5.0 hrs</span>
+            </div>
+            <input type="range" id="sunHours" min="2" max="9" step="0.5" value="5" oninput="document.getElementById('sunLabel').textContent=parseFloat(this.value).toFixed(1)+' hrs';calc()">
+          </div>
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">System efficiency / losses</span>
+              <span class="sl-val" id="effLabel">80%</span>
+            </div>
+            <input type="range" id="sysEff" min="60" max="95" step="1" value="80" oninput="document.getElementById('effLabel').textContent=this.value+'%';calc()">
+          </div>
+        </div>
+
+        <div class="input-card">
+          <div class="card-title">Electricity &amp; financial</div>
+          <div class="field">
+            <label>Current electricity tariff (per kWh)</label>
+            <input type="number" id="tariff" value="50" min="0.01" step="0.5" oninput="calc()">
+          </div>
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Annual electricity price increase</span>
+              <span class="sl-val" id="tariffIncLabel">5.0%</span>
+            </div>
+            <input type="range" id="tariffInc" min="0" max="20" step="0.5" value="5" oninput="document.getElementById('tariffIncLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
+          </div>
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Panel degradation per year</span>
+              <span class="sl-val" id="degradeLabel">0.5%</span>
+            </div>
+            <input type="range" id="degrade" min="0" max="2" step="0.1" value="0.5" oninput="document.getElementById('degradeLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
+          </div>
+          <div class="field">
+            <label>Annual maintenance cost</label>
+            <input type="number" id="maintCost" value="15000" min="0" oninput="calc()">
+          </div>
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">System lifespan (years)</span>
+              <span class="sl-val" id="lifespanLabel">25 yrs</span>
+            </div>
+            <input type="range" id="lifespan" min="10" max="35" step="1" value="25" oninput="document.getElementById('lifespanLabel').textContent=this.value+' yrs';calc()">
+          </div>
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Net metering export (%)</span>
+              <span class="sl-val" id="exportLabel">0%</span>
+            </div>
+            <input type="range" id="exportPct" min="0" max="100" step="5" value="0" oninput="document.getElementById('exportLabel').textContent=this.value+'%';calc()">
+          </div>
+        </div>
+      </div>
+
+      <div class="results-panel">
+        <div class="roi-hero">
+          <div class="rh-label">Payback period</div>
+          <div class="rh-value" id="paybackVal">—</div>
+          <div class="rh-sub" id="paybackSub">Enter your details to calculate</div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-card"><div class="mc-label">Daily generation</div><div class="mc-val mc-blue" id="dailyGen">—</div></div>
+          <div class="metric-card"><div class="mc-label">Annual generation</div><div class="mc-val mc-blue" id="annualGen">—</div></div>
+          <div class="metric-card"><div class="mc-label">Year 1 savings</div><div class="mc-val mc-green" id="yr1Saving">—</div></div>
+          <div class="metric-card"><div class="mc-label">Lifetime savings</div><div class="mc-val mc-green" id="lifeSaving">—</div></div>
+          <div class="metric-card"><div class="mc-label">Net profit</div><div class="mc-val mc-green" id="netProfit">—</div></div>
+          <div class="metric-card"><div class="mc-label">Annual ROI</div><div class="mc-val mc-amber" id="annualROI">—</div></div>
+          <div class="metric-card"><div class="mc-label">Total ROI</div><div class="mc-val mc-amber" id="totalROI">—</div></div>
+          <div class="metric-card"><div class="mc-label">Net cost (after subsidy)</div><div class="mc-val" id="netCost">—</div></div>
+        </div>
+
+        <div class="co2-card">
+          <div class="co2-icon">&#127807;</div>
+          <div>
+            <div class="co2-main" id="co2Annual">CO2 offset: —</div>
+            <div class="co2-sub" id="co2Trees">Equivalent to planting — trees/year</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <div class="section-title">Cumulative savings vs investment over time</div>
+      <div class="chart-wrap">
+        <canvas id="roiChart" role="img" aria-label="Line chart showing cumulative solar savings versus initial investment over system lifespan">Cumulative solar savings chart</canvas>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Cumulative savings</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ef4444;opacity:0.7"></div>Investment cost</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem">
+      <div class="section-title">Year-by-year breakdown</div>
+      <div class="year-table-wrap">
+        <table class="year-table" id="yearTable"></table>
+      </div>
+    </div>
+
+    <div class="edu-section">
+      <h2>Understanding solar panel ROI</h2>
+      <p>Solar panel ROI is calculated by comparing total lifetime savings from electricity generation against initial installation cost and ongoing maintenance. Unlike most investments, solar ROI improves over time as electricity tariffs rise and the system continues generating free electricity well past its payback period.</p>
+      <h3>Key factors that affect solar ROI</h3>
+      <p>Peak sun hours are the single biggest variable — a system in Pakistan (5–6 hrs/day) generates far more than the same system in northern Europe (2–3 hrs/day). Local electricity tariffs, available subsidies, and net metering availability also significantly impact returns. Panel degradation (typically 0.5% per year) slightly reduces output over time but has minimal impact on overall ROI.</p>
+      <h3>Solar potential by country</h3>
+      <table class="country-table">
+        <thead><tr><th>Country</th><th>Avg sun hours</th><th>Typical tariff</th><th>Avg payback</th><th>Net metering</th></tr></thead>
+        <tbody>
+          <tr><td>Pakistan</td><td>5.0–6.0</td><td>PKR 40–70/kWh</td><td class="c-good">4–7 years</td><td>Yes (NEPRA)</td></tr>
+          <tr><td>India</td><td>4.5–6.5</td><td>INR 6–12/kWh</td><td class="c-good">4–7 years</td><td>Yes</td></tr>
+          <tr><td>UAE</td><td>5.5–6.5</td><td>AED 0.23–0.38/kWh</td><td class="c-good">5–8 years</td><td>Yes</td></tr>
+          <tr><td>Saudi Arabia</td><td>5.5–7.0</td><td>SAR 0.18/kWh</td><td class="c-warn">8–12 years</td><td>Limited</td></tr>
+          <tr><td>UK</td><td>2.5–3.5</td><td>GBP 0.25–0.35/kWh</td><td class="c-warn">8–12 years</td><td>Yes (SEG)</td></tr>
+          <tr><td>USA</td><td>4.0–6.0</td><td>USD 0.12–0.25/kWh</td><td class="c-good">6–9 years</td><td>Yes (most states)</td></tr>
+          <tr><td>Bangladesh</td><td>4.5–5.5</td><td>BDT 8–12/kWh</td><td class="c-good">5–8 years</td><td>Limited</td></tr>
+          <tr><td>Malaysia</td><td>4.5–5.5</td><td>MYR 0.35–0.52/kWh</td><td class="c-good">6–9 years</td><td>Yes (NEM)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long does it take for solar panels to pay for themselves? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">The average payback period ranges from 5 to 12 years depending on system cost, electricity rates, daily sunlight hours, and subsidies. In Pakistan and India with high electricity tariffs and good sun exposure, payback can be as short as 4–6 years. After payback, the system generates essentially free electricity for the remaining lifespan.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a good ROI for solar panels? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">A good solar ROI is typically 10–20% per year, better than most fixed-income investments. Over a 25-year lifespan, most residential installations return 2–4 times the initial investment in electricity savings. ROI improves further as electricity tariffs rise.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much does a 5kW solar system cost in Pakistan? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">A 5kW on-grid solar system in Pakistan typically costs PKR 700,000 to PKR 1,200,000 depending on panel brand and inverter type. With current NEPRA electricity rates, most 5kW systems achieve payback in 4–7 years.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How many solar panels do I need for my home? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Divide your daily electricity consumption (kWh) by peak sun hours in your area, then add 20% for system losses. A home using 20 kWh/day in Pakistan (5 peak sun hours) needs 4.8 kW, or approximately 10–12 panels of 400W each.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is net metering and how does it affect solar ROI? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Net metering lets you export excess solar electricity to the grid and receive credit on your bill. This significantly improves ROI by monetizing energy you cannot use immediately. Pakistan, India, UAE, and most developed countries support net metering for residential installations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much CO2 does a solar system offset? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">On average, 1 kWh of solar electricity offsets approximately 0.5 kg of CO2. A 5kW system generating 25 kWh/day offsets roughly 4–5 tonnes of CO2 per year, equivalent to planting 180–220 trees annually.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="related-tools-section">
+    <h2 class="related-title">Related tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="mortgage-affordability-calculator.html">
+        <div class="rc-icon">🏠</div>
+        <div class="rc-name">Mortgage affordability calculator</div>
+        <div class="rc-desc">Find out how much house you can afford on your salary</div>
+      </a>
+      <a class="related-card" href="loan-emi-comparison.html">
+        <div class="rc-icon">📊</div>
+        <div class="rc-name">Loan EMI comparison</div>
+        <div class="rc-desc">Compare up to 4 loans side by side — EMI, interest, amortisation</div>
+      </a>
+      <a class="related-card" href="islamic-mortgage-calculator.html">
+        <div class="rc-icon">🕌</div>
+        <div class="rc-name">Islamic mortgage calculator</div>
+        <div class="rc-desc">Halal home financing — Murabaha, Musharakah & Ijarah. Multi-currency.</div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="app.js?v=19"></script>
+  <script>
+    const SYMBOLS = { PKR:'Rs ',USD:'$',INR:'₹',AED:'AED ',GBP:'£',SAR:'SAR ',BDT:'৳',MYR:'RM ' };
+    const PRESETS = {
+      pk5:  { currency:'PKR', systemKw:5,  installCost:900000,  subsidy:0,     sunHours:5.0, sysEff:80, tariff:50,   tariffInc:8,  degrade:0.5, maintCost:15000, lifespan:25, exportPct:0  },
+      pk10: { currency:'PKR', systemKw:10, installCost:1700000, subsidy:0,     sunHours:5.0, sysEff:80, tariff:50,   tariffInc:8,  degrade:0.5, maintCost:25000, lifespan:25, exportPct:10 },
+      in5:  { currency:'INR', systemKw:5,  installCost:250000,  subsidy:60000, sunHours:5.5, sysEff:80, tariff:8,    tariffInc:5,  degrade:0.5, maintCost:5000,  lifespan:25, exportPct:20 },
+      uae5: { currency:'AED', systemKw:5,  installCost:18000,   subsidy:0,     sunHours:6.0, sysEff:82, tariff:0.30, tariffInc:3,  degrade:0.5, maintCost:500,   lifespan:25, exportPct:30 },
+      uk4:  { currency:'GBP', systemKw:4,  installCost:6500,    subsidy:0,     sunHours:3.0, sysEff:78, tariff:0.28, tariffInc:4,  degrade:0.5, maintCost:100,   lifespan:25, exportPct:50 },
+      us6:  { currency:'USD', systemKw:6,  installCost:16000,   subsidy:4800,  sunHours:5.0, sysEff:80, tariff:0.15, tariffInc:3,  degrade:0.5, maintCost:200,   lifespan:25, exportPct:30 },
+    };
+
+    function applyPreset(key, btn) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const p = PRESETS[key];
+      document.getElementById('currency').value   = p.currency;
+      document.getElementById('systemKw').value   = p.systemKw;
+      document.getElementById('installCost').value= p.installCost;
+      document.getElementById('subsidy').value    = p.subsidy;
+      setSlider('sunHours',  p.sunHours,  'sunLabel',       v => parseFloat(v).toFixed(1)+' hrs');
+      setSlider('sysEff',    p.sysEff,    'effLabel',       v => v+'%');
+      document.getElementById('tariff').value     = p.tariff;
+      setSlider('tariffInc', p.tariffInc, 'tariffIncLabel', v => parseFloat(v).toFixed(1)+'%');
+      setSlider('degrade',   p.degrade,   'degradeLabel',   v => parseFloat(v).toFixed(1)+'%');
+      document.getElementById('maintCost').value  = p.maintCost;
+      setSlider('lifespan',  p.lifespan,  'lifespanLabel',  v => v+' yrs');
+      setSlider('exportPct', p.exportPct, 'exportLabel',    v => v+'%');
+      calc();
+    }
+
+    function setSlider(id, val, labelId, fmt) {
+      document.getElementById(id).value = val;
+      document.getElementById(labelId).textContent = fmt(val);
+    }
+
+    function fmt(n) {
+      const cur = document.getElementById('currency').value;
+      const sym = SYMBOLS[cur] || '';
+      if (['PKR','INR','BDT'].includes(cur)) {
+        if (n >= 10000000) return sym + (n/10000000).toFixed(2) + ' Cr';
+        if (n >= 100000)   return sym + (n/100000).toFixed(2) + ' L';
+      }
+      return sym + Math.round(n).toLocaleString();
+    }
+
+    let roiChart = null;
+
+    function calc() {
+      const systemKw    = parseFloat(document.getElementById('systemKw').value)    || 0;
+      const installCost = parseFloat(document.getElementById('installCost').value) || 0;
+      const subsidy     = parseFloat(document.getElementById('subsidy').value)     || 0;
+      const sunHours    = parseFloat(document.getElementById('sunHours').value)    || 5;
+      const sysEff      = parseFloat(document.getElementById('sysEff').value)      || 80;
+      const tariff      = parseFloat(document.getElementById('tariff').value)      || 0;
+      const tariffInc   = parseFloat(document.getElementById('tariffInc').value)   || 0;
+      const degrade     = parseFloat(document.getElementById('degrade').value)     || 0;
+      const maintCost   = parseFloat(document.getElementById('maintCost').value)   || 0;
+      const lifespan    = parseInt(document.getElementById('lifespan').value)      || 25;
+      const exportPct   = parseFloat(document.getElementById('exportPct').value)   || 0;
+
+      const netCost  = Math.max(0, installCost - subsidy);
+      const dailyKwh = systemKw * sunHours * (sysEff / 100);
+      const annualKwh= dailyKwh * 365;
+
+      let cumSaving = 0, paybackYearExact = null, paybackRowIdx = -1;
+      let currentTariff = tariff, currentEff = 1;
+      const years = [];
+
+      for (let y = 1; y <= lifespan; y++) {
+        const kwh        = annualKwh * currentEff;
+        const selfUse    = kwh * (1 - exportPct / 100);
+        const exported   = kwh * (exportPct / 100);
+        const saving     = (selfUse + exported) * currentTariff - maintCost;
+        cumSaving       += saving;
+
+        if (paybackYearExact === null && cumSaving >= netCost) {
+          const prevCum = cumSaving - saving;
+          paybackYearExact = (y - 1) + (netCost - prevCum) / saving;
+          paybackRowIdx = y - 1;
+        }
+
+        years.push({ y, kwh: Math.round(kwh), saving: Math.round(saving), cumSaving: Math.round(cumSaving), net: Math.round(cumSaving - netCost) });
+        currentTariff *= (1 + tariffInc / 100);
+        currentEff    *= (1 - degrade / 100);
+      }
+
+      const yr1    = years[0]?.saving || 0;
+      const life   = years[lifespan-1]?.cumSaving || 0;
+      const profit = life - netCost;
+      const annROI = netCost > 0 ? (yr1 / netCost * 100) : 0;
+      const totROI = netCost > 0 ? (profit / netCost * 100) : 0;
+      const co2    = annualKwh * 0.5 / 1000;
+      const trees  = Math.round(co2 * 45);
+
+      document.getElementById('paybackVal').textContent  = paybackYearExact ? paybackYearExact.toFixed(1) + ' years' : 'Beyond lifespan';
+      document.getElementById('paybackSub').textContent  = paybackYearExact
+        ? `Free electricity for ${(lifespan - paybackYearExact).toFixed(1)} more years after payback`
+        : 'Consider reducing cost or increasing tariff input';
+      document.getElementById('dailyGen').textContent    = dailyKwh.toFixed(1) + ' kWh';
+      document.getElementById('annualGen').textContent   = Math.round(annualKwh).toLocaleString() + ' kWh';
+      document.getElementById('yr1Saving').textContent   = fmt(yr1);
+      document.getElementById('lifeSaving').textContent  = fmt(life);
+      document.getElementById('netProfit').textContent   = fmt(profit);
+      document.getElementById('annualROI').textContent   = annROI.toFixed(1) + '%';
+      document.getElementById('totalROI').textContent    = totROI.toFixed(0) + '%';
+      document.getElementById('netCost').textContent     = fmt(netCost);
+      document.getElementById('co2Annual').textContent   = `CO2 offset: ${co2.toFixed(1)} tonnes/year`;
+      document.getElementById('co2Trees').textContent    = `Equivalent to planting ${trees.toLocaleString()} trees/year`;
+
+      if (roiChart) roiChart.destroy();
+      const ctx = document.getElementById('roiChart').getContext('2d');
+      roiChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: years.map(y => 'Yr '+y.y),
+          datasets: [
+            { label:'Cumulative savings', data: years.map(y => y.cumSaving), borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.08)', fill:true, tension:0.3, pointRadius:0, borderWidth:2 },
+            { label:'Investment cost',    data: years.map(() => Math.round(netCost)), borderColor:'#ef4444', borderDash:[6,4], borderWidth:1.5, pointRadius:0, fill:false }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + fmt(c.parsed.y) } }
+          },
+          scales: {
+            x: { ticks: { autoSkip:true, maxTicksLimit:10, color:'#888', font:{size:11} }, grid:{ color:'rgba(0,0,0,0.04)' } },
+            y: { ticks: { color:'#888', font:{size:11}, callback: v => fmt(v) }, grid:{ color:'rgba(0,0,0,0.04)' } }
+          }
+        }
+      });
+
+      document.getElementById('yearTable').innerHTML = `
+        <thead><tr><th>Year</th><th>Generation (kWh)</th><th>Annual savings</th><th>Cumulative savings</th><th>Net position</th></tr></thead>
+        <tbody>${years.map((y,i) => `
+          <tr class="${i===paybackRowIdx?'payback-row':''}">
+            <td>${y.y}${i===paybackRowIdx?' &#10003;':''}</td>
+            <td>${y.kwh.toLocaleString()}</td>
+            <td>${fmt(y.saving)}</td>
+            <td>${fmt(y.cumSaving)}</td>
+            <td style="color:${y.net>=0?'#10b981':'#ef4444'};font-weight:${y.net>=0?'600':'400'}">${y.net>=0?'+':''}${fmt(y.net)}</td>
+          </tr>`).join('')}
+        </tbody>`;
+    }
+
+    function toggleFaq(btn) {
+      const ans = btn.nextElementSibling;
+      const open = ans.classList.contains('open');
+      btn.classList.toggle('open', !open);
+      ans.classList.toggle('open', !open);
+    }
+
+    calc();
+  </script>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

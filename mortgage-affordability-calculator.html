@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Affordability Calculator — How Much House Can I Afford? | ToolsNova</title>
+  <meta name="description" content="Free mortgage affordability calculator. Find out how much house you can afford based on your income, expenses, and debt. Calculate maximum loan amount, monthly payment, and required salary for any home price. Supports Pakistan, India, UAE, UK, USA.">
+  <meta name="keywords" content="mortgage affordability calculator, how much house can I afford, home loan affordability, maximum mortgage calculator, salary to home loan calculator, home buying calculator, mortgage income calculator Pakistan, house loan eligibility calculator">
+  <link rel="canonical" href="https://toolsnova.net/mortgage-affordability-calculator">
+
+  <meta property="og:title" content="Mortgage Affordability Calculator — How Much House Can I Afford?">
+  <meta property="og:description" content="Calculate how much mortgage you can afford based on your income, debts, and expenses. Find your maximum loan, required income, and monthly payment instantly.">
+  <meta property="og:url" content="https://toolsnova.net/mortgage-affordability-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolsNova">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mortgage Affordability Calculator | ToolsNova">
+  <meta name="twitter:description" content="How much house can you afford? Calculate max loan, monthly payment and required salary instantly.">
+
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S6PPGS7N63');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Affordability Calculator",
+    "url": "https://toolsnova.net/mortgage-affordability-calculator",
+    "description": "Calculate how much mortgage you can afford based on income, debts, and expenses. Find maximum loan amount, monthly payment, and required salary for any home price.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much mortgage can I afford on my salary?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most banks follow the 28/36 rule: your mortgage payment should not exceed 28% of your gross monthly income, and total debt payments should not exceed 36%. For example, if your monthly salary is PKR 150,000, your maximum mortgage payment should be around PKR 42,000. Use this calculator to find your exact affordability based on your income and existing debts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the debt-to-income ratio for a mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The debt-to-income (DTI) ratio is the percentage of your gross monthly income that goes toward debt payments. Most lenders require a maximum DTI of 43% including the new mortgage. A DTI below 36% is considered good, and below 28% for housing costs alone is ideal. A high DTI ratio reduces how much mortgage you can qualify for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much down payment do I need for a home?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most banks require a minimum down payment of 10% to 30% of the property price. In Pakistan, banks typically require 20-30%. In the UK, a 10% deposit is common for first-time buyers, while 20-25% gets better interest rates. A larger down payment reduces your loan amount, monthly payment, and total interest paid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 28/36 rule for mortgage affordability?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 28/36 rule is a guideline used by most lenders: spend no more than 28% of gross monthly income on housing costs (mortgage, insurance, taxes), and no more than 36% on total debt (housing plus car loans, student loans, credit cards). Following this rule helps ensure your mortgage remains manageable even if your financial situation changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What salary do I need to buy a house worth PKR 10 million?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a PKR 10 million home with 20% down payment (PKR 2 million), you would need a loan of PKR 8 million. At 20% interest rate for 15 years, the monthly EMI would be approximately PKR 96,000. Using the 28% housing rule, you would need a gross monthly income of at least PKR 342,000, or approximately PKR 4.1 million annually."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my credit score affect mortgage affordability?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, your credit score directly affects the interest rate you are offered, which significantly impacts affordability. A higher credit score typically means a lower interest rate, which reduces your monthly payment and allows you to afford a larger loan. In Pakistan and South Asia, credit history with banks and the CIBIL/eCIB score are key factors in mortgage approval."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .calc-container { max-width: 940px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    .tool-header { margin-bottom: 1.5rem; }
+    .tool-header h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .tool-header p { color: var(--text2); font-size: 0.95rem; }
+
+    .mode-tabs {
+      display: flex; border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden; margin-bottom: 1.5rem;
+      max-width: 500px;
+    }
+    .mode-tab {
+      flex: 1; padding: 10px 12px; font-size: 0.85rem; font-weight: 500;
+      background: transparent; border: none; cursor: pointer;
+      color: var(--text2); transition: all 0.15s; text-align: center;
+    }
+    .mode-tab:not(:last-child) { border-right: 1px solid var(--border); }
+    .mode-tab.active { background: var(--accent-dim); color: var(--text); font-weight: 600; }
+
+    .preset-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: center; }
+    .preset-bar span { font-size: 0.8rem; color: var(--text3); }
+    .preset-btn {
+      padding: 6px 14px; font-size: 0.78rem; font-weight: 500;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: transparent; cursor: pointer; color: var(--text2);
+      transition: all 0.15s;
+    }
+    .preset-btn:hover, .preset-btn.active { background: var(--accent-dim); color: var(--text); border-color: var(--text); }
+
+    .main-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; align-items: start;
+    }
+    @media (max-width: 680px) { .main-layout { grid-template-columns: 1fr; } }
+
+    .input-card {
+      background: var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px; margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 0.78rem; font-weight: 600; color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px;
+    }
+
+    .field { margin-bottom: 12px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 0.75rem; color: var(--text3); font-weight: 500; margin-bottom: 4px; }
+    .field-hint { font-size: 0.7rem; color: var(--text2); margin-top: 3px; }
+    .field input, .field select {
+      padding: 9px 12px; font-size: 0.9rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface2); color: var(--text);
+      width: 100%; box-sizing: border-box; transition: border-color 0.15s;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--text); }
+
+    .slider-field { margin-bottom: 14px; }
+    .slider-top { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 5px; }
+    .sl-label { color: var(--text3); font-weight: 500; }
+    .sl-val { font-weight: 600; color: var(--text); }
+    input[type=range] { width: 100%; accent-color: var(--text); }
+
+    /* Results */
+    .results-panel { display: flex; flex-direction: column; gap: 12px; }
+
+    .hero-card {
+      border-radius: 14px; padding: 20px; text-align: center;
+      background: var(--accent-dim); border: 1px solid #bfdbfe;
+    }
+    .hero-label { font-size: 0.78rem; color: var(--text); font-weight: 500; margin-bottom: 4px; }
+    .hero-value { font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1.1; }
+    .hero-sub { font-size: 0.78rem; color: var(--text2); margin-top: 5px; }
+
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .metric-card {
+      background: var(--surface,var(--surface2));
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 14px;
+    }
+    .mc-label { font-size: 0.7rem; color: var(--text3); margin-bottom: 3px; }
+    .mc-val { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+    .mc-green { color: var(--text) !important; }
+    .mc-blue  { color: var(--text) !important; }
+    .mc-amber { color: #d97706 !important; }
+    .mc-red   { color: #ef4444 !important; }
+
+    /* DTI gauge */
+    .dti-card {
+      background: var(--surface,var(--surface2));
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .dti-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .dti-title { font-size: 0.78rem; font-weight: 600; color: var(--text2); }
+    .dti-value { font-size: 1rem; font-weight: 700; }
+    .dti-bar-bg { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
+    .dti-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s; }
+    .dti-zones { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--text2); }
+
+    /* Affordability verdict */
+    .verdict-card {
+      border-radius: 12px; padding: 14px 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .verdict-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .verdict-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 3px; }
+    .verdict-desc  { font-size: 0.78rem; line-height: 1.55; }
+    .verdict-green { background: var(--surface2); border: 1px solid #86efac; }
+    .verdict-green .verdict-title { color: var(--text); }
+    .verdict-green .verdict-desc  { color: var(--text); }
+    .verdict-amber { background: var(--surface)beb; border: 1px solid #fcd34d; }
+    .verdict-amber .verdict-title { color: var(--text2); }
+    .verdict-amber .verdict-desc  { color: var(--text2); }
+    .verdict-red   { background: var(--surface)7f7; border: 1px solid #fca5a5; }
+    .verdict-red .verdict-title   { color: var(--text2); }
+    .verdict-red .verdict-desc    { color: var(--text2); }
+
+    /* Breakdown donut area */
+    .breakdown-section { margin-top: 1.75rem; }
+    .section-title {
+      font-size: 0.78rem; font-weight: 600; color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;
+    }
+    .breakdown-layout { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: center; }
+    @media (max-width: 520px) { .breakdown-layout { grid-template-columns: 1fr; } }
+    .donut-wrap { position: relative; width: 180px; height: 180px; margin: 0 auto; }
+    .donut-wrap canvas { width: 180px !important; height: 180px !important; }
+    .donut-center {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center; pointer-events: none;
+    }
+    .donut-center .dc-val { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .donut-center .dc-label { font-size: 0.65rem; color: var(--text3); }
+
+    .breakdown-legend { display: flex; flex-direction: column; gap: 10px; }
+    .legend-row { display: flex; justify-content: space-between; align-items: center; }
+    .legend-left { display: flex; align-items: center; gap: 8px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+    .legend-name { font-size: 0.82rem; color: var(--text); }
+    .legend-pct  { font-size: 0.75rem; color: var(--text3); }
+    .legend-amt  { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+    /* Salary required section */
+    .salary-section { margin-top: 1.75rem; }
+    .salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 10px; }
+    .salary-card {
+      background: var(--surface,var(--surface2));
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 14px;
+    }
+    .sc-price { font-size: 0.78rem; color: var(--text3); margin-bottom: 4px; }
+    .sc-salary { font-size: 1rem; font-weight: 600; color: var(--text); }
+    .sc-note   { font-size: 0.68rem; color: var(--text2); margin-top: 2px; }
+
+    .edu-section { margin-top: 3rem; }
+    .edu-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .edu-section p { font-size: 0.9rem; color: var(--text2); line-height: 1.75; margin-bottom: 1rem; }
+    .edu-section h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0.75rem; }
+    @media (max-width: 520px) { .rules-grid { grid-template-columns: 1fr; } }
+    .rule-card {
+      background: var(--surface,var(--surface2));
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px;
+    }
+    .rule-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .rule-desc  { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+
+    .faq-section { margin-top: 3rem; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; padding: 14px 16px; background: var(--surface2); border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .faq-q .arrow { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 12px 16px 14px; font-size: 0.875rem; color: var(--text2); line-height: 1.7; border-top: 1px solid var(--border); background: var(--surface2); }
+    .faq-a.open { display: block; }
+  
+/* ── Dark theme FAQ fix for 6 new tools ── */
+.faq-q {
+  color: var(--text) !important;
+  background: var(--surface2) !important;
+}
+.faq-q:hover {
+  background: var(--surface3) !important;
+}
+.faq-a {
+  color: var(--text2) !important;
+  background: var(--surface) !important;
+}
+.faq-item {
+  border-color: var(--border) !important;
+}
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+  <main class="tool-main">
+
+    <div class="tool-header">
+      <h1>Mortgage affordability calculator</h1>
+      <p>Find out how much house you can afford based on your income, debts, and down payment. Calculate maximum loan, required salary, and monthly payment instantly.</p>
+    </div>
+
+    <div class="mode-tabs">
+      <button class="mode-tab active" onclick="switchMode('afford', this)">How much can I afford?</button>
+      <button class="mode-tab" onclick="switchMode('qualify', this)">Can I afford this house?</button>
+      <button class="mode-tab" onclick="switchMode('salary', this)">What salary do I need?</button>
+    </div>
+
+    <div class="preset-bar">
+      <span>Presets:</span>
+      <button class="preset-btn" onclick="applyPreset('pk150',this)">PKR 150K salary</button>
+      <button class="preset-btn" onclick="applyPreset('pk300',this)">PKR 300K salary</button>
+      <button class="preset-btn" onclick="applyPreset('usd5k',this)">USD 5K salary</button>
+      <button class="preset-btn" onclick="applyPreset('gbp4k',this)">GBP 4K salary</button>
+      <button class="preset-btn" onclick="applyPreset('inr80k',this)">INR 80K salary</button>
+    </div>
+
+    <div class="main-layout">
+
+      <div>
+        <div class="input-card">
+          <div class="card-title">Your financial details</div>
+
+          <div class="field">
+            <label>Currency</label>
+            <select id="currency" onchange="calc()">
+              <option value="PKR">PKR — Pakistani Rupee</option>
+              <option value="USD">USD — US Dollar</option>
+              <option value="INR">INR — Indian Rupee</option>
+              <option value="AED">AED — UAE Dirham</option>
+              <option value="GBP">GBP — British Pound</option>
+              <option value="SAR">SAR — Saudi Riyal</option>
+              <option value="BDT">BDT — Bangladeshi Taka</option>
+              <option value="MYR">MYR — Malaysian Ringgit</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Gross monthly income</label>
+            <input type="number" id="income" value="150000" min="1" oninput="calc()">
+            <div class="field-hint">Before tax / combined household income</div>
+          </div>
+
+          <div class="field">
+            <label>Monthly existing debt payments</label>
+            <input type="number" id="existingDebt" value="0" min="0" oninput="calc()">
+            <div class="field-hint">Car loans, credit cards, personal loans etc.</div>
+          </div>
+
+          <div class="field" id="housePriceField" style="display:none">
+            <label>Target home price</label>
+            <input type="number" id="homePrice" value="10000000" min="1" oninput="calc()">
+          </div>
+
+          <div class="field" id="targetSalaryField" style="display:none">
+            <label>Target home price</label>
+            <input type="number" id="homePriceSalary" value="10000000" min="1" oninput="calc()">
+          </div>
+
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Down payment (%)</span>
+              <span class="sl-val" id="downLabel">20%</span>
+            </div>
+            <input type="range" id="downPct" min="5" max="60" step="1" value="20" oninput="document.getElementById('downLabel').textContent=this.value+'%';calc()">
+          </div>
+
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Annual interest rate</span>
+              <span class="sl-val" id="rateLabel">20.0%</span>
+            </div>
+            <input type="range" id="intRate" min="1" max="35" step="0.5" value="20" oninput="document.getElementById('rateLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
+          </div>
+
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Loan tenure</span>
+              <span class="sl-val" id="tenureLabel">15 years</span>
+            </div>
+            <input type="range" id="tenure" min="1" max="30" step="1" value="15" oninput="document.getElementById('tenureLabel').textContent=this.value+' years';calc()">
+          </div>
+
+        </div>
+
+        <div class="input-card">
+          <div class="card-title">Additional monthly costs</div>
+
+          <div class="field">
+            <label>Monthly property tax / maintenance</label>
+            <input type="number" id="propTax" value="0" min="0" oninput="calc()">
+          </div>
+          <div class="field">
+            <label>Monthly home insurance</label>
+            <input type="number" id="insurance" value="0" min="0" oninput="calc()">
+          </div>
+
+          <div class="slider-field">
+            <div class="slider-top">
+              <span class="sl-label">Max housing cost ratio</span>
+              <span class="sl-val" id="housingRatioLabel">28%</span>
+            </div>
+            <input type="range" id="housingRatio" min="20" max="50" step="1" value="28" oninput="document.getElementById('housingRatioLabel').textContent=this.value+'%';calc()">
+            <div class="field-hint" style="margin-top:4px;font-size:0.7rem;color:var(--text2)">Conservative: 25% &nbsp;|&nbsp; Standard: 28% &nbsp;|&nbsp; Aggressive: 35%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-panel">
+        <div class="hero-card">
+          <div class="hero-label" id="heroLabel">Maximum home price you can afford</div>
+          <div class="hero-value" id="heroValue">—</div>
+          <div class="hero-sub" id="heroSub">Enter your details to calculate</div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-card"><div class="mc-label">Max loan amount</div><div class="mc-val mc-blue" id="maxLoan">—</div></div>
+          <div class="metric-card"><div class="mc-label">Monthly EMI</div><div class="mc-val mc-blue" id="monthlyEMI">—</div></div>
+          <div class="metric-card"><div class="mc-label">Down payment needed</div><div class="mc-val mc-amber" id="downPayment">—</div></div>
+          <div class="metric-card"><div class="mc-label">Total housing cost/mo</div><div class="mc-val" id="totalHousingCost">—</div></div>
+          <div class="metric-card"><div class="mc-label">Total interest paid</div><div class="mc-val mc-amber" id="totalInterest">—</div></div>
+          <div class="metric-card"><div class="mc-label">Total amount payable</div><div class="mc-val" id="totalPayable">—</div></div>
+        </div>
+
+        <div class="dti-card">
+          <div class="dti-top">
+            <span class="dti-title">Debt-to-income ratio (DTI)</span>
+            <span class="dti-value" id="dtiValue">—</span>
+          </div>
+          <div class="dti-bar-bg"><div class="dti-bar-fill" id="dtiFill" style="width:0%"></div></div>
+          <div class="dti-zones"><span>0%</span><span>28% housing</span><span>36% good</span><span>43% max</span><span>50%+</span></div>
+        </div>
+
+        <div class="verdict-card verdict-green" id="verdictCard">
+          <div class="verdict-icon" id="verdictIcon">&#9989;</div>
+          <div>
+            <div class="verdict-title" id="verdictTitle">Enter your details</div>
+            <div class="verdict-desc" id="verdictDesc">Fill in your income and loan details to see your affordability verdict.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="breakdown-section">
+      <div class="section-title">Monthly payment breakdown</div>
+      <div class="breakdown-layout">
+        <div class="donut-wrap">
+          <canvas id="donutChart" role="img" aria-label="Donut chart showing monthly payment breakdown"></canvas>
+          <div class="donut-center">
+            <div class="dc-val" id="donutCenter">—</div>
+            <div class="dc-label">per month</div>
+          </div>
+        </div>
+        <div class="breakdown-legend" id="breakdownLegend"></div>
+      </div>
+    </div>
+
+    <!-- Salary required table (mode: afford / qualify only) -->
+    <div class="salary-section" id="salarySection">
+      <div class="section-title">Minimum salary required for different home prices</div>
+      <div class="salary-grid" id="salaryGrid"></div>
+    </div>
+
+    <div class="edu-section">
+      <h2>How mortgage affordability is calculated</h2>
+      <p>Mortgage affordability is determined by your income, existing debts, down payment, interest rate, and loan tenure. Lenders use standardized rules to ensure your monthly mortgage payment remains manageable relative to your income.</p>
+
+      <h3>The key affordability rules</h3>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-title">28% housing rule</div>
+          <div class="rule-desc">Your total monthly housing cost (EMI + insurance + taxes) should not exceed 28% of your gross monthly income. This is the front-end debt-to-income ratio.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-title">36% total debt rule</div>
+          <div class="rule-desc">All monthly debt payments combined (mortgage + car loans + credit cards + student loans) should not exceed 36% of gross income. This is the back-end DTI.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-title">43% maximum DTI</div>
+          <div class="rule-desc">Most banks will not approve a mortgage if your total DTI exceeds 43%. Some lenders allow up to 50% for strong credit profiles, but this is risky territory.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-title">20% down payment rule</div>
+          <div class="rule-desc">A 20% down payment is the gold standard — it eliminates PMI/insurance requirements, reduces monthly payments, and signals financial stability to lenders.</div>
+        </div>
+      </div>
+
+      <h3>Tips to improve mortgage affordability</h3>
+      <p>Increasing your down payment directly reduces the loan amount and monthly EMI. Paying off existing debts improves your DTI ratio and may qualify you for a larger loan. Choosing a longer tenure reduces monthly payments but increases total interest. A co-borrower (spouse or family member) can combine income to qualify for a larger loan.</p>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much mortgage can I afford on my salary? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Most banks follow the 28/36 rule: your mortgage payment should not exceed 28% of gross monthly income, and total debt payments should not exceed 36%. If your monthly salary is PKR 150,000, your maximum mortgage payment should be around PKR 42,000. Use this calculator to find your exact affordability.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the debt-to-income ratio for a mortgage? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">The DTI ratio is the percentage of gross monthly income that goes toward debt payments. Most lenders require a maximum DTI of 43% including the new mortgage. Below 36% is considered good, and below 28% for housing alone is ideal. A high DTI reduces how much mortgage you can qualify for.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much down payment do I need for a home? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Most banks require 10% to 30% of the property price. In Pakistan, banks typically require 20–30%. In the UK, 10% is common for first-time buyers while 20–25% gets better rates. A larger down payment reduces your loan, monthly payment, and total interest paid.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the 28/36 rule for mortgage affordability? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">The 28/36 rule: spend no more than 28% of gross monthly income on housing costs, and no more than 36% on total debt. Following this rule ensures your mortgage remains manageable even if your financial situation changes.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What salary do I need to buy a house worth PKR 10 million? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">For a PKR 10 million home with 20% down (PKR 2M), you need an PKR 8M loan. At 20% interest for 15 years, the monthly EMI is approximately PKR 96,000. Using the 28% housing rule, you need a gross monthly income of at least PKR 342,000, or about PKR 4.1M annually.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does my credit score affect mortgage affordability? <span class="arrow">&#8964;</span></button>
+        <div class="faq-a">Yes — your credit score directly affects the interest rate offered, which significantly impacts affordability. A higher credit score means a lower rate, reducing monthly payment and allowing a larger loan. In Pakistan and South Asia, credit history with banks and the eCIB score are key factors in mortgage approval.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="related-tools-section">
+    <h2 class="related-title">Related finance tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="islamic-mortgage-calculator.html">
+        <div class="rc-icon">🕌</div>
+        <div class="rc-name">Islamic mortgage calculator</div>
+        <div class="rc-desc">Halal home financing — Murabaha, Musharakah & Ijarah. Multi-currency.</div>
+      </a>
+      <a class="related-card" href="loan-emi-comparison.html">
+        <div class="rc-icon">📊</div>
+        <div class="rc-name">Loan EMI comparison</div>
+        <div class="rc-desc">Compare up to 4 loans side by side — EMI, interest, amortisation</div>
+      </a>
+      <a class="related-card" href="solar-panel-roi-calculator.html">
+        <div class="rc-icon">☀️</div>
+        <div class="rc-name">Solar panel ROI calculator</div>
+        <div class="rc-desc">Calculate payback period and lifetime savings for solar</div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="app.js?v=19"></script>
+  <script>
+    const SYMBOLS = { PKR:'Rs ',USD:'$',INR:'₹',AED:'AED ',GBP:'£',SAR:'SAR ',BDT:'৳',MYR:'RM ' };
+    const DONUT_COLORS = ['#2563eb','#10b981','#f59e0b','#8b5cf6'];
+
+    const PRESETS = {
+      pk150: { currency:'PKR', income:150000, existingDebt:0,  downPct:20, intRate:20,  tenure:15, propTax:0,   insurance:0,   housingRatio:28, homePrice:10000000 },
+      pk300: { currency:'PKR', income:300000, existingDebt:0,  downPct:20, intRate:20,  tenure:20, propTax:0,   insurance:0,   housingRatio:28, homePrice:20000000 },
+      usd5k: { currency:'USD', income:5000,   existingDebt:300,downPct:20, intRate:7,   tenure:30, propTax:200, insurance:100, housingRatio:28, homePrice:250000   },
+      gbp4k: { currency:'GBP', income:4000,   existingDebt:200,downPct:15, intRate:5.5, tenure:25, propTax:150, insurance:80,  housingRatio:28, homePrice:200000   },
+      inr80k:{ currency:'INR', income:80000,  existingDebt:0,  downPct:20, intRate:9,   tenure:20, propTax:0,   insurance:0,   housingRatio:28, homePrice:5000000  },
+    };
+
+    let mode = 'afford';
+    let donutChart = null;
+
+    function switchMode(m, el) {
+      mode = m;
+      document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('housePriceField').style.display   = m === 'qualify' ? '' : 'none';
+      document.getElementById('targetSalaryField').style.display = m === 'salary'  ? '' : 'none';
+      document.getElementById('salarySection').style.display     = m === 'salary'  ? 'none' : '';
+
+      const heroLabel = document.getElementById('heroLabel');
+      if (m === 'afford')  heroLabel.textContent = 'Maximum home price you can afford';
+      if (m === 'qualify') heroLabel.textContent = 'Monthly payment for this home';
+      if (m === 'salary')  heroLabel.textContent = 'Minimum monthly salary needed';
+      calc();
+    }
+
+    function applyPreset(key, btn) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const p = PRESETS[key];
+      document.getElementById('currency').value      = p.currency;
+      document.getElementById('income').value        = p.income;
+      document.getElementById('existingDebt').value  = p.existingDebt;
+      document.getElementById('homePrice').value     = p.homePrice;
+      document.getElementById('homePriceSalary').value = p.homePrice;
+      setSlider('downPct',      p.downPct,      'downLabel',        v => v+'%');
+      setSlider('intRate',      p.intRate,      'rateLabel',        v => parseFloat(v).toFixed(1)+'%');
+      setSlider('tenure',       p.tenure,       'tenureLabel',      v => v+' years');
+      setSlider('housingRatio', p.housingRatio, 'housingRatioLabel',v => v+'%');
+      document.getElementById('propTax').value   = p.propTax;
+      document.getElementById('insurance').value = p.insurance;
+      calc();
+    }
+
+    function setSlider(id, val, labelId, fmt) {
+      document.getElementById(id).value = val;
+      document.getElementById(labelId).textContent = fmt(val);
+    }
+
+    function fmt(n) {
+      const cur = document.getElementById('currency').value;
+      const sym = SYMBOLS[cur] || '';
+      if (['PKR','INR','BDT'].includes(cur)) {
+        if (Math.abs(n) >= 10000000) return sym + (n/10000000).toFixed(2) + ' Cr';
+        if (Math.abs(n) >= 100000)   return sym + (n/100000).toFixed(2) + ' L';
+      }
+      return sym + Math.round(n).toLocaleString();
+    }
+
+    function calcEMI(principal, annualRate, years) {
+      const r = annualRate / 100 / 12;
+      const n = years * 12;
+      if (r === 0 || principal <= 0) return { emi: principal / n, total: principal, interest: 0 };
+      const emi = principal * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
+      return { emi, total: emi * n, interest: emi * n - principal };
+    }
+
+    function maxAffordableLoan(maxMonthlyPayment, annualRate, years) {
+      const r = annualRate / 100 / 12;
+      const n = years * 12;
+      if (r === 0) return maxMonthlyPayment * n;
+      return maxMonthlyPayment * (Math.pow(1+r,n)-1) / (r * Math.pow(1+r,n));
+    }
+
+    function calc() {
+      const income       = parseFloat(document.getElementById('income').value)       || 0;
+      const existingDebt = parseFloat(document.getElementById('existingDebt').value) || 0;
+      const downPct      = parseFloat(document.getElementById('downPct').value)      || 20;
+      const intRate      = parseFloat(document.getElementById('intRate').value)      || 10;
+      const tenure       = parseFloat(document.getElementById('tenure').value)       || 15;
+      const propTax      = parseFloat(document.getElementById('propTax').value)      || 0;
+      const insurance    = parseFloat(document.getElementById('insurance').value)    || 0;
+      const housingRatio = parseFloat(document.getElementById('housingRatio').value) || 28;
+
+      const maxHousingBudget = income * housingRatio / 100;
+      const maxTotalDebt     = income * 0.43;
+      const debtHeadroom     = maxTotalDebt - existingDebt;
+      const maxEMI           = Math.max(0, Math.min(maxHousingBudget, debtHeadroom) - propTax - insurance);
+
+      let heroVal, heroSub, loanAmt, homeVal, emi, totalInt, totalPay, downAmt;
+
+      if (mode === 'afford') {
+        loanAmt  = maxAffordableLoan(maxEMI, intRate, tenure);
+        homeVal  = loanAmt / (1 - downPct/100);
+        downAmt  = homeVal * downPct / 100;
+        const r  = calcEMI(loanAmt, intRate, tenure);
+        emi      = r.emi;
+        totalInt = r.interest;
+        totalPay = r.total;
+        heroVal  = fmt(homeVal);
+        heroSub  = `Based on ${housingRatio}% housing ratio · ${downPct}% down payment`;
+      } else if (mode === 'qualify') {
+        homeVal  = parseFloat(document.getElementById('homePrice').value) || 0;
+        downAmt  = homeVal * downPct / 100;
+        loanAmt  = homeVal - downAmt;
+        const r  = calcEMI(loanAmt, intRate, tenure);
+        emi      = r.emi;
+        totalInt = r.interest;
+        totalPay = r.total;
+        heroVal  = fmt(emi + propTax + insurance);
+        heroSub  = `Total monthly cost for this home`;
+      } else {
+        homeVal  = parseFloat(document.getElementById('homePriceSalary').value) || 0;
+        downAmt  = homeVal * downPct / 100;
+        loanAmt  = homeVal - downAmt;
+        const r  = calcEMI(loanAmt, intRate, tenure);
+        emi      = r.emi;
+        totalInt = r.interest;
+        totalPay = r.total;
+        const totalHousing = emi + propTax + insurance;
+        const reqIncome    = totalHousing / (housingRatio / 100);
+        heroVal  = fmt(reqIncome);
+        heroSub  = `Gross monthly salary needed (${housingRatio}% housing rule)`;
+      }
+
+      const totalHousingCost = emi + propTax + insurance;
+      const totalDTI = (totalHousingCost + existingDebt) / income * 100;
+      const housingDTI = totalHousingCost / income * 100;
+
+      document.getElementById('heroValue').textContent      = heroVal;
+      document.getElementById('heroSub').textContent        = heroSub;
+      document.getElementById('maxLoan').textContent        = fmt(loanAmt);
+      document.getElementById('monthlyEMI').textContent     = fmt(emi);
+      document.getElementById('downPayment').textContent    = fmt(downAmt);
+      document.getElementById('totalHousingCost').textContent = fmt(totalHousingCost);
+      document.getElementById('totalInterest').textContent  = fmt(totalInt);
+      document.getElementById('totalPayable').textContent   = fmt(totalPay);
+
+      // DTI bar
+      const dtiPct = Math.min(100, totalDTI);
+      const dtiFill = document.getElementById('dtiFill');
+      dtiFill.style.width = dtiPct.toFixed(1) + '%';
+      dtiFill.style.background = totalDTI <= 28 ? '#10b981' : totalDTI <= 36 ? '#3b82f6' : totalDTI <= 43 ? '#f59e0b' : '#ef4444';
+      document.getElementById('dtiValue').textContent = totalDTI.toFixed(1) + '%';
+      document.getElementById('dtiValue').style.color = totalDTI <= 36 ? '#10b981' : totalDTI <= 43 ? '#f59e0b' : '#ef4444';
+
+      // Verdict
+      const vc = document.getElementById('verdictCard');
+      const vt = document.getElementById('verdictTitle');
+      const vd = document.getElementById('verdictDesc');
+      const vi = document.getElementById('verdictIcon');
+      vc.className = 'verdict-card';
+      if (totalDTI <= 28) {
+        vc.classList.add('verdict-green');
+        vi.textContent = '✅'; vt.textContent = 'Excellent affordability';
+        vd.textContent = `Your housing costs are ${housingDTI.toFixed(1)}% of income — well within the 28% guideline. You have strong financial headroom.`;
+      } else if (totalDTI <= 36) {
+        vc.classList.add('verdict-green');
+        vi.textContent = '✅'; vt.textContent = 'Good affordability';
+        vd.textContent = `Your total DTI is ${totalDTI.toFixed(1)}% — within the safe 36% zone. Most lenders will approve this loan.`;
+      } else if (totalDTI <= 43) {
+        vc.classList.add('verdict-amber');
+        vi.textContent = '⚠️'; vt.textContent = 'Manageable but stretched';
+        vd.textContent = `Your DTI is ${totalDTI.toFixed(1)}%. Some lenders will approve this but you should reduce other debts or increase your down payment to improve your position.`;
+      } else {
+        vc.classList.add('verdict-red');
+        vi.textContent = '❌'; vt.textContent = 'Affordability risk';
+        vd.textContent = `Your DTI of ${totalDTI.toFixed(1)}% exceeds the 43% maximum. Consider a smaller loan, larger down payment, or reducing existing debts before applying.`;
+      }
+
+      // Donut chart
+      const segments = [
+        { label:'Principal & interest', val: Math.round(emi),      color: DONUT_COLORS[0] },
+        { label:'Property tax/maint',   val: Math.round(propTax),  color: DONUT_COLORS[2] },
+        { label:'Insurance',            val: Math.round(insurance), color: DONUT_COLORS[1] },
+        { label:'Other debt payments',  val: Math.round(existingDebt), color: DONUT_COLORS[3] },
+      ].filter(s => s.val > 0);
+
+      const total = segments.reduce((s,x) => s+x.val, 0);
+      document.getElementById('donutCenter').textContent = fmt(total);
+
+      if (donutChart) donutChart.destroy();
+      const ctx = document.getElementById('donutChart').getContext('2d');
+      donutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: segments.map(s => s.label),
+          datasets: [{ data: segments.map(s => s.val), backgroundColor: segments.map(s => s.color), borderWidth: 2, borderColor: getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#141416', hoverOffset: 4 }]
+        },
+        options: {
+          responsive: false, cutout: '68%',
+          plugins: { legend:{ display:false }, tooltip:{ callbacks:{ label: c => ' ' + c.label + ': ' + fmt(c.raw) } } }
+        }
+      });
+
+      document.getElementById('breakdownLegend').innerHTML = segments.map(s => {
+        const pct = total > 0 ? (s.val/total*100).toFixed(0) : 0;
+        return `<div class="legend-row">
+          <div class="legend-left"><div class="legend-dot" style="background:${s.color}"></div><span class="legend-name">${s.label}</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span class="legend-pct">${pct}%</span><span class="legend-amt">${fmt(s.val)}</span></div>
+        </div>`;
+      }).join('');
+
+      // Salary table
+      if (mode !== 'salary') {
+        const base = homeVal > 0 ? homeVal : 10000000;
+        const multipliers = [0.5, 0.75, 1, 1.25, 1.5, 2];
+        document.getElementById('salaryGrid').innerHTML = multipliers.map(m => {
+          const hp   = base * m;
+          const loan = hp * (1 - downPct/100);
+          const e    = calcEMI(loan, intRate, tenure).emi;
+          const req  = (e + propTax + insurance) / (housingRatio/100);
+          return `<div class="salary-card">
+            <div class="sc-price">${fmt(hp)}</div>
+            <div class="sc-salary">${fmt(req)}/mo</div>
+            <div class="sc-note">Min. salary needed</div>
+          </div>`;
+        }).join('');
+      }
+    }
+
+    function toggleFaq(btn) {
+      const ans = btn.nextElementSibling;
+      const open = ans.classList.contains('open');
+      btn.classList.toggle('open', !open);
+      ans.classList.toggle('open', !open);
+    }
+
+    calc();
+  </script>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

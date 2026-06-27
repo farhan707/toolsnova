@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Studio — Free Prompt Builder & Improver for ChatGPT, Claude, Gemini</title>
+<meta name="description" content="Build better AI prompts instantly. Role, context, task, format, tone — structured prompt generator for ChatGPT, Claude, Gemini, Midjourney and more. Free, no signup.">
+<link rel="canonical" href="https://toolsnova.net/ai-prompt-studio">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="AI Prompt Studio — Build Perfect Prompts for ChatGPT, Claude & Gemini">
+<meta property="og:description" content="Structured AI prompt builder. Fill in role, context, task, format and tone — get a ready-to-use prompt instantly. Free, no signup, works offline.">
+<meta property="og:url" content="https://toolsnova.net/ai-prompt-studio">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Prompt Studio","url":"https://toolsnova.net/ai-prompt-studio","description":"Free AI prompt builder and improver for ChatGPT, Claude, Gemini and more. Build structured prompts with role, context, task, format and tone.","applicationCategory":"ProductivityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+<style>
+/* ── Tool layout ── */
+.tool-hero {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.tool-hero h1 { font-size: 1.6rem; color: var(--accent); margin: 0 0 .4rem; font-family: var(--display); font-weight: 800; }
+.tool-hero p  { color: var(--text2); margin: 0; font-size: .9rem; line-height: 1.6; }
+.tool-hero .subtitle { font-size: .72rem; color: var(--text3); margin-top: .4rem; font-family: var(--mono); }
+
+/* ── Mode tabs ── */
+.mode-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .8rem;
+}
+.mode-tab {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 8px;
+  padding: .4rem 1rem;
+  cursor: pointer;
+  font-size: .82rem;
+  font-family: var(--mono);
+  transition: all .15s;
+}
+.mode-tab.active {
+  background: var(--accent);
+  color: #0c0c0e;
+  border-color: var(--accent);
+  font-weight: 700;
+}
+.mode-tab:hover:not(.active) { background: var(--surface3); color: var(--text); }
+
+/* ── Two-column layout ── */
+.studio-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+@media(max-width:700px) { .studio-layout { grid-template-columns: 1fr; } }
+
+/* ── Builder panel ── */
+.builder-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+.panel-title {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text3);
+  margin-bottom: 1rem;
+  font-family: var(--mono);
+}
+
+/* ── Field groups ── */
+.field-group {
+  margin-bottom: .9rem;
+}
+.field-label {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--text2);
+  margin-bottom: .3rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--mono);
+}
+.field-hint {
+  font-size: .68rem;
+  color: var(--text3);
+  margin-left: auto;
+  font-weight: 400;
+}
+.field-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 8px;
+  padding: .55rem .8rem;
+  font-size: .88rem;
+  font-family: var(--mono);
+  box-sizing: border-box;
+  transition: border-color .15s;
+}
+.field-input:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.field-input::placeholder { color: var(--text3); }
+textarea.field-input {
+  resize: vertical;
+  min-height: 70px;
+  line-height: 1.6;
+  font-size: .83rem;
+}
+select.field-input { cursor: pointer; }
+
+/* ── Template chips ── */
+.template-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+.tpl-chip {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 99px;
+  padding: .25rem .7rem;
+  font-size: .72rem;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: all .15s;
+}
+.tpl-chip:hover { background: var(--accent-dim); border-color: rgba(127,255,111,.4); color: var(--accent); }
+
+/* ── Output panel ── */
+.output-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  position: sticky;
+  top: 1rem;
+}
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .8rem;
+}
+.output-actions { display: flex; gap: 6px; }
+.act-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  border-radius: 6px;
+  padding: .3rem .7rem;
+  font-size: .75rem;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: all .15s;
+}
+.act-btn:hover { background: var(--surface3); color: var(--text); }
+.act-btn.primary { background: var(--accent-dim); border-color: rgba(127,255,111,.35); color: var(--accent); }
+.act-btn.primary:hover { background: rgba(127,255,111,.2); }
+
+.prompt-output {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: var(--mono);
+  font-size: .82rem;
+  line-height: 1.8;
+  color: var(--text);
+  min-height: 200px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.prompt-output.empty { color: var(--text3); font-style: italic; }
+
+/* ── Prompt stats ── */
+.prompt-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: .6rem;
+  font-size: .72rem;
+  color: var(--text3);
+  font-family: var(--mono);
+  flex-wrap: wrap;
+}
+.stat-pill {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: .2rem .6rem;
+}
+.stat-pill span { color: var(--accent); }
+
+/* ── Improve mode ── */
+.improve-panel {
+  display: none;
+}
+.improve-panel.active { display: block; }
+.builder-panel-wrap.hidden { display: none; }
+
+/* ── Score bar ── */
+.score-section {
+  margin-top: .8rem;
+  border-top: 1px solid var(--border);
+  padding-top: .8rem;
+}
+.score-label { font-size: .72rem; color: var(--text3); font-family: var(--mono); margin-bottom: .4rem; }
+.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; }
+.score-item { display: flex; align-items: center; gap: .4rem; font-size: .72rem; color: var(--text2); font-family: var(--mono); }
+.score-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot-green  { background: #7fff6f; }
+.dot-yellow { background: #ffc107; }
+.dot-red    { background: #ff5555; }
+.dot-gray   { background: var(--border2); }
+
+/* ── History ── */
+.history-section {
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  padding-top: .8rem;
+}
+.history-title {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text3);
+  margin-bottom: .6rem;
+  font-family: var(--mono);
+}
+.history-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem .8rem;
+  margin-bottom: .4rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+.history-item:hover { border-color: var(--border2); background: var(--surface3); }
+.history-text {
+  font-size: .75rem;
+  color: var(--text2);
+  font-family: var(--mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.history-meta { font-size: .65rem; color: var(--text3); margin-top: 2px; font-family: var(--mono); }
+
+/* ── Edu section ── */
+.edu-section { margin-top: 2rem; }
+.edu-section h2 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--text); margin-bottom: .8rem; letter-spacing: -.02em; }
+.edu-section h3 { font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--text); margin: 1rem 0 .4rem; }
+.edu-section p  { font-size: .83rem; color: var(--text2); line-height: 1.75; margin-bottom: .6rem; }
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: .75rem 0; }
+.edu-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: .75rem; }
+.edu-card-title { font-size: .78rem; font-weight: 600; color: var(--accent); font-family: var(--mono); margin-bottom: .35rem; }
+.edu-card-body  { font-size: .76rem; color: var(--text3); line-height: 1.6; }
+.edu-highlight  { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: .75rem 1rem; margin: .75rem 0; font-size: .82rem; color: var(--text2); line-height: 1.7; }
+.edu-highlight strong { color: var(--accent); font-family: var(--mono); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+<main class="tool-main">
+  <div class="tool-hero">
+    <h1>🧠 AI Prompt Studio</h1>
+    <p>Build structured, high-quality prompts for ChatGPT, Claude, Gemini, and more — or paste a weak prompt and get an improved version instantly.</p>
+    <div class="subtitle">💡 100% client-side &nbsp;•&nbsp; No API key needed &nbsp;•&nbsp; Works offline</div>
+  </div>
+
+  <!-- Mode tabs -->
+  <div class="mode-tabs">
+    <button class="mode-tab active" onclick="switchMode('build', this)">🏗 Build Prompt</button>
+    <button class="mode-tab" onclick="switchMode('improve', this)">⚡ Improve Prompt</button>
+    <button class="mode-tab" onclick="switchMode('templates', this)">📋 Templates</button>
+  </div>
+
+  <!-- BUILD MODE -->
+  <div id="mode-build">
+    <div class="studio-layout">
+      <!-- Left: Builder -->
+      <div class="builder-panel">
+        <div class="panel-title">🔧 Prompt Builder</div>
+
+        <div class="field-group">
+          <div class="field-label">🎭 Role / Persona <span class="field-hint">Who should the AI be?</span></div>
+          <input class="field-input" type="text" id="b-role" placeholder="e.g. expert Python developer, senior copywriter, data analyst..." oninput="buildPrompt()">
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">🌍 Context / Background <span class="field-hint">What's the situation?</span></div>
+          <textarea class="field-input" id="b-context" rows="2" placeholder="e.g. I'm building a SaaS product for small businesses. My audience is non-technical users..." oninput="buildPrompt()"></textarea>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">🎯 Task <span class="field-hint">What exactly should it do?</span></div>
+          <textarea class="field-input" id="b-task" rows="3" placeholder="e.g. Write a landing page headline and 3 bullet points explaining the key benefits..." oninput="buildPrompt()"></textarea>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">📋 Output Format <span class="field-hint">How should it respond?</span></div>
+          <select class="field-input" id="b-format" onchange="buildPrompt()">
+            <option value="">— Select format —</option>
+            <option value="a numbered list">Numbered list</option>
+            <option value="bullet points">Bullet points</option>
+            <option value="a structured markdown document with headers">Markdown with headers</option>
+            <option value="a table">Table</option>
+            <option value="a short paragraph (2–3 sentences)">Short paragraph</option>
+            <option value="a detailed essay">Detailed essay</option>
+            <option value="step-by-step instructions">Step-by-step instructions</option>
+            <option value="JSON">JSON format</option>
+            <option value="code only, no explanation">Code only</option>
+            <option value="code with explanation">Code + explanation</option>
+            <option value="a single sentence">Single sentence</option>
+            <option value="a professional email">Professional email</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">🎨 Tone <span class="field-hint">Voice and style</span></div>
+          <select class="field-input" id="b-tone" onchange="buildPrompt()">
+            <option value="">— Select tone —</option>
+            <option value="professional and concise">Professional &amp; Concise</option>
+            <option value="friendly and conversational">Friendly &amp; Conversational</option>
+            <option value="technical and precise">Technical &amp; Precise</option>
+            <option value="creative and engaging">Creative &amp; Engaging</option>
+            <option value="persuasive and confident">Persuasive &amp; Confident</option>
+            <option value="simple and beginner-friendly">Simple &amp; Beginner-friendly</option>
+            <option value="formal and academic">Formal &amp; Academic</option>
+            <option value="casual and witty">Casual &amp; Witty</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">⚠️ Constraints <span class="field-hint">What to avoid or limit</span></div>
+          <textarea class="field-input" id="b-constraints" rows="2" placeholder="e.g. Keep it under 200 words. Avoid jargon. Do not use the word 'leverage'..." oninput="buildPrompt()"></textarea>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">💡 Examples <span class="field-hint">Show/tell what good looks like</span></div>
+          <textarea class="field-input" id="b-examples" rows="2" placeholder="e.g. Good example: 'Save 3 hours a day with automated workflows.' Bad example: 'Our software is very efficient.'" oninput="buildPrompt()"></textarea>
+        </div>
+
+        <div style="margin-top:.5rem;display:flex;gap:6px;">
+          <button class="act-btn" onclick="clearBuilder()">Clear all</button>
+        </div>
+      </div>
+
+      <!-- Right: Output -->
+      <div class="output-panel">
+        <div class="output-header">
+          <div class="panel-title" style="margin:0">✨ Generated Prompt</div>
+          <div class="output-actions">
+            <button class="act-btn" onclick="copyPrompt()">📋 Copy</button>
+            <button class="act-btn" onclick="saveToHistory()">💾 Save</button>
+          </div>
+        </div>
+        <div class="prompt-output empty" id="prompt-output">Fill in the fields on the left to generate your prompt...</div>
+
+        <div class="prompt-stats" id="prompt-stats" style="display:none">
+          <div class="stat-pill">Words: <span id="stat-words">0</span></div>
+          <div class="stat-pill">Chars: <span id="stat-chars">0</span></div>
+          <div class="stat-pill">~Tokens: <span id="stat-tokens">0</span></div>
+        </div>
+
+        <!-- Quality score -->
+        <div class="score-section" id="score-section" style="display:none">
+          <div class="score-label">Prompt Quality Score</div>
+          <div class="score-grid" id="score-grid"></div>
+        </div>
+
+        <!-- History -->
+        <div class="history-section" id="history-section" style="display:none">
+          <div class="history-title">📁 Saved Prompts</div>
+          <div id="history-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPROVE MODE -->
+  <div id="mode-improve" style="display:none">
+    <div class="studio-layout">
+      <div class="builder-panel">
+        <div class="panel-title">⚡ Paste Your Prompt</div>
+        <div class="field-group">
+          <div class="field-label">Your existing prompt</div>
+          <textarea class="field-input" id="i-input" rows="8" placeholder="Paste your prompt here and we'll improve it...&#10;&#10;e.g. 'Write me a blog post about AI'" oninput="improvePrompt()"></textarea>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Goal of improvement</div>
+          <select class="field-input" id="i-goal" onchange="improvePrompt()">
+            <option value="more specific">Make it more specific</option>
+            <option value="add structure">Add structure &amp; format</option>
+            <option value="add role">Add role/persona</option>
+            <option value="add constraints">Add constraints</option>
+            <option value="make professional">Make it more professional</option>
+            <option value="make concise">Make it more concise</option>
+            <option value="add examples">Add example guidance</option>
+            <option value="full rewrite">Full structured rewrite</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Target AI model</div>
+          <select class="field-input" id="i-model" onchange="improvePrompt()">
+            <option value="ChatGPT / GPT-4o">ChatGPT / GPT-4o</option>
+            <option value="Claude">Claude (Anthropic)</option>
+            <option value="Gemini">Gemini (Google)</option>
+            <option value="any AI model">Any AI model</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="output-panel">
+        <div class="output-header">
+          <div class="panel-title" style="margin:0">✨ Improved Prompt</div>
+          <div class="output-actions">
+            <button class="act-btn" onclick="copyImproved()">📋 Copy</button>
+            <button class="act-btn" onclick="saveImproved()">💾 Save</button>
+          </div>
+        </div>
+        <div class="prompt-output empty" id="improve-output">Paste a prompt on the left to see the improved version...</div>
+        <div class="prompt-stats" id="improve-stats" style="display:none">
+          <div class="stat-pill">Words: <span id="istat-words">0</span></div>
+          <div class="stat-pill">Chars: <span id="istat-chars">0</span></div>
+          <div class="stat-pill">~Tokens: <span id="istat-tokens">0</span></div>
+        </div>
+        <div class="score-section" id="improve-score-section" style="display:none">
+          <div class="score-label">What was improved</div>
+          <div id="improve-changes"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES MODE -->
+  <div id="mode-templates" style="display:none">
+    <div class="builder-panel" style="max-width:100%">
+      <div class="panel-title">📋 Ready-to-Use Prompt Templates</div>
+      <div class="template-row" id="tpl-category-row">
+        <button class="tpl-chip active" onclick="filterTemplates('all',this)">All</button>
+        <button class="tpl-chip" onclick="filterTemplates('writing',this)">✍️ Writing</button>
+        <button class="tpl-chip" onclick="filterTemplates('coding',this)">💻 Coding</button>
+        <button class="tpl-chip" onclick="filterTemplates('business',this)">💼 Business</button>
+        <button class="tpl-chip" onclick="filterTemplates('marketing',this)">📣 Marketing</button>
+        <button class="tpl-chip" onclick="filterTemplates('learning',this)">📚 Learning</button>
+        <button class="tpl-chip" onclick="filterTemplates('data',this)">📊 Data</button>
+      </div>
+      <div id="template-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem;margin-top:.8rem;"></div>
+    </div>
+  </div>
+
+  <!-- Educational Content -->
+  <section class="edu-section">
+    <h2>How to Write Better AI Prompts in 2026</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🎭 The Role Technique</div><div class="edu-card-body">Start with "You are a [expert role]..." — this primes the model to draw on relevant knowledge and write in the right voice. "You are a senior UX designer" gives very different results than "help me with my app."</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎯 Be Specific About Output</div><div class="edu-card-body">Vague prompts get vague answers. Always specify: length (200 words), format (bullet list), count (5 ideas), audience (beginners), and what to avoid. Constraints are not limiting — they're focusing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🌍 Context Is Everything</div><div class="edu-card-body">The AI has no idea who you are or what you're building. Give it background: your industry, your audience, what you've already tried, what tools you're using. More context = better output.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💡 Show, Don't Just Tell</div><div class="edu-card-body">Include 1–2 examples of what good output looks like. "Like this: [example]" or "In the style of [X]" dramatically improves quality. Few-shot prompting works even with just one example.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Chain Your Prompts</div><div class="edu-card-body">For complex tasks, break them into steps. First ask for an outline, then expand each section. This is more reliable than asking for everything at once and avoids token-limit issues.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Use Negative Constraints</div><div class="edu-card-body">"Do not use jargon", "Avoid clichés like 'in conclusion'", "Don't suggest [X]" — negative constraints are often more effective than positive ones at shaping the output to your exact needs.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>💡 The RCTFE Framework:</strong> Every great prompt has a Role, Context, Task, Format, and Examples (RCTFE). This tool builds all 5 automatically — use the Build Prompt tab to fill them in and see how they combine into a structured, high-performance prompt.</div>
+
+    <h2>Prompt Engineering for Each AI Model</h2>
+    <h3>ChatGPT / GPT-4o</h3>
+    <p>GPT-4o responds well to explicit role assignment and structured formatting requests. Use markdown headers in your prompt to get markdown headers back. It handles long system prompts well — front-load your most important constraints. Works best with clear step-by-step instructions for complex tasks.</p>
+    <h3>Claude (Anthropic)</h3>
+    <p>Claude excels at nuance and following complex instructions. It prefers natural language over rigid formatting in prompts. Add "Think step by step" for reasoning tasks. Claude is particularly good at following negative constraints — if you say "avoid X", it reliably avoids X. It also responds well to being asked to show its reasoning.</p>
+    <h3>Gemini (Google)</h3>
+    <p>Gemini benefits from structured prompts with clear sections. It handles multimodal tasks (combining text and image analysis) extremely well. For long-document analysis, Gemini's 1M token context window is unmatched — structure your prompt to reference specific sections of the document for best results.</p>
+    <h3>General Prompt Tips</h3>
+    <p>Regardless of which model you use: start with the most important instruction, use line breaks to separate sections, be explicit about length and format, and always review the first output then refine your prompt rather than starting over. A good prompt is an iterative process — use the Improve tab to evolve yours.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Related AI Tools</h2>
+    <div class="related-tools-section">
+      <div class="related-grid">
+        <a href="ai-api-cost-calculator.html" class="related-card">
+          <div class="rc-icon">💰</div>
+          <div><div class="rc-name">AI API Cost Calculator</div><div class="rc-desc">Compare GPT-4o, Claude, Gemini costs across 20+ models</div></div>
+        </a>
+        <a href="ai-token-counter.html" class="related-card">
+          <div class="rc-icon">🔢</div>
+          <div><div class="rc-name">AI Token Counter</div><div class="rc-desc">Count tokens and estimate API costs before sending</div></div>
+        </a>
+        <a href="word-counter.html" class="related-card">
+          <div class="rc-icon">Aa</div>
+          <div><div class="rc-name">Word Counter</div><div class="rc-desc">Count words, characters, and reading time</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script src="app.js?v=20"></script>
+<script>
+// ════════════════════════════════════════
+// AI PROMPT STUDIO
+// ════════════════════════════════════════
+
+let history = JSON.parse(localStorage.getItem('ps-history') || '[]');
+let currentMode = 'build';
+
+// ── Mode switching ────────────────────────────────────────
+function switchMode(mode, btn) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mode-build').style.display     = mode === 'build'     ? '' : 'none';
+  document.getElementById('mode-improve').style.display   = mode === 'improve'   ? '' : 'none';
+  document.getElementById('mode-templates').style.display = mode === 'templates' ? '' : 'none';
+  if (mode === 'templates') renderTemplates('all');
+}
+
+// ── BUILD MODE ────────────────────────────────────────────
+function buildPrompt() {
+  const role        = document.getElementById('b-role').value.trim();
+  const context     = document.getElementById('b-context').value.trim();
+  const task        = document.getElementById('b-task').value.trim();
+  const format      = document.getElementById('b-format').value;
+  const tone        = document.getElementById('b-tone').value;
+  const constraints = document.getElementById('b-constraints').value.trim();
+  const examples    = document.getElementById('b-examples').value.trim();
+
+  const parts = [];
+
+  if (role)        parts.push(`You are ${role}.`);
+  if (context)     parts.push(`Context: ${context}`);
+  if (task)        parts.push(`Task: ${task}`);
+  if (format)      parts.push(`Format your response as ${format}.`);
+  if (tone)        parts.push(`Use a ${tone} tone.`);
+  if (constraints) parts.push(`Constraints: ${constraints}`);
+  if (examples)    parts.push(`Examples / Reference: ${examples}`);
+
+  const out = document.getElementById('prompt-output');
+  if (parts.length === 0) {
+    out.textContent = 'Fill in the fields on the left to generate your prompt...';
+    out.className = 'prompt-output empty';
+    document.getElementById('prompt-stats').style.display = 'none';
+    document.getElementById('score-section').style.display = 'none';
+    return;
+  }
+
+  const prompt = parts.join('\n\n');
+  out.textContent = prompt;
+  out.className = 'prompt-output';
+
+  // Stats
+  const words  = prompt.split(/\s+/).filter(Boolean).length;
+  const chars  = prompt.length;
+  const tokens = Math.ceil(chars / 4);
+  document.getElementById('stat-words').textContent  = words;
+  document.getElementById('stat-chars').textContent  = chars;
+  document.getElementById('stat-tokens').textContent = tokens;
+  document.getElementById('prompt-stats').style.display = '';
+
+  // Quality score
+  renderScore({role, context, task, format, tone, constraints, examples});
+}
+
+function renderScore(fields) {
+  const checks = [
+    { label: 'Role defined',        pass: !!fields.role },
+    { label: 'Context provided',    pass: !!fields.context },
+    { label: 'Clear task',          pass: fields.task.length > 20 },
+    { label: 'Format specified',    pass: !!fields.format },
+    { label: 'Tone set',            pass: !!fields.tone },
+    { label: 'Constraints added',   pass: !!fields.constraints },
+    { label: 'Examples included',   pass: !!fields.examples },
+    { label: 'Task is detailed',    pass: fields.task.length > 60 },
+  ];
+  const score = checks.filter(c => c.pass).length;
+  const grid = document.getElementById('score-grid');
+  grid.innerHTML = checks.map(c => `
+    <div class="score-item">
+      <div class="score-dot ${c.pass ? 'dot-green' : 'dot-gray'}"></div>
+      ${c.label}
+    </div>`).join('');
+  document.getElementById('score-section').style.display = '';
+}
+
+function clearBuilder() {
+  ['b-role','b-context','b-task','b-constraints','b-examples'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('b-format').value = '';
+  document.getElementById('b-tone').value = '';
+  buildPrompt();
+}
+
+// ── IMPROVE MODE ──────────────────────────────────────────
+function improvePrompt() {
+  const input = document.getElementById('i-input').value.trim();
+  const goal  = document.getElementById('i-goal').value;
+  const model = document.getElementById('i-model').value;
+  const out   = document.getElementById('improve-output');
+
+  if (!input) {
+    out.textContent = 'Paste a prompt on the left to see the improved version...';
+    out.className = 'prompt-output empty';
+    document.getElementById('improve-stats').style.display = 'none';
+    document.getElementById('improve-score-section').style.display = 'none';
+    return;
+  }
+
+  let improved = input;
+  const changes = [];
+
+  // Apply improvements based on goal
+  if (goal === 'add role' || goal === 'full rewrite') {
+    if (!input.toLowerCase().includes('you are') && !input.toLowerCase().includes('act as')) {
+      improved = `You are an expert assistant optimized for ${model}.\n\n` + improved;
+      changes.push('Added role/persona');
+    }
+  }
+
+  if (goal === 'add structure' || goal === 'full rewrite') {
+    if (!improved.includes('Format') && !improved.includes('format')) {
+      improved += '\n\nFormat your response using clear sections with headers where appropriate.';
+      changes.push('Added output format instruction');
+    }
+  }
+
+  if (goal === 'more specific' || goal === 'full rewrite') {
+    if (improved.split(' ').length < 30) {
+      improved += '\n\nBe specific, detailed, and practical. Provide concrete examples where relevant.';
+      changes.push('Added specificity instruction');
+    }
+  }
+
+  if (goal === 'add constraints' || goal === 'full rewrite') {
+    improved += '\n\nConstraints: Keep the response focused and actionable. Avoid generic advice. Do not use filler phrases.';
+    changes.push('Added constraints');
+  }
+
+  if (goal === 'make professional') {
+    improved += '\n\nUse a professional, authoritative tone. Back claims with reasoning. Avoid colloquialisms.';
+    changes.push('Added professional tone instruction');
+  }
+
+  if (goal === 'make concise') {
+    improved += '\n\nBe concise. Use bullet points. Limit to the most important points only. Aim for under 200 words.';
+    changes.push('Added conciseness instruction');
+  }
+
+  if (goal === 'add examples') {
+    improved += '\n\nInclude 1–2 concrete examples to illustrate your points. Use real-world scenarios where possible.';
+    changes.push('Added example guidance');
+  }
+
+  if (goal === 'full rewrite') {
+    // Wrap cleanly
+    const task = input.replace(/^(write|create|make|generate|help|give me|can you|please)/i, '').trim();
+    improved = `You are an expert assistant optimized for ${model}.\n\nContext: [Add relevant context about your situation here]\n\nTask: ${task.charAt(0).toUpperCase() + task.slice(1)}\n\nFormat: Provide a structured response with clear sections. Use bullet points for lists.\n\nTone: Professional and helpful.\n\nConstraints: Be specific and practical. Avoid generic advice. Focus on actionable output.`;
+    changes.push('Full structured rewrite applied');
+  }
+
+  out.textContent = improved;
+  out.className = 'prompt-output';
+
+  // Stats
+  const words  = improved.split(/\s+/).filter(Boolean).length;
+  const chars  = improved.length;
+  const tokens = Math.ceil(chars / 4);
+  document.getElementById('istat-words').textContent  = words;
+  document.getElementById('istat-chars').textContent  = chars;
+  document.getElementById('istat-tokens').textContent = tokens;
+  document.getElementById('improve-stats').style.display = '';
+
+  // Changes list
+  const changesEl = document.getElementById('improve-changes');
+  changesEl.innerHTML = changes.length
+    ? changes.map(c => `<div class="score-item" style="margin:.25rem 0"><div class="score-dot dot-green"></div>${c}</div>`).join('')
+    : '<div style="font-size:.75rem;color:var(--text3);font-family:var(--mono)">No changes needed for this goal.</div>';
+  document.getElementById('improve-score-section').style.display = '';
+}
+
+// ── TEMPLATES ─────────────────────────────────────────────
+const TEMPLATES = [
+  { cat:'writing', title:'Blog Post Writer', icon:'✍️',
+    desc:'Writes a full SEO blog post with intro, body, and CTA.',
+    prompt:`You are an expert content writer and SEO specialist.\n\nContext: I need a blog post for [your website/niche].\n\nTask: Write a comprehensive blog post about [topic]. Include:\n- Engaging headline (H1)\n- Hook introduction (2–3 sentences)\n- 3–5 main sections with H2 headers\n- Practical tips in each section\n- Conclusion with a clear CTA\n\nFormat: Markdown with headers and bullet points.\n\nTone: Helpful, informative, and engaging.\n\nConstraints: 800–1000 words. Optimize for the keyword "[main keyword]". Avoid keyword stuffing. No fluff.` },
+
+  { cat:'coding', title:'Code Reviewer', icon:'🔍',
+    desc:'Reviews your code for bugs, performance, and best practices.',
+    prompt:`You are a senior software engineer with expertise in clean code and best practices.\n\nTask: Review the following code and provide:\n1. Bugs or errors found\n2. Performance improvements\n3. Security issues (if any)\n4. Code style and readability improvements\n5. Refactored version of the code\n\n[PASTE YOUR CODE HERE]\n\nFormat: Use numbered sections. Show the refactored code in a code block.\n\nTone: Technical and precise.\n\nConstraints: Be specific about line numbers. Explain WHY each change improves the code.` },
+
+  { cat:'coding', title:'Function Builder', icon:'⚙️',
+    desc:'Generates a clean, documented function from a description.',
+    prompt:`You are an expert [Python/JavaScript/TypeScript] developer who writes clean, production-ready code.\n\nTask: Write a function that [describe what the function should do].\n\nRequirements:\n- Function name: [name]\n- Input: [describe inputs and types]\n- Output: [describe output and type]\n- Handle edge cases: [list edge cases]\n\nFormat: Code only. Include JSDoc/docstring comments. Add inline comments for complex logic.\n\nConstraints: Follow [language] best practices. No external libraries unless necessary. Include 3 example usage cases in comments.` },
+
+  { cat:'business', title:'Email Drafter', icon:'📧',
+    desc:'Writes professional business emails for any situation.',
+    prompt:`You are an experienced business communication specialist.\n\nContext: I need to send an email to [recipient: client/manager/colleague] about [topic].\n\nSituation: [Describe the situation — e.g., following up on a proposal, requesting a meeting, delivering bad news]\n\nTask: Write a professional email that:\n- Gets to the point quickly\n- Has a clear subject line\n- Makes the desired action obvious\n- Ends with a specific next step\n\nFormat: Subject line first, then the email body.\n\nTone: Professional and respectful.\n\nConstraints: Under 150 words for the body. No corporate jargon. One clear ask per email.` },
+
+  { cat:'business', title:'Meeting Agenda', icon:'📅',
+    desc:'Creates a structured agenda for any business meeting.',
+    prompt:`You are an expert business facilitator.\n\nContext: I'm running a [meeting type: team standup/strategy meeting/client call/project kickoff] with [number] attendees.\n\nMeeting goal: [What should be decided or accomplished?]\n\nTask: Create a detailed meeting agenda including:\n- Pre-meeting preparation for attendees\n- Timed agenda items\n- Discussion questions for each item\n- Decision points to resolve\n- Action items template\n\nFormat: Structured markdown with time allocations.\n\nTone: Professional and action-oriented.\n\nConstraints: Total meeting time: [X] minutes. Each agenda item needs a clear owner. Include a buffer for overruns.` },
+
+  { cat:'marketing', title:'Ad Copy Generator', icon:'📣',
+    desc:'Writes compelling ad copy for any product or service.',
+    prompt:`You are an expert direct-response copywriter with 10+ years of experience writing high-converting ads.\n\nProduct/Service: [What are you selling?]\nTarget audience: [Who are you targeting? Age, interests, pain points]\nPlatform: [Facebook/Google/LinkedIn/Instagram]\n\nTask: Write 3 variations of ad copy, each including:\n- Attention-grabbing headline (under 8 words)\n- Body copy (under 90 words)\n- Clear CTA button text\n\nFormat: Label each variation (Variation A, B, C). Use the format:\n**Headline:** [text]\n**Body:** [text]\n**CTA:** [text]\n\nTone: Persuasive and benefit-focused.\n\nConstraints: Lead with the customer's pain point, not features. Each variation should have a different angle (emotional / logical / social proof).` },
+
+  { cat:'marketing', title:'Social Media Post', icon:'📱',
+    desc:'Creates engaging posts for LinkedIn, Twitter/X, or Instagram.',
+    prompt:`You are a social media expert who writes posts that get high engagement.\n\nPlatform: [LinkedIn / Twitter/X / Instagram]\nTopic: [What is the post about?]\nGoal: [Brand awareness / Drive traffic / Build followers / Share insight]\n\nTask: Write 3 post variations for this topic.\n\nFormat: Each post on its own, with relevant hashtags at the end.\n\nTone: [Professional for LinkedIn / Punchy for Twitter / Inspirational for Instagram]\n\nConstraints:\n- LinkedIn: Under 200 words, no clickbait\n- Twitter/X: Under 280 characters per tweet, hook in the first line\n- Instagram: Start with a hook, use line breaks, 5–8 hashtags` },
+
+  { cat:'learning', title:'Concept Explainer', icon:'📚',
+    desc:'Explains any complex concept at any level of detail.',
+    prompt:`You are a world-class teacher who excels at making complex topics simple.\n\nConcept: [What concept should be explained?]\nAudience: [Complete beginner / Some background / Advanced learner]\n\nTask: Explain this concept using:\n1. A one-sentence simple definition\n2. An analogy that makes it intuitive\n3. How it works step-by-step\n4. A real-world example\n5. Common misconceptions to avoid\n6. What to learn next\n\nFormat: Numbered sections with clear headings.\n\nTone: Simple, clear, and engaging. Assume no prior knowledge.\n\nConstraints: No jargon without explanation. If you must use a technical term, define it immediately.` },
+
+  { cat:'learning', title:'Study Plan Creator', icon:'🎓',
+    desc:'Creates a personalized study plan for any subject or skill.',
+    prompt:`You are an expert learning coach and curriculum designer.\n\nSubject/Skill: [What do you want to learn?]\nCurrent level: [Complete beginner / Some experience / Intermediate]\nGoal: [What do you want to be able to do?]\nTime available: [X hours per week for Y weeks/months]\n\nTask: Create a structured study plan including:\n- Week-by-week breakdown of topics\n- Recommended resources for each topic (free and paid)\n- Practice exercises or projects\n- Milestones to measure progress\n- Common mistakes to avoid\n\nFormat: Week-by-week table, then resources section.\n\nConstraints: Prioritize learning by doing over reading theory. Include at least one project per month.` },
+
+  { cat:'data', title:'Data Analysis Prompt', icon:'📊',
+    desc:'Gets AI to analyze data and extract meaningful insights.',
+    prompt:`You are a senior data analyst with expertise in finding actionable insights from data.\n\nContext: I have a dataset about [describe what the data contains — e.g., monthly sales by region, user engagement metrics, survey responses].\n\nData summary: [Paste your data or describe it here]\n\nTask: Analyze this data and provide:\n1. Key trends and patterns\n2. Anomalies or outliers worth investigating\n3. Top 3 actionable insights\n4. Suggested next steps or further analysis\n5. Any limitations in the data I should be aware of\n\nFormat: Use sections with clear headers. Include specific numbers where possible.\n\nTone: Data-driven and objective.\n\nConstraints: Distinguish between correlation and causation. Flag assumptions clearly.` },
+
+  { cat:'data', title:'SQL Query Builder', icon:'🗄️',
+    desc:'Generates optimized SQL queries from plain English descriptions.',
+    prompt:`You are an expert database engineer with deep knowledge of SQL optimization.\n\nDatabase: [MySQL / PostgreSQL / SQLite / SQL Server]\n\nTable structure:\n[Describe your tables and columns, or paste CREATE TABLE statements]\n\nTask: Write a SQL query that [describe what you want to find or do].\n\nRequirements:\n- [Any specific filters, date ranges, groupings]\n- [Performance considerations]\n\nFormat: SQL code block, then a plain English explanation of what it does and why you wrote it that way.\n\nConstraints: Optimize for readability first, performance second. Add comments for complex joins or subqueries. Include an alternative approach if one exists.` },
+];
+
+let currentCatFilter = 'all';
+
+function filterTemplates(cat, btn) {
+  currentCatFilter = cat;
+  document.querySelectorAll('#tpl-category-row .tpl-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderTemplates(cat);
+}
+
+function renderTemplates(cat) {
+  const filtered = cat === 'all' ? TEMPLATES : TEMPLATES.filter(t => t.cat === cat);
+  const grid = document.getElementById('template-grid');
+  grid.innerHTML = filtered.map((t, i) => `
+    <div class="edu-card" style="cursor:pointer;transition:all .15s" onclick="useTemplate(${TEMPLATES.indexOf(t)})"
+         onmouseover="this.style.borderColor='rgba(127,255,111,.4)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div class="edu-card-title">${t.icon} ${t.title}</div>
+      <div class="edu-card-body" style="margin-bottom:.6rem">${t.desc}</div>
+      <div style="font-size:.68rem;color:var(--accent);font-family:var(--mono)">Click to use →</div>
+    </div>`).join('');
+}
+
+function useTemplate(idx) {
+  const t = TEMPLATES[idx];
+  // Switch to improve mode and paste the template
+  const improveTab = document.querySelectorAll('.mode-tab')[1];
+  switchMode('improve', improveTab);
+  document.getElementById('i-input').value = t.prompt;
+  // Or better: just put it in the output directly
+  const out = document.getElementById('improve-output');
+  out.textContent = t.prompt;
+  out.className = 'prompt-output';
+  const words  = t.prompt.split(/\s+/).filter(Boolean).length;
+  const chars  = t.prompt.length;
+  document.getElementById('istat-words').textContent  = words;
+  document.getElementById('istat-chars').textContent  = chars;
+  document.getElementById('istat-tokens').textContent = Math.ceil(chars/4);
+  document.getElementById('improve-stats').style.display = '';
+  document.getElementById('improve-score-section').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── COPY / SAVE ───────────────────────────────────────────
+function copyPrompt() {
+  const text = document.getElementById('prompt-output').textContent;
+  if (!text || document.getElementById('prompt-output').classList.contains('empty')) return;
+  navigator.clipboard.writeText(text).then(() => showToast('Prompt copied!'));
+}
+
+function copyImproved() {
+  const text = document.getElementById('improve-output').textContent;
+  if (!text || document.getElementById('improve-output').classList.contains('empty')) return;
+  navigator.clipboard.writeText(text).then(() => showToast('Prompt copied!'));
+}
+
+function saveToHistory() {
+  const text = document.getElementById('prompt-output').textContent;
+  if (!text || document.getElementById('prompt-output').classList.contains('empty')) return;
+  pushHistory(text);
+}
+
+function saveImproved() {
+  const text = document.getElementById('improve-output').textContent;
+  if (!text || document.getElementById('improve-output').classList.contains('empty')) return;
+  pushHistory(text);
+}
+
+function pushHistory(text) {
+  history.unshift({ text, date: new Date().toLocaleDateString() });
+  if (history.length > 10) history.pop();
+  localStorage.setItem('ps-history', JSON.stringify(history));
+  renderHistory();
+  showToast('Saved to history!');
+}
+
+function renderHistory() {
+  if (history.length === 0) {
+    document.getElementById('history-section').style.display = 'none';
+    return;
+  }
+  document.getElementById('history-section').style.display = '';
+  const list = document.getElementById('history-list');
+  list.innerHTML = history.map((h, i) => `
+    <div class="history-item" onclick="loadHistory(${i})">
+      <div class="history-text">${h.text.slice(0, 120)}${h.text.length > 120 ? '...' : ''}</div>
+      <div class="history-meta">Saved ${h.date} — click to load</div>
+    </div>`).join('');
+}
+
+function loadHistory(i) {
+  const out = document.getElementById('prompt-output');
+  out.textContent = history[i].text;
+  out.className = 'prompt-output';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  showToast('Prompt loaded!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(10px)'; }, 2000);
+}
+
+// ── INIT ──────────────────────────────────────────────────
+renderHistory();
+</script>
+<div class="copy-toast" id="toast"></div>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

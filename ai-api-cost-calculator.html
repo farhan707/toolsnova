@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI API Cost Calculator 2026 — GPT-4o, Claude, Gemini, DeepSeek Pricing</title>
+<meta name="description" content="Calculate and compare AI API costs across GPT-4o, Claude 3.5, Gemini 2.0, DeepSeek, Grok and 20+ models. Enter tokens or words and see exact costs instantly. Free, no signup.">
+<link rel="canonical" href="https://toolsnova.net/ai-api-cost-calculator">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="AI API Cost Calculator 2026 — Compare GPT-4o, Claude, Gemini Pricing">
+<meta property="og:description" content="Calculate exact AI API costs for GPT-4o, Claude 3.5 Sonnet, Gemini 2.0, DeepSeek, Grok and 20+ models. Free, no signup, instant results.">
+<meta property="og:url" content="https://toolsnova.net/ai-api-cost-calculator">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI API Cost Calculator","url":"https://toolsnova.net/ai-api-cost-calculator","description":"Calculate and compare AI API costs across GPT-4o, Claude 3.5, Gemini 2.0, DeepSeek and 20+ models instantly.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+<style>
+.tool-hero {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.tool-hero h1 { font-size: 1.6rem; color: var(--accent); margin: 0 0 .4rem; }
+.tool-hero p  { color: var(--text2); margin: 0; font-size: .9rem; }
+.last-updated { font-size: .72rem; color: var(--text3); margin-top: .4rem; font-family: var(--mono); }
+
+/* Input section */
+.input-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+  margin-bottom: .8rem;
+}
+@media(max-width:600px){ .input-row { grid-template-columns: 1fr; } }
+.input-label {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .3rem;
+}
+.calc-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 8px;
+  padding: .55rem .8rem;
+  font-size: .95rem;
+  font-family: var(--mono);
+  box-sizing: border-box;
+}
+.calc-input:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.calc-select {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 8px;
+  padding: .55rem .8rem;
+  font-size: .88rem;
+  box-sizing: border-box;
+}
+.unit-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: .8rem;
+}
+.unit-tab {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 6px;
+  padding: .3rem .8rem;
+  cursor: pointer;
+  font-size: .82rem;
+  font-family: var(--mono);
+  transition: all .15s;
+}
+.unit-tab.active {
+  background: var(--accent);
+  color: #0c0c0e;
+  border-color: var(--accent);
+}
+
+/* Results table */
+.results-section {
+  margin-bottom: 1rem;
+}
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .6rem;
+}
+.results-title { font-size: .9rem; font-weight: 700; color: var(--text); }
+.sort-select {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 6px;
+  padding: .25rem .6rem;
+  font-size: .78rem;
+}
+.model-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.model-table th {
+  background: var(--surface2);
+  color: var(--text3);
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: .55rem .7rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border2);
+  white-space: nowrap;
+}
+.model-table td {
+  padding: .6rem .7rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  font-size: .85rem;
+}
+.model-table tr:last-child td { border-bottom: none; }
+.model-table tr:hover td { background: var(--surface2); }
+.model-table tr.cheapest td { background: rgba(127,255,111,.04); }
+.model-name {
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.provider-badge {
+  font-size: .65rem;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-weight: 700;
+}
+.badge-openai  { background: rgba(0,163,108,.15); color: #00a36c; }
+.badge-anthropic { background: rgba(208,127,89,.15); color: #d07f59; }
+.badge-google  { background: rgba(66,133,244,.15); color: #4285f4; }
+.badge-deepseek { background: rgba(127,90,240,.15); color: #7f5af0; }
+.badge-meta    { background: rgba(24,119,242,.15); color: #1877f2; }
+.badge-xai     { background: rgba(255,255,255,.1); color: var(--text2); }
+.badge-mistral { background: rgba(255,164,0,.15); color: #ffa400; }
+.badge-cohere  { background: rgba(83,170,221,.15); color: #53aadd; }
+.cost-cell {
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: var(--text);
+}
+.cost-total {
+  font-family: var(--mono);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.cheapest-badge {
+  background: var(--accent);
+  color: #0c0c0e;
+  font-size: .62rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  margin-left: 4px;
+}
+.expensive-badge {
+  background: rgba(255,50,50,.12);
+  color: #ff5555;
+  font-size: .62rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  margin-left: 4px;
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+.filter-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 6px;
+  padding: .3rem .7rem;
+  cursor: pointer;
+  font-size: .78rem;
+  font-family: var(--mono);
+  transition: all .15s;
+}
+.filter-btn:hover { background: var(--surface3); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: #0c0c0e; border-color: var(--accent); }
+
+/* Summary cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .6rem;
+  margin-bottom: 1rem;
+}
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .8rem;
+  text-align: center;
+}
+.summary-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: var(--mono);
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+.summary-label {
+  font-size: .72rem;
+  color: var(--text3);
+  line-height: 1.3;
+}
+
+/* Context bar */
+.context-bar {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem 1rem;
+  margin-bottom: 1rem;
+  font-size: .82rem;
+  color: var(--text2);
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.context-bar span { display: flex; align-items: center; gap: 5px; }
+
+/* Tier legend */
+.tier-legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-size: .78rem;
+  color: var(--text3);
+}
+.tier-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+<main class="tool-main">
+  <div class="tool-hero">
+    <h1>AI API Cost Calculator</h1>
+    <p>Compare exact API costs across 20+ AI models — GPT-4o, Claude 3.5, Gemini 2.0, DeepSeek, Grok, Llama and more. Enter tokens or words, see costs instantly.</p>
+    <div class="last-updated">💡 Prices updated June 2026 &nbsp;•&nbsp; All processing in your browser &nbsp;•&nbsp; No signup needed</div>
+  </div>
+
+  <!-- Input Section -->
+  <div class="input-section">
+    <div class="unit-tabs">
+      <button class="unit-tab active" onclick="setUnit('tokens',this)">Tokens</button>
+      <button class="unit-tab" onclick="setUnit('words',this)">Words</button>
+      <button class="unit-tab" onclick="setUnit('chars',this)">Characters</button>
+    </div>
+    <div class="input-row">
+      <div>
+        <div class="input-label">Input (prompt) <span id="unitLabel">tokens</span></div>
+        <input class="calc-input" type="number" id="inputTokens" value="1000" min="0" oninput="calculate()">
+      </div>
+      <div>
+        <div class="input-label">Output (completion) <span id="unitLabel2">tokens</span></div>
+        <input class="calc-input" type="number" id="outputTokens" value="500" min="0" oninput="calculate()">
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <div class="input-label">Number of API calls</div>
+        <input class="calc-input" type="number" id="apiCalls" value="1000" min="1" oninput="calculate()">
+      </div>
+      <div>
+        <div class="input-label">Period</div>
+        <select class="calc-select" id="period" onchange="calculate()">
+          <option value="1">Per call (×1)</option>
+          <option value="1000" selected>Per 1,000 calls</option>
+          <option value="10000">Per 10,000 calls</option>
+          <option value="30000">Per 30,000 calls/month</option>
+          <option value="100000">Per 100,000 calls</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary-grid" id="summaryGrid"></div>
+
+  <!-- Context info -->
+  <div class="context-bar" id="contextBar"></div>
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All Models</button>
+    <button class="filter-btn" onclick="setFilter('openai',this)">OpenAI</button>
+    <button class="filter-btn" onclick="setFilter('anthropic',this)">Anthropic</button>
+    <button class="filter-btn" onclick="setFilter('google',this)">Google</button>
+    <button class="filter-btn" onclick="setFilter('deepseek',this)">DeepSeek</button>
+    <button class="filter-btn" onclick="setFilter('meta',this)">Meta</button>
+    <button class="filter-btn" onclick="setFilter('other',this)">Others</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section">
+    <div class="results-header">
+      <div class="results-title" id="resultsTitle">All Models — Cost Comparison</div>
+      <select class="sort-select" onchange="setSortOrder(this.value)">
+        <option value="cost">Sort: Cheapest first</option>
+        <option value="cost-desc">Sort: Most expensive first</option>
+        <option value="name">Sort: Model name</option>
+      </select>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="model-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input price</th>
+            <th>Output price</th>
+            <th>Input cost</th>
+            <th>Output cost</th>
+            <th>Total / call</th>
+            <th>Total (×calls)</th>
+          </tr>
+        </thead>
+        <tbody id="modelTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Educational Content -->
+  <section class="edu-section">
+    <h2>How to Use the AI API Cost Calculator</h2>
+    <ol class="edu-steps">
+      <li><strong>Enter your token counts</strong> — Input the number of input tokens (your prompt) and output tokens (the AI's response). Switch to Words or Characters if you prefer — the calculator converts automatically (1 word ≈ 1.3 tokens, 1 token ≈ 4 characters).</li>
+      <li><strong>Set your API call volume</strong> — Enter how many API calls you make per day or month. The "Per 1,000 calls" default shows your cost at scale, which is usually what matters for budgeting.</li>
+      <li><strong>Filter by provider</strong> — Click OpenAI, Anthropic, Google, or DeepSeek to focus the comparison. Click "All Models" to see the full picture.</li>
+      <li><strong>Read the results</strong> — The table shows input cost, output cost, total per call, and total for your full call volume. The cheapest model gets a ✅ badge. Sort by price or name using the dropdown.</li>
+      <li><strong>Use the summary cards</strong> — See the cheapest option, most expensive, average cost, and potential savings at a glance before diving into the table.</li>
+    </ol>
+    <div class="edu-highlight"><strong>💡 Key insight:</strong> Output tokens are typically 2–5x more expensive than input tokens across all providers. This means a prompt that generates a long response costs significantly more than one that generates a short answer. Optimizing your output length (using "be concise" in your system prompt) can cut costs by 40–60%.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Understanding AI API Pricing in 2026</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🪙 What Is a Token?</div><div class="edu-card-body">A token is roughly 4 characters or ¾ of a word in English. "Hello world" = 2 tokens. A typical paragraph = 75–100 tokens. A full page of text ≈ 500 tokens. All AI models price their APIs per 1 million tokens (MTok) — so a $3/MTok model costs $0.000003 per token, or $0.003 for 1,000 tokens.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📊 Input vs Output Pricing</div><div class="edu-card-body">Every model charges separately for input (your prompt) and output (the AI response). Output is always more expensive — typically 3–5x the input price. This is because generating tokens requires more compute than reading them. GPT-4o charges $2.50/MTok input but $10/MTok output — a 4x difference.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏆 Cheapest Models 2026</div><div class="edu-card-body">DeepSeek V3 at $0.27/MTok input is among the cheapest frontier models. Gemini 2.0 Flash at $0.10/MTok input is Google's budget option. Llama 3.3 (self-hosted via Groq/Together) can be near-free at scale. GPT-4o Mini at $0.15/MTok is OpenAI's budget tier. For simple tasks, these often match GPT-4o quality at 10x lower cost.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💰 How to Reduce API Costs</div><div class="edu-card-body">1) Shorten system prompts — every character costs money on every call. 2) Use prompt caching (Claude, GPT-4o) — cached input tokens cost 90% less. 3) Choose the right model tier — GPT-4o Mini vs GPT-4o for simple tasks. 4) Compress context — summarize conversation history instead of passing full history. 5) Set max_tokens limits to control output length.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Prompt Caching</div><div class="edu-card-body">Claude and GPT-4o both support prompt caching — if you send the same system prompt repeatedly, cached tokens cost up to 90% less. Anthropic charges $0.30/MTok for cached Claude reads vs $3.00/MTok uncached. For apps with consistent system prompts, caching alone can cut costs by 50–80%.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📈 Cost at Scale</div><div class="edu-card-body">100 users × 10 messages/day × 500 tokens/message = 500,000 tokens/day = 15M tokens/month. At GPT-4o ($2.50 input + $10 output): ~$56/month assuming 60% output. At DeepSeek V3 ($0.27 input + $1.10 output): ~$7/month — 87% cheaper. At this scale, model choice matters enormously for unit economics.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>AI Model Pricing Comparison — Full Breakdown</h2>
+    <h3>OpenAI GPT Models</h3>
+    <p>OpenAI remains the most-used AI API in 2026. GPT-4o is the flagship model at $2.50/MTok input and $10/MTok output — suitable for complex reasoning, vision, and code generation. GPT-4o Mini at $0.15/$0.60 is the budget tier, ideal for classification, summarization, and simple Q&A. The o3 reasoning model at $10/$40 per MTok is reserved for complex multi-step reasoning tasks where accuracy matters more than cost. OpenAI's Batch API offers 50% discounts for non-realtime workloads.</p>
+    <h3>Anthropic Claude Models</h3>
+    <p>Claude 3.5 Sonnet ($3/$15 per MTok) is widely considered the best model for coding and writing in 2026. Claude 3.5 Haiku ($0.80/$4) is the budget option with strong performance on structured tasks. Claude 3 Opus ($15/$75) is the premium reasoning model. Anthropic's prompt caching cuts cached input costs to $0.30/MTok for Sonnet — a major advantage for applications with fixed system prompts. Claude has a 200K token context window across all models.</p>
+    <h3>Google Gemini Models</h3>
+    <p>Gemini 2.0 Flash ($0.10/$0.40 per MTok) is Google's most cost-effective frontier model and one of the cheapest available in 2026. Gemini 2.0 Pro ($1.25/$5) is the premium tier. Gemini has a 1M token context window — the largest of any major provider — making it ideal for document analysis and long-context tasks. Google offers a free tier with rate limits for development and testing.</p>
+    <h3>DeepSeek Models</h3>
+    <p>DeepSeek V3 at $0.27/$1.10 per MTok caused a major market disruption in early 2025 by matching GPT-4 quality at a fraction of the cost. DeepSeek R1 ($0.55/$2.19) is the reasoning model. Both are open-source and can be self-hosted for near-zero marginal cost at scale. For cost-sensitive production workloads where data privacy allows, DeepSeek often delivers the best price-performance ratio available.</p>
+    <div class="edu-highlight"><strong>🔗 Related tools:</strong> Use our <a href="ai-token-counter.html" style="color:var(--accent)">AI Token Counter</a> to count tokens in your prompts before calculating costs. See our <a href="ai-model-database.html" style="color:var(--accent)">AI Model Database</a> for full specs including context windows, capabilities, and benchmarks.</div>
+  </section>
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Which AI API is cheapest in 2026?</div>
+      <div class="faq-a">DeepSeek V3 and Gemini 2.0 Flash are among the cheapest frontier models in 2026 — both under $0.30/MTok for input tokens. For self-hosting, Llama 3.3 via providers like Groq or Together AI can cost even less at scale. GPT-4o Mini ($0.15/MTok) is the most affordable OpenAI option. The right choice depends on your quality requirements and data privacy needs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How do I calculate AI API costs for my app?</div>
+      <div class="faq-a">Estimate your average prompt length (input tokens) + average response length (output tokens), then multiply by your expected daily API calls. Use this calculator to compare costs across models. A typical chatbot message is 150–300 input tokens and 100–250 output tokens. At 1,000 calls/day with GPT-4o, that's roughly $1–3/day or $30–90/month.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">How many words is 1,000 tokens?</div>
+      <div class="faq-a">Approximately 750 words in English, or roughly 1.5 pages of standard text. The exact ratio depends on the language and content type — code tends to use more tokens per word than plain prose. Technical content with special characters can use up to 2x more tokens per word than simple English text.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">What is prompt caching and how much does it save?</div>
+      <div class="faq-a">Prompt caching lets you reuse repeated portions of your prompt (like a system prompt) at a heavily discounted rate. Anthropic charges $0.30/MTok for cached Claude 3.5 Sonnet reads vs $3.00/MTok uncached — a 90% discount. OpenAI offers similar caching for GPT-4o. If your application sends the same system prompt on every call, caching can reduce your total costs by 40–80% depending on the ratio of system prompt to user message length.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Is Claude or GPT-4o cheaper?</div>
+      <div class="faq-a">For standard usage, GPT-4o ($2.50/$10 per MTok) is slightly cheaper than Claude 3.5 Sonnet ($3/$15 per MTok). However, with prompt caching, Claude can become significantly cheaper if you have a long system prompt. Claude 3.5 Haiku ($0.80/$4) is the most affordable Anthropic option and often competes with GPT-4o Mini in price.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faqToggle(this)">Can I use this calculator for my monthly API budget?</div>
+      <div class="faq-a">Yes — set the "Number of API calls" to your expected monthly volume and select "Per 30,000 calls/month" (or enter your actual number). The "Total (×calls)" column shows your projected monthly cost per model. This helps you budget before choosing a provider and can reveal whether switching models would save meaningful money at your scale.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script src="app.js?v=20"></script>
+<script>
+// ════════════════════════════════════════
+// AI API COST CALCULATOR
+// ════════════════════════════════════════
+
+// All prices in USD per 1M tokens (updated June 2026)
+const MODELS = [
+  // OpenAI
+  { id:'gpt-4o',        name:'GPT-4o',           provider:'openai',    input:2.50,  output:10.00, cached:0.625,  ctx:'128K', tier:'flagship' },
+  { id:'gpt-4o-mini',   name:'GPT-4o Mini',      provider:'openai',    input:0.15,  output:0.60,  cached:0.075,  ctx:'128K', tier:'budget' },
+  { id:'o3',            name:'o3',                provider:'openai',    input:10.00, output:40.00, cached:2.50,   ctx:'200K', tier:'reasoning' },
+  { id:'o4-mini',       name:'o4-mini',           provider:'openai',    input:1.10,  output:4.40,  cached:0.275,  ctx:'200K', tier:'reasoning' },
+  { id:'gpt-4-turbo',   name:'GPT-4 Turbo',      provider:'openai',    input:10.00, output:30.00, cached:null,   ctx:'128K', tier:'legacy' },
+  // Anthropic
+  { id:'claude-3-5-sonnet',name:'Claude 3.5 Sonnet',provider:'anthropic',input:3.00, output:15.00, cached:0.30,  ctx:'200K', tier:'flagship' },
+  { id:'claude-3-5-haiku', name:'Claude 3.5 Haiku', provider:'anthropic',input:0.80, output:4.00,  cached:0.08,  ctx:'200K', tier:'budget' },
+  { id:'claude-3-opus',    name:'Claude 3 Opus',    provider:'anthropic',input:15.00,output:75.00, cached:1.50,  ctx:'200K', tier:'premium' },
+  // Google
+  { id:'gemini-2-flash', name:'Gemini 2.0 Flash', provider:'google',   input:0.10,  output:0.40,  cached:0.025, ctx:'1M',   tier:'budget' },
+  { id:'gemini-2-pro',   name:'Gemini 2.0 Pro',   provider:'google',   input:1.25,  output:5.00,  cached:null,  ctx:'1M',   tier:'flagship' },
+  { id:'gemini-1-5-pro', name:'Gemini 1.5 Pro',   provider:'google',   input:1.25,  output:5.00,  cached:0.315, ctx:'1M',   tier:'legacy' },
+  // DeepSeek
+  { id:'deepseek-v3',    name:'DeepSeek V3',      provider:'deepseek', input:0.27,  output:1.10,  cached:0.014, ctx:'64K',  tier:'flagship' },
+  { id:'deepseek-r1',    name:'DeepSeek R1',      provider:'deepseek', input:0.55,  output:2.19,  cached:0.055, ctx:'64K',  tier:'reasoning' },
+  // Meta
+  { id:'llama-3-3-70b',  name:'Llama 3.3 70B',   provider:'meta',     input:0.59,  output:0.79,  cached:null,  ctx:'128K', tier:'open' },
+  { id:'llama-3-1-405b', name:'Llama 3.1 405B',  provider:'meta',     input:3.00,  output:3.00,  cached:null,  ctx:'128K', tier:'open' },
+  // xAI
+  { id:'grok-2',         name:'Grok-2',           provider:'xai',      input:2.00,  output:10.00, cached:null,  ctx:'128K', tier:'flagship' },
+  { id:'grok-2-mini',    name:'Grok-2 Mini',      provider:'xai',      input:0.20,  output:0.50,  cached:null,  ctx:'128K', tier:'budget' },
+  // Mistral
+  { id:'mistral-large',  name:'Mistral Large 2',  provider:'mistral',  input:2.00,  output:6.00,  cached:null,  ctx:'128K', tier:'flagship' },
+  { id:'mixtral-8x22b',  name:'Mixtral 8x22B',    provider:'mistral',  input:0.90,  output:0.90,  cached:null,  ctx:'64K',  tier:'open' },
+  // Cohere
+  { id:'command-r-plus', name:'Command R+',       provider:'cohere',   input:2.50,  output:10.00, cached:null,  ctx:'128K', tier:'flagship' },
+  { id:'command-r',      name:'Command R',        provider:'cohere',   input:0.15,  output:0.60,  cached:null,  ctx:'128K', tier:'budget' },
+];
+
+const PROVIDER_LABELS = {
+  openai:'OpenAI', anthropic:'Anthropic', google:'Google',
+  deepseek:'DeepSeek', meta:'Meta', xai:'xAI',
+  mistral:'Mistral', cohere:'Cohere'
+};
+
+let currentFilter = 'all';
+let currentSort   = 'cost';
+let currentUnit   = 'tokens';
+
+// Conversion ratios
+const TO_TOKENS = { tokens:1, words:1.333, chars:0.25 };
+
+function getTokens() {
+  const ratio = TO_TOKENS[currentUnit];
+  const inp = (+document.getElementById('inputTokens').value || 0) * ratio;
+  const out = (+document.getElementById('outputTokens').value || 0) * ratio;
+  const calls = +document.getElementById('apiCalls').value || 1000;
+  const period = +document.getElementById('period').value || 1000;
+  return { inp, out, calls, period };
+}
+
+function calcCost(model, inp, out) {
+  const inCost  = (inp  / 1_000_000) * model.input;
+  const outCost = (out / 1_000_000) * model.output;
+  return { inCost, outCost, total: inCost + outCost };
+}
+
+function fmt(n) {
+  if (n === 0) return '$0.000000';
+  if (n < 0.001) return '$' + n.toFixed(7).replace(/0+$/, '');
+  if (n < 1) return '$' + n.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
+  if (n < 100) return '$' + n.toFixed(4);
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function fmtPer(price) {
+  return '$' + price.toFixed(2) + '/MTok';
+}
+
+function setUnit(unit, el) {
+  currentUnit = unit;
+  document.querySelectorAll('.unit-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('unitLabel').textContent = unit;
+  document.getElementById('unitLabel2').textContent = unit;
+  calculate();
+}
+
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+
+function setSortOrder(s) {
+  currentSort = s;
+  calculate();
+}
+
+function calculate() {
+  const { inp, out, calls, period } = getTokens();
+  const totalCalls = calls * (period > 1 ? 1 : 1); // period handled in display
+
+  // Filter models
+  let models = MODELS.filter(m =>
+    currentFilter === 'all' ||
+    m.provider === currentFilter ||
+    (currentFilter === 'other' && !['openai','anthropic','google','deepseek','meta'].includes(m.provider))
+  );
+
+  // Calculate costs
+  let results = models.map(m => {
+    const c = calcCost(m, inp, out);
+    return { ...m, ...c, scaledTotal: c.total * calls };
+  });
+
+  // Sort
+  if (currentSort === 'cost') results.sort((a,b) => a.total - b.total);
+  else if (currentSort === 'cost-desc') results.sort((a,b) => b.total - a.total);
+  else results.sort((a,b) => a.name.localeCompare(b.name));
+
+  const cheapest = Math.min(...results.map(r => r.total));
+  const mostExp  = Math.max(...results.map(r => r.total));
+  const avg = results.reduce((s,r) => s+r.total, 0) / results.length;
+
+  // Update summary
+  const cheapestModel = results.find(r => r.total === cheapest);
+  const expModel      = results.find(r => r.total === mostExp);
+  const savings = mostExp > 0 ? (mostExp - cheapest) * calls : 0;
+
+  document.getElementById('summaryGrid').innerHTML = `
+    <div class="summary-card">
+      <div class="summary-value">${fmt(cheapest)}</div>
+      <div class="summary-label">Cheapest / call<br><strong style="color:var(--accent)">${cheapestModel?.name}</strong></div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value" style="color:#ff5555">${fmt(mostExp)}</div>
+      <div class="summary-label">Most expensive / call<br><strong>${expModel?.name}</strong></div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value">${fmt(avg)}</div>
+      <div class="summary-label">Average cost / call<br>across ${results.length} models</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value">${fmt(savings)}</div>
+      <div class="summary-label">Max savings<br>vs cheapest (${calls.toLocaleString()} calls)</div>
+    </div>
+  `;
+
+  // Context bar
+  const inpTok  = Math.round(inp);
+  const outTok  = Math.round(out);
+  const words   = Math.round((inp + out) / 1.333);
+  document.getElementById('contextBar').innerHTML = `
+    <span>📥 Input: <strong>${inpTok.toLocaleString()}</strong> tokens</span>
+    <span>📤 Output: <strong>${outTok.toLocaleString()}</strong> tokens</span>
+    <span>📝 Total: <strong>~${words.toLocaleString()}</strong> words</span>
+    <span>🔄 Calls: <strong>${calls.toLocaleString()}</strong></span>
+  `;
+
+  // Render table
+  const tbody = document.getElementById('modelTableBody');
+  tbody.innerHTML = results.map((r, i) => {
+    const isCheapest = r.total === cheapest && results.length > 1;
+    const isMostExp  = r.total === mostExp  && results.length > 1;
+    const badge = PROVIDER_LABELS[r.provider] || r.provider;
+    return `<tr class="${isCheapest ? 'cheapest' : ''}">
+      <td>
+        <div class="model-name">
+          ${r.name}
+          ${isCheapest ? '<span class="cheapest-badge">✅ Cheapest</span>' : ''}
+          ${isMostExp  ? '<span class="expensive-badge">⬆ Expensive</span>' : ''}
+        </div>
+        <span class="provider-badge badge-${r.provider}">${badge}</span>
+      </td>
+      <td class="cost-cell">${fmtPer(r.input)}</td>
+      <td class="cost-cell">${fmtPer(r.output)}</td>
+      <td class="cost-cell">${fmt(r.inCost)}</td>
+      <td class="cost-cell">${fmt(r.outCost)}</td>
+      <td class="cost-total">${fmt(r.total)}</td>
+      <td class="cost-total" style="color:${isCheapest?'var(--accent)':'var(--text)'}">${fmt(r.scaledTotal)}</td>
+    </tr>`;
+  }).join('');
+
+  // Update title
+  const filterLabel = currentFilter === 'all' ? 'All Models' : PROVIDER_LABELS[currentFilter] || currentFilter;
+  document.getElementById('resultsTitle').textContent = `${filterLabel} — Cost for ${inp.toLocaleString()} input + ${out.toLocaleString()} output tokens × ${calls.toLocaleString()} calls`;
+}
+
+// Init
+calculate();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(r => console.log('[ToolsNova] SW:', r.scope))
+      .catch(e => console.log('[ToolsNova] SW failed:', e));
+  });
+}
+</script>
+</body>
+</html>

@@ -6,6 +6,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Read from html element — already set by inline <head> script, no localStorage needed
   const current = document.documentElement.getAttribute('data-theme') || 'dark';
+
+  // Inject theme toggle button into site-header (visible in nav, works on all pages)
+  const header = document.querySelector('.site-header');
+  const navToggleBtn = document.querySelector('.nav-toggle');
+  if (header && !document.getElementById('theme-toggle-header')) {
+    const btn = document.createElement('button');
+    btn.id = 'theme-toggle-header';
+    btn.className = 'theme-toggle-header-btn';
+    btn.setAttribute('aria-label', 'Toggle theme');
+    btn.onclick = toggleTheme;
+    // Insert before nav-toggle (mobile) or at end of header
+    if (navToggleBtn) {
+      header.insertBefore(btn, navToggleBtn);
+    } else {
+      header.appendChild(btn);
+    }
+  }
+
   _updateToggleIcon(current);
 });
 
@@ -18,19 +36,26 @@ function toggleTheme() {
 }
 
 function _updateToggleIcon(theme) {
-  const btn = document.getElementById('theme-toggle');
-  if (!btn) return;
-  btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-  btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-  // Update fixed button colours for light/dark
-  if (theme === 'light') {
-    btn.style.background = '#ffffff';
-    btn.style.color = '#111112';
-    btn.style.border = '2px solid rgba(26,138,10,0.4)';
-  } else {
-    btn.style.background = '#141416';
-    btn.style.color = '#f0f0f2';
-    btn.style.border = '2px solid rgba(127,255,111,0.4)';
+  // Update FAB (bottom-right)
+  const fab = document.getElementById('theme-toggle');
+  if (fab) {
+    fab.textContent = theme === 'dark' ? '🌙' : '☀️';
+    fab.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    if (theme === 'light') {
+      fab.style.background = '#ffffff';
+      fab.style.color = '#111112';
+      fab.style.border = '2px solid rgba(26,138,10,0.4)';
+    } else {
+      fab.style.background = '#141416';
+      fab.style.color = '#f0f0f2';
+      fab.style.border = '2px solid rgba(127,255,111,0.4)';
+    }
+  }
+  // Update header button
+  const hbtn = document.getElementById('theme-toggle-header');
+  if (hbtn) {
+    hbtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    hbtn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
   }
 }
 

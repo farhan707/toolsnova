@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midjourney Prompt Builder 2026 — Free AI Image Prompt Generator</title>
+<meta name="description" content="Build perfect Midjourney prompts instantly. Choose subject, style, lighting, camera, artist references and more. Copy-ready prompts for Midjourney v6, DALL-E 3, Stable Diffusion. Free, no signup.">
+<link rel="canonical" href="https://toolsnova.net/midjourney-prompt-builder">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="Midjourney Prompt Builder — Free AI Image Prompt Generator 2026">
+<meta property="og:description" content="Build detailed Midjourney, DALL-E 3 and Stable Diffusion prompts. Subject, style, lighting, camera, mood and more. Copy-ready output instantly.">
+<meta property="og:url" content="https://toolsnova.net/midjourney-prompt-builder">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Midjourney Prompt Builder","url":"https://toolsnova.net/midjourney-prompt-builder","description":"Free AI image prompt builder for Midjourney, DALL-E 3 and Stable Diffusion. Build detailed prompts with subject, style, lighting, camera and artist references.","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+<style>
+.tool-hero { background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.tool-hero h1 { font-size: 1.6rem; color: var(--accent); margin: 0 0 .4rem; font-family: var(--display); font-weight: 800; }
+.tool-hero p  { color: var(--text2); margin: 0; font-size: .9rem; line-height: 1.6; }
+.subtitle { font-size: .72rem; color: var(--text3); margin-top: .4rem; font-family: var(--mono); }
+
+/* Model tabs */
+.model-tabs { display:flex; gap:6px; margin-bottom:1.2rem; }
+.model-tab { background:var(--surface2); border:1px solid var(--border); color:var(--text2); border-radius:8px; padding:.35rem .9rem; cursor:pointer; font-size:.8rem; font-family:var(--mono); transition:all .15s; }
+.model-tab.active { background:var(--accent); color:#0c0c0e; border-color:var(--accent); font-weight:700; }
+.model-tab:hover:not(.active) { background:var(--surface3); color:var(--text); }
+
+/* Layout */
+.studio-layout { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:start; }
+@media(max-width:700px) { .studio-layout { grid-template-columns:1fr; } }
+
+/* Builder panel */
+.builder-panel { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.2rem; }
+.panel-title { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text3); margin-bottom:1rem; font-family:var(--mono); }
+
+/* Field groups */
+.field-group { margin-bottom:.85rem; }
+.field-label { font-size:.75rem; font-weight:600; color:var(--text2); margin-bottom:.3rem; display:flex; align-items:center; gap:.4rem; font-family:var(--mono); }
+.field-hint { font-size:.67rem; color:var(--text3); margin-left:auto; font-weight:400; }
+.field-input { width:100%; background:var(--surface2); border:1px solid var(--border2); color:var(--text); border-radius:8px; padding:.5rem .75rem; font-size:.85rem; font-family:var(--mono); box-sizing:border-box; transition:border-color .15s; }
+.field-input:focus { outline:2px solid var(--accent); border-color:var(--accent); }
+.field-input::placeholder { color:var(--text3); }
+textarea.field-input { resize:vertical; min-height:60px; line-height:1.6; }
+select.field-input { cursor:pointer; }
+
+/* Tag chips for multi-select */
+.tag-grid { display:flex; flex-wrap:wrap; gap:5px; }
+.tag-chip { background:var(--surface2); border:1px solid var(--border); color:var(--text3); border-radius:6px; padding:.22rem .6rem; font-size:.72rem; font-family:var(--mono); cursor:pointer; transition:all .15s; user-select:none; }
+.tag-chip:hover { color:var(--text2); border-color:var(--border2); }
+.tag-chip.selected { background:var(--accent-dim); border-color:rgba(127,255,111,.5); color:var(--accent); }
+
+/* Output panel */
+.output-panel { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.2rem; position:sticky; top:1rem; }
+.output-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:.8rem; }
+.output-actions { display:flex; gap:6px; }
+.act-btn { background:var(--surface2); border:1px solid var(--border2); color:var(--text2); border-radius:6px; padding:.3rem .7rem; font-size:.75rem; font-family:var(--mono); cursor:pointer; transition:all .15s; }
+.act-btn:hover { background:var(--surface3); color:var(--text); }
+.act-btn.primary { background:var(--accent-dim); border-color:rgba(127,255,111,.35); color:var(--accent); }
+.act-btn.primary:hover { background:rgba(127,255,111,.2); }
+
+.prompt-output { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:1rem; font-family:var(--mono); font-size:.82rem; line-height:1.8; color:var(--text); min-height:140px; white-space:pre-wrap; word-break:break-word; }
+.prompt-output.empty { color:var(--text3); font-style:italic; }
+
+/* Variations */
+.variations-grid { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-top:.8rem; }
+@media(max-width:500px) { .variations-grid { grid-template-columns:1fr; } }
+.variation-card { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:.7rem; cursor:pointer; transition:all .15s; }
+.variation-card:hover { border-color:rgba(127,255,111,.4); }
+.variation-label { font-size:.67rem; color:var(--accent); font-family:var(--mono); font-weight:700; margin-bottom:.35rem; text-transform:uppercase; letter-spacing:.05em; }
+.variation-text { font-size:.75rem; color:var(--text2); font-family:var(--mono); line-height:1.6; }
+
+/* Stats */
+.prompt-stats { display:flex; gap:.6rem; margin-top:.6rem; font-size:.72rem; color:var(--text3); font-family:var(--mono); flex-wrap:wrap; }
+.stat-pill { background:var(--surface2); border:1px solid var(--border); border-radius:99px; padding:.2rem .6rem; }
+.stat-pill span { color:var(--accent); }
+
+/* Parameter badge row */
+.param-row { display:flex; flex-wrap:wrap; gap:5px; margin-top:.6rem; }
+.param-badge { font-size:.68rem; background:rgba(127,255,111,.08); border:1px solid rgba(127,255,111,.2); color:var(--accent); border-radius:4px; padding:.15rem .45rem; font-family:var(--mono); }
+
+/* Quick-fill templates */
+.tpl-row { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:1rem; }
+.tpl-btn { background:var(--surface2); border:1px solid var(--border); color:var(--text2); border-radius:99px; padding:.25rem .7rem; font-size:.72rem; font-family:var(--mono); cursor:pointer; transition:all .15s; }
+.tpl-btn:hover { background:var(--accent-dim); border-color:rgba(127,255,111,.4); color:var(--accent); }
+
+/* Edu */
+.edu-section { margin-top:2rem; }
+.edu-section h2 { font-family:var(--display); font-weight:700; font-size:1.1rem; color:var(--text); margin-bottom:.8rem; letter-spacing:-.02em; }
+.edu-section h3 { font-family:var(--display); font-weight:600; font-size:.95rem; color:var(--text); margin:1rem 0 .4rem; }
+.edu-section p  { font-size:.83rem; color:var(--text2); line-height:1.75; margin-bottom:.6rem; }
+.edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:.75rem 0; }
+.edu-card { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:.75rem; }
+.edu-card-title { font-size:.78rem; font-weight:600; color:var(--accent); font-family:var(--mono); margin-bottom:.35rem; }
+.edu-card-body  { font-size:.76rem; color:var(--text3); line-height:1.6; }
+.edu-highlight  { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:.75rem 1rem; margin:.75rem 0; font-size:.82rem; color:var(--text2); line-height:1.7; }
+.edu-highlight strong { color:var(--accent); font-family:var(--mono); }
+.related-tools-section { max-width:860px; margin:2rem auto 1rem; padding:0 1rem; }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.7rem; }
+.related-card { display:flex; gap:.6rem; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:.8rem; text-decoration:none; transition:all .15s; }
+.related-card:hover { background:var(--accent-dim); border-color:rgba(127,255,111,.35); }
+.rc-icon { font-size:1.3rem; flex-shrink:0; margin-top:1px; }
+.rc-name { font-size:.85rem; font-weight:600; color:var(--text); margin-bottom:2px; line-height:1.3; }
+.rc-desc { font-size:.75rem; color:var(--text3); line-height:1.4; }
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav">
+    <span class="nav-category-label">Developer</span>
+    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
+    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
+    <a href="word-counter.html"        class="nav-link">Word Counter</a>
+    <a href="case-converter.html"      class="nav-link">Case Converter</a>
+    <a href="password-generator.html"  class="nav-link">Password Generator</a>
+    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
+    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
+    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
+    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
+    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
+    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
+    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
+    <a href="color-picker.html"        class="nav-link">Color Picker</a>
+    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
+    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
+    <a href="random-number-generator.html" class="nav-link">Random Number</a>
+    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
+    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
+    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
+    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
+    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
+    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
+    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
+    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
+    <a href="number-base-converter.html" class="nav-link">Number Base</a>
+    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
+    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Utilities</span>
+    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
+    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
+    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
+    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
+    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
+    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
+    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
+    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
+    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
+    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
+    <a href="character-counter.html"   class="nav-link">Character Counter</a>
+    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
+    <a href="random-word-generator.html" class="nav-link">Random Words</a>
+    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Fun &amp; Niche</span>
+    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
+    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
+    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
+    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
+    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
+    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Health &amp; Fitness</span>
+    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
+    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
+    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
+    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
+    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
+    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
+    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
+    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
+    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
+    <a href="height-converter.html"      class="nav-link">Height Converter</a>
+    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
+    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
+    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
+    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
+    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Student Tools</span>
+    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
+    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
+    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
+    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
+    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
+    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Math &amp; Science</span>
+    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
+    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
+    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
+    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
+    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
+    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
+    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
+    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
+    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
+    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
+    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
+    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
+    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
+    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
+    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
+    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
+    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
+    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
+    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
+    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
+    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
+    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
+    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Construction</span>
+    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
+    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
+    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
+    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
+    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Converters</span>
+    <a href="temperature-converter.html" class="nav-link">Temperature</a>
+    <a href="length-converter.html"    class="nav-link">Length</a>
+    <a href="weight-converter.html"    class="nav-link">Weight</a>
+    <a href="speed-converter.html"     class="nav-link">Speed</a>
+    <a href="data-size-converter.html" class="nav-link">Data Size</a>
+    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
+    <a href="margin-calculator.html"   class="nav-link">Margin</a>
+    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
+    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
+    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
+    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
+    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
+    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
+    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
+    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
+    <div class="nav-divider"></div>
+    <span class="nav-category-label">🏆 Prop Firm Tools</span>
+    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
+    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
+    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
+    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
+    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
+    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
+    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
+    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
+    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
+    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
+    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
+    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
+    </nav>
+</header>
+
+<main class="tool-main">
+  <div class="tool-hero">
+    <h1>🎨 Midjourney Prompt Builder</h1>
+    <p>Build detailed, copy-ready prompts for Midjourney v6, DALL-E 3, Stable Diffusion and Firefly. Pick subject, style, lighting, camera settings, mood and artist references — get a professional prompt instantly.</p>
+    <div class="subtitle">💡 Works for Midjourney v6 · DALL-E 3 · Stable Diffusion · Adobe Firefly &nbsp;•&nbsp; No signup &nbsp;•&nbsp; 100% free</div>
+  </div>
+
+  <!-- Model selector -->
+  <div class="model-tabs">
+    <button class="model-tab active" onclick="setModel('midjourney',this)">Midjourney v6</button>
+    <button class="model-tab" onclick="setModel('dalle',this)">DALL-E 3</button>
+    <button class="model-tab" onclick="setModel('sd',this)">Stable Diffusion</button>
+    <button class="model-tab" onclick="setModel('firefly',this)">Adobe Firefly</button>
+  </div>
+
+  <!-- Quick-fill templates -->
+  <div class="tpl-row" id="tpl-row">
+    <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);align-self:center;margin-right:4px">Quick fill:</span>
+    <button class="tpl-btn" onclick="fillTemplate('portrait')">👤 Portrait</button>
+    <button class="tpl-btn" onclick="fillTemplate('landscape')">🌄 Landscape</button>
+    <button class="tpl-btn" onclick="fillTemplate('product')">📦 Product Shot</button>
+    <button class="tpl-btn" onclick="fillTemplate('architecture')">🏛 Architecture</button>
+    <button class="tpl-btn" onclick="fillTemplate('fantasy')">🐉 Fantasy</button>
+    <button class="tpl-btn" onclick="fillTemplate('cyberpunk')">🌆 Cyberpunk</button>
+    <button class="tpl-btn" onclick="fillTemplate('logo')">✏️ Logo / Icon</button>
+    <button class="tpl-btn" onclick="fillTemplate('food')">🍜 Food</button>
+  </div>
+
+  <div class="studio-layout">
+    <!-- LEFT: Builder -->
+    <div class="builder-panel">
+      <div class="panel-title">🔧 Prompt Builder</div>
+
+      <div class="field-group">
+        <div class="field-label">🎭 Subject <span class="field-hint">Main focus of the image</span></div>
+        <textarea class="field-input" id="f-subject" rows="2" placeholder="e.g. a young woman with long red hair sitting in a neon-lit Tokyo alley..." oninput="buildPrompt()"></textarea>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">🎨 Art Style</div>
+        <div class="tag-grid" id="tags-style">
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Photorealistic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Cinematic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Oil painting</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Watercolor</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Pencil sketch</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Digital art</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Anime</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">3D render</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Pixel art</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Concept art</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Illustration</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Minimalist</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Surrealism</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Pop art</div>
+          <div class="tag-chip" onclick="toggleTag(this,'style')">Impressionist</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">💡 Lighting</div>
+        <div class="tag-grid" id="tags-lighting">
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Golden hour</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Studio lighting</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Dramatic shadows</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Soft diffused light</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Neon glow</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Backlit / Rim light</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Cinematic lighting</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Moonlight</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Candlelight</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Overcast</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Volumetric light</div>
+          <div class="tag-chip" onclick="toggleTag(this,'lighting')">Chiaroscuro</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">📷 Camera & Lens</div>
+        <div class="tag-grid" id="tags-camera">
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Shot on 35mm film</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">85mm portrait lens</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Wide angle 24mm</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Macro lens</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Telephoto 200mm</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Shallow depth of field</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Bokeh background</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Drone aerial view</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Low angle shot</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Bird's eye view</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Close-up</div>
+          <div class="tag-chip" onclick="toggleTag(this,'camera')">Full body shot</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">🌈 Color Palette</div>
+        <div class="tag-grid" id="tags-color">
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Vibrant colors</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Muted pastel tones</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Monochromatic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Black and white</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Warm tones</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Cool blue tones</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Earth tones</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Neon colors</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Golden palette</div>
+          <div class="tag-chip" onclick="toggleTag(this,'color')">Dark moody palette</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">😌 Mood / Atmosphere</div>
+        <div class="tag-grid" id="tags-mood">
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Peaceful</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Epic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Mysterious</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Melancholic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Tense</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Dreamy</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Nostalgic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Energetic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Dark and eerie</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Whimsical</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Romantic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'mood')">Futuristic</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">🖌 Artist Reference <span class="field-hint">Optional</span></div>
+        <div class="tag-grid" id="tags-artist">
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Greg Rutkowski</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Artgerm</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">WLOP</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">James Gurney</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Craig Mullins</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Alphonse Mucha</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Simon Stalenhag</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Zdzisław Beksiński</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Norman Rockwell</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Caravaggio</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Studio Ghibli style</div>
+          <div class="tag-chip" onclick="toggleTag(this,'artist')">Pixar style</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">✨ Quality Boosters</div>
+        <div class="tag-grid" id="tags-quality">
+          <div class="tag-chip selected" onclick="toggleTag(this,'quality')">highly detailed</div>
+          <div class="tag-chip selected" onclick="toggleTag(this,'quality')">8K resolution</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">award winning</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">masterpiece</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">trending on ArtStation</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">ultra realistic</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">sharp focus</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">professional photography</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">HDR</div>
+          <div class="tag-chip" onclick="toggleTag(this,'quality')">ray tracing</div>
+        </div>
+      </div>
+
+      <!-- MJ-specific params (shown only for Midjourney) -->
+      <div id="mj-params" class="field-group">
+        <div class="field-label">⚙️ Midjourney Parameters</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+          <div>
+            <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);margin-bottom:.25rem">Aspect Ratio</div>
+            <select class="field-input" id="mj-ar" onchange="buildPrompt()">
+              <option value="">Default</option>
+              <option value="--ar 1:1">1:1 Square</option>
+              <option value="--ar 16:9" selected>16:9 Widescreen</option>
+              <option value="--ar 9:16">9:16 Portrait</option>
+              <option value="--ar 4:3">4:3 Classic</option>
+              <option value="--ar 3:2">3:2 Photo</option>
+              <option value="--ar 2:3">2:3 Tall</option>
+              <option value="--ar 21:9">21:9 Cinematic</option>
+            </select>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);margin-bottom:.25rem">Stylize (0–1000)</div>
+            <input class="field-input" type="number" id="mj-stylize" min="0" max="1000" value="100" oninput="buildPrompt()">
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);margin-bottom:.25rem">Version</div>
+            <select class="field-input" id="mj-version" onchange="buildPrompt()">
+              <option value="--v 6.1" selected>v6.1 (latest)</option>
+              <option value="--v 6">v6</option>
+              <option value="--v 5.2">v5.2</option>
+              <option value="--niji 6">Niji 6 (anime)</option>
+            </select>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);margin-bottom:.25rem">Chaos (0–100)</div>
+            <input class="field-input" type="number" id="mj-chaos" min="0" max="100" value="0" oninput="buildPrompt()">
+          </div>
+        </div>
+        <div style="margin-top:.6rem;">
+          <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);margin-bottom:.25rem">Negative Prompt (--no)</div>
+          <input class="field-input" type="text" id="mj-no" placeholder="e.g. blurry, deformed, text, watermark, ugly" oninput="buildPrompt()">
+        </div>
+      </div>
+
+      <div style="margin-top:.5rem;display:flex;gap:6px;">
+        <button class="act-btn" onclick="clearAll()">Clear all</button>
+        <button class="act-btn" onclick="randomize()">🎲 Randomize</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Output -->
+    <div class="output-panel">
+      <div class="output-header">
+        <div class="panel-title" style="margin:0">✨ Your Prompt</div>
+        <div class="output-actions">
+          <button class="act-btn primary" onclick="copyPrompt()">📋 Copy</button>
+        </div>
+      </div>
+
+      <div class="prompt-output empty" id="prompt-output">Fill in the subject and select options to build your prompt...</div>
+
+      <div class="param-row" id="param-row" style="display:none"></div>
+
+      <div class="prompt-stats" id="prompt-stats" style="display:none">
+        <div class="stat-pill">Words: <span id="stat-words">0</span></div>
+        <div class="stat-pill">Tags selected: <span id="stat-tags">0</span></div>
+      </div>
+
+      <!-- 4 variations -->
+      <div style="margin-top:1rem;border-top:1px solid var(--border);padding-top:.8rem;" id="variations-section" style="display:none">
+        <div class="panel-title" style="margin-bottom:.6rem">🔀 Style Variations</div>
+        <div class="variations-grid" id="variations-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDU -->
+  <section class="edu-section">
+    <h2>How to Write Perfect Midjourney Prompts</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📐 Prompt Structure</div><div class="edu-card-body">The best Midjourney prompts follow: [Subject] + [Environment] + [Style] + [Lighting] + [Camera] + [Mood] + [Quality tags] + [Parameters]. More specific subject descriptions produce more consistent results than vague ones.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚖️ Stylize Parameter</div><div class="edu-card-body">--stylize controls how strongly Midjourney applies its aesthetic. Low (0–100): stays close to your prompt. Medium (250–500): balanced interpretation. High (750–1000): highly stylized, more artistic freedom. Default is 100.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎲 Chaos Parameter</div><div class="edu-card-body">--chaos (0–100) controls variation between results. Low chaos: consistent, predictable outputs. High chaos: wild, unexpected interpretations. Use low chaos for product/professional work, high chaos for creative exploration.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🚫 Negative Prompts</div><div class="edu-card-body">Use --no to exclude unwanted elements: --no blurry, text, watermark, ugly, deformed. In Midjourney v6, negative prompts are more effective than in earlier versions. Always exclude "text" unless you want text in the image.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🖌 Artist References</div><div class="edu-card-body">Adding "in the style of [artist]" or "by [artist]" is the fastest way to get a consistent aesthetic. Greg Rutkowski for epic fantasy, Artgerm for portraits, Simon Stalenhag for retrofuturism. Combine 2–3 artists for unique blends.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📸 Camera Terms</div><div class="edu-card-body">"Shot on 35mm Kodak Portra 400" gives film grain and color. "85mm f/1.4 bokeh" gives portrait blur. "Shot on Sony A7R V" gives sharp digital. Camera and lens specifications dramatically change the feel of photorealistic images.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>💡 v6.1 tip:</strong> Midjourney v6.1 understands natural language much better than earlier versions. You can write full sentences for the subject description instead of comma-separated keywords. "A woman standing in the rain looking up at the sky" works better than "woman, rain, sky, looking up."</div>
+
+    <h2>DALL-E 3 vs Midjourney vs Stable Diffusion</h2>
+    <p>Each model has different strengths. Midjourney v6 produces the most aesthetically refined images and excels at artistic styles. DALL-E 3 (via ChatGPT) follows complex instructions most accurately and handles text in images well. Stable Diffusion (SDXL/Flux) is open-source, runs locally, and is best for fine-tuned control with LoRA models. Adobe Firefly is commercially safe — all outputs are licensed for commercial use.</p>
+    <p>For the best results, use this builder's model selector to switch prompt format — DALL-E 3 needs more descriptive natural language, while Stable Diffusion benefits from keyword-heavy prompts with weights like (subject:1.4).</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Related AI Tools</h2>
+    <div class="related-tools-section">
+      <div class="related-grid">
+        <a href="ai-prompt-studio.html" class="related-card">
+          <div class="rc-icon">🧠</div>
+          <div><div class="rc-name">AI Prompt Studio</div><div class="rc-desc">Build prompts for ChatGPT, Claude and Gemini</div></div>
+        </a>
+        <a href="ai-api-cost-calculator.html" class="related-card">
+          <div class="rc-icon">💰</div>
+          <div><div class="rc-name">AI API Cost Calculator</div><div class="rc-desc">Compare costs across 20+ AI models</div></div>
+        </a>
+        <a href="ai-token-counter.html" class="related-card">
+          <div class="rc-icon">🔢</div>
+          <div><div class="rc-name">AI Token Counter</div><div class="rc-desc">Count tokens and estimate API costs</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</footer>
+
+<button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script src="app.js?v=20"></script>
+<script>
+// ════════════════════════════════════════
+// MIDJOURNEY PROMPT BUILDER
+// ════════════════════════════════════════
+
+let currentModel = 'midjourney';
+const selectedTags = { style:[], lighting:[], camera:[], color:[], mood:[], artist:[], quality:['highly detailed','8K resolution'] };
+
+// ── Model switching ───────────────────────────────────────
+function setModel(model, btn) {
+  currentModel = model;
+  document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mj-params').style.display = model === 'midjourney' ? '' : 'none';
+  buildPrompt();
+}
+
+// ── Tag toggling ──────────────────────────────────────────
+function toggleTag(el, group) {
+  const val = el.textContent.trim();
+  const idx = selectedTags[group].indexOf(val);
+  if (idx === -1) {
+    selectedTags[group].push(val);
+    el.classList.add('selected');
+  } else {
+    selectedTags[group].splice(idx, 1);
+    el.classList.remove('selected');
+  }
+  buildPrompt();
+}
+
+// ── Build prompt ──────────────────────────────────────────
+function buildPrompt() {
+  const subject = document.getElementById('f-subject').value.trim();
+  const out = document.getElementById('prompt-output');
+
+  const allTags = [
+    ...selectedTags.style,
+    ...selectedTags.lighting,
+    ...selectedTags.camera,
+    ...selectedTags.color,
+    ...selectedTags.mood,
+  ];
+
+  const artistTags = selectedTags.artist.length
+    ? (selectedTags.artist.length === 1 ? `by ${selectedTags.artist[0]}` : `by ${selectedTags.artist.slice(0,-1).join(', ')} and ${selectedTags.artist.slice(-1)}`)
+    : '';
+
+  const qualityTags = selectedTags.quality;
+
+  let parts = [];
+  if (subject) parts.push(subject);
+  if (allTags.length) parts.push(allTags.join(', '));
+  if (artistTags) parts.push(artistTags);
+  if (qualityTags.length) parts.push(qualityTags.join(', '));
+
+  if (parts.length === 0) {
+    out.textContent = 'Fill in the subject and select options to build your prompt...';
+    out.className = 'prompt-output empty';
+    document.getElementById('prompt-stats').style.display = 'none';
+    document.getElementById('param-row').style.display = 'none';
+    document.getElementById('variations-section').style.display = 'none';
+    return;
+  }
+
+  let prompt = parts.join(', ');
+
+  // Model-specific formatting
+  if (currentModel === 'midjourney') {
+    const ar       = document.getElementById('mj-ar').value;
+    const stylize  = document.getElementById('mj-stylize').value;
+    const version  = document.getElementById('mj-version').value;
+    const chaos    = document.getElementById('mj-chaos').value;
+    const noPrompt = document.getElementById('mj-no').value.trim();
+    const params = [
+      ar || '',
+      stylize && stylize !== '100' ? `--stylize ${stylize}` : '',
+      version || '--v 6.1',
+      chaos && chaos !== '0' ? `--chaos ${chaos}` : '',
+      noPrompt ? `--no ${noPrompt}` : '',
+    ].filter(Boolean).join(' ');
+    prompt = `/imagine prompt: ${prompt} ${params}`.trim();
+
+    // Show param badges
+    const paramRow = document.getElementById('param-row');
+    const badges = [ar, `--stylize ${stylize}`, version, chaos !== '0' ? `--chaos ${chaos}` : ''].filter(Boolean);
+    paramRow.innerHTML = badges.map(b => `<span class="param-badge">${b}</span>`).join('');
+    paramRow.style.display = '';
+  } else if (currentModel === 'dalle') {
+    prompt = `Create an image of ${subject || 'the following scene'}. Style: ${[...selectedTags.style, ...selectedTags.lighting].join(', ') || 'photorealistic'}. ${selectedTags.mood.length ? 'Mood: ' + selectedTags.mood.join(', ') + '.' : ''} ${selectedTags.camera.length ? 'Camera: ' + selectedTags.camera.join(', ') + '.' : ''} ${artistTags ? 'Visual style inspired by ' + artistTags + '.' : ''} High quality, detailed.`.replace(/\s+/g, ' ').trim();
+    document.getElementById('param-row').style.display = 'none';
+  } else if (currentModel === 'sd') {
+    const weightedTags = [...allTags.map(t => `(${t}:1.2)`), ...qualityTags.map(t => `(${t}:1.4)`)];
+    prompt = [subject ? `(${subject}:1.3)` : '', ...weightedTags, artistTags].filter(Boolean).join(', ');
+    document.getElementById('param-row').style.display = 'none';
+  } else if (currentModel === 'firefly') {
+    prompt = `${subject ? subject + '. ' : ''}${allTags.length ? allTags.join(', ') + '. ' : ''}${artistTags ? 'Style: ' + artistTags + '. ' : ''}${qualityTags.join(', ')}.`.trim();
+    document.getElementById('param-row').style.display = 'none';
+  }
+
+  out.textContent = prompt;
+  out.className = 'prompt-output';
+
+  // Stats
+  const totalTags = Object.values(selectedTags).flat().length;
+  document.getElementById('stat-words').textContent = prompt.split(/\s+/).filter(Boolean).length;
+  document.getElementById('stat-tags').textContent = totalTags;
+  document.getElementById('prompt-stats').style.display = '';
+
+  // Variations
+  renderVariations(subject, allTags, qualityTags, artistTags);
+}
+
+function renderVariations(subject, allTags, qualityTags, artistTags) {
+  const VARIATIONS = [
+    { label: '🌅 Warm & Cinematic',  extra: ['golden hour', 'cinematic lighting', 'warm tones', 'anamorphic lens flare'] },
+    { label: '🌙 Dark & Moody',      extra: ['moonlight', 'dramatic shadows', 'dark moody palette', 'mysterious'] },
+    { label: '🎨 Painterly',         extra: ['oil painting', 'impressionist', 'textured brushstrokes', 'fine art'] },
+    { label: '⚡ Epic & Dramatic',   extra: ['epic', 'volumetric light', 'vibrant colors', 'award winning'] },
+  ];
+
+  const section = document.getElementById('variations-section');
+  const grid = document.getElementById('variations-grid');
+
+  if (!subject) { section.style.display = 'none'; return; }
+
+  section.style.display = '';
+  grid.innerHTML = VARIATIONS.map(v => {
+    const tags = [...new Set([...allTags, ...v.extra, ...qualityTags])];
+    let varPrompt = [subject, tags.join(', '), artistTags].filter(Boolean).join(', ');
+    if (currentModel === 'midjourney') varPrompt = `/imagine prompt: ${varPrompt} --v 6.1 --ar 16:9`;
+    return `<div class="variation-card" onclick="loadVariation(this)">
+      <div class="variation-label">${v.label}</div>
+      <div class="variation-text">${varPrompt.slice(0, 120)}${varPrompt.length > 120 ? '...' : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+function loadVariation(el) {
+  const text = el.querySelector('.variation-text').textContent;
+  const full = el._fullText || text;
+  document.getElementById('prompt-output').textContent = full.endsWith('...') ? full : full;
+  document.getElementById('prompt-output').className = 'prompt-output';
+  copyToClipboard(full.endsWith('...') ? text : full);
+}
+
+// ── Templates ─────────────────────────────────────────────
+const TEMPLATES = {
+  portrait:     { subject: 'a beautiful woman with wavy auburn hair, wearing a silk dress, standing in a sunlit garden', style:['Photorealistic'], lighting:['Golden hour','Soft diffused light'], camera:['85mm portrait lens','Shallow depth of field','Bokeh background'], color:['Warm tones'], mood:['Romantic'], quality:['highly detailed','8K resolution','sharp focus'] },
+  landscape:    { subject: 'a vast mountain valley at sunrise with a winding river, pine forests, and misty peaks in the background', style:['Photorealistic'], lighting:['Golden hour','Volumetric light'], camera:['Wide angle 24mm','Drone aerial view'], color:['Vibrant colors'], mood:['Peaceful'], quality:['highly detailed','8K resolution','HDR'] },
+  product:      { subject: 'a luxury perfume bottle on a marble surface with water droplets', style:['Photorealistic'], lighting:['Studio lighting','Soft diffused light'], camera:['Macro lens','Close-up'], color:['Muted pastel tones'], mood:['Peaceful'], quality:['highly detailed','8K resolution','professional photography','sharp focus'] },
+  architecture: { subject: 'a futuristic glass skyscraper with organic curved forms and rooftop gardens, surrounded by other modern buildings', style:['Cinematic','Concept art'], lighting:['Cinematic lighting','Dramatic shadows'], camera:['Wide angle 24mm','Low angle shot'], color:['Cool blue tones'], mood:['Futuristic','Epic'], quality:['highly detailed','8K resolution','trending on ArtStation'] },
+  fantasy:      { subject: 'a powerful dragon perched on a ancient stone castle tower under a stormy night sky with lightning', style:['Digital art','Concept art'], lighting:['Dramatic shadows','Volumetric light'], camera:['Wide angle 24mm'], color:['Dark moody palette'], mood:['Epic','Mysterious'], artist:['Greg Rutkowski'], quality:['highly detailed','8K resolution','masterpiece','award winning'] },
+  cyberpunk:    { subject: 'a lone hacker in a neon-lit alley in night-time Tokyo, rain reflecting colorful signs on wet pavement', style:['Cinematic','Digital art'], lighting:['Neon glow','Dramatic shadows'], camera:['35mm portrait lens'], color:['Neon colors'], mood:['Mysterious','Tense','Futuristic'], artist:['Simon Stalenhag'], quality:['highly detailed','8K resolution','ray tracing'] },
+  logo:         { subject: 'a minimalist geometric logo of a phoenix rising, clean lines, modern design, on white background', style:['Minimalist','Digital art'], lighting:['Studio lighting'], camera:[], color:['Vibrant colors'], mood:['Energetic'], quality:['highly detailed','sharp focus'] },
+  food:         { subject: 'a rustic bowl of ramen with soft-boiled egg, chashu pork, and nori, steam rising, on a wooden table', style:['Photorealistic'], lighting:['Soft diffused light','Studio lighting'], camera:['Macro lens','Close-up','Shallow depth of field'], color:['Warm tones'], mood:['Peaceful'], quality:['highly detailed','8K resolution','professional photography'] },
+};
+
+function fillTemplate(name) {
+  const t = TEMPLATES[name];
+  if (!t) return;
+
+  // Clear all tags first
+  Object.keys(selectedTags).forEach(k => selectedTags[k] = []);
+  document.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('selected'));
+
+  // Set subject
+  document.getElementById('f-subject').value = t.subject;
+
+  // Set tags
+  Object.keys(t).forEach(group => {
+    if (group === 'subject') return;
+    t[group].forEach(val => {
+      selectedTags[group].push(val);
+      // Find and highlight the chip
+      document.querySelectorAll(`#tags-${group} .tag-chip`).forEach(chip => {
+        if (chip.textContent.trim() === val) chip.classList.add('selected');
+      });
+    });
+  });
+
+  buildPrompt();
+}
+
+// ── Randomize ─────────────────────────────────────────────
+function randomize() {
+  const subjects = [
+    'a samurai warrior standing in a bamboo forest in the rain',
+    'an astronaut floating above a colorful nebula',
+    'a medieval wizard casting a spell in a candlelit library',
+    'a futuristic city submerged half underwater at sunset',
+    'a wolf howling at the full moon on a snowy mountain peak',
+    'a steam-powered locomotive racing through a desert canyon',
+    'a fairy tale cottage covered in glowing mushrooms in an enchanted forest',
+    'a deep sea creature glowing in the dark ocean abyss',
+  ];
+  document.getElementById('f-subject').value = subjects[Math.floor(Math.random() * subjects.length)];
+
+  // Clear and randomly pick tags
+  Object.keys(selectedTags).forEach(k => selectedTags[k] = []);
+  document.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('selected'));
+
+  const pick = (group) => {
+    const chips = [...document.querySelectorAll(`#tags-${group} .tag-chip`)];
+    const count = Math.floor(Math.random() * 2) + 1;
+    for (let i = 0; i < count; i++) {
+      const chip = chips[Math.floor(Math.random() * chips.length)];
+      if (!chip.classList.contains('selected')) {
+        chip.classList.add('selected');
+        selectedTags[group].push(chip.textContent.trim());
+      }
+    }
+  };
+
+  ['style','lighting','camera','color','mood','quality'].forEach(pick);
+  buildPrompt();
+}
+
+// ── Utilities ─────────────────────────────────────────────
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('Copied!')).catch(() => {});
+}
+
+function copyPrompt() {
+  const out = document.getElementById('prompt-output');
+  if (out.classList.contains('empty')) return;
+  copyToClipboard(out.textContent);
+}
+
+function clearAll() {
+  document.getElementById('f-subject').value = '';
+  Object.keys(selectedTags).forEach(k => selectedTags[k] = []);
+  document.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('selected'));
+  document.getElementById('mj-no').value = '';
+  document.getElementById('mj-chaos').value = '0';
+  document.getElementById('mj-stylize').value = '100';
+  buildPrompt();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(10px)'; }, 2000);
+}
+
+// Init
+buildPrompt();
+</script>
+<div class="copy-toast" id="toast"></div>
+<script>
+if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
+      .catch(err => console.log('[ToolsNova] SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

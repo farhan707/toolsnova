@@ -1,5 +1,5 @@
 /* ================================================================
-   ToolsNova Service Worker v7
+   ToolsNova Service Worker v8
    Strategy:
    - Pre-cache core assets + top 15 pages on install
    - Dynamically cache ALL other pages as user visits them
@@ -8,8 +8,8 @@
    - Full offline support for any visited page
    ================================================================ */
 
-const CACHE_NAME   = 'toolsnova-v7';
-const ASSETS_CACHE = 'toolsnova-assets-v7';
+const CACHE_NAME   = 'toolsnova-v8';
+const ASSETS_CACHE = 'toolsnova-assets-v8';
 
 // ── Pre-cache these on install (top traffic pages) ─────────────────
 const PRE_CACHE_PAGES = [
@@ -34,8 +34,8 @@ const PRE_CACHE_PAGES = [
 
 // ── Core assets always needed ──────────────────────────────────────
 const CORE_ASSETS = [
-  '/app.js?v=19',
-  '/style.css?v=19',
+  '/app.js?v=20',
+  '/style.css?v=20',
   '/favicon.svg',
   '/manifest.json',
 ];

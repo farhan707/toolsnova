@@ -2,367 +2,162 @@
 <html lang="en">
 <head>
 <script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Token Counter & Cost Estimator — GPT-4, Claude, Gemini | ToolsNova</title>
-  <meta name="description" content="Free AI token counter and API cost estimator. Count tokens for GPT-4o, GPT-4, Claude 3, Gemini, and Llama instantly. Calculate exact API costs before you run your prompts.">
-  <meta name="keywords" content="ai token counter, gpt token counter, claude token counter, llm token calculator, openai token cost estimator, prompt token count, api cost calculator">
-  <link rel="canonical" href="https://toolsnova.net/ai-token-counter">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Token Counter & Cost Estimator 2026 — GPT-4o, Claude, Gemini | ToolsNova</title>
+<meta name="description" content="Free AI token counter and API cost estimator. Count tokens for GPT-4o, Claude 3.5 Sonnet, Gemini 2.0 Flash, DeepSeek V3, o3 and 20+ models. Monthly cost calculator included. Instant, no signup.">
+<link rel="canonical" href="https://toolsnova.net/ai-token-counter">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta property="og:title" content="AI Token Counter & Cost Estimator 2026 — GPT-4o, Claude, Gemini">
+<meta property="og:description" content="Count tokens and estimate API costs for all major AI models instantly. Updated 2026 pricing. Monthly cost calculator included. Free, no signup.">
+<meta property="og:url" content="https://toolsnova.net/ai-token-counter">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Token Counter & Cost Estimator 2026 | ToolsNova">
+<meta name="twitter:description" content="Count tokens and estimate API costs for GPT-4o, Claude 3.5, Gemini 2.0, DeepSeek and more. Free and instant.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Token Counter & Cost Estimator","url":"https://toolsnova.net/ai-token-counter","description":"Free tool to count tokens and estimate API costs for GPT-4o, Claude 3.5 Sonnet, Gemini 2.0 Flash, DeepSeek V3, o3 and 20+ major AI models. Updated June 2026 pricing.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ToolsNova","url":"https://toolsnova.net"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a token in AI models?","acceptedAnswer":{"@type":"Answer","text":"A token is the basic unit of text that AI language models process. Tokens are not the same as words — a single word can be one or multiple tokens. On average, 1 token equals approximately 0.75 words, or 4 characters in English."}},{"@type":"Question","name":"How many tokens is 1000 words?","acceptedAnswer":{"@type":"Answer","text":"Approximately 1,333 tokens. The general rule is 1 token ≈ 0.75 English words. Code, special characters, and non-English languages may use more tokens per word."}},{"@type":"Question","name":"Which is the cheapest AI model per token?","acceptedAnswer":{"@type":"Answer","text":"As of June 2026, Gemini 2.0 Flash at $0.10/MTok input is one of the cheapest frontier models. DeepSeek V3 at $0.27/MTok and GPT-4o Mini at $0.15/MTok are also very cost-effective options."}},{"@type":"Question","name":"What is prompt caching and how much does it save?","acceptedAnswer":{"@type":"Answer","text":"Prompt caching lets you re-use a fixed system prompt at a reduced rate. Claude charges $0.30/MTok for cached inputs vs $3.00/MTok uncached — a 90% saving. GPT-4o cached inputs cost $1.25/MTok vs $2.50/MTok — a 50% saving. Apps with consistent system prompts can save 50–80% on input costs."}}]}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+<style>
+/* ── Layout ── */
+.tool-hero { background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:1.5rem; }
+.tool-hero h1 { font-size:1.6rem; color:var(--accent); margin:0 0 .4rem; font-family:var(--display); font-weight:800; }
+.tool-hero p  { color:var(--text2); margin:0; font-size:.9rem; line-height:1.6; }
+.subtitle { font-size:.72rem; color:var(--text3); margin-top:.4rem; font-family:var(--mono); }
 
-  <meta property="og:title" content="AI Token Counter & Cost Estimator — GPT-4, Claude, Gemini">
-  <meta property="og:description" content="Count tokens and estimate API costs for all major AI models instantly. Supports GPT-4o, Claude 3.5, Gemini, Llama and more.">
-  <meta property="og:url" content="https://toolsnova.net/ai-token-counter">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolsNova">
+.main-layout { display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start; }
+@media(max-width:700px){ .main-layout { grid-template-columns:1fr; } }
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="AI Token Counter & Cost Estimator | ToolsNova">
-  <meta name="twitter:description" content="Count tokens and estimate API costs for GPT-4, Claude, Gemini and more — free and instant.">
-
-  <link rel="stylesheet" href="style.css?v=20">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-S6PPGS7N63');
-  </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "AI Token Counter & Cost Estimator",
-    "url": "https://toolsnova.net/ai-token-counter",
-    "description": "Free tool to count tokens and estimate API costs for GPT-4o, Claude 3.5, Gemini 1.5, Llama 3 and other major AI models.",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "publisher": { "@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net" }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is a token in AI models?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A token is the basic unit of text that AI language models process. Tokens are not the same as words — a single word can be one or multiple tokens, and short common words may share a token. On average, 1 token equals approximately 0.75 words, or 100 tokens equals roughly 75 words in English."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does OpenAI calculate token costs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "OpenAI charges separately for input tokens (your prompt) and output tokens (the model's response). For example, GPT-4o charges $2.50 per million input tokens and $10.00 per million output tokens as of 2025. Costs vary significantly between models — GPT-4o mini is much cheaper than GPT-4o."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How many tokens is 1000 words?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Approximately 1,333 tokens. The general rule is that 1 token equals about 0.75 English words, so 1,000 words is roughly 1,333 tokens. However this varies by content type — code, special characters, and non-English languages may tokenize differently."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the context window of GPT-4o?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GPT-4o has a context window of 128,000 tokens, meaning you can include up to 128K tokens of combined prompt and conversation history in a single API call. Claude 3.5 Sonnet supports 200,000 tokens, and Gemini 1.5 Pro supports up to 1,000,000 tokens."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this token counter accurate?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This tool uses the BPE (Byte Pair Encoding) approximation method which closely matches OpenAI's tiktoken library. Results are highly accurate for English text (within 1–3%). For code, special characters, or non-Latin scripts, results may vary slightly from official API token counts."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which AI models does this token counter support?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This tool supports GPT-4o, GPT-4o mini, GPT-4 Turbo, GPT-3.5 Turbo, Claude 3.5 Sonnet, Claude 3 Opus, Claude 3 Haiku, Gemini 1.5 Pro, Gemini 1.5 Flash, Llama 3 70B, and Mistral Large. Pricing is based on latest published API rates."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <style>
-    .calc-container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 3rem;
-    }
-    .tool-header { margin-bottom: 1.5rem; }
-    .tool-header h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.35rem; }
-    .tool-header p { color: var(--text2); font-size: 0.95rem; }
-
-    .main-layout {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 20px;
-      align-items: start;
-    }
-    @media (max-width: 700px) {
-      .main-layout { grid-template-columns: 1fr; }
-    }
-
-    .textarea-wrap { position: relative; }
-    #promptText {
-      width: 100%;
-      min-height: 260px;
-      padding: 14px;
-      font-size: 0.9rem;
-      font-family: var(--font-mono, monospace);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      resize: vertical;
-      box-sizing: border-box;
-      background: var(--surface2);
-      color: var(--text);
-      line-height: 1.6;
-      transition: border-color 0.15s;
-    }
-    #promptText:focus { outline: none; border-color: var(--accent); }
-    #promptText::placeholder { color: var(--text2); }
-
-    .textarea-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-    .btn-sm {
-      padding: 6px 14px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: transparent;
-      cursor: pointer;
-      color: var(--text2);
-      transition: background 0.15s;
-    }
-    .btn-sm:hover { background: var(--surface, var(--surface2)); }
-
-    .sidebar { display: flex; flex-direction: column; gap: 14px; }
-
-    .stat-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .stat-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      text-align: center;
-    }
-    .stat-card .s-val {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .stat-card .s-val.accent { color: var(--text); }
-    .stat-card .s-label {
-      font-size: 0.7rem;
-      color: var(--text3);
-      margin-top: 3px;
-    }
-
-    .section-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text2);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    .model-select-wrap {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-    .model-select-wrap select {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.875rem;
-      background: var(--surface2);
-      color: var(--text);
-      margin-bottom: 12px;
-      box-sizing: border-box;
-    }
-    .model-select-wrap select:focus { outline: none; border-color: var(--text); }
-
-    .cost-breakdown {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .cost-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.82rem;
-    }
-    .cost-row .c-label { color: var(--text2); }
-    .cost-row .c-val { font-weight: 500; color: var(--text); }
-    .cost-row.total {
-      border-top: 1px solid var(--border);
-      padding-top: 8px;
-      margin-top: 2px;
-    }
-    .cost-row.total .c-label { font-weight: 600; color: var(--text); }
-    .cost-row.total .c-val { color: var(--text); font-weight: 700; font-size: 0.95rem; }
-
-    .output-ratio-wrap {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-    .ratio-slider-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .ratio-slider-row input[type=range] { flex: 1; }
-    .ratio-slider-row span {
-      font-size: 0.8rem;
-      font-weight: 500;
-      min-width: 40px;
-      text-align: right;
-      color: var(--text);
-    }
-    .ratio-hint {
-      font-size: 0.72rem;
-      color: var(--text3);
-      margin-top: 5px;
-    }
-
-    .ctx-bar-wrap {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-    .ctx-bar-bg {
-      height: 8px;
-      background: var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin: 8px 0 5px;
-    }
-    .ctx-bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      background: #2563eb;
-      transition: width 0.3s;
-    }
-    .ctx-bar-fill.warn { background: #d97706; }
-    .ctx-bar-fill.danger { background: #dc2626; }
-    .ctx-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      color: var(--text3);
-    }
-
-    .model-compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem;
-      margin-top: 1.5rem;
-    }
-    .model-compare-table th {
-      text-align: left;
-      padding: 8px 10px;
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-      font-weight: 600;
-      font-size: 0.75rem;
-      color: var(--text2);
-    }
-    .model-compare-table td {
-      padding: 9px 10px;
-      border-bottom: 1px solid var(--border));
-      color: var(--text);
-      vertical-align: middle;
-    }
-    .model-compare-table tr:last-child td { border-bottom: none; }
-    .model-compare-table tr.active-row td { background: var(--accent-dim); }
-    .provider-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 20px;
-      margin-left: 5px;
-    }
-    .badge-openai { background: rgba(127,255,111,.15); color: var(--accent); }
-    .badge-anthropic { background: var(--surface2); color: var(--text2); }
-    .badge-google { background: rgba(255,180,0,.1); color: var(--text2); }
-    .badge-meta { background: #dbeafe; color: var(--text); }
-    .badge-mistral { background: var(--surface2); color: var(--text2); }
-
-    .cost-this-prompt { font-weight: 700; color: var(--text); }
-
-    .edu-section { margin-top: 3rem; }
-    .edu-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
-    .edu-section p { font-size: 0.9rem; color: var(--text2); line-height: 1.75; margin-bottom: 1rem; }
-    .edu-section h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
-
-    .faq-section { margin-top: 3rem; }
-    .faq-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
-    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-    .faq-q { width: 100%; text-align: left; padding: 14px 16px; background: var(--surface2); border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-    .faq-q .arrow { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
-    .faq-q.open .arrow { transform: rotate(180deg); }
-    .faq-a { display: none; padding: 12px 16px 14px; font-size: 0.875rem; color: var(--text2); line-height: 1.7; border-top: 1px solid var(--border); background: var(--surface2); }
-    .faq-a.open { display: block; }
-  
-/* ── Dark theme FAQ fix for 6 new tools ── */
-.faq-q {
-  color: var(--text) !important;
-  background: var(--surface2) !important;
+/* ── Textarea ── */
+#promptText {
+  width:100%; min-height:240px; padding:14px; font-size:.88rem;
+  font-family:var(--mono); border:1px solid var(--border); border-radius:12px;
+  resize:vertical; box-sizing:border-box; background:var(--surface2);
+  color:var(--text); line-height:1.7; transition:border-color .15s;
 }
-.faq-q:hover {
-  background: var(--surface3) !important;
-}
-.faq-a {
-  color: var(--text2) !important;
-  background: var(--surface) !important;
-}
-.faq-item {
-  border-color: var(--border) !important;
-}
+#promptText:focus { outline:none; border-color:var(--accent); }
+#promptText::placeholder { color:var(--text3); }
+
+.textarea-actions { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+.btn-sm { padding:5px 12px; font-size:.78rem; font-weight:500; border:1px solid var(--border); border-radius:8px; background:transparent; cursor:pointer; color:var(--text2); font-family:var(--mono); transition:background .15s; }
+.btn-sm:hover { background:var(--surface2); color:var(--text); }
+
+/* ── Sidebar ── */
+.sidebar { display:flex; flex-direction:column; gap:12px; }
+
+.stat-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.stat-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:10px 12px; text-align:center; }
+.stat-card .s-val { font-size:1.35rem; font-weight:700; color:var(--accent); font-family:var(--display); line-height:1.2; }
+.stat-card .s-label { font-size:.67rem; color:var(--text3); margin-top:3px; font-family:var(--mono); text-transform:uppercase; letter-spacing:.05em; }
+
+.section-box { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+.section-title { font-size:.72rem; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; font-family:var(--mono); }
+
+/* ── Model select ── */
+.section-box select { width:100%; padding:7px 9px; border:1px solid var(--border2); border-radius:8px; font-size:.85rem; background:var(--surface); color:var(--text); margin-bottom:10px; box-sizing:border-box; font-family:var(--mono); }
+.section-box select:focus { outline:none; border-color:var(--accent); }
+
+/* ── Cost breakdown ── */
+.cost-row { display:flex; justify-content:space-between; align-items:center; font-size:.8rem; padding:3px 0; }
+.cost-row .c-label { color:var(--text2); }
+.cost-row .c-val { font-weight:500; color:var(--text); font-family:var(--mono); }
+.cost-row.total { border-top:1px solid var(--border); padding-top:8px; margin-top:4px; }
+.cost-row.total .c-label { font-weight:700; color:var(--text); font-size:.85rem; }
+.cost-row.total .c-val { color:var(--accent); font-weight:700; font-size:.95rem; }
+.cost-row.cache-row .c-val { color:#7fff6f; }
+.cache-badge { font-size:.65rem; background:rgba(127,255,111,.1); border:1px solid rgba(127,255,111,.25); color:var(--accent); border-radius:4px; padding:1px 5px; font-family:var(--mono); margin-left:4px; }
+
+/* ── Sliders ── */
+.slider-row { display:flex; align-items:center; gap:8px; margin-top:6px; }
+.slider-row input[type=range] { flex:1; accent-color:var(--accent); }
+.slider-row span { font-size:.8rem; font-weight:600; min-width:42px; text-align:right; color:var(--text); font-family:var(--mono); }
+.slider-hint { font-size:.7rem; color:var(--text3); margin-top:4px; font-family:var(--mono); }
+
+/* ── Context bar ── */
+.ctx-bar-bg { height:7px; background:var(--border); border-radius:4px; overflow:hidden; margin:8px 0 4px; }
+.ctx-bar-fill { height:100%; border-radius:4px; background:var(--accent); transition:width .3s; }
+.ctx-bar-fill.warn { background:#f59e0b; }
+.ctx-bar-fill.danger { background:#ef4444; }
+.ctx-meta { display:flex; justify-content:space-between; font-size:.7rem; color:var(--text3); font-family:var(--mono); }
+
+/* ── Monthly estimator ── */
+.monthly-result { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:8px; }
+.monthly-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px 10px; text-align:center; }
+.monthly-val { font-size:1rem; font-weight:700; color:var(--accent); font-family:var(--mono); }
+.monthly-label { font-size:.65rem; color:var(--text3); font-family:var(--mono); margin-top:2px; }
+
+/* ── Compare table ── */
+.compare-wrap { margin-top:1.8rem; overflow-x:auto; }
+.compare-title { font-size:.72rem; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:.06em; margin-bottom:.7rem; font-family:var(--mono); }
+.model-compare-table { width:100%; border-collapse:collapse; font-size:.8rem; }
+.model-compare-table th { text-align:left; padding:8px 10px; background:var(--surface2); border-bottom:1px solid var(--border2); font-weight:600; font-size:.72rem; color:var(--text3); font-family:var(--mono); text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
+.model-compare-table td { padding:8px 10px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:middle; font-size:.82rem; }
+.model-compare-table tr:last-child td { border-bottom:none; }
+.model-compare-table tr.active-row td { background:var(--accent-dim); }
+.model-compare-table tr:hover td { background:var(--surface2); }
+.provider-badge { display:inline-block; font-size:.63rem; font-weight:700; padding:2px 6px; border-radius:20px; margin-left:5px; font-family:var(--mono); }
+.badge-openai    { background:rgba(0,163,108,.15);    color:#00a36c; }
+.badge-anthropic { background:rgba(208,127,89,.15);   color:#d07f59; }
+.badge-google    { background:rgba(66,133,244,.15);   color:#4285f4; }
+.badge-deepseek  { background:rgba(127,90,240,.15);   color:#7f5af0; }
+.badge-meta      { background:rgba(24,119,242,.15);   color:#1877f2; }
+.badge-xai       { background:rgba(255,255,255,.08);  color:var(--text2); }
+.badge-mistral   { background:rgba(255,164,0,.15);    color:#ffa400; }
+.cost-highlight  { font-weight:700; color:var(--accent); font-family:var(--mono); }
+.cheapest-badge  { background:var(--accent); color:#0c0c0e; font-size:.62rem; font-weight:700; padding:1px 5px; border-radius:3px; font-family:var(--mono); margin-left:4px; }
+
+/* ── Edu ── */
+.edu-section { margin-top:2.5rem; }
+.edu-section h2 { font-family:var(--display); font-weight:700; font-size:1.1rem; color:var(--text); margin-bottom:.8rem; letter-spacing:-.02em; }
+.edu-section h3 { font-family:var(--display); font-weight:600; font-size:.95rem; color:var(--text); margin:1rem 0 .4rem; }
+.edu-section p  { font-size:.83rem; color:var(--text2); line-height:1.75; margin-bottom:.6rem; }
+.edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:.75rem 0; }
+.edu-card { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:.75rem; }
+.edu-card-title { font-size:.78rem; font-weight:600; color:var(--accent); font-family:var(--mono); margin-bottom:.35rem; }
+.edu-card-body  { font-size:.76rem; color:var(--text3); line-height:1.6; }
+.edu-highlight  { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:.75rem 1rem; margin:.75rem 0; font-size:.82rem; color:var(--text2); line-height:1.7; }
+.edu-highlight strong { color:var(--accent); font-family:var(--mono); }
+
+/* ── FAQ ── */
+.faq-section { margin-top:2rem; }
+.faq-section h2 { font-family:var(--display); font-weight:700; font-size:1.1rem; color:var(--text); margin-bottom:1rem; letter-spacing:-.02em; }
+.faq-item { border:1px solid var(--border); border-radius:10px; margin-bottom:8px; overflow:hidden; }
+.faq-q { width:100%; text-align:left; padding:12px 14px; background:var(--surface2); border:none; font-size:.88rem; font-weight:500; cursor:pointer; color:var(--text); display:flex; justify-content:space-between; align-items:center; gap:8px; font-family:var(--mono); }
+.faq-q:hover { background:var(--surface3); }
+.faq-q .arrow { font-size:.9rem; transition:transform .2s; flex-shrink:0; }
+.faq-q.open .arrow { transform:rotate(180deg); }
+.faq-a { display:none; padding:10px 14px 12px; font-size:.82rem; color:var(--text2); line-height:1.7; border-top:1px solid var(--border); background:var(--surface); }
+.faq-a.open { display:block; }
+
+/* ── Related tools ── */
+.related-tools-section { max-width:860px; margin:2rem auto 1rem; padding:0 1rem; }
+.related-title { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text3); margin-bottom:.8rem; font-family:var(--mono); }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.7rem; }
+.related-card { display:flex; gap:.6rem; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:.8rem; text-decoration:none; transition:all .15s; }
+.related-card:hover { background:var(--accent-dim); border-color:rgba(127,255,111,.35); }
+.rc-icon { font-size:1.3rem; flex-shrink:0; margin-top:1px; }
+.rc-name { font-size:.85rem; font-weight:600; color:var(--text); margin-bottom:2px; line-height:1.3; }
+.rc-desc { font-size:.75rem; color:var(--text3); line-height:1.4; }
 </style>
 </head>
 <body>
-
-  <header class="site-header">
+<header class="site-header">
   <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
   <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
   <nav class="site-nav">
@@ -519,178 +314,207 @@
     <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
     <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
     <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
-    </nav>
+  </nav>
 </header>
 
-  <main class="tool-main">
+<main class="tool-main">
 
-    <div class="tool-header">
-      <h1>AI token counter &amp; cost estimator</h1>
-      <p>Count tokens and estimate API costs for GPT-4o, Claude 3.5, Gemini, Llama and more — instantly, in your browser.</p>
-    </div>
+  <div class="tool-hero">
+    <h1>🔢 AI Token Counter &amp; Cost Estimator</h1>
+    <p>Count tokens and estimate API costs for GPT-4o, Claude 3.5 Sonnet, Gemini 2.0 Flash, DeepSeek V3, o3 and 20+ models. Monthly budget calculator and prompt caching savings included.</p>
+    <div class="subtitle">💡 Prices updated June 2026 &nbsp;•&nbsp; All processing in your browser &nbsp;•&nbsp; No signup needed</div>
+  </div>
 
-    <div class="main-layout">
+  <div class="main-layout">
 
-      <div class="left-col">
-        <div class="textarea-wrap">
-          <textarea id="promptText" placeholder="Paste your prompt or text here to count tokens and estimate cost..."></textarea>
-        </div>
-        <div class="textarea-actions">
-          <button class="btn-sm" onclick="clearText()">Clear</button>
-          <button class="btn-sm" onclick="loadSample('short')">Sample: short prompt</button>
-          <button class="btn-sm" onclick="loadSample('long')">Sample: long prompt</button>
-          <button class="btn-sm" onclick="loadSample('code')">Sample: code</button>
-        </div>
-      </div>
-
-      <div class="sidebar">
-
-        <div class="stat-row">
-          <div class="stat-card">
-            <div class="s-val accent" id="tokenCount">0</div>
-            <div class="s-label">Tokens</div>
-          </div>
-          <div class="stat-card">
-            <div class="s-val" id="wordCount">0</div>
-            <div class="s-label">Words</div>
-          </div>
-          <div class="stat-card">
-            <div class="s-val" id="charCount">0</div>
-            <div class="s-label">Characters</div>
-          </div>
-          <div class="stat-card">
-            <div class="s-val" id="sentenceCount">0</div>
-            <div class="s-label">Sentences</div>
-          </div>
-        </div>
-
-        <div class="model-select-wrap">
-          <div class="section-title">Model &amp; cost estimate</div>
-          <select id="modelSelect" onchange="updateCost()">
-            <optgroup label="OpenAI">
-              <option value="gpt4o">GPT-4o</option>
-              <option value="gpt4o-mini">GPT-4o mini</option>
-              <option value="gpt4-turbo">GPT-4 Turbo</option>
-              <option value="gpt35-turbo">GPT-3.5 Turbo</option>
-            </optgroup>
-            <optgroup label="Anthropic">
-              <option value="claude35-sonnet">Claude 3.5 Sonnet</option>
-              <option value="claude3-opus">Claude 3 Opus</option>
-              <option value="claude3-haiku">Claude 3 Haiku</option>
-            </optgroup>
-            <optgroup label="Google">
-              <option value="gemini15-pro">Gemini 1.5 Pro</option>
-              <option value="gemini15-flash">Gemini 1.5 Flash</option>
-            </optgroup>
-            <optgroup label="Meta / Open Source">
-              <option value="llama3-70b">Llama 3 70B</option>
-              <option value="mistral-large">Mistral Large</option>
-            </optgroup>
-          </select>
-
-          <div class="cost-breakdown" id="costBreakdown"></div>
-        </div>
-
-        <div class="output-ratio-wrap">
-          <div class="section-title">Expected output tokens</div>
-          <div class="ratio-slider-row">
-            <input type="range" id="outputRatio" min="0.1" max="10" step="0.1" value="1" oninput="updateOutputLabel(); updateCost()">
-            <span id="outputRatioLabel">1×</span>
-          </div>
-          <div class="ratio-hint">Multiplier of input tokens. 1× means output ≈ same length as your prompt.</div>
-        </div>
-
-        <div class="ctx-bar-wrap">
-          <div class="section-title">Context window usage</div>
-          <div class="ctx-bar-bg">
-            <div class="ctx-bar-fill" id="ctxFill" style="width:0%"></div>
-          </div>
-          <div class="ctx-meta">
-            <span id="ctxUsed">0 tokens used</span>
-            <span id="ctxTotal">128K limit</span>
-          </div>
-        </div>
-
+    <!-- LEFT: Textarea -->
+    <div>
+      <textarea id="promptText" placeholder="Paste your prompt or text here to count tokens and estimate API cost..."></textarea>
+      <div class="textarea-actions">
+        <button class="btn-sm" onclick="clearText()">Clear</button>
+        <button class="btn-sm" onclick="loadSample('short')">Sample: short</button>
+        <button class="btn-sm" onclick="loadSample('long')">Sample: long</button>
+        <button class="btn-sm" onclick="loadSample('code')">Sample: code</button>
+        <button class="btn-sm" onclick="loadSample('system')">Sample: system prompt</button>
       </div>
     </div>
 
-    <div style="margin-top:2rem">
-      <div class="section-title">Cost comparison — your current prompt across all models</div>
-      <div style="overflow-x:auto">
-        <table class="model-compare-table" id="compareTable"></table>
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+
+      <!-- Stats -->
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="s-val" id="tokenCount">0</div>
+          <div class="s-label">Tokens</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-val" id="wordCount">0</div>
+          <div class="s-label">Words</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-val" id="charCount">0</div>
+          <div class="s-label">Characters</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-val" id="sentenceCount">0</div>
+          <div class="s-label">Sentences</div>
+        </div>
       </div>
+
+      <!-- Model + cost -->
+      <div class="section-box">
+        <div class="section-title">Model &amp; cost estimate</div>
+        <select id="modelSelect" onchange="updateCost()">
+          <optgroup label="OpenAI">
+            <option value="gpt4o">GPT-4o</option>
+            <option value="gpt4o-mini">GPT-4o Mini</option>
+            <option value="o3">o3 (reasoning)</option>
+            <option value="o4-mini">o4-mini (reasoning)</option>
+            <option value="gpt4-turbo">GPT-4 Turbo</option>
+          </optgroup>
+          <optgroup label="Anthropic">
+            <option value="claude35-sonnet">Claude 3.5 Sonnet</option>
+            <option value="claude35-haiku">Claude 3.5 Haiku</option>
+            <option value="claude3-opus">Claude 3 Opus</option>
+          </optgroup>
+          <optgroup label="Google">
+            <option value="gemini2-flash">Gemini 2.0 Flash</option>
+            <option value="gemini2-pro">Gemini 2.0 Pro</option>
+            <option value="gemini15-pro">Gemini 1.5 Pro</option>
+          </optgroup>
+          <optgroup label="DeepSeek">
+            <option value="deepseek-v3">DeepSeek V3</option>
+            <option value="deepseek-r1">DeepSeek R1</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="grok-2">Grok-2 (xAI)</option>
+            <option value="llama3-70b">Llama 3.3 70B</option>
+            <option value="mistral-large">Mistral Large 2</option>
+          </optgroup>
+        </select>
+        <div class="cost-breakdown" id="costBreakdown"></div>
+      </div>
+
+      <!-- Output ratio -->
+      <div class="section-box">
+        <div class="section-title">Expected output tokens</div>
+        <div class="slider-row">
+          <input type="range" id="outputRatio" min="0.1" max="10" step="0.1" value="1" oninput="updateOutputLabel();updateCost()">
+          <span id="outputRatioLabel">1×</span>
+        </div>
+        <div class="slider-hint">Multiplier of input tokens. 1× = output ≈ same length as prompt.</div>
+      </div>
+
+      <!-- Context bar -->
+      <div class="section-box">
+        <div class="section-title">Context window usage</div>
+        <div class="ctx-bar-bg"><div class="ctx-bar-fill" id="ctxFill" style="width:0%"></div></div>
+        <div class="ctx-meta">
+          <span id="ctxUsed">0 tokens used</span>
+          <span id="ctxTotal">128K window</span>
+        </div>
+      </div>
+
+      <!-- Monthly estimator -->
+      <div class="section-box">
+        <div class="section-title">📅 Monthly cost estimator</div>
+        <div class="slider-hint" style="margin-bottom:6px">API calls per day</div>
+        <div class="slider-row">
+          <input type="range" id="callsPerDay" min="1" max="10000" step="1" value="1000" oninput="updateMonthly()">
+          <span id="callsLabel">1,000</span>
+        </div>
+        <div class="monthly-result" id="monthlyResult">
+          <div class="monthly-card"><div class="monthly-val" id="mCostDay">—</div><div class="monthly-label">Per day</div></div>
+          <div class="monthly-card"><div class="monthly-val" id="mCostMonth">—</div><div class="monthly-label">Per month</div></div>
+          <div class="monthly-card"><div class="monthly-val" id="mCostYear">—</div><div class="monthly-label">Per year</div></div>
+          <div class="monthly-card"><div class="monthly-val" id="mCacheMonth" style="color:var(--accent)">—</div><div class="monthly-label">With caching</div></div>
+        </div>
+        <div class="slider-hint" style="margin-top:6px" id="cacheNote"></div>
+      </div>
+
     </div>
+  </div>
 
-    <div class="edu-section">
-      <h2>What are tokens and why do they matter?</h2>
-      <p>Tokens are the fundamental units that large language models (LLMs) use to read and generate text. When you send a prompt to an AI API, your text is first split into tokens using a tokenizer — then the model processes those tokens one by one to generate a response.</p>
-      <h3>How tokenization works</h3>
-      <p>Modern LLMs use Byte Pair Encoding (BPE) tokenization. Common short words like "the", "is", "a" are usually single tokens. Longer or less common words may be split into 2–4 tokens. Numbers, punctuation, and special characters each consume tokens too. On average, 1 token ≈ 0.75 English words, or roughly 4 characters.</p>
-      <h3>Why token count affects your costs</h3>
-      <p>AI APIs charge per token — separately for input (your prompt + conversation history) and output (the model's response). If you're building an app that processes large documents or runs thousands of API calls per day, even small reductions in token count can translate to significant savings. This tool helps you understand your token usage before you run any API calls.</p>
-      <h3>Tips to reduce token usage</h3>
-      <p>Remove unnecessary filler words and redundant instructions from your system prompt. Use structured formats like JSON or bullet points instead of long prose instructions. Summarize long conversation histories instead of sending the full thread. Choose a smaller model (like GPT-4o mini or Claude 3 Haiku) for tasks that don't require top-tier reasoning.</p>
+  <!-- Compare table -->
+  <div class="compare-wrap">
+    <div class="compare-title">Cost comparison — your current prompt across all models</div>
+    <table class="model-compare-table" id="compareTable"></table>
+  </div>
+
+  <!-- Edu -->
+  <section class="edu-section">
+    <h2>What are tokens and why do they matter?</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🔤 What is a token?</div><div class="edu-card-body">Tokens are the fundamental units LLMs process. Common short words = 1 token. Longer or rare words = 2–4 tokens. Numbers and punctuation each count. Rule of thumb: 1 token ≈ 0.75 words ≈ 4 characters in English.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💸 Input vs Output cost</div><div class="edu-card-body">Every model charges separately for input (your prompt) and output (the response). Output is always 3–5× more expensive than input. GPT-4o: $2.50 input vs $10.00 output per MTok — a 4× difference.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🔄 Prompt Caching</div><div class="edu-card-body">Claude and GPT-4o cache repeated system prompts at up to 90% discount. Claude cached reads: $0.30/MTok vs $3.00/MTok uncached. For apps with fixed system prompts, caching cuts input costs by 50–90%.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📐 Context Window</div><div class="edu-card-body">The context window is the total tokens a model can process at once (input + output combined). GPT-4o: 128K. Claude 3.5: 200K. Gemini 2.0 Pro: 1M tokens. Exceeding it truncates older parts of the conversation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">✂️ Reduce token usage</div><div class="edu-card-body">Remove filler words from system prompts. Use bullet points instead of prose instructions. Summarize chat history instead of sending everything. Use a smaller model for simple tasks — GPT-4o Mini is 15× cheaper than GPT-4o.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏆 Cheapest 2026 models</div><div class="edu-card-body">Gemini 2.0 Flash: $0.10/MTok input. GPT-4o Mini: $0.15/MTok. DeepSeek V3: $0.27/MTok. For most tasks these match GPT-4o quality at 10–25× lower cost. Use this counter to find your cheapest option.</div></div>
     </div>
+    <div class="edu-highlight"><strong>💡 Token math:</strong> 1,000 English words ≈ 1,333 tokens. A typical system prompt (300 words) ≈ 400 tokens. A full A4 page of text ≈ 500 tokens. A book chapter (5,000 words) ≈ 6,650 tokens. At GPT-4o pricing ($2.50/MTok), processing 1,000 tokens costs just $0.0025 — but at scale (1M calls/month × 1,000 tokens) that's $2,500/month.</div>
 
-    <div class="faq-section">
-      <h2>Frequently asked questions</h2>
+    <h2>2026 AI Model Pricing Guide</h2>
+    <h3>OpenAI Models</h3>
+    <p>GPT-4o ($2.50/$10.00 per MTok) is the flagship for complex tasks. GPT-4o Mini ($0.15/$0.60) is the budget tier — excellent for classification, summarization and simple Q&A at 15× lower cost. The o3 reasoning model ($10/$40) is for complex multi-step problems where accuracy trumps cost. GPT-4o cached input rate is $1.25/MTok — 50% off the standard rate.</p>
+    <h3>Anthropic Claude</h3>
+    <p>Claude 3.5 Sonnet ($3.00/$15.00) leads for coding and long-document tasks. Claude 3.5 Haiku ($0.80/$4.00) is the fast budget option. Anthropic's prompt caching is the most aggressive in the industry — cached Claude inputs cost just $0.30/MTok vs $3.00/MTok uncached, a 90% saving. All Claude models support 200K context.</p>
+    <h3>Google Gemini</h3>
+    <p>Gemini 2.0 Flash ($0.10/$0.40) is the cheapest frontier model available in 2026. Gemini 2.0 Pro ($1.25/$5.00) is the premium tier with 1M token context — ideal for analyzing entire books, codebases, or long conversations without summarization.</p>
+    <h3>DeepSeek</h3>
+    <p>DeepSeek V3 ($0.27/$1.10) and R1 ($0.55/$2.19) offer GPT-4 class performance at a fraction of the cost. Both are open-source and can be self-hosted for near-zero marginal cost at scale. Cached DeepSeek inputs are as low as $0.014/MTok — the lowest cached rate of any frontier model.</p>
+  </section>
 
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What is a token in AI models? <span class="arrow">&#8964;</span></button>
-        <div class="faq-a">A token is the basic unit of text that AI language models process. Tokens are not the same as words — a single word can be one or multiple tokens. On average, 1 token equals approximately 0.75 words, or 100 tokens equals roughly 75 words in English.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How does OpenAI calculate token costs? <span class="arrow">&#8964;</span></button>
-        <div class="faq-a">OpenAI charges separately for input tokens (your prompt) and output tokens (the model's response). For example, GPT-4o charges $2.50 per million input tokens and $10.00 per million output tokens. Costs vary significantly between models — GPT-4o mini is approximately 15× cheaper than GPT-4o.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How many tokens is 1000 words? <span class="arrow">&#8964;</span></button>
-        <div class="faq-a">Approximately 1,333 tokens. The general rule is 1 token ≈ 0.75 English words, so 1,000 words ≈ 1,333 tokens. Code, special characters, and non-English text may tokenize differently and use more tokens per word.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What is the context window of GPT-4o? <span class="arrow">&#8964;</span></button>
-        <div class="faq-a">GPT-4o has a context window of 128,000 tokens. Claude 3.5 Sonnet supports 200,000 tokens. Gemini 1.5 Pro supports up to 1,000,000 tokens. The context window includes both your input and the model's output.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Is this token counter accurate? <span class="arrow">&#8964;</span></button>
-        <div class="faq-a">This tool uses a BPE approximation that closely matches OpenAI's tiktoken library. Results are highly accurate for English text (within 1–3%). For code, special characters, or non-Latin scripts, results may vary slightly from the official API token count.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Which AI models does this tool support? <span class="arrow">&#8964;</span></button>
-        <div class="faq-a">This tool supports GPT-4o, GPT-4o mini, GPT-4 Turbo, GPT-3.5 Turbo, Claude 3.5 Sonnet, Claude 3 Opus, Claude 3 Haiku, Gemini 1.5 Pro, Gemini 1.5 Flash, Llama 3 70B, and Mistral Large. Pricing reflects the latest published API rates.</div>
-      </div>
-
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is a token in AI models? <span class="arrow">⌄</span></button>
+      <div class="faq-a">A token is the basic unit of text that AI language models process. Tokens are not the same as words — a single word can be one or multiple tokens. On average, 1 token equals approximately 0.75 words, or 4 characters in English. The exact tokenization depends on the model's vocabulary (BPE tokenizer).</div>
     </div>
-
-  </main>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How many tokens is 1,000 words? <span class="arrow">⌄</span></button>
+      <div class="faq-a">Approximately 1,333 tokens. The rule is 1 token ≈ 0.75 English words. Code tokenizes differently — Python and JavaScript tend to use more tokens per line than English prose. Non-Latin scripts (Chinese, Arabic, Korean) often use 2–3 tokens per character.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which is the cheapest AI model in 2026? <span class="arrow">⌄</span></button>
+      <div class="faq-a">Gemini 2.0 Flash at $0.10/MTok input is the cheapest frontier model as of June 2026. GPT-4o Mini ($0.15/MTok) and DeepSeek V3 ($0.27/MTok) are also very cost-effective. With prompt caching, DeepSeek cached inputs drop to $0.014/MTok — the lowest rate available.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is prompt caching and how much does it save? <span class="arrow">⌄</span></button>
+      <div class="faq-a">Prompt caching lets you reuse a fixed prefix (like a long system prompt) at a reduced rate on subsequent calls. Claude charges $0.30/MTok for cached reads vs $3.00/MTok uncached — a 90% saving. GPT-4o cached inputs cost $1.25/MTok vs $2.50/MTok — a 50% saving. Apps with consistent system prompts can save 50–80% on total input costs.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How accurate is this token counter? <span class="arrow">⌄</span></button>
+      <div class="faq-a">This tool uses a BPE approximation that closely matches OpenAI's tiktoken library. For English text, accuracy is within 1–3% of the actual API token count. Code, special characters, emojis, and non-Latin scripts may vary slightly. For exact counts, use the official tiktoken library or the API's usage response.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What context window does each model support? <span class="arrow">⌄</span></button>
+      <div class="faq-a">GPT-4o and GPT-4o Mini: 128K tokens. o3 and o4-mini: 200K tokens. Claude 3.5 Sonnet and Haiku: 200K tokens. Gemini 2.0 Flash: 1M tokens. Gemini 2.0 Pro: 1M tokens. DeepSeek V3 and R1: 64K tokens. Llama 3.3 70B: 128K tokens. The context window includes both your input and the model's output.</div>
+    </div>
+  </section>
 
   <div class="related-tools-section">
-    <h2 class="related-title">Related developer tools</h2>
+    <div class="related-title">Related AI Tools</div>
     <div class="related-grid">
-      <a class="related-card" href="legal-document-analyzer.html">
-        <div class="rc-icon">⚖️</div>
-        <div class="rc-name">Legal document analyzer</div>
-        <div class="rc-desc">Readability score, jargon detection & plain English checker for contracts</div>
+      <a class="related-card" href="ai-api-cost-calculator.html">
+        <div class="rc-icon">💰</div>
+        <div><div class="rc-name">AI API Cost Calculator</div><div class="rc-desc">Compare GPT-4o, Claude, Gemini costs across 20+ models side by side</div></div>
       </a>
-      <a class="related-card" href="mortgage-affordability-calculator.html">
-        <div class="rc-icon">🏠</div>
-        <div class="rc-name">Mortgage affordability calculator</div>
-        <div class="rc-desc">Find out how much house you can afford on your salary</div>
+      <a class="related-card" href="ai-prompt-studio.html">
+        <div class="rc-icon">🧠</div>
+        <div><div class="rc-name">AI Prompt Studio</div><div class="rc-desc">Build and improve prompts for ChatGPT, Claude and Gemini</div></div>
       </a>
-      <a class="related-card" href="loan-emi-comparison.html">
-        <div class="rc-icon">📊</div>
-        <div class="rc-name">Loan EMI comparison</div>
-        <div class="rc-desc">Compare up to 4 loans side by side — EMI, interest, amortisation</div>
+      <a class="related-card" href="midjourney-prompt-builder.html">
+        <div class="rc-icon">🎨</div>
+        <div><div class="rc-name">Midjourney Prompt Builder</div><div class="rc-desc">Build detailed image prompts for Midjourney v6, DALL-E 3 and Stable Diffusion</div></div>
       </a>
     </div>
   </div>
 
-  <footer class="site-footer">
+</main>
+
+<footer class="site-footer">
   <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
   <nav class="footer-links">
     <a href="about.html">About</a>
@@ -700,211 +524,233 @@
   </nav>
 </footer>
 
-  <script src="app.js?v=20"></script>
-  <script>
-    const MODELS = {
-      'gpt4o':           { name:'GPT-4o',           provider:'openai',    ctx:128000,  inputPer1M:2.50,   outputPer1M:10.00  },
-      'gpt4o-mini':      { name:'GPT-4o mini',       provider:'openai',    ctx:128000,  inputPer1M:0.15,   outputPer1M:0.60   },
-      'gpt4-turbo':      { name:'GPT-4 Turbo',       provider:'openai',    ctx:128000,  inputPer1M:10.00,  outputPer1M:30.00  },
-      'gpt35-turbo':     { name:'GPT-3.5 Turbo',     provider:'openai',    ctx:16385,   inputPer1M:0.50,   outputPer1M:1.50   },
-      'claude35-sonnet': { name:'Claude 3.5 Sonnet', provider:'anthropic', ctx:200000,  inputPer1M:3.00,   outputPer1M:15.00  },
-      'claude3-opus':    { name:'Claude 3 Opus',     provider:'anthropic', ctx:200000,  inputPer1M:15.00,  outputPer1M:75.00  },
-      'claude3-haiku':   { name:'Claude 3 Haiku',    provider:'anthropic', ctx:200000,  inputPer1M:0.25,   outputPer1M:1.25   },
-      'gemini15-pro':    { name:'Gemini 1.5 Pro',    provider:'google',    ctx:1000000, inputPer1M:3.50,   outputPer1M:10.50  },
-      'gemini15-flash':  { name:'Gemini 1.5 Flash',  provider:'google',    ctx:1000000, inputPer1M:0.075,  outputPer1M:0.30   },
-      'llama3-70b':      { name:'Llama 3 70B',       provider:'meta',      ctx:8192,    inputPer1M:0.59,   outputPer1M:0.79   },
-      'mistral-large':   { name:'Mistral Large',     provider:'mistral',   ctx:32000,   inputPer1M:3.00,   outputPer1M:9.00   },
-    };
-
-    const PROVIDER_BADGE = {
-      openai:'badge-openai', anthropic:'badge-anthropic',
-      google:'badge-google', meta:'badge-meta', mistral:'badge-mistral'
-    };
-    const PROVIDER_LABEL = {
-      openai:'OpenAI', anthropic:'Anthropic',
-      google:'Google', meta:'Meta', mistral:'Mistral'
-    };
-
-    function estimateTokens(text) {
-      if (!text) return 0;
-      let t = text;
-      t = t.replace(/\s+/g, ' ').trim();
-      const words = t.split(' ').filter(w => w.length > 0);
-      let tokens = 0;
-      for (const w of words) {
-        if (w.length <= 3) tokens += 1;
-        else if (w.length <= 6) tokens += 1;
-        else if (w.length <= 10) tokens += 2;
-        else tokens += Math.ceil(w.length / 4);
-      }
-      const punctMatches = (t.match(/[.,!?;:()\[\]{}"'\-\/\\]/g) || []).length;
-      tokens += Math.ceil(punctMatches * 0.5);
-      const numMatches = (t.match(/\d+/g) || []).length;
-      tokens += Math.ceil(numMatches * 0.3);
-      return Math.max(1, Math.round(tokens * 1.05));
-    }
-
-    function countWords(text) {
-      return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-    }
-
-    function countSentences(text) {
-      const matches = text.match(/[.!?]+/g);
-      return matches ? matches.length : (text.trim().length > 0 ? 1 : 0);
-    }
-
-    function fmtCost(usd) {
-      if (usd < 0.000001) return '$0.00';
-      if (usd < 0.01) return '$' + usd.toFixed(6);
-      if (usd < 1) return '$' + usd.toFixed(4);
-      return '$' + usd.toFixed(3);
-    }
-
-    function fmtCtx(n) {
-      if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
-      if (n >= 1000) return (n/1000).toFixed(0) + 'K';
-      return n.toString();
-    }
-
-    let currentTokens = 0;
-
-    function updateAll() {
-      const text = document.getElementById('promptText').value;
-      currentTokens = estimateTokens(text);
-      const words = countWords(text);
-      const chars = text.length;
-      const sentences = countSentences(text);
-
-      document.getElementById('tokenCount').textContent = currentTokens.toLocaleString();
-      document.getElementById('wordCount').textContent = words.toLocaleString();
-      document.getElementById('charCount').textContent = chars.toLocaleString();
-      document.getElementById('sentenceCount').textContent = sentences.toLocaleString();
-
-      updateCost();
-      updateCompareTable();
-    }
-
-    function updateOutputLabel() {
-      const ratio = parseFloat(document.getElementById('outputRatio').value);
-      document.getElementById('outputRatioLabel').textContent = ratio.toFixed(1) + '×';
-    }
-
-    function updateCost() {
-      const modelKey = document.getElementById('modelSelect').value;
-      const model = MODELS[modelKey];
-      const ratio = parseFloat(document.getElementById('outputRatio').value);
-      const outputTokens = Math.round(currentTokens * ratio);
-
-      const inputCost  = (currentTokens / 1_000_000) * model.inputPer1M;
-      const outputCost = (outputTokens  / 1_000_000) * model.outputPer1M;
-      const totalCost  = inputCost + outputCost;
-
-      const ctxPct = Math.min(100, (currentTokens / model.ctx) * 100);
-      const fill = document.getElementById('ctxFill');
-      fill.style.width = ctxPct.toFixed(1) + '%';
-      fill.className = 'ctx-bar-fill' + (ctxPct > 90 ? ' danger' : ctxPct > 70 ? ' warn' : '');
-      document.getElementById('ctxUsed').textContent = currentTokens.toLocaleString() + ' tokens used';
-      document.getElementById('ctxTotal').textContent = fmtCtx(model.ctx) + ' limit';
-
-      document.getElementById('costBreakdown').innerHTML = `
-        <div class="cost-row">
-          <span class="c-label">Input tokens</span>
-          <span class="c-val">${currentTokens.toLocaleString()}</span>
-        </div>
-        <div class="cost-row">
-          <span class="c-label">Input cost</span>
-          <span class="c-val">${fmtCost(inputCost)}</span>
-        </div>
-        <div class="cost-row">
-          <span class="c-label">Output tokens (est.)</span>
-          <span class="c-val">${outputTokens.toLocaleString()}</span>
-        </div>
-        <div class="cost-row">
-          <span class="c-label">Output cost</span>
-          <span class="c-val">${fmtCost(outputCost)}</span>
-        </div>
-        <div class="cost-row">
-          <span class="c-label">Rate (input/output per 1M)</span>
-          <span class="c-val">$${model.inputPer1M.toFixed(3)} / $${model.outputPer1M.toFixed(3)}</span>
-        </div>
-        <div class="cost-row total">
-          <span class="c-label">Total cost this call</span>
-          <span class="c-val">${fmtCost(totalCost)}</span>
-        </div>
-      `;
-
-      updateCompareTable();
-    }
-
-    function updateCompareTable() {
-      const ratio = parseFloat(document.getElementById('outputRatio').value);
-      const outputTokens = Math.round(currentTokens * ratio);
-      const selectedKey = document.getElementById('modelSelect').value;
-
-      let rows = '';
-      for (const [key, m] of Object.entries(MODELS)) {
-        const inputCost  = (currentTokens / 1_000_000) * m.inputPer1M;
-        const outputCost = (outputTokens  / 1_000_000) * m.outputPer1M;
-        const total      = inputCost + outputCost;
-        const badge      = PROVIDER_BADGE[m.provider];
-        const provLabel  = PROVIDER_LABEL[m.provider];
-        const isActive   = key === selectedKey;
-        rows += `<tr class="${isActive ? 'active-row' : ''}">
-          <td>${m.name}<span class="provider-badge ${badge}">${provLabel}</span></td>
-          <td>${fmtCtx(m.ctx)}</td>
-          <td>$${m.inputPer1M.toFixed(3)}</td>
-          <td>$${m.outputPer1M.toFixed(3)}</td>
-          <td class="cost-this-prompt">${fmtCost(total)}</td>
-        </tr>`;
-      }
-
-      document.getElementById('compareTable').innerHTML = `
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Context</th>
-            <th>Input /1M</th>
-            <th>Output /1M</th>
-            <th>This prompt</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      `;
-    }
-
-    function clearText() {
-      document.getElementById('promptText').value = '';
-      updateAll();
-    }
-
-    const SAMPLES = {
-      short: `You are a helpful assistant. Answer the following question concisely in 2-3 sentences.\n\nQuestion: What is the difference between machine learning and deep learning?`,
-      long: `You are an expert software architect with 20 years of experience designing large-scale distributed systems. I need you to review the following system design for a real-time ride-sharing application and provide detailed feedback on:\n\n1. Scalability bottlenecks\n2. Database design and sharding strategy\n3. Message queue implementation\n4. API gateway configuration\n5. Caching layer design\n6. Fault tolerance and disaster recovery\n\nHere is the current proposed architecture:\n\nThe system uses a microservices architecture with 12 services including: user-service, driver-service, booking-service, payment-service, notification-service, geolocation-service, pricing-service, analytics-service, auth-service, admin-service, rating-service, and surge-pricing-service.\n\nEach service has its own PostgreSQL database. We use Redis for caching and Kafka for event streaming. The API gateway is Kong. All services are containerized with Docker and orchestrated with Kubernetes on AWS EKS.\n\nPlease provide specific, actionable recommendations for each area listed above.`,
-      code: `def merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n\nExplain this code step by step, analyze its time and space complexity, and suggest any optimizations.`
-    };
-
-    function loadSample(key) {
-      document.getElementById('promptText').value = SAMPLES[key];
-      updateAll();
-    }
-
-    function toggleFaq(btn) {
-      const ans = btn.nextElementSibling;
-      const isOpen = ans.classList.contains('open');
-      btn.classList.toggle('open', !isOpen);
-      ans.classList.toggle('open', !isOpen);
-    }
-
-    document.getElementById('promptText').addEventListener('input', updateAll);
-    document.getElementById('outputRatio').addEventListener('input', function() {
-      updateOutputLabel();
-      updateCost();
-    });
-
-    updateAll();
-  </script>
-
 <button class="theme-toggle-fab" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+<script src="app.js?v=20"></script>
+<script>
+// ════════════════════════════════════════
+// AI TOKEN COUNTER — improved June 2026
+// ════════════════════════════════════════
+
+const MODELS = {
+  'gpt4o':          { name:'GPT-4o',           provider:'openai',    ctx:128000,  input:2.50,  output:10.00, cached:1.25  },
+  'gpt4o-mini':     { name:'GPT-4o Mini',       provider:'openai',    ctx:128000,  input:0.15,  output:0.60,  cached:0.075 },
+  'o3':             { name:'o3',                 provider:'openai',    ctx:200000,  input:10.00, output:40.00, cached:2.50  },
+  'o4-mini':        { name:'o4-mini',            provider:'openai',    ctx:200000,  input:1.10,  output:4.40,  cached:0.275 },
+  'gpt4-turbo':     { name:'GPT-4 Turbo',        provider:'openai',    ctx:128000,  input:10.00, output:30.00, cached:null  },
+  'claude35-sonnet':{ name:'Claude 3.5 Sonnet',  provider:'anthropic', ctx:200000,  input:3.00,  output:15.00, cached:0.30  },
+  'claude35-haiku': { name:'Claude 3.5 Haiku',   provider:'anthropic', ctx:200000,  input:0.80,  output:4.00,  cached:0.08  },
+  'claude3-opus':   { name:'Claude 3 Opus',      provider:'anthropic', ctx:200000,  input:15.00, output:75.00, cached:1.50  },
+  'gemini2-flash':  { name:'Gemini 2.0 Flash',   provider:'google',    ctx:1000000, input:0.10,  output:0.40,  cached:0.025 },
+  'gemini2-pro':    { name:'Gemini 2.0 Pro',     provider:'google',    ctx:1000000, input:1.25,  output:5.00,  cached:null  },
+  'gemini15-pro':   { name:'Gemini 1.5 Pro',     provider:'google',    ctx:1000000, input:1.25,  output:5.00,  cached:0.315 },
+  'deepseek-v3':    { name:'DeepSeek V3',         provider:'deepseek',  ctx:64000,   input:0.27,  output:1.10,  cached:0.014 },
+  'deepseek-r1':    { name:'DeepSeek R1',         provider:'deepseek',  ctx:64000,   input:0.55,  output:2.19,  cached:0.055 },
+  'grok-2':         { name:'Grok-2',              provider:'xai',       ctx:128000,  input:2.00,  output:10.00, cached:null  },
+  'llama3-70b':     { name:'Llama 3.3 70B',       provider:'meta',      ctx:128000,  input:0.59,  output:0.79,  cached:null  },
+  'mistral-large':  { name:'Mistral Large 2',     provider:'mistral',   ctx:128000,  input:2.00,  output:6.00,  cached:null  },
+};
+
+const PROVIDER_LABEL = { openai:'OpenAI', anthropic:'Anthropic', google:'Google', deepseek:'DeepSeek', xai:'xAI', meta:'Meta', mistral:'Mistral' };
+
+let currentTokens = 0;
+
+// ── Token estimation (BPE approximation) ─────────────────
+function estimateTokens(text) {
+  if (!text) return 0;
+  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+  let tokens = 0;
+  for (const w of words) {
+    if      (w.length <= 3)  tokens += 1;
+    else if (w.length <= 6)  tokens += 1;
+    else if (w.length <= 10) tokens += 2;
+    else                     tokens += Math.ceil(w.length / 4);
+  }
+  const punct = (text.match(/[.,!?;:()[\]{}"'\-\/\\]/g) || []).length;
+  tokens += Math.ceil(punct * 0.5);
+  const nums = (text.match(/\d+/g) || []).length;
+  tokens += Math.ceil(nums * 0.3);
+  return Math.max(1, Math.round(tokens * 1.05));
+}
+
+function countWords(text)     { return text.trim() === '' ? 0 : text.trim().split(/\s+/).length; }
+function countSentences(text) { const m = text.match(/[.!?]+/g); return m ? m.length : (text.trim().length > 0 ? 1 : 0); }
+
+function fmtCost(usd) {
+  if (usd === 0) return '$0.00';
+  if (usd < 0.000001) return '<$0.000001';
+  if (usd < 0.01)  return '$' + usd.toFixed(6);
+  if (usd < 1)     return '$' + usd.toFixed(4);
+  if (usd < 1000)  return '$' + usd.toFixed(2);
+  return '$' + usd.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function fmtCtx(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(0) + 'M';
+  if (n >= 1000)    return (n/1000).toFixed(0) + 'K';
+  return n.toString();
+}
+
+// ── Update all on input ───────────────────────────────────
+function updateAll() {
+  const text = document.getElementById('promptText').value;
+  currentTokens = estimateTokens(text);
+  document.getElementById('tokenCount').textContent    = currentTokens.toLocaleString();
+  document.getElementById('wordCount').textContent     = countWords(text).toLocaleString();
+  document.getElementById('charCount').textContent     = text.length.toLocaleString();
+  document.getElementById('sentenceCount').textContent = countSentences(text).toLocaleString();
+  updateCost();
+  updateCompareTable();
+  updateMonthly();
+}
+
+function updateOutputLabel() {
+  const r = parseFloat(document.getElementById('outputRatio').value);
+  document.getElementById('outputRatioLabel').textContent = r.toFixed(1) + '×';
+}
+
+// ── Cost breakdown ────────────────────────────────────────
+function updateCost() {
+  const key   = document.getElementById('modelSelect').value;
+  const m     = MODELS[key];
+  const ratio = parseFloat(document.getElementById('outputRatio').value);
+  const outTok = Math.round(currentTokens * ratio);
+
+  const inCost   = (currentTokens / 1e6) * m.input;
+  const outCost  = (outTok       / 1e6) * m.output;
+  const total    = inCost + outCost;
+  const cachedIn = m.cached ? (currentTokens / 1e6) * m.cached : null;
+  const cachedTotal = cachedIn !== null ? cachedIn + outCost : null;
+  const saving   = cachedTotal !== null ? total - cachedTotal : null;
+
+  // Context bar
+  const pct = Math.min(100, (currentTokens / m.ctx) * 100);
+  const fill = document.getElementById('ctxFill');
+  fill.style.width = pct.toFixed(1) + '%';
+  fill.className = 'ctx-bar-fill' + (pct > 90 ? ' danger' : pct > 70 ? ' warn' : '');
+  document.getElementById('ctxUsed').textContent  = currentTokens.toLocaleString() + ' tokens';
+  document.getElementById('ctxTotal').textContent = fmtCtx(m.ctx) + ' window';
+
+  // Breakdown HTML
+  let html = `
+    <div class="cost-row"><span class="c-label">Input tokens</span><span class="c-val">${currentTokens.toLocaleString()}</span></div>
+    <div class="cost-row"><span class="c-label">Input cost</span><span class="c-val">${fmtCost(inCost)}</span></div>
+    <div class="cost-row"><span class="c-label">Output tokens (est.)</span><span class="c-val">${outTok.toLocaleString()}</span></div>
+    <div class="cost-row"><span class="c-label">Output cost</span><span class="c-val">${fmtCost(outCost)}</span></div>
+    <div class="cost-row"><span class="c-label">Rate (in/out per 1M)</span><span class="c-val">$${m.input.toFixed(2)} / $${m.output.toFixed(2)}</span></div>
+    <div class="cost-row total"><span class="c-label">Total this call</span><span class="c-val">${fmtCost(total)}</span></div>`;
+
+  if (cachedTotal !== null) {
+    html += `<div class="cost-row cache-row" style="margin-top:6px"><span class="c-label">With prompt caching<span class="cache-badge">↓${Math.round((1 - m.cached/m.input)*100)}%</span></span><span class="c-val">${fmtCost(cachedTotal)}</span></div>`;
+    html += `<div class="cost-row"><span class="c-label">Saving per call</span><span class="c-val" style="color:var(--accent)">${fmtCost(saving)}</span></div>`;
+  }
+
+  document.getElementById('costBreakdown').innerHTML = html;
+  updateMonthly();
+}
+
+// ── Monthly estimator ─────────────────────────────────────
+function updateMonthly() {
+  const key      = document.getElementById('modelSelect').value;
+  const m        = MODELS[key];
+  const ratio    = parseFloat(document.getElementById('outputRatio').value);
+  const outTok   = Math.round(currentTokens * ratio);
+  const calls    = parseInt(document.getElementById('callsPerDay').value) || 1000;
+
+  document.getElementById('callsLabel').textContent = calls.toLocaleString();
+
+  const costPerCall    = ((currentTokens / 1e6) * m.input) + ((outTok / 1e6) * m.output);
+  const costDay        = costPerCall * calls;
+  const costMonth      = costDay * 30;
+  const costYear       = costDay * 365;
+
+  let cacheMonth = null;
+  if (m.cached) {
+    const cachedPerCall = ((currentTokens / 1e6) * m.cached) + ((outTok / 1e6) * m.output);
+    cacheMonth = cachedPerCall * calls * 30;
+  }
+
+  document.getElementById('mCostDay').textContent   = fmtCost(costDay);
+  document.getElementById('mCostMonth').textContent = fmtCost(costMonth);
+  document.getElementById('mCostYear').textContent  = fmtCost(costYear);
+  document.getElementById('mCacheMonth').textContent = cacheMonth !== null ? fmtCost(cacheMonth) : 'N/A';
+
+  const noteEl = document.getElementById('cacheNote');
+  if (cacheMonth !== null) {
+    const saved = costMonth - cacheMonth;
+    noteEl.textContent = `Prompt caching saves ${fmtCost(saved)}/month (${Math.round((saved/costMonth)*100)}%) on ${m.name}.`;
+  } else {
+    noteEl.textContent = `${m.name} does not support prompt caching.`;
+  }
+}
+
+// ── Compare table ─────────────────────────────────────────
+function updateCompareTable() {
+  const ratio    = parseFloat(document.getElementById('outputRatio').value);
+  const outTok   = Math.round(currentTokens * ratio);
+  const selected = document.getElementById('modelSelect').value;
+
+  const results = Object.entries(MODELS).map(([key, m]) => {
+    const total = ((currentTokens / 1e6) * m.input) + ((outTok / 1e6) * m.output);
+    return { key, m, total };
+  }).sort((a, b) => a.total - b.total);
+
+  const cheapest = results[0].total;
+
+  const rows = results.map(({ key, m, total }, i) => {
+    const isCheapest = i === 0 && results.length > 1;
+    const badge = `<span class="provider-badge badge-${m.provider}">${PROVIDER_LABEL[m.provider]}</span>`;
+    const cheapBadge = isCheapest ? '<span class="cheapest-badge">✅ Cheapest</span>' : '';
+    return `<tr class="${key === selected ? 'active-row' : ''}">
+      <td>${m.name}${badge}${cheapBadge}</td>
+      <td>${fmtCtx(m.ctx)}</td>
+      <td>$${m.input.toFixed(2)}</td>
+      <td>$${m.output.toFixed(2)}</td>
+      <td>${m.cached ? '$' + m.cached.toFixed(3) : '—'}</td>
+      <td class="cost-highlight">${fmtCost(total)}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('compareTable').innerHTML = `
+    <thead><tr>
+      <th>Model</th><th>Context</th><th>Input /1M</th><th>Output /1M</th><th>Cached /1M</th><th>This prompt</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>`;
+}
+
+// ── Samples ───────────────────────────────────────────────
+const SAMPLES = {
+  short: `You are a helpful assistant. Answer the following question concisely in 2-3 sentences.\n\nQuestion: What is the difference between machine learning and deep learning?`,
+  long: `You are an expert software architect with 20 years of experience designing large-scale distributed systems. I need you to review the following system design for a real-time ride-sharing application and provide detailed feedback on:\n\n1. Scalability bottlenecks\n2. Database design and sharding strategy\n3. Message queue implementation (Kafka vs RabbitMQ)\n4. API gateway configuration\n5. Caching layer design\n6. Fault tolerance and disaster recovery\n\nThe system uses a microservices architecture with 12 services: user-service, driver-service, booking-service, payment-service, notification-service, geolocation-service, pricing-service, analytics-service, auth-service, admin-service, rating-service, and surge-pricing-service.\n\nEach service has its own PostgreSQL database. We use Redis for caching and Kafka for event streaming. The API gateway is Kong. All services are containerised with Docker and orchestrated with Kubernetes on AWS EKS.\n\nPlease provide specific, actionable recommendations for each area.`,
+  code: `def merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n\nExplain this code step by step, analyse its time and space complexity, and suggest optimisations.`,
+  system: `You are Claude, an AI assistant made by Anthropic. You are helpful, harmless, and honest.\n\nGuidelines:\n- Always respond in the same language as the user\n- Be concise but thorough — answer the question directly, then provide context\n- If you are unsure, say so rather than guessing\n- For code: always include comments, use meaningful variable names, and follow best practices for the language\n- For creative writing: match the user's requested tone and style exactly\n- For factual questions: cite the basis for your answer where possible\n- Never make up URLs, citations, or statistics\n- If asked to do something harmful or unethical, politely decline and explain why\n\nFormatting:\n- Use markdown headers (##) for multi-section responses\n- Use bullet points for lists of 3+ items\n- Use code blocks for all code snippets\n- Keep paragraphs short (3-4 sentences max)\n\nToday's date: ${new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}`
+};
+
+function loadSample(key) {
+  document.getElementById('promptText').value = SAMPLES[key];
+  updateAll();
+}
+
+function clearText() {
+  document.getElementById('promptText').value = '';
+  updateAll();
+}
+
+function toggleFaq(btn) {
+  const ans = btn.nextElementSibling;
+  const open = ans.classList.contains('open');
+  btn.classList.toggle('open', !open);
+  ans.classList.toggle('open', !open);
+}
+
+// ── Event listeners ───────────────────────────────────────
+document.getElementById('promptText').addEventListener('input', updateAll);
+document.getElementById('outputRatio').addEventListener('input', () => { updateOutputLabel(); updateCost(); });
+document.getElementById('callsPerDay').addEventListener('input', updateMonthly);
+
+// Init
+updateAll();
+</script>
+<div class="copy-toast" id="toast"></div>
 <script>
 if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {

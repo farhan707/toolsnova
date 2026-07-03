@@ -17,14 +17,14 @@
 
 /* 1. Foundation */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-@import url('css/tokens.css');
+@import url('css/tokens.css?v=22');
 
 /* 2. Layout */
 @import url('css/header.css');
 @import url('css/footer.css');
 
 /* 3. Components */
-@import url('css/cards.css');
+@import url('css/cards.css?v=22');
 @import url('css/search.css');
 @import url('css/tools.css');
 

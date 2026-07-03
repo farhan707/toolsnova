@@ -1,8 +1,87 @@
 # ToolsNova V3 — Project Status
 
-## Current Build: RC3 (Release Candidate)
+## Current Build: RC4 (Release Candidate)
 
-### RC3 session changes (continuation of RC2 — mobile nav bug + layout)
+### RC4 session changes (mobile layout investigation — homepage only)
+This session had real headless-Chromium access (Playwright, previously
+unavailable), which made it possible to actually measure the DOM instead
+of reasoning about CSS statically — used for both issues below.
+
+**1. Horizontal overflow on mobile.** Loaded the real homepage in
+headless Chromium at 320/360/390/430px and measured
+`document.documentElement.scrollWidth` directly, then walked every
+element's `getBoundingClientRect()` to find whichever one exceeded the
+viewport. Isolated it to a single element: the "Browse by Goal"
+section's `.goals-grid`, rendering at ~1188px wide regardless of
+viewport width. Root cause: `.goals-grid` used CSS Grid's
+`grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))` while
+being a plain block with no explicit width (relying on the default
+`width: auto`). `auto-fill`'s column-count resolution needs a definite
+container inline-size to know how many columns fit and when to wrap;
+without one, Chromium sized the grid (and, by extension, its parent
+`.v2-section`, confirmed via `getComputedStyle`) to fit all 10 goal-cards
+in a single un-wrapped row. Verified this theory empirically before
+touching the real file, by injecting candidate CSS overrides into the
+live page and re-measuring — confirmed `width:100%` on the grid,
+`display:flex` instead of grid, and a fixed column count all
+independently fixed it, while `auto-fit` (as opposed to `auto-fill`)
+did not, ruling out that as a red herring. Checked every other
+`auto-fill`/`auto-fit` grid in the codebase (7 total across
+`cards.css`/`prompt-library.css`/`tool-components.css`) and confirmed
+none of the others are actually used on the homepage or lack the
+responsive fallback that makes `.goals-grid` unique. Fixed by switching
+`.goals-grid`/`.goal-card` to the same flexbox `flex-wrap: wrap` +
+`flex: 1 1 160px` pattern already used successfully elsewhere in this
+file (`.stats-grid`/`.v2-stat-card`) for the identical "responsive row of
+small cards" use case — flexbox's wrap decision is resolved against
+actual available space at layout time, so it doesn't have Grid
+`auto-fill`'s circular-sizing failure mode. Re-verified with the same
+headless-browser measurement: zero overflow at 320/360/390/430px, and
+confirmed desktop (901/1024/1280px) renders with the same row/column
+counts and near-identical card widths (~165-202px vs. the original
+~160-191px) as before the change — no visual regression.
+Added `overflow-x: hidden` to `html`/`body` in `tokens.css` as the
+explicitly-requested safety net only, clearly commented as not being the
+actual fix.
+
+**2. Stats card subtitle wrapping.** Measured actual rendered text
+height for every `.stat-text` at 320/360/390/430px plus the surrounding
+range up to 900px. Found the awkward wrap wasn't really a 320-430px
+problem specifically — cards render single-column (clean 2-line text,
+28px tall) at 320-390px, but at ~414px+ the existing `flex:1;
+min-width:160px` rule lets 2 cards fit per row, squeezing each card to
+~165-203px, which is too narrow for both halves of the `<br>`-separated
+subtitle (e.g. "Happy Users" / "And Growing") to each stay on one line —
+so they each wrap again, producing 4 lines instead of 2. This recurs
+throughout the 414-768px range, not just near 430px. Fixed by forcing
+`.v2-stat-card { flex: 1 1 100%; }` inside the site's existing
+`@media (max-width: 900px)` block, so cards always stack one-per-row on
+any mobile-classified viewport, guaranteeing every subtitle gets a wide
+card to wrap cleanly in — no wording changes needed. Verified: max
+subtitle height is a consistent 28px (clean 2 lines) at every width from
+320px through 900px; desktop (901px+) row/column counts and card widths
+are pixel-identical to before, confirmed via headless-browser
+measurement, since the change lives entirely inside the `max-width:900px`
+query.
+
+**Cache-busting follow-through.** Both fixes live in `css/cards.css`
+(`.goals-grid`) and `css/tokens.css` (`overflow-x` safety net) — imported
+into `style.css` via `@import`, which has no query-string versioning of
+its own; a browser that had ever cached `css/cards.css` or
+`css/tokens.css` under their bare URLs would never re-fetch them just
+because `style.css`'s own `?v=` changed. Added `?v=22` to those two
+`@import` paths in `style.css`, which is itself a content change to
+`style.css`, so bumped `VERSION` to `'22'` in both generators,
+regenerated all 594 generator-owned pages, and did a targeted find/replace
+on the remaining 150 hand-authored pages' `style.css?v=20` →
+`style.css?v=22` (only `style.css`, since `app.js`/`homepage.css`/
+`search.js` are unchanged since the RC3 cache audit — verified with a
+final sitewide audit that nothing references a changed asset at a stale
+version).
+
+Packaged as `ToolsNova_RC4.zip`.
+
+### Previously completed (RC3)
 - **Root cause of the persisting "tnNavToggle is not defined" report**:
   re-verified line-by-line that `tnNavToggle()` genuinely exists in the
   RC2.zip already delivered — correctly scoped at top level of `app.js`,

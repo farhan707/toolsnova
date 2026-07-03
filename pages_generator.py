@@ -34,7 +34,7 @@ DATA_DIR = BASE_DIR / 'data'
 SITE_URL = 'https://toolsnova.net'
 GA_ID    = 'G-S6PPGS7N63'
 ADSENSE  = 'ca-pub-5507557143792193'
-VERSION  = '21'
+VERSION  = '22'
 
 def he(s):
     return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')

@@ -101,6 +101,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 html {
   font-size: 15px;
   scroll-behavior: smooth;
+  /* Safety net only — NOT the fix for horizontal-scroll bugs. The actual
+     RC3 mobile overflow (the "Browse by Goal" grid growing past the
+     viewport) was root-caused and fixed at its source in
+     css/cards.css (.goals-grid). This just guards against the page ever
+     becoming side-scrollable from some future/unknown cause; it doesn't
+     address the reason a horizontal-scroll bug exists in the first
+     place, so don't rely on it in place of finding the real culprit. */
+  overflow-x: hidden;
 }
 
 body {
@@ -111,6 +119,7 @@ body {
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* safety net — see html{} comment above */
 }
 
 /* ── Smooth theme transition (not for interactive elements) ── */

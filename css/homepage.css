@@ -833,6 +833,16 @@
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
+  /* Stat cards: stack one-per-row on mobile instead of the desktop
+     flex-wrap grid. The base .v2-stat-card rule (flex:1; min-width:160px)
+     lets 2-3 cards share a row anywhere from ~414px up to 900px, which
+     squeezes each card down to ~165-200px wide — too narrow for both
+     halves of the two-line subtitle (e.g. "Happy Users" / "And Growing")
+     to each fit on one line, so they wrap a second time and look
+     cramped. A full-width card gives the subtitle generous room for a
+     clean two-line wrap at every mobile size. */
+  .v2-stat-card { flex: 1 1 100%; }
+
   /* Bigger tap target for the hamburger button (was 36x36, below the
      44x44 minimum recommended for touch targets on iOS/Android). Scoped
      here rather than in the base .nav-hamburger rule so it never affects

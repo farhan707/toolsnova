@@ -833,6 +833,27 @@
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
+  /* Bigger tap target for the hamburger button (was 36x36, below the
+     44x44 minimum recommended for touch targets on iOS/Android). Scoped
+     here rather than in the base .nav-hamburger rule so it never affects
+     desktop, even though the base rule is display:none on desktop anyway. */
+  .nav-hamburger { width: 44px; height: 44px; font-size: 1.25rem; }
+
+  /* Mobile nav drawer links: bigger, evenly-spaced tap targets. Was
+     0.6rem vertical padding only (~39px tall row) — bumped to a full
+     44px+ tap height with a visible divider between items so adjacent
+     links don't feel cramped on a touchscreen. */
+  .mobile-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.85rem 0.25rem;
+    font-size: 0.98rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav-section { padding: 0.5rem 0; }
+
   .v2-hero {
     grid-template-columns: 1fr;
     padding: 3rem 1.25rem 2rem;

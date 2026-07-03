@@ -37,7 +37,7 @@ OUT_DIR  = BASE_DIR / 'prompts'
 SITE_URL = 'https://toolsnova.net'
 GA_ID    = 'G-S6PPGS7N63'
 ADSENSE  = 'ca-pub-5507557143792193'
-VERSION  = '20'   # asset cache-bust version
+VERSION  = '21'   # asset cache-bust version
 
 # ── Helpers ───────────────────────────────────────────────────
 def load_json(name):

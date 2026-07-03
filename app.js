@@ -903,19 +903,38 @@ document.addEventListener('click', e => {
    and collection pages use #v2-mobile-nav / #v2-hamburger, distinct from
    the .site-nav structure navToggle() above handles on tool pages). Was
    wired via onclick on all 18 of these pages but never defined — every
-   hamburger click threw ReferenceError: tnNavToggle is not defined. */
+   hamburger click threw ReferenceError: tnNavToggle is not defined.
+   RC3: also locks body scroll while the full-screen drawer is open (it's
+   a fixed overlay, so the page underneath was still scrollable behind
+   it), and closes automatically when a link inside it is tapped — matters
+   because several mobile-nav links are same-page hash anchors
+   (index.html#trending), which don't trigger a full navigation, so the
+   overlay would otherwise stay open covering the content you just
+   navigated to. */
 function tnNavToggle() {
   const nav = document.getElementById('v2-mobile-nav');
-  if (nav) nav.classList.toggle('open');
+  if (!nav) return;
+  const willOpen = !nav.classList.contains('open');
+  nav.classList.toggle('open', willOpen);
+  document.body.style.overflow = willOpen ? 'hidden' : '';
 }
-// Close V2 mobile nav on outside click
+function tnNavClose() {
+  const nav = document.getElementById('v2-mobile-nav');
+  if (nav && nav.classList.contains('open')) {
+    nav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+// Close V2 mobile nav on outside click, link tap, or Escape
 document.addEventListener('click', e => {
   const nav = document.getElementById('v2-mobile-nav');
   const btn = document.getElementById('v2-hamburger');
-  if (nav && nav.classList.contains('open') && btn &&
-      !nav.contains(e.target) && !btn.contains(e.target)) {
-    nav.classList.remove('open');
-  }
+  if (!nav || !nav.classList.contains('open')) return;
+  if (e.target.closest('#v2-mobile-nav a')) { tnNavClose(); return; }
+  if (btn && !nav.contains(e.target) && !btn.contains(e.target)) tnNavClose();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') tnNavClose();
 });
 
 /* ════════════════════════════════════

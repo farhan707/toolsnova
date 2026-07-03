@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Essay Planner Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to plan and structure an academic essay. Thesis statement, argument map, paragraph plan, introduction draft, and academic register tips — for university writing.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/academic-essay-planner.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Academic Essay Planner &amp; Structure Builder Prompt">
+<meta property="og:description" content="Free AI prompt to plan and structure an academic essay. Thesis statement, argument map, paragraph plan, introduction draft, and academic register tips — for university writing.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/academic-essay-planner.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Academic Essay Planner &amp; Structure Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to plan and structure an academic essay. Thesis statement, argument map, paragraph plan, introduction draft, and academic register tips — for university writing.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Education", "item": "https://toolsnova.net/prompts/education/index.html"}, {"@type": "ListItem", "position": 5, "name": "Academic Essay Planner & Structure Builder", "item": "https://toolsnova.net/prompts/claude/academic-essay-planner.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Academic Essay Planner & Structure Builder Prompt", "description": "Free AI prompt to plan and structure an academic essay. Thesis statement, argument map, paragraph plan, introduction draft, and academic register tips — for university writing.", "url": "https://toolsnova.net/prompts/claude/academic-essay-planner.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "academic writing, essay, argument structure, university, research paper"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What makes a good thesis?", "acceptedAnswer": {"@type": "Answer", "text": "A good thesis makes a specific arguable claim, answers the question directly, is complex enough to need an essay to prove, and indicates the argument's structure. There were many causes of WWI is not a thesis. Economic factors were enabling conditions not triggering causes is."}}, {"@type": "Question", "name": "How to avoid plagiarism when using AI for academic essays?", "acceptedAnswer": {"@type": "Answer", "text": "Use AI to plan structure, develop the argument, and understand concepts — not to write the final text you submit as your own. The ideas and words submitted must be yours. Always check your institution's AI use policy."}}, {"@type": "Question", "name": "How long should the introduction be?", "acceptedAnswer": {"@type": "Answer", "text": "Roughly 8-10% of total word count. For 2500 words: 200-250 words. Write it properly last — only after you know exactly what argument you are making."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces the most sophisticated academic writing — understands argumentation structure, appropriate hedging language, and maintains formal register throughout."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/education/index.html">📚 Education</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Academic Essay Planner &amp; Structure Builder</span>
+    </div>
+    <h1>Claude Academic Essay Planner &amp; Structure Builder Prompt</h1>
+    <p>Plan a well-structured academic essay with a clear thesis, evidence-based argument map, paragraph plan, and academic voice guidance.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📚 Education</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-education">📚 Education</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">academic writing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">essay</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">argument structure</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">university</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/academic-essay-planner.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/academic-essay-planner.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/academic-essay-planner.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>essay question or title</label><input class="var-input" type="text" placeholder="essay question or title" oninput="updatePrompt()" data-var="essay question or title"></div>
+<div class="var-group"><label>subject area</label><input class="var-input" type="text" placeholder="subject area" oninput="updatePrompt()" data-var="subject area"></div>
+<div class="var-group"><label>target word count</label><input class="var-input" type="text" placeholder="target word count" oninput="updatePrompt()" data-var="target word count"></div>
+<div class="var-group"><label>academic level</label><input class="var-input" type="text" placeholder="academic level" oninput="updatePrompt()" data-var="academic level"></div>
+<div class="var-group"><label>argument direction</label><input class="var-input" type="text" placeholder="argument direction" oninput="updatePrompt()" data-var="argument direction"></div>
+<div class="var-group"><label>available sources</label><input class="var-input" type="text" placeholder="available sources" oninput="updatePrompt()" data-var="available sources"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an academic writing tutor with expertise in essay structure, argumentation, and academic register.<br><br>Essay question: <span class="var-hl">[your question or title]</span><br>Subject: <span class="var-hl">[history/psychology/economics/literature/science/other]</span><br>Word count: <span class="var-hl">[target]</span><br>Level: <span class="var-hl">[A-level/undergraduate/postgraduate/professional]</span><br>Argument direction: <span class="var-hl">[your position, or help me find one]</span><br>Key sources: <span class="var-hl">[any sources you have or plan to use]</span><br><br>Task:<br>1. THESIS STATEMENT: A clear arguable claim answering the question in one sentence<br>2. ARGUMENT MAP: Main argument, supporting sub-arguments, counter-argument, rebuttal<br>3. ESSAY STRUCTURE: Section-by-section breakdown with approximate word count per section<br>4. PARAGRAPH PLAN: For each body paragraph — topic sentence, evidence needed, analysis point<br>5. INTRODUCTION DRAFT: Opening hook, context, thesis, roadmap (150-200 words)<br>6. CONCLUSION STRATEGY: How to synthesise without merely repeating<br>7. ACADEMIC REGISTER TIPS: 5 specific language improvements for your topic area</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">ESSAY PLAN: WWI Economic Causes — 2500 words<br><br>THESIS:<br>While economic interdependence and imperial competition contributed to the conditions that made European conflict possible, the immediate causes of the First World War were primarily diplomatic failures and miscalculations by political leaders who chose war when alternatives existed.<br><br>ARGUMENT MAP:<br>Main: Economic factors were enabling conditions, not triggering causes<br>Sub 1: Imperial competition created friction but also mutual deterrence (Ferguson)<br>Sub 2: European economic integration made war economically irrational — yet it happened<br>Counter: Fischer Primat der Wirtschaft thesis — Germany's war aims were economically driven<br>Rebuttal: Fischer overstates economic intentionality; political miscalculation was the actual mechanism<br><br>STRUCTURE:<br>Introduction: 200 words<br>Section 1 Economic interdependence argument: 500 words<br>Section 2 Imperial competition and colonial friction: 500 words<br>Section 3 Fischer controversy: 400 words<br>Section 4 Political miscalculation as proximate cause: 600 words<br>Conclusion: 300 words<br><br>INTRODUCTION DRAFT:<br>In the summer of 1914, Europe's most economically integrated nations went to war with one another — a paradox that has occupied historians for over a century. Norman Angell had argued in 1910 that war between advanced economies had become economically impossible. Yet the guns of August fired nonetheless. To what extent did economic factors cause the First World War?<br><br>This essay argues that economic forces shaped the landscape in which war became conceivable but did not pull the trigger. Imperial competition and financial rivalry created strategic anxiety, yet it was diplomatic miscalculation in July 1914 that transformed a regional crisis into a continental catastrophe.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">The thesis must be arguable — if a reasonable person could not disagree with it, it is a fact not a thesis</div>
+<div class="tip-card">Every body paragraph needs a topic sentence that makes a specific claim, not just introduces a topic</div>
+<div class="tip-card">Evidence should be analysed not just cited — As Ferguson argues, this suggests — not citation then move on</div>
+<div class="tip-card">Academic register means precise formal language — avoid a lot of, really, things; use substantial, significant, phenomena</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Narrative not argument — telling the story of what happened instead of arguing a position</div>
+<div class="mistake-card">Evidence without analysis — a string of quotations with no analytical comment does not demonstrate understanding</div>
+<div class="mistake-card">Conclusion that only repeats the introduction — synthesise and point to implications</div>
+<div class="mistake-card">Ignoring the counter-argument — a strong essay engages with the best case against its thesis and rebuts it</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What makes a good thesis?</div><div class="faq-a">A good thesis makes a specific arguable claim, answers the question directly, is complex enough to need an essay to prove, and indicates the argument's structure. There were many causes of WWI is not a thesis. Economic factors were enabling conditions not triggering causes is.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to avoid plagiarism when using AI for academic essays?</div><div class="faq-a">Use AI to plan structure, develop the argument, and understand concepts — not to write the final text you submit as your own. The ideas and words submitted must be yours. Always check your institution's AI use policy.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should the introduction be?</div><div class="faq-a">Roughly 8-10% of total word count. For 2500 words: 200-250 words. Write it properly last — only after you know exactly what argument you are making.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude produces the most sophisticated academic writing — understands argumentation structure, appropriate hedging language, and maintains formal register throughout.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/book-club-guide.html"><div class="rc-title">Book Club Discussion Guide Creator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/debate-prep-coach.html"><div class="rc-title">Debate &amp; Argument Coach</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/lesson-plan-creator.html"><div class="rc-title">Lesson Plan Creator</div><div class="rc-cat">📚 Education</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an academic writing tutor with expertise in essay structure, argumentation, and academic register.\n\nEssay question: [your question or title]\nSubject: [history/psychology/economics/literature/science/other]\nWord count: [target]\nLevel: [A-level/undergraduate/postgraduate/professional]\nArgument direction: [your position, or help me find one]\nKey sources: [any sources you have or plan to use]\n\nTask:\n1. THESIS STATEMENT: A clear arguable claim answering the question in one sentence\n2. ARGUMENT MAP: Main argument, supporting sub-arguments, counter-argument, rebuttal\n3. ESSAY STRUCTURE: Section-by-section breakdown with approximate word count per section\n4. PARAGRAPH PLAN: For each body paragraph — topic sentence, evidence needed, analysis point\n5. INTRODUCTION DRAFT: Opening hook, context, thesis, roadmap (150-200 words)\n6. CONCLUSION STRATEGY: How to synthesise without merely repeating\n7. ACADEMIC REGISTER TIPS: 5 specific language improvements for your topic area";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'academic-essay-planner';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Content Brief Builder Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build a complete SEO content brief. Target keyword, search intent, article structure, competitor gaps, on-page requirements — briefs that produce ranking content.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/seo-content-brief.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude SEO Content Brief Builder Prompt">
+<meta property="og:description" content="Free AI prompt to build a complete SEO content brief. Target keyword, search intent, article structure, competitor gaps, on-page requirements — briefs that produce ranking content.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/seo-content-brief.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude SEO Content Brief Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to build a complete SEO content brief. Target keyword, search intent, article structure, competitor gaps, on-page requirements — briefs that produce ranking content.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "SEO", "item": "https://toolsnova.net/prompts/seo/index.html"}, {"@type": "ListItem", "position": 5, "name": "SEO Content Brief Builder", "item": "https://toolsnova.net/prompts/claude/seo-content-brief.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude SEO Content Brief Builder Prompt", "description": "Free AI prompt to build a complete SEO content brief. Target keyword, search intent, article structure, competitor gaps, on-page requirements — briefs that produce ranking content.", "url": "https://toolsnova.net/prompts/claude/seo-content-brief.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "SEO, content brief, keyword strategy, on-page SEO, content planning"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I find LSI keywords?", "acceptedAnswer": {"@type": "Answer", "text": "Free: Google People Also Ask and Related Searches, Search Console for similar pages, AnswerThePublic. Paid: Ahrefs, Semrush. Also: type the primary keyword into Claude or ChatGPT and ask for 10 semantically related terms."}}, {"@type": "Question", "name": "How long should the content be?", "acceptedAnswer": {"@type": "Answer", "text": "Match or beat the average word count of the top 3 ranking pages — but only if additional length adds value. Thin content with excellent targeting often outranks bloated content."}}, {"@type": "Question", "name": "Best model for content briefs?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces the most analytically rigorous content briefs — better at synthesising what currently ranks and identifying genuine differentiation opportunities."}}, {"@type": "Question", "name": "How do I find what differentiates?", "acceptedAnswer": {"@type": "Answer", "text": "Read the top 5 ranking articles. Note: questions they do not answer, what is outdated, where they are vague where you could be specific, what format you could improve. The gaps are your differentiation."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/seo/index.html">🔍 SEO</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>SEO Content Brief Builder</span>
+    </div>
+    <h1>Claude SEO Content Brief Builder Prompt</h1>
+    <p>Build a complete SEO content brief that guides writers to produce content that ranks — keywords, intent, structure, and differentiation angle.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🔍 SEO</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-seo">🔍 SEO</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">SEO</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">content brief</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">keyword strategy</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">on-page SEO</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/seo-content-brief.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/seo-content-brief.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/seo-content-brief.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>primary target keyword</label><input class="var-input" type="text" placeholder="primary target keyword" oninput="updatePrompt()" data-var="primary target keyword"></div>
+<div class="var-group"><label>search intent type</label><input class="var-input" type="text" placeholder="search intent type" oninput="updatePrompt()" data-var="search intent type"></div>
+<div class="var-group"><label>target audience</label><input class="var-input" type="text" placeholder="target audience" oninput="updatePrompt()" data-var="target audience"></div>
+<div class="var-group"><label>content type</label><input class="var-input" type="text" placeholder="comprehensive how-to guide" oninput="updatePrompt()" data-var="content type"></div>
+<div class="var-group"><label>author expertise level</label><input class="var-input" type="text" placeholder="author expertise level" oninput="updatePrompt()" data-var="author expertise level"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior SEO content strategist who has built briefs for content that has ranked on page 1 for competitive keywords.<br><br>Target keyword: <span class="var-hl">[primary keyword]</span><br>Search intent: <span class="var-hl">[informational/navigational/commercial/transactional]</span><br>Target audience: <span class="var-hl">[who is searching for this]</span><br>Content type: <span class="var-hl">[blog post/landing page/comparison/how-to/list post]</span><br>Author expertise: <span class="var-hl">[subject matter expert / generalist writer]</span><br><br>Task:<br>1. KEYWORD STRATEGY: Primary keyword plus 3-5 LSI and semantic keywords to include naturally<br>2. SEARCH INTENT ANALYSIS: What the searcher actually wants — information, comparison, tool, or decision<br>3. CONTENT STRUCTURE: H2 and H3 outline based on what currently ranks for this keyword<br>4. ON-PAGE REQUIREMENTS: Title tag under 60 chars, meta description under 155 chars, URL slug, word count target, reading level, internal link opportunities<br>5. DIFFERENTIATION ANGLE: What your content will say that the top results do not<br>6. MUST-INCLUDE ELEMENTS: Images, tables, FAQs, statistics, examples required<br>7. WHAT TO AVOID: Mistakes that would prevent this from ranking</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">SEO BRIEF: ai prompt engineering guide<br><br>KEYWORD STRATEGY:<br>Primary: ai prompt engineering guide<br>Semantic: prompt engineering techniques, how to write better AI prompts, ChatGPT prompting tips, Claude prompt examples, few-shot prompting<br><br>SEARCH INTENT:<br>Learner intent — searcher wants practical actionable instruction to apply immediately. NOT looking for academic definitions. Structure accordingly: theory minimum, examples maximum.<br><br>CONTENT STRUCTURE:<br>H1: AI Prompt Engineering Guide 2026 — Techniques That Actually Work<br>H2: What Is Prompt Engineering? (150 words max — keep short)<br>H2: The 5 Core Prompt Engineering Techniques<br>  H3: 1. Role Assignment<br>  H3: 2. Context and Constraints<br>  H3: 3. Few-Shot Examples<br>  H3: 4. Chain-of-Thought Prompting<br>  H3: 5. Output Format Specification<br>H2: Common Prompt Engineering Mistakes<br>H2: Prompt Engineering by Model: ChatGPT vs Claude vs Gemini<br>H2: 10 Ready-to-Use Prompt Templates<br>H2: FAQ<br><br>ON-PAGE:<br>Title: AI Prompt Engineering Guide 2026 — Techniques That Work (55 chars)<br>Meta: Learn prompt engineering from scratch — 5 core techniques, real examples, and ready-to-use templates for ChatGPT, Claude, and Gemini. (137 chars)<br>URL: /ai-prompt-engineering-guide<br>Word count: 2500-3500 words, Reading level: Grade 8-10<br><br>DIFFERENTIATION:<br>Most guides are model-agnostic. Yours differentiates by: side-by-side examples of the same prompt on ChatGPT vs Claude vs Gemini showing different results, 10 copy-paste templates at the end, and a common mistakes section most competitors skip.<br><br>MUST INCLUDE:<br>10+ worked before-and-after examples, comparison table of technique vs use case vs example prompt, FAQ section targeting People Also Ask results</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">H2 structure should be based on what currently ranks — analyse the top 5 results before prescribing any structure</div>
+<div class="tip-card">Search intent matters more than keyword match — mismatched content will never rank for the keyword</div>
+<div class="tip-card">Differentiation is essential — content that says the same things as the top results will not displace them</div>
+<div class="tip-card">Internal links boost both SEO and time-on-site — identify 3-5 existing articles to link from and to in the brief</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Writing a brief without analysing the current SERPs — you must know what already ranks first</div>
+<div class="mistake-card">Targeting a keyword without confirming intent — mismatched intent is why good content fails to rank</div>
+<div class="mistake-card">No differentiation angle — content that repeats what is already out there will not displace it</div>
+<div class="mistake-card">Word count without quality context — 3000 words without specifying what those words should contain produces padding</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I find LSI keywords?</div><div class="faq-a">Free: Google People Also Ask and Related Searches, Search Console for similar pages, AnswerThePublic. Paid: Ahrefs, Semrush. Also: type the primary keyword into Claude or ChatGPT and ask for 10 semantically related terms.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should the content be?</div><div class="faq-a">Match or beat the average word count of the top 3 ranking pages — but only if additional length adds value. Thin content with excellent targeting often outranks bloated content.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model for content briefs?</div><div class="faq-a">Claude produces the most analytically rigorous content briefs — better at synthesising what currently ranks and identifying genuine differentiation opportunities.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I find what differentiates?</div><div class="faq-a">Read the top 5 ranking articles. Note: questions they do not answer, what is outdated, where they are vague where you could be specific, what format you could improve. The gaps are your differentiation.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/topical-authority-map.html"><div class="rc-title">Topical Authority Map Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/technical-seo-site-audit.html"><div class="rc-title">Technical SEO Audit Checklist Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/seo-competitor-analysis.html"><div class="rc-title">SEO Competitor Analysis Framework</div><div class="rc-cat">🔍 SEO</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior SEO content strategist who has built briefs for content that has ranked on page 1 for competitive keywords.\n\nTarget keyword: [primary keyword]\nSearch intent: [informational/navigational/commercial/transactional]\nTarget audience: [who is searching for this]\nContent type: [blog post/landing page/comparison/how-to/list post]\nAuthor expertise: [subject matter expert / generalist writer]\n\nTask:\n1. KEYWORD STRATEGY: Primary keyword plus 3-5 LSI and semantic keywords to include naturally\n2. SEARCH INTENT ANALYSIS: What the searcher actually wants — information, comparison, tool, or decision\n3. CONTENT STRUCTURE: H2 and H3 outline based on what currently ranks for this keyword\n4. ON-PAGE REQUIREMENTS: Title tag under 60 chars, meta description under 155 chars, URL slug, word count target, reading level, internal link opportunities\n5. DIFFERENTIATION ANGLE: What your content will say that the top results do not\n6. MUST-INCLUDE ELEMENTS: Images, tables, FAQs, statistics, examples required\n7. WHAT TO AVOID: Mistakes that would prevent this from ranking";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'seo-content-brief';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

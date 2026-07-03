@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Internal Link Strategy Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build an internal linking strategy. Link equity flow, anchor text optimisation, pillar-cluster architecture, and priority pages to link to — SEO that compounds.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/seo-internal-link-strategy.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude SEO Internal Link Strategy Builder Prompt">
+<meta property="og:description" content="Free AI prompt to build an internal linking strategy. Link equity flow, anchor text optimisation, pillar-cluster architecture, and priority pages to link to — SEO that compounds.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/seo-internal-link-strategy.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude SEO Internal Link Strategy Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to build an internal linking strategy. Link equity flow, anchor text optimisation, pillar-cluster architecture, and priority pages to link to — SEO that compounds.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "SEO", "item": "https://toolsnova.net/prompts/seo/index.html"}, {"@type": "ListItem", "position": 5, "name": "SEO Internal Link Strategy Builder", "item": "https://toolsnova.net/prompts/claude/seo-internal-link-strategy.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude SEO Internal Link Strategy Builder Prompt", "description": "Free AI prompt to build an internal linking strategy. Link equity flow, anchor text optimisation, pillar-cluster architecture, and priority pages to link to — SEO that compounds.", "url": "https://toolsnova.net/prompts/claude/seo-internal-link-strategy.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "internal linking, SEO, link equity, topical authority, site architecture"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many internal links per page?", "acceptedAnswer": {"@type": "Answer", "text": "No hard limit. Google can crawl hundreds per page. The practical limit is what makes sense for the reader. For content pages: 3-8 contextual links within the content is typical. For hub or category pages: 20-50 links to supporting pages is normal."}}, {"@type": "Question", "name": "Do internal links affect rankings?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — significantly. Internal links pass PageRank (ranking signal) from one page to another and signal to Google which pages are most important on your site. Pages with more internal links pointing to them rank higher, all else equal."}}, {"@type": "Question", "name": "How to audit internal links?", "acceptedAnswer": {"@type": "Answer", "text": "Free: Screaming Frog (crawl up to 500 URLs free), Google Search Console (links report shows internal links per page). Paid: Ahrefs site audit, Semrush site audit. For static sites, your own generator can also produce an internal links report."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces more strategically coherent internal linking plans — it understands how PageRank flows through site architecture and gives site-specific prioritisation rather than generic advice."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/seo/index.html">🔍 SEO</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>SEO Internal Link Strategy Builder</span>
+    </div>
+    <h1>Claude SEO Internal Link Strategy Builder Prompt</h1>
+    <p>Build a systematic internal linking strategy that passes link equity, builds topical authority, and boosts page rankings.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🔍 SEO</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-seo">🔍 SEO</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">internal linking</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">SEO</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">link equity</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">topical authority</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/seo-internal-link-strategy.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/seo-internal-link-strategy.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/seo-internal-link-strategy.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>site URL or description</label><input class="var-input" type="text" placeholder="site URL or description" oninput="updatePrompt()" data-var="site URL or description"></div>
+<div class="var-group"><label>site structure</label><input class="var-input" type="text" placeholder="site structure" oninput="updatePrompt()" data-var="site structure"></div>
+<div class="var-group"><label>highest-priority pages</label><input class="var-input" type="text" placeholder="highest-priority pages" oninput="updatePrompt()" data-var="highest-priority pages"></div>
+<div class="var-group"><label>content volume</label><input class="var-input" type="text" placeholder="content volume" oninput="updatePrompt()" data-var="content volume"></div>
+<div class="var-group"><label>current internal linking status</label><input class="var-input" type="text" placeholder="current internal linking status" oninput="updatePrompt()" data-var="current internal linking status"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a technical SEO specialist who has improved rankings through internal linking architecture.<br><br>Site: <span class="var-hl">[your site URL or description]</span><br>Site structure: <span class="var-hl">[how the site is organised — categories, topics, blog, tools]</span><br>Highest-priority pages: <span class="var-hl">[the 3-5 pages you most want to rank]</span><br>Content volume: <span class="var-hl">[approximate number of pages]</span><br>Current linking: <span class="var-hl">[no internal links / some / systematic already]</span><br><br>Task:<br>1. LINK EQUITY FLOW: How PageRank flows through your site and which pages to prioritise<br>2. PILLAR-CLUSTER ARCHITECTURE: Hub pages and supporting cluster pages for your main topics<br>3. PRIORITY LINKS TO ADD: Specific pages that should link to your most important pages<br>4. ANCHOR TEXT STRATEGY: How to vary anchor text across internal links<br>5. ORPHAN PAGE AUDIT: How to find and fix pages with no internal links pointing to them<br>6. IMPLEMENTATION PLAN: How to add internal links systematically without manual checking every page<br>7. QUICK WINS: 3 internal linking changes you can make this week for immediate impact</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">INTERNAL LINK STRATEGY: ToolsNova<br><br>LINK EQUITY FLOW:<br>Highest authority: homepage receives most external links<br>Flow: Homepage -&gt; category pages (12) -&gt; individual prompt pages<br>Current problem: most prompt pages are link orphans — Google sees them as low-priority<br><br>PILLAR-CLUSTER ARCHITECTURE:<br>Pillar: /ai-prompt-library (hub page — already exists)<br>Clusters by category: /prompts/chatgpt, /prompts/claude, /prompts/gemini, /prompts/writing, /prompts/coding etc.<br>Each individual prompt page links back to its category page (cluster) and the hub<br>Category pages link to the 5-10 highest-quality prompts in that category<br><br>PRIORITY LINKS TO ADD THIS WEEK:<br>1. Homepage — add links to top 3 category pages in the above-the-fold section<br>2. ai-prompt-library hub — link to all 12 category pages (if not already)<br>3. Every prompt page — add a link to its category page at the top (breadcrumb style)<br>4. Related prompts section — every prompt links to 3-5 related prompts (already in schema — verify it renders as HTML links)<br><br>ANCHOR TEXT STRATEGY:<br>Exact match: use sparingly — AI prompt library 20% of links<br>Partial match: free AI prompts, AI prompts for [category] 40%<br>Generic: click here, see more prompts 10%<br>Brand: ToolsNova prompt library 30%<br>Avoid: using the same anchor text on every link to the same page<br><br>ORPHAN PAGE FIX:<br>Crawl with Screaming Frog (free up to 500 URLs)<br>Filter: inlinks = 0 for HTML pages<br>For each orphan: find the most relevant category or related prompt page and add a link<br><br>QUICK WINS (this week):<br>1. Add breadcrumb links to every prompt page (Category &gt; Prompt Name) — fixes orphan issue at scale<br>2. Add a related prompts section to the 10 highest-traffic prompt pages — increases pages per session<br>3. Link to the ai-prompt-library hub from the homepage hero section if not already there</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Internal links are free PageRank — every link from a high-authority page to a lower-priority page passes ranking signal at zero cost</div>
+<div class="tip-card">Orphan pages are invisible to Google even if their content is excellent — every page needs at least 3 internal links pointing to it</div>
+<div class="tip-card">Anchor text diversity matters — using the same anchor text phrase on every internal link can trigger over-optimisation penalties</div>
+<div class="tip-card">The related content section at the bottom of every page is the highest-leverage internal linking pattern for content-heavy sites</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Footer links to every page — these are devalued by Google because they appear on every page; they pass minimal equity</div>
+<div class="mistake-card">Not linking from high-authority pages — a link from your homepage or a page with 50 external links is worth dramatically more than a link from a page with none</div>
+<div class="mistake-card">Generic anchor text everywhere — click here and read more pass little topical relevance signal</div>
+<div class="mistake-card">Building new content without thinking about internal links at creation time — adding them retrospectively is harder than building them in from the start</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many internal links per page?</div><div class="faq-a">No hard limit. Google can crawl hundreds per page. The practical limit is what makes sense for the reader. For content pages: 3-8 contextual links within the content is typical. For hub or category pages: 20-50 links to supporting pages is normal.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Do internal links affect rankings?</div><div class="faq-a">Yes — significantly. Internal links pass PageRank (ranking signal) from one page to another and signal to Google which pages are most important on your site. Pages with more internal links pointing to them rank higher, all else equal.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to audit internal links?</div><div class="faq-a">Free: Screaming Frog (crawl up to 500 URLs free), Google Search Console (links report shows internal links per page). Paid: Ahrefs site audit, Semrush site audit. For static sites, your own generator can also produce an internal links report.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude produces more strategically coherent internal linking plans — it understands how PageRank flows through site architecture and gives site-specific prioritisation rather than generic advice.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/technical-seo-site-audit.html"><div class="rc-title">Technical SEO Audit Checklist Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/seo-content-brief.html"><div class="rc-title">SEO Content Brief Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/topical-authority-map.html"><div class="rc-title">Topical Authority Map Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/seo-competitor-analysis.html"><div class="rc-title">SEO Competitor Analysis Framework</div><div class="rc-cat">🔍 SEO</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a technical SEO specialist who has improved rankings through internal linking architecture.\n\nSite: [your site URL or description]\nSite structure: [how the site is organised — categories, topics, blog, tools]\nHighest-priority pages: [the 3-5 pages you most want to rank]\nContent volume: [approximate number of pages]\nCurrent linking: [no internal links / some / systematic already]\n\nTask:\n1. LINK EQUITY FLOW: How PageRank flows through your site and which pages to prioritise\n2. PILLAR-CLUSTER ARCHITECTURE: Hub pages and supporting cluster pages for your main topics\n3. PRIORITY LINKS TO ADD: Specific pages that should link to your most important pages\n4. ANCHOR TEXT STRATEGY: How to vary anchor text across internal links\n5. ORPHAN PAGE AUDIT: How to find and fix pages with no internal links pointing to them\n6. IMPLEMENTATION PLAN: How to add internal links systematically without manual checking every page\n7. QUICK WINS: 3 internal linking changes you can make this week for immediate impact";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'seo-internal-link-strategy';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

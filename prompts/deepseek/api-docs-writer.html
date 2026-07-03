@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation Writer Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to write API documentation. Endpoint descriptions, request and response examples, error codes, authentication guide — developer docs that reduce support tickets.">
+<link rel="canonical" href="https://toolsnova.net/prompts/deepseek/api-docs-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="DeepSeek API Documentation Writer Prompt">
+<meta property="og:description" content="Free AI prompt to write API documentation. Endpoint descriptions, request and response examples, error codes, authentication guide — developer docs that reduce support tickets.">
+<meta property="og:url" content="https://toolsnova.net/prompts/deepseek/api-docs-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek API Documentation Writer Prompt">
+<meta name="twitter:description" content="Free AI prompt to write API documentation. Endpoint descriptions, request and response examples, error codes, authentication guide — developer docs that reduce support tickets.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "DeepSeek", "item": "https://toolsnova.net/prompts/deepseek/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "API Documentation Writer", "item": "https://toolsnova.net/prompts/deepseek/api-docs-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "DeepSeek API Documentation Writer Prompt", "description": "Free AI prompt to write API documentation. Endpoint descriptions, request and response examples, error codes, authentication guide — developer docs that reduce support tickets.", "url": "https://toolsnova.net/prompts/deepseek/api-docs-writer.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "API documentation, technical writing, REST API, developer docs, OpenAPI"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What format for API docs?", "acceptedAnswer": {"@type": "Answer", "text": "Markdown is standard for developer docs. OpenAPI/Swagger YAML for machine-readable specs that auto-generate interactive docs. Many teams use both: OpenAPI for the spec, Markdown for narrative guides."}}, {"@type": "Question", "name": "Should I auto-generate docs from code?", "acceptedAnswer": {"@type": "Answer", "text": "Auto-generated docs ensure accuracy but are often sparse. The best docs combine auto-generated reference with hand-written guides, tutorials, and examples."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces the most technically accurate and readable API docs — understands REST conventions deeply and uses correct technical terminology consistently."}}, {"@type": "Question", "name": "How to keep docs up to date?", "acceptedAnswer": {"@type": "Answer", "text": "Treat docs as code — update in the same PR as the API change. Automated tests that verify example requests against the live API are the most reliable way to catch stale documentation."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/deepseek/index.html">DeepSeek</a><span class="breadcrumb-sep">›</span>
+      <span>API Documentation Writer</span>
+    </div>
+    <h1>DeepSeek API Documentation Writer Prompt</h1>
+    <p>Write clear complete API documentation that developers can actually use — endpoints, parameters, examples, and every error code.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">API documentation</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">technical writing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">REST API</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">developer docs</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/api-docs-writer.html">ChatGPT</a><a class="model-link" href="/prompts/claude/api-docs-writer.html">Claude</a><a class="model-link active" href="/prompts/deepseek/api-docs-writer.html" style="border-color:#7f5af0;color:#7f5af0">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>API name</label><input class="var-input" type="text" placeholder="API name" oninput="updatePrompt()" data-var="API name"></div>
+<div class="var-group"><label>endpoint path and method</label><input class="var-input" type="text" placeholder="endpoint path and method" oninput="updatePrompt()" data-var="endpoint path and method"></div>
+<div class="var-group"><label>endpoint purpose</label><input class="var-input" type="text" placeholder="endpoint purpose" oninput="updatePrompt()" data-var="endpoint purpose"></div>
+<div class="var-group"><label>authentication method</label><input class="var-input" type="text" placeholder="authentication method" oninput="updatePrompt()" data-var="authentication method"></div>
+<div class="var-group"><label>request parameters</label><input class="var-input" type="text" placeholder="request parameters" oninput="updatePrompt()" data-var="request parameters"></div>
+<div class="var-group"><label>success response</label><input class="var-input" type="text" placeholder="success response" oninput="updatePrompt()" data-var="success response"></div>
+<div class="var-group"><label>error cases</label><input class="var-input" type="text" placeholder="error cases" oninput="updatePrompt()" data-var="error cases"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior technical writer who has documented APIs used by 100,000+ developers.<br><br>API name: <span class="var-hl">[name]</span><br>Endpoint: <span class="var-hl">[path and HTTP method]</span><br>Purpose: <span class="var-hl">[what the endpoint does]</span><br>Authentication: <span class="var-hl">[API key/OAuth/JWT/none]</span><br>Request parameters: <span class="var-hl">[path, query, and body fields]</span><br>Response: <span class="var-hl">[what it returns on success]</span><br>Error cases: <span class="var-hl">[common error scenarios]</span><br><br>Task:<br>1. ENDPOINT OVERVIEW: One-sentence description<br>2. AUTHENTICATION: How to authenticate with a working example<br>3. REQUEST FORMAT: Method and URL, required headers, parameters table with name/type/required/description/example, curl example<br>4. RESPONSE FORMAT: Success response with annotated JSON, fields table with field/type/description<br>5. ERROR RESPONSES: Table of error codes, HTTP status, cause, and resolution<br>6. CODE EXAMPLE: Working snippet in Python or JavaScript<br>7. RATE LIMITS AND NOTES: Any limitations developers need to know</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in DeepSeek</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box"># GET /v1/prompts<br>Retrieve a paginated list of AI prompts. Supports filtering by category and model.<br><br>## Authentication<br>Authorization: Bearer YOUR_API_KEY<br>Get your API key: ToolsNova dashboard -&gt; Settings -&gt; API.<br><br>## Request<br>URL: https://api.toolsnova.net/v1/prompts<br><br>| Parameter | Type | Required | Default | Description |<br>|-----------|------|----------|---------|-------------|<br>| category | string | No | - | One of: writing, coding, marketing, seo, business, trading, finance, career, education, social, productivity, image |<br>| model | string | No | - | One of: chatgpt, claude, gemini, grok, deepseek |<br>| limit | integer | No | 20 | Max: 100 |<br>| offset | integer | No | 0 | Pagination offset |<br><br>curl 'https://api.toolsnova.net/v1/prompts?category=coding&amp;limit=5' -H 'Authorization: Bearer YOUR_API_KEY'<br><br>## Response 200 OK<br>{&quot;total&quot;: 18, &quot;limit&quot;: 5, &quot;offset&quot;: 0, &quot;data&quot;: [{&quot;id&quot;: 158, &quot;slug&quot;: &quot;sql-advanced-queries&quot;, &quot;category&quot;: &quot;coding&quot;, &quot;best_model&quot;: &quot;deepseek&quot;}]}<br><br>## Errors<br>| Status | Code | Cause | Resolution |<br>|--------|------|-------|------------|<br>| 401 | INVALID_KEY | Missing or invalid API key | Check key in dashboard |<br>| 400 | INVALID_CATEGORY | Category not in allowed list | Use one of the 12 valid categories |<br>| 429 | RATE_LIMITED | Over 100 requests per minute | Implement exponential backoff |</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Always include a working curl example — it is the first thing most developers try</div>
+<div class="tip-card">Error responses are as important as success responses — document every error with its resolution</div>
+<div class="tip-card">Parameter tables with defaults and constraints prevent the most common support tickets</div>
+<div class="tip-card">Code examples should be copy-paste ready — test them yourself before publishing</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Documenting only the happy path — developers need to know what happens when things go wrong</div>
+<div class="mistake-card">Vague parameter descriptions — the ID of the user is insufficient; specify format, constraints, and where to find it</div>
+<div class="mistake-card">No authentication example — auth is always the first place developers get stuck</div>
+<div class="mistake-card">Inconsistent naming conventions — if you use snake_case in one response, use it everywhere</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What format for API docs?</div><div class="faq-a">Markdown is standard for developer docs. OpenAPI/Swagger YAML for machine-readable specs that auto-generate interactive docs. Many teams use both: OpenAPI for the spec, Markdown for narrative guides.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I auto-generate docs from code?</div><div class="faq-a">Auto-generated docs ensure accuracy but are often sparse. The best docs combine auto-generated reference with hand-written guides, tutorials, and examples.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude produces the most technically accurate and readable API docs — understands REST conventions deeply and uses correct technical terminology consistently.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to keep docs up to date?</div><div class="faq-a">Treat docs as code — update in the same PR as the API change. Automated tests that verify example requests against the live API are the most reliable way to catch stale documentation.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/python-script-builder.html"><div class="rc-title">Python Task Automation Script Builder</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/code-reviewer.html"><div class="rc-title">Code Reviewer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/sql-advanced-queries.html"><div class="rc-title">Advanced SQL Query Builder</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/unit-test-generator.html"><div class="rc-title">Unit Test Generator</div><div class="rc-cat">💻 Coding</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior technical writer who has documented APIs used by 100,000+ developers.\n\nAPI name: [name]\nEndpoint: [path and HTTP method]\nPurpose: [what the endpoint does]\nAuthentication: [API key/OAuth/JWT/none]\nRequest parameters: [path, query, and body fields]\nResponse: [what it returns on success]\nError cases: [common error scenarios]\n\nTask:\n1. ENDPOINT OVERVIEW: One-sentence description\n2. AUTHENTICATION: How to authenticate with a working example\n3. REQUEST FORMAT: Method and URL, required headers, parameters table with name/type/required/description/example, curl example\n4. RESPONSE FORMAT: Success response with annotated JSON, fields table with field/type/description\n5. ERROR RESPONSES: Table of error codes, HTTP status, cause, and resolution\n6. CODE EXAMPLE: Working snippet in Python or JavaScript\n7. RATE LIMITS AND NOTES: Any limitations developers need to know";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.deepseek.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'api-docs-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

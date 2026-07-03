@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk &amp; Position Sizing Calculator Prompt Prompt for ChatGPT | Fre</title>
+<meta name="description" content="Free risk &amp; position sizing calculator prompt prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup req">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/risk-position-size-calculator.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Risk &amp; Position Sizing Calculator Prompt Prompt">
+<meta property="og:description" content="Free risk &amp; position sizing calculator prompt prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup req">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/risk-position-size-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Risk &amp; Position Sizing Calculator Prompt Prompt">
+<meta name="twitter:description" content="Free risk &amp; position sizing calculator prompt prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup req">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Trading", "item": "https://toolsnova.net/prompts/trading/index.html"}, {"@type": "ListItem", "position": 5, "name": "Risk & Position Sizing Calculator Prompt", "item": "https://toolsnova.net/prompts/chatgpt/risk-position-size-calculator.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Risk & Position Sizing Calculator Prompt Prompt", "description": "Free risk & position sizing calculator prompt prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup req", "url": "https://toolsnova.net/prompts/chatgpt/risk-position-size-calculator.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "position sizing, risk management, forex, lot size, trading"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What percentage should I risk per trade?", "acceptedAnswer": {"@type": "Answer", "text": "Most professional traders risk 0.5–1% per trade. New traders should start at 0.25–0.5%. Above 2% per trade dramatically increases the probability of account ruin during normal losing streaks. The math matters: at 1% risk, you need 50+ consecutive losses to blow a 50% drawdown."}}, {"@type": "Question", "name": "How do I calculate pip value for XAU/USD?", "acceptedAnswer": {"@type": "Answer", "text": "XAU/USD: 1 standard lot = 100 oz of gold. 1 pip = $0.01 movement × 100 oz = $1 per standard lot, so $0.10 per mini lot, $0.01 per micro lot. At $3,000 gold price, 1 pip of XAU/USD is worth $1/lot. This is why small lot sizes are important on gold."}}, {"@type": "Question", "name": "Should I use fixed dollar risk or percentage risk?", "acceptedAnswer": {"@type": "Answer", "text": "Percentage risk is better long-term — as your account grows, your absolute risk grows proportionally, allowing compounding. Fixed dollar risk means you take larger relative risk as your account shrinks (dangerous) and smaller relative risk as it grows (limits upside)."}}, {"@type": "Question", "name": "What is the Kelly Criterion?", "acceptedAnswer": {"@type": "Answer", "text": "Kelly Criterion: f = (p × b − q) / b, where p = win probability, b = net win size, q = loss probability. It gives the theoretically optimal fraction to risk per trade. In practice, traders use 1/4 or 1/2 Kelly to reduce variance while maintaining edge."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/trading/index.html">📊 Trading</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Risk &amp; Position Sizing Calculator Prompt</span>
+    </div>
+    <h1>ChatGPT Risk &amp; Position Sizing Calculator Prompt Prompt</h1>
+    <p>You are a professional risk manager who has protected trading accounts from ruin for over a decade.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📊 Trading</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-trading">📊 Trading</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">position sizing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">risk management</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">forex</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">lot size</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/risk-position-size-calculator.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/risk-position-size-calculator.html">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>account size</label><input class="var-input" type="text" placeholder="[example account size]" oninput="updatePrompt()" data-var="account size"></div>
+<div class="var-group"><label>risk percentage</label><input class="var-input" type="text" placeholder="[example risk percentage]" oninput="updatePrompt()" data-var="risk percentage"></div>
+<div class="var-group"><label>stop loss pips</label><input class="var-input" type="text" placeholder="[example stop loss pips]" oninput="updatePrompt()" data-var="stop loss pips"></div>
+<div class="var-group"><label>instrument</label><input class="var-input" type="text" placeholder="[example instrument]" oninput="updatePrompt()" data-var="instrument"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a professional risk manager who has protected trading accounts from ruin for over a decade.<br><br>Account: £/$/<span class="var-hl">[account size]</span><br>Risk per trade: <span class="var-hl">[risk percentage]</span>%<br>Stop loss: <span class="var-hl">[stop loss pips/points]</span><br>Instrument: <span class="var-hl">[instrument — XAU/USD/EUR/USD/US30/BTC]</span><br><br>Task: Complete position sizing calculation:<br><br>1. RISK CALCULATION:<br>   Dollar/pound risk per trade = account × risk%<br>   Position size formula for <span class="var-hl">[instrument]</span><br>   Exact lot size (standard/mini/micro)<br><br>2. SCENARIO TABLE:<br>   Position sizes at 0.5% / 1% / 1.5% / 2% risk with your SL<br><br>3. CONSECUTIVE LOSS ANALYSIS:<br>   After 5 consecutive losses at each risk level: account balance, drawdown %<br>   At what point does position sizing need to decrease?<br><br>4. COMPOUNDING POSITION SIZES:<br>   How size should increase as account grows<br><br>5. PSYCHOLOGICAL RISK GUIDE:<br>   At which dollar amount does this trade start to affect your emotions?<br>   Recommended cap for your current account level<br><br>6. RED LINES: 4 absolute rules that protect the account</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">POSITION SIZING: £10,000 account, XAU/USD, 1% risk, 35 pip SL<br><br>RISK CALCULATION:<br>Risk per trade: £10,000 × 1% = £100<br>XAU/USD pip value (per 0.1 lot / mini lot): $1.00/pip<br>SL pips: 35<br>Position size: £100 ÷ (35 × £1.00) = 0.286 → round down to 0.28 lots<br>Verify: 0.28 lots × 35 pips × $1/pip = $9.80 risk ≈ 1% ✅ (slight undershoot is correct — never overshoot)<br><br>SCENARIO TABLE:<br>| Risk % | Dollar risk | Lot size (35 pip SL) |<br>|---|---|---|<br>| 0.5% | £50 | 0.14 lots |<br>| 1.0% | £100 | 0.28 lots |<br>| 1.5% | £150 | 0.43 lots |<br>| 2.0% | £200 | 0.57 lots |<br><br>CONSECUTIVE LOSS ANALYSIS (at 1% risk):<br>Start: £10,000<br>After loss 1: £9,900 (down 1%)<br>After loss 3: £9,703 (down 3%)<br>After loss 5: £9,510 (down 4.9%)<br>After loss 10: £9,044 (down 9.6%)<br>Conclusion: At 1% risk, 10 consecutive losses = 9.6% drawdown. Account survives and can continue.<br><br>At 2% risk:<br>After 10 losses: £8,171 (down 18.3%) — still recoverable<br>At 5% risk: After 10 losses = £5,987 (down 40%) — very difficult to recover<br><br>PSYCHOLOGICAL GUIDE:<br>Most traders start to feel emotional when loss &gt; 0.5% of weekly income equivalent<br>For a £10,000 account: recommend staying at £50–100 per trade (0.5–1%) until account grows to £20,000<br><br>RED LINES:<br>1. NEVER risk more than 2% on a single trade — ever<br>2. If daily loss hits 3%, STOP trading for the day<br>3. If weekly loss hits 5%, review the week before trading again<br>4. If drawdown exceeds 10%, reduce position size by 50%</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#00a36c">ChatGPT</div>
+        <div style="font-size:.75rem;color:var(--text3)">ChatGPT (GPT-4o / GPT-5)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Always calculate position size BEFORE looking at the setup — emotion-based sizing is the most common account-destroying mistake</div>
+<div class="tip-card">Round position sizes DOWN, never up — undershooting risk is safe, overshooting is dangerous</div>
+<div class="tip-card">During a losing streak, reduce risk temporarily — it protects capital AND psychology</div>
+<div class="tip-card">The Kelly Criterion (optimal position sizing based on win rate and RR) is worth understanding, though most traders use a more conservative fraction</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Adding to losing positions without having planned this in advance — averaging down is a capital destroyer</div>
+<div class="mistake-card">Keeping the same lot size regardless of SL distance — this means different trades have wildly different risk amounts</div>
+<div class="mistake-card">No daily loss limit — once you've hit 3% daily loss, your judgment is compromised</div>
+<div class="mistake-card">Risking the same on all trades regardless of setup quality — a Tier A setup (3+ confluences) can justify 1.5%, a Tier C setup should be 0.5% or skipped</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What percentage should I risk per trade?</div><div class="faq-a">Most professional traders risk 0.5–1% per trade. New traders should start at 0.25–0.5%. Above 2% per trade dramatically increases the probability of account ruin during normal losing streaks. The math matters: at 1% risk, you need 50+ consecutive losses to blow a 50% drawdown.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I calculate pip value for XAU/USD?</div><div class="faq-a">XAU/USD: 1 standard lot = 100 oz of gold. 1 pip = $0.01 movement × 100 oz = $1 per standard lot, so $0.10 per mini lot, $0.01 per micro lot. At $3,000 gold price, 1 pip of XAU/USD is worth $1/lot. This is why small lot sizes are important on gold.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use fixed dollar risk or percentage risk?</div><div class="faq-a">Percentage risk is better long-term — as your account grows, your absolute risk grows proportionally, allowing compounding. Fixed dollar risk means you take larger relative risk as your account shrinks (dangerous) and smaller relative risk as it grows (limits upside).</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What is the Kelly Criterion?</div><div class="faq-a">Kelly Criterion: f = (p × b − q) / b, where p = win probability, b = net win size, q = loss probability. It gives the theoretically optimal fraction to risk per trade. In practice, traders use 1/4 or 1/2 Kelly to reduce variance while maintaining edge.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/xauusd-gold-analysis.html"><div class="rc-title">XAU/USD Gold Analysis (SMC)</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/prop-firm-challenge-strategy.html"><div class="rc-title">Prop Firm Challenge Strategy</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/trading-journal-review.html"><div class="rc-title">Trading Journal Review &amp; Analysis</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/forex-pair-analysis.html"><div class="rc-title">Forex Pair Analysis Prompt</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a professional risk manager who has protected trading accounts from ruin for over a decade.\n\nAccount: £/$/[account size]\nRisk per trade: [risk percentage]%\nStop loss: [stop loss pips/points]\nInstrument: [instrument — XAU/USD/EUR/USD/US30/BTC]\n\nTask: Complete position sizing calculation:\n\n1. RISK CALCULATION:\n   Dollar/pound risk per trade = account × risk%\n   Position size formula for [instrument]\n   Exact lot size (standard/mini/micro)\n\n2. SCENARIO TABLE:\n   Position sizes at 0.5% / 1% / 1.5% / 2% risk with your SL\n\n3. CONSECUTIVE LOSS ANALYSIS:\n   After 5 consecutive losses at each risk level: account balance, drawdown %\n   At what point does position sizing need to decrease?\n\n4. COMPOUNDING POSITION SIZES:\n   How size should increase as account grows\n\n5. PSYCHOLOGICAL RISK GUIDE:\n   At which dollar amount does this trade start to affect your emotions?\n   Recommended cap for your current account level\n\n6. RED LINES: 4 absolute rules that protect the account";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'risk-position-size-calculator';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

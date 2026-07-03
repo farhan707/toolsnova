@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podcast Script Writer Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to write a podcast episode script. Hook, interview questions, narrative flow, segment transitions, and show notes — professional podcast scripts in minutes.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/podcast-script-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Podcast Episode Script Writer Prompt">
+<meta property="og:description" content="Free AI prompt to write a podcast episode script. Hook, interview questions, narrative flow, segment transitions, and show notes — professional podcast scripts in minutes.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/podcast-script-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Podcast Episode Script Writer Prompt">
+<meta name="twitter:description" content="Free AI prompt to write a podcast episode script. Hook, interview questions, narrative flow, segment transitions, and show notes — professional podcast scripts in minutes.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Writing", "item": "https://toolsnova.net/prompts/writing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Podcast Episode Script Writer", "item": "https://toolsnova.net/prompts/claude/podcast-script-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Podcast Episode Script Writer Prompt", "description": "Free AI prompt to write a podcast episode script. Hook, interview questions, narrative flow, segment transitions, and show notes — professional podcast scripts in minutes.", "url": "https://toolsnova.net/prompts/claude/podcast-script-writer.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "podcast, script, audio content, interview, storytelling"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Script the whole episode or just outline it?", "acceptedAnswer": {"@type": "Answer", "text": "Solo and narrative shows benefit from fuller scripting. Interviews work better with outlines and questions — over-scripting kills natural conversation energy. Script the hook and close precisely; outline the body."}}, {"@type": "Question", "name": "How to get better guests?", "acceptedAnswer": {"@type": "Answer", "text": "Start with your network. Offer a compelling specific reason to appear: My audience is 5000 of exactly the right people who would love your perspective on this specific topic. Warm intros beat cold outreach consistently."}}, {"@type": "Question", "name": "What equipment do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Minimum: USB microphone around 70 pounds, a quiet room, and free recording software such as Audacity or Riverside for remote guests. Equipment should not be the reason you do not start."}}, {"@type": "Question", "name": "Best model for podcast scripts?", "acceptedAnswer": {"@type": "Answer", "text": "ChatGPT for interview formats — its conversational energy produces better follow-up question suggestions. Claude for narrative or solo episodes requiring sustained structured argument."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/writing/index.html">✍️ Writing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Podcast Episode Script Writer</span>
+    </div>
+    <h1>Claude Podcast Episode Script Writer Prompt</h1>
+    <p>Write a complete podcast episode script — hook, interview questions, narrative flow, transitions, show notes, and social clip moments.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">✍️ Writing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-writing">✍️ Writing</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">podcast</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">script</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">audio content</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">interview</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/podcast-script-writer.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/podcast-script-writer.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/podcast-script-writer.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>podcast name and niche</label><input class="var-input" type="text" placeholder="podcast name and niche" oninput="updatePrompt()" data-var="podcast name and niche"></div>
+<div class="var-group"><label>episode topic or guest</label><input class="var-input" type="text" placeholder="episode topic or guest" oninput="updatePrompt()" data-var="episode topic or guest"></div>
+<div class="var-group"><label>episode format</label><input class="var-input" type="text" placeholder="episode format" oninput="updatePrompt()" data-var="episode format"></div>
+<div class="var-group"><label>episode length</label><input class="var-input" type="text" placeholder="episode length" oninput="updatePrompt()" data-var="episode length"></div>
+<div class="var-group"><label>target audience</label><input class="var-input" type="text" placeholder="target audience" oninput="updatePrompt()" data-var="target audience"></div>
+<div class="var-group"><label>main listener takeaway</label><input class="var-input" type="text" placeholder="main listener takeaway" oninput="updatePrompt()" data-var="main listener takeaway"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a podcast producer who has scripted episodes that hit top 100 charts in their category.<br><br>Podcast name: <span class="var-hl">[name and niche]</span><br>Episode topic: <span class="var-hl">[topic or guest and their expertise]</span><br>Format: <span class="var-hl">[solo/interview/co-hosted/narrative]</span><br>Length: <span class="var-hl">[15/30/45/60 minutes]</span><br>Audience: <span class="var-hl">[who listens]</span><br>Main takeaway: <span class="var-hl">[what the listener should know or feel by the end]</span><br><br>Task:<br>1. HOOK (first 60 seconds): Opening that makes people stop skipping and stay — do not start with intro music or welcome to the show<br>2. INTRO (90 seconds): Show, host, episode premise — tight not rambling<br>3. EPISODE OUTLINE: Section-by-section with timing<br>4. INTERVIEW QUESTIONS (if applicable): 10-15 ranked from warm-up to deep-dive, with 2-3 follow-up probes per key question<br>5. TRANSITIONS: Natural segment transitions that maintain flow<br>6. CLOSING: Memorable ending — not just thanks for listening<br>7. SHOW NOTES: Title, summary, timestamps, 5 key takeaways, 3 links to mention<br>8. SOCIAL CLIPS: 3 soundbite moments likely to work as short clips</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">PODCAST SCRIPT: PromptCraft — AI Content at Scale<br><br>HOOK (60 seconds — start mid-conversation, no intro music yet):<br>What if I told you that one person, working alone, produced 50000 words of publishable client content last month — and genuinely believes quality got better, not worse, when they added AI. My guest today is that person, and I want to know exactly how they did it, because every assumption I had going into this conversation was wrong.<br><br>INTERVIEW QUESTIONS:<br>WARM-UP:<br>1. Before AI, what did your content workflow look like for a typical article?<br>2. What was the specific moment you decided to try integrating AI seriously?<br><br>DEEP-DIVE:<br>3. Walk me through what a day actually looks like — what does AI-assisted content operation mean in practice?<br>4. Where in the process does AI contribute most? Where does it contribute least?<br>5. How do you maintain your clients' distinct voices when AI is involved?<br><br>FOLLOW-UPS FOR QUESTION 5:<br>Can you give a specific example — what did you prompt, what came back, what did you change?<br>What percentage of the final published word count is your original language vs AI language you edited?<br>What is the worst client reaction you have had to AI-assisted work, and what did you learn?<br><br>CLOSING:<br>I want to end with one question: if someone listening wants to start exactly where you started 6 months ago, what is the one thing to do this week?<br><br>SHOW NOTES:<br>Title: 50000 Words a Month — How One Freelancer Built an AI Content Operation<br>Timestamps: 0:00 Hook, 2:00 Background, 8:00 The workflow, 25:00 Voice and quality, 38:00 Client reactions, 44:00 Where to start</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#00a36c">ChatGPT</div>
+        <div style="font-size:.75rem;color:var(--text3)">ChatGPT (GPT-4o / GPT-5)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Hook should start mid-idea not with welcome to the show — drop the listener into the most compelling part</div>
+<div class="tip-card">Follow-up questions are more valuable than scripted questions — the best moments come from following what the guest actually says</div>
+<div class="tip-card">End with one specific actionable takeaway — listeners are more likely to share an episode that taught them something concrete</div>
+<div class="tip-card">Plan your social clip moments before recording — 3-4 questions designed to produce standalone 60-second clips</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Opening with a long intro about the show — listeners already know the show; get to the content immediately</div>
+<div class="mistake-card">Questions that can be answered in one word — did you enjoy X vs walk me through what X felt like in practice</div>
+<div class="mistake-card">No transitions between segments — abrupt topic shifts make the listener feel lost</div>
+<div class="mistake-card">Show notes that are just the transcript — good show notes are a curated resource with timestamps, links, and key takeaways</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Script the whole episode or just outline it?</div><div class="faq-a">Solo and narrative shows benefit from fuller scripting. Interviews work better with outlines and questions — over-scripting kills natural conversation energy. Script the hook and close precisely; outline the body.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to get better guests?</div><div class="faq-a">Start with your network. Offer a compelling specific reason to appear: My audience is 5000 of exactly the right people who would love your perspective on this specific topic. Warm intros beat cold outreach consistently.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What equipment do I need?</div><div class="faq-a">Minimum: USB microphone around 70 pounds, a quiet room, and free recording software such as Audacity or Riverside for remote guests. Equipment should not be the reason you do not start.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model for podcast scripts?</div><div class="faq-a">ChatGPT for interview formats — its conversational energy produces better follow-up question suggestions. Claude for narrative or solo episodes requiring sustained structured argument.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/youtube-script-writer.html"><div class="rc-title">YouTube Script Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/substack-essay-writer.html"><div class="rc-title">Substack Newsletter Essay Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/content-calendar-creator.html"><div class="rc-title">Monthly Content Calendar Creator</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/newsletter-growth-strategy.html"><div class="rc-title">Email Newsletter Growth Strategy</div><div class="rc-cat">📣 Marketing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a podcast producer who has scripted episodes that hit top 100 charts in their category.\n\nPodcast name: [name and niche]\nEpisode topic: [topic or guest and their expertise]\nFormat: [solo/interview/co-hosted/narrative]\nLength: [15/30/45/60 minutes]\nAudience: [who listens]\nMain takeaway: [what the listener should know or feel by the end]\n\nTask:\n1. HOOK (first 60 seconds): Opening that makes people stop skipping and stay — do not start with intro music or welcome to the show\n2. INTRO (90 seconds): Show, host, episode premise — tight not rambling\n3. EPISODE OUTLINE: Section-by-section with timing\n4. INTERVIEW QUESTIONS (if applicable): 10-15 ranked from warm-up to deep-dive, with 2-3 follow-up probes per key question\n5. TRANSITIONS: Natural segment transitions that maintain flow\n6. CLOSING: Memorable ending — not just thanks for listening\n7. SHOW NOTES: Title, summary, timestamps, 5 key takeaways, 3 links to mention\n8. SOCIAL CLIPS: 3 soundbite moments likely to work as short clips";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'podcast-script-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

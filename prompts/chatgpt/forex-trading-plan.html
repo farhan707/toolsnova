@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forex Trading Plan Builder Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build a complete forex trading plan. Entry/exit rules, position sizing, daily loss limits, and performance review — a disciplined trading framework.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/forex-trading-plan.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Forex Trading Plan Builder Prompt">
+<meta property="og:description" content="Free AI prompt to build a complete forex trading plan. Entry/exit rules, position sizing, daily loss limits, and performance review — a disciplined trading framework.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/forex-trading-plan.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Forex Trading Plan Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to build a complete forex trading plan. Entry/exit rules, position sizing, daily loss limits, and performance review — a disciplined trading framework.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Trading", "item": "https://toolsnova.net/prompts/trading/index.html"}, {"@type": "ListItem", "position": 5, "name": "Forex Trading Plan Builder", "item": "https://toolsnova.net/prompts/chatgpt/forex-trading-plan.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Forex Trading Plan Builder Prompt", "description": "Free AI prompt to build a complete forex trading plan. Entry/exit rules, position sizing, daily loss limits, and performance review — a disciplined trading framework.", "url": "https://toolsnova.net/prompts/chatgpt/forex-trading-plan.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "forex, trading plan, risk management, day trading, FX"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long should a trading plan be?", "acceptedAnswer": {"@type": "Answer", "text": "Long enough to be unambiguous, short enough to read before each session. 2-4 pages is typical. Every rule should be specific enough to need no interpretation when you're at the charts."}}, {"@type": "Question", "name": "How do I know if my plan is working?", "acceptedAnswer": {"@type": "Answer", "text": "After 50-100 trades precisely following the plan: win rate × average winner > loss rate × average loser = positive expectancy. Fewer than 50 trades is too small a sample to evaluate any strategy."}}, {"@type": "Question", "name": "Same plan every day?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with one exception: your plan should define when to sit out (major news, extreme volatility). Consistency builds the data you need to improve."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude maintains rule consistency across a complex multi-component plan, builds in the psychological safeguards most traders need, and avoids vague generic trading advice."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/trading/index.html">📊 Trading</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Forex Trading Plan Builder</span>
+    </div>
+    <h1>ChatGPT Forex Trading Plan Builder Prompt</h1>
+    <p>Build a complete rule-based forex trading plan with exact entry criteria, risk management rules, and a weekly review process.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📊 Trading</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-trading">📊 Trading</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">forex</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">trading plan</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">risk management</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">day trading</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/forex-trading-plan.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/forex-trading-plan.html">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>trading style</label><input class="var-input" type="text" placeholder="day trading" oninput="updatePrompt()" data-var="trading style"></div>
+<div class="var-group"><label>session focus</label><input class="var-input" type="text" placeholder="session focus" oninput="updatePrompt()" data-var="session focus"></div>
+<div class="var-group"><label>account size</label><input class="var-input" type="text" placeholder="account size" oninput="updatePrompt()" data-var="account size"></div>
+<div class="var-group"><label>primary currency pairs</label><input class="var-input" type="text" placeholder="primary currency pairs" oninput="updatePrompt()" data-var="primary currency pairs"></div>
+<div class="var-group"><label>current weakness</label><input class="var-input" type="text" placeholder="current weakness" oninput="updatePrompt()" data-var="current weakness"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a professional forex trader and risk manager with 15+ years training institutional and retail traders.<br><br>DISCLAIMER: Educational only — not financial advice. Forex trading involves significant risk of loss. Never trade money you cannot afford to lose.<br><br>Trading style: <span class="var-hl">[scalping/day trading/swing trading/position trading]</span><br>Session: <span class="var-hl">[London/New York/Asian/all sessions]</span><br>Account size: <span class="var-hl">[approximate account]</span><br>Primary pairs: <span class="var-hl">[EUR/USD/GBP/JPY/XAU/USD/other]</span><br>Current weakness: <span class="var-hl">[entries too early/can't hold trades/revenge trading/no plan]</span><br><br>Task:<br>1. PHILOSOPHY: 3 principles that govern every trade<br>2. SETUP CRITERIA: ALL must be present — HTF bias, LTF confirmation, entry trigger, min R:R<br>3. ENTRY RULES: Exact conditions — specific, not vague ('look for pullbacks' is not a rule)<br>4. SL RULES: Where exactly, what if price approaches SL<br>5. TP RULES: When to scale out, when to hold, when to move to breakeven<br>6. RISK MANAGEMENT: Per-trade %, daily loss limit, weekly limit, what happens at limits<br>7. SESSION RULES: Trading hours, must-close time<br>8. DAILY ROUTINE: Pre/during/post-session rituals<br>9. REVIEW: Weekly journal questions</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">TRADING PLAN: Day Trader — London/NY<br>DISCLAIMER: Educational — not financial advice.<br><br>PHILOSOPHY:<br>1. Protect capital first — a losing trade that respected the plan is a good trade<br>2. No setup = no trade — boredom is not a reason to enter<br>3. The market will always be there tomorrow — revenge trading closes accounts<br><br>SETUP CRITERIA (ALL required):<br>☐ H4/H1 bias confirmed (direction of last impulse, position vs key level)<br>☐ Liquidity level swept (high/low taken out)<br>☐ 15M structure shift confirmed by candle CLOSE (BOS or CHOCH — never on a wick)<br>☐ 5M displacement candle for entry<br>☐ Minimum 1:2 R:R to nearest opposing liquidity<br><br>ENTRY RULES:<br>• Wait for 15M candle to CLOSE showing BOS — never enter on a wick<br>• Enter on 5M after first retracement into FVG or OB<br>• Price at zone but no trigger → SKIP the trade<br>• Missed entry → mark the lesson, wait for the next setup<br><br>RISK:<br>Per trade: 1% account (£50 on £5K)<br>Personal daily stop: 2.5% (£125) — stop trading, close platform, walk away<br>Firm daily limit: 3% (£150) — personal stop creates a safety buffer<br>Revenge rule: minimum 15-min break after any losing trade<br><br>SUNDAY REVIEW:<br>1. Did I follow ALL criteria on every trade?<br>2. Which rule did I break? What's the consequence I'm adding?<br>3. Win rate and average R:R this week?<br>4. One thing to do differently next week?</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">A trading plan without a review process is useless — the plan says what to do; the review says if you're doing it</div>
+<div class="tip-card">The most important rule is the one you break most — identify it and add an explicit consequence</div>
+<div class="tip-card">Journal every trade, not just the losers — winning without understanding why is as dangerous as losing</div>
+<div class="tip-card">Daily loss limits prevent the account-destroying sessions almost every retail trader eventually has</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Entry rules too vague ('look for confluence') — be specific enough someone else could follow them exactly</div>
+<div class="mistake-card">No daily loss limit — the single most dangerous omission in any retail trading plan</div>
+<div class="mistake-card">Changing the plan mid-trade — the plan was made without emotional pressure; the trade is full of it</div>
+<div class="mistake-card">No statistics tracking — without win rate and average R:R data you cannot know if you have edge</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should a trading plan be?</div><div class="faq-a">Long enough to be unambiguous, short enough to read before each session. 2-4 pages is typical. Every rule should be specific enough to need no interpretation when you're at the charts.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I know if my plan is working?</div><div class="faq-a">After 50-100 trades precisely following the plan: win rate × average winner &gt; loss rate × average loser = positive expectancy. Fewer than 50 trades is too small a sample to evaluate any strategy.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Same plan every day?</div><div class="faq-a">Yes, with one exception: your plan should define when to sit out (major news, extreme volatility). Consistency builds the data you need to improve.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude maintains rule consistency across a complex multi-component plan, builds in the psychological safeguards most traders need, and avoids vague generic trading advice.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/risk-position-size-calculator.html"><div class="rc-title">Risk &amp; Position Sizing Calculator Prompt</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/trading-psychology-coach.html"><div class="rc-title">Trading Psychology Coach</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/xauusd-gold-analysis.html"><div class="rc-title">XAU/USD Gold Analysis (SMC)</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/backtesting-strategy-builder.html"><div class="rc-title">Trading Strategy Backtesting Framework</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a professional forex trader and risk manager with 15+ years training institutional and retail traders.\n\nDISCLAIMER: Educational only — not financial advice. Forex trading involves significant risk of loss. Never trade money you cannot afford to lose.\n\nTrading style: [scalping/day trading/swing trading/position trading]\nSession: [London/New York/Asian/all sessions]\nAccount size: [approximate account]\nPrimary pairs: [EUR/USD/GBP/JPY/XAU/USD/other]\nCurrent weakness: [entries too early/can't hold trades/revenge trading/no plan]\n\nTask:\n1. PHILOSOPHY: 3 principles that govern every trade\n2. SETUP CRITERIA: ALL must be present — HTF bias, LTF confirmation, entry trigger, min R:R\n3. ENTRY RULES: Exact conditions — specific, not vague ('look for pullbacks' is not a rule)\n4. SL RULES: Where exactly, what if price approaches SL\n5. TP RULES: When to scale out, when to hold, when to move to breakeven\n6. RISK MANAGEMENT: Per-trade %, daily loss limit, weekly limit, what happens at limits\n7. SESSION RULES: Trading hours, must-close time\n8. DAILY ROUTINE: Pre/during/post-session rituals\n9. REVIEW: Weekly journal questions";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'forex-trading-plan';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

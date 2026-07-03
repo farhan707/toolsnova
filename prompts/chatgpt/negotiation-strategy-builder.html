@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negotiation Script Builder Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build a negotiation strategy. Opening anchor, key moves, objection responses, concession plan, and BATNA — for salary, contracts, B2B deals, and disputes.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/negotiation-strategy-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Negotiation Script &amp; Strategy Builder Prompt">
+<meta property="og:description" content="Free AI prompt to build a negotiation strategy. Opening anchor, key moves, objection responses, concession plan, and BATNA — for salary, contracts, B2B deals, and disputes.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/negotiation-strategy-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Negotiation Script &amp; Strategy Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to build a negotiation strategy. Opening anchor, key moves, objection responses, concession plan, and BATNA — for salary, contracts, B2B deals, and disputes.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "Negotiation Script & Strategy Builder", "item": "https://toolsnova.net/prompts/chatgpt/negotiation-strategy-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Negotiation Script & Strategy Builder Prompt", "description": "Free AI prompt to build a negotiation strategy. Opening anchor, key moves, objection responses, concession plan, and BATNA — for salary, contracts, B2B deals, and disputes.", "url": "https://toolsnova.net/prompts/chatgpt/negotiation-strategy-builder.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "negotiation, salary, contracts, B2B, conflict resolution"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is BATNA?", "acceptedAnswer": {"@type": "Answer", "text": "Best Alternative to a Negotiated Agreement — what you will do if the negotiation fails. The strength of your BATNA determines your negotiating power. A competing job offer means you can walk away from a bad deal."}}, {"@type": "Question", "name": "Should I reveal a competing offer?", "acceptedAnswer": {"@type": "Answer", "text": "Only as a last resort, and only if you are genuinely willing to leave. Revealing it too early reduces its power. Used correctly as a final escalation when other arguments are exhausted, it is often the decisive move."}}, {"@type": "Question", "name": "How to negotiate without being aggressive?", "acceptedAnswer": {"@type": "Answer", "text": "Collaborative negotiation frames the conversation as how do we find something that works for both of us. Lead with market data and your value, not personal desire."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is stronger for negotiation strategy — maintains logical structure across a sequence, builds effective principled arguments, and calibrates tone for collaborative vs competitive contexts."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Negotiation Script &amp; Strategy Builder</span>
+    </div>
+    <h1>ChatGPT Negotiation Script &amp; Strategy Builder Prompt</h1>
+    <p>Build a complete negotiation strategy with opening anchor, key moves, objection responses, and BATNA for any high-stakes situation.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">negotiation</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">salary</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">contracts</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">B2B</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/negotiation-strategy-builder.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/negotiation-strategy-builder.html">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>negotiation type</label><input class="var-input" type="text" placeholder="negotiation type" oninput="updatePrompt()" data-var="negotiation type"></div>
+<div class="var-group"><label>your position and justification</label><input class="var-input" type="text" placeholder="your position and justification" oninput="updatePrompt()" data-var="your position and justification"></div>
+<div class="var-group"><label>counterparty and their interests</label><input class="var-input" type="text" placeholder="counterparty and their interests" oninput="updatePrompt()" data-var="counterparty and their interests"></div>
+<div class="var-group"><label>your BATNA</label><input class="var-input" type="text" placeholder="your BATNA" oninput="updatePrompt()" data-var="your BATNA"></div>
+<div class="var-group"><label>your leverages</label><input class="var-input" type="text" placeholder="your leverages" oninput="updatePrompt()" data-var="your leverages"></div>
+<div class="var-group"><label>their leverages</label><input class="var-input" type="text" placeholder="their leverages" oninput="updatePrompt()" data-var="their leverages"></div>
+<div class="var-group"><label>required tone</label><input class="var-input" type="text" placeholder="required tone" oninput="updatePrompt()" data-var="required tone"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a professional negotiation coach and former commercial lawyer who has advised on 100 million or more in deals.<br><br>Negotiation type: <span class="var-hl">[salary/contract/B2B deal/freelance rate/property/dispute]</span><br>Your position: <span class="var-hl">[what you want and why you deserve it]</span><br>Counterparty: <span class="var-hl">[who you are negotiating with and what they likely want]</span><br>Your BATNA: <span class="var-hl">[your best alternative if this negotiation fails]</span><br>Your leverages: <span class="var-hl">[what is in your favour]</span><br>Their leverages: <span class="var-hl">[what is in their favour]</span><br>Tone: <span class="var-hl">[collaborative/competitive/assertive/diplomatic]</span><br><br>Task:<br>1. OPENING POSITION: What to say first and how to anchor the number<br>2. PRINCIPLED JUSTIFICATION: Evidence and logic behind your position — not just I want more<br>3. KEY MOVES (3-5): Strategic sequence of what to say at each stage<br>4. OBJECTION RESPONSES: Most likely objections and your response to each<br>5. CONCESSION PLAN: What you can give up and in what order<br>6. CLOSING TECHNIQUE: How to close when you have reached the right position<br>7. WALK-AWAY PROTOCOL: The exact signal to watch for that means you should walk away</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">SALARY NEGOTIATION STRATEGY<br><br>OPENING POSITION:<br>Ask for 65000 first. Higher than target for two reasons: gives room to compromise to your real target of 62000 making it feel like a win for them, and resets their mental anchor upward from the 55000-58000 market rate.<br><br>PRINCIPLED JUSTIFICATION:<br>I want to base this conversation on market data and my specific contribution. Based on Glassdoor and recruitment data, market rate for my role and experience is 58000-65000. I am on the lower end. Over the last 18 months I led projects 1, 2, and 3, which delivered specific outcomes. I have been promoted twice which is faster than the standard trajectory. I think 65000 reflects where I should be.<br><br>KEY MOVES:<br>1. Open with market data and track record — NOT I have another offer<br>2. If they offer 10% which is 57200: I appreciate that and understand the policy. Given the market data and my performance, I think that still leaves me below where I should be. Is there flexibility beyond the standard policy for exceptional performance?<br>3. Reveal competing offer only if stuck at 10%: I should be transparent — I have a competing offer at 60000. I would genuinely prefer to stay. Is there a path to matching or exceeding that?<br>4. If capped at 58000: negotiate non-salary — title upgrade, extra holiday, remote flexibility, guaranteed 6-month review with defined criteria<br>5. If firmly capped: I need a few days to consider. Do not accept at the meeting.<br><br>WALK-AWAY SIGNAL:<br>If they will not move above 57000 and offer no meaningful non-salary compensation, your BATNA at 60000 is better. Do not accept less than your BATNA out of loyalty — loyalty goes both ways.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Anchor high or low if buying — the first number stated has disproportionate influence on the final outcome</div>
+<div class="tip-card">Principled positions based on market data are far more compelling than positional demands — they create an evidence-based conversation</div>
+<div class="tip-card">Your BATNA is your power — negotiate knowing you have alternatives even if you do not want to use them</div>
+<div class="tip-card">Silence is a negotiation tool — after making a request, stop talking; most people concede to fill the silence</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Revealing your BATNA too early — it loses its power as an opening move</div>
+<div class="mistake-card">Accepting the first offer without counter-offering — a counteroffer is always expected</div>
+<div class="mistake-card">Making a final offer when you do not mean it — hollow ultimatums destroy credibility</div>
+<div class="mistake-card">Not having a clear BATNA before negotiating — negotiating without alternatives is negotiating from weakness</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What is BATNA?</div><div class="faq-a">Best Alternative to a Negotiated Agreement — what you will do if the negotiation fails. The strength of your BATNA determines your negotiating power. A competing job offer means you can walk away from a bad deal.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I reveal a competing offer?</div><div class="faq-a">Only as a last resort, and only if you are genuinely willing to leave. Revealing it too early reduces its power. Used correctly as a final escalation when other arguments are exhausted, it is often the decisive move.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to negotiate without being aggressive?</div><div class="faq-a">Collaborative negotiation frames the conversation as how do we find something that works for both of us. Lead with market data and your value, not personal desire.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude is stronger for negotiation strategy — maintains logical structure across a sequence, builds effective principled arguments, and calibrates tone for collaborative vs competitive contexts.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/b2b-discovery-framework.html"><div class="rc-title">B2B Sales Discovery Call Framework</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/cover-letter-writer.html"><div class="rc-title">Cover Letter Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/cold-email-sequence.html"><div class="rc-title">Cold Email Outreach Sequence</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/business-case-writer.html"><div class="rc-title">Business Case Writer</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a professional negotiation coach and former commercial lawyer who has advised on 100 million or more in deals.\n\nNegotiation type: [salary/contract/B2B deal/freelance rate/property/dispute]\nYour position: [what you want and why you deserve it]\nCounterparty: [who you are negotiating with and what they likely want]\nYour BATNA: [your best alternative if this negotiation fails]\nYour leverages: [what is in your favour]\nTheir leverages: [what is in their favour]\nTone: [collaborative/competitive/assertive/diplomatic]\n\nTask:\n1. OPENING POSITION: What to say first and how to anchor the number\n2. PRINCIPLED JUSTIFICATION: Evidence and logic behind your position — not just I want more\n3. KEY MOVES (3-5): Strategic sequence of what to say at each stage\n4. OBJECTION RESPONSES: Most likely objections and your response to each\n5. CONCESSION PLAN: What you can give up and in what order\n6. CLOSING TECHNIQUE: How to close when you have reached the right position\n7. WALK-AWAY PROTOCOL: The exact signal to watch for that means you should walk away";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'negotiation-strategy-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

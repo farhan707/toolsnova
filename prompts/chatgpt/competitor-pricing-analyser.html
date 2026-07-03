@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitor Pricing Analysis Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to analyse competitor pricing and build your own pricing strategy. Competitive positioning, price-to-value mapping, and pricing model recommendation — generated instantly.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/competitor-pricing-analyser.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Competitor Pricing Analysis Prompt">
+<meta property="og:description" content="Free AI prompt to analyse competitor pricing and build your own pricing strategy. Competitive positioning, price-to-value mapping, and pricing model recommendation — generated instantly.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/competitor-pricing-analyser.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Competitor Pricing Analysis Prompt">
+<meta name="twitter:description" content="Free AI prompt to analyse competitor pricing and build your own pricing strategy. Competitive positioning, price-to-value mapping, and pricing model recommendation — generated instantly.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "Competitor Pricing Analysis", "item": "https://toolsnova.net/prompts/chatgpt/competitor-pricing-analyser.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Competitor Pricing Analysis Prompt", "description": "Free AI prompt to analyse competitor pricing and build your own pricing strategy. Competitive positioning, price-to-value mapping, and pricing model recommendation — generated instantly.", "url": "https://toolsnova.net/prompts/chatgpt/competitor-pricing-analyser.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "pricing, competitive analysis, SaaS pricing, revenue, strategy"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I charge more or less than my competitors?", "acceptedAnswer": {"@type": "Answer", "text": "Price based on the value you deliver relative to alternatives, not based on competitor prices alone. If you solve the problem better, price higher and justify it with evidence. If you're a simpler alternative, price lower to capture the segment that doesn't need full complexity."}}, {"@type": "Question", "name": "How do I raise prices for existing customers?", "acceptedAnswer": {"@type": "Answer", "text": "Grandfather existing customers on their current rate for 12 months, give 60 days notice, explain why prices are increasing (value added, sustainability), and offer an annual pre-pay at the old rate. Transparent, fair, and timed communication is the formula."}}, {"@type": "Question", "name": "Is freemium a good pricing model?", "acceptedAnswer": {"@type": "Answer", "text": "Freemium works when: (1) the marginal cost of serving free users is near zero, (2) free users genuinely need premium features at some point, and (3) you can afford the CAC while waiting for conversion. Freemium fails when free users never need to upgrade."}}, {"@type": "Question", "name": "How should I price for enterprise customers?", "acceptedAnswer": {"@type": "Answer", "text": "Enterprise pricing is almost always custom/negotiated. List a 'starting from' price to qualify leads. Enterprise deals typically include custom contracts, SLAs, dedicated support, and SSO/security features — all of which justify 10-50× the SMB price."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Competitor Pricing Analysis</span>
+    </div>
+    <h1>ChatGPT Competitor Pricing Analysis Prompt</h1>
+    <p>Analyse competitor pricing models and identify the optimal pricing strategy for your product.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">pricing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">competitive analysis</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">SaaS pricing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">revenue</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/competitor-pricing-analyser.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/competitor-pricing-analyser.html">Claude</a><a class="model-link" href="/prompts/gemini/competitor-pricing-analyser.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>your product and current pricing</label><input class="var-input" type="text" placeholder="ToolsNova AI Prompt Library — currently free, considering premium tier" oninput="updatePrompt()" data-var="your product and current pricing"></div>
+<div class="var-group"><label>competitor names and pricing</label><input class="var-input" type="text" placeholder="PromptBase ($2-10/prompt), AIPRM (free + $9/mo premium), Snack Prompt (free)" oninput="updatePrompt()" data-var="competitor names and pricing"></div>
+<div class="var-group"><label>customer type</label><input class="var-input" type="text" placeholder="individual professionals and small teams" oninput="updatePrompt()" data-var="customer type"></div>
+<div class="var-group"><label>revenue goal</label><input class="var-input" type="text" placeholder="balance both — sustainable revenue without killing free growth" oninput="updatePrompt()" data-var="revenue goal"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a pricing strategy consultant who has optimised pricing for SaaS companies increasing revenue by 30–60% without changing the product.<br><br>Your product: <span class="var-hl">[your product and current pricing if any]</span><br>Competitors: <span class="var-hl">[list 3–5 competitors with their pricing if known]</span><br>Customer type: <span class="var-hl">[customer type — individual/SMB/enterprise/mixed]</span><br>Revenue goal: <span class="var-hl">[revenue goal — maximise revenue/maximise users/balance both]</span><br><br>Task: Complete pricing analysis:<br><br>1. COMPETITIVE PRICING MAP:<br>   For each competitor: pricing model, tiers, price points, what's included at each tier<br>   Position on a Low/Medium/High pricing axis<br><br>2. VALUE-TO-PRICE ASSESSMENT:<br>   For each competitor (and you): what does the customer get per pound/dollar spent?<br>   Where is the market under-pricing (opportunity) and over-pricing (risk)?<br><br>3. PRICING MODEL ANALYSIS:<br>   Compare: per-seat / usage-based / freemium / flat-rate / tiered / credit-based<br>   Recommend the best model for your product and customer type with reasoning<br><br>4. YOUR RECOMMENDED PRICING STRATEGY:<br>   - Price points for each tier<br>   - What's included at each tier and why<br>   - Which features are the 'fence' that drives upgrades<br>   - Annual vs. monthly discount recommendation<br><br>5. PSYCHOLOGICAL PRICING TACTICS:<br>   3 tactics to apply to your pricing page<br><br>6. TESTING PLAN:<br>   How to A/B test your pricing without alienating current customers</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">COMPETITOR PRICING MAP:<br><br>| Competitor | Model | Free tier | Paid | What you get |<br>|---|---|---|---|---|<br>| PromptBase | Pay-per-prompt | Browse only | $2–$10/prompt | Individual prompts from creators |<br>| AIPRM | Freemium | 5 prompts/day | $9–$49/mo | ChatGPT browser extension + prompt templates |<br>| Snack Prompt | Free | Unlimited | None (donations) | Community-contributed prompts |<br>| ToolsNova (current) | Free | Unlimited | None | 200+ practitioner-written prompts |<br><br>PRICING MODEL RECOMMENDATION: FREEMIUM with optional 'Pro' tier<br><br>Rationale: Your competitive advantage is being free — that's what differentiates you from PromptBase and positions you well against AIPRM. The risk of paywalling core features is that it eliminates your main differentiator and you don't have the brand recognition to justify it yet.<br><br>RECOMMENDED STRUCTURE:<br>Free (forever): All 200+ prompts, copy, variables, FAQ<br>Pro (£7/month): Prompt collections/folders, team sharing, priority new prompts, API access (future), export to PDF<br>Team (£19/month): Everything in Pro + 5 seats, shared prompt library, usage analytics<br><br>FENCE FEATURES (what drives upgrades):<br>The fence should be features power users need but casual users don't: team sharing, API access, saved collections. Never put core prompt quality behind a paywall — that's your acquisition engine.<br><br>TESTING PLAN:<br>Phase 1: Soft launch Pro to email list at 30% discount ('founding member' framing)<br>Phase 2: A/B test £5 vs £9 vs £14 price points with different feature bundles<br>Phase 3: Survey non-converters on what would make them upgrade</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Price anchoring: show the highest price first — it makes all lower prices feel like better value</div>
+<div class="tip-card">Annual plans typically convert 40–60% of monthly customers and significantly improve LTV — offer a discount that's meaningful but sustainable (20–30%)</div>
+<div class="tip-card">The 'fence' between free and paid should be features power users genuinely need, not artificial limits on what free users can do</div>
+<div class="tip-card">Survey your non-converting free users before launching paid — 'what would make you pay?' is more valuable than any pricing study</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Copying competitor prices without understanding whether their market position justifies theirs</div>
+<div class="mistake-card">Too many tiers — 3 tiers is the maximum before choice paralysis reduces conversions on all tiers</div>
+<div class="mistake-card">Pricing based on your costs rather than the value you deliver to the customer</div>
+<div class="mistake-card">Never testing pricing — even small changes in price presentation can move conversion by 20-30%</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I charge more or less than my competitors?</div><div class="faq-a">Price based on the value you deliver relative to alternatives, not based on competitor prices alone. If you solve the problem better, price higher and justify it with evidence. If you're a simpler alternative, price lower to capture the segment that doesn't need full complexity.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I raise prices for existing customers?</div><div class="faq-a">Grandfather existing customers on their current rate for 12 months, give 60 days notice, explain why prices are increasing (value added, sustainability), and offer an annual pre-pay at the old rate. Transparent, fair, and timed communication is the formula.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is freemium a good pricing model?</div><div class="faq-a">Freemium works when: (1) the marginal cost of serving free users is near zero, (2) free users genuinely need premium features at some point, and (3) you can afford the CAC while waiting for conversion. Freemium fails when free users never need to upgrade.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How should I price for enterprise customers?</div><div class="faq-a">Enterprise pricing is almost always custom/negotiated. List a 'starting from' price to qualify leads. Enterprise deals typically include custom contracts, SLAs, dedicated support, and SSO/security features — all of which justify 10-50× the SMB price.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/business-plan-writer.html"><div class="rc-title">Business Plan Writer</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/usp-value-proposition.html"><div class="rc-title">USP &amp; Value Proposition Generator</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/competitor-analysis.html"><div class="rc-title">Competitor Analysis Report</div><div class="rc-cat">📣 Marketing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a pricing strategy consultant who has optimised pricing for SaaS companies increasing revenue by 30–60% without changing the product.\n\nYour product: [your product and current pricing if any]\nCompetitors: [list 3–5 competitors with their pricing if known]\nCustomer type: [customer type — individual/SMB/enterprise/mixed]\nRevenue goal: [revenue goal — maximise revenue/maximise users/balance both]\n\nTask: Complete pricing analysis:\n\n1. COMPETITIVE PRICING MAP:\n   For each competitor: pricing model, tiers, price points, what's included at each tier\n   Position on a Low/Medium/High pricing axis\n\n2. VALUE-TO-PRICE ASSESSMENT:\n   For each competitor (and you): what does the customer get per pound/dollar spent?\n   Where is the market under-pricing (opportunity) and over-pricing (risk)?\n\n3. PRICING MODEL ANALYSIS:\n   Compare: per-seat / usage-based / freemium / flat-rate / tiered / credit-based\n   Recommend the best model for your product and customer type with reasoning\n\n4. YOUR RECOMMENDED PRICING STRATEGY:\n   - Price points for each tier\n   - What's included at each tier and why\n   - Which features are the 'fence' that drives upgrades\n   - Annual vs. monthly discount recommendation\n\n5. PSYCHOLOGICAL PRICING TACTICS:\n   3 tactics to apply to your pricing page\n\n6. TESTING PLAN:\n   How to A/B test your pricing without alienating current customers";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'competitor-pricing-analyser';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

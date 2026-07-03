@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analysis Insight Generator Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to analyse data and extract insights. Paste your data and get pattern identification, key findings, anomalies, and specific recommendations — instantly.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/data-analysis-interpreter.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Data Analysis &amp; Insight Generator Prompt">
+<meta property="og:description" content="Free AI prompt to analyse data and extract insights. Paste your data and get pattern identification, key findings, anomalies, and specific recommendations — instantly.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/data-analysis-interpreter.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Data Analysis &amp; Insight Generator Prompt">
+<meta name="twitter:description" content="Free AI prompt to analyse data and extract insights. Paste your data and get pattern identification, key findings, anomalies, and specific recommendations — instantly.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "Data Analysis & Insight Generator", "item": "https://toolsnova.net/prompts/chatgpt/data-analysis-interpreter.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Data Analysis & Insight Generator Prompt", "description": "Free AI prompt to analyse data and extract insights. Paste your data and get pattern identification, key findings, anomalies, and specific recommendations — instantly.", "url": "https://toolsnova.net/prompts/chatgpt/data-analysis-interpreter.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "data analysis, insights, statistics, business intelligence, reporting"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much data do I need for meaningful analysis?", "acceptedAnswer": {"@type": "Answer", "text": "For trend analysis: minimum 12 data points (12 months, or 12 weeks). For A/B testing: depends on traffic and effect size — use a sample size calculator. For finding patterns: more is better, but 6 months of weekly data is usually enough to identify seasonality and trends."}}, {"@type": "Question", "name": "What visualisations work best for different data types?", "acceptedAnswer": {"@type": "Answer", "text": "Time series (performance over time): line chart. Comparison between categories: bar chart. Correlation between two variables: scatter plot. Part-to-whole: pie chart (max 5 segments) or stacked bar. Distribution: histogram. For most business reporting, line and bar charts cover 80% of needs."}}, {"@type": "Question", "name": "Which AI model is best for data analysis?", "acceptedAnswer": {"@type": "Answer", "text": "For interpreting data you paste as text or a table: Claude and ChatGPT are both strong. For actual computation and statistical analysis: use Python (pandas, numpy) or R, then use AI to interpret the results. AI should interpret data, not replace statistical computation."}}, {"@type": "Question", "name": "Can I paste actual CSV data into the prompt?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — paste up to ~50 rows of data directly into the prompt. For larger datasets, summarise the data (key metrics, date range, totals by category) and paste that. For very large datasets, use Python or a BI tool to pre-process, then use AI to interpret the summary statistics."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Data Analysis &amp; Insight Generator</span>
+    </div>
+    <h1>ChatGPT Data Analysis &amp; Insight Generator Prompt</h1>
+    <p>Turn raw data into clear insights, patterns, and actionable recommendations.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">data analysis</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">insights</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">statistics</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">business intelligence</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/data-analysis-interpreter.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/data-analysis-interpreter.html">Claude</a><a class="model-link" href="/prompts/gemini/data-analysis-interpreter.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>data description</label><input class="var-input" type="text" placeholder="Monthly website traffic and conversion data for ToolsNova, Jan-June 2026" oninput="updatePrompt()" data-var="data description"></div>
+<div class="var-group"><label>business context</label><input class="var-input" type="text" placeholder="Understand which content drives the most conversions to support the content strategy" oninput="updatePrompt()" data-var="business context"></div>
+<div class="var-group"><label>analysis goal</label><input class="var-input" type="text" placeholder="identify trends and find what drives conversions" oninput="updatePrompt()" data-var="analysis goal"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior data analyst who has built reporting systems and extracted insights from complex datasets for Fortune 500 companies.<br><br>Data description: <span class="var-hl">[data description — what this data is and what it measures]</span><br>Business context: <span class="var-hl">[business context — what decision this data supports]</span><br>Analysis goal: <span class="var-hl">[analysis goal — identify trends/find anomalies/compare periods/find correlations/build a report]</span><br><br>Paste your data:<br><span class="var-hl">[paste data here — CSV, table, or description]</span><br><br>Task: Complete data analysis:<br><br>1. DATA SUMMARY:<br>   - What you have: rows, columns, date range, key metrics<br>   - Data quality issues: missing values, outliers, suspicious entries<br><br>2. KEY FINDINGS (5–7 insights, ranked by business importance):<br>   For each: Finding → Evidence (the specific numbers) → Business implication<br><br>3. ANOMALIES &amp; FLAGS:<br>   - Any data points that require investigation<br>   - Possible explanations for each<br><br>4. TREND ANALYSIS:<br>   - Direction and magnitude of change over time<br>   - Seasonality or cyclical patterns if applicable<br>   - Leading indicators (what predicts future performance)<br><br>5. ACTIONABLE RECOMMENDATIONS:<br>   3–5 specific actions supported by the data<br><br>6. WHAT THE DATA CANNOT TELL YOU:<br>   Limitations and what additional data would improve the analysis<br><br>7. VISUALISATION SUGGESTIONS:<br>   The 3 charts that would best communicate these findings</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">DATA SUMMARY:<br><br>Dataset: 6 months (Jan–Jun 2026), 8 metrics, 24 data points<br>Key metrics: Sessions, Page views, Bounce rate, Time on site, Conversions, Conversion rate, Source, Content type<br>Data quality: No missing values. June data is partial (21 days) — flag in analysis.<br><br>KEY FINDINGS:<br><br>1. CONVERSION RATE DISPARITY BY CONTENT TYPE (High business impact)<br>Prompt pages convert at 4.2% vs. calculator tools at 1.8% vs. blog posts at 0.4%.<br>Implication: Prompt pages are 2.3× better at converting than calculators and 10.5× better than blog posts. Priority: maximise prompt page count and organic entry points.<br><br>2. TRAFFIC SPIKE IN MARCH NOT MATCHED BY CONVERSIONS (Flag for investigation)<br>March traffic increased 340% (likely Product Hunt launch based on referrer data) but conversion rate dropped to 0.9% (vs 3.1% average).<br>Implication: Product Hunt traffic doesn't convert — quality of traffic matters more than volume. Don't optimise for PH traffic specifically.<br><br>3. ORGANIC SEARCH TRAFFIC GROWING 23% MoM (Positive trend)<br>SEO traffic is the fastest-growing channel and has the highest conversion rate (5.1%).<br>Recommendation: Double down on SEO-optimised prompt pages.<br><br>ACTIONABLE RECOMMENDATIONS:<br>1. Publish 20 more prompt pages targeting high-intent SEO keywords (evidence: prompt pages convert 4.2% from organic)<br>2. Add internal links from calculator tools to relevant prompt pages (evidence: conversion rate disparity)<br>3. Investigate March spike source — if Product Hunt, don't repeat for conversion goals</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Always state what the data cannot tell you — analysis without acknowledged limitations is misleading</div>
+<div class="tip-card">Rank findings by business importance, not statistical significance — a 0.1% change that affects $1M of revenue matters more than a 50% change that affects $100</div>
+<div class="tip-card">Every finding should connect to a decision — 'traffic increased 23%' is a fact; 'traffic increased 23%, suggesting our SEO investment is paying off and we should double it' is an insight</div>
+<div class="tip-card">Be specific about the numbers behind every finding — 'conversion rate improved' is weak; 'conversion rate improved from 1.8% to 3.1% over 3 months' is useful</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Reporting data instead of analysing it — a table of numbers is not an analysis; pattern recognition and implication are</div>
+<div class="mistake-card">Treating correlation as causation — traffic increased and so did conversions is not evidence that traffic caused conversions</div>
+<div class="mistake-card">Over-indexing on outliers — one anomalous month doesn't change the trend; be careful about drawing conclusions from single data points</div>
+<div class="mistake-card">Ignoring data quality issues — analysis built on bad data produces confident wrong answers</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How much data do I need for meaningful analysis?</div><div class="faq-a">For trend analysis: minimum 12 data points (12 months, or 12 weeks). For A/B testing: depends on traffic and effect size — use a sample size calculator. For finding patterns: more is better, but 6 months of weekly data is usually enough to identify seasonality and trends.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What visualisations work best for different data types?</div><div class="faq-a">Time series (performance over time): line chart. Comparison between categories: bar chart. Correlation between two variables: scatter plot. Part-to-whole: pie chart (max 5 segments) or stacked bar. Distribution: histogram. For most business reporting, line and bar charts cover 80% of needs.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model is best for data analysis?</div><div class="faq-a">For interpreting data you paste as text or a table: Claude and ChatGPT are both strong. For actual computation and statistical analysis: use Python (pandas, numpy) or R, then use AI to interpret the results. AI should interpret data, not replace statistical computation.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I paste actual CSV data into the prompt?</div><div class="faq-a">Yes — paste up to ~50 rows of data directly into the prompt. For larger datasets, summarise the data (key metrics, date range, totals by category) and paste that. For very large datasets, use Python or a BI tool to pre-process, then use AI to interpret the summary statistics.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/sql-query-generator.html"><div class="rc-title">SQL Query Generator</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/python-debugger.html"><div class="rc-title">Python Debugger</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/backtesting-strategy-builder.html"><div class="rc-title">Trading Strategy Backtesting Framework</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior data analyst who has built reporting systems and extracted insights from complex datasets for Fortune 500 companies.\n\nData description: [data description — what this data is and what it measures]\nBusiness context: [business context — what decision this data supports]\nAnalysis goal: [analysis goal — identify trends/find anomalies/compare periods/find correlations/build a report]\n\nPaste your data:\n[paste data here — CSV, table, or description]\n\nTask: Complete data analysis:\n\n1. DATA SUMMARY:\n   - What you have: rows, columns, date range, key metrics\n   - Data quality issues: missing values, outliers, suspicious entries\n\n2. KEY FINDINGS (5–7 insights, ranked by business importance):\n   For each: Finding → Evidence (the specific numbers) → Business implication\n\n3. ANOMALIES & FLAGS:\n   - Any data points that require investigation\n   - Possible explanations for each\n\n4. TREND ANALYSIS:\n   - Direction and magnitude of change over time\n   - Seasonality or cyclical patterns if applicable\n   - Leading indicators (what predicts future performance)\n\n5. ACTIONABLE RECOMMENDATIONS:\n   3–5 specific actions supported by the data\n\n6. WHAT THE DATA CANNOT TELL YOU:\n   Limitations and what additional data would improve the analysis\n\n7. VISUALISATION SUGGESTIONS:\n   The 3 charts that would best communicate these findings";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'data-analysis-interpreter';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

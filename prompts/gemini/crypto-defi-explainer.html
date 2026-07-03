@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto &amp; DeFi Explainer Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to explain crypto and DeFi concepts. Bitcoin to yield farming, smart contracts to L2s — any blockchain concept explained clearly for any knowledge level.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/crypto-defi-explainer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Crypto &amp; DeFi Concept Explainer Prompt">
+<meta property="og:description" content="Free AI prompt to explain crypto and DeFi concepts. Bitcoin to yield farming, smart contracts to L2s — any blockchain concept explained clearly for any knowledge level.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/crypto-defi-explainer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Crypto &amp; DeFi Concept Explainer Prompt">
+<meta name="twitter:description" content="Free AI prompt to explain crypto and DeFi concepts. Bitcoin to yield farming, smart contracts to L2s — any blockchain concept explained clearly for any knowledge level.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Finance", "item": "https://toolsnova.net/prompts/finance/index.html"}, {"@type": "ListItem", "position": 5, "name": "Crypto & DeFi Concept Explainer", "item": "https://toolsnova.net/prompts/gemini/crypto-defi-explainer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Crypto & DeFi Concept Explainer Prompt", "description": "Free AI prompt to explain crypto and DeFi concepts. Bitcoin to yield farming, smart contracts to L2s — any blockchain concept explained clearly for any knowledge level.", "url": "https://toolsnova.net/prompts/gemini/crypto-defi-explainer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "crypto, defi, blockchain, web3, finance"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is providing liquidity worth it in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Depends on the pair, fee tier, and alternative. Concentrated liquidity on Uniswap v3 can generate high returns for sophisticated providers but requires active management. Stablecoin pairs are more predictable. Always model your specific situation including IL, gas costs, and your opportunity cost."}}, {"@type": "Question", "name": "What's the difference between Uniswap v2 and v3?", "acceptedAnswer": {"@type": "Answer", "text": "v2: simple 50/50 pool across full price range. v3: concentrated liquidity — you choose a price range to provide liquidity, earning higher fees within that range but earning nothing if price moves outside it. v3 is more capital-efficient but more complex and requires active management."}}, {"@type": "Question", "name": "Is DeFi safe to use?", "acceptedAnswer": {"@type": "Answer", "text": "DeFi carries genuine risks that traditional finance doesn't: smart contract bugs, economic exploits, rug pulls (fraudulent developers), and regulatory uncertainty. Reputable, audited protocols on established chains have better safety profiles than new, unaudited ones. Never invest more than you can afford to lose entirely."}}, {"@type": "Question", "name": "Which blockchain should I use for DeFi in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Ethereum mainnet: highest security and liquidity, highest gas costs. Arbitrum/Base/Optimism (Ethereum L2): much lower gas costs, good security. Solana: fast and cheap, different risk profile. The choice depends on which protocols you're using — most major protocols now have multi-chain deployments."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/finance/index.html">💰 Finance</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Crypto &amp; DeFi Concept Explainer</span>
+    </div>
+    <h1>Gemini Crypto &amp; DeFi Concept Explainer Prompt</h1>
+    <p>Explain complex crypto and DeFi concepts clearly, from basic blockchain to advanced yield farming strategies.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💰 Finance</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-finance">💰 Finance</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">crypto</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">defi</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">blockchain</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">web3</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/crypto-defi-explainer.html">ChatGPT</a><a class="model-link" href="/prompts/claude/crypto-defi-explainer.html">Claude</a><a class="model-link active" href="/prompts/gemini/crypto-defi-explainer.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>crypto or DeFi concept to explain</label><input class="var-input" type="text" placeholder="Liquidity pools and automated market makers (AMMs)" oninput="updatePrompt()" data-var="crypto or DeFi concept to explain"></div>
+<div class="var-group"><label>audience level</label><input class="var-input" type="text" placeholder="intermediate — understands crypto basics but hasn't used DeFi" oninput="updatePrompt()" data-var="audience level"></div>
+<div class="var-group"><label>context for learning</label><input class="var-input" type="text" placeholder="considering providing liquidity on Uniswap" oninput="updatePrompt()" data-var="context for learning"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a blockchain educator and former DeFi protocol engineer who can explain complex concepts clearly without hype.<br><br>DISCLAIMER: This is educational content only — not financial advice. Crypto investments carry significant risk.<br><br>Concept: <span class="var-hl">[crypto or DeFi concept to explain]</span><br>Audience: <span class="var-hl">[audience — complete beginner/intermediate/developer/investor]</span><br>Context: <span class="var-hl">[context — why they're learning this/what decision this supports]</span><br><br>Task: Explain <span class="var-hl">[concept]</span> comprehensively:<br><br>1. PLAIN ENGLISH DEFINITION (50 words max):<br>   What it is, without jargon<br><br>2. THE ANALOGY:<br>   Map to something familiar from traditional finance or everyday life<br><br>3. HOW IT WORKS (technical level matching audience):<br>   Step-by-step mechanism<br><br>4. WHY IT EXISTS:<br>   What problem does this solve? What didn't work before?<br><br>5. RISKS (be honest):<br>   The real risks this concept carries — smart contract risk, regulatory risk, market risk, etc.<br><br>6. HOW IT'S USED IN PRACTICE:<br>   Real protocols or use cases (name specific examples)<br><br>7. COMMON MISCONCEPTIONS:<br>   What people get wrong about this concept<br><br>8. WHERE IT'S HEADING:<br>   Current development trajectory and what to watch<br><br>Tone: Educational and honest. Neither hype nor dismissal. Acknowledge genuine uncertainty.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">CONCEPT: Liquidity Pools &amp; Automated Market Makers (AMMs)<br>DISCLAIMER: Educational only — not financial advice.<br><br>PLAIN ENGLISH:<br>A liquidity pool is a smart contract holding two tokens that anyone can trade against. An AMM automatically sets prices based on the ratio of those tokens — no order book, no counterparty, just a formula.<br><br>THE ANALOGY:<br>Imagine a vending machine that sells both Coke and Pepsi. The machine automatically adjusts prices based on how much of each is left inside — more Coke means cheaper Coke. Anyone can restock the machine (provide liquidity) and earn a share of every sale (trading fees).<br><br>HOW IT WORKS:<br>1. You deposit two tokens (e.g., ETH and USDC) in equal dollar value into a pool<br>2. Traders swap one token for the other, paying a 0.3% fee (on Uniswap v2)<br>3. The price adjusts automatically: x * y = k (constant product formula)<br>4. You earn a proportional share of all trading fees while your tokens are in the pool<br>5. When you withdraw, you get back your proportional share of both tokens plus accumulated fees<br><br>RISKS (honest assessment):<br>1. Impermanent Loss: If token prices diverge significantly, you'd have been better off just holding both tokens separately. This is real and substantial for volatile pairs.<br>2. Smart contract risk: Pool contracts can have bugs or be exploited. Even audited protocols have been hacked.<br>3. Gas costs: On Ethereum mainnet, entering and exiting pools can cost $30–$200+, making small amounts unprofitable<br>4. Regulatory uncertainty: DeFi's legal status is genuinely unclear in most jurisdictions<br><br>COMMON MISCONCEPTIONS:<br>'Providing liquidity is free money' — No. Impermanent loss often exceeds fee income for volatile pairs during trending markets. Calculate carefully.<br>'AMMs are always cheaper than CEXs' — Not true. Slippage on large trades can make AMMs more expensive than centralised exchanges with deep order books.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Always calculate impermanent loss scenarios before providing liquidity to a volatile pair — tools like impermanent.loss.com show you the scenarios</div>
+<div class="tip-card">Stablecoin pairs (USDC/USDT) have minimal impermanent loss but also minimal fee income — conservative but predictable</div>
+<div class="tip-card">Gas costs on Ethereum mainnet make small liquidity positions unprofitable — consider L2s (Arbitrum, Base, Optimism) for smaller amounts</div>
+<div class="tip-card">Smart contract audits reduce but don't eliminate risk — even audited protocols have been exploited for hundreds of millions</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Providing liquidity to highly volatile pairs and not accounting for impermanent loss — this is the most common way liquidity providers lose money</div>
+<div class="mistake-card">Not tracking real returns including impermanent loss — fee APY shown by protocols often excludes IL, making returns look better than they are</div>
+<div class="mistake-card">Trusting audits as a security guarantee — audits reduce but don't eliminate risk; diversification across protocols matters</div>
+<div class="mistake-card">Ignoring gas costs when calculating returns on small positions — a $50 gas cost to enter and exit makes $200 positions unprofitable at many fee tiers</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is providing liquidity worth it in 2026?</div><div class="faq-a">Depends on the pair, fee tier, and alternative. Concentrated liquidity on Uniswap v3 can generate high returns for sophisticated providers but requires active management. Stablecoin pairs are more predictable. Always model your specific situation including IL, gas costs, and your opportunity cost.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the difference between Uniswap v2 and v3?</div><div class="faq-a">v2: simple 50/50 pool across full price range. v3: concentrated liquidity — you choose a price range to provide liquidity, earning higher fees within that range but earning nothing if price moves outside it. v3 is more capital-efficient but more complex and requires active management.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is DeFi safe to use?</div><div class="faq-a">DeFi carries genuine risks that traditional finance doesn't: smart contract bugs, economic exploits, rug pulls (fraudulent developers), and regulatory uncertainty. Reputable, audited protocols on established chains have better safety profiles than new, unaudited ones. Never invest more than you can afford to lose entirely.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which blockchain should I use for DeFi in 2026?</div><div class="faq-a">Ethereum mainnet: highest security and liquidity, highest gas costs. Arbitrum/Base/Optimism (Ethereum L2): much lower gas costs, good security. Solana: fast and cheap, different risk profile. The choice depends on which protocols you're using — most major protocols now have multi-chain deployments.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/investment-analysis.html"><div class="rc-title">Investment Opportunity Analyser</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/financial-ratio-analyser.html"><div class="rc-title">Financial Ratios &amp; Company Health Analyser</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/personal-financial-planner.html"><div class="rc-title">Personal Financial Plan Builder</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/risk-position-size-calculator.html"><div class="rc-title">Risk &amp; Position Sizing Calculator Prompt</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a blockchain educator and former DeFi protocol engineer who can explain complex concepts clearly without hype.\n\nDISCLAIMER: This is educational content only — not financial advice. Crypto investments carry significant risk.\n\nConcept: [crypto or DeFi concept to explain]\nAudience: [audience — complete beginner/intermediate/developer/investor]\nContext: [context — why they're learning this/what decision this supports]\n\nTask: Explain [concept] comprehensively:\n\n1. PLAIN ENGLISH DEFINITION (50 words max):\n   What it is, without jargon\n\n2. THE ANALOGY:\n   Map to something familiar from traditional finance or everyday life\n\n3. HOW IT WORKS (technical level matching audience):\n   Step-by-step mechanism\n\n4. WHY IT EXISTS:\n   What problem does this solve? What didn't work before?\n\n5. RISKS (be honest):\n   The real risks this concept carries — smart contract risk, regulatory risk, market risk, etc.\n\n6. HOW IT'S USED IN PRACTICE:\n   Real protocols or use cases (name specific examples)\n\n7. COMMON MISCONCEPTIONS:\n   What people get wrong about this concept\n\n8. WHERE IT'S HEADING:\n   Current development trajectory and what to watch\n\nTone: Educational and honest. Neither hype nor dismissal. Acknowledge genuine uncertainty.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'crypto-defi-explainer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

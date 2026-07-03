@@ -1,99 +1,35 @@
 {
-  "name": "ToolsNova — 100 Free Online Tools",
+  "name": "ToolsNova — Free Browser Tools",
   "short_name": "ToolsNova",
-  "description": "100 free browser-based tools for developers, traders, finance, health, and more. No signup, no ads, works offline.",
-  "start_url": "/",
+  "description": "155+ free browser-based tools and 200+ AI prompts. No signup, works offline.",
+  "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#0c0c0e",
+  "background_color": "#0a0c10",
   "theme_color": "#7fff6f",
-  "lang": "en",
-  "categories": ["utilities", "finance", "productivity", "developer tools"],
+  "orientation": "any",
   "icons": [
     {
-      "src": "icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/icons/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
-      "src": "icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/icons/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
     },
     {
-      "src": "icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Calorie Calculator",
-      "url": "/calorie-calculator",
-      "description": "Calculate daily calories and macros"
-    },
-    {
-      "name": "Lot Size Calculator",
-      "url": "/lot-size-calculator",
-      "description": "Forex lot size and risk calculator"
-    },
-    {
-      "name": "QR Code Generator",
-      "url": "/qr-code-generator",
-      "description": "Generate QR codes instantly"
-    },
-    {
-      "name": "JSON Formatter",
-      "url": "/json-formatter",
-      "description": "Format and validate JSON"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "icons/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "icons/screenshot-narrow.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow"
     }
   ]
 }

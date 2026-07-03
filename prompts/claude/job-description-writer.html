@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Description Writer Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free job description writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/job-description-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Job Description Writer Prompt">
+<meta property="og:description" content="Free job description writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/job-description-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Job Description Writer Prompt">
+<meta name="twitter:description" content="Free job description writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Writing", "item": "https://toolsnova.net/prompts/writing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Job Description Writer", "item": "https://toolsnova.net/prompts/claude/job-description-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Job Description Writer Prompt", "description": "Free job description writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/job-description-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "job description, hiring, recruitment, HR, job posting"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I write different JDs for different platforms?", "acceptedAnswer": {"@type": "Answer", "text": "The core content can be the same, but formatting differs: LinkedIn and Indeed show the first 3 lines in search, so lead with the most compelling hook. AngelList/Wellfound applicants expect more culture and equity transparency."}}, {"@type": "Question", "name": "How do I avoid unconscious bias in job descriptions?", "acceptedAnswer": {"@type": "Answer", "text": "Use tools like Textio or Gender Decoder to flag biased language. Avoid adjectives like 'aggressive' (male-coded) and 'supportive' (female-coded) for the same traits. Focus on skills and outcomes, not personality traits."}}, {"@type": "Question", "name": "How long should a job description be?", "acceptedAnswer": {"@type": "Answer", "text": "400–700 words is the sweet spot for most roles. Under 200 words looks like you haven't thought about the role. Over 1,000 words loses candidates who scan (which is most of them)."}}, {"@type": "Question", "name": "Should internal job descriptions look different?", "acceptedAnswer": {"@type": "Answer", "text": "Internal postings benefit from more transparency about team dynamics, the reporting relationship, and growth path. External postings need more 'sell' and less assumed context about the company culture."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/writing/index.html">✍️ Writing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Job Description Writer</span>
+    </div>
+    <h1>Claude Job Description Writer Prompt</h1>
+    <p>You are a talent acquisition specialist who writes job descriptions that attract A-players and filter out poor fits.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">✍️ Writing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-writing">✍️ Writing</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">job description</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">hiring</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">recruitment</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">HR</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/job-description-writer.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/job-description-writer.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/job-description-writer.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>job title</label><input class="var-input" type="text" placeholder="Senior Product Manager" oninput="updatePrompt()" data-var="job title"></div>
+<div class="var-group"><label>responsibilities</label><input class="var-input" type="text" placeholder="[example responsibilities]" oninput="updatePrompt()" data-var="responsibilities"></div>
+<div class="var-group"><label>required skills</label><input class="var-input" type="text" placeholder="[example required skills]" oninput="updatePrompt()" data-var="required skills"></div>
+<div class="var-group"><label>company culture</label><input class="var-input" type="text" placeholder="[example company culture]" oninput="updatePrompt()" data-var="company culture"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a talent acquisition specialist who writes job descriptions that attract A-players and filter out poor fits.<br><br>Role: <span class="var-hl">[job title]</span><br>Responsibilities: <span class="var-hl">[responsibilities]</span><br>Required skills: <span class="var-hl">[required skills]</span><br>Culture: <span class="var-hl">[company culture — startup/corporate/remote/hybrid/values]</span><br><br>Task: Write a complete job description:<br><br>1. JOB TITLE: Searchable, accurate (not 'Growth Ninja')<br><br>2. THE OPPORTUNITY (3–4 sentences):<br>   Why this role is exciting — not just what the company does<br><br>3. WHAT YOU'LL DO (5–7 bullet points):<br>   Specific responsibilities, not generic duties<br>   Lead with the most important and interesting work<br><br>4. WHAT WE'RE LOOKING FOR:<br>   Must-have (3–5 non-negotiables)<br>   Nice-to-have (3–5 preferred but not required)<br>   Don't list more than 10 requirements total<br><br>5. WHAT WE OFFER:<br>   Salary range (include it — listings with salary get 4x more applicants)<br>   Benefits, flexibility, growth opportunities<br><br>6. ONE HONEST LINE about challenges:<br>   (This filters for resilience and reduces mismatched hires)<br><br>Format: Ready to paste into a job board. Use inclusive language. Avoid gender-coded words.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">Senior Product Manager — AI Tools<br>[Remote — UK or European time zones | £80,000–£105,000 + equity]<br><br>THE OPPORTUNITY<br>ToolsNova is approaching 1 million monthly users with a team of 8 people — which means every PM decision here is felt immediately, not in 6 months. You'll own the product direction for our AI tool suite (200+ tools) and be the first dedicated PM hire. This is a 0-to-1 role within a product that already exists, which is the most interesting kind.<br><br>WHAT YOU'LL DO<br>• Own the full product roadmap for the AI hub — prioritisation, specifications, and cross-functional coordination<br>• Talk to 5+ users per week through structured interviews and interpret their needs beyond what they literally say<br>• Define success metrics for each launch and hold yourself accountable to them publicly<br>• Work directly with our solo developer to scope work accurately and protect their focus time<br>• Identify the 3 competitors most likely to eat our lunch in 18 months and build a plan to prevent it<br><br>MUST-HAVE<br>• 3+ years as a PM in a B2C or developer-focused product<br>• You can write your own PRDs and don't need a template<br>• You've shipped something that failed and you can tell us clearly what you learned</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Include the salary range — it's no longer optional; listings without it get 60–80% fewer qualified applicants on most platforms</div>
+<div class="tip-card">Lead with what makes this role unique, not the company description — candidates read dozens of listings</div>
+<div class="tip-card">'Rockstar', 'ninja', 'guru' in a job title reduce application rates from women by 30% — use actual job titles</div>
+<div class="tip-card">The 'one honest line about challenges' is your best filter for resilient candidates — weak candidates self-select out</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Listing 15+ requirements — it signals you don't know what you need and discourages strong candidates (who won't meet everything)</div>
+<div class="mistake-card">Generic culture descriptions ('fast-paced environment', 'collaborative team') — every company says this</div>
+<div class="mistake-card">No salary range — it's the first thing candidates look for and the most common reason they skip a listing</div>
+<div class="mistake-card">Writing the job description as if the company is doing the candidate a favour — the best candidates have options</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I write different JDs for different platforms?</div><div class="faq-a">The core content can be the same, but formatting differs: LinkedIn and Indeed show the first 3 lines in search, so lead with the most compelling hook. AngelList/Wellfound applicants expect more culture and equity transparency.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I avoid unconscious bias in job descriptions?</div><div class="faq-a">Use tools like Textio or Gender Decoder to flag biased language. Avoid adjectives like 'aggressive' (male-coded) and 'supportive' (female-coded) for the same traits. Focus on skills and outcomes, not personality traits.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should a job description be?</div><div class="faq-a">400–700 words is the sweet spot for most roles. Under 200 words looks like you haven't thought about the role. Over 1,000 words loses candidates who scan (which is most of them).</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should internal job descriptions look different?</div><div class="faq-a">Internal postings benefit from more transparency about team dynamics, the reporting relationship, and growth path. External postings need more 'sell' and less assumed context about the company culture.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/ats-resume-writer.html"><div class="rc-title">ATS-Optimised Resume Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/interview-prep-coach.html"><div class="rc-title">Job Interview Preparation Coach</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/professional-email-writer.html"><div class="rc-title">Professional Email Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/salary-negotiation-script.html"><div class="rc-title">Salary Negotiation Script</div><div class="rc-cat">🎯 Career</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a talent acquisition specialist who writes job descriptions that attract A-players and filter out poor fits.\n\nRole: [job title]\nResponsibilities: [responsibilities]\nRequired skills: [required skills]\nCulture: [company culture — startup/corporate/remote/hybrid/values]\n\nTask: Write a complete job description:\n\n1. JOB TITLE: Searchable, accurate (not 'Growth Ninja')\n\n2. THE OPPORTUNITY (3–4 sentences):\n   Why this role is exciting — not just what the company does\n\n3. WHAT YOU'LL DO (5–7 bullet points):\n   Specific responsibilities, not generic duties\n   Lead with the most important and interesting work\n\n4. WHAT WE'RE LOOKING FOR:\n   Must-have (3–5 non-negotiables)\n   Nice-to-have (3–5 preferred but not required)\n   Don't list more than 10 requirements total\n\n5. WHAT WE OFFER:\n   Salary range (include it — listings with salary get 4x more applicants)\n   Benefits, flexibility, growth opportunities\n\n6. ONE HONEST LINE about challenges:\n   (This filters for resilience and reduces mismatched hires)\n\nFormat: Ready to paste into a job board. Use inclusive language. Avoid gender-coded words.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'job-description-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

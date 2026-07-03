@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Bio Writer Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to write profile bios for all social media platforms. Instagram, Twitter/X, LinkedIn, TikTok, YouTube — platform-optimised bios generated instantly.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/social-media-bio-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Social Media Bio Writer (All Platforms) Prompt">
+<meta property="og:description" content="Free AI prompt to write profile bios for all social media platforms. Instagram, Twitter/X, LinkedIn, TikTok, YouTube — platform-optimised bios generated instantly.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/social-media-bio-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Social Media Bio Writer (All Platforms) Prompt">
+<meta name="twitter:description" content="Free AI prompt to write profile bios for all social media platforms. Instagram, Twitter/X, LinkedIn, TikTok, YouTube — platform-optimised bios generated instantly.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Social Media", "item": "https://toolsnova.net/prompts/social/index.html"}, {"@type": "ListItem", "position": 5, "name": "Social Media Bio Writer (All Platforms)", "item": "https://toolsnova.net/prompts/claude/social-media-bio-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Social Media Bio Writer (All Platforms) Prompt", "description": "Free AI prompt to write profile bios for all social media platforms. Instagram, Twitter/X, LinkedIn, TikTok, YouTube — platform-optimised bios generated instantly.", "url": "https://toolsnova.net/prompts/claude/social-media-bio-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "bio, social media, twitter, instagram, linkedin, profile"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should my bio be identical on all platforms?", "acceptedAnswer": {"@type": "Answer", "text": "No. The core message should be consistent (same value proposition), but the format, tone, and content should be native to each platform. LinkedIn readers are professional; TikTok readers are casual. Instagram readers are visual; Twitter/X readers are text-native. Adapt accordingly."}}, {"@type": "Question", "name": "How often should I update my social bio?", "acceptedAnswer": {"@type": "Answer", "text": "When your role, main offer, or most impressive credential changes. A bio that mentions a 2020 achievement in 2026 signals you haven't evolved. LinkedIn specifically — update your headline whenever your position, focus, or audience changes significantly."}}, {"@type": "Question", "name": "Should I include keywords in my bio?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, especially on LinkedIn and Twitter/X — both platforms use bio keywords in search. Instagram's search is primarily hashtag and location-based, though account name and bio keywords matter. TikTok's search increasingly uses bio content."}}, {"@type": "Question", "name": "Is Claude better than ChatGPT for bio writing?", "acceptedAnswer": {"@type": "Answer", "text": "Both are effective for bio writing. Claude is stronger at following strict character count constraints and maintaining consistent voice across variations. ChatGPT is slightly faster at generating many options quickly. Specify exact character limits in your prompt for best results."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/social/index.html">📱 Social Media</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Social Media Bio Writer (All Platforms)</span>
+    </div>
+    <h1>Claude Social Media Bio Writer (All Platforms) Prompt</h1>
+    <p>Write optimised profile bios for every social media platform — Instagram, Twitter, LinkedIn, TikTok, and YouTube.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📱 Social Media</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-social">📱 Social Media</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">bio</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">social media</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">twitter</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">instagram</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/social-media-bio-writer.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/social-media-bio-writer.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/social-media-bio-writer.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>name or brand</label><input class="var-input" type="text" placeholder="ToolsNova" oninput="updatePrompt()" data-var="name or brand"></div>
+<div class="var-group"><label>what you do</label><input class="var-input" type="text" placeholder="free AI tools and prompt library" oninput="updatePrompt()" data-var="what you do"></div>
+<div class="var-group"><label>who you help or serve</label><input class="var-input" type="text" placeholder="marketers, developers, and SEO professionals" oninput="updatePrompt()" data-var="who you help or serve"></div>
+<div class="var-group"><label>best result or credential</label><input class="var-input" type="text" placeholder="50,000+ monthly users, 200+ free AI prompts" oninput="updatePrompt()" data-var="best result or credential"></div>
+<div class="var-group"><label>personality</label><input class="var-input" type="text" placeholder="minimal and direct" oninput="updatePrompt()" data-var="personality"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a personal branding expert who has written social media bios for creators with 1M+ followers and executives at top companies.<br><br>Your name/brand: <span class="var-hl">[name or brand]</span><br>What you do: <span class="var-hl">[what you do]</span><br>Who you help or serve: <span class="var-hl">[who you help or serve]</span><br>Best result or credential: <span class="var-hl">[your best result or credential]</span><br>Personality: <span class="var-hl">[personality — serious/playful/minimal/bold/professional]</span><br><br>Task: Write platform-optimised bios for each platform:<br><br>INSTAGRAM (150 chars max):<br>- Line 1: What you do (hook)<br>- Line 2: Who you help or proof point<br>- Line 3: CTA with link direction<br>- Emoji usage: match personality<br><br>TWITTER/X (160 chars max):<br>- One sentence that captures your value<br>- Optional: personality signal<br>- No wasted words<br><br>LINKEDIN HEADLINE (220 chars max):<br>- Value proposition | Who you help | Proof point<br>- Keywords recruiters/clients search<br><br>TIKTOK (80 chars visible before 'more'):<br>- Instant hook in first 5 words<br>- What to expect from your content<br><br>YOUTUBE CHANNEL DESCRIPTION (first 125 chars visible):<br>- Channel value proposition<br>- Upload schedule<br>- Subscribe CTA<br><br>For each: provide 2 variations (bold/safe), character count, and platform-specific optimisation note</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">INSTAGRAM BIOS:<br><br>Variation 1 (Bold):<br>🤖 200+ free AI prompts<br>For writers, coders &amp; marketers<br>↓ Copy yours (no login needed)<br>[147 chars ✅]<br><br>Variation 2 (Minimal):<br>Free AI prompt library<br>50,000 professionals use it<br>toolsnova.net<br>[60 chars ✅]<br><br>TWITTER/X BIOS:<br><br>Variation 1: '200+ free AI prompts for ChatGPT, Claude &amp; Gemini. No signup, no paywall. toolsnova.net'<br>[90 chars ✅]<br><br>Variation 2: 'Free AI tools for people who don't want to pay for AI tools. 50K users agree.'<br>[80 chars ✅]<br><br>LINKEDIN HEADLINE:<br><br>Variation 1: 'Free AI Prompt Library | 200+ Prompts for ChatGPT, Claude &amp; Gemini | 50,000 Professionals'<br>[92 chars ✅]<br><br>Variation 2: 'Founder at ToolsNova | Building Free AI Tools for Marketers, Developers &amp; SEO Professionals'<br>[93 chars ✅]<br><br>TIKTOK:<br><br>Variation 1: 'Free AI prompts 🤖 New tool every week'<br>[38 chars ✅]<br><br>YOUTUBE CHANNEL:<br><br>'Free AI prompts for ChatGPT, Claude, and Gemini — 200+ professional templates, no signup. New prompts weekly. Subscribe for free AI tools that actually work.'</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Your Instagram bio should work without the link in bio — don't make the entire value proposition dependent on clicking away</div>
+<div class="tip-card">LinkedIn headline is indexed by LinkedIn's internal search — include the keywords your target audience would search ('SEO consultant' not 'growth wizard')</div>
+<div class="tip-card">TikTok shows only the first 80 characters without clicking 'more' — your hook must be complete in that space</div>
+<div class="tip-card">Twitter/X bios appear in search results — include your key topic keywords naturally</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Same bio on every platform — Instagram and LinkedIn audiences behave differently; your bio should too</div>
+<div class="mistake-card">No CTA — every bio should give people somewhere to go or something to do</div>
+<div class="mistake-card">Listing your job titles instead of the value you create — 'Content Manager' is a title; 'I help B2B companies get 3× more from their content team' is a value proposition</div>
+<div class="mistake-card">Emojis that don't add meaning — decorative emojis look unprofessional; emojis that replace or emphasise words add value</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should my bio be identical on all platforms?</div><div class="faq-a">No. The core message should be consistent (same value proposition), but the format, tone, and content should be native to each platform. LinkedIn readers are professional; TikTok readers are casual. Instagram readers are visual; Twitter/X readers are text-native. Adapt accordingly.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How often should I update my social bio?</div><div class="faq-a">When your role, main offer, or most impressive credential changes. A bio that mentions a 2020 achievement in 2026 signals you haven't evolved. LinkedIn specifically — update your headline whenever your position, focus, or audience changes significantly.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I include keywords in my bio?</div><div class="faq-a">Yes, especially on LinkedIn and Twitter/X — both platforms use bio keywords in search. Instagram's search is primarily hashtag and location-based, though account name and bio keywords matter. TikTok's search increasingly uses bio content.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is Claude better than ChatGPT for bio writing?</div><div class="faq-a">Both are effective for bio writing. Claude is stronger at following strict character count constraints and maintaining consistent voice across variations. ChatGPT is slightly faster at generating many options quickly. Specify exact character limits in your prompt for best results.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/personal-bio-writer.html"><div class="rc-title">Professional Bio Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/linkedin-profile-writer.html"><div class="rc-title">LinkedIn Profile Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/linkedin-post-writer.html"><div class="rc-title">LinkedIn Post Writer</div><div class="rc-cat">📱 Social Media</div></a><a class="related-card" href="/prompts/chatgpt/personal-mission-statement.html"><div class="rc-title">Personal Mission Statement Writer</div><div class="rc-cat">🚀 Productivity</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a personal branding expert who has written social media bios for creators with 1M+ followers and executives at top companies.\n\nYour name/brand: [name or brand]\nWhat you do: [what you do]\nWho you help or serve: [who you help or serve]\nBest result or credential: [your best result or credential]\nPersonality: [personality — serious/playful/minimal/bold/professional]\n\nTask: Write platform-optimised bios for each platform:\n\nINSTAGRAM (150 chars max):\n- Line 1: What you do (hook)\n- Line 2: Who you help or proof point\n- Line 3: CTA with link direction\n- Emoji usage: match personality\n\nTWITTER/X (160 chars max):\n- One sentence that captures your value\n- Optional: personality signal\n- No wasted words\n\nLINKEDIN HEADLINE (220 chars max):\n- Value proposition | Who you help | Proof point\n- Keywords recruiters/clients search\n\nTIKTOK (80 chars visible before 'more'):\n- Instant hook in first 5 words\n- What to expect from your content\n\nYOUTUBE CHANNEL DESCRIPTION (first 125 chars visible):\n- Channel value proposition\n- Upload schedule\n- Subscribe CTA\n\nFor each: provide 2 variations (bold/safe), character count, and platform-specific optimisation note";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'social-media-bio-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

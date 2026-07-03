@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grant Proposal Writer Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to write a grant proposal. Statement of need, project narrative, SMART objectives, budget justification, evaluation plan — a structured proposal that wins funding.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/grant-proposal-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Grant Proposal Writer Prompt">
+<meta property="og:description" content="Free AI prompt to write a grant proposal. Statement of need, project narrative, SMART objectives, budget justification, evaluation plan — a structured proposal that wins funding.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/grant-proposal-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Grant Proposal Writer Prompt">
+<meta name="twitter:description" content="Free AI prompt to write a grant proposal. Statement of need, project narrative, SMART objectives, budget justification, evaluation plan — a structured proposal that wins funding.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "Grant Proposal Writer", "item": "https://toolsnova.net/prompts/claude/grant-proposal-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Grant Proposal Writer Prompt", "description": "Free AI prompt to write a grant proposal. Statement of need, project narrative, SMART objectives, budget justification, evaluation plan — a structured proposal that wins funding.", "url": "https://toolsnova.net/prompts/claude/grant-proposal-builder.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "grant writing, nonprofit, fundraising, funding proposal, public sector"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I find grants?", "acceptedAnswer": {"@type": "Answer", "text": "UK: NLCF Grants for Good Causes, government Find a Grant database, local community foundations, corporate CSR programmes. EU: Horizon Europe, Erasmus+. Subscription databases: Grants Online, Funding Central."}}, {"@type": "Question", "name": "What is a theory of change?", "acceptedAnswer": {"@type": "Answer", "text": "Maps Activities to Outputs to Outcomes to Impact. Funders want to see that your activities logically lead to your claimed outcomes."}}, {"@type": "Question", "name": "How long should a grant proposal be?", "acceptedAnswer": {"@type": "Answer", "text": "Follow funder word limits exactly — exceeding them can mean automatic disqualification. Executive summary: 1 page. Statement of need: 1-2 pages. Project narrative: 2-3 pages."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is significantly stronger for grant writing — maintains formal evidence-based register, builds logical theory of change arguments, and uses appropriate hedging language for outcome projections."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Grant Proposal Writer</span>
+    </div>
+    <h1>Claude Grant Proposal Writer Prompt</h1>
+    <p>Write a compelling grant proposal that communicates your need, project plan, and measurable impact to secure funding from any funder.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">grant writing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">nonprofit</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">fundraising</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">funding proposal</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/grant-proposal-builder.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/grant-proposal-builder.html" style="border-color:#d07f59;color:#d07f59">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>organisation name and type</label><input class="var-input" type="text" placeholder="organisation name and type" oninput="updatePrompt()" data-var="organisation name and type"></div>
+<div class="var-group"><label>funder type</label><input class="var-input" type="text" placeholder="funder type" oninput="updatePrompt()" data-var="funder type"></div>
+<div class="var-group"><label>amount requested</label><input class="var-input" type="text" placeholder="amount requested" oninput="updatePrompt()" data-var="amount requested"></div>
+<div class="var-group"><label>project description</label><input class="var-input" type="text" placeholder="project description" oninput="updatePrompt()" data-var="project description"></div>
+<div class="var-group"><label>target beneficiaries</label><input class="var-input" type="text" placeholder="target beneficiaries" oninput="updatePrompt()" data-var="target beneficiaries"></div>
+<div class="var-group"><label>problem being solved</label><input class="var-input" type="text" placeholder="problem being solved" oninput="updatePrompt()" data-var="problem being solved"></div>
+<div class="var-group"><label>track record</label><input class="var-input" type="text" placeholder="3 previous digital skills programmes reaching 180 young people; 68% into employment or education within 6 months" oninput="updatePrompt()" data-var="track record"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a professional grant writer who has secured over 5 million in funding for nonprofits and social enterprises.<br><br>Organisation: <span class="var-hl">[name and type]</span><br>Funder: <span class="var-hl">[government/foundation/corporate/EU/other]</span><br>Amount: <span class="var-hl">[amount you are applying for]</span><br>Project: <span class="var-hl">[name and 2-sentence description]</span><br>Beneficiaries: <span class="var-hl">[who benefits and how many]</span><br>Problem: <span class="var-hl">[the specific problem this project addresses]</span><br>Track record: <span class="var-hl">[relevant previous work or achievements]</span><br><br>Task:<br>1. EXECUTIVE SUMMARY (300 words): Problem, solution, impact, and funding ask<br>2. STATEMENT OF NEED (500 words): Evidence-backed problem with data, local context, and beneficiary voice<br>3. PROJECT NARRATIVE (600 words): What you will do, how, who delivers it, and theory of change<br>4. SMART OBJECTIVES: 3-5 objectives with measurable indicators<br>5. BUDGET NARRATIVE: Key line item justifications and demonstration of cost-effectiveness<br>6. EVALUATION PLAN: How you will measure and report impact<br>7. ORGANISATIONAL CREDIBILITY: Why you are the right organisation to deliver this<br>8. RED FLAGS TO AVOID: What would cause this application to be rejected</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">GRANT PROPOSAL: Code Ready Programme — 45000 NLCF<br><br>EXECUTIVE SUMMARY:<br>In Oldham, 18.2% of young people aged 16-24 are NEET — nearly double the national average. The primary barrier: 62% of local job vacancies require digital skills that NEET young people have never been taught.<br><br>Bright Futures Youth CIC requests 45000 to deliver Code Ready — a free intensive 12-week coding and digital skills programme for 60 young people per year. Based on our track record with 180 previous participants with 68% into employment or education within 6 months, we expect at least 40 of the 60 participants to progress to employment, apprenticeship, or further education.<br><br>SMART OBJECTIVES:<br>1. Deliver Code Ready to 60 NEET young people by March 2027 — measured by attendance register<br>2. 75% of participants (45) achieve a nationally recognised digital qualification by programme end<br>3. 65% of participants (39) progress to employment, apprenticeship, or further education within 6 months<br><br>ORGANISATIONAL CREDIBILITY:<br>Bright Futures has delivered digital skills programming since 2021, reaching 180 young people across 3 cohorts. Our 68% positive destination rate compares favourably to the national average of 54% for comparable programmes. We employ 4 full-time DBS-cleared staff with ILM-qualified tutors.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Funder priorities come first — read the funding criteria before writing a single word, then use their language throughout</div>
+<div class="tip-card">Evidence of need should be local and recent — local data about your specific community is more compelling than national statistics</div>
+<div class="tip-card">Match your writing tone to the funder — NLCF should feel warm and community-focused; UKRI should feel rigorous and evidence-based</div>
+<div class="tip-card">Brief the programme officer informally before submitting if possible — their guidance shapes a stronger application</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Describing your organisation before explaining the problem — funders fund problems not organisations</div>
+<div class="mistake-card">Vague impact statements — improved wellbeing is not an outcome; 68% into employment within 6 months is</div>
+<div class="mistake-card">Budget that does not explain the rationale — staffing costs need to show who, at what rate, for how many hours</div>
+<div class="mistake-card">Generic proposal that does not align with the funder's current strategic priorities — rejected immediately</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I find grants?</div><div class="faq-a">UK: NLCF Grants for Good Causes, government Find a Grant database, local community foundations, corporate CSR programmes. EU: Horizon Europe, Erasmus+. Subscription databases: Grants Online, Funding Central.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What is a theory of change?</div><div class="faq-a">Maps Activities to Outputs to Outcomes to Impact. Funders want to see that your activities logically lead to your claimed outcomes.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should a grant proposal be?</div><div class="faq-a">Follow funder word limits exactly — exceeding them can mean automatic disqualification. Executive summary: 1 page. Statement of need: 1-2 pages. Project narrative: 2-3 pages.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude is significantly stronger for grant writing — maintains formal evidence-based register, builds logical theory of change arguments, and uses appropriate hedging language for outcome projections.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/business-case-writer.html"><div class="rc-title">Business Case Writer</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/pitch-deck-outline.html"><div class="rc-title">Investor Pitch Deck Outline</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a professional grant writer who has secured over 5 million in funding for nonprofits and social enterprises.\n\nOrganisation: [name and type]\nFunder: [government/foundation/corporate/EU/other]\nAmount: [amount you are applying for]\nProject: [name and 2-sentence description]\nBeneficiaries: [who benefits and how many]\nProblem: [the specific problem this project addresses]\nTrack record: [relevant previous work or achievements]\n\nTask:\n1. EXECUTIVE SUMMARY (300 words): Problem, solution, impact, and funding ask\n2. STATEMENT OF NEED (500 words): Evidence-backed problem with data, local context, and beneficiary voice\n3. PROJECT NARRATIVE (600 words): What you will do, how, who delivers it, and theory of change\n4. SMART OBJECTIVES: 3-5 objectives with measurable indicators\n5. BUDGET NARRATIVE: Key line item justifications and demonstration of cost-effectiveness\n6. EVALUATION PLAN: How you will measure and report impact\n7. ORGANISATIONAL CREDIBILITY: Why you are the right organisation to deliver this\n8. RED FLAGS TO AVOID: What would cause this application to be rejected";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'grant-proposal-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

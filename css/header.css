@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════
+   TOOLSNOVA — HEADER & NAVIGATION
+   Used by: all pages
+   ═══════════════════════════════════════════════════ */
+
+/* ── Site header ── */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.4rem 2rem 0;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* ── Logo ── */
+.logo {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-dot { color: var(--accent); }
+
+/* ── Nav container ── */
+.site-nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* ── Nav links ── */
+.nav-link {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text3);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+.nav-link:hover {
+  color: var(--text2);
+  background: var(--surface2);
+}
+.nav-link.active {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border-color: rgba(127, 255, 111, 0.25);
+}
+
+/* ── Nav category label ── */
+.nav-category-label {
+  font-size: 0.62rem;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem 0.1rem;
+  flex-shrink: 0;
+}
+
+/* ── Nav divider ── */
+.nav-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border2);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+/* ── Header theme toggle ── */
+.theme-toggle-header-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  font-family: var(--mono);
+  flex-shrink: 0;
+  margin-left: auto;
+  transition: background 0.15s, border-color 0.15s;
+}
+.theme-toggle-header-btn:hover {
+  background: var(--surface3);
+  border-color: var(--border2);
+}
+[data-theme="light"] .theme-toggle-header-btn {
+  background: #f0f0ee;
+  border-color: rgba(0, 0, 0, 0.14);
+  color: #111112;
+}
+[data-theme="light"] .theme-toggle-header-btn:hover {
+  background: #e8e8e6;
+}
+
+/* ── Mobile hamburger button ── */
+.nav-toggle {
+  display: none;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+.nav-toggle:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Page hero (used on individual tool pages) ── */
+.page-hero {
+  padding: 2rem 2rem 0;
+}
+.page-hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+.page-hero p {
+  font-size: 0.8rem;
+  color: var(--text2);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+/* ── Light mode header ── */
+[data-theme="light"] .site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+/* ════════════════════════════════════
+   MOBILE NAV
+   ════════════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 1rem;
+    left: 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 0.6rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    z-index: 9999;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+  .site-nav.open { display: flex; }
+  .nav-link { padding: 0.45rem 0.8rem; font-size: 0.78rem; }
+  .nav-divider { width: 100%; height: 1px; margin: 4px 0; }
+  .nav-category-label {
+    font-size: 0.58rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem 0.1rem;
+  }
+}

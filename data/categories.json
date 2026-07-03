@@ -1,0 +1,14 @@
+[
+  { "id": "writing",      "label": "Writing",      "emoji": "✍️",  "desc": "Blog posts, emails, stories, scripts, and all forms of written content.",          "color": "#7fff6f" },
+  { "id": "seo",          "label": "SEO",          "emoji": "🔍",  "desc": "Keyword research, meta tags, content briefs, schema, and technical SEO.",            "color": "#ea4335" },
+  { "id": "marketing",    "label": "Marketing",    "emoji": "📣",  "desc": "Ad copy, landing pages, email campaigns, sales letters, and brand strategy.",        "color": "#ffa400" },
+  { "id": "business",     "label": "Business",     "emoji": "💼",  "desc": "Business plans, pitch decks, SWOT analysis, OKRs, and operational frameworks.",      "color": "#4285f4" },
+  { "id": "coding",       "label": "Coding",       "emoji": "💻",  "desc": "Code review, debugging, SQL, React, API docs, unit tests, and DevOps.",              "color": "#7f5af0" },
+  { "id": "trading",      "label": "Trading",      "emoji": "📊",  "desc": "Gold analysis, forex, SMC, ICT, prop firm strategy, and trading psychology.",        "color": "#ffc800" },
+  { "id": "education",    "label": "Education",    "emoji": "📚",  "desc": "Lesson plans, study guides, flashcards, quizzes, and curriculum design.",            "color": "#00a36c" },
+  { "id": "social",       "label": "Social Media", "emoji": "📱",  "desc": "Twitter threads, Instagram captions, LinkedIn posts, TikTok scripts, and more.",     "color": "#53aadd" },
+  { "id": "productivity", "label": "Productivity", "emoji": "🚀",  "desc": "Task systems, email management, deep work, delegation, and automation.",             "color": "#34d399" },
+  { "id": "image",        "label": "Image AI",     "emoji": "🎨",  "desc": "Midjourney, DALL-E 3, Stable Diffusion, Flux, and Adobe Firefly prompts.",           "color": "#d07f59" },
+  { "id": "finance",      "label": "Finance",      "emoji": "💰",  "desc": "Financial models, investment analysis, budgeting, and personal finance planning.",   "color": "#22d3ee" },
+  { "id": "career",       "label": "Career",       "emoji": "🎯",  "desc": "Resumes, cover letters, interviews, salary negotiation, and LinkedIn profiles.",     "color": "#f472b6" }
+]

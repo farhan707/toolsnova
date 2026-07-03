@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Drip Sequence Builder Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free prompt to build a complete email drip sequence for lead nurture. 5-7 email series with subject lines, timing, and CTA — ready to load into any email platform.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/email-drip-sequence.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Email Drip Sequence Builder Prompt">
+<meta property="og:description" content="Free prompt to build a complete email drip sequence for lead nurture. 5-7 email series with subject lines, timing, and CTA — ready to load into any email platform.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/email-drip-sequence.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Email Drip Sequence Builder Prompt">
+<meta name="twitter:description" content="Free prompt to build a complete email drip sequence for lead nurture. 5-7 email series with subject lines, timing, and CTA — ready to load into any email platform.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Marketing", "item": "https://toolsnova.net/prompts/marketing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Email Drip Sequence Builder", "item": "https://toolsnova.net/prompts/gemini/email-drip-sequence.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Email Drip Sequence Builder Prompt", "description": "Free prompt to build a complete email drip sequence for lead nurture. 5-7 email series with subject lines, timing, and CTA — ready to load into any email platform.", "url": "https://toolsnova.net/prompts/gemini/email-drip-sequence.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "email, drip, automation, nurture, marketing"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's the ideal number of emails in a drip sequence?", "acceptedAnswer": {"@type": "Answer", "text": "5–7 emails over 14–21 days is the sweet spot for most B2B and SaaS products. E-commerce can go longer. The sequence should end when you've delivered enough value to justify one clear ask — extending it beyond that point generates unsubscribes."}}, {"@type": "Question", "name": "Which email platform should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Klaviyo for e-commerce, ConvertKit or Mailchimp for content creators, ActiveCampaign for complex B2B automation. All support the sequence structure this prompt generates. The logic is platform-agnostic."}}, {"@type": "Question", "name": "How do I A/B test across a sequence?", "acceptedAnswer": {"@type": "Answer", "text": "Test one variable per email, not across the whole sequence simultaneously. Start with Email 1 subject lines (highest leverage), then Email 3 body content (highest drop-off point), then CTAs. Most platforms support A/B testing at the individual email level."}}, {"@type": "Question", "name": "Should I use Claude or ChatGPT for drip sequences?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is stronger for drip sequences — it maintains a consistent voice across multiple emails and follows complex conditional logic (conversion events, branches) more faithfully. ChatGPT is faster for generating multiple subject line options."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/marketing/index.html">📣 Marketing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Email Drip Sequence Builder</span>
+    </div>
+    <h1>Gemini Email Drip Sequence Builder Prompt</h1>
+    <p>Build a complete automated email drip sequence that nurtures leads from cold to sale.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📣 Marketing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-marketing">📣 Marketing</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">email</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">drip</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">automation</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">nurture</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/email-drip-sequence.html">ChatGPT</a><a class="model-link" href="/prompts/claude/email-drip-sequence.html">Claude</a><a class="model-link active" href="/prompts/gemini/email-drip-sequence.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>product or service</label><input class="var-input" type="text" placeholder="ToolsNova AI Prompt Library" oninput="updatePrompt()" data-var="product or service"></div>
+<div class="var-group"><label>lead source</label><input class="var-input" type="text" placeholder="free download of '10 Best AI Prompts'" oninput="updatePrompt()" data-var="lead source"></div>
+<div class="var-group"><label>campaign goal</label><input class="var-input" type="text" placeholder="get subscriber to browse the full prompt library" oninput="updatePrompt()" data-var="campaign goal"></div>
+<div class="var-group"><label>number of emails</label><input class="var-input" type="text" placeholder="5" oninput="updatePrompt()" data-var="number of emails"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an email marketing automation expert who has built drip sequences converting 25%+ of cold leads to customers.<br><br>Product/Service: <span class="var-hl">[product or service]</span><br>Lead source: <span class="var-hl">[lead source — free download/webinar/trial signup/contact form]</span><br>Goal: <span class="var-hl">[campaign goal — book call/purchase/trial upgrade/re-engage]</span><br>Number of emails: <span class="var-hl">[number of emails — 5, 7, or 10]</span><br><br>Task: Build a complete email drip sequence:<br><br>For EACH email:<br>- EMAIL <span class="var-hl">[N]</span> — Day <span class="var-hl">[X]</span><br>- Goal: What this email achieves<br>- Subject line: 3 options (A/B/C)<br>- Preview text: Complements subject, under 90 chars<br>- Opening line: First sentence (not 'Hi <span class="var-hl">[Name]</span>, hope you're well')<br>- Body: 150–200 words maximum<br>- Primary CTA: Button text + destination<br>- Timing note: Why this email sends on Day <span class="var-hl">[X]</span><br><br>SEQUENCE LOGIC:<br>- Define the 'conversion event' that exits the subscriber early<br>- Define the re-engagement branch for non-openers after Email 3<br>- Define what happens after Email <span class="var-hl">[N]</span> if no conversion<br><br>DELIVERABILITY NOTES: Subject line spam words to avoid for this topic</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">5-EMAIL DRIP SEQUENCE: ToolsNova Prompt Library<br>Trigger: Downloaded '10 Best AI Prompts'<br><br>EMAIL 1 — Day 0 (Immediate)<br>Goal: Deliver the lead magnet + set expectations<br>Subject A: Your 10 AI prompts are inside 📋<br>Subject B: Here are the prompts you requested<br>Subject C: Quick question about your AI workflow<br>Preview: Pick one and try it in the next 10 minutes →<br><br>Body:<br>You're in.<br><br>Your 10 AI prompts are attached — but before you open them, I want to flag the one that surprises people most: the SEO Blog Post Writer. Most users try it expecting decent output and get something they can actually publish.<br><br>The prompts work across ChatGPT, Claude, and Gemini. Try one now, while the tab is open.<br><br>[Browse the full library → toolsnova.net/ai-prompt-library.html]<br><br>P.S. Hit reply and tell me what you're trying to get AI to help you with — I read every reply.<br><br>CTA: Browse Full Library<br>Timing note: Sent immediately — highest open rate, deliver value before expectation forms<br><br>EMAIL 2 — Day 3<br>Goal: Social proof + second exposure to the library<br>Subject A: '47,000 people used this prompt last week'<br>Subject B: The most copied prompt on ToolsNova right now<br>Preview: Here's why the SEO prompt keeps getting shared<br>...<br><br>CONVERSION EVENT: If subscriber clicks any prompt library link → exit sequence, tag as 'active user'<br>NON-OPENER BRANCH: If Email 3 unopened → resend Email 3 with Subject C at Day 8</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">The Day 0 email has the highest open rate of any email you'll ever send — deliver genuine value immediately, not a pitch</div>
+<div class="tip-card">Email 3 is when most sequences lose people — it needs to be your most valuable email, not a sales push</div>
+<div class="tip-card">Always define the exit condition (conversion event) before building — sequences without exit logic spam people who've already converted</div>
+<div class="tip-card">Preview text is your second subject line — optimise it independently, don't repeat the subject</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Pitching in Email 1 — the sequence should earn the right to pitch by delivering value first</div>
+<div class="mistake-card">Same CTA in every email — vary the ask (read this, watch this, try this) to avoid pattern blindness</div>
+<div class="mistake-card">No plain-text version — many email clients render HTML poorly; always write a clean text version</div>
+<div class="mistake-card">No unsubscribe path that feels respectful — 'I'll stop emailing you' as a CTA beats 'manage preferences'</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the ideal number of emails in a drip sequence?</div><div class="faq-a">5–7 emails over 14–21 days is the sweet spot for most B2B and SaaS products. E-commerce can go longer. The sequence should end when you've delivered enough value to justify one clear ask — extending it beyond that point generates unsubscribes.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which email platform should I use?</div><div class="faq-a">Klaviyo for e-commerce, ConvertKit or Mailchimp for content creators, ActiveCampaign for complex B2B automation. All support the sequence structure this prompt generates. The logic is platform-agnostic.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I A/B test across a sequence?</div><div class="faq-a">Test one variable per email, not across the whole sequence simultaneously. Start with Email 1 subject lines (highest leverage), then Email 3 body content (highest drop-off point), then CTAs. Most platforms support A/B testing at the individual email level.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use Claude or ChatGPT for drip sequences?</div><div class="faq-a">Claude is stronger for drip sequences — it maintains a consistent voice across multiple emails and follows complex conditional logic (conversion events, branches) more faithfully. ChatGPT is faster for generating multiple subject line options.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/newsletter-writer.html"><div class="rc-title">Email Newsletter Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/email-campaign-writer.html"><div class="rc-title">Email Marketing Campaign Writer</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/landing-page-copywriter.html"><div class="rc-title">Landing Page Copywriter</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/cold-email-outreach.html"><div class="rc-title">Cold Email Outreach Sequence</div><div class="rc-cat">✍️ Writing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an email marketing automation expert who has built drip sequences converting 25%+ of cold leads to customers.\n\nProduct/Service: [product or service]\nLead source: [lead source — free download/webinar/trial signup/contact form]\nGoal: [campaign goal — book call/purchase/trial upgrade/re-engage]\nNumber of emails: [number of emails — 5, 7, or 10]\n\nTask: Build a complete email drip sequence:\n\nFor EACH email:\n- EMAIL [N] — Day [X]\n- Goal: What this email achieves\n- Subject line: 3 options (A/B/C)\n- Preview text: Complements subject, under 90 chars\n- Opening line: First sentence (not 'Hi [Name], hope you're well')\n- Body: 150–200 words maximum\n- Primary CTA: Button text + destination\n- Timing note: Why this email sends on Day [X]\n\nSEQUENCE LOGIC:\n- Define the 'conversion event' that exits the subscriber early\n- Define the re-engagement branch for non-openers after Email 3\n- Define what happens after Email [N] if no conversion\n\nDELIVERABILITY NOTES: Subject line spam words to avoid for this topic";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'email-drip-sequence';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

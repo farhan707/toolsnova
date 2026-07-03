@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short Story Writer Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free short story writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/short-story-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Short Story Writer Prompt">
+<meta property="og:description" content="Free short story writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/short-story-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Short Story Writer Prompt">
+<meta name="twitter:description" content="Free short story writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Writing", "item": "https://toolsnova.net/prompts/writing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Short Story Writer", "item": "https://toolsnova.net/prompts/gemini/short-story-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Short Story Writer Prompt", "description": "Free short story writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/gemini/short-story-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "fiction, short story, creative writing, narrative, storytelling"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long is a short story?", "acceptedAnswer": {"@type": "Answer", "text": "Definitions vary: flash fiction (under 1,000 words), short short story (1,000–2,500), standard short story (2,500–7,500), long short story / novelette (7,500–17,500). For most literary magazines, 2,500–5,000 words is the sweet spot."}}, {"@type": "Question", "name": "Which AI model writes the best fiction?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is widely considered the strongest model for literary fiction — it's better at prose style, character voice, and narrative structure. For genre fiction (thriller, sci-fi, romance), both Claude and ChatGPT produce solid results."}}, {"@type": "Question", "name": "Can I use AI-generated fiction for publication?", "acceptedAnswer": {"@type": "Answer", "text": "Many publications now require disclosure of AI assistance. Policies vary widely. For submission to literary magazines, read each publication's AI policy carefully. Many now explicitly prohibit AI-generated text."}}, {"@type": "Question", "name": "How do I make the writing sound less like AI?", "acceptedAnswer": {"@type": "Answer", "text": "Specify a strong narrative voice, use unusual specific details (not generic ones), request unconventional structure, and always edit the output heavily. The first draft from AI is a scaffold — the story happens in your revision."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/writing/index.html">✍️ Writing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Short Story Writer</span>
+    </div>
+    <h1>Gemini Short Story Writer Prompt</h1>
+    <p>You are an accomplished fiction writer with published short stories in literary magazines and genre anthologies.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">✍️ Writing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-writing">✍️ Writing</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">fiction</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">short story</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">creative writing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">narrative</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/short-story-writer.html">ChatGPT</a><a class="model-link" href="/prompts/claude/short-story-writer.html">Claude</a><a class="model-link active" href="/prompts/gemini/short-story-writer.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>genre</label><input class="var-input" type="text" placeholder="[example genre]" oninput="updatePrompt()" data-var="genre"></div>
+<div class="var-group"><label>central conflict</label><input class="var-input" type="text" placeholder="[example central conflict]" oninput="updatePrompt()" data-var="central conflict"></div>
+<div class="var-group"><label>main character</label><input class="var-input" type="text" placeholder="[example main character]" oninput="updatePrompt()" data-var="main character"></div>
+<div class="var-group"><label>target word count</label><input class="var-input" type="text" placeholder="[example target word count]" oninput="updatePrompt()" data-var="target word count"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an accomplished fiction writer with published short stories in literary magazines and genre anthologies.<br><br>Genre: <span class="var-hl">[genre — literary/thriller/sci-fi/romance/horror/magical realism]</span><br>Conflict: <span class="var-hl">[central conflict]</span><br>Main character: <span class="var-hl">[main character — brief description]</span><br>Word count: <span class="var-hl">[target word count]</span><br><br>Task: Write a complete short story:<br><br>STRUCTURE:<br>- Opening scene: Drop into the action or a specific moment (no backstory dumps)<br>- Inciting incident: The event that changes everything<br>- Rising tension: 2–3 escalating complications<br>- Climax: The moment of maximum tension/decision<br>- Resolution: Earned, not convenient<br><br>CRAFT REQUIREMENTS:<br>- Show don't tell: Use specific sensory details, not adjectives<br>- Dialogue: Every line of dialogue must do 2 things (reveal character AND advance plot)<br>- POV: Consistent close-third or first person<br>- Voice: Distinctive — the reader should feel a specific person wrote this<br>- Ending: Should reframe the opening in a new light</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">THE WEIGHT OF SMALL THINGS<br><br>She counted the sugar packets every morning.<br><br>Not because she was particular about sugar — she took her coffee black. It was because the café kept exactly 47 packets in the ceramic dish by the register, and this number had stayed constant for nine months, and this constancy was the only evidence she had that some things in the world remained predictable.<br><br>The morning everything changed, there were 46.<br><br>'You're staring at the sugar again,' said Marcus, sliding into the seat across from her without asking.<br><br>Dr. Yemi Adeyinka closed her laptop screen with deliberate care. 'I'm observing,' she said. 'It's different.'<br><br>'To you, sure.' He flagged down the server. 'The psych board called me.'<br><br>She'd known it was coming. You don't lose three patients in two months without consequences — regardless of whether the losses were preventable, regardless of what the reviews concluded, regardless of the commendation they'd filed alongside the inquiry...</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Start in the middle of a moment, not the beginning of a story — the backstory can wait</div>
+<div class="tip-card">Every scene needs to change something — if the character ends a scene the same as they started it, cut the scene</div>
+<div class="tip-card">Read your dialogue out loud — wooden dialogue reveals itself immediately when spoken</div>
+<div class="tip-card">The ending you write first is rarely the right ending — write through, then look back and find where the real ending lives</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Explaining the character's feelings instead of showing them through action and dialogue</div>
+<div class="mistake-card">Starting with weather or waking up — these are the two most over-used opening moves in fiction</div>
+<div class="mistake-card">Resolving tension too quickly — readers stay for the discomfort; resolution is the destination, not the journey</div>
+<div class="mistake-card">Ignoring the physical world — stories without sensory detail feel like they're happening inside a white box</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long is a short story?</div><div class="faq-a">Definitions vary: flash fiction (under 1,000 words), short short story (1,000–2,500), standard short story (2,500–7,500), long short story / novelette (7,500–17,500). For most literary magazines, 2,500–5,000 words is the sweet spot.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model writes the best fiction?</div><div class="faq-a">Claude is widely considered the strongest model for literary fiction — it's better at prose style, character voice, and narrative structure. For genre fiction (thriller, sci-fi, romance), both Claude and ChatGPT produce solid results.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I use AI-generated fiction for publication?</div><div class="faq-a">Many publications now require disclosure of AI assistance. Policies vary widely. For submission to literary magazines, read each publication's AI policy carefully. Many now explicitly prohibit AI-generated text.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I make the writing sound less like AI?</div><div class="faq-a">Specify a strong narrative voice, use unusual specific details (not generic ones), request unconventional structure, and always edit the output heavily. The first draft from AI is a scaffold — the story happens in your revision.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/newsletter-writer.html"><div class="rc-title">Email Newsletter Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/youtube-script-writer.html"><div class="rc-title">YouTube Script Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/speech-writer.html"><div class="rc-title">Speech &amp; Presentation Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/professional-email-writer.html"><div class="rc-title">Professional Email Writer</div><div class="rc-cat">✍️ Writing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an accomplished fiction writer with published short stories in literary magazines and genre anthologies.\n\nGenre: [genre — literary/thriller/sci-fi/romance/horror/magical realism]\nConflict: [central conflict]\nMain character: [main character — brief description]\nWord count: [target word count]\n\nTask: Write a complete short story:\n\nSTRUCTURE:\n- Opening scene: Drop into the action or a specific moment (no backstory dumps)\n- Inciting incident: The event that changes everything\n- Rising tension: 2–3 escalating complications\n- Climax: The moment of maximum tension/decision\n- Resolution: Earned, not convenient\n\nCRAFT REQUIREMENTS:\n- Show don't tell: Use specific sensory details, not adjectives\n- Dialogue: Every line of dialogue must do 2 things (reveal character AND advance plot)\n- POV: Consistent close-third or first person\n- Voice: Distinctive — the reader should feel a specific person wrote this\n- Ending: Should reframe the opening in a new light";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'short-story-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

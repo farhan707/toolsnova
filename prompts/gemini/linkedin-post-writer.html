@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Post Writer Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free linkedin post writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/linkedin-post-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini LinkedIn Post Writer Prompt">
+<meta property="og:description" content="Free linkedin post writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/linkedin-post-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini LinkedIn Post Writer Prompt">
+<meta name="twitter:description" content="Free linkedin post writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Social Media", "item": "https://toolsnova.net/prompts/social/index.html"}, {"@type": "ListItem", "position": 5, "name": "LinkedIn Post Writer", "item": "https://toolsnova.net/prompts/gemini/linkedin-post-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini LinkedIn Post Writer Prompt", "description": "Free linkedin post writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/gemini/linkedin-post-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "linkedin, post, personal brand, professional, networking"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How often should I post on LinkedIn?", "acceptedAnswer": {"@type": "Answer", "text": "3–5 times per week is the sweet spot for growth. Below 2x/week and the algorithm barely shows your content. Above 7x/week and quality typically drops. Consistency over frequency."}}, {"@type": "Question", "name": "Does LinkedIn favour certain types of content?", "acceptedAnswer": {"@type": "Answer", "text": "LinkedIn's algorithm in 2026 favours: content that generates comments (especially long comments), content that gets shared to feed, and content with 'dwell time' (people spend time reading). Personal stories outperform promotional content by 3–5x."}}, {"@type": "Question", "name": "Should I use LinkedIn newsletters?", "acceptedAnswer": {"@type": "Answer", "text": "LinkedIn newsletters build a subscriber list that gets notified per publication — this is a significant advantage over regular posts. For authority content that goes beyond 500 words, newsletters are worth the additional effort."}}, {"@type": "Question", "name": "Can Claude write better LinkedIn posts than ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is generally stronger for LinkedIn — it writes with more nuance, avoids generic corporate language, and better understands the professional register of the platform. Claude Sonnet 4 is particularly good for personal-story format posts."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/social/index.html">📱 Social Media</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>LinkedIn Post Writer</span>
+    </div>
+    <h1>Gemini LinkedIn Post Writer Prompt</h1>
+    <p>You are a LinkedIn content strategist who has grown multiple professional accounts to 100K+ followers.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📱 Social Media</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-social">📱 Social Media</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">linkedin</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">post</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">personal brand</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">professional</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/linkedin-post-writer.html">ChatGPT</a><a class="model-link" href="/prompts/claude/linkedin-post-writer.html">Claude</a><a class="model-link active" href="/prompts/gemini/linkedin-post-writer.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>post topic</label><input class="var-input" type="text" placeholder="[example post topic]" oninput="updatePrompt()" data-var="post topic"></div>
+<div class="var-group"><label>professional insight</label><input class="var-input" type="text" placeholder="[example professional insight]" oninput="updatePrompt()" data-var="professional insight"></div>
+<div class="var-group"><label>target audience</label><input class="var-input" type="text" placeholder="[example target audience]" oninput="updatePrompt()" data-var="target audience"></div>
+<div class="var-group"><label>desired outcome</label><input class="var-input" type="text" placeholder="[example desired outcome]" oninput="updatePrompt()" data-var="desired outcome"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a LinkedIn content strategist who has grown multiple professional accounts to 100K+ followers.<br><br>Topic: <span class="var-hl">[post topic]</span><br>Insight: <span class="var-hl">[professional insight — your unique take on this]</span><br>Audience: <span class="var-hl">[audience — job function, industry, seniority level]</span><br>Outcome: <span class="var-hl">[desired outcome — connections/leads/job offers/brand awareness]</span><br><br>Task: Write 3 LinkedIn post variations:<br><br>Each post format:<br>- Hook (first line visible before 'see more' — must compel the click)<br>- Body (short paragraphs, white space between every paragraph)<br>- CTA<br>- NO hashtags (LinkedIn's algorithm treats them as spam in 2026)<br><br>POST 1 — The Unpopular Opinion:<br><span class="var-hl">[Counterintuitive first line]</span><br><span class="var-hl">[Contrarian take with evidence/reasoning]</span><br><span class="var-hl">[Acknowledge the nuance]</span><br><span class="var-hl">[Invite debate]</span><br><br>POST 2 — Personal Story + Lesson:<br><span class="var-hl">[Specific story moment opening]</span><br><span class="var-hl">[Narrative arc]</span><br><span class="var-hl">[The lesson]</span><br><span class="var-hl">[How it applies to the reader]</span><br><br>POST 3 — Insight List:<br><span class="var-hl">[Bold opening statement]</span><br><span class="var-hl">[N things I've learned about X:]</span><br><span class="var-hl">[Arrow-format insights]</span><br><span class="var-hl">[Question at end]</span><br><br>LinkedIn formatting: Short paragraphs. White space. Bold the key insight (using * in LinkedIn).</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">POST 1 (Unpopular opinion):<br>95% of people optimise their LinkedIn profile for recruiters.<br><br>That's why 95% of people don't get the LinkedIn results they want.<br><br>Your LinkedIn profile is not a digital resume. It's a sales page.<br><br>And the buyer isn't the recruiter who's reviewing 200 profiles today. The buyer is the decision-maker who Googles your name after someone refers you — and who you need to trust you instantly, with zero context.<br><br>I've helped 40+ executives rewrite their profiles with this frame. The results aren't modest:<br><br>→ 3x increase in meaningful inbound messages<br>→ Speaking opportunities<br>→ Board positions<br>→ Strategic partnerships<br><br>None of them went back to 'resume style' after seeing the difference.<br><br>Are you writing your profile for the recruiter, or for the decision-maker who matters most?<br><br>[Expected performance: 8,000–25,000 impressions if posted by an active account in professional services]<br><br>POST 2 (Personal story):<br>I once lost a £200,000 client in a 90-second phone call.<br><br>I was presenting our proposal. I opened with our company history, our awards, our team size.<br><br>The client stopped me at 90 seconds: 'I know all this. What I don't know is how you're going to solve my problem.'<br><br>I had spent 3 weeks on the proposal and 45 seconds on the actual problem.<br><br>That call changed how I structure every client conversation. I now spend the first 70% of every initial meeting asking questions and restating their problem — before I say a single word about my solution.<br><br>The close rate went from 40% to 68%. The £200K client? We won the next RFP.<br><br>Most pitches fail not because the solution is wrong. They fail because the problem wasn't made real enough first.<br><br>What's the most valuable mistake you've made in client work?</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Your first line is visible in the feed without clicking 'see more' — write it to work as a standalone statement that creates curiosity</div>
+<div class="tip-card">LinkedIn rewards posts that generate saves and deep engagement more than posts that just get likes — write for quality of engagement</div>
+<div class="tip-card">Share real outcomes with specific numbers — 'significantly improved' is worth 10% as much as 'improved by 68%'</div>
+<div class="tip-card">Reply to every comment within 2 hours of posting — LinkedIn's algorithm weighs comments heavily and your replies count as engagement too</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Using hashtags in 2026 — LinkedIn's algorithm has deprioritised hashtag-driven discovery; they add no reach</div>
+<div class="mistake-card">Starting with 'I'm excited to announce...' — this is the corporate equivalent of 'I hope this email finds you well'</div>
+<div class="mistake-card">Posting without a clear point of view — the most-shared LinkedIn content is opinionated, not neutral</div>
+<div class="mistake-card">Cross-posting Twitter content without reformatting — Twitter's sentence structure doesn't work on LinkedIn and vice versa</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How often should I post on LinkedIn?</div><div class="faq-a">3–5 times per week is the sweet spot for growth. Below 2x/week and the algorithm barely shows your content. Above 7x/week and quality typically drops. Consistency over frequency.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does LinkedIn favour certain types of content?</div><div class="faq-a">LinkedIn's algorithm in 2026 favours: content that generates comments (especially long comments), content that gets shared to feed, and content with 'dwell time' (people spend time reading). Personal stories outperform promotional content by 3–5x.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use LinkedIn newsletters?</div><div class="faq-a">LinkedIn newsletters build a subscriber list that gets notified per publication — this is a significant advantage over regular posts. For authority content that goes beyond 500 words, newsletters are worth the additional effort.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can Claude write better LinkedIn posts than ChatGPT?</div><div class="faq-a">Claude is generally stronger for LinkedIn — it writes with more nuance, avoids generic corporate language, and better understands the professional register of the platform. Claude Sonnet 4 is particularly good for personal-story format posts.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/twitter-thread-writer.html"><div class="rc-title">Twitter / X Thread Writer</div><div class="rc-cat">📱 Social Media</div></a><a class="related-card" href="/prompts/chatgpt/personal-bio-writer.html"><div class="rc-title">Professional Bio Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/instagram-caption-writer.html"><div class="rc-title">Instagram Caption Writer</div><div class="rc-cat">📱 Social Media</div></a><a class="related-card" href="/prompts/chatgpt/cold-email-outreach.html"><div class="rc-title">Cold Email Outreach Sequence</div><div class="rc-cat">✍️ Writing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a LinkedIn content strategist who has grown multiple professional accounts to 100K+ followers.\n\nTopic: [post topic]\nInsight: [professional insight — your unique take on this]\nAudience: [audience — job function, industry, seniority level]\nOutcome: [desired outcome — connections/leads/job offers/brand awareness]\n\nTask: Write 3 LinkedIn post variations:\n\nEach post format:\n- Hook (first line visible before 'see more' — must compel the click)\n- Body (short paragraphs, white space between every paragraph)\n- CTA\n- NO hashtags (LinkedIn's algorithm treats them as spam in 2026)\n\nPOST 1 — The Unpopular Opinion:\n[Counterintuitive first line]\n[Contrarian take with evidence/reasoning]\n[Acknowledge the nuance]\n[Invite debate]\n\nPOST 2 — Personal Story + Lesson:\n[Specific story moment opening]\n[Narrative arc]\n[The lesson]\n[How it applies to the reader]\n\nPOST 3 — Insight List:\n[Bold opening statement]\n[N things I've learned about X:]\n[Arrow-format insights]\n[Question at end]\n\nLinkedIn formatting: Short paragraphs. White space. Bold the key insight (using * in LinkedIn).";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'linkedin-post-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor Update Writer Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to write startup investor updates. Key metrics, wins, challenges, and ask — the structured 90-second update that keeps investors engaged and supportive.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/investor-update-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Startup Investor Update Writer Prompt">
+<meta property="og:description" content="Free AI prompt to write startup investor updates. Key metrics, wins, challenges, and ask — the structured 90-second update that keeps investors engaged and supportive.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/investor-update-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Startup Investor Update Writer Prompt">
+<meta name="twitter:description" content="Free AI prompt to write startup investor updates. Key metrics, wins, challenges, and ask — the structured 90-second update that keeps investors engaged and supportive.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "Startup Investor Update Writer", "item": "https://toolsnova.net/prompts/chatgpt/investor-update-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Startup Investor Update Writer Prompt", "description": "Free AI prompt to write startup investor updates. Key metrics, wins, challenges, and ask — the structured 90-second update that keeps investors engaged and supportive.", "url": "https://toolsnova.net/prompts/chatgpt/investor-update-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "investor update, startup, fundraising, metrics, transparency"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How often to send?", "acceptedAnswer": {"@type": "Answer", "text": "Monthly for early-stage. Quarterly for later-stage. Never let more than 90 days pass."}}, {"@type": "Question", "name": "Ideal length?", "acceptedAnswer": {"@type": "Answer", "text": "90 seconds to read — roughly 300–400 words plus a metrics table."}}, {"@type": "Question", "name": "Should I send bad news?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, immediately. Bad news investors discover from a third party is far more damaging than proactive disclosure."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude — maintains transparency and confidence without promotionalism, structures the 90-second-scan format naturally."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Startup Investor Update Writer</span>
+    </div>
+    <h1>ChatGPT Startup Investor Update Writer Prompt</h1>
+    <p>Write professional investor updates that build trust, maintain engagement, and support future fundraising rounds.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">investor update</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">startup</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">fundraising</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">metrics</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/investor-update-writer.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/investor-update-writer.html">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>company name and description</label><input class="var-input" type="text" placeholder="company name and description" oninput="updatePrompt()" data-var="company name and description"></div>
+<div class="var-group"><label>update period</label><input class="var-input" type="text" placeholder="update period" oninput="updatePrompt()" data-var="update period"></div>
+<div class="var-group"><label>key metrics</label><input class="var-input" type="text" placeholder="key metrics" oninput="updatePrompt()" data-var="key metrics"></div>
+<div class="var-group"><label>main wins</label><input class="var-input" type="text" placeholder="main wins" oninput="updatePrompt()" data-var="main wins"></div>
+<div class="var-group"><label>main challenges</label><input class="var-input" type="text" placeholder="main challenges" oninput="updatePrompt()" data-var="main challenges"></div>
+<div class="var-group"><label>specific ask</label><input class="var-input" type="text" placeholder="specific ask" oninput="updatePrompt()" data-var="specific ask"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a startup advisor who has reviewed 500+ investor updates and knows what builds investor confidence.<br><br>Company: <span class="var-hl">[name and one-line description]</span><br>Period: <span class="var-hl">[month/quarter, e.g. June 2026]</span><br>Metrics: <span class="var-hl">[MRR, users, revenue, burn rate, runway]</span><br>Wins: <span class="var-hl">[main wins]</span><br>Challenges: <span class="var-hl">[main challenges — honest]</span><br>Ask: <span class="var-hl">[specific ask or 'no ask this period']</span><br><br>Write a complete investor update — investors read in 90 seconds, structure for scanning:<br><br>SUBJECT: <span class="var-hl">[Company]</span> <span class="var-hl">[Period]</span> — <span class="var-hl">[headline metric]</span><br>📊 METRICS: Table Metric | This period | Last period | Change<br>🚀 HIGHLIGHTS (3 bullets): Specific wins<br>⚠️ CHALLENGES (2 bullets): Honest — builds trust<br>🎯 NEXT PERIOD: Top 2–3 priorities<br>💰 FINANCIALS: Revenue/MRR, burn rate, runway (months)<br>🙏 ASK: One specific actionable request<br>PERSONAL NOTE: 2–3 sentences of founder's honest perspective<br><br>Tone: Transparent, confident, concise. No spin.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">SUBJECT: ToolsNova June 2026 — 52K monthly users, AI Prompt Library live<br><br>Hi [Names],<br><br>📊 METRICS<br>| Metric | June | May | Change |<br>|---|---|---|---|<br>| Monthly Active Users | 52,000 | 44,000 | +18% |<br>| Prompt Library | 200 prompts | 0 | Launch |<br>| Email Subscribers | 416 | 0 | New channel |<br>| Revenue | £0 | £0 | Pre-monetisation |<br>| Runway | 14 months | 15 months | Cash-funded |<br><br>🚀 HIGHLIGHTS<br>• AI Prompt Library launched — indexed by Google in 48h, page 1 for 3 keywords within 2 weeks<br>• All 52K users from organic search — zero paid acquisition<br>• Email list started: 416 subscribers at 0.8% conversion (optimising)<br><br>⚠️ CHALLENGES<br>• AdSense pending since March — revenue blocked; testing direct sponsorships as alternative<br>• Email conversion (0.8%) below 2% target — A/B testing lead magnet this month<br><br>🎯 NEXT 30 DAYS<br>• 200 → 250 prompts (SEO compound effect)<br>• A/B test popup to reach 1.5% email conversion<br>• First direct sponsorship outreach<br><br>🙏 ASK: Introductions to anyone in developer tools or AI productivity — co-marketing or integration potential.<br><br>Honest note: AdSense delay has been frustrating but forcing a healthier monetisation conversation. The prompt library gives us a real product to build around.<br><br>[Name]</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Send every 30 days — investors who hear from you regularly help proactively and reinvest more often</div>
+<div class="tip-card">Lead with the metrics table — investors scan numbers first, narrative second</div>
+<div class="tip-card">Never hide bad news — investors find out anyway; hidden problems permanently destroy trust</div>
+<div class="tip-card">The Ask section is most underused — investors want to help but need a specific request</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Monthly updates becoming quarterly — inconsistency signals trouble</div>
+<div class="mistake-card">All wins no challenges — experienced investors know every business has problems</div>
+<div class="mistake-card">Vague metrics ('strong growth') — specific numbers only</div>
+<div class="mistake-card">No ask — the whole point of regular updates is staying connected and available to help</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How often to send?</div><div class="faq-a">Monthly for early-stage. Quarterly for later-stage. Never let more than 90 days pass.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Ideal length?</div><div class="faq-a">90 seconds to read — roughly 300–400 words plus a metrics table.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I send bad news?</div><div class="faq-a">Yes, immediately. Bad news investors discover from a third party is far more damaging than proactive disclosure.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude — maintains transparency and confidence without promotionalism, structures the 90-second-scan format naturally.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/business-plan-writer.html"><div class="rc-title">Business Plan Writer</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/pitch-deck-outline.html"><div class="rc-title">Investor Pitch Deck Outline</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/startup-pitch-coach.html"><div class="rc-title">Startup Pitch Coach</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a startup advisor who has reviewed 500+ investor updates and knows what builds investor confidence.\n\nCompany: [name and one-line description]\nPeriod: [month/quarter, e.g. June 2026]\nMetrics: [MRR, users, revenue, burn rate, runway]\nWins: [main wins]\nChallenges: [main challenges — honest]\nAsk: [specific ask or 'no ask this period']\n\nWrite a complete investor update — investors read in 90 seconds, structure for scanning:\n\nSUBJECT: [Company] [Period] — [headline metric]\n📊 METRICS: Table Metric | This period | Last period | Change\n🚀 HIGHLIGHTS (3 bullets): Specific wins\n⚠️ CHALLENGES (2 bullets): Honest — builds trust\n🎯 NEXT PERIOD: Top 2–3 priorities\n💰 FINANCIALS: Revenue/MRR, burn rate, runway (months)\n🙏 ASK: One specific actionable request\nPERSONAL NOTE: 2–3 sentences of founder's honest perspective\n\nTone: Transparent, confident, concise. No spin.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'investor-update-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

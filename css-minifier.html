@@ -8,7 +8,7 @@
 <meta name="description" content="Minify CSS to reduce file size or format/prettify CSS for readability. Removes comments and whitespace. Free online CSS minifier and formatter.">
 <link rel="canonical" href="https://toolsnova.net/css-minifier">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20">
@@ -25,6 +25,15 @@
 <meta property="og:description" content="Minify CSS to reduce file size or format/prettify CSS for readability. Removes comments and whitespace. Free online CSS minifier and formatter.">
 <meta property="og:url" content="https://toolsnova.net/css-minifier">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CSS Minifier Online — Free CSS Minify & Formatter">
+<meta name="twitter:description" content="Minify CSS to reduce file size or format/prettify CSS for readability. Removes comments and whitespace. Free online CSS minifier and formatter.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Minifier Online","url":"https://toolsnova.net/css-minifier","description":"Minify CSS to reduce file size or format/prettify CSS for readability. Removes comments and whitespace. Free online CSS minifier and formatter.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
@@ -249,8 +258,7 @@ gtag('config', 'G-S6PPGS7N63');
       <div class="edu-card"><div class="edu-card-title">📦 What Gets Removed</div><div class="edu-card-body">Comments (/* ... */). Whitespace (spaces, tabs, newlines). Redundant semicolons (last property in rule). Redundant zeros (0.5 → .5, 0px → 0). Long colour names (#ffffff → #fff). Duplicate properties. Empty rules. Vendor prefix duplicates for modern browser targets.</div></div>
       <div class="edu-card"><div class="edu-card-title">📊 Minification vs Compression</div><div class="edu-card-body">Minification removes redundant characters from source code — reduces file size and removes human readability. Compression (gzip/brotli) applies algorithmic compression to the minified file — further reduces transfer size. These are complementary: minify first, then serve compressed. A 100KB CSS file: after minification ~65KB, after gzip ~15KB.</div></div>
       <div class="edu-card"><div class="edu-card-title">🔄 Source Maps</div><div class="edu-card-body">Minified code is unreadable for debugging. Source maps link minified code back to original source — browser DevTools shows original formatted CSS when debugging, even when serving minified files. Build tools (webpack, Vite, rollup) generate source maps automatically. Essential for debugging production issues without deploying unminified code.</div></div>
-      <div class="edu-card"><div class="edu-card-title">⚡ Critical CSS</div><div class="edu-card-body">The CSS needed to render above-the-fold content. Inlining critical CSS in the HTML <head>
-<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script> eliminates the render-blocking CSS request, significantly improving First Contentful Paint (FCP). Tools like Critical extract the critical CSS automatically. Minification is especially important for inlined CSS as it goes directly in the HTML.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Critical CSS</div><div class="edu-card-body">The CSS needed to render above-the-fold content. Inlining critical CSS in the HTML &lt;head&gt; eliminates the render-blocking CSS request, significantly improving First Contentful Paint (FCP). Tools like Critical extract the critical CSS automatically. Minification is especially important for inlined CSS as it goes directly in the HTML.</div></div>
       <div class="edu-card"><div class="edu-card-title">🏗️ Build Tool Integration</div><div class="edu-card-body">Production CSS minification should be automated in your build pipeline. webpack: css-minimizer-webpack-plugin. Vite: built-in with esbuild. Gulp: gulp-cssnano. PostCSS: cssnano plugin. These tools run automatically on every production build, ensuring minification without manual steps. Manual minification via this tool is useful for quick optimisation or one-off files.</div></div>
       <div class="edu-card"><div class="edu-card-title">📈 Performance Impact</div><div class="edu-card-body">CSS is render-blocking — the browser cannot display content until all CSS is downloaded and parsed. Smaller CSS files load faster, reducing render-blocking time. On a 3G connection, every 100KB of CSS adds approximately 1–2 seconds of loading time. CSS minification is one of the highest ROI performance optimisations with zero functional impact.</div></div>
     </div>
@@ -289,17 +297,25 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-<section class="related-section">
-  <h2 class="related-title">Related Tools</h2>
-  <div class="related-grid">
-    <a href="json-formatter.html" class="related-card"><span class="related-name">JSON Formatter</span><span class="related-arrow">→</span></a>
-    <a href="html-encoder-decoder.html" class="related-card"><span class="related-name">HTML Encoder</span><span class="related-arrow">→</span></a>
-    <a href="markdown-editor.html" class="related-card"><span class="related-name">Markdown Editor</span><span class="related-arrow">→</span></a>
-    <a href="diff-checker.html" class="related-card"><span class="related-name">Diff Checker</span><span class="related-arrow">→</span></a>
-    <a href="url-encoder.html" class="related-card"><span class="related-name">URL Encoder</span><span class="related-arrow">→</span></a>
-  </div>
-</section>
 
+
+
+
+
+<!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
+<section class="related-tools-section">
+  <div class="related-title">🔗 Related Tools</div>
+  <div class="related-grid">
+    <a class="related-card" href="json-formatter.html"><span class="rc-icon">{}</span><div><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format, validate and beautify JSON with syntax highlighting.</div></div></a>
+    <a class="related-card" href="base64-encoder.html"><span class="rc-icon">⇌</span><div><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Encode or decode Base64 strings. Supports Unicode and emoji.</div></div></a>
+    <a class="related-card" href="case-converter.html"><span class="rc-icon">Cc</span><div><div class="rc-name">Case Converter</div><div class="rc-desc">UPPER, lower, camelCase, PascalCase, snake_case, kebab-case.</div></div></a>
+    <a class="related-card" href="word-counter.html"><span class="rc-icon">Aa</span><div><div class="rc-name">Word Counter</div><div class="rc-desc">Count words, characters, sentences, paragraphs and reading time.</div></div></a>
+    <a class="related-card" href="url-encoder.html"><span class="rc-icon">🔗</span><div><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode or decode URLs and query parameters with breakdown.</div></div></a>
+    <a class="related-card" href="timestamp-converter.html"><span class="rc-icon">⏱</span><div><div class="rc-name">Timestamp Converter</div><div class="rc-desc">Unix epoch ↔ human date. UTC, ISO 8601, local timezone.</div></div></a>
+  </div>
+  <a href="developer-tools/index.html" class="section-view-all" style="display:inline-block;margin-top:.75rem">Browse all 27+ Developer tools →</a>
+</section>
+<!-- RELATED-TOOLS:END -->
 </main>
 <footer class="site-footer">
   <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
@@ -311,7 +327,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=20"></script>
+<script src="app.js?v=20" defer></script>
 <script>
 if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
   window.addEventListener('load', () => {

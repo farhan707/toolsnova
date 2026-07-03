@@ -1,3 +1,4 @@
+/* ToolsNova app.js v20 — unified production script */
 /* ════════════════════════════════════════════
    THEME SYSTEM — Light / Dark
    ════════════════════════════════════════════ */
@@ -898,6 +899,65 @@ document.addEventListener('click', e => {
   }
 });
 
+/* tnNavToggle: mobile hamburger menu for the V2 nav (homepage, category,
+   and collection pages use #v2-mobile-nav / #v2-hamburger, distinct from
+   the .site-nav structure navToggle() above handles on tool pages). Was
+   wired via onclick on all 18 of these pages but never defined — every
+   hamburger click threw ReferenceError: tnNavToggle is not defined. */
+function tnNavToggle() {
+  const nav = document.getElementById('v2-mobile-nav');
+  if (nav) nav.classList.toggle('open');
+}
+// Close V2 mobile nav on outside click
+document.addEventListener('click', e => {
+  const nav = document.getElementById('v2-mobile-nav');
+  const btn = document.getElementById('v2-hamburger');
+  if (nav && nav.classList.contains('open') && btn &&
+      !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
+
+/* ════════════════════════════════════
+   NEWSLETTER FORM (homepage)
+   ════════════════════════════════════ */
+function initNewsletterForm() {
+  const form  = document.getElementById('v2-newsletter-form');
+  if (!form) return;
+  const input = document.getElementById('v2-newsletter-email');
+  const msg   = document.getElementById('v2-newsletter-msg');
+  const btn   = form.querySelector('.newsletter-btn');
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function showMsg(text, ok) {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.className = 'newsletter-msg ' + (ok ? 'ok' : 'err');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // no page refresh
+    const email = (input && input.value || '').trim();
+    if (!email) {
+      showMsg('Please enter your email address.', false);
+      input && input.focus();
+      return;
+    }
+    if (!EMAIL_RE.test(email)) {
+      showMsg('Please enter a valid email address.', false);
+      input && input.focus();
+      return;
+    }
+    showMsg('✓ Subscribed! Check your inbox to confirm.', true);
+    if (btn) { btn.disabled = true; btn.textContent = 'Subscribed ✓'; }
+    if (input) input.value = '';
+    setTimeout(function () {
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+    }, 4000);
+  });
+}
+document.addEventListener('DOMContentLoaded', initNewsletterForm);
+
 /* ════════════════════════════════════
    FAQ ACCORDION
    ════════════════════════════════════ */
@@ -908,6 +968,27 @@ function faqToggle(el) {
   // close all in this section
   item.closest('.faq-section')?.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
+}
+
+/* tnFaqToggle: the aria-expanded/hidden-answer accordion pattern used on the
+   homepage, category pages, and collection pages (button.faq-q[aria-expanded]
+   + sibling div.faq-a[hidden], both inside .faq-item > .faq-list). Distinct
+   from faqToggle() above, which drives the older .faq-item.open class style
+   used on individual tool pages. Scoped to close only the other items in the
+   same .faq-list so multiple FAQ sections on one page don't interfere. */
+function tnFaqToggle(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+  const list = btn.closest('.faq-list') || document;
+  list.querySelectorAll('.faq-q[aria-expanded]').forEach(b => {
+    b.setAttribute('aria-expanded', 'false');
+    const a = b.nextElementSibling;
+    if (a) a.hidden = true;
+  });
+  if (!isOpen) {
+    btn.setAttribute('aria-expanded', 'true');
+    if (answer) answer.hidden = false;
+  }
 }
 
 /* ════════════════════════════════════

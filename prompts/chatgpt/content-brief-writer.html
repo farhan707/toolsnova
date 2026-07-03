@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Content Brief Generator Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free seo content brief generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/content-brief-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT SEO Content Brief Generator Prompt">
+<meta property="og:description" content="Free seo content brief generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/content-brief-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT SEO Content Brief Generator Prompt">
+<meta name="twitter:description" content="Free seo content brief generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "SEO", "item": "https://toolsnova.net/prompts/seo/index.html"}, {"@type": "ListItem", "position": 5, "name": "SEO Content Brief Generator", "item": "https://toolsnova.net/prompts/chatgpt/content-brief-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT SEO Content Brief Generator Prompt", "description": "Free seo content brief generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/chatgpt/content-brief-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "content brief, seo, editorial, writing"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I create a brief for every article?", "acceptedAnswer": {"@type": "Answer", "text": "For SEO articles, yes. Briefs dramatically improve first-draft quality, reduce revision rounds, and ensure strategic consistency. The 15 minutes spent on a brief saves 2+ hours of editing."}}, {"@type": "Question", "name": "Does this work with freelance writers?", "acceptedAnswer": {"@type": "Answer", "text": "This is ideal for freelance writers. The structured output gives them everything they need without requiring briefing calls. Attach the competing URL and they're ready to go."}}, {"@type": "Question", "name": "Can I use AI to research competing URLs?", "acceptedAnswer": {"@type": "Answer", "text": "ChatGPT with web browsing or Gemini can summarise competing content if you paste the URL. For systematic gap analysis, a tool like Ahrefs Content Gap is faster at scale."}}, {"@type": "Question", "name": "How detailed should the brief be?", "acceptedAnswer": {"@type": "Answer", "text": "The brief should be detailed enough that two different writers would produce similar articles. If the outcome would vary wildly between writers, the brief needs more specificity."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/seo/index.html">🔍 SEO</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>SEO Content Brief Generator</span>
+    </div>
+    <h1>ChatGPT SEO Content Brief Generator Prompt</h1>
+    <p>You are an SEO content strategist who creates briefs that result in page-1 rankings 80% of the time.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🔍 SEO</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-seo">🔍 SEO</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">content brief</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">seo</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">editorial</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">writing</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/content-brief-writer.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/content-brief-writer.html">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>target keyword</label><input class="var-input" type="text" placeholder="AI tools for marketing" oninput="updatePrompt()" data-var="target keyword"></div>
+<div class="var-group"><label>top competing URL</label><input class="var-input" type="text" placeholder="[example top competing URL]" oninput="updatePrompt()" data-var="top competing URL"></div>
+<div class="var-group"><label>word count target</label><input class="var-input" type="text" placeholder="[example word count target]" oninput="updatePrompt()" data-var="word count target"></div>
+<div class="var-group"><label>target audience</label><input class="var-input" type="text" placeholder="[example target audience]" oninput="updatePrompt()" data-var="target audience"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an SEO content strategist who creates briefs that result in page-1 rankings 80% of the time.<br><br>Target keyword: <span class="var-hl">[target keyword]</span><br>Top competing URL: <span class="var-hl">[top competing URL]</span><br>Target word count: <span class="var-hl">[word count target]</span><br>Audience: <span class="var-hl">[target audience]</span><br><br>Task: Create a complete SEO content brief for a writer:<br><br>ARTICLE OVERVIEW:<br>- Working title<br>- Target keyword (primary)<br>- LSI keywords (10–15 semantic keywords to weave in)<br>- Word count target<br>- Target search intent<br>- Ideal reader persona<br><br>SERP ANALYSIS:<br>- Content type dominating the SERP<br>- Content gaps vs. top competitors<br>- Featured snippet format (if applicable)<br><br>ARTICLE OUTLINE:<br>H1 | H2 sections with sub-points | H3 sub-sections | FAQ section (5 questions) | Conclusion<br><br>ON-PAGE SEO CHECKLIST:<br>- Keyword placement requirements<br>- Image alt text suggestions<br>- Internal links to include<br>- External authority sites to reference<br><br>WRITER NOTES: Tone, style, things to avoid, unique angles required</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">CONTENT BRIEF: 'Best AI Tools for Marketing 2026'<br><br>TARGET KEYWORD: best AI tools for marketing<br>SECONDARY KEYWORDS: AI marketing software, AI content tools, artificial intelligence marketing, AI social media tools, marketing automation AI<br>LSI KEYWORDS: ChatGPT for marketing, Jasper AI, Midjourney marketing, AI ad copy, predictive analytics...<br><br>WORD COUNT: 2,800–3,200 words<br>SEARCH INTENT: Commercial investigation (user comparing options before deciding)<br>READER PERSONA: Marketing manager at a SMB, budget-conscious, 3+ years experience, already using some AI tools<br><br>SERP ANALYSIS:<br>- Top 5 results are all listicles (8–15 tools)<br>- Gap: None cover AI tools specifically for B2B vs B2C marketing<br>- Gap: No one includes real ROI data or case studies<br>- Featured snippet opportunity: 'What is the best AI tool for marketing' — definition-style answer<br><br>OUTLINE:<br>H1: 15 Best AI Tools for Marketing in 2026 (Tested &amp; Ranked)<br>H2: How We Selected These Tools [criteria: features/price/ease of use/results]<br>H2: Best AI Tools for Content Marketing [3–4 specific tools with mini-reviews]<br>...</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Brief the writer on what NOT to write about as much as what to include — constraints improve quality</div>
+<div class="tip-card">Include 3 real examples of the content type you want — show, don't just tell</div>
+<div class="tip-card">Specify the exact People Also Ask questions to answer — these are the featured snippet opportunities</div>
+<div class="tip-card">Share the top 3 competing URLs and explicitly note what gaps to fill</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Generic briefs that don't specify the unique angle — the writer will produce generic content</div>
+<div class="mistake-card">Setting word count without explaining why — give the rationale so writers don't pad</div>
+<div class="mistake-card">Leaving out internal linking instructions — most writers won't add these without prompting</div>
+<div class="mistake-card">Not including the target audience persona — tone and depth can vary wildly without this</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I create a brief for every article?</div><div class="faq-a">For SEO articles, yes. Briefs dramatically improve first-draft quality, reduce revision rounds, and ensure strategic consistency. The 15 minutes spent on a brief saves 2+ hours of editing.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does this work with freelance writers?</div><div class="faq-a">This is ideal for freelance writers. The structured output gives them everything they need without requiring briefing calls. Attach the competing URL and they're ready to go.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I use AI to research competing URLs?</div><div class="faq-a">ChatGPT with web browsing or Gemini can summarise competing content if you paste the URL. For systematic gap analysis, a tool like Ahrefs Content Gap is faster at scale.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How detailed should the brief be?</div><div class="faq-a">The brief should be detailed enough that two different writers would produce similar articles. If the outcome would vary wildly between writers, the brief needs more specificity.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/seo-article-writer.html"><div class="rc-title">SEO Article Writer</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/keyword-research-cluster.html"><div class="rc-title">Keyword Research &amp; Cluster Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/topical-authority-map.html"><div class="rc-title">Topical Authority Map Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/meta-tags-generator.html"><div class="rc-title">Meta Tags Generator</div><div class="rc-cat">🔍 SEO</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an SEO content strategist who creates briefs that result in page-1 rankings 80% of the time.\n\nTarget keyword: [target keyword]\nTop competing URL: [top competing URL]\nTarget word count: [word count target]\nAudience: [target audience]\n\nTask: Create a complete SEO content brief for a writer:\n\nARTICLE OVERVIEW:\n- Working title\n- Target keyword (primary)\n- LSI keywords (10–15 semantic keywords to weave in)\n- Word count target\n- Target search intent\n- Ideal reader persona\n\nSERP ANALYSIS:\n- Content type dominating the SERP\n- Content gaps vs. top competitors\n- Featured snippet format (if applicable)\n\nARTICLE OUTLINE:\nH1 | H2 sections with sub-points | H3 sub-sections | FAQ section (5 questions) | Conclusion\n\nON-PAGE SEO CHECKLIST:\n- Keyword placement requirements\n- Image alt text suggestions\n- Internal links to include\n- External authority sites to reference\n\nWRITER NOTES: Tone, style, things to avoid, unique angles required";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'content-brief-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

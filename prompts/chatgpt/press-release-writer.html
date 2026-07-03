@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press Release Writer Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free press release writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/press-release-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Press Release Writer Prompt">
+<meta property="og:description" content="Free press release writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/press-release-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Press Release Writer Prompt">
+<meta name="twitter:description" content="Free press release writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Writing", "item": "https://toolsnova.net/prompts/writing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Press Release Writer", "item": "https://toolsnova.net/prompts/chatgpt/press-release-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Press Release Writer Prompt", "description": "Free press release writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/chatgpt/press-release-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "press release, PR, media, journalism, announcements"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do press releases still work in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but differently. Traditional wire distribution (PRNewswire, BusinessWire) is less effective for small companies. Direct pitching to specific journalists at target publications, with a press release as supporting material, works much better."}}, {"@type": "Question", "name": "How long should a press release be?", "acceptedAnswer": {"@type": "Answer", "text": "One page: 400–500 words maximum. Journalists decide in 10 seconds whether to read further. If you can't explain the news in one page, the news isn't clear enough yet."}}, {"@type": "Question", "name": "Should I send a press release or a pitch email?", "acceptedAnswer": {"@type": "Answer", "text": "A pitch email (2–3 sentences, personalised) gets more opens than a press release blast. Attach or link to the press release as background. Lead with the pitch; the press release is the detail."}}, {"@type": "Question", "name": "What's the difference between AP Style and regular writing?", "acceptedAnswer": {"@type": "Answer", "text": "AP Style: states abbreviated (N.Y., not New York), no serial Oxford comma, numbers below 10 spelled out, dates without -st/-th/-nd (June 28, not June 28th). Use it for press releases targeting US media."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/writing/index.html">✍️ Writing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Press Release Writer</span>
+    </div>
+    <h1>ChatGPT Press Release Writer Prompt</h1>
+    <p>You are a senior PR professional who has placed stories in Forbes, TechCrunch, and major national press.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">✍️ Writing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-writing">✍️ Writing</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">press release</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">PR</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">media</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">journalism</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/press-release-writer.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/press-release-writer.html">Claude</a><a class="model-link" href="/prompts/gemini/press-release-writer.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>announcement</label><input class="var-input" type="text" placeholder="[example announcement]" oninput="updatePrompt()" data-var="announcement"></div>
+<div class="var-group"><label>company name</label><input class="var-input" type="text" placeholder="ToolsNova" oninput="updatePrompt()" data-var="company name"></div>
+<div class="var-group"><label>key spokesperson</label><input class="var-input" type="text" placeholder="[example key spokesperson]" oninput="updatePrompt()" data-var="key spokesperson"></div>
+<div class="var-group"><label>target publication</label><input class="var-input" type="text" placeholder="[example target publication]" oninput="updatePrompt()" data-var="target publication"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior PR professional who has placed stories in Forbes, TechCrunch, and major national press.<br><br>Announcement: <span class="var-hl">[announcement]</span><br>Company: <span class="var-hl">[company name]</span><br>Spokesperson: <span class="var-hl">[key spokesperson — name and title]</span><br>Target publication: <span class="var-hl">[target publication]</span><br><br>Task: Write a complete press release:<br><br>FOR IMMEDIATE RELEASE<br><br>HEADLINE (max 80 chars): Newsy, verb-led, answers 'what happened'<br>SUBHEADLINE (optional): Adds context or the 'why it matters'<br><br>DATELINE: <span class="var-hl">[City, Date]</span><br><br>LEAD PARAGRAPH: Who, what, when, where, why — all in 40 words or less<br><br>BODY (2–3 paragraphs):<br>- Business context and significance<br>- Key details, data, or feature specifics<br>- Broader market context (why this matters now)<br><br>QUOTE 1: <span class="var-hl">[Spokesperson]</span> — strategic perspective<br>QUOTE 2 (optional): Customer, partner, or analyst<br><br>BOILERPLATE: Company description (2–3 sentences, fact-based)<br><br>MEDIA CONTACT: Template format<br><br>###<br><br>Format: Standard AP Style. No exclamation points. Fact-based, not promotional.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">FOR IMMEDIATE RELEASE<br><br>ToolsNova Launches Free AI Prompt Library With 200+ Expert Prompts for ChatGPT, Claude, and Gemini<br>Free resource targets professionals seeking immediate productivity gains from AI tools without prompt-engineering expertise<br><br>LONDON, 28 June 2026 — ToolsNova, the browser-based productivity tool platform, today launched the AI Prompt Library, a free resource offering more than 200 professionally crafted prompts for the five most widely used AI models, including ChatGPT, Claude, Gemini, Grok, and DeepSeek.<br><br>The library covers 12 professional categories — including SEO, marketing, coding, trading, and career development — and features dynamic variable fields that allow users to customise prompts without technical knowledge. Each prompt page includes example outputs, professional tips, and common mistakes, sourced from practitioners across each vertical.<br><br>'Most people are getting a fraction of what AI tools can actually do, not because the tools are limited, but because they don't know how to instruct them,' said [Spokesperson], founder of ToolsNova. 'The AI Prompt Library removes that barrier entirely — users can copy a professional-grade prompt, fill in their details, and have output quality that would previously have required hours of trial and error.'<br><br>The launch addresses a growing gap in the AI productivity space: while AI model adoption has accelerated sharply, consistent, high-quality output remains difficult without expertise in prompt engineering.<br><br>About ToolsNova<br>ToolsNova (toolsnova.net) is a free browser-based utility platform offering 155+ tools for professionals across AI, trading, finance, productivity, and developer use cases. All tools are free with no account required.<br><br>Media Contact:<br>[Name] | [Title] | [email] | [phone]</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Lead with the news, not the context — journalists delete anything before the news</div>
+<div class="tip-card">Write quotes that sound like a person said them, not a legal department approved them</div>
+<div class="tip-card">Target your distribution: a tech announcement sent to fashion journalists is noise</div>
+<div class="tip-card">Include one compelling data point in the lead paragraph — it's what journalists use to pitch their editors</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Using promotional language ('revolutionary', 'cutting-edge', 'world-class') — journalists remove these words reflexively</div>
+<div class="mistake-card">Burying the actual news in paragraph 3 — journalists stop reading after paragraph 1 if it's not clear what happened</div>
+<div class="mistake-card">Forgetting the boilerplate — it's what journalists use to describe your company without calling you</div>
+<div class="mistake-card">Sending without a follow-up plan — 90% of press releases are ignored on first contact; a brief follow-up email the next day is standard</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Do press releases still work in 2026?</div><div class="faq-a">Yes, but differently. Traditional wire distribution (PRNewswire, BusinessWire) is less effective for small companies. Direct pitching to specific journalists at target publications, with a press release as supporting material, works much better.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should a press release be?</div><div class="faq-a">One page: 400–500 words maximum. Journalists decide in 10 seconds whether to read further. If you can't explain the news in one page, the news isn't clear enough yet.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I send a press release or a pitch email?</div><div class="faq-a">A pitch email (2–3 sentences, personalised) gets more opens than a press release blast. Attach or link to the press release as background. Lead with the pitch; the press release is the detail.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the difference between AP Style and regular writing?</div><div class="faq-a">AP Style: states abbreviated (N.Y., not New York), no serial Oxford comma, numbers below 10 spelled out, dates without -st/-th/-nd (June 28, not June 28th). Use it for press releases targeting US media.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/professional-email-writer.html"><div class="rc-title">Professional Email Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/linkedin-post-writer.html"><div class="rc-title">LinkedIn Post Writer</div><div class="rc-cat">📱 Social Media</div></a><a class="related-card" href="/prompts/chatgpt/brand-story-writer.html"><div class="rc-title">Brand Story Writer</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/content-brief-writer.html"><div class="rc-title">SEO Content Brief Generator</div><div class="rc-cat">🔍 SEO</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior PR professional who has placed stories in Forbes, TechCrunch, and major national press.\n\nAnnouncement: [announcement]\nCompany: [company name]\nSpokesperson: [key spokesperson — name and title]\nTarget publication: [target publication]\n\nTask: Write a complete press release:\n\nFOR IMMEDIATE RELEASE\n\nHEADLINE (max 80 chars): Newsy, verb-led, answers 'what happened'\nSUBHEADLINE (optional): Adds context or the 'why it matters'\n\nDATELINE: [City, Date]\n\nLEAD PARAGRAPH: Who, what, when, where, why — all in 40 words or less\n\nBODY (2–3 paragraphs):\n- Business context and significance\n- Key details, data, or feature specifics\n- Broader market context (why this matters now)\n\nQUOTE 1: [Spokesperson] — strategic perspective\nQUOTE 2 (optional): Customer, partner, or analyst\n\nBOILERPLATE: Company description (2–3 sentences, fact-based)\n\nMEDIA CONTACT: Template format\n\n###\n\nFormat: Standard AP Style. No exclamation points. Fact-based, not promotional.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'press-release-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

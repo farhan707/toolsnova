@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════
+   TOOLSNOVA — SEARCH
+   Hero search bar, autocomplete, popular tags
+   ═══════════════════════════════════════════════════ */
+
+/* ── Hero search wrapper ── */
+.hero-search-wrap {
+  position: relative;
+  max-width: 640px;
+  margin-top: 1.5rem;
+}
+.hero-search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-search {
+  width: 100%;
+  background: var(--card);
+  border: 1.5px solid var(--border2);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.95rem 7rem 0.95rem 3rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-card);
+}
+.hero-search::placeholder { color: var(--text3); }
+.hero-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.hero-search-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: #0c0c0e;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+.hero-search-btn:hover { opacity: 0.88; transform: translateY(-50%) scale(1.02); }
+
+/* ── Autocomplete dropdown ── */
+.hero-search-results {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover);
+  z-index: 9999;
+  overflow: hidden;
+  max-height: 360px;
+  overflow-y: auto;
+}
+.hero-search-results.open { display: block; }
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.search-result-item:hover,
+.search-result-item.active {
+  background: var(--accent-dim);
+}
+.result-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+.search-result-info { flex: 1; min-width: 0; }
+.search-result-name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+.search-result-cat  { font-size: 0.7rem;  color: var(--text3); font-family: var(--mono); }
+.search-result-go   { font-size: 0.72rem; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+
+/* ── Popular search tags (hero) ── */
+.hero-popular {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+.popular-tag {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  border-radius: 99px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.popular-tag:hover {
+  background: var(--accent-dim);
+  border-color: rgba(127, 255, 111, 0.4);
+  color: var(--accent);
+}
+
+/* ── SEO search pills section ── */
+.search-tags-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.search-tag-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text2);
+  text-decoration: none;
+  transition: all 0.15s;
+  font-family: var(--mono);
+  box-shadow: var(--shadow-card);
+}
+.search-tag-pill:hover {
+  background: var(--accent-dim);
+  border-color: rgba(127, 255, 111, 0.4);
+  color: var(--accent);
+}
+
+/* ── Light mode ── */
+[data-theme="light"] .hero-search-results {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}

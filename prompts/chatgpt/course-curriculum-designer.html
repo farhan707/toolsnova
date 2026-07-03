@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Course Curriculum Designer Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to design a complete online course curriculum. Module structure, lesson plans, assignments, and learning outcomes — professional course design in minutes.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/course-curriculum-designer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Online Course Curriculum Designer Prompt">
+<meta property="og:description" content="Free AI prompt to design a complete online course curriculum. Module structure, lesson plans, assignments, and learning outcomes — professional course design in minutes.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/course-curriculum-designer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Online Course Curriculum Designer Prompt">
+<meta name="twitter:description" content="Free AI prompt to design a complete online course curriculum. Module structure, lesson plans, assignments, and learning outcomes — professional course design in minutes.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Education", "item": "https://toolsnova.net/prompts/education/index.html"}, {"@type": "ListItem", "position": 5, "name": "Online Course Curriculum Designer", "item": "https://toolsnova.net/prompts/chatgpt/course-curriculum-designer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Online Course Curriculum Designer Prompt", "description": "Free AI prompt to design a complete online course curriculum. Module structure, lesson plans, assignments, and learning outcomes — professional course design in minutes.", "url": "https://toolsnova.net/prompts/chatgpt/course-curriculum-designer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "online course, curriculum, elearning, teaching, course design"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long should an online course be?", "acceptedAnswer": {"@type": "Answer", "text": "Long enough to achieve the transformation promise, short enough to be completed. For Udemy: 2–5 hours is the sweet spot for most topics. For premium courses sold directly: 10–30 hours is common. Completion rate drops significantly above 5 hours on most platforms."}}, {"@type": "Question", "name": "Should I record audio-only or video?", "acceptedAnswer": {"@type": "Answer", "text": "For screen-based content (software tutorials, coding, design): screen recording with voiceover. For concept-heavy content: talking head video + slides. For pure theory: slides + voiceover can work. Audio quality matters more than video quality — invest in a good microphone first."}}, {"@type": "Question", "name": "Which AI model is best for course design?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is strongest for curriculum design — it maintains pedagogical coherence across modules, writes well-structured learning outcomes at appropriate Bloom's levels, and produces realistic time estimates. Gemini is useful for researching what competing courses cover."}}, {"@type": "Question", "name": "Should I launch with all content or in batches?", "acceptedAnswer": {"@type": "Answer", "text": "Launch with complete content for a premium course (students expect it). Launch with a 'founding member' batch model if you're validating demand first. Udemy requires minimum content before publishing. Either way, outline the full curriculum before recording to ensure coherence."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/education/index.html">📚 Education</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Online Course Curriculum Designer</span>
+    </div>
+    <h1>ChatGPT Online Course Curriculum Designer Prompt</h1>
+    <p>Design a complete online course curriculum with modules, lessons, assignments, and learning outcomes.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📚 Education</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-education">📚 Education</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">online course</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">curriculum</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">elearning</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">teaching</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/course-curriculum-designer.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/course-curriculum-designer.html">Claude</a><a class="model-link" href="/prompts/gemini/course-curriculum-designer.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>course topic</label><input class="var-input" type="text" placeholder="AI Prompt Engineering for Content Marketers" oninput="updatePrompt()" data-var="course topic"></div>
+<div class="var-group"><label>target learner</label><input class="var-input" type="text" placeholder="content marketers with 2+ years experience who use ChatGPT but get inconsistent results" oninput="updatePrompt()" data-var="target learner"></div>
+<div class="var-group"><label>platform</label><input class="var-input" type="text" placeholder="Udemy" oninput="updatePrompt()" data-var="platform"></div>
+<div class="var-group"><label>course length</label><input class="var-input" type="text" placeholder="4 hours" oninput="updatePrompt()" data-var="course length"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an instructional designer with 15+ years building online courses for platforms like Udemy, Coursera, and custom LMS.<br><br>Course topic: <span class="var-hl">[course topic]</span><br>Target learner: <span class="var-hl">[target learner — experience level, job role, goal]</span><br>Platform: <span class="var-hl">[platform — Udemy/Teachable/Kajabi/custom LMS/YouTube]</span><br>Course length: <span class="var-hl">[course length — 2 hours/4 hours/8 hours/10+ hours]</span><br><br>Task: Design a complete course curriculum:<br><br>1. COURSE OVERVIEW:<br>   - Transformation promise: what the learner can do after that they couldn't before<br>   - Prerequisites<br>   - Unique angle vs. other courses on this topic<br><br>2. LEARNING OUTCOMES (5–7):<br>   'By the end of this course, learners will be able to <span class="var-hl">[verb]</span>...'<br>   Use Bloom's taxonomy verbs at appropriate levels<br><br>3. MODULE STRUCTURE (5–8 modules):<br>   For each module:<br>   - Module title<br>   - Module learning outcome<br>   - 3–5 lessons with titles<br>   - Assignment or exercise<br>   - Estimated duration<br><br>4. LESSON TYPES MIX:<br>   Recommend the ratio of: video lecture / screen recording / quiz / exercise / case study<br><br>5. ASSESSMENTS:<br>   - Formative: 1 quiz per module<br>   - Summative: final project brief<br><br>6. LAUNCH PACKAGE:<br>   - Course title (7 options for A/B testing)<br>   - Subtitle (keyword-rich)<br>   - Who this is for (3 bullet points)<br>   - What you'll learn (8 bullet points)</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">COURSE: AI Prompt Engineering for Content Marketers<br><br>TRANSFORMATION PROMISE:<br>'Before this course, you use AI and cross your fingers. After this course, you know exactly which prompt structure to use for every content task — and you get professional-quality output the first time, consistently.'<br><br>LEARNING OUTCOMES:<br>1. Design (Bloom's: Create) multi-component prompts using the RCTFE framework<br>2. Select (Bloom's: Evaluate) the appropriate AI model for different content tasks<br>3. Build (Bloom's: Create) a personal prompt library of 20+ reusable templates<br>4. Debug (Bloom's: Analyse) prompts that produce poor output by identifying the missing component<br>5. Produce (Bloom's: Create) SEO-optimised articles, email campaigns, and ad copy using AI<br><br>MODULE STRUCTURE:<br><br>MODULE 1: Why Your AI Prompts Aren't Working (and the fix) | 30 min<br>Learning outcome: Diagnose why a prompt produces poor output<br>Lessons:<br>  1.1 The anatomy of a poor prompt (10 min video)<br>  1.2 The RCTFE framework — your new default (12 min video + worksheet)<br>  1.3 Before/after: rewriting 5 real prompts live (8 min screen recording)<br>Assignment: Rewrite 3 prompts from your own content workflow using RCTFE<br><br>MODULE 2: Writing AI Prompts for Blog and SEO Content | 50 min<br>...<br><br>COURSE TITLE OPTIONS (for Udemy A/B testing):<br>1. 'AI Prompt Engineering for Content Marketers: Get Pro Output Every Time'<br>2. 'The Content Marketer's Guide to AI Prompts That Actually Work'<br>3. 'Master AI Prompts for Marketing: ChatGPT, Claude &amp; Gemini'<br>4. 'Stop Getting Mediocre AI Content: A Prompt Engineering Course for Marketers'</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">The transformation promise is more important than the course outline — people buy outcomes, not modules</div>
+<div class="tip-card">Lesson length sweet spot for Udemy/online platforms: 5–12 minutes per video. Under 5 minutes feels thin; over 15 minutes loses attention</div>
+<div class="tip-card">Every module needs an assignment — passive watching doesn't create skill; practice does</div>
+<div class="tip-card">Udemy's algorithm rewards completion rate — design for completion by keeping early modules shorter and more immediately valuable</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Covering too much — a focused course that transforms students in one area beats a comprehensive course that overwhelms them</div>
+<div class="mistake-card">All lectures, no exercises — skill development requires practice; build exercises into every module</div>
+<div class="mistake-card">Not defining prerequisites clearly — students who start without the right background leave bad reviews</div>
+<div class="mistake-card">Course title optimised for search but not for the student — 'Advanced Neural Network Architectures' misses the customer who searches 'how to build AI'</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should an online course be?</div><div class="faq-a">Long enough to achieve the transformation promise, short enough to be completed. For Udemy: 2–5 hours is the sweet spot for most topics. For premium courses sold directly: 10–30 hours is common. Completion rate drops significantly above 5 hours on most platforms.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I record audio-only or video?</div><div class="faq-a">For screen-based content (software tutorials, coding, design): screen recording with voiceover. For concept-heavy content: talking head video + slides. For pure theory: slides + voiceover can work. Audio quality matters more than video quality — invest in a good microphone first.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model is best for course design?</div><div class="faq-a">Claude is strongest for curriculum design — it maintains pedagogical coherence across modules, writes well-structured learning outcomes at appropriate Bloom's levels, and produces realistic time estimates. Gemini is useful for researching what competing courses cover.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I launch with all content or in batches?</div><div class="faq-a">Launch with complete content for a premium course (students expect it). Launch with a 'founding member' batch model if you're validating demand first. Udemy requires minimum content before publishing. Either way, outline the full curriculum before recording to ensure coherence.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/lesson-plan-creator.html"><div class="rc-title">Lesson Plan Creator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/study-plan-creator.html"><div class="rc-title">Personalised Study Plan Creator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/quiz-assessment-creator.html"><div class="rc-title">Quiz &amp; Assessment Creator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/webinar-script-writer.html"><div class="rc-title">Webinar &amp; Online Event Script</div><div class="rc-cat">✍️ Writing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an instructional designer with 15+ years building online courses for platforms like Udemy, Coursera, and custom LMS.\n\nCourse topic: [course topic]\nTarget learner: [target learner — experience level, job role, goal]\nPlatform: [platform — Udemy/Teachable/Kajabi/custom LMS/YouTube]\nCourse length: [course length — 2 hours/4 hours/8 hours/10+ hours]\n\nTask: Design a complete course curriculum:\n\n1. COURSE OVERVIEW:\n   - Transformation promise: what the learner can do after that they couldn't before\n   - Prerequisites\n   - Unique angle vs. other courses on this topic\n\n2. LEARNING OUTCOMES (5–7):\n   'By the end of this course, learners will be able to [verb]...'\n   Use Bloom's taxonomy verbs at appropriate levels\n\n3. MODULE STRUCTURE (5–8 modules):\n   For each module:\n   - Module title\n   - Module learning outcome\n   - 3–5 lessons with titles\n   - Assignment or exercise\n   - Estimated duration\n\n4. LESSON TYPES MIX:\n   Recommend the ratio of: video lecture / screen recording / quiz / exercise / case study\n\n5. ASSESSMENTS:\n   - Formative: 1 quiz per module\n   - Summative: final project brief\n\n6. LAUNCH PACKAGE:\n   - Course title (7 options for A/B testing)\n   - Subtitle (keyword-rich)\n   - Who this is for (3 bullet points)\n   - What you'll learn (8 bullet points)";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'course-curriculum-designer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

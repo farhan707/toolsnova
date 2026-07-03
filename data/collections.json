@@ -1,0 +1,37 @@
+[
+  {
+    "id": "forex-trading",
+    "name": "Forex Trading Pack",
+    "icon": "📈",
+    "desc": "Everything a forex trader needs",
+    "tools": ["lot-size-calculator.html","risk-reward-calculator.html","pip-value-calculator.html","stop-loss-take-profit-calculator.html","drawdown-calculator.html","forex-profit-calculator.html"]
+  },
+  {
+    "id": "developer-starter",
+    "name": "Developer Starter Pack",
+    "icon": "💻",
+    "desc": "Essential tools every developer uses daily",
+    "tools": ["json-formatter.html","base64-encoder.html","regex-tester.html","hash-generator.html","password-generator.html","jwt-decoder.html"]
+  },
+  {
+    "id": "ai-power",
+    "name": "AI Power Pack",
+    "icon": "🤖",
+    "desc": "Get more out of every AI model",
+    "tools": ["ai-prompt-library.html","ai-prompt-studio.html","ai-token-counter.html","ai-api-cost-calculator.html","midjourney-prompt-builder.html"]
+  },
+  {
+    "id": "student",
+    "name": "Student Pack",
+    "icon": "🎓",
+    "desc": "Tools for assignments and exams",
+    "tools": ["gpa-calculator.html","grade-calculator.html","scientific-calculator.html","fraction-calculator.html","percentage-error-calculator.html","word-counter.html"]
+  },
+  {
+    "id": "finance-home",
+    "name": "Finance & Home Pack",
+    "icon": "🏠",
+    "desc": "Plan your finances and home purchase",
+    "tools": ["mortgage-calculator.html","emi-calculator.html","loan-emi-comparison.html","retirement-calculator.html","roi-calculator.html","net-worth-calculator.html"]
+  }
+]

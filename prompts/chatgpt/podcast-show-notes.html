@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podcast Show Notes &amp; Episode Summary Prompt for Claude | Free | T</title>
+<meta name="description" content="Free podcast show notes &amp; episode summary prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup require">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/podcast-show-notes.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Podcast Show Notes &amp; Episode Summary Prompt">
+<meta property="og:description" content="Free podcast show notes &amp; episode summary prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup require">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/podcast-show-notes.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Podcast Show Notes &amp; Episode Summary Prompt">
+<meta name="twitter:description" content="Free podcast show notes &amp; episode summary prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup require">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Writing", "item": "https://toolsnova.net/prompts/writing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Podcast Show Notes & Episode Summary", "item": "https://toolsnova.net/prompts/chatgpt/podcast-show-notes.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Podcast Show Notes & Episode Summary Prompt", "description": "Free podcast show notes & episode summary prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup require", "url": "https://toolsnova.net/prompts/chatgpt/podcast-show-notes.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "podcast, show notes, audio content, seo, content repurposing"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long should podcast show notes be?", "acceptedAnswer": {"@type": "Answer", "text": "For SEO value: 300–600 words minimum. For podcast apps: the description section (150–200 words) is what shows in the app. Write both: short for the app, long for the web page."}}, {"@type": "Question", "name": "Can I use AI to write show notes from a transcript?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — paste the transcript and ask Claude or ChatGPT to extract key insights, generate chapter titles, and identify pull quotes. Always fact-check against the actual episode. AI-from-transcript notes are faster and often better than writing from memory."}}, {"@type": "Question", "name": "Should I publish full transcripts?", "acceptedAnswer": {"@type": "Answer", "text": "Full transcripts significantly improve SEO (every word spoken becomes indexable) and accessibility. AI transcription tools (Whisper, Otter.ai) make this achievable. For most podcasts, the SEO benefit alone justifies the effort."}}, {"@type": "Question", "name": "Which AI model is best for show notes?", "acceptedAnswer": {"@type": "Answer", "text": "Claude maintains consistent structure and writes engaging descriptions without overpromising. Provide the episode transcript or detailed notes for best results — the more input, the better the output."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/writing/index.html">✍️ Writing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Podcast Show Notes &amp; Episode Summary</span>
+    </div>
+    <h1>ChatGPT Podcast Show Notes &amp; Episode Summary Prompt</h1>
+    <p>You are a podcast producer who writes show notes that rank in Google and convert listeners to subscribers.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">✍️ Writing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-writing">✍️ Writing</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">podcast</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">show notes</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">audio content</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">seo</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/podcast-show-notes.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/podcast-show-notes.html">Claude</a><a class="model-link" href="/prompts/gemini/podcast-show-notes.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>episode topic</label><input class="var-input" type="text" placeholder="[example episode topic]" oninput="updatePrompt()" data-var="episode topic"></div>
+<div class="var-group"><label>guest name and role</label><input class="var-input" type="text" placeholder="[example guest name and role]" oninput="updatePrompt()" data-var="guest name and role"></div>
+<div class="var-group"><label>key insights from episode</label><input class="var-input" type="text" placeholder="[example key insights from episode]" oninput="updatePrompt()" data-var="key insights from episode"></div>
+<div class="var-group"><label>episode length</label><input class="var-input" type="text" placeholder="[example episode length]" oninput="updatePrompt()" data-var="episode length"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a podcast producer who writes show notes that rank in Google and convert listeners to subscribers.<br><br>Topic: <span class="var-hl">[episode topic]</span><br>Guest: <span class="var-hl">[guest name and role]</span><br>Key insights: <span class="var-hl">[key insights from episode — bullet list]</span><br>Length: <span class="var-hl">[episode length]</span> minutes<br><br>Task: Write complete show notes:<br><br>1. SEO EPISODE TITLE (under 60 chars, keyword-led)<br>2. EPISODE DESCRIPTION (150 words): Guest hook → core question → 3 specific takeaways → CTA to listen<br>3. KEY TAKEAWAYS (5 bullet points — each standalone and share-worthy)<br>4. CHAPTER MARKERS: Approximate timestamps for each section<br>5. RESOURCES MENTIONED: Placeholder format with link slots<br>6. PULL QUOTE: One share-worthy quote for social media<br>7. SEO TAGS: 10 relevant keywords for discoverability<br>8. SOCIAL POST: Twitter/LinkedIn version promoting the episode</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">EPISODE: Newsletter growth without ads | GUEST: Sarah Chen, newsletter operator<br><br>SEO TITLE: How Sarah Chen Built 52K Newsletter Subscribers Without Ads<br><br>DESCRIPTION:<br>Sarah Chen grew her newsletter from zero to 52,000 subscribers in 18 months — without spending a pound on advertising. Her secret: treating every email like a product, not a broadcast.<br><br>In this episode, Sarah shares the exact content strategy that drove her growth: the three content types that get forwarded most, why most newsletters fail in months 2–4, and the single decision that doubled her growth rate overnight.<br><br>Whether you're at 100 subscribers or 10,000, this episode gives you a roadmap you can implement this week. Listen now.<br><br>KEY TAKEAWAYS:<br>• Every email Sarah writes is optimised to be forwarded, not just read — this is her entire acquisition strategy<br>• Month 3 is when most newsletters die; she explains exactly what to do differently in months 2–4<br>• Her one-email-per-week rule and why breaking it cost her 800 subscribers in a single month<br>• The specific content format of her highest-performing emails (she shares the template)<br>• How to turn casual readers into active promoters without an affiliate programme<br><br>CHAPTER MARKERS:<br>00:00 – Introduction<br>04:30 – The strategy that changed everything<br>12:00 – The content formula: give, give, give, ask<br>24:00 – Surviving Month 3 (the valley of death)<br>35:00 – Rapid-fire growth tactics<br>44:00 – Q&amp;A<br><br>PULL QUOTE: 'Most newsletters try to be everything to everyone. The ones that grow treat every email like a product — something so good the reader can't help but forward it.'<br><br>SOCIAL POST (LinkedIn):<br>52,000 newsletter subscribers. Zero ad spend. 18 months.<br><br>Sarah Chen joined the podcast to share exactly how she did it — including the Month 3 trap that kills most newsletters.<br><br>Full episode: [link] 🎙️</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Show notes are your episode's SEO landing page — include the keywords your ideal listener searches for</div>
+<div class="tip-card">Chapter markers improve listen-through rate and display prominently on Spotify and YouTube</div>
+<div class="tip-card">The pull quote should be extracted from the actual episode — genuine quotes resonate more than paraphrases</div>
+<div class="tip-card">The social post should be optimised for the platform, not copied directly from the description</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Generic descriptions ('In this episode we talk about...') — describe the specific value delivered</div>
+<div class="mistake-card">No chapter markers — free to add, significantly improve listening experience and viewer retention</div>
+<div class="mistake-card">Forgetting the CTA — show notes without a subscribe or email capture link waste significant conversion opportunity</div>
+<div class="mistake-card">Not including resources mentioned — this is one of the most-clicked sections of any show notes</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long should podcast show notes be?</div><div class="faq-a">For SEO value: 300–600 words minimum. For podcast apps: the description section (150–200 words) is what shows in the app. Write both: short for the app, long for the web page.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I use AI to write show notes from a transcript?</div><div class="faq-a">Yes — paste the transcript and ask Claude or ChatGPT to extract key insights, generate chapter titles, and identify pull quotes. Always fact-check against the actual episode. AI-from-transcript notes are faster and often better than writing from memory.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I publish full transcripts?</div><div class="faq-a">Full transcripts significantly improve SEO (every word spoken becomes indexable) and accessibility. AI transcription tools (Whisper, Otter.ai) make this achievable. For most podcasts, the SEO benefit alone justifies the effort.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model is best for show notes?</div><div class="faq-a">Claude maintains consistent structure and writes engaging descriptions without overpromising. Provide the episode transcript or detailed notes for best results — the more input, the better the output.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/youtube-script-writer.html"><div class="rc-title">YouTube Script Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/newsletter-writer.html"><div class="rc-title">Email Newsletter Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/twitter-thread-writer.html"><div class="rc-title">Twitter / X Thread Writer</div><div class="rc-cat">📱 Social Media</div></a><a class="related-card" href="/prompts/chatgpt/content-calendar-creator.html"><div class="rc-title">Monthly Content Calendar Creator</div><div class="rc-cat">📣 Marketing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a podcast producer who writes show notes that rank in Google and convert listeners to subscribers.\n\nTopic: [episode topic]\nGuest: [guest name and role]\nKey insights: [key insights from episode — bullet list]\nLength: [episode length] minutes\n\nTask: Write complete show notes:\n\n1. SEO EPISODE TITLE (under 60 chars, keyword-led)\n2. EPISODE DESCRIPTION (150 words): Guest hook → core question → 3 specific takeaways → CTA to listen\n3. KEY TAKEAWAYS (5 bullet points — each standalone and share-worthy)\n4. CHAPTER MARKERS: Approximate timestamps for each section\n5. RESOURCES MENTIONED: Placeholder format with link slots\n6. PULL QUOTE: One share-worthy quote for social media\n7. SEO TAGS: 10 relevant keywords for discoverability\n8. SOCIAL POST: Twitter/LinkedIn version promoting the episode";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'podcast-show-notes';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

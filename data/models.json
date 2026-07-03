@@ -1,0 +1,52 @@
+[
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "fullName": "ChatGPT (GPT-4o / GPT-5)",
+    "color": "#00a36c",
+    "bg": "rgba(0,163,108,0.1)",
+    "border": "rgba(0,163,108,0.3)",
+    "desc": "OpenAI's flagship model. Best all-rounder for writing, analysis, and coding.",
+    "url": "https://chat.openai.com"
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "fullName": "Claude (Opus 4 / Sonnet 4)",
+    "color": "#d07f59",
+    "bg": "rgba(208,127,89,0.1)",
+    "border": "rgba(208,127,89,0.3)",
+    "desc": "Anthropic's model. Best for long-form writing, nuanced instructions, and safety.",
+    "url": "https://claude.ai"
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "fullName": "Gemini 2.0 Flash / Pro",
+    "color": "#4285f4",
+    "bg": "rgba(66,133,244,0.1)",
+    "border": "rgba(66,133,244,0.3)",
+    "desc": "Google's model. Best for research, ultra-long context, and Google Workspace.",
+    "url": "https://gemini.google.com"
+  },
+  {
+    "id": "grok",
+    "name": "Grok",
+    "fullName": "Grok 3",
+    "color": "#909090",
+    "bg": "rgba(144,144,160,0.1)",
+    "border": "rgba(144,144,160,0.3)",
+    "desc": "xAI's model with real-time web access. Best for current events and X/Twitter context.",
+    "url": "https://grok.x.ai"
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "fullName": "DeepSeek V3 / R1",
+    "color": "#7f5af0",
+    "bg": "rgba(127,90,240,0.1)",
+    "border": "rgba(127,90,240,0.3)",
+    "desc": "Open-source frontier model. Best for coding, math, and cost-sensitive applications.",
+    "url": "https://chat.deepseek.com"
+  }
+]

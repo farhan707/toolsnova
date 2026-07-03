@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Interview Prep Prompt | DeepSeek | ToolsNova</title>
+<meta name="description" content="Free AI prompt to prepare for coding interviews. Custom practice problems, optimal solutions with complexity analysis, and interview strategy for FAANG and top tech companies.">
+<link rel="canonical" href="https://toolsnova.net/prompts/deepseek/code-interview-prep.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="DeepSeek Technical Interview Preparation Coach Prompt">
+<meta property="og:description" content="Free AI prompt to prepare for coding interviews. Custom practice problems, optimal solutions with complexity analysis, and interview strategy for FAANG and top tech companies.">
+<meta property="og:url" content="https://toolsnova.net/prompts/deepseek/code-interview-prep.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek Technical Interview Preparation Coach Prompt">
+<meta name="twitter:description" content="Free AI prompt to prepare for coding interviews. Custom practice problems, optimal solutions with complexity analysis, and interview strategy for FAANG and top tech companies.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "DeepSeek", "item": "https://toolsnova.net/prompts/deepseek/index.html"}, {"@type": "ListItem", "position": 4, "name": "Career", "item": "https://toolsnova.net/prompts/career/index.html"}, {"@type": "ListItem", "position": 5, "name": "Technical Interview Preparation Coach", "item": "https://toolsnova.net/prompts/deepseek/code-interview-prep.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "DeepSeek Technical Interview Preparation Coach Prompt", "description": "Free AI prompt to prepare for coding interviews. Custom practice problems, optimal solutions with complexity analysis, and interview strategy for FAANG and top tech companies.", "url": "https://toolsnova.net/prompts/deepseek/code-interview-prep.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "technical interview, coding interview, algorithms, data structures, FAANG"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many LeetCode problems?", "acceptedAnswer": {"@type": "Answer", "text": "100 well-understood problems across all patterns beats 300 memorised. For FAANG: 150–200. For product companies: 75–100 focused on medium difficulty."}}, {"@type": "Question", "name": "System design importance?", "acceptedAnswer": {"@type": "Answer", "text": "Critical at senior level — weighs as much as coding. Practice: URL shortener, social media feed, distributed cache, ride-sharing. Know CAP theorem, sharding, consistent hashing."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "DeepSeek R1 is exceptional — reasoning mode thinks through solutions step-by-step and identifies edge cases. Claude is stronger for system design discussions."}}, {"@type": "Question", "name": "Handle an unseen problem?", "acceptedAnswer": {"@type": "Answer", "text": "State brute force immediately — shows you understand it. Then identify the bottleneck. Interviewers evaluate process more than memorised answers."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/career/index.html">🎯 Career</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/deepseek/index.html">DeepSeek</a><span class="breadcrumb-sep">›</span>
+      <span>Technical Interview Preparation Coach</span>
+    </div>
+    <h1>DeepSeek Technical Interview Preparation Coach Prompt</h1>
+    <p>Prepare for technical coding interviews with custom practice problems, optimal solutions, and interview strategy for top tech companies.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🎯 Career</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-career">🎯 Career</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">technical interview</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">coding interview</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">algorithms</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">data structures</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/code-interview-prep.html">ChatGPT</a><a class="model-link" href="/prompts/claude/code-interview-prep.html">Claude</a><a class="model-link active" href="/prompts/deepseek/code-interview-prep.html" style="border-color:#7f5af0;color:#7f5af0">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>target role</label><input class="var-input" type="text" placeholder="target role" oninput="updatePrompt()" data-var="target role"></div>
+<div class="var-group"><label>target companies</label><input class="var-input" type="text" placeholder="target companies" oninput="updatePrompt()" data-var="target companies"></div>
+<div class="var-group"><label>weakest areas</label><input class="var-input" type="text" placeholder="weakest areas" oninput="updatePrompt()" data-var="weakest areas"></div>
+<div class="var-group"><label>interview timeline</label><input class="var-input" type="text" placeholder="interview timeline" oninput="updatePrompt()" data-var="interview timeline"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior software engineer who has conducted 300+ technical interviews at top tech companies.<br><br>Target role: <span class="var-hl">[SWE/SDE2/Senior/Staff Engineer]</span><br>Companies: <span class="var-hl">[Google/Meta/Amazon/Stripe/startup/any]</span><br>Weakest areas: <span class="var-hl">[arrays/trees/graphs/DP/system design/SQL]</span><br>Timeline: <span class="var-hl">[1 week/2 weeks/1 month/3 months]</span><br><br>Task:<br>1. SKILLS GAP: What to close for <span class="var-hl">[role]</span> at <span class="var-hl">[companies]</span><br>2. STUDY PLAN: Week-by-week for <span class="var-hl">[timeline]</span> with problem counts<br>3. PROBLEM SET for each weak area: 2 easy warm-ups, 3 medium core, 1 hard stretch; KEY INSIGHT for each<br>4. INTERVIEW STRATEGY: 5-step framework for unseen problems, communication while coding, when to ask for hints<br>5. SYSTEM DESIGN: 3 most common questions for <span class="var-hl">[companies]</span><br>6. BEHAVIOURAL: STAR method for 5 most common questions<br>7. MOCK PROBLEM: One complete problem with optimal solution, complexity, edge cases</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in DeepSeek</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">INTERVIEW PREP: Senior SWE — Stripe/Shopify | 6 weeks<br><br>SKILLS GAP: Product companies weight code quality and system design heavily — less extreme LeetCode than Google.<br><br>6-WEEK PLAN:<br>Week 1–2: Arrays, Strings, Hash Maps (2 mediums/day)<br>Week 3: Trees, Graphs, BFS/DFS<br>Week 4: DP — 1 easy + 1 medium + pattern review daily<br>Week 5: System Design intensive<br>Week 6: Mock interviews + gap review<br><br>DP PROBLEM SET:<br>Easy: Climbing Stairs (LC70) — 1D DP, Fibonacci<br>Easy: House Robber (LC198) — 1D DP with constraint<br>Medium: Coin Change (LC322) — KEY: build optimal from 0, canonical unbounded knapsack<br>Medium: LIS (LC300) — KEY: for each element, best subsequence ending here?<br>Medium: Word Break (LC139) — KEY: can I partition this? Think backwards.<br><br>5-STEP APPROACH:<br>1. Clarify (2 min): constraints, edge cases<br>2. Brute force (2 min): state aloud, don't code<br>3. Optimise (5 min): identify bottleneck<br>4. Code (15–20 min): clean names, readable logic<br>5. Test (5 min): walk through test cases<br><br>MOCK: Find unique combinations summing to target.<br>Optimal: Backtracking, sorted, skip duplicates<br>Time: O(N^(T/M)) | Space: O(T/M)<br>Edge cases: empty candidates, target=0, all &gt; target</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#7f5af0">DeepSeek</div>
+        <div style="font-size:.75rem;color:var(--text3)">DeepSeek V3 / R1</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Talk while you code — interviewers evaluate communication as much as correctness</div>
+<div class="tip-card">Walk through a concrete example before writing any code</div>
+<div class="tip-card">For DP: recursive brute force → memoize → bottom-up tabulation</div>
+<div class="tip-card">Code quality matters at senior level — meaningful names, clean conditionals</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Jumping straight to code — 5 min understanding beats 25 min recoding</div>
+<div class="mistake-card">Not asking about constraints</div>
+<div class="mistake-card">Ignoring edge cases — empty arrays, null, integer overflow</div>
+<div class="mistake-card">Giving up silently — if stuck, state your thinking; interviewers give hints to those who show process</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many LeetCode problems?</div><div class="faq-a">100 well-understood problems across all patterns beats 300 memorised. For FAANG: 150–200. For product companies: 75–100 focused on medium difficulty.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">System design importance?</div><div class="faq-a">Critical at senior level — weighs as much as coding. Practice: URL shortener, social media feed, distributed cache, ride-sharing. Know CAP theorem, sharding, consistent hashing.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">DeepSeek R1 is exceptional — reasoning mode thinks through solutions step-by-step and identifies edge cases. Claude is stronger for system design discussions.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Handle an unseen problem?</div><div class="faq-a">State brute force immediately — shows you understand it. Then identify the bottleneck. Interviewers evaluate process more than memorised answers.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/code-reviewer.html"><div class="rc-title">Code Reviewer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/unit-test-generator.html"><div class="rc-title">Unit Test Generator</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/python-debugger.html"><div class="rc-title">Python Debugger</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/career-change-advisor.html"><div class="rc-title">Career Change Strategy Advisor</div><div class="rc-cat">🎯 Career</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior software engineer who has conducted 300+ technical interviews at top tech companies.\n\nTarget role: [SWE/SDE2/Senior/Staff Engineer]\nCompanies: [Google/Meta/Amazon/Stripe/startup/any]\nWeakest areas: [arrays/trees/graphs/DP/system design/SQL]\nTimeline: [1 week/2 weeks/1 month/3 months]\n\nTask:\n1. SKILLS GAP: What to close for [role] at [companies]\n2. STUDY PLAN: Week-by-week for [timeline] with problem counts\n3. PROBLEM SET for each weak area: 2 easy warm-ups, 3 medium core, 1 hard stretch; KEY INSIGHT for each\n4. INTERVIEW STRATEGY: 5-step framework for unseen problems, communication while coding, when to ask for hints\n5. SYSTEM DESIGN: 3 most common questions for [companies]\n6. BEHAVIOURAL: STAR method for 5 most common questions\n7. MOCK PROBLEM: One complete problem with optimal solution, complexity, edge cases";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.deepseek.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'code-interview-prep';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

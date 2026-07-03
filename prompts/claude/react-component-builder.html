@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React Component Builder Prompt for DeepSeek | Free | ToolsNova</title>
+<meta name="description" content="Free react component builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/react-component-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude React Component Builder Prompt">
+<meta property="og:description" content="Free react component builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/react-component-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude React Component Builder Prompt">
+<meta name="twitter:description" content="Free react component builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "React Component Builder", "item": "https://toolsnova.net/prompts/claude/react-component-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude React Component Builder Prompt", "description": "Free react component builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/react-component-builder.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "react, typescript, frontend, component, hooks"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I use Claude or DeepSeek for React components?", "acceptedAnswer": {"@type": "Answer", "text": "Both are excellent. DeepSeek V3 tends to produce more concise, idiomatic React. Claude is stronger at following complex accessibility and prop design requirements precisely."}}, {"@type": "Question", "name": "Does this work for Next.js components?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — specify 'Next.js 15 with App Router' in your [component name] description and note whether it's a Server Component or Client Component ('use client'). The AI will generate the appropriate component type."}}, {"@type": "Question", "name": "Can I generate components with shadcn/ui?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — specify 'styled with shadcn/ui components' in the [styling approach] field. The generated component will import from @/components/ui/... and follow shadcn patterns."}}, {"@type": "Question", "name": "What about React Native?", "acceptedAnswer": {"@type": "Answer", "text": "Specify 'React Native' in the component name or add a note. Core patterns (hooks, state, TypeScript) are similar, but the styling system (StyleSheet vs. CSS) and components (View/Text vs. div/p) differ."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>React Component Builder</span>
+    </div>
+    <h1>Claude React Component Builder Prompt</h1>
+    <p>You are a senior React developer who writes clean, performant, and accessible components.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">react</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">typescript</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">frontend</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">component</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/react-component-builder.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/react-component-builder.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/deepseek/react-component-builder.html">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>component name</label><input class="var-input" type="text" placeholder="[example component name]" oninput="updatePrompt()" data-var="component name"></div>
+<div class="var-group"><label>what it does</label><input class="var-input" type="text" placeholder="[example what it does]" oninput="updatePrompt()" data-var="what it does"></div>
+<div class="var-group"><label>props needed</label><input class="var-input" type="text" placeholder="[example props needed]" oninput="updatePrompt()" data-var="props needed"></div>
+<div class="var-group"><label>styling approach</label><input class="var-input" type="text" placeholder="[example styling approach]" oninput="updatePrompt()" data-var="styling approach"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior React developer who writes clean, performant, and accessible components.<br><br>Component: <span class="var-hl">[component name]</span><br>Purpose: <span class="var-hl">[what it does]</span><br>Props: <span class="var-hl">[props needed]</span><br>Styling: <span class="var-hl">[styling approach — Tailwind/CSS Modules/styled-components/plain CSS]</span><br><br>Task: Build a complete React component including:<br><br>1. TYPESCRIPT INTERFACE: Full prop type definitions with JSDoc comments<br><br>2. THE COMPONENT:<br>   - Functional component with correct hooks<br>   - Error state, loading state, and empty state handled<br>   - Accessibility: ARIA labels, keyboard navigation, focus management<br><br>3. CUSTOM HOOKS (if applicable): Extract business logic from UI<br><br>4. USAGE EXAMPLES: 3 different use cases showing the component<br><br>5. TESTING GUIDE: 5 test cases (Jest + React Testing Library)<br><br>Format: TypeScript throughout. Code blocks with syntax highlighting.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">// SearchableDropdown.tsx<br>import { useState, useRef, useEffect, useCallback } from 'react';<br><br>/** Option item in the dropdown list */<br>interface Option {<br>  value: string;<br>  label: string;<br>  disabled?: boolean;<br>}<br><br>/** Props for the SearchableDropdown component */<br>interface SearchableDropdownProps {<br>  /** Array of options to display */<br>  options: Option[];<br>  /** Currently selected value */<br>  value: string | null;<br>  /** Callback fired when selection changes */<br>  onChange: (value: string) =&gt; void;<br>  /** Placeholder text for the search input */<br>  placeholder?: string;<br>  /** Disable the entire dropdown */<br>  disabled?: boolean;<br>  /** Custom class name for the container */<br>  className?: string;<br>}<br><br>export function SearchableDropdown({<br>  options,<br>  value,<br>  onChange,<br>  placeholder = 'Search...',<br>  disabled = false,<br>  className = '',<br>}: SearchableDropdownProps) {<br>  const [isOpen, setIsOpen] = useState(false);<br>  const [search, setSearch] = useState('');<br>  const inputRef = useRef&lt;HTMLInputElement&gt;(null);<br><br>  const filtered = options.filter(o =&gt;<br>    o.label.toLowerCase().includes(search.toLowerCase())<br>  );<br><br>  // Close on outside click<br>  useEffect(() =&gt; {<br>    const handler = (e: MouseEvent) =&gt; {<br>      if (!inputRef.current?.closest('.dropdown-root')?.contains(e.target as Node)) {<br>        setIsOpen(false);<br>      }<br>    };<br>    document.addEventListener('mousedown', handler);<br>    return () =&gt; document.removeEventListener('mousedown', handler);<br>  }, []);<br>  ...</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#7f5af0">DeepSeek</div>
+        <div style="font-size:.75rem;color:var(--text3)">DeepSeek V3 / R1</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Split large components into smaller ones early — a component over 200 lines is usually doing too much</div>
+<div class="tip-card">Co-locate related code: types, component, hooks, and tests for one component should be in the same folder</div>
+<div class="tip-card">Use React DevTools Profiler before optimising performance — measure first, optimise second</div>
+<div class="tip-card">Accessibility is not optional: every interactive element needs a keyboard handler and appropriate ARIA attributes</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Putting everything in one mega-component — makes testing, reuse, and debugging dramatically harder</div>
+<div class="mistake-card">Over-using useEffect for things that can be calculated during render — derived state doesn't need an effect</div>
+<div class="mistake-card">Missing the dependency array in useEffect — causes either infinite loops or stale closures</div>
+<div class="mistake-card">Using array index as the key prop in lists that can change order — causes subtle rendering bugs</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use Claude or DeepSeek for React components?</div><div class="faq-a">Both are excellent. DeepSeek V3 tends to produce more concise, idiomatic React. Claude is stronger at following complex accessibility and prop design requirements precisely.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does this work for Next.js components?</div><div class="faq-a">Yes — specify 'Next.js 15 with App Router' in your [component name] description and note whether it's a Server Component or Client Component ('use client'). The AI will generate the appropriate component type.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I generate components with shadcn/ui?</div><div class="faq-a">Yes — specify 'styled with shadcn/ui components' in the [styling approach] field. The generated component will import from @/components/ui/... and follow shadcn patterns.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What about React Native?</div><div class="faq-a">Specify 'React Native' in the component name or add a note. Core patterns (hooks, state, TypeScript) are similar, but the styling system (StyleSheet vs. CSS) and components (View/Text vs. div/p) differ.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/code-reviewer.html"><div class="rc-title">Code Reviewer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/unit-test-generator.html"><div class="rc-title">Unit Test Generator</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/api-documentation-writer.html"><div class="rc-title">API Documentation Writer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/code-refactor.html"><div class="rc-title">Code Refactoring Assistant</div><div class="rc-cat">💻 Coding</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior React developer who writes clean, performant, and accessible components.\n\nComponent: [component name]\nPurpose: [what it does]\nProps: [props needed]\nStyling: [styling approach — Tailwind/CSS Modules/styled-components/plain CSS]\n\nTask: Build a complete React component including:\n\n1. TYPESCRIPT INTERFACE: Full prop type definitions with JSDoc comments\n\n2. THE COMPONENT:\n   - Functional component with correct hooks\n   - Error state, loading state, and empty state handled\n   - Accessibility: ARIA labels, keyboard navigation, focus management\n\n3. CUSTOM HOOKS (if applicable): Extract business logic from UI\n\n4. USAGE EXAMPLES: 3 different use cases showing the component\n\n5. TESTING GUIDE: 5 test cases (Jest + React Testing Library)\n\nFormat: TypeScript throughout. Code blocks with syntax highlighting.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'react-component-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

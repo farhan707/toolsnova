@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Persona Builder Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build detailed customer personas. Demographics, psychographics, pain points, buying behaviour, and messaging — full persona document generated instantly.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/customer-persona-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Customer Persona Builder Prompt">
+<meta property="og:description" content="Free AI prompt to build detailed customer personas. Demographics, psychographics, pain points, buying behaviour, and messaging — full persona document generated instantly.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/customer-persona-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Customer Persona Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to build detailed customer personas. Demographics, psychographics, pain points, buying behaviour, and messaging — full persona document generated instantly.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Marketing", "item": "https://toolsnova.net/prompts/marketing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Customer Persona Builder", "item": "https://toolsnova.net/prompts/gemini/customer-persona-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Customer Persona Builder Prompt", "description": "Free AI prompt to build detailed customer personas. Demographics, psychographics, pain points, buying behaviour, and messaging — full persona document generated instantly.", "url": "https://toolsnova.net/prompts/gemini/customer-persona-builder.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "customer persona, buyer persona, ICP, market research, targeting"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many customer personas should I have?", "acceptedAnswer": {"@type": "Answer", "text": "2–3 is the practical maximum. With more than 3, teams argue about which persona a decision serves rather than making the decision. If you genuinely have 5 different customer types, serve 2 well before expanding."}}, {"@type": "Question", "name": "How is a persona different from an ICP?", "acceptedAnswer": {"@type": "Answer", "text": "ICP (Ideal Customer Profile) describes the type of company or account. Persona describes the specific human within that company who makes or influences the buying decision. For B2B, you need both."}}, {"@type": "Question", "name": "What data should I use to build personas?", "acceptedAnswer": {"@type": "Answer", "text": "In priority order: (1) 5-10 interviews with actual customers, (2) customer support ticket analysis, (3) sales call recordings, (4) NPS survey open-ended responses, (5) analytics and behavioural data. Avoid building personas from assumptions alone."}}, {"@type": "Question", "name": "Can AI generate accurate customer personas?", "acceptedAnswer": {"@type": "Answer", "text": "AI generates the structure and prompts the right questions, but the specific details must come from real customer data. An AI-generated persona based on 'SaaS product for marketers' is too generic to drive decisions. Feed it real quotes, support tickets, and feedback for meaningful output."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/marketing/index.html">📣 Marketing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Customer Persona Builder</span>
+    </div>
+    <h1>Gemini Customer Persona Builder Prompt</h1>
+    <p>Build detailed, research-based customer personas that actually guide marketing and product decisions.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📣 Marketing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-marketing">📣 Marketing</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">customer persona</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">buyer persona</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">ICP</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">market research</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/customer-persona-builder.html">ChatGPT</a><a class="model-link" href="/prompts/claude/customer-persona-builder.html">Claude</a><a class="model-link active" href="/prompts/gemini/customer-persona-builder.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>business type</label><input class="var-input" type="text" placeholder="SaaS productivity tool" oninput="updatePrompt()" data-var="business type"></div>
+<div class="var-group"><label>product or service</label><input class="var-input" type="text" placeholder="AI Prompt Library" oninput="updatePrompt()" data-var="product or service"></div>
+<div class="var-group"><label>existing customer insight</label><input class="var-input" type="text" placeholder="Most users are marketers and developers who use ChatGPT or Claude daily but feel they get inconsistent results" oninput="updatePrompt()" data-var="existing customer insight"></div>
+<div class="var-group"><label>number of personas</label><input class="var-input" type="text" placeholder="2" oninput="updatePrompt()" data-var="number of personas"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a user research specialist who has built customer personas used to guide $10M+ marketing budgets.<br><br>Business type: <span class="var-hl">[business type — SaaS/e-commerce/service/marketplace]</span><br>Product/Service: <span class="var-hl">[product or service]</span><br>Existing customer insight: <span class="var-hl">[existing insight — describe your best customers or paste anonymised customer feedback]</span><br>Number of personas: <span class="var-hl">[number of personas — 1, 2, or 3]</span><br><br>Task: Build <span class="var-hl">[number of personas]</span> detailed customer persona(s):<br><br>For EACH persona:<br><br>IDENTITY:<br>- Persona name and archetype (e.g., 'The Pragmatic Manager')<br>- Demographics: age range, role, seniority, company size<br>- Quote that captures their worldview in one sentence<br><br>SITUATION:<br>- Day-to-day role: what they actually do each day<br>- What they're responsible for and judged on<br>- Tools and workflows they currently use<br><br>PAINS &amp; FRUSTRATIONS:<br>- Top 3 professional pains (specific, not generic)<br>- What they've tried before that didn't work<br>- The language they use to describe their problem<br><br>GOALS &amp; MOTIVATIONS:<br>- Professional goal they're trying to achieve<br>- Personal motivation underneath the professional goal<br>- What success looks like to them in 12 months<br><br>BUYING BEHAVIOUR:<br>- How they discover solutions (channels)<br>- What triggers a purchase decision<br>- Who else is involved in the decision<br>- Deal-breakers that kill a purchase<br><br>MESSAGING:<br>- Headline that speaks directly to this persona<br>- Value proposition in their language<br>- Channels and content types that reach them</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">PERSONA 1: 'The Pragmatic Marketer'<br><br>IDENTITY:<br>Name: The Pragmatic Marketer | Age: 28–42 | Role: Content Manager / Head of Marketing | Company: B2B SaaS, 10–200 employees<br>Quote: 'I don't need AI to replace my team — I need it to make my team 3× faster.'<br><br>SITUATION:<br>Day-to-day: Oversees content calendar, briefs writers, reviews copy, manages social and email. Spends 30–40% of time in editing mode.<br>Judged on: organic traffic, lead quality from content, email open rates, and 'did the content feel on-brand'<br>Tools: HubSpot, Google Docs, Notion, ChatGPT (used inconsistently)<br><br>PAINS:<br>1. AI output is 'almost good but not quite' — requires more editing than starting from scratch sometimes<br>2. No reliable prompt system — team uses AI differently every time, produces wildly inconsistent quality<br>3. Can't trust AI with SEO content — has been burned by inaccurate facts and keyword-stuffed output<br><br>BUYING BEHAVIOUR:<br>Discovers: Twitter/X, newsletter recommendations, specific searches ('ChatGPT prompts for SEO', 'how to write SEO content with AI')<br>Trigger: When a piece of AI content embarrasses her or when she sees a competitor's content and wonders 'how did they do that so well?'<br>Deal-breaker: Any paid tool that requires another monthly subscription<br><br>MESSAGING:<br>Headline: 'AI prompts that your whole team can use — and trust'<br>Value prop: '200+ tested prompts for every content task. Each one shows you the output before you commit to it.'</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Base personas on real customer data whenever possible — internal assumptions about customers are often wrong in surprising ways</div>
+<div class="tip-card">The 'quote that captures their worldview' is the single most useful line in a persona — if team members can cite it from memory, the persona is working</div>
+<div class="tip-card">Pain points should use the customer's exact language, not your product's language — 'I can't get consistent AI output' not 'they need better prompt engineering'</div>
+<div class="tip-card">Revisit personas every 6–12 months — your customer base changes as your product and market evolve</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Too many personas — 2–3 is the maximum before personas stop driving decisions and start creating arguments</div>
+<div class="mistake-card">Generic demographics ('35-55 years old, college educated') that don't differentiate between your best and worst customers</div>
+<div class="mistake-card">No buying behaviour section — knowing who the customer is without knowing how they buy leads to wasted marketing spend</div>
+<div class="mistake-card">Building personas in isolation without validating them against real customer conversations</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many customer personas should I have?</div><div class="faq-a">2–3 is the practical maximum. With more than 3, teams argue about which persona a decision serves rather than making the decision. If you genuinely have 5 different customer types, serve 2 well before expanding.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How is a persona different from an ICP?</div><div class="faq-a">ICP (Ideal Customer Profile) describes the type of company or account. Persona describes the specific human within that company who makes or influences the buying decision. For B2B, you need both.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What data should I use to build personas?</div><div class="faq-a">In priority order: (1) 5-10 interviews with actual customers, (2) customer support ticket analysis, (3) sales call recordings, (4) NPS survey open-ended responses, (5) analytics and behavioural data. Avoid building personas from assumptions alone.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can AI generate accurate customer personas?</div><div class="faq-a">AI generates the structure and prompts the right questions, but the specific details must come from real customer data. An AI-generated persona based on 'SaaS product for marketers' is too generic to drive decisions. Feed it real quotes, support tickets, and feedback for meaningful output.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/usp-value-proposition.html"><div class="rc-title">USP &amp; Value Proposition Generator</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/competitor-analysis.html"><div class="rc-title">Competitor Analysis Report</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/social-media-strategy.html"><div class="rc-title">Social Media Content Strategy</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/content-calendar-creator.html"><div class="rc-title">Monthly Content Calendar Creator</div><div class="rc-cat">📣 Marketing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a user research specialist who has built customer personas used to guide $10M+ marketing budgets.\n\nBusiness type: [business type — SaaS/e-commerce/service/marketplace]\nProduct/Service: [product or service]\nExisting customer insight: [existing insight — describe your best customers or paste anonymised customer feedback]\nNumber of personas: [number of personas — 1, 2, or 3]\n\nTask: Build [number of personas] detailed customer persona(s):\n\nFor EACH persona:\n\nIDENTITY:\n- Persona name and archetype (e.g., 'The Pragmatic Manager')\n- Demographics: age range, role, seniority, company size\n- Quote that captures their worldview in one sentence\n\nSITUATION:\n- Day-to-day role: what they actually do each day\n- What they're responsible for and judged on\n- Tools and workflows they currently use\n\nPAINS & FRUSTRATIONS:\n- Top 3 professional pains (specific, not generic)\n- What they've tried before that didn't work\n- The language they use to describe their problem\n\nGOALS & MOTIVATIONS:\n- Professional goal they're trying to achieve\n- Personal motivation underneath the professional goal\n- What success looks like to them in 12 months\n\nBUYING BEHAVIOUR:\n- How they discover solutions (channels)\n- What triggers a purchase decision\n- Who else is involved in the decision\n- Deal-breakers that kill a purchase\n\nMESSAGING:\n- Headline that speaks directly to this persona\n- Value proposition in their language\n- Channels and content types that reach them";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'customer-persona-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

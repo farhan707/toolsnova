@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tool Comparison Guide Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to compare AI tools for any task. ChatGPT vs Claude vs Gemini vs DeepSeek — honest comparison with specific use case recommendations and when to use each.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/ai-tool-comparison.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini AI Tool Comparison &amp; Selection Guide Prompt">
+<meta property="og:description" content="Free AI prompt to compare AI tools for any task. ChatGPT vs Claude vs Gemini vs DeepSeek — honest comparison with specific use case recommendations and when to use each.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/ai-tool-comparison.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini AI Tool Comparison &amp; Selection Guide Prompt">
+<meta name="twitter:description" content="Free AI prompt to compare AI tools for any task. ChatGPT vs Claude vs Gemini vs DeepSeek — honest comparison with specific use case recommendations and when to use each.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Education", "item": "https://toolsnova.net/prompts/education/index.html"}, {"@type": "ListItem", "position": 5, "name": "AI Tool Comparison & Selection Guide", "item": "https://toolsnova.net/prompts/gemini/ai-tool-comparison.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini AI Tool Comparison & Selection Guide Prompt", "description": "Free AI prompt to compare AI tools for any task. ChatGPT vs Claude vs Gemini vs DeepSeek — honest comparison with specific use case recommendations and when to use each.", "url": "https://toolsnova.net/prompts/gemini/ai-tool-comparison.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "AI tools, ChatGPT, Claude, Gemini, AI comparison"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which AI model is best overall?", "acceptedAnswer": {"@type": "Answer", "text": "There is no single best model — it depends on the task. As of mid-2026: Claude is strongest for long-form writing, reasoning, and nuanced analysis. ChatGPT is strongest for versatility and breadth. DeepSeek is strongest for coding and technical tasks. Gemini is strongest for multimodal tasks and Google ecosystem integration."}}, {"@type": "Question", "name": "Is the paid tier worth it?", "acceptedAnswer": {"@type": "Answer", "text": "For casual use: free tiers of Claude, ChatGPT, and Gemini cover most tasks. For professional use where you need consistent access, longer outputs, and the latest models: yes. Claude Pro and ChatGPT Plus are around 20 USD per month and pay for themselves quickly for regular users."}}, {"@type": "Question", "name": "Should I use multiple AI models?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — using 2-3 models strategically outperforms any single model. Common approach: Claude for writing and analysis, DeepSeek or ChatGPT for coding, Gemini for research with Google grounding."}}, {"@type": "Question", "name": "Best model to compare AI models?", "acceptedAnswer": {"@type": "Answer", "text": "Somewhat recursive — but Claude gives the most balanced and honest comparisons. It acknowledges its own weaknesses relative to other models more reliably than models that tend to self-promote."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/education/index.html">📚 Education</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>AI Tool Comparison &amp; Selection Guide</span>
+    </div>
+    <h1>Gemini AI Tool Comparison &amp; Selection Guide Prompt</h1>
+    <p>Compare AI tools for any specific task and get a clear recommendation on which model to use and why.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📚 Education</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-education">📚 Education</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">AI tools</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">ChatGPT</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">Claude</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">Gemini</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/ai-tool-comparison.html">ChatGPT</a><a class="model-link" href="/prompts/claude/ai-tool-comparison.html">Claude</a><a class="model-link active" href="/prompts/gemini/ai-tool-comparison.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>specific task to accomplish</label><input class="var-input" type="text" placeholder="specific task to accomplish" oninput="updatePrompt()" data-var="specific task to accomplish"></div>
+<div class="var-group"><label>your context and use case</label><input class="var-input" type="text" placeholder="your context and use case" oninput="updatePrompt()" data-var="your context and use case"></div>
+<div class="var-group"><label>priorities for this task</label><input class="var-input" type="text" placeholder="priorities for this task" oninput="updatePrompt()" data-var="priorities for this task"></div>
+<div class="var-group"><label>AI models to compare</label><input class="var-input" type="text" placeholder="AI models to compare" oninput="updatePrompt()" data-var="AI models to compare"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an AI tools expert who has tested every major model extensively on professional tasks.<br><br>Task you need to accomplish: <span class="var-hl">[describe the specific task as precisely as possible]</span><br>Your context: <span class="var-hl">[who you are and what you will use the output for]</span><br>Priorities: <span class="var-hl">[accuracy / speed / cost / creativity / reasoning / coding / safety / other]</span><br>Models to compare: <span class="var-hl">[ChatGPT / Claude / Gemini / DeepSeek / Grok / all]</span><br><br>Task:<br>1. TASK ANALYSIS: What capabilities this task actually requires<br>2. MODEL COMPARISON TABLE: For each model — strengths for this task, weaknesses, and score 1-5<br>3. RECOMMENDED MODEL: Clear recommendation with the specific reason for this task<br>4. PROMPT TIPS: How to prompt the recommended model to get the best result<br>5. FALLBACK: What to use if the recommended model is unavailable or gives poor output<br>6. COST CONSIDERATION: Free vs paid tiers and which you actually need for this task<br>7. WHEN TO SWITCH: Signs the recommended model is not working and what to try instead</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">AI TOOL COMPARISON: Technical Blog Post on Vector Databases<br><br>TASK REQUIREMENTS:<br>This task needs: sustained technical accuracy across 1500 words, ability to explain complex concepts with appropriate analogies, working Python code examples, consistent tone for a developer audience, and structured long-form writing<br><br>COMPARISON TABLE:<br>Claude (Recommended):<br>Strengths: Strongest sustained long-form technical writing, best at calibrating depth for a specific audience level, highest code accuracy in explanations, most consistent tone across 1500 words<br>Weaknesses: Occasionally over-careful with caveats; may need to be told to be direct<br>Score for this task: 5/5<br><br>ChatGPT:<br>Strengths: Good code examples, wide technical knowledge, fast<br>Weaknesses: Long-form technical content can drift in consistency; sometimes adds filler padding to hit length<br>Score: 4/5<br><br>DeepSeek:<br>Strengths: Exceptional for code generation and technical accuracy; cost-effective<br>Weaknesses: Long-form educational writing is not its strongest suit; better for code than prose<br>Score: 3/5 for this specific task<br><br>Gemini:<br>Strengths: Good factual grounding, multimodal if you need diagrams<br>Weaknesses: Developer-focused long-form technical writing is weaker than Claude or ChatGPT<br>Score: 3/5 for this task<br><br>RECOMMENDATION: Claude<br>Reason: For long-form technical writing that needs to maintain accuracy, appropriate technical depth, and consistent audience calibration across 1500 words, Claude consistently outperforms alternatives. The key is specifying the audience level precisely in your prompt.<br><br>PROMPT TIPS FOR CLAUDE:<br>You are a developer advocate writing for software engineers who know Python but have never used vector databases. Write a 1500-word technical blog post explaining how vector databases work. Use concrete Python code examples. Avoid assuming knowledge of embeddings — explain them briefly. Use headers. Be direct and precise — this audience does not need hand-holding but does need the concepts grounded in code they can try.<br><br>FALLBACK: ChatGPT GPT-4o — strong technical knowledge and good code examples, though you may need an extra editing pass for consistency<br><br>COST: Claude.ai free tier works for this task. The paid tier (Pro) removes length limits which matters for consistently long articles — worth it if you produce 10+ long articles per month</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">The best AI model for a task depends entirely on the task — no single model wins at everything</div>
+<div class="tip-card">Specify your audience precisely in the prompt — the same model will produce very different output for beginners vs experts on the same topic</div>
+<div class="tip-card">Test your top 2 models on the same prompt for important tasks — 5 minutes of testing saves editing time</div>
+<div class="tip-card">Free tiers are sufficient for most tasks; paid tiers matter for long outputs, high volume, and priority access during peak times</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Defaulting to ChatGPT for everything — Claude is genuinely stronger for long-form writing, nuanced reasoning, and code explanation; DeepSeek is stronger for pure coding tasks</div>
+<div class="mistake-card">Not specifying the audience in the prompt — telling the model who the reader is dramatically improves output calibration</div>
+<div class="mistake-card">Using the wrong model for the task and blaming AI when the real issue is model selection</div>
+<div class="mistake-card">Never testing alternatives — most people use one model and assume it is the best for everything</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model is best overall?</div><div class="faq-a">There is no single best model — it depends on the task. As of mid-2026: Claude is strongest for long-form writing, reasoning, and nuanced analysis. ChatGPT is strongest for versatility and breadth. DeepSeek is strongest for coding and technical tasks. Gemini is strongest for multimodal tasks and Google ecosystem integration.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is the paid tier worth it?</div><div class="faq-a">For casual use: free tiers of Claude, ChatGPT, and Gemini cover most tasks. For professional use where you need consistent access, longer outputs, and the latest models: yes. Claude Pro and ChatGPT Plus are around 20 USD per month and pay for themselves quickly for regular users.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use multiple AI models?</div><div class="faq-a">Yes — using 2-3 models strategically outperforms any single model. Common approach: Claude for writing and analysis, DeepSeek or ChatGPT for coding, Gemini for research with Google grounding.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model to compare AI models?</div><div class="faq-a">Somewhat recursive — but Claude gives the most balanced and honest comparisons. It acknowledges its own weaknesses relative to other models more reliably than models that tend to self-promote.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/seo-content-brief.html"><div class="rc-title">SEO Content Brief Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/academic-essay-planner.html"><div class="rc-title">Academic Essay Planner &amp; Structure Builder</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/python-automation-script-builder.html"><div class="rc-title">Python Script Builder</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/sql-advanced-queries.html"><div class="rc-title">Advanced SQL Query Builder</div><div class="rc-cat">💻 Coding</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an AI tools expert who has tested every major model extensively on professional tasks.\n\nTask you need to accomplish: [describe the specific task as precisely as possible]\nYour context: [who you are and what you will use the output for]\nPriorities: [accuracy / speed / cost / creativity / reasoning / coding / safety / other]\nModels to compare: [ChatGPT / Claude / Gemini / DeepSeek / Grok / all]\n\nTask:\n1. TASK ANALYSIS: What capabilities this task actually requires\n2. MODEL COMPARISON TABLE: For each model — strengths for this task, weaknesses, and score 1-5\n3. RECOMMENDED MODEL: Clear recommendation with the specific reason for this task\n4. PROMPT TIPS: How to prompt the recommended model to get the best result\n5. FALLBACK: What to use if the recommended model is unavailable or gives poor output\n6. COST CONSIDERATION: Free vs paid tiers and which you actually need for this task\n7. WHEN TO SWITCH: Signs the recommended model is not working and what to try instead";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'ai-tool-comparison';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

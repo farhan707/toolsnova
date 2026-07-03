@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>27+ Free Developer Tools — Browser-Based, No Signup | ToolsNova</title>
+<meta name="description" content="JSON tools, encoders, converters, generators and utilities every developer uses daily. 27+ free tools, 100% browser-based, no signup required.">
+<link rel="canonical" href="https://toolsnova.net/developer-tools/index.html">
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<meta property="og:title" content="Developer Tools — ToolsNova">
+<meta property="og:description" content="JSON tools, encoders, converters, generators and utilities every developer uses daily. 27+ free tools, 100% browser-based, no signup required.">
+<meta property="og:url" content="https://toolsnova.net/developer-tools/index.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Developer Tools — ToolsNova">
+<meta name="twitter:description" content="JSON tools, encoders, converters, generators and utilities every developer uses daily. 27+ free tools, 100% browser-based, no signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "Developer", "item": "https://toolsnova.net/developer-tools/index.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are these Developer tools free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every Developer tool on ToolsNova is completely free, with no signup, no usage limits, and no hidden fees."}}, {"@type": "Question", "name": "Do I need to create an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. All Developer tools work instantly in your browser — no account, no email, no signup required."}}, {"@type": "Question", "name": "Is my data safe?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every Developer tool runs entirely in your browser. Nothing you type or upload is ever sent to our servers."}}, {"@type": "Question", "name": "Can I use these tools on mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All Developer tools are fully responsive and work on desktop, tablet and mobile devices."}}]}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../style.css?v=20">
+<link rel="stylesheet" href="../css/homepage.css?v=20">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="v2-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="v2-logo">Tools<span class="v2-logo-dot">.</span>Nova</a>
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link-item">Home</a>
+      <div class="nav-link-item">
+        AI Workspace
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <div class="mega-menu">
+          <a href="../ai-prompt-library.html"><span>📚</span> AI Prompt Library</a>
+          <a href="../ai-prompt-studio.html"><span>🧠</span> AI Prompt Studio</a>
+          <a href="../ai-token-counter.html"><span>🔢</span> AI Token Counter</a>
+          <a href="../ai-api-cost-calculator.html"><span>💰</span> API Cost Calculator</a>
+          <a href="../midjourney-prompt-builder.html"><span>🎨</span> Midjourney Builder</a>
+        </div>
+      </div>
+      <a href="../index.html#trending" class="nav-link-item">Categories</a>
+      <a href="../ai-prompt-library.html" class="nav-link-item">AI Prompts</a>
+      <a href="../index.html#collections" class="nav-link-item">Collections</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="v2-nav-search-btn" aria-label="Search" onclick="document.getElementById('v2-search')?.focus()">🔍</button>
+      <a href="../index.html#bookmarks" class="nav-icon-btn" aria-label="Bookmarks">⭐</a>
+      <button class="nav-icon-btn" id="v2-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="v2-hamburger" onclick="tnNavToggle()" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="v2-mobile-nav">
+  <div class="mobile-nav-section"><a href="../index.html">🏠 Home</a><a href="../ai-prompt-library.html">📚 AI Prompt Library</a></div>
+</div>
+<main>
+  <div class="page-hero" style="padding:2rem 2rem 0">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <span>Developer</span>
+    </nav>
+    <div class="hero-badge">{} 27+ Tools</div>
+    <h1 style="font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.03em;margin:.6rem 0">Developer Tools</h1>
+    <p style="font-size:.95rem;color:var(--text2);max-width:640px;line-height:1.7">JSON tools, encoders, converters, generators and utilities every developer uses daily.</p>
+
+    <div class="hero-search-wrap" style="margin-top:1.25rem;max-width:520px">
+      <span class="hero-search-icon">🔍</span>
+      <input class="hero-search" type="search" id="v2-search" placeholder="Search Developer tools..." autocomplete="off">
+      <button class="hero-search-btn" id="v2-search-btn">Search</button>
+      <div class="hero-search-results" id="v2-search-results" role="listbox"></div>
+    </div>
+  </div>
+
+  <div class="v2-section">
+    <div class="section-header">
+      <div><div class="section-eyebrow">Popular</div><h2 class="section-title">Popular Developer Tools</h2></div>
+    </div>
+    <div class="tools-grid-4">
+    <a href="../json-formatter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">{}</div>
+      <div class="tool-card-name">JSON Formatter</div>
+      <div class="tool-card-desc">Format, validate and beautify JSON with syntax highlighting.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../password-generator.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔑</div>
+      <div class="tool-card-name">Password Generator</div>
+      <div class="tool-card-desc">Cryptographically random strong passwords. Bulk generation.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../regex-tester.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">.*</div>
+      <div class="tool-card-name">Regex Tester</div>
+      <div class="tool-card-desc">Live regex matching with match highlighting, flags, and quick-insert tokens.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    </div>
+  </div>
+
+  <div class="v2-section">
+    <div class="section-header">
+      <div><div class="section-eyebrow">All Tools</div><h2 class="section-title">All 27+ Developer Tools</h2></div>
+    </div>
+    <div class="tools-grid-4">
+    <a href="../json-formatter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">{}</div>
+      <div class="tool-card-name">JSON Formatter</div>
+      <div class="tool-card-desc">Format, validate and beautify JSON with syntax highlighting.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../base64-encoder.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">⇌</div>
+      <div class="tool-card-name">Base64 Encoder</div>
+      <div class="tool-card-desc">Encode or decode Base64 strings. Supports Unicode and emoji.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../case-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">Cc</div>
+      <div class="tool-card-name">Case Converter</div>
+      <div class="tool-card-desc">UPPER, lower, camelCase, PascalCase, snake_case, kebab-case.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../word-counter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">Aa</div>
+      <div class="tool-card-name">Word Counter</div>
+      <div class="tool-card-desc">Count words, characters, sentences, paragraphs and reading time.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../url-encoder.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔗</div>
+      <div class="tool-card-name">URL Encoder</div>
+      <div class="tool-card-desc">Encode or decode URLs and query parameters with breakdown.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../timestamp-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">⏱</div>
+      <div class="tool-card-name">Timestamp Converter</div>
+      <div class="tool-card-desc">Unix epoch ↔ human date. UTC, ISO 8601, local timezone.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../password-generator.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔑</div>
+      <div class="tool-card-name">Password Generator</div>
+      <div class="tool-card-desc">Cryptographically random strong passwords. Bulk generation.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../lorem-ipsum.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">¶</div>
+      <div class="tool-card-name">Lorem Ipsum</div>
+      <div class="tool-card-desc">Generate placeholder text — words, sentences or paragraphs.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../uuid-generator.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">⬡</div>
+      <div class="tool-card-name">UUID Generator</div>
+      <div class="tool-card-desc">Generate UUID v4 strings. Bulk, uppercase, and no-dash formats.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../hash-generator.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">#</div>
+      <div class="tool-card-name">Hash Generator</div>
+      <div class="tool-card-desc">MD5, SHA-1, SHA-256, SHA-512 from any text. All at once.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../regex-tester.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">.*</div>
+      <div class="tool-card-name">Regex Tester</div>
+      <div class="tool-card-desc">Live regex matching with match highlighting, flags, and quick-insert tokens.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../diff-checker.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">⇄</div>
+      <div class="tool-card-name">Diff Checker</div>
+      <div class="tool-card-desc">Compare two texts or code files and see additions, deletions line by line.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../color-picker.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🎨</div>
+      <div class="tool-card-name">Color Picker</div>
+      <div class="tool-card-desc">Pick colors and convert between HEX, RGB and HSL. Includes contrast checker.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../number-to-words.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">123</div>
+      <div class="tool-card-name">Number to Words</div>
+      <div class="tool-card-desc">Convert any number to English words. For cheques, contracts and invoices.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../text-repeater.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">↺</div>
+      <div class="tool-card-name">Text Repeater</div>
+      <div class="tool-card-desc">Repeat any text up to 1,000 times with a custom separator.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../random-number-generator.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🎲</div>
+      <div class="tool-card-name">Random Number Generator</div>
+      <div class="tool-card-desc">Cryptographically secure random numbers in any range. Dice roller included.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../jwt-decoder.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔑</div>
+      <div class="tool-card-name">JWT Decoder</div>
+      <div class="tool-card-desc">Decode and inspect JWT tokens — header, payload, claims, and expiry status.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../markdown-editor.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">📄</div>
+      <div class="tool-card-name">Markdown Editor</div>
+      <div class="tool-card-desc">Live Markdown preview with HTML output. Side-by-side editor and renderer.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../json-to-csv-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">⇄</div>
+      <div class="tool-card-name">JSON ↔ CSV</div>
+      <div class="tool-card-desc">Convert JSON arrays to CSV or CSV files to JSON. Bidirectional, instant.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../html-encoder-decoder.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">&lt;/&gt;</div>
+      <div class="tool-card-name">HTML Encoder</div>
+      <div class="tool-card-desc">Encode text to HTML entities or decode entities back to plain text.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../hex-binary-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">0x</div>
+      <div class="tool-card-name">Hex/Binary Converter</div>
+      <div class="tool-card-desc">Convert between decimal, hex, binary and octal with ASCII and Unicode info.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../css-minifier.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">{}→</div>
+      <div class="tool-card-name">CSS Minifier</div>
+      <div class="tool-card-desc">Minify CSS to reduce file size or format minified CSS for readability.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../cron-expression-builder.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">⏰</div>
+      <div class="tool-card-name">Cron Expression Builder</div>
+      <div class="tool-card-desc">Build cron schedules visually with plain-English descriptions and presets.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../color-code-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🎨</div>
+      <div class="tool-card-name">Color Code Converter</div>
+      <div class="tool-card-desc">Convert HEX, RGB, RGBA, HSL, CMYK with tints and shades.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../number-base-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔢</div>
+      <div class="tool-card-name">Number Base Converter</div>
+      <div class="tool-card-desc">Binary, octal, decimal, hexadecimal — all bases at once.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../password-strength-checker.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔐</div>
+      <div class="tool-card-name">Password Strength Checker</div>
+      <div class="tool-card-desc">Entropy score, crack time estimate, detailed improvement tips.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    <a href="../text-to-slug-converter.html" class="tool-card-v2">
+      <div class="tool-card-icon icon-badge icon-badge-green">🔗</div>
+      <div class="tool-card-name">Text to Slug Converter</div>
+      <div class="tool-card-desc">Convert any title to a clean SEO-friendly URL slug instantly.</div>
+      <div class="tool-card-cta">Open →</div>
+    </a>
+    </div>
+  </div>
+
+  <div class="v2-section">
+    <div class="section-header">
+      <div><div class="section-eyebrow">Explore</div><h2 class="section-title">Related Categories</h2></div>
+    </div>
+    <div class="chip-links" style="display:flex;flex-wrap:wrap;gap:.5rem"><a href="../utilities/index.html" class="chip-link">🛠️ Utilities</a><a href="../finance-tools/index.html" class="chip-link">$ Finance</a><a href="../trading-tools/index.html" class="chip-link">📊 Trading</a><a href="../health-tools/index.html" class="chip-link">❤️ Health</a><a href="../prop-firm-tools/index.html" class="chip-link">🏆 Prop Firm</a><a href="../student-tools/index.html" class="chip-link">🎓 Students</a><a href="../fun-tools/index.html" class="chip-link">🎲 Fun</a><a href="../converter-tools/index.html" class="chip-link">🔄 Converters</a><a href="../math-tools/index.html" class="chip-link">📐 Math</a><a href="../ai-tools/index.html" class="chip-link">🤖 AI</a><a href="../construction-tools/index.html" class="chip-link">🏗️ Construction</a></div>
+  </div>
+
+  <div class="v2-section">
+    <div class="section-header">
+      <div><div class="section-eyebrow">FAQ</div><h2 class="section-title">Common Questions</h2></div>
+    </div>
+    <div class="faq-list"><div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Are these Developer tools free?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>Yes. Every Developer tool on ToolsNova is completely free, with no signup, no usage limits, and no hidden fees.</div>
+    </div><div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Do I need to create an account?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>No. All Developer tools work instantly in your browser — no account, no email, no signup required.</div>
+    </div><div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Is my data safe?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>Yes. Every Developer tool runs entirely in your browser. Nothing you type or upload is ever sent to our servers.</div>
+    </div><div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Can I use these tools on mobile?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>Yes. All Developer tools are fully responsive and work on desktop, tablet and mobile devices.</div>
+    </div></div>
+  </div>
+</main>
+<footer class="v2-footer">
+  <div class="footer-inner">
+    <div class="footer-grid-lg">
+      <div class="footer-brand">
+        <a href="../index.html" class="v2-logo">Tools<span class="v2-logo-dot">.</span>Nova</a>
+        <p>155+ free browser tools and 200+ AI prompts for developers, traders, and everyday use. 100% private — everything runs in your browser.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a href="../developer-tools/index.html">Developer</a>
+        <a href="../trading-tools/index.html">Trading</a>
+        <a href="../finance-tools/index.html">Finance</a>
+        <a href="../health-tools/index.html">Health</a>
+      </div>
+      <div class="footer-col">
+        <h4>Popular Tools</h4>
+        <a href="../json-formatter.html">JSON Formatter</a>
+        <a href="../mortgage-calculator.html">Mortgage Calculator</a>
+        <a href="../lot-size-calculator.html">Lot Size Calculator</a>
+        <a href="../regex-tester.html">Regex Tester</a>
+      </div>
+      <div class="footer-col">
+        <h4>AI Resources</h4>
+        <a href="../ai-prompt-library.html">AI Prompt Library</a>
+        <a href="../ai-prompt-studio.html">AI Prompt Studio</a>
+        <a href="../ai-token-counter.html">AI Token Counter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <h4 style="margin-top:1rem">Legal</h4>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy-v2">© 2026 ToolsNova — toolsnova.net — all processing happens in your browser</span>
+      <nav class="footer-bottom-links" aria-label="Footer legal links">
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="v2-back-top" aria-label="Back to top">↑</button>
+<script src="../app.js?v=20" defer></script>
+<script src="../js/search.js?v=20" defer></script>
+<script>
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+</body></html>

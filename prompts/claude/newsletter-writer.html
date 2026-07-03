@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Newsletter Writer Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free email newsletter writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/newsletter-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Email Newsletter Writer Prompt">
+<meta property="og:description" content="Free email newsletter writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/newsletter-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Email Newsletter Writer Prompt">
+<meta name="twitter:description" content="Free email newsletter writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Writing", "item": "https://toolsnova.net/prompts/writing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Email Newsletter Writer", "item": "https://toolsnova.net/prompts/claude/newsletter-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Email Newsletter Writer Prompt", "description": "Free email newsletter writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/newsletter-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "newsletter, email, marketing, writing"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's the ideal newsletter length?", "acceptedAnswer": {"@type": "Answer", "text": "For most audiences, 150–300 words performs better than longer newsletters. Focus on one idea per issue and leave readers wanting more."}}, {"@type": "Question", "name": "Which AI model is best for newsletters?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces the most natural, human-sounding newsletter copy. ChatGPT is excellent for generating multiple subject line options quickly."}}, {"@type": "Question", "name": "How often should I send?", "acceptedAnswer": {"@type": "Answer", "text": "Consistency beats frequency. A weekly newsletter you actually publish beats a daily one you abandon. Start with weekly."}}, {"@type": "Question", "name": "Can I use this prompt for LinkedIn newsletters?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with minor adjustments. LinkedIn newsletters tend to be slightly more formal and benefit from more professional examples. Adjust the [audience] and [tone] accordingly."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/writing/index.html">✍️ Writing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Email Newsletter Writer</span>
+    </div>
+    <h1>Claude Email Newsletter Writer Prompt</h1>
+    <p>You are an expert email newsletter writer who specialises in high open-rate, high-click content.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">✍️ Writing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-writing">✍️ Writing</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">newsletter</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">email</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">marketing</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">writing</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/newsletter-writer.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/newsletter-writer.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/newsletter-writer.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>newsletter topic</label><input class="var-input" type="text" placeholder="[example newsletter topic]" oninput="updatePrompt()" data-var="newsletter topic"></div>
+<div class="var-group"><label>main story</label><input class="var-input" type="text" placeholder="[example main story]" oninput="updatePrompt()" data-var="main story"></div>
+<div class="var-group"><label>audience</label><input class="var-input" type="text" placeholder="marketing professionals" oninput="updatePrompt()" data-var="audience"></div>
+<div class="var-group"><label>desired action</label><input class="var-input" type="text" placeholder="[example desired action]" oninput="updatePrompt()" data-var="desired action"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an expert email newsletter writer who specialises in high open-rate, high-click content.<br><br>Newsletter topic: <span class="var-hl">[newsletter topic]</span><br>Main story: <span class="var-hl">[main story]</span><br>Audience: <span class="var-hl">[audience]</span><br>Desired action: <span class="var-hl">[desired action]</span><br><br>Task: Write a complete email newsletter including:<br>- Subject line with emoji (40 characters max, curiosity-driven)<br>- Preview text (90 characters max, adds to subject without repeating it)<br>- Opening hook (1 sentence, not 'Dear subscriber')<br>- Main content: the story or insight (150–200 words)<br>- One key takeaway in a call-out box style<br>- CTA that drives <span class="var-hl">[desired action]</span><br>- Brief sign-off<br><br>Tone: Conversational, like a smart friend sharing something valuable.<br>Constraints: Short paragraphs (2–3 sentences max). No corporate speak. One CTA only.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">Subject: 🧠 The 2-minute rule that changed my week<br>Preview: It's not what you think — and it's not from GTD<br><br>Hey [First Name],<br><br>This week I ran an experiment: I timed every task that felt 'quick' before I started it.<br><br>The average 'quick task' took 23 minutes.<br><br>Here's what I changed: I now write down what I think a task will take before I start it, then compare to the real time after. Within one week, my estimates are 40% more accurate and I'm scheduling 90-minute deep work blocks instead of 10-minute 'quick ones'.<br><br>💡 The takeaway: We're not bad at doing work — we're bad at estimating work. Fix the estimate, and the schedule fixes itself.<br><br>This week's action: Track actual vs. estimated time for 5 tasks. Share what you find.<br><br>See you Thursday,<br>[Name]</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Your subject line determines 80% of your open rate — write 10 options and pick the best</div>
+<div class="tip-card">Send on Tuesday or Wednesday at 10am your audience's time for maximum opens</div>
+<div class="tip-card">Newsletters that feel personal (written to 'you', not 'our subscribers') get 2–3x more replies</div>
+<div class="tip-card">Build a consistent 'voice' — readers should recognise your newsletter in 2 sentences</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Using 'I hope this email finds you well' as an opener — delete it every time</div>
+<div class="mistake-card">Writing more than 300 words — most newsletters are too long, not too short</div>
+<div class="mistake-card">Having more than one CTA — it splits attention and reduces clicks on both</div>
+<div class="mistake-card">Being inconsistent — sending randomly is worse than not sending at all</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the ideal newsletter length?</div><div class="faq-a">For most audiences, 150–300 words performs better than longer newsletters. Focus on one idea per issue and leave readers wanting more.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model is best for newsletters?</div><div class="faq-a">Claude produces the most natural, human-sounding newsletter copy. ChatGPT is excellent for generating multiple subject line options quickly.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How often should I send?</div><div class="faq-a">Consistency beats frequency. A weekly newsletter you actually publish beats a daily one you abandon. Start with weekly.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I use this prompt for LinkedIn newsletters?</div><div class="faq-a">Yes, with minor adjustments. LinkedIn newsletters tend to be slightly more formal and benefit from more professional examples. Adjust the [audience] and [tone] accordingly.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/email-campaign-writer.html"><div class="rc-title">Email Marketing Campaign Writer</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/cold-email-outreach.html"><div class="rc-title">Cold Email Outreach Sequence</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/content-calendar-creator.html"><div class="rc-title">Monthly Content Calendar Creator</div><div class="rc-cat">📣 Marketing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an expert email newsletter writer who specialises in high open-rate, high-click content.\n\nNewsletter topic: [newsletter topic]\nMain story: [main story]\nAudience: [audience]\nDesired action: [desired action]\n\nTask: Write a complete email newsletter including:\n- Subject line with emoji (40 characters max, curiosity-driven)\n- Preview text (90 characters max, adds to subject without repeating it)\n- Opening hook (1 sentence, not 'Dear subscriber')\n- Main content: the story or insight (150–200 words)\n- One key takeaway in a call-out box style\n- CTA that drives [desired action]\n- Brief sign-off\n\nTone: Conversational, like a smart friend sharing something valuable.\nConstraints: Short paragraphs (2–3 sentences max). No corporate speak. One CTA only.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'newsletter-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

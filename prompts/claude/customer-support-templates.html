@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Support Templates Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build customer support email templates. Refund requests, bugs, cancellations, angry customers — professional templates that resolve and retain.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/customer-support-templates.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Customer Support Template Library Prompt">
+<meta property="og:description" content="Free AI prompt to build customer support email templates. Refund requests, bugs, cancellations, angry customers — professional templates that resolve and retain.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/customer-support-templates.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Customer Support Template Library Prompt">
+<meta name="twitter:description" content="Free AI prompt to build customer support email templates. Refund requests, bugs, cancellations, angry customers — professional templates that resolve and retain.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "Customer Support Template Library", "item": "https://toolsnova.net/prompts/claude/customer-support-templates.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Customer Support Template Library Prompt", "description": "Free AI prompt to build customer support email templates. Refund requests, bugs, cancellations, angry customers — professional templates that resolve and retain.", "url": "https://toolsnova.net/prompts/claude/customer-support-templates.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "customer support, email templates, customer service, helpdesk, retention"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Use templates verbatim?", "acceptedAnswer": {"@type": "Answer", "text": "No — personalise the opening (their name + their specific issue) and the closing. Pure templates feel hollow."}}, {"@type": "Question", "name": "Ideal support email length?", "acceptedAnswer": {"@type": "Answer", "text": "As short as possible while fully resolving the issue. Always answer in the first paragraph."}}, {"@type": "Question", "name": "Handling abusive customers?", "acceptedAnswer": {"@type": "Answer", "text": "'I understand you're frustrated and want to help. I'm not able to continue if [behaviour] continues, but happy to help when we can speak respectfully.'"}}, {"@type": "Question", "name": "ChatGPT or Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Claude for warmer empathetic language (subscription/SaaS). ChatGPT for more direct efficient language. Match to your brand voice."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Customer Support Template Library</span>
+    </div>
+    <h1>Claude Customer Support Template Library Prompt</h1>
+    <p>Build a complete library of customer support email templates that resolve issues efficiently and retain customers.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">customer support</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">email templates</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">customer service</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">helpdesk</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/customer-support-templates.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/customer-support-templates.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/customer-support-templates.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>business type</label><input class="var-input" type="text" placeholder="business type" oninput="updatePrompt()" data-var="business type"></div>
+<div class="var-group"><label>product name</label><input class="var-input" type="text" placeholder="product name" oninput="updatePrompt()" data-var="product name"></div>
+<div class="var-group"><label>brand tone</label><input class="var-input" type="text" placeholder="brand tone" oninput="updatePrompt()" data-var="brand tone"></div>
+<div class="var-group"><label>most common issues</label><input class="var-input" type="text" placeholder="most common issues" oninput="updatePrompt()" data-var="most common issues"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a customer success director who has reduced churn by 35% through better support communications.<br><br>Business: <span class="var-hl">[SaaS/e-commerce/subscription/service]</span><br>Product: <span class="var-hl">[product name]</span><br>Tone: <span class="var-hl">[warm/professional/friendly/formal]</span><br>Common issues: <span class="var-hl">[list 4–5 most common]</span><br><br>Create 8 templates. For EACH:<br>- SUBJECT: Specific (not 'Re: Your message')<br>- OPENING: Acknowledge + empathise (not 'Sorry for the inconvenience')<br>- RESOLUTION: Specific action or answer<br>- CLOSING: Warm, open for follow-up<br>- INTERNAL NOTE: What to check before sending<br><br>TEMPLATES: (1) Refund grant, (2) Refund decline with alternative, (3) Bug acknowledgement, (4) Feature request, (5) 'Not working' needs more info, (6) Account/billing, (7) Cancellation save, (8) Angry customer<br><br>ALSO: 3 phrases NEVER to use, response time targets, escalation criteria</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">TEMPLATE 1 — REFUND (GRANT):<br>Subject: Your refund is on its way — [reference]<br>Hi [Name], Absolutely — I've processed your refund. You'll see it on your [card/PayPal] within 3–5 business days. I'm sorry it didn't work out with Pro. If anything specific wasn't working, I'd genuinely like to know. Your free account is still active — all 200+ prompts available anytime.<br>[Name] at ToolsNova<br>INTERNAL NOTE: Process refund in payment dashboard BEFORE sending.<br><br>TEMPLATE 7 — CANCELLATION SAVE:<br>Subject: Before you go — can I help with this?<br>Hi [Name], I saw you've cancelled Pro — completely fine, free access continues. Before I confirm, was there something specific not working? Sometimes there's a quick fix. If it's the price, I can offer [one month free / discount]. No pressure. If you're sure, just reply — I'll confirm immediately.<br>[Name]<br>INTERNAL NOTE: Check usage data first — if active, mention specific feature; if barely used, offer tutorial.<br><br>NEVER SAY:<br>1. 'Sorry for any inconvenience' — vague; say what specifically you're sorry about<br>2. 'As per my previous email' — passive-aggressive; resend the information<br>3. 'That's not our policy' — makes customers feel like obstacles; explain the why<br><br>RESPONSE TIMES:<br>Angry/urgent: 2h | Billing: 4h | Bug: 6h | General: 24h | Feature: 48h (never promise delivery dates)</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Personalise the opening — 'I saw you were trying to use the SEO prompt when...' shows you read their email</div>
+<div class="tip-card">Never promise timelines you can't control</div>
+<div class="tip-card">Cancellation save must feel human, not auto-triggered — authenticity is the difference</div>
+<div class="tip-card">Track which templates resolve on first contact; improve underperformers quarterly</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Copy-pasting verbatim — customers immediately detect templates</div>
+<div class="mistake-card">Over-apologising — one genuine apology beats multiple 'sorries'</div>
+<div class="mistake-card">Escalating too slowly — angry customers reach senior staff faster than policy suggests</div>
+<div class="mistake-card">No follow-up after complex issues — confirm the solution actually worked</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Use templates verbatim?</div><div class="faq-a">No — personalise the opening (their name + their specific issue) and the closing. Pure templates feel hollow.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Ideal support email length?</div><div class="faq-a">As short as possible while fully resolving the issue. Always answer in the first paragraph.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Handling abusive customers?</div><div class="faq-a">'I understand you're frustrated and want to help. I'm not able to continue if [behaviour] continues, but happy to help when we can speak respectfully.'</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">ChatGPT or Claude?</div><div class="faq-a">Claude for warmer empathetic language (subscription/SaaS). ChatGPT for more direct efficient language. Match to your brand voice.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/professional-email-writer.html"><div class="rc-title">Professional Email Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/apology-email-writer.html"><div class="rc-title">Professional Apology &amp; Crisis Email</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/crisis-communications-plan.html"><div class="rc-title">Crisis Communication Plan</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/brand-voice-guide.html"><div class="rc-title">Brand Voice &amp; Tone Guide Creator</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a customer success director who has reduced churn by 35% through better support communications.\n\nBusiness: [SaaS/e-commerce/subscription/service]\nProduct: [product name]\nTone: [warm/professional/friendly/formal]\nCommon issues: [list 4–5 most common]\n\nCreate 8 templates. For EACH:\n- SUBJECT: Specific (not 'Re: Your message')\n- OPENING: Acknowledge + empathise (not 'Sorry for the inconvenience')\n- RESOLUTION: Specific action or answer\n- CLOSING: Warm, open for follow-up\n- INTERNAL NOTE: What to check before sending\n\nTEMPLATES: (1) Refund grant, (2) Refund decline with alternative, (3) Bug acknowledgement, (4) Feature request, (5) 'Not working' needs more info, (6) Account/billing, (7) Cancellation save, (8) Angry customer\n\nALSO: 3 phrases NEVER to use, response time targets, escalation criteria";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'customer-support-templates';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

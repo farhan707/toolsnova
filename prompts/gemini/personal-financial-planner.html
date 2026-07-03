@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Financial Plan Builder Prompt for Claude | Free | ToolsN</title>
+<meta name="description" content="Free personal financial plan builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/personal-financial-planner.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Personal Financial Plan Builder Prompt">
+<meta property="og:description" content="Free personal financial plan builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/personal-financial-planner.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Personal Financial Plan Builder Prompt">
+<meta name="twitter:description" content="Free personal financial plan builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Finance", "item": "https://toolsnova.net/prompts/finance/index.html"}, {"@type": "ListItem", "position": 5, "name": "Personal Financial Plan Builder", "item": "https://toolsnova.net/prompts/gemini/personal-financial-planner.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Personal Financial Plan Builder Prompt", "description": "Free personal financial plan builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/gemini/personal-financial-planner.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "personal finance, budgeting, savings, financial plan, money"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this a substitute for a real financial advisor?", "acceptedAnswer": {"@type": "Answer", "text": "No. This prompt provides educational financial planning frameworks. A regulated financial adviser (IFA in the UK, CFP in the US) provides personalised regulated advice and is legally accountable for their recommendations. For complex situations (inheritance, divorce, business sale), always consult a professional."}}, {"@type": "Question", "name": "Which model gives the best financial planning output?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is strongest for financial plans — it follows complex numerical constraints, produces clearly structured output, and includes appropriate disclaimers naturally. It's also less likely to make numerical errors than some alternatives."}}, {"@type": "Question", "name": "Should I use ISAs or SIPPs for savings?", "acceptedAnswer": {"@type": "Answer", "text": "ISAs: Tax-free savings/investment, withdraw anytime, no tax relief on contributions. SIPPs (pension): Tax relief on contributions (25–45%), can't access until 57, excellent for retirement. Use both: ISA for medium-term goals, SIPP for retirement."}}, {"@type": "Question", "name": "How accurate are AI financial calculations?", "acceptedAnswer": {"@type": "Answer", "text": "AI can make arithmetic errors, especially with complex compound calculations. Always verify the numbers independently. Use this for the framework and strategy; verify the maths with a spreadsheet or calculator."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/finance/index.html">💰 Finance</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Personal Financial Plan Builder</span>
+    </div>
+    <h1>Gemini Personal Financial Plan Builder Prompt</h1>
+    <p>You are a certified financial planner who creates clear, actionable financial plans without jargon.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💰 Finance</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-finance">💰 Finance</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">personal finance</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">budgeting</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">savings</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">financial plan</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/personal-financial-planner.html">ChatGPT</a><a class="model-link" href="/prompts/claude/personal-financial-planner.html">Claude</a><a class="model-link active" href="/prompts/gemini/personal-financial-planner.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>monthly income</label><input class="var-input" type="text" placeholder="[example monthly income]" oninput="updatePrompt()" data-var="monthly income"></div>
+<div class="var-group"><label>monthly expenses</label><input class="var-input" type="text" placeholder="[example monthly expenses]" oninput="updatePrompt()" data-var="monthly expenses"></div>
+<div class="var-group"><label>financial goals</label><input class="var-input" type="text" placeholder="[example financial goals]" oninput="updatePrompt()" data-var="financial goals"></div>
+<div class="var-group"><label>current savings</label><input class="var-input" type="text" placeholder="[example current savings]" oninput="updatePrompt()" data-var="current savings"></div>
+<div class="var-group"><label>timeline</label><input class="var-input" type="text" placeholder="[example timeline]" oninput="updatePrompt()" data-var="timeline"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a certified financial planner who creates clear, actionable financial plans without jargon.<br><br>Monthly income (after tax): <span class="var-hl">[monthly income]</span><br>Monthly expenses (estimate): <span class="var-hl">[monthly expenses]</span><br>Financial goals: <span class="var-hl">[financial goals — emergency fund/house deposit/retirement/debt-free/investment]</span><br>Current savings: <span class="var-hl">[current savings]</span><br>Timeline: <span class="var-hl">[timeline]</span><br><br>Task: Create a complete personal financial plan:<br><br>1. FINANCIAL SNAPSHOT:<br>   - Monthly surplus/deficit<br>   - Savings rate (%)<br>   - Time to goal at current rate<br><br>2. BUDGET OPTIMISATION:<br>   Apply the 50/30/20 rule (modified for goals):<br>   - 50% Needs: <span class="var-hl">[exact amounts]</span><br>   - 30% Wants: <span class="var-hl">[where to cut]</span><br>   - 20% Financial goals: <span class="var-hl">[how to split]</span><br><br>3. GOAL ROADMAP:<br>   For each goal: monthly amount needed + timeline + account type<br><br>4. EMERGENCY FUND: Target amount + timeline to reach it<br><br>5. INVESTMENT BASICS (if applicable): Simple, low-cost approach<br><br>6. ACTION PLAN: 5 specific things to do this week<br><br>Disclaimer: This is educational, not regulated financial advice. Consult a regulated IFA for personalised guidance.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">PERSONAL FINANCIAL PLAN<br>Monthly Net Income: £3,200 | Monthly Expenses: £2,600 | Surplus: £600/month<br><br>FINANCIAL SNAPSHOT:<br>Current savings rate: 18.75% — above average (average UK: 8.1%)<br>Current savings: £4,500<br>Primary goal: £25,000 house deposit in 3 years<br>Time to goal at current saving rate: 34 months — achievable ✅<br><br>BUDGET OPTIMISATION (50/30/20 modified for your goal):<br><br>✅ NEEDS (50% = £1,600):<br>Rent/mortgage: £900<br>Groceries: £250<br>Transport: £180<br>Utilities/phone: £150<br>Insurance: £120<br>→ Current spending: £1,780 (⚠️ £180 over target)<br><br>💡 WANTS (25% = £800):<br>Dining/social: £300<br>Entertainment: £150<br>Clothing: £100<br>Hobbies: £100<br>Miscellaneous: £150<br>→ Reduce wants by £180 to bring needs in line<br><br>🎯 GOALS (25% = £800/month):<br>House deposit fund: £600/month → ISA (tax-free growth)<br>Emergency fund top-up: £150/month → Easy-access account<br>Retirement (SIPP): £50/month → Matched by employer if available<br><br>GOAL ROADMAP:<br>Emergency Fund: Target £9,600 (3 months expenses). Currently have £4,500. At £150/month → 34 months. 🔴 Priority: increase this to £300/month for first 6 months.<br>House Deposit: Target £25,000. Need to save £20,500 more. At £600/month → 34 months (comfortably within 3-year goal).</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Automate savings transfers on payday — the money you never see is the money you don't spend</div>
+<div class="tip-card">An emergency fund is not optional — without it, one unexpected expense wipes out months of investment gains</div>
+<div class="tip-card">Index funds (Vanguard, iShares) beat 90%+ of actively managed funds over 10+ year periods with dramatically lower fees</div>
+<div class="tip-card">Review your budget quarterly, not monthly — monthly reviews create anxiety; quarterly gives you enough data to see patterns</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Investing before having an emergency fund — you'll be forced to sell investments at the worst time if an emergency hits</div>
+<div class="mistake-card">Keeping savings in a current account — even a basic cash ISA or easy-access savings account at a competitive rate adds up significantly</div>
+<div class="mistake-card">Ignoring employer pension matching — this is an immediate 100% return on that money; always contribute at least enough to get the full match</div>
+<div class="mistake-card">Paying off low-interest debt aggressively while not investing — at 3–5% interest rates, investing in index funds likely outperforms debt repayment</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is this a substitute for a real financial advisor?</div><div class="faq-a">No. This prompt provides educational financial planning frameworks. A regulated financial adviser (IFA in the UK, CFP in the US) provides personalised regulated advice and is legally accountable for their recommendations. For complex situations (inheritance, divorce, business sale), always consult a professional.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which model gives the best financial planning output?</div><div class="faq-a">Claude is strongest for financial plans — it follows complex numerical constraints, produces clearly structured output, and includes appropriate disclaimers naturally. It's also less likely to make numerical errors than some alternatives.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use ISAs or SIPPs for savings?</div><div class="faq-a">ISAs: Tax-free savings/investment, withdraw anytime, no tax relief on contributions. SIPPs (pension): Tax relief on contributions (25–45%), can't access until 57, excellent for retirement. Use both: ISA for medium-term goals, SIPP for retirement.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How accurate are AI financial calculations?</div><div class="faq-a">AI can make arithmetic errors, especially with complex compound calculations. Always verify the numbers independently. Use this for the framework and strategy; verify the maths with a spreadsheet or calculator.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/business-plan-writer.html"><div class="rc-title">Business Plan Writer</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/decision-making-framework.html"><div class="rc-title">Decision-Making Framework Builder</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a certified financial planner who creates clear, actionable financial plans without jargon.\n\nMonthly income (after tax): [monthly income]\nMonthly expenses (estimate): [monthly expenses]\nFinancial goals: [financial goals — emergency fund/house deposit/retirement/debt-free/investment]\nCurrent savings: [current savings]\nTimeline: [timeline]\n\nTask: Create a complete personal financial plan:\n\n1. FINANCIAL SNAPSHOT:\n   - Monthly surplus/deficit\n   - Savings rate (%)\n   - Time to goal at current rate\n\n2. BUDGET OPTIMISATION:\n   Apply the 50/30/20 rule (modified for goals):\n   - 50% Needs: [exact amounts]\n   - 30% Wants: [where to cut]\n   - 20% Financial goals: [how to split]\n\n3. GOAL ROADMAP:\n   For each goal: monthly amount needed + timeline + account type\n\n4. EMERGENCY FUND: Target amount + timeline to reach it\n\n5. INVESTMENT BASICS (if applicable): Simple, low-cost approach\n\n6. ACTION PLAN: 5 specific things to do this week\n\nDisclaimer: This is educational, not regulated financial advice. Consult a regulated IFA for personalised guidance.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'personal-financial-planner';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

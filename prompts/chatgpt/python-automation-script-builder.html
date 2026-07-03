@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Script Builder Prompt | DeepSeek | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build complete Python scripts. Automation, data processing, file management, APIs — production-ready Python with type hints, error handling, and usage examples.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/python-automation-script-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Python Script Builder Prompt">
+<meta property="og:description" content="Free AI prompt to build complete Python scripts. Automation, data processing, file management, APIs — production-ready Python with type hints, error handling, and usage examples.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/python-automation-script-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Python Script Builder Prompt">
+<meta name="twitter:description" content="Free AI prompt to build complete Python scripts. Automation, data processing, file management, APIs — production-ready Python with type hints, error handling, and usage examples.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "Python Script Builder", "item": "https://toolsnova.net/prompts/chatgpt/python-automation-script-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Python Script Builder Prompt", "description": "Free AI prompt to build complete Python scripts. Automation, data processing, file management, APIs — production-ready Python with type hints, error handling, and usage examples.", "url": "https://toolsnova.net/prompts/chatgpt/python-automation-script-builder.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "Python, scripting, automation, code generation, programming"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I use asyncio for URL checking?", "acceptedAnswer": {"@type": "Answer", "text": "For 100+ URLs, asyncio with aiohttp gives massive performance gains. For smaller lists the synchronous approach is simpler. Use ThreadPoolExecutor as a middle ground without the async complexity."}}, {"@type": "Question", "name": "How to make the script faster?", "acceptedAnswer": {"@type": "Answer", "text": "Use concurrent.futures.ThreadPoolExecutor for I/O-bound tasks. For 100 URLs, 10 parallel workers reduces total time from 100s to about 10s."}}, {"@type": "Question", "name": "Best model for Python scripts?", "acceptedAnswer": {"@type": "Answer", "text": "DeepSeek V3 writes clean idiomatic Python with excellent error handling and modern conventions. Claude is also excellent and better at explaining implementation trade-offs."}}, {"@type": "Question", "name": "How to handle very large CSV files?", "acceptedAnswer": {"@type": "Answer", "text": "Replace the list comprehension in read_urls with a generator and process in batches. Memory stays constant regardless of file size."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Python Script Builder</span>
+    </div>
+    <h1>ChatGPT Python Script Builder Prompt</h1>
+    <p>Build complete production-ready Python scripts for automation, data processing, and utility tasks with full error handling and documentation.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">Python</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">scripting</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">automation</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">code generation</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/python-automation-script-builder.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/python-automation-script-builder.html">Claude</a><a class="model-link" href="/prompts/deepseek/python-automation-script-builder.html">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>what the script does</label><input class="var-input" type="text" placeholder="what the script does" oninput="updatePrompt()" data-var="what the script does"></div>
+<div class="var-group"><label>inputs</label><input class="var-input" type="text" placeholder="CSV with a url column" oninput="updatePrompt()" data-var="inputs"></div>
+<div class="var-group"><label>outputs</label><input class="var-input" type="text" placeholder="CSV report with url, status_code, response_time_ms, status working or broken or error" oninput="updatePrompt()" data-var="outputs"></div>
+<div class="var-group"><label>Python version</label><input class="var-input" type="text" placeholder="Python version" oninput="updatePrompt()" data-var="Python version"></div>
+<div class="var-group"><label>allowed dependencies</label><input class="var-input" type="text" placeholder="allowed dependencies" oninput="updatePrompt()" data-var="allowed dependencies"></div>
+<div class="var-group"><label>error handling level</label><input class="var-input" type="text" placeholder="error handling level" oninput="updatePrompt()" data-var="error handling level"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior Python developer who writes clean production-ready scripts.<br><br>Task: <span class="var-hl">[describe exactly what the script should do]</span><br>Inputs: <span class="var-hl">[what data or files it receives]</span><br>Outputs: <span class="var-hl">[what it should produce]</span><br>Python version: <span class="var-hl">[3.9/3.10/3.11/3.12]</span><br>Dependencies: <span class="var-hl">[only stdlib / specific packages / anything]</span><br>Error handling: <span class="var-hl">[basic / robust — handle all edge cases]</span><br><br>Task:<br>1. COMPLETE SCRIPT: Working code with all imports, type hints throughout, docstrings on all functions, constants at top, main guard<br>2. ERROR HANDLING: Specific exceptions caught, meaningful messages, graceful degradation<br>3. USAGE EXAMPLES: How to run from command line<br>4. DEPENDENCIES: pip install command if needed<br>5. EDGE CASES: What the script handles and what it does not<br>6. TESTS: 3-5 test cases as assertions or pytest</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">```python<br>#!/usr/bin/env python3<br>from pathlib import Path<br>from typing import NamedTuple<br>import csv, time<br>import requests<br>from requests.exceptions import Timeout, ConnectionError, RequestException<br><br>TIMEOUT_SECONDS: int = 10<br>USER_AGENT: str = 'URLChecker/1.0'<br><br>class URLResult(NamedTuple):<br>    url: str<br>    status_code: int | None<br>    response_time_ms: int | None<br>    status: str<br>    error: str<br><br>def check_url(url: str) -&gt; URLResult:<br>    if not url.startswith(('http://', 'https://')):<br>        return URLResult(url, None, None, 'error', 'Invalid URL: missing scheme')<br>    try:<br>        start = time.monotonic()<br>        r = requests.get(url, timeout=TIMEOUT_SECONDS, headers={'User-Agent': USER_AGENT})<br>        ms = int((time.monotonic() - start) * 1000)<br>        return URLResult(url, r.status_code, ms, 'working' if r.status_code == 200 else 'broken', '')<br>    except Timeout:<br>        return URLResult(url, None, None, 'error', f'Timeout after {TIMEOUT_SECONDS}s')<br>    except ConnectionError as e:<br>        return URLResult(url, None, None, 'error', f'Connection failed: {e}')<br>    except RequestException as e:<br>        return URLResult(url, None, None, 'error', str(e))<br><br>def read_urls(path: Path) -&gt; list[str]:<br>    with open(path, newline='', encoding='utf-8') as f:<br>        reader = csv.DictReader(f)<br>        if 'url' not in (reader.fieldnames or []):<br>            raise ValueError(&quot;CSV must have a 'url' column&quot;)<br>        return [row['url'].strip() for row in reader if row['url'].strip()]<br><br>if __name__ == '__main__':<br>    import sys<br>    if len(sys.argv) != 3:<br>        print('Usage: python url_checker.py input.csv output.csv'); sys.exit(1)<br>    results = [check_url(u) for u in read_urls(Path(sys.argv[1]))]<br>    with open(sys.argv[2], 'w', newline='', encoding='utf-8') as f:<br>        w = csv.writer(f)<br>        w.writerow(['url','status_code','response_time_ms','status','error'])<br>        for r in results: w.writerow([r.url, r.status_code, r.response_time_ms, r.status, r.error])<br>    print(f'Done: {sum(1 for r in results if r.status==&quot;working&quot;)}/{len(results)} working.')<br>```<br><br>USAGE: pip install requests then python url_checker.py urls.csv report.csv</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#7f5af0">DeepSeek</div>
+        <div style="font-size:.75rem;color:var(--text3)">DeepSeek V3 / R1</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Type hints make scripts self-documenting and enable IDE support — always include them in production code</div>
+<div class="tip-card">Constants at the top make configuration changes one-line edits</div>
+<div class="tip-card">The main guard lets the script be imported as a module without running — always include it</div>
+<div class="tip-card">Catch specific exceptions not bare Exception — gives far more useful error messages to the user</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">No error handling at all — network scripts always encounter failures; unhandled exceptions give cryptic messages</div>
+<div class="mistake-card">Hardcoded file paths and magic numbers — use constants and command-line arguments</div>
+<div class="mistake-card">No type hints — makes code harder to maintain and understand six months later</div>
+<div class="mistake-card">Missing encoding parameter in file opens — prevents surprises on non-ASCII content</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use asyncio for URL checking?</div><div class="faq-a">For 100+ URLs, asyncio with aiohttp gives massive performance gains. For smaller lists the synchronous approach is simpler. Use ThreadPoolExecutor as a middle ground without the async complexity.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to make the script faster?</div><div class="faq-a">Use concurrent.futures.ThreadPoolExecutor for I/O-bound tasks. For 100 URLs, 10 parallel workers reduces total time from 100s to about 10s.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model for Python scripts?</div><div class="faq-a">DeepSeek V3 writes clean idiomatic Python with excellent error handling and modern conventions. Claude is also excellent and better at explaining implementation trade-offs.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to handle very large CSV files?</div><div class="faq-a">Replace the list comprehension in read_urls with a generator and process in batches. Memory stays constant regardless of file size.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/sql-advanced-queries.html"><div class="rc-title">Advanced SQL Query Builder</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/code-reviewer.html"><div class="rc-title">Code Reviewer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/unit-test-generator.html"><div class="rc-title">Unit Test Generator</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/api-documentation-writer.html"><div class="rc-title">API Documentation Writer</div><div class="rc-cat">💻 Coding</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior Python developer who writes clean production-ready scripts.\n\nTask: [describe exactly what the script should do]\nInputs: [what data or files it receives]\nOutputs: [what it should produce]\nPython version: [3.9/3.10/3.11/3.12]\nDependencies: [only stdlib / specific packages / anything]\nError handling: [basic / robust — handle all edge cases]\n\nTask:\n1. COMPLETE SCRIPT: Working code with all imports, type hints throughout, docstrings on all functions, constants at top, main guard\n2. ERROR HANDLING: Specific exceptions caught, meaningful messages, graceful degradation\n3. USAGE EXAMPLES: How to run from command line\n4. DEPENDENCIES: pip install command if needed\n5. EDGE CASES: What the script handles and what it does not\n6. TESTS: 3-5 test cases as assertions or pytest";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'python-automation-script-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

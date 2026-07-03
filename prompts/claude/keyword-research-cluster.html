@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyword Research &amp; Cluster Builder Prompt for ChatGPT | Free | To</title>
+<meta name="description" content="Free keyword research &amp; cluster builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/keyword-research-cluster.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Keyword Research &amp; Cluster Builder Prompt">
+<meta property="og:description" content="Free keyword research &amp; cluster builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/keyword-research-cluster.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Keyword Research &amp; Cluster Builder Prompt">
+<meta name="twitter:description" content="Free keyword research &amp; cluster builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "SEO", "item": "https://toolsnova.net/prompts/seo/index.html"}, {"@type": "ListItem", "position": 5, "name": "Keyword Research & Cluster Builder", "item": "https://toolsnova.net/prompts/claude/keyword-research-cluster.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Keyword Research & Cluster Builder Prompt", "description": "Free keyword research & cluster builder prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/keyword-research-cluster.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "keyword research, seo, content planning, topic clusters"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I still need a paid keyword tool?", "acceptedAnswer": {"@type": "Answer", "text": "Paid tools (Ahrefs, Semrush) give you accurate volume and difficulty data that AI cannot provide. Use this prompt to build your strategy and cluster structure, then validate volumes in a real keyword tool."}}, {"@type": "Question", "name": "How many keywords should I target per page?", "acceptedAnswer": {"@type": "Answer", "text": "One primary keyword and 5–10 semantically related keywords per page. Don't try to optimise one page for unrelated terms."}}, {"@type": "Question", "name": "How long does it take to rank?", "acceptedAnswer": {"@type": "Answer", "text": "For a new domain, expect 6–12 months for competitive terms. Quick-win long-tail keywords can rank in 4–8 weeks. Topical authority compounds over time — the longer you publish, the faster each new page ranks."}}, {"@type": "Question", "name": "Can Gemini help with keyword research?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Gemini 2.0 Flash has strong web awareness and can suggest keyword ideas based on current trends. For actual search volume data, verify in Google Search Console or a dedicated tool."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/seo/index.html">🔍 SEO</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Keyword Research &amp; Cluster Builder</span>
+    </div>
+    <h1>Claude Keyword Research &amp; Cluster Builder Prompt</h1>
+    <p>You are a senior SEO strategist who builds keyword strategies that dominate niche topics.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🔍 SEO</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-seo">🔍 SEO</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">keyword research</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">seo</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">content planning</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">topic clusters</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/keyword-research-cluster.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/keyword-research-cluster.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/keyword-research-cluster.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>seed keyword</label><input class="var-input" type="text" placeholder="[example seed keyword]" oninput="updatePrompt()" data-var="seed keyword"></div>
+<div class="var-group"><label>website niche</label><input class="var-input" type="text" placeholder="[example website niche]" oninput="updatePrompt()" data-var="website niche"></div>
+<div class="var-group"><label>target audience</label><input class="var-input" type="text" placeholder="[example target audience]" oninput="updatePrompt()" data-var="target audience"></div>
+<div class="var-group"><label>content goal</label><input class="var-input" type="text" placeholder="[example content goal]" oninput="updatePrompt()" data-var="content goal"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior SEO strategist who builds keyword strategies that dominate niche topics.<br><br>Seed keyword: <span class="var-hl">[seed keyword]</span><br>Niche: <span class="var-hl">[website niche]</span><br>Audience: <span class="var-hl">[target audience]</span><br>Goal: <span class="var-hl">[content goal — traffic/leads/sales/authority]</span><br><br>Task: Build a complete keyword research report:<br><br>1. SEED KEYWORD ANALYSIS: Search intent, competition level, best page type<br><br>2. KEYWORD CLUSTERS (8–10 clusters): For each cluster:<br>   - Cluster theme<br>   - Primary keyword (pillar page)<br>   - 5–8 supporting keywords (sub-pages)<br>   - Search intent for each<br>   - Suggested page title<br><br>3. CONTENT ARCHITECTURE:<br>   - Hub page (pillar)<br>   - Spoke pages (clusters)<br>   - Internal linking structure<br><br>4. QUICK WIN KEYWORDS: 10 long-tail, high-intent, low-competition keywords with explanation of why each is a quick win<br><br>5. FEATURED SNIPPET OPPORTUNITIES: 5 question-format keywords + content format to target each<br><br>Format: Tables where possible. Priority order for each cluster (High/Medium/Low).</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">SEED KEYWORD: 'AI tools for business'<br>Search Intent: Informational/Commercial<br>Best Page Type: Comparison listicle + hub page<br><br>CLUSTER 1: Free AI tools (Priority: HIGH)<br>Pillar: 'Best free AI tools for business 2026'<br>Supporting keywords:<br>- 'free AI writing tools' (informational, high vol)<br>- 'free AI image generators' (informational)<br>- 'ChatGPT alternatives free' (commercial)<br>- 'free AI tools for small business' (commercial)<br>- 'no-cost AI productivity tools' (informational)<br><br>CLUSTER 2: AI tools by function (Priority: HIGH)<br>Pillar: 'AI tools for marketing 2026'<br>Supporting keywords:<br>- 'AI copywriting tools'<br>- 'AI social media tools'<br>- 'AI email marketing tools'...</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#00a36c">ChatGPT</div>
+        <div style="font-size:.75rem;color:var(--text3)">ChatGPT (GPT-4o / GPT-5)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Don't chase volume alone — a 200 search/month keyword with low competition beats a 10,000/month keyword you can't rank for</div>
+<div class="tip-card">Cluster your keywords by topic, not just by word similarity — semantic grouping is what builds topical authority</div>
+<div class="tip-card">Target featured snippets first — they give you position 0 with a fraction of the effort of ranking #1</div>
+<div class="tip-card">Use your clusters to build a publishing calendar — one cluster per month for 12 months is a solid SEO strategy</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Targeting head terms (single words) as a new site — you'll never rank for 'SEO' but can rank for 'SEO for e-commerce beginners'</div>
+<div class="mistake-card">Ignoring search intent — ranking for the wrong intent means bounce rates that kill your rankings</div>
+<div class="mistake-card">Not updating keyword research — the competitive landscape shifts every 6–12 months</div>
+<div class="mistake-card">Choosing keywords without checking the actual SERP — sometimes the top results tell you the true intent</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Do I still need a paid keyword tool?</div><div class="faq-a">Paid tools (Ahrefs, Semrush) give you accurate volume and difficulty data that AI cannot provide. Use this prompt to build your strategy and cluster structure, then validate volumes in a real keyword tool.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many keywords should I target per page?</div><div class="faq-a">One primary keyword and 5–10 semantically related keywords per page. Don't try to optimise one page for unrelated terms.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long does it take to rank?</div><div class="faq-a">For a new domain, expect 6–12 months for competitive terms. Quick-win long-tail keywords can rank in 4–8 weeks. Topical authority compounds over time — the longer you publish, the faster each new page ranks.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can Gemini help with keyword research?</div><div class="faq-a">Yes. Gemini 2.0 Flash has strong web awareness and can suggest keyword ideas based on current trends. For actual search volume data, verify in Google Search Console or a dedicated tool.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/seo-article-writer.html"><div class="rc-title">SEO Article Writer</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/topical-authority-map.html"><div class="rc-title">Topical Authority Map Builder</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/content-brief-writer.html"><div class="rc-title">SEO Content Brief Generator</div><div class="rc-cat">🔍 SEO</div></a><a class="related-card" href="/prompts/chatgpt/internal-linking-strategy.html"><div class="rc-title">Internal Linking Strategy Builder</div><div class="rc-cat">🔍 SEO</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior SEO strategist who builds keyword strategies that dominate niche topics.\n\nSeed keyword: [seed keyword]\nNiche: [website niche]\nAudience: [target audience]\nGoal: [content goal — traffic/leads/sales/authority]\n\nTask: Build a complete keyword research report:\n\n1. SEED KEYWORD ANALYSIS: Search intent, competition level, best page type\n\n2. KEYWORD CLUSTERS (8–10 clusters): For each cluster:\n   - Cluster theme\n   - Primary keyword (pillar page)\n   - 5–8 supporting keywords (sub-pages)\n   - Search intent for each\n   - Suggested page title\n\n3. CONTENT ARCHITECTURE:\n   - Hub page (pillar)\n   - Spoke pages (clusters)\n   - Internal linking structure\n\n4. QUICK WIN KEYWORDS: 10 long-tail, high-intent, low-competition keywords with explanation of why each is a quick win\n\n5. FEATURED SNIPPET OPPORTUNITIES: 5 question-format keywords + content format to target each\n\nFormat: Tables where possible. Priority order for each cluster (High/Medium/Low).";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'keyword-research-cluster';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

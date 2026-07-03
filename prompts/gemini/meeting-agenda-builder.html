@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Agenda Builder Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build structured meeting agendas. Time-boxed sections, decision frameworks, facilitation notes, and action item templates — better meetings every time.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/meeting-agenda-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Meeting Agenda &amp; Facilitation Guide Prompt">
+<meta property="og:description" content="Free AI prompt to build structured meeting agendas. Time-boxed sections, decision frameworks, facilitation notes, and action item templates — better meetings every time.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/meeting-agenda-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Meeting Agenda &amp; Facilitation Guide Prompt">
+<meta name="twitter:description" content="Free AI prompt to build structured meeting agendas. Time-boxed sections, decision frameworks, facilitation notes, and action item templates — better meetings every time.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Productivity", "item": "https://toolsnova.net/prompts/productivity/index.html"}, {"@type": "ListItem", "position": 5, "name": "Meeting Agenda & Facilitation Guide", "item": "https://toolsnova.net/prompts/gemini/meeting-agenda-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Meeting Agenda & Facilitation Guide Prompt", "description": "Free AI prompt to build structured meeting agendas. Time-boxed sections, decision frameworks, facilitation notes, and action item templates — better meetings every time.", "url": "https://toolsnova.net/prompts/gemini/meeting-agenda-builder.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "meeting, agenda, facilitation, productivity, team"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many agenda items should a 60-minute meeting have?", "acceptedAnswer": {"@type": "Answer", "text": "3–5 is the practical maximum. More items mean less time per item, which means more is discussed and less is decided. The agenda should be optimistic about focus and pessimistic about time."}}, {"@type": "Question", "name": "Should I use a decision log in meetings?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — a simple table of 'decision | what was decided | who decided | date' shared after every meeting dramatically reduces re-litigation of past decisions. Teams that keep decision logs make decisions faster because they don't relitigate every historical choice."}}, {"@type": "Question", "name": "How do I handle a meeting that has no clear purpose?", "acceptedAnswer": {"@type": "Answer", "text": "Before sending the invite, complete this sentence: 'This meeting needs to happen because [reason], and it will be successful if [outcome].' If you can't complete it, the meeting shouldn't happen — send an email instead."}}, {"@type": "Question", "name": "Which AI model writes the best meeting agendas?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is strongest for meeting facilitation — it follows complex structural requirements and writes facilitation notes that account for real meeting dynamics (dominant voices, tangents, time pressure). For simpler agendas, any model works well."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/productivity/index.html">🚀 Productivity</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Meeting Agenda &amp; Facilitation Guide</span>
+    </div>
+    <h1>Gemini Meeting Agenda &amp; Facilitation Guide Prompt</h1>
+    <p>Create structured meeting agendas that end on time, make decisions, and have clear action items.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🚀 Productivity</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-productivity">🚀 Productivity</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">meeting</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">agenda</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">facilitation</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">productivity</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/meeting-agenda-builder.html">ChatGPT</a><a class="model-link" href="/prompts/claude/meeting-agenda-builder.html">Claude</a><a class="model-link active" href="/prompts/gemini/meeting-agenda-builder.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>meeting type</label><input class="var-input" type="text" placeholder="quarterly planning" oninput="updatePrompt()" data-var="meeting type"></div>
+<div class="var-group"><label>duration</label><input class="var-input" type="text" placeholder="90" oninput="updatePrompt()" data-var="duration"></div>
+<div class="var-group"><label>attendees and roles</label><input class="var-input" type="text" placeholder="Founder (facilitator), Head of Marketing, Head of Product — 3 people" oninput="updatePrompt()" data-var="attendees and roles"></div>
+<div class="var-group"><label>primary outcome</label><input class="var-input" type="text" placeholder="Agree on Q3 priorities and resource allocation" oninput="updatePrompt()" data-var="primary outcome"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a professional meeting facilitator who has led executive meetings for Fortune 500 companies where every minute has a cost.<br><br>Meeting type: <span class="var-hl">[meeting type — team standup/strategic planning/problem-solving/decision-making/retrospective/1:1/client kickoff]</span><br>Duration: <span class="var-hl">[duration]</span> minutes<br>Attendees: <span class="var-hl">[attendees — roles and number of people]</span><br>Primary outcome: <span class="var-hl">[primary outcome — what must be decided or achieved by end of meeting]</span><br><br>Task: Build a complete meeting agenda:<br><br>1. PRE-MEETING (send 48 hours before):<br>   - Clear objective statement (what 'done' looks like)<br>   - Pre-read materials needed<br>   - Decisions to make vs. items to discuss vs. items to inform<br><br>2. AGENDA (time-boxed to <span class="var-hl">[duration]</span> minutes):<br>   For each section:<br>   <span class="var-hl">[Time allocation]</span> — <span class="var-hl">[Section name]</span> — <span class="var-hl">[What happens]</span> — <span class="var-hl">[Owner]</span><br>   Include: Buffer time for overruns<br><br>3. DECISION FRAMEWORK:<br>   - What decisions need to be made in this meeting<br>   - Who has final say on each<br>   - What information is needed to make each decision<br><br>4. FACILITATION NOTES:<br>   - How to open the meeting (not 'let's get started')<br>   - How to handle tangents<br>   - How to handle a dominant voice<br>   - How to end without overrunning<br><br>5. ACTION ITEM TEMPLATE:<br>   <span class="var-hl">[Action]</span> — <span class="var-hl">[Owner]</span> — <span class="var-hl">[Due date]</span> — <span class="var-hl">[Success criteria]</span><br><br>6. POST-MEETING:<br>   What to send within 24 hours of the meeting</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">QUARTERLY PLANNING MEETING — 90 minutes<br>Attendees: Founder, Head of Marketing, Head of Product<br>Outcome: Agreed Q3 priority list with resource allocation decisions made<br><br>PRE-MEETING (send 48h before):<br>'In our 90-minute meeting on [date], we'll agree the Q3 priority list and who owns what. Before attending, please:<br>1. Review the Q2 OKR results doc (linked)<br>2. Come with your top 3 priorities for Q3 and why<br>3. Note any resource constraints your team is facing<br><br>Decisions we WILL make: Q3 priority ranking, resource allocation between product and marketing<br>Decisions we will NOT make: individual OKR targets, hiring decisions (separate meeting)<br>'<br><br>AGENDA:<br>[0–10 min] OPEN: Q2 recap — what did we ship, what are the numbers? Each person: 2 minutes, no slides<br>[10–25 min] OPPORTUNITY MAPPING: Each person presents their top 3 Q3 priorities. No debate yet — just get everything on the whiteboard.<br>[25–55 min] PRIORITISATION: Using the 2×2 (impact vs. effort), decide which opportunities are Q3 vs. Q4 vs. later. Target: 3–5 Q3 priorities.<br>[55–70 min] RESOURCE ALLOCATION: For each Q3 priority — who owns it, how much of whose time does it need?<br>[70–80 min] OPEN ISSUES: Anything that didn't fit into the above — 2 mins per person max<br>[80–90 min] ACTION ITEMS + CLOSE: Document every decision and action item. State them aloud before ending.<br><br>FACILITATION NOTES:<br>Open with: 'We have 90 minutes and one job: leave knowing exactly what Q3 looks like. Let's start by spending 10 minutes on where we are.'<br><br>Handling tangents: 'That's important — let's put it in the parking lot so we don't lose it, and come back to it at minute 70.'<br>Ending hard at 90 min: '10 minutes left. Let's capture every action item before we close.'</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Send the agenda 48 hours before — last-minute agendas mean people arrive unprepared, and the first 15 minutes are wasted catching up</div>
+<div class="tip-card">Every agenda item should have an owner and an output — not 'discuss marketing' but 'Head of Marketing presents Q3 content plan — 10 min'</div>
+<div class="tip-card">Start on time regardless of who's missing — starting late trains people to arrive late</div>
+<div class="tip-card">The most important 10 minutes of any meeting is the last 10: action items with owners, due dates, and success criteria</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">More agenda items than time allows — most 60-minute meetings need a 45-minute agenda</div>
+<div class="mistake-card">No pre-read sent in advance — arriving cold means the first 20 minutes are synchronisation, not decision-making</div>
+<div class="mistake-card">Mixing discussion and decision in the same agenda item without being explicit about which is happening</div>
+<div class="mistake-card">No action item template — 'we should look into that' is not an action item; 'Alex to research pricing by Friday' is</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many agenda items should a 60-minute meeting have?</div><div class="faq-a">3–5 is the practical maximum. More items mean less time per item, which means more is discussed and less is decided. The agenda should be optimistic about focus and pessimistic about time.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use a decision log in meetings?</div><div class="faq-a">Yes — a simple table of 'decision | what was decided | who decided | date' shared after every meeting dramatically reduces re-litigation of past decisions. Teams that keep decision logs make decisions faster because they don't relitigate every historical choice.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I handle a meeting that has no clear purpose?</div><div class="faq-a">Before sending the invite, complete this sentence: 'This meeting needs to happen because [reason], and it will be successful if [outcome].' If you can't complete it, the meeting shouldn't happen — send an email instead.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model writes the best meeting agendas?</div><div class="faq-a">Claude is strongest for meeting facilitation — it follows complex structural requirements and writes facilitation notes that account for real meeting dynamics (dominant voices, tangents, time pressure). For simpler agendas, any model works well.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/deep-work-focus-system.html"><div class="rc-title">Deep Work &amp; Focus System Designer</div><div class="rc-cat">🚀 Productivity</div></a><a class="related-card" href="/prompts/chatgpt/delegation-framework.html"><div class="rc-title">Delegation &amp; Task Assignment Framework</div><div class="rc-cat">🚀 Productivity</div></a><a class="related-card" href="/prompts/chatgpt/personal-productivity-system.html"><div class="rc-title">Personal Productivity System Designer</div><div class="rc-cat">🚀 Productivity</div></a><a class="related-card" href="/prompts/chatgpt/okr-writer.html"><div class="rc-title">OKR (Objectives &amp; Key Results) Writer</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a professional meeting facilitator who has led executive meetings for Fortune 500 companies where every minute has a cost.\n\nMeeting type: [meeting type — team standup/strategic planning/problem-solving/decision-making/retrospective/1:1/client kickoff]\nDuration: [duration] minutes\nAttendees: [attendees — roles and number of people]\nPrimary outcome: [primary outcome — what must be decided or achieved by end of meeting]\n\nTask: Build a complete meeting agenda:\n\n1. PRE-MEETING (send 48 hours before):\n   - Clear objective statement (what 'done' looks like)\n   - Pre-read materials needed\n   - Decisions to make vs. items to discuss vs. items to inform\n\n2. AGENDA (time-boxed to [duration] minutes):\n   For each section:\n   [Time allocation] — [Section name] — [What happens] — [Owner]\n   Include: Buffer time for overruns\n\n3. DECISION FRAMEWORK:\n   - What decisions need to be made in this meeting\n   - Who has final say on each\n   - What information is needed to make each decision\n\n4. FACILITATION NOTES:\n   - How to open the meeting (not 'let's get started')\n   - How to handle tangents\n   - How to handle a dominant voice\n   - How to end without overrunning\n\n5. ACTION ITEM TEMPLATE:\n   [Action] — [Owner] — [Due date] — [Success criteria]\n\n6. POST-MEETING:\n   What to send within 24 hours of the meeting";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'meeting-agenda-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

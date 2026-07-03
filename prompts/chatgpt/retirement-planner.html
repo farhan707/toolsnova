@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retirement Planning Calculator &amp; Guide Prompt for Claude | Free |</title>
+<meta name="description" content="Free retirement planning calculator &amp; guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requi">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/retirement-planner.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Retirement Planning Calculator &amp; Guide Prompt">
+<meta property="og:description" content="Free retirement planning calculator &amp; guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requi">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/retirement-planner.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Retirement Planning Calculator &amp; Guide Prompt">
+<meta name="twitter:description" content="Free retirement planning calculator &amp; guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requi">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Finance", "item": "https://toolsnova.net/prompts/finance/index.html"}, {"@type": "ListItem", "position": 5, "name": "Retirement Planning Calculator & Guide", "item": "https://toolsnova.net/prompts/chatgpt/retirement-planner.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Retirement Planning Calculator & Guide Prompt", "description": "Free retirement planning calculator & guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requi", "url": "https://toolsnova.net/prompts/chatgpt/retirement-planner.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "retirement, pension, SIPP, ISA, long-term finance"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's the 4% withdrawal rule?", "acceptedAnswer": {"@type": "Answer", "text": "A rule of thumb suggesting you can withdraw 4% of your portfolio annually in retirement without running out of money over 30 years. To find your retirement number: annual income needed ÷ 4% = savings target. At 3% (more conservative), it's even safer."}}, {"@type": "Question", "name": "SIPP vs. ISA — what's the difference?", "acceptedAnswer": {"@type": "Answer", "text": "SIPP: Tax relief on contributions (25–45% depending on income), tax-free growth, taxed on withdrawal, accessible from age 57. ISA: No tax relief on contributions, tax-free growth, tax-free on withdrawal, accessible anytime. Use both: SIPP for retirement savings, ISA for accessible long-term savings."}}, {"@type": "Question", "name": "What is sequence of returns risk?", "acceptedAnswer": {"@type": "Answer", "text": "The risk that a major market crash in the first 5 years of retirement permanently reduces your portfolio's longevity. A 30% drop early in retirement when you're withdrawing (not contributing) is far more damaging than the same drop mid-career. Solution: maintain 2–3 years of cash/bonds in retirement."}}, {"@type": "Question", "name": "How much should I have saved by each age?", "acceptedAnswer": {"@type": "Answer", "text": "Common UK benchmark: 1× salary by 30, 3× by 40, 6× by 50, 8× by 60. These are averages for reaching a comfortable retirement — they depend on your target income and retirement age. Use the 25× annual expenses rule for your specific situation."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/finance/index.html">💰 Finance</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Retirement Planning Calculator &amp; Guide</span>
+    </div>
+    <h1>ChatGPT Retirement Planning Calculator &amp; Guide Prompt</h1>
+    <p>You are a retirement planning specialist who has helped hundreds of people achieve financial independence.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💰 Finance</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-finance">💰 Finance</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">retirement</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">pension</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">SIPP</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">ISA</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/retirement-planner.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/retirement-planner.html">Claude</a><a class="model-link" href="/prompts/gemini/retirement-planner.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>current age</label><input class="var-input" type="text" placeholder="[example current age]" oninput="updatePrompt()" data-var="current age"></div>
+<div class="var-group"><label>retirement age</label><input class="var-input" type="text" placeholder="[example retirement age]" oninput="updatePrompt()" data-var="retirement age"></div>
+<div class="var-group"><label>current savings</label><input class="var-input" type="text" placeholder="[example current savings]" oninput="updatePrompt()" data-var="current savings"></div>
+<div class="var-group"><label>monthly contribution</label><input class="var-input" type="text" placeholder="[example monthly contribution]" oninput="updatePrompt()" data-var="monthly contribution"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a retirement planning specialist who has helped hundreds of people achieve financial independence.<br><br>DISCLAIMER: Educational only — not regulated financial advice. Consult a qualified IFA for personalised planning.<br><br>Age now: <span class="var-hl">[current age]</span><br>Retirement age: <span class="var-hl">[retirement age]</span><br>Current savings: £/$/<span class="var-hl">[current savings]</span><br>Monthly contribution: £/$/<span class="var-hl">[monthly contribution]</span><br>Risk tolerance: <span class="var-hl">[risk tolerance — conservative/moderate/growth]</span><br><br>Task: Complete retirement planning analysis:<br><br>1. THE NUMBER: How much you need at retirement (25× annual expenses rule)<br><br>2. PROJECTION:<br>   Conservative (5% annual return): Savings at retirement<br>   Moderate (7% annual return): Savings at retirement<br>   Optimistic (9% annual return): Savings at retirement<br><br>3. GAP ANALYSIS: Are you on track? Contribution needed to close any gap<br><br>4. ACCOUNT STRATEGY:<br>   Pension/SIPP vs. ISA — when to use each and in what proportion<br><br>5. INVESTMENT ALLOCATION for <span class="var-hl">[risk tolerance]</span>:<br>   Suggested portfolio split by asset class and why<br><br>6. CRITICAL MILESTONES: What to check and do at each decade<br><br>7. BIGGEST MISTAKES: The retirement planning errors that cost people most</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">RETIREMENT PLAN: Age 35, Retiring at 65, £45,000 savings, £800/month contribution<br>DISCLAIMER: Educational only — not regulated advice.<br><br>THE NUMBER:<br>Estimated retirement income needed: £2,500/month = £30,000/year<br>25× rule: £30,000 × 25 = £750,000 target<br>(The 4% withdrawal rule: £750,000 × 4% = £30,000/year, sustainable for 30+ years)<br><br>PROJECTION (30 years, including £45K existing + £800/month contributions):<br>5% annual return: £730,000 ← slightly below target<br>7% annual return: £1,120,000 ← comfortably exceeds target<br>9% annual return: £1,750,000 ← significant surplus<br><br>GAP ANALYSIS:<br>At 5% return (conservative): £20,000 short of target<br>Solution: Increase monthly contribution by £55/month to £855, OR plan to retire at 66 instead of 65<br>At 7%+ return: On track or ahead — continue current plan<br><br>ACCOUNT STRATEGY (UK):<br>SIPP first up to employer match threshold — it's free money + immediate tax relief<br>ISA next — for flexibility (accessible before retirement age) and tax-free growth<br>At age 35: prioritise 80% SIPP, 20% ISA (time horizon allows maximum pension tax benefits)<br><br>INVESTMENT ALLOCATION (Moderate risk, 30-year horizon):<br>60% Global equity index funds (Vanguard FTSE All World or similar)<br>25% UK/US broad market ETFs<br>10% Bonds (increase to 40% as retirement approaches)<br>5% Cash/alternatives<br>Total cost: Target 0.2–0.3% annual fund charges</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Start yesterday, start today — compound interest's power is almost impossible to describe until you model it. At 7% return, money doubles every 10 years.</div>
+<div class="tip-card">Employer pension matching is the highest-risk-free return available — always contribute at least enough to get the full match</div>
+<div class="tip-card">As you approach retirement, gradually shift from growth to income investments — the 'glide path' reduces sequence-of-returns risk</div>
+<div class="tip-card">Inflation erodes savings — a 7% return with 3% inflation is really a 4% real return; model for real returns, not nominal</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Starting too late — the difference between starting at 25 vs. 35 is enormous due to compound interest</div>
+<div class="mistake-card">Paying high fund management charges — 1% vs. 0.2% annual charge sounds small but costs £100,000+ over a 30-year retirement</div>
+<div class="mistake-card">Not increasing contributions as income grows — the lifestyle creep that absorbs every pay rise</div>
+<div class="mistake-card">Accessing pension early — tax penalties and lost compound growth make early access very expensive</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the 4% withdrawal rule?</div><div class="faq-a">A rule of thumb suggesting you can withdraw 4% of your portfolio annually in retirement without running out of money over 30 years. To find your retirement number: annual income needed ÷ 4% = savings target. At 3% (more conservative), it's even safer.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">SIPP vs. ISA — what's the difference?</div><div class="faq-a">SIPP: Tax relief on contributions (25–45% depending on income), tax-free growth, taxed on withdrawal, accessible from age 57. ISA: No tax relief on contributions, tax-free growth, tax-free on withdrawal, accessible anytime. Use both: SIPP for retirement savings, ISA for accessible long-term savings.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What is sequence of returns risk?</div><div class="faq-a">The risk that a major market crash in the first 5 years of retirement permanently reduces your portfolio's longevity. A 30% drop early in retirement when you're withdrawing (not contributing) is far more damaging than the same drop mid-career. Solution: maintain 2–3 years of cash/bonds in retirement.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How much should I have saved by each age?</div><div class="faq-a">Common UK benchmark: 1× salary by 30, 3× by 40, 6× by 50, 8× by 60. These are averages for reaching a comfortable retirement — they depend on your target income and retirement age. Use the 25× annual expenses rule for your specific situation.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/personal-financial-planner.html"><div class="rc-title">Personal Financial Plan Builder</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/debt-payoff-planner.html"><div class="rc-title">Debt Payoff Strategy Planner</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/investment-analysis.html"><div class="rc-title">Investment Opportunity Analyser</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a retirement planning specialist who has helped hundreds of people achieve financial independence.\n\nDISCLAIMER: Educational only — not regulated financial advice. Consult a qualified IFA for personalised planning.\n\nAge now: [current age]\nRetirement age: [retirement age]\nCurrent savings: £/$/[current savings]\nMonthly contribution: £/$/[monthly contribution]\nRisk tolerance: [risk tolerance — conservative/moderate/growth]\n\nTask: Complete retirement planning analysis:\n\n1. THE NUMBER: How much you need at retirement (25× annual expenses rule)\n\n2. PROJECTION:\n   Conservative (5% annual return): Savings at retirement\n   Moderate (7% annual return): Savings at retirement\n   Optimistic (9% annual return): Savings at retirement\n\n3. GAP ANALYSIS: Are you on track? Contribution needed to close any gap\n\n4. ACCOUNT STRATEGY:\n   Pension/SIPP vs. ISA — when to use each and in what proportion\n\n5. INVESTMENT ALLOCATION for [risk tolerance]:\n   Suggested portfolio split by asset class and why\n\n6. CRITICAL MILESTONES: What to check and do at each decade\n\n7. BIGGEST MISTAKES: The retirement planning errors that cost people most";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'retirement-planner';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

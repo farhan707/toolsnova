@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker &amp; DevOps Setup Guide Prompt for DeepSeek | Free | ToolsNov</title>
+<meta name="description" content="Free docker &amp; devops setup guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/docker-setup-guide.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Docker &amp; DevOps Setup Guide Prompt">
+<meta property="og:description" content="Free docker &amp; devops setup guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/docker-setup-guide.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Docker &amp; DevOps Setup Guide Prompt">
+<meta name="twitter:description" content="Free docker &amp; devops setup guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "Docker & DevOps Setup Guide", "item": "https://toolsnova.net/prompts/claude/docker-setup-guide.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Docker & DevOps Setup Guide Prompt", "description": "Free docker & devops setup guide prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/docker-setup-guide.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "docker, devops, containers, ci/cd, deployment"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When should I use Docker vs. just deploying the app directly?", "acceptedAnswer": {"@type": "Answer", "text": "Docker is valuable when: you have different environments (dev/staging/prod), the app has complex dependencies, you're running multiple services, or you want reproducible deployments. For a simple static site or serverless function, Docker adds complexity without benefit."}}, {"@type": "Question", "name": "What's the difference between docker-compose and Kubernetes?", "acceptedAnswer": {"@type": "Answer", "text": "Docker Compose: runs multiple containers on one machine, great for development and small production deployments. Kubernetes: orchestrates containers across multiple machines, provides auto-scaling, self-healing, rolling updates — for production at scale. Most apps don't need Kubernetes; start with Compose or a PaaS (Fly.io, Railway)."}}, {"@type": "Question", "name": "How do I handle database migrations with Docker?", "acceptedAnswer": {"@type": "Answer", "text": "Add a migration step before the app starts: in your entrypoint script, run `python manage.py migrate` (Django) or `alembic upgrade head` (SQLAlchemy) before starting the server. In Kubernetes, use an init container for migrations."}}, {"@type": "Question", "name": "Which AI model is best for DevOps help?", "acceptedAnswer": {"@type": "Answer", "text": "DeepSeek V3 is strong for specific technical configurations. Claude is better for explaining the reasoning behind DevOps decisions and writing comprehensive guides. For complex multi-service architectures, Claude's ability to reason about system design is valuable."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Docker &amp; DevOps Setup Guide</span>
+    </div>
+    <h1>Claude Docker &amp; DevOps Setup Guide Prompt</h1>
+    <p>You are a senior DevOps engineer with expertise in containerisation, CI/CD pipelines, and cloud deployment.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">docker</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">devops</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">containers</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">ci/cd</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/docker-setup-guide.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/docker-setup-guide.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/deepseek/docker-setup-guide.html">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>application type</label><input class="var-input" type="text" placeholder="[example application type]" oninput="updatePrompt()" data-var="application type"></div>
+<div class="var-group"><label>language/framework</label><input class="var-input" type="text" placeholder="[example language/framework]" oninput="updatePrompt()" data-var="language/framework"></div>
+<div class="var-group"><label>hosting environment</label><input class="var-input" type="text" placeholder="[example hosting environment]" oninput="updatePrompt()" data-var="hosting environment"></div>
+<div class="var-group"><label>deployment requirements</label><input class="var-input" type="text" placeholder="[example deployment requirements]" oninput="updatePrompt()" data-var="deployment requirements"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior DevOps engineer with expertise in containerisation, CI/CD pipelines, and cloud deployment.<br><br>Application: <span class="var-hl">[application type — web app/API/microservice/data pipeline]</span><br>Stack: <span class="var-hl">[language/framework — Python/FastAPI/Node.js/React/etc]</span><br>Hosting: <span class="var-hl">[hosting environment — AWS/GCP/Azure/Fly.io/Railway/VPS]</span><br>Requirements: <span class="var-hl">[deployment requirements — zero-downtime/auto-scaling/HTTPS/multi-service]</span><br><br>Task: Create a complete Docker setup:<br><br>1. DOCKERFILE: Production-optimised multi-stage build<br>2. DOCKER-COMPOSE: Development + production configurations<br>3. .dockerignore: What to exclude<br>4. ENVIRONMENT VARIABLES: What to set + where + how to keep secrets safe<br>5. CI/CD PIPELINE: GitHub Actions workflow for build → test → deploy<br>6. HEALTH CHECKS: Container health monitoring setup<br>7. TROUBLESHOOTING GUIDE: Top 5 Docker issues for this stack + fixes</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">DOCKER SETUP: Python FastAPI app → Fly.io deployment<br><br># Dockerfile (multi-stage, production-optimised)<br>```dockerfile<br># Stage 1: Dependencies<br>FROM python:3.12-slim AS builder<br>WORKDIR /build<br>COPY requirements.txt .<br>RUN pip install --no-cache-dir --user -r requirements.txt<br><br># Stage 2: Production image<br>FROM python:3.12-slim<br>WORKDIR /app<br><br># Security: non-root user<br>RUN useradd --create-home appuser<br>USER appuser<br><br># Copy installed packages from builder<br>COPY --from=builder /root/.local /home/appuser/.local<br>COPY . .<br><br># Health check<br>HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \<br>  CMD python -c &quot;import requests; requests.get('http://localhost:8000/health')&quot;<br><br>EXPOSE 8000<br>CMD [&quot;python&quot;, &quot;-m&quot;, &quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8000&quot;]<br>```<br><br># docker-compose.yml (development)<br>```yaml<br>version: '3.9'<br>services:<br>  api:<br>    build: .<br>    ports: [&quot;8000:8000&quot;]<br>    volumes: [&quot;.:/app&quot;]  # hot-reload in dev<br>    environment:<br>      - DEBUG=true<br>      - DATABASE_URL=${DATABASE_URL}<br>    env_file: [.env]<br>  <br>  db:<br>    image: postgres:16-alpine<br>    environment:<br>      POSTGRES_DB: appdb<br>      POSTGRES_USER: ${DB_USER}<br>      POSTGRES_PASSWORD: ${DB_PASSWORD}<br>    volumes: [postgres_data:/var/lib/postgresql/data]<br><br>volumes:<br>  postgres_data:<br>```<br><br># GitHub Actions CI/CD<br>```yaml<br>name: Deploy to Fly.io<br>on:<br>  push:<br>    branches: [main]<br>jobs:<br>  deploy:<br>    runs-on: ubuntu-latest<br>    steps:<br>      - uses: actions/checkout@v4<br>      - uses: superfly/flyctl-actions/setup-flyctl@master<br>      - run: flyctl deploy --remote-only<br>        env:<br>          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}<br>```</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#7f5af0">DeepSeek</div>
+        <div style="font-size:.75rem;color:var(--text3)">DeepSeek V3 / R1</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Multi-stage builds are mandatory for production — development dependencies (pytest, black, mypy) should never be in your production image</div>
+<div class="tip-card">Use specific version tags (python:3.12-slim, not python:latest) — 'latest' changes without warning and breaks your builds</div>
+<div class="tip-card">Never put secrets in Dockerfiles or docker-compose.yml — use environment variables and a secrets manager</div>
+<div class="tip-card">Run containers as non-root users — it's a security best practice that's easy to implement and required by some hosting platforms</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">COPY . . before installing dependencies — this invalidates cache every time you change any file</div>
+<div class="mistake-card">Not using .dockerignore — copies node_modules or .venv into the image, making it huge</div>
+<div class="mistake-card">Hard-coding DATABASE_URL or API keys in config files — use environment variables always</div>
+<div class="mistake-card">No health check — container orchestrators need health checks to know when to restart failed containers</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">When should I use Docker vs. just deploying the app directly?</div><div class="faq-a">Docker is valuable when: you have different environments (dev/staging/prod), the app has complex dependencies, you're running multiple services, or you want reproducible deployments. For a simple static site or serverless function, Docker adds complexity without benefit.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the difference between docker-compose and Kubernetes?</div><div class="faq-a">Docker Compose: runs multiple containers on one machine, great for development and small production deployments. Kubernetes: orchestrates containers across multiple machines, provides auto-scaling, self-healing, rolling updates — for production at scale. Most apps don't need Kubernetes; start with Compose or a PaaS (Fly.io, Railway).</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I handle database migrations with Docker?</div><div class="faq-a">Add a migration step before the app starts: in your entrypoint script, run `python manage.py migrate` (Django) or `alembic upgrade head` (SQLAlchemy) before starting the server. In Kubernetes, use an init container for migrations.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model is best for DevOps help?</div><div class="faq-a">DeepSeek V3 is strong for specific technical configurations. Claude is better for explaining the reasoning behind DevOps decisions and writing comprehensive guides. For complex multi-service architectures, Claude's ability to reason about system design is valuable.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/api-documentation-writer.html"><div class="rc-title">API Documentation Writer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/unit-test-generator.html"><div class="rc-title">Unit Test Generator</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/code-reviewer.html"><div class="rc-title">Code Reviewer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/backtesting-strategy-builder.html"><div class="rc-title">Trading Strategy Backtesting Framework</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior DevOps engineer with expertise in containerisation, CI/CD pipelines, and cloud deployment.\n\nApplication: [application type — web app/API/microservice/data pipeline]\nStack: [language/framework — Python/FastAPI/Node.js/React/etc]\nHosting: [hosting environment — AWS/GCP/Azure/Fly.io/Railway/VPS]\nRequirements: [deployment requirements — zero-downtime/auto-scaling/HTTPS/multi-service]\n\nTask: Create a complete Docker setup:\n\n1. DOCKERFILE: Production-optimised multi-stage build\n2. DOCKER-COMPOSE: Development + production configurations\n3. .dockerignore: What to exclude\n4. ENVIRONMENT VARIABLES: What to set + where + how to keep secrets safe\n5. CI/CD PIPELINE: GitHub Actions workflow for build → test → deploy\n6. HEALTH CHECKS: Container health monitoring setup\n7. TROUBLESHOOTING GUIDE: Top 5 Docker issues for this stack + fixes";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'docker-setup-guide';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

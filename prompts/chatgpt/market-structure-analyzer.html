@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Structure Analyzer Prompt for ChatGPT | Free | ToolsNova</title>
+<meta name="description" content="Free market structure analyzer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/market-structure-analyzer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Market Structure Analyzer Prompt">
+<meta property="og:description" content="Free market structure analyzer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/market-structure-analyzer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Market Structure Analyzer Prompt">
+<meta name="twitter:description" content="Free market structure analyzer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Trading", "item": "https://toolsnova.net/prompts/trading/index.html"}, {"@type": "ListItem", "position": 5, "name": "Market Structure Analyzer", "item": "https://toolsnova.net/prompts/chatgpt/market-structure-analyzer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Market Structure Analyzer Prompt", "description": "Free market structure analyzer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/chatgpt/market-structure-analyzer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "market structure, bos, choch, swing highs, swing lows, smc"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's the difference between BOS and CHOCH?", "acceptedAnswer": {"@type": "Answer", "text": "BOS (Break of Structure) = price breaks a swing point in the same direction as the existing trend — confirms trend continuation. CHOCH (Change of Character) = price breaks a swing point AGAINST the existing trend — signals potential reversal."}}, {"@type": "Question", "name": "How do I identify swing highs and lows?", "acceptedAnswer": {"@type": "Answer", "text": "A swing high requires at least 2 lower highs on either side. A swing low requires at least 2 higher lows on either side. The more candles involved, the more significant the swing point. Most charting platforms have built-in swing detection tools."}}, {"@type": "Question", "name": "Does market structure analysis work on all timeframes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the same principles apply from 1-minute charts to monthly charts. The significance of structure increases with timeframe. A weekly BOS is more significant than a 5-minute BOS. Always analyse structure top-down."}}, {"@type": "Question", "name": "Can I use these concepts on crypto or stocks?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — SMC/market structure is instrument-agnostic. The same BOS, CHOCH, and swing point concepts apply to Bitcoin, S&P 500, individual stocks, or any liquid market. Liquidity levels and session timing are the main adaptations needed."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/trading/index.html">📊 Trading</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Market Structure Analyzer</span>
+    </div>
+    <h1>ChatGPT Market Structure Analyzer Prompt</h1>
+    <p>You are a professional SMC trader who reads market structure with surgical precision.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📊 Trading</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-trading">📊 Trading</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">market structure</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">bos</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">choch</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">swing highs</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/market-structure-analyzer.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/market-structure-analyzer.html">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>instrument</label><input class="var-input" type="text" placeholder="[example instrument]" oninput="updatePrompt()" data-var="instrument"></div>
+<div class="var-group"><label>recent swing points</label><input class="var-input" type="text" placeholder="[example recent swing points]" oninput="updatePrompt()" data-var="recent swing points"></div>
+<div class="var-group"><label>current timeframe</label><input class="var-input" type="text" placeholder="[example current timeframe]" oninput="updatePrompt()" data-var="current timeframe"></div>
+<div class="var-group"><label>bias you're testing</label><input class="var-input" type="text" placeholder="[example bias you're testing]" oninput="updatePrompt()" data-var="bias you're testing"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a professional SMC trader who reads market structure with surgical precision.<br><br>Instrument: <span class="var-hl">[instrument]</span><br>Recent swing points: <span class="var-hl">[recent swing points — list last 5–8 highs and lows with prices]</span><br>Timeframe: <span class="var-hl">[current timeframe]</span><br>Bias being tested: <span class="var-hl">[bias you're testing — is this structure bullish/bearish?]</span><br><br>Task: Complete market structure analysis:<br><br>1. SWING SEQUENCE: Map the HH-HL (bullish) or LH-LL (bearish) sequence from your data<br><br>2. STRUCTURE CLASSIFICATION:<br>   - Is there a clear BOS (Break of Structure)?<br>   - Is there a CHOCH (Change of Character)?<br>   - Where is the most recent confirmed structure shift?<br><br>3. TREND CLASSIFICATION:<br>   - Primary trend (HTF)<br>   - Secondary trend (trading timeframe)<br>   - Alignment or conflict?<br><br>4. KEY STRUCTURAL LEVELS:<br>   - Last confirmed swing high (resistance)<br>   - Last confirmed swing low (support)<br>   - Most recently swept liquidity pool<br><br>5. TRADE BIAS CONCLUSION: Bullish, bearish, or wait — with specific price trigger<br><br>6. INVALIDATION: The exact price level that makes this analysis wrong</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">MARKET STRUCTURE: XAU/USD H4<br>Swing Points: H1=$3,310, L1=$3,265, H2=$3,298, L2=$3,272, H3=$3,285, current=$3,279<br><br>SWING SEQUENCE:<br>H1(3310) → L1(3265) → H2(3298) → L2(3272) → H3(3285) → current(3279)<br><br>ANALYSIS:<br>H2(3298) &lt; H1(3310) → Lower High ✓ bearish structure<br>L2(3272) &gt; L1(3265) → Higher Low ✗ — NOT making lower lows<br>Conclusion: RANGING structure. No clear trend.<br><br>KEY BOS: None confirmed. Price is making higher lows but lower highs — classic compression/triangle.<br><br>STRUCTURAL LEVELS:<br>Resistance: H1=$3,310 (buy-side liquidity above)<br>Support: L1=$3,265 (sell-side liquidity below)<br>Last swept: L1 at $3,265 was taken out 3 weeks ago — now acting as support<br><br>TRADE BIAS: WAIT<br>Bullish trigger: H4 close above $3,299 (breaks H2, confirms BOS bullish)<br>Bearish trigger: H4 close below $3,265 (confirms LL, breaks L1, structure turns bearish)<br><br>INVALIDATION: N/A — wait for BOS confirmation before bias is established</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#00a36c">ChatGPT</div>
+        <div style="font-size:.75rem;color:var(--text3)">ChatGPT (GPT-4o / GPT-5)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">BOS must be a candle CLOSE beyond the swing point — wicks don't count as BOS</div>
+<div class="tip-card">The most recent CHOCH is the highest-probability reversal point in any SMC analysis</div>
+<div class="tip-card">Never trade against the last confirmed BOS direction without a CHOCH on the same timeframe</div>
+<div class="tip-card">The 'wait' bias is underrated — more than 50% of good SMC analysis should conclude with 'no setup yet'</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Calling a CHOCH on a single candle — it requires a confirmed close and ideally subsequent structure</div>
+<div class="mistake-card">Ignoring the higher timeframe BOS — trading H1 setups against a H4 BOS is low-probability</div>
+<div class="mistake-card">Entering on the BOS candle itself — enter the return to the OB/FVG created by the BOS, not on the breakout</div>
+<div class="mistake-card">Treating every swing high/low as significant — only the clear, unambiguous swing points matter</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the difference between BOS and CHOCH?</div><div class="faq-a">BOS (Break of Structure) = price breaks a swing point in the same direction as the existing trend — confirms trend continuation. CHOCH (Change of Character) = price breaks a swing point AGAINST the existing trend — signals potential reversal.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I identify swing highs and lows?</div><div class="faq-a">A swing high requires at least 2 lower highs on either side. A swing low requires at least 2 higher lows on either side. The more candles involved, the more significant the swing point. Most charting platforms have built-in swing detection tools.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does market structure analysis work on all timeframes?</div><div class="faq-a">Yes — the same principles apply from 1-minute charts to monthly charts. The significance of structure increases with timeframe. A weekly BOS is more significant than a 5-minute BOS. Always analyse structure top-down.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I use these concepts on crypto or stocks?</div><div class="faq-a">Yes — SMC/market structure is instrument-agnostic. The same BOS, CHOCH, and swing point concepts apply to Bitcoin, S&amp;P 500, individual stocks, or any liquid market. Liquidity levels and session timing are the main adaptations needed.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/xauusd-gold-analysis.html"><div class="rc-title">XAU/USD Gold Analysis (SMC)</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/ict-concepts-analysis.html"><div class="rc-title">ICT Concepts Market Analysis</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/forex-pair-analysis.html"><div class="rc-title">Forex Pair Analysis Prompt</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/backtesting-strategy-builder.html"><div class="rc-title">Trading Strategy Backtesting Framework</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a professional SMC trader who reads market structure with surgical precision.\n\nInstrument: [instrument]\nRecent swing points: [recent swing points — list last 5–8 highs and lows with prices]\nTimeframe: [current timeframe]\nBias being tested: [bias you're testing — is this structure bullish/bearish?]\n\nTask: Complete market structure analysis:\n\n1. SWING SEQUENCE: Map the HH-HL (bullish) or LH-LL (bearish) sequence from your data\n\n2. STRUCTURE CLASSIFICATION:\n   - Is there a clear BOS (Break of Structure)?\n   - Is there a CHOCH (Change of Character)?\n   - Where is the most recent confirmed structure shift?\n\n3. TREND CLASSIFICATION:\n   - Primary trend (HTF)\n   - Secondary trend (trading timeframe)\n   - Alignment or conflict?\n\n4. KEY STRUCTURAL LEVELS:\n   - Last confirmed swing high (resistance)\n   - Last confirmed swing low (support)\n   - Most recently swept liquidity pool\n\n5. TRADE BIAS CONCLUSION: Bullish, bearish, or wait — with specific price trigger\n\n6. INVALIDATION: The exact price level that makes this analysis wrong";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'market-structure-analyzer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

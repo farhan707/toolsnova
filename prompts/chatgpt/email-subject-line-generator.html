@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Subject Line Generator Prompt for ChatGPT | Free | ToolsNov</title>
+<meta name="description" content="Free email subject line generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/email-subject-line-generator.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Email Subject Line Generator Prompt">
+<meta property="og:description" content="Free email subject line generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/email-subject-line-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Email Subject Line Generator Prompt">
+<meta name="twitter:description" content="Free email subject line generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Marketing", "item": "https://toolsnova.net/prompts/marketing/index.html"}, {"@type": "ListItem", "position": 5, "name": "Email Subject Line Generator", "item": "https://toolsnova.net/prompts/chatgpt/email-subject-line-generator.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Email Subject Line Generator Prompt", "description": "Free email subject line generator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/chatgpt/email-subject-line-generator.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "email, subject line, open rate, email marketing, copywriting"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's a good email open rate in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Industry averages: B2B newsletters 25–35%, e-commerce 15–25%, transactional 40–60%. Your own trend matters more than industry benchmarks — if your rate is rising, you're doing something right."}}, {"@type": "Question", "name": "Does first-name personalisation still work?", "acceptedAnswer": {"@type": "Answer", "text": "Name personalisation adds 0–5% open rate lift and can feel hollow if overused. Behaviour-based personalisation ('You downloaded X, here's Y') consistently outperforms name-only personalisation."}}, {"@type": "Question", "name": "How many subject lines should I test?", "acceptedAnswer": {"@type": "Answer", "text": "Two variants per email for standard A/B testing. High-volume lists (10K+) can support multivariate (4+ variants) testing. For smaller lists, sequential testing across multiple sends is more reliable than splitting a small list."}}, {"@type": "Question", "name": "Does subject line length affect open rates?", "acceptedAnswer": {"@type": "Answer", "text": "Shorter lines (under 50 chars) perform better on mobile. Longer lines sometimes win for desktop-heavy, engaged audiences. Test for your specific list — general advice rarely beats your own data."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/marketing/index.html">📣 Marketing</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Email Subject Line Generator</span>
+    </div>
+    <h1>ChatGPT Email Subject Line Generator Prompt</h1>
+    <p>You are an email marketing specialist consistently achieving 40%+ open rates.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📣 Marketing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-marketing">📣 Marketing</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">email</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">subject line</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">open rate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">email marketing</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/email-subject-line-generator.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/email-subject-line-generator.html">Claude</a><a class="model-link" href="/prompts/gemini/email-subject-line-generator.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>email content</label><input class="var-input" type="text" placeholder="[example email content]" oninput="updatePrompt()" data-var="email content"></div>
+<div class="var-group"><label>audience</label><input class="var-input" type="text" placeholder="marketing professionals" oninput="updatePrompt()" data-var="audience"></div>
+<div class="var-group"><label>desired outcome</label><input class="var-input" type="text" placeholder="[example desired outcome]" oninput="updatePrompt()" data-var="desired outcome"></div>
+<div class="var-group"><label>current open rate</label><input class="var-input" type="text" placeholder="[example current open rate]" oninput="updatePrompt()" data-var="current open rate"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an email marketing specialist consistently achieving 40%+ open rates.<br><br>Email content: <span class="var-hl">[email content — brief description]</span><br>Audience: <span class="var-hl">[audience]</span><br>Outcome: <span class="var-hl">[desired outcome — click/reply/buy/read]</span><br>Current rate: <span class="var-hl">[current open rate — so we can beat it]</span><br><br>Task: Write 30 subject lines in 6 categories (5 each):<br><br>1. CURIOSITY: Creates information gap without being clickbait<br>2. BENEFIT: Leads with the specific reader outcome<br>3. URGENCY/SCARCITY: Time-bound or limited availability<br>4. PERSONALISATION: Behaviour, segment, or name-based<br>5. QUESTION: Invites internal monologue<br>6. PATTERN INTERRUPT: Breaks inbox expectation<br><br>Format: <span class="var-hl">[Subject line]</span> | <span class="var-hl">[char count]</span> | <span class="var-hl">[Preview text that pairs with it]</span><br><br>Finish with: A/B test recommendation — top 2 to test + which you predict wins and why</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">EMAIL: ToolsNova prompt library launch | AUDIENCE: Marketers | OUTCOME: Click to browse<br><br>CURIOSITY:<br>'The prompt behind my best AI results 🧠' | 41 chars | Preview: It took 6 months to figure out. Here it is.<br>'Why your AI content looks like everyone else's' | 47 chars | Preview: The one gap most writers don't know they have<br>'What separates 4★ AI output from 5★' | 37 chars | Preview: Hint: it's not the model you're using<br><br>BENEFIT:<br>'200+ AI prompts, zero signup required' | 38 chars | Preview: Writing, SEO, coding, trading — copy and use<br>'Copy → paste → better AI output in 30 seconds' | 47 chars | Preview: 200 tested prompts across 12 categories<br><br>QUESTION:<br>'Are you getting 20% of what ChatGPT can do?' | 44 chars | Preview: Most marketers are. Here's the fix — free.<br>'What if you never wrote a prompt from scratch?' | 47 chars | Preview: We built the thing. It's free.<br><br>PATTERN INTERRUPT:<br>'Imagine never writing a prompt from scratch again' | 50 chars | Preview: 200+ prompts. Free. No catch.<br>'The opposite of prompt hacking' | 31 chars | Preview: 200 prompts that actually work, written by practitioners<br><br>A/B TEST RECOMMENDATION:<br>Test: 'The prompt behind my best AI results 🧠' vs 'Are you getting 20% of what ChatGPT can do?'<br>Prediction: Curiosity with emoji wins — combines personal hook with visual interrupt. Confirm at 500 sends each.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#00a36c">ChatGPT</div>
+        <div style="font-size:.75rem;color:var(--text3)">ChatGPT (GPT-4o / GPT-5)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Preview text is your second subject line — most email clients show 90 characters after the subject; make them count</div>
+<div class="tip-card">Emoji in subject lines add 6–7% open rate lift on average when used with meaning, not decoration</div>
+<div class="tip-card">Avoid spam triggers in subject lines: 'Free', 'guarantee', 'click here', 'urgent' increase spam filtering</div>
+<div class="tip-card">Always A/B test on a meaningful sample — minimum 500 sends per variant for statistically significant results</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Subject lines over 60 characters — truncated on mobile, which is where 65%+ of emails are opened</div>
+<div class="mistake-card">Misleading subject lines that don't match content — causes unsubscribes and spam complaints that hurt future deliverability</div>
+<div class="mistake-card">Using the same subject line style every send — audiences habituate and open rates decline</div>
+<div class="mistake-card">Testing too many variables — only change the subject line to know what caused the result</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's a good email open rate in 2026?</div><div class="faq-a">Industry averages: B2B newsletters 25–35%, e-commerce 15–25%, transactional 40–60%. Your own trend matters more than industry benchmarks — if your rate is rising, you're doing something right.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does first-name personalisation still work?</div><div class="faq-a">Name personalisation adds 0–5% open rate lift and can feel hollow if overused. Behaviour-based personalisation ('You downloaded X, here's Y') consistently outperforms name-only personalisation.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many subject lines should I test?</div><div class="faq-a">Two variants per email for standard A/B testing. High-volume lists (10K+) can support multivariate (4+ variants) testing. For smaller lists, sequential testing across multiple sends is more reliable than splitting a small list.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does subject line length affect open rates?</div><div class="faq-a">Shorter lines (under 50 chars) perform better on mobile. Longer lines sometimes win for desktop-heavy, engaged audiences. Test for your specific list — general advice rarely beats your own data.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/newsletter-writer.html"><div class="rc-title">Email Newsletter Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/email-campaign-writer.html"><div class="rc-title">Email Marketing Campaign Writer</div><div class="rc-cat">📣 Marketing</div></a><a class="related-card" href="/prompts/chatgpt/cold-email-outreach.html"><div class="rc-title">Cold Email Outreach Sequence</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/landing-page-copywriter.html"><div class="rc-title">Landing Page Copywriter</div><div class="rc-cat">📣 Marketing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an email marketing specialist consistently achieving 40%+ open rates.\n\nEmail content: [email content — brief description]\nAudience: [audience]\nOutcome: [desired outcome — click/reply/buy/read]\nCurrent rate: [current open rate — so we can beat it]\n\nTask: Write 30 subject lines in 6 categories (5 each):\n\n1. CURIOSITY: Creates information gap without being clickbait\n2. BENEFIT: Leads with the specific reader outcome\n3. URGENCY/SCARCITY: Time-bound or limited availability\n4. PERSONALISATION: Behaviour, segment, or name-based\n5. QUESTION: Invites internal monologue\n6. PATTERN INTERRUPT: Breaks inbox expectation\n\nFormat: [Subject line] | [char count] | [Preview text that pairs with it]\n\nFinish with: A/B test recommendation — top 2 to test + which you predict wins and why";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'email-subject-line-generator';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

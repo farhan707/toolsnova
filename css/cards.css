@@ -1,0 +1,386 @@
+/* ═══════════════════════════════════════════════════
+   TOOLSNOVA — CARDS
+   Tool cards, category cards, stat cards, why cards,
+   collection cards, goal cards.
+   ═══════════════════════════════════════════════════ */
+
+/* ══════════════════════════════
+   TOOL CARDS — Production style
+   (used on index.html and all category pages)
+   ══════════════════════════════ */
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.tool-card:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+.tool-icon  { font-size: 1.1rem; opacity: 0.6; margin-bottom: 0.1rem; }
+.tool-name  { font-family: var(--display); font-weight: 700; font-size: 0.92rem; letter-spacing: -0.02em; color: var(--text); }
+.tool-desc  { font-size: 0.73rem; color: var(--text2); line-height: 1.6; }
+.tool-go    { font-size: 0.68rem; color: var(--accent); margin-top: auto; padding-top: 0.6rem; letter-spacing: 0.03em; }
+
+/* ── Tool grid ── */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+
+/* ══════════════════════════════
+   TOOL CARDS V2 — Homepage premium style
+   (used in homepage category showcases)
+   ══════════════════════════════ */
+.tool-card-v2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-card);
+}
+.tool-card-v2:hover {
+  border-color: var(--accent-glow);
+  background: var(--card2);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.tool-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.tool-card-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.3;
+}
+.tool-card-desc {
+  font-size: 0.78rem;
+  color: var(--text2);
+  line-height: 1.6;
+  flex: 1;
+}
+.tool-card-cta {
+  font-size: 0.73rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 0.25rem;
+  letter-spacing: 0.02em;
+}
+.tool-card-date {
+  font-size: 0.65rem;
+  color: var(--text3);
+  font-family: var(--mono);
+}
+.badge-new {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(127, 255, 111, 0.3);
+  border-radius: 99px;
+  padding: 1px 6px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* ── 4-col tool grid (homepage showcase) ── */
+.tools-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1100px) { .tools-grid-4 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px)  { .tools-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .tools-grid-4 { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════
+   CATEGORY CARDS
+   ══════════════════════════════ */
+.cat-card-v2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-card);
+}
+.cat-card-v2:hover {
+  border-color: var(--accent-glow);
+  background: var(--card2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+.cat-card-icon  { font-size: 2rem; line-height: 1; margin-bottom: 0.5rem; }
+.cat-card-name  { font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; color: var(--text); }
+.cat-card-count { font-size: 0.72rem; color: var(--accent); font-family: var(--mono); font-weight: 600; }
+.cat-card-desc  { font-size: 0.78rem; color: var(--text2); line-height: 1.5; }
+.cat-card-link  { font-size: 0.75rem; color: var(--text3); margin-top: auto; padding-top: 0.75rem; transition: color 0.15s; }
+.cat-card-v2:hover .cat-card-link { color: var(--accent); }
+
+.categories-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1100px) { .categories-grid-5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .categories-grid-5 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px)  { .categories-grid-5 { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════
+   STAT CARDS
+   ══════════════════════════════ */
+/* Tool page stat cards */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.1rem;
+}
+.stat-label {
+  font-size: 0.62rem;
+  color: var(--text3);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-value.accent { color: var(--accent); }
+
+/* Homepage V2 stat cards */
+.v2-stats { padding: 2rem; }
+.stats-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.v2-stat-card {
+  flex: 1;
+  min-width: 160px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-card);
+}
+.stat-icon { font-size: 1.6rem; flex-shrink: 0; }
+.stat-number {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-text {
+  font-size: 0.78rem;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════
+   WHY CARDS
+   ══════════════════════════════ */
+.why-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.why-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-card);
+}
+.why-icon  { font-size: 1.75rem; }
+.why-title { font-family: var(--display); font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.why-desc  { font-size: 0.78rem; color: var(--text2); line-height: 1.6; }
+
+@media (max-width: 1000px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .why-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════
+   COLLECTION CARDS
+   ══════════════════════════════ */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.collection-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+.collection-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.collection-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.collection-desc {
+  font-size: 0.78rem;
+  color: var(--text2);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.collection-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.collection-tools a {
+  font-size: 0.72rem;
+  padding: 0.3rem 0.7rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 99px;
+  color: var(--text2);
+  text-decoration: none;
+  transition: all 0.15s;
+  font-family: var(--mono);
+}
+.collection-tools a:hover {
+  background: var(--accent-dim);
+  border-color: rgba(127, 255, 111, 0.4);
+  color: var(--accent);
+}
+
+@media (max-width: 900px)  { .collections-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .collections-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════
+   GOAL CARDS
+   ══════════════════════════════ */
+.goals-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+.goal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-card);
+}
+.goal-card:hover {
+  border-color: var(--accent-glow);
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+}
+.goal-icon { font-size: 1.75rem; }
+.goal-text { font-size: 0.82rem; font-weight: 600; color: var(--text2); line-height: 1.3; }
+
+/* ══════════════════════════════
+   RELATED TOOLS CARDS
+   ══════════════════════════════ */
+.related-tools-section {
+  max-width: 860px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+}
+.related-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  margin-bottom: 0.8rem;
+}
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.7rem;
+}
+.related-card {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.related-card:hover {
+  background: var(--accent-dim);
+  border-color: rgba(127, 255, 111, 0.35);
+}
+.rc-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+.rc-name { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.rc-desc { font-size: 0.75rem; color: var(--text3); line-height: 1.4; }
+
+/* ── Light mode card adjustments ── */
+[data-theme="light"] .tool-card,
+[data-theme="light"] .tool-card-v2 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .tool-card-v2:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}

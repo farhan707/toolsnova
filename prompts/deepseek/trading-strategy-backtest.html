@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Strategy Backtesting Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to build a trading strategy backtesting framework. Entry and exit rules, performance metrics, sample size requirements, and overfitting prevention — validate your strategy properly.">
+<link rel="canonical" href="https://toolsnova.net/prompts/deepseek/trading-strategy-backtest.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="DeepSeek Trading Strategy Backtesting Framework Prompt">
+<meta property="og:description" content="Free AI prompt to build a trading strategy backtesting framework. Entry and exit rules, performance metrics, sample size requirements, and overfitting prevention — validate your strategy properly.">
+<meta property="og:url" content="https://toolsnova.net/prompts/deepseek/trading-strategy-backtest.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek Trading Strategy Backtesting Framework Prompt">
+<meta name="twitter:description" content="Free AI prompt to build a trading strategy backtesting framework. Entry and exit rules, performance metrics, sample size requirements, and overfitting prevention — validate your strategy properly.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "DeepSeek", "item": "https://toolsnova.net/prompts/deepseek/index.html"}, {"@type": "ListItem", "position": 4, "name": "Trading", "item": "https://toolsnova.net/prompts/trading/index.html"}, {"@type": "ListItem", "position": 5, "name": "Trading Strategy Backtesting Framework", "item": "https://toolsnova.net/prompts/deepseek/trading-strategy-backtest.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "DeepSeek Trading Strategy Backtesting Framework Prompt", "description": "Free AI prompt to build a trading strategy backtesting framework. Entry and exit rules, performance metrics, sample size requirements, and overfitting prevention — validate your strategy properly.", "url": "https://toolsnova.net/prompts/deepseek/trading-strategy-backtest.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "backtesting, trading strategy, quantitative trading, strategy validation, technical analysis"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is overfitting in backtesting?", "acceptedAnswer": {"@type": "Answer", "text": "Overfitting means your strategy rules were unconsciously or deliberately optimised to match historical data, so they describe the past perfectly but have no predictive power for the future. The tell: results dramatically worsen on new data, or the strategy requires many specific parameters to produce good results."}}, {"@type": "Question", "name": "How many trades are needed to validate a strategy?", "acceptedAnswer": {"@type": "Answer", "text": "Statistically: 100 trades gives confidence intervals wide enough to be directionally useful. 200 trades gives reasonable confidence. 500+ trades gives strong statistical significance. Under 50 trades, you cannot draw any conclusions."}}, {"@type": "Question", "name": "Can I backtest manually without coding?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — for lower frequency strategies (daily or weekly signals), manual backtesting by scrolling through historical charts is feasible and often more realistic than automated backtests. For intraday strategies with high signal frequency, automated backtesting saves time."}}, {"@type": "Question", "name": "Best model for backtesting frameworks?", "acceptedAnswer": {"@type": "Answer", "text": "Claude maintains mathematical consistency across a multi-criteria framework and gives realistic assessment of what sample sizes actually mean statistically. DeepSeek is strong for writing backtesting code in Python if you have data."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/trading/index.html">📊 Trading</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/deepseek/index.html">DeepSeek</a><span class="breadcrumb-sep">›</span>
+      <span>Trading Strategy Backtesting Framework</span>
+    </div>
+    <h1>DeepSeek Trading Strategy Backtesting Framework Prompt</h1>
+    <p>Build a rigorous backtesting framework for any trading strategy — entry and exit rules, performance metrics, and how to avoid overfitting.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📊 Trading</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-trading">📊 Trading</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">backtesting</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">trading strategy</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">quantitative trading</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">strategy validation</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/trading-strategy-backtest.html">ChatGPT</a><a class="model-link" href="/prompts/claude/trading-strategy-backtest.html">Claude</a><a class="model-link active" href="/prompts/deepseek/trading-strategy-backtest.html" style="border-color:#7f5af0;color:#7f5af0">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>strategy description including entry and exit signals</label><input class="var-input" type="text" placeholder="strategy description including entry and exit signals" oninput="updatePrompt()" data-var="strategy description including entry and exit signals"></div>
+<div class="var-group"><label>available historical data</label><input class="var-input" type="text" placeholder="available historical data" oninput="updatePrompt()" data-var="available historical data"></div>
+<div class="var-group"><label>backtesting tool</label><input class="var-input" type="text" placeholder="backtesting tool" oninput="updatePrompt()" data-var="backtesting tool"></div>
+<div class="var-group"><label>main concern or weakness</label><input class="var-input" type="text" placeholder="main concern or weakness" oninput="updatePrompt()" data-var="main concern or weakness"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a quantitative analyst and trading strategy developer who has backtested 200+ strategies.<br><br>DISCLAIMER: Educational only — not financial advice. Past performance does not guarantee future results. Trading involves significant risk of loss.<br><br>Strategy description: <span class="var-hl">[describe your trading strategy — entry signal, exit signal, timeframe, instrument]</span><br>Data available: <span class="var-hl">[what historical data you have access to]</span><br>Backtest tool: <span class="var-hl">[TradingView/Python/MT5/Excel/other]</span><br>Main concern: <span class="var-hl">[overfitting / small sample size / curve fitting / realistic execution]</span><br><br>Task:<br>1. RULE SPECIFICATION: Convert your strategy description into precise, unambiguous if-then rules that can be coded or manually backtested<br>2. DATA REQUIREMENTS: Minimum sample size, lookback period, and why<br>3. PERFORMANCE METRICS: Which metrics to track and what good looks like for each<br>4. OVERFITTING PREVENTION: How to avoid building a strategy that only worked in the past<br>5. EXECUTION REALISM: How to account for spread, slippage, and commission in backtest results<br>6. WALK-FORWARD TESTING: How to validate the strategy on unseen data<br>7. GO/NO-GO CRITERIA: Minimum thresholds a strategy must pass before live trading</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in DeepSeek</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">BACKTESTING FRAMEWORK: XAU/USD Session Sweep Strategy<br>DISCLAIMER: Educational — not financial advice. Past results do not guarantee future returns.<br><br>RULE SPECIFICATION (precise and codeable):<br>ENTRY CONDITIONS (all must be true):<br>1. London session (07:00-10:00 GMT) or NY open (13:00-15:00 GMT)<br>2. Price sweeps the session low (defined as the lowest low of the previous 2 hours) — wick goes below it by at least 3 pips<br>3. The 15M candle that swept the low CLOSES above the sweep level<br>4. RSI(14) on the 15M is below 40 at the time of the close<br>5. No major news event within 30 minutes (check in advance)<br><br>STOP LOSS: Below the sweep wick low plus spread plus 5 pip buffer<br>TAKE PROFIT: 2× the stop loss distance (1:2 R:R)<br>TIME EXIT: Close any open trade at 11:00 GMT (end of London primary session) regardless of P&amp;L<br><br>DATA REQUIREMENTS:<br>Minimum: 200 complete trade setups to have statistical significance<br>With your strategy triggering approximately 3-5 times per week: you need 40-65 weeks of data (roughly 12-15 months minimum)<br>Your 2 years of data is adequate — but use 18 months for development and 6 months held out for walk-forward test<br><br>PERFORMANCE METRICS:<br>Win rate: target above 45% for a 1:2 R:R system<br>Profit factor: gross profit / gross loss. Below 1.3 is weak. Above 1.5 is acceptable. Above 2.0 is strong.<br>Maximum drawdown: should be below 3× average monthly gain<br>Sharpe ratio: above 1.0 is acceptable; above 1.5 is strong<br>Expectancy: (win rate × avg win) - (loss rate × avg loss) must be positive<br><br>OVERFITTING PREVENTION:<br>1. Minimum 3 parameters in the rule — you have 5 (sweep size, candle close, RSI level, session times, R:R). Fewer parameters = less overfitting risk.<br>2. Do not optimise RSI level, sweep pip size, or R:R on the same data you test on — pick your parameters first then test them<br>3. If changing any single parameter by 10% destroys the results, the strategy is fragile<br>4. Walk-forward test on the held-out 6 months BEFORE going live<br><br>GO/NO-GO CRITERIA:<br>Minimum 150 trades in backtest (ideally 200+)<br>Profit factor above 1.4<br>Maximum drawdown below 15%<br>Walk-forward results within 30% of backtest results (not dramatically worse)<br>If any criterion fails: do not trade live — refine the rules and retest</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">A strategy needs at least 100-200 trades in the backtest for any statistical conclusions — fewer trades may just be lucky noise</div>
+<div class="tip-card">The walk-forward test on unseen data is the most important test — if the strategy fails on the held-out period, it was overfit</div>
+<div class="tip-card">Realistic spread and slippage can destroy the profitability of strategies that look great on paper — XAU/USD has 25-80 pip spreads in high volatility; always model worst-case spread</div>
+<div class="tip-card">The best strategies have simple rules — if you need 10 conditions to enter a trade, you are probably curve fitting to historical accidents</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Testing on all available data and then trading live — you have no unseen validation data and no way to know if results were random</div>
+<div class="mistake-card">Optimising parameters on historical data then claiming those parameters are correct — this is guaranteed overfitting</div>
+<div class="mistake-card">Not accounting for spread and commission — strategies that look profitable at zero spread often fail in live markets</div>
+<div class="mistake-card">Small sample sizes — 30 trades proving a strategy works is not proof of anything; it is the minimum required to start thinking about it seriously</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What is overfitting in backtesting?</div><div class="faq-a">Overfitting means your strategy rules were unconsciously or deliberately optimised to match historical data, so they describe the past perfectly but have no predictive power for the future. The tell: results dramatically worsen on new data, or the strategy requires many specific parameters to produce good results.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many trades are needed to validate a strategy?</div><div class="faq-a">Statistically: 100 trades gives confidence intervals wide enough to be directionally useful. 200 trades gives reasonable confidence. 500+ trades gives strong statistical significance. Under 50 trades, you cannot draw any conclusions.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I backtest manually without coding?</div><div class="faq-a">Yes — for lower frequency strategies (daily or weekly signals), manual backtesting by scrolling through historical charts is feasible and often more realistic than automated backtests. For intraday strategies with high signal frequency, automated backtesting saves time.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model for backtesting frameworks?</div><div class="faq-a">Claude maintains mathematical consistency across a multi-criteria framework and gives realistic assessment of what sample sizes actually mean statistically. DeepSeek is strong for writing backtesting code in Python if you have data.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/forex-trading-plan.html"><div class="rc-title">Forex Trading Plan Builder</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/trading-mindset-coach.html"><div class="rc-title">Trading Psychology Coach</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/xauusd-gold-analysis.html"><div class="rc-title">XAU/USD Gold Analysis (SMC)</div><div class="rc-cat">📊 Trading</div></a><a class="related-card" href="/prompts/chatgpt/prop-firm-challenge-guide.html"><div class="rc-title">Prop Firm Challenge Risk &amp; Pacing Strategy</div><div class="rc-cat">📊 Trading</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a quantitative analyst and trading strategy developer who has backtested 200+ strategies.\n\nDISCLAIMER: Educational only — not financial advice. Past performance does not guarantee future results. Trading involves significant risk of loss.\n\nStrategy description: [describe your trading strategy — entry signal, exit signal, timeframe, instrument]\nData available: [what historical data you have access to]\nBacktest tool: [TradingView/Python/MT5/Excel/other]\nMain concern: [overfitting / small sample size / curve fitting / realistic execution]\n\nTask:\n1. RULE SPECIFICATION: Convert your strategy description into precise, unambiguous if-then rules that can be coded or manually backtested\n2. DATA REQUIREMENTS: Minimum sample size, lookback period, and why\n3. PERFORMANCE METRICS: Which metrics to track and what good looks like for each\n4. OVERFITTING PREVENTION: How to avoid building a strategy that only worked in the past\n5. EXECUTION REALISM: How to account for spread, slippage, and commission in backtest results\n6. WALK-FORWARD TESTING: How to validate the strategy on unseen data\n7. GO/NO-GO CRITERIA: Minimum thresholds a strategy must pass before live trading";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.deepseek.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'trading-strategy-backtest';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

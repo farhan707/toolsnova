@@ -1,18 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-
-  <!-- Dark background -->
-  <rect width="64" height="64" rx="14" fill="#0c0c0e"/>
-
-  <!-- Subtle outer ring -->
-  <circle cx="32" cy="32" r="28" fill="none" stroke="#7fff6f" stroke-width="1.5" opacity="0.2"/>
-
-  <!-- Nova 4-point star -->
-  <polygon points="32,6 37,27 58,32 37,37 32,58 27,37 6,32 27,27" fill="#7fff6f"/>
-
-  <!-- Center hole -->
-  <circle cx="32" cy="32" r="7" fill="#0c0c0e"/>
-
-  <!-- Center bright dot -->
-  <circle cx="32" cy="32" r="4" fill="#7fff6f"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="#0a0c10"/>
+  <rect x="9" y="9.5" width="14" height="3" fill="#7fff6f"/>
+  <rect x="14.5" y="9.5" width="3" height="14" fill="#7fff6f"/>
+  <circle cx="23" cy="22" r="1.6" fill="#7fff6f"/>
 </svg>

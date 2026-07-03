@@ -1,0 +1,363 @@
+/* ═══════════════════════════════════════════════════
+   TOOLSNOVA — AI PROMPT LIBRARY
+   Hub page and individual prompt page styles.
+   ═══════════════════════════════════════════════════ */
+
+/* ── Prompt hub hero ── */
+.hub-hero {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.hub-hero h1 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+  font-family: var(--display);
+  font-weight: 800;
+}
+.hub-hero p { color: var(--text2); margin: 0; font-size: 0.88rem; line-height: 1.65; }
+.hub-stats { font-size: 0.72rem; color: var(--text3); font-family: var(--mono); margin-top: 0.4rem; }
+.hub-stats span { color: var(--accent); }
+
+/* ── Section labels ── */
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text3);
+  font-family: var(--mono);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* ── Category chips ── */
+.chip-links { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.chip-link {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  border-radius: 8px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.77rem;
+  font-family: var(--mono);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.chip-link:hover { border-color: rgba(127, 255, 111, 0.4); color: var(--accent); }
+
+/* ── Prompt card grid ── */
+.prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ── Prompt card ── */
+.prompt-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.prompt-card:hover {
+  border-color: rgba(127, 255, 111, 0.4);
+  background: var(--surface3);
+  transform: translateY(-1px);
+}
+.card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--display);
+  line-height: 1.3;
+}
+.card-desc { font-size: 0.77rem; color: var(--text3); line-height: 1.55; flex: 1; }
+.card-footer { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 0.25rem; }
+
+/* ── Category / Difficulty badges ── */
+.badge {
+  font-size: 0.6rem;
+  font-family: var(--mono);
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.badge-writing     { background: rgba(127,255,111,.12); color: #7fff6f; }
+.badge-seo         { background: rgba(234,67,53,.12); color: #ea4335; }
+.badge-marketing   { background: rgba(255,164,0,.12); color: #ffa400; }
+.badge-business    { background: rgba(66,133,244,.12); color: #4285f4; }
+.badge-coding      { background: rgba(127,90,240,.12); color: #7f5af0; }
+.badge-trading     { background: rgba(255,200,0,.12); color: #ffc800; }
+.badge-education   { background: rgba(0,163,108,.12); color: #00a36c; }
+.badge-social      { background: rgba(83,170,221,.12); color: #53aadd; }
+.badge-productivity{ background: rgba(52,211,153,.12); color: #34d399; }
+.badge-image       { background: rgba(208,127,89,.12); color: #d07f59; }
+.badge-finance     { background: rgba(34,211,238,.12); color: #22d3ee; }
+.badge-career      { background: rgba(244,114,182,.12); color: #f472b6; }
+.badge-beginner    { background: rgba(0,163,108,.1); color: #00a36c; }
+.badge-intermediate{ background: rgba(255,164,0,.1); color: #ffa400; }
+.badge-advanced    { background: rgba(234,67,53,.1); color: #ea4335; }
+
+/* Light mode badge adjustments */
+[data-theme="light"] .badge-writing     { background: rgba(22,163,74,.12); color: #16a34a; }
+[data-theme="light"] .badge-coding      { background: rgba(124,58,237,.12); color: #7c3aed; }
+[data-theme="light"] .badge-trading     { background: rgba(161,98,7,.12); color: #a16207; }
+
+/* ── Category mini-grid (hub page) ── */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1.2rem;
+}
+.cat-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.85rem 0.75rem;
+  text-decoration: none;
+  transition: all 0.15s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.cat-card:hover {
+  border-color: rgba(127, 255, 111, 0.4);
+  background: var(--surface3);
+  transform: translateY(-1px);
+}
+.cat-card-emoji { font-size: 1.4rem; }
+.cat-card-label { font-size: 0.78rem; font-weight: 700; color: var(--text); font-family: var(--display); }
+.cat-card-count { font-size: 0.65rem; color: var(--text3); font-family: var(--mono); }
+
+/* ══════════════════════════════
+   INDIVIDUAL PROMPT PAGES
+   ══════════════════════════════ */
+.prompt-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  font-size: 0.72rem;
+  color: var(--text3);
+  font-family: var(--mono);
+  margin-bottom: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--text3); text-decoration: none; transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb-sep { color: var(--text3); opacity: 0.5; }
+
+/* ── Prompt page header ── */
+.prompt-header { margin-bottom: 1.5rem; }
+.prompt-title {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+.prompt-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.prompt-desc {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* ── Prompt text box ── */
+.prompt-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.prompt-box-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  font-family: var(--mono);
+  margin-bottom: 0.75rem;
+}
+.prompt-text {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.prompt-text .var-slot {
+  background: var(--accent-dim);
+  border: 1px solid rgba(127, 255, 111, 0.3);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.8em;
+}
+.copy-prompt-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.copy-prompt-btn:hover {
+  background: var(--accent-dim);
+  border-color: rgba(127, 255, 111, 0.4);
+  color: var(--accent);
+}
+
+/* ── Prompt sections (tips, FAQ, etc.) ── */
+.prompt-section { margin-bottom: 1.5rem; }
+.prompt-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text3);
+  font-family: var(--mono);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Tips list ── */
+.tips-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.tips-list li {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.65;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.tips-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--mono);
+}
+
+/* ── Mistakes list ── */
+.mistakes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.mistakes-list li {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.65;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.mistakes-list li::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-family: var(--mono);
+}
+
+/* ── Example output box ── */
+.example-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+  position: relative;
+}
+
+/* ── Model recommendation badge ── */
+.best-model-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: var(--accent-dim);
+  border: 1px solid rgba(127, 255, 111, 0.25);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.best-model-label { font-size: 0.7rem; color: var(--text3); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.07em; }
+.best-model-name  { font-size: 0.85rem; font-weight: 700; color: var(--accent); font-family: var(--display); }
+
+/* ── Related prompts ── */
+.related-prompts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6rem;
+}
+.related-prompt-link {
+  display: block;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--text2);
+  text-decoration: none;
+  transition: all 0.15s;
+  font-weight: 600;
+}
+.related-prompt-link:hover {
+  border-color: rgba(127, 255, 111, 0.4);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .prompt-grid { grid-template-columns: 1fr; }
+  .prompt-page { padding: 1rem 0.75rem 2rem; }
+  .prompt-title { font-size: 1.3rem; }
+  .cat-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}

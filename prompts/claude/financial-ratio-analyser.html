@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Ratio Analyser Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to analyse a company's financial health. Profitability, liquidity, leverage, and efficiency ratios with interpretation — complete fundamental analysis.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/financial-ratio-analyser.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Financial Ratios &amp; Company Health Analyser Prompt">
+<meta property="og:description" content="Free AI prompt to analyse a company's financial health. Profitability, liquidity, leverage, and efficiency ratios with interpretation — complete fundamental analysis.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/financial-ratio-analyser.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Financial Ratios &amp; Company Health Analyser Prompt">
+<meta name="twitter:description" content="Free AI prompt to analyse a company's financial health. Profitability, liquidity, leverage, and efficiency ratios with interpretation — complete fundamental analysis.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Finance", "item": "https://toolsnova.net/prompts/finance/index.html"}, {"@type": "ListItem", "position": 5, "name": "Financial Ratios & Company Health Analyser", "item": "https://toolsnova.net/prompts/claude/financial-ratio-analyser.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Financial Ratios & Company Health Analyser Prompt", "description": "Free AI prompt to analyse a company's financial health. Profitability, liquidity, leverage, and efficiency ratios with interpretation — complete fundamental analysis.", "url": "https://toolsnova.net/prompts/claude/financial-ratio-analyser.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "financial ratios, fundamental analysis, stocks, company health, accounting"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What financial data do I need for this analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Minimum: Revenue, Gross profit, Operating income (EBIT), Net income, Current assets, Current liabilities, Total assets, Total debt/liabilities, Shareholders' equity. All available from a company's annual report (income statement + balance sheet)."}}, {"@type": "Question", "name": "Where can I find this financial data?", "acceptedAnswer": {"@type": "Answer", "text": "Public companies: Investor Relations page on their website, SEC EDGAR (US), Companies House (UK), or financial databases like Macrotrends, Wisesheets, or Stockanalysis.com. Private companies: credit bureau reports, pitch deck disclosures, or request from the company directly."}}, {"@type": "Question", "name": "Which model is best for financial analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Claude is strongest — it maintains numerical accuracy, follows complex calculation sequences, and provides appropriately cautious interpretation with relevant caveats. Always verify calculations independently; AI can make arithmetic errors."}}, {"@type": "Question", "name": "Are these ratios suitable for all industries?", "acceptedAnswer": {"@type": "Answer", "text": "The ratio categories are universal, but the benchmarks vary enormously by industry. Asset-heavy industries (manufacturing, utilities) have lower ROA than asset-light (software, professional services). Always apply industry-specific benchmarks, not generic ones."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/finance/index.html">💰 Finance</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Financial Ratios &amp; Company Health Analyser</span>
+    </div>
+    <h1>Claude Financial Ratios &amp; Company Health Analyser Prompt</h1>
+    <p>Analyse a company's financial health using key ratios — profitability, liquidity, leverage, and efficiency.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💰 Finance</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-finance">💰 Finance</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">financial ratios</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">fundamental analysis</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">stocks</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">company health</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/financial-ratio-analyser.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/financial-ratio-analyser.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/financial-ratio-analyser.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>company name</label><input class="var-input" type="text" placeholder="Hypothetical SaaS Co" oninput="updatePrompt()" data-var="company name"></div>
+<div class="var-group"><label>industry</label><input class="var-input" type="text" placeholder="B2B SaaS" oninput="updatePrompt()" data-var="industry"></div>
+<div class="var-group"><label>financial data</label><input class="var-input" type="text" placeholder="Revenue £10M, Gross profit £8M, EBIT £1M, Net income £0.8M, Total assets £5M, Current assets £3M, Current liabilities £1M, Total debt £2M, Equity £3M, Interest expense £0.15M" oninput="updatePrompt()" data-var="financial data"></div>
+<div class="var-group"><label>analysis purpose</label><input class="var-input" type="text" placeholder="investment research" oninput="updatePrompt()" data-var="analysis purpose"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a certified financial analyst (CFA) specialising in fundamental analysis.<br><br>DISCLAIMER: This is educational analysis only — not regulated investment advice. Consult a qualified financial adviser.<br><br>Company: <span class="var-hl">[company name]</span><br>Industry: <span class="var-hl">[industry — for sector-appropriate benchmarking]</span><br>Financial data: <span class="var-hl">[paste key financial figures — revenue, profit, assets, liabilities, or describe the situation]</span><br>Analysis purpose: <span class="var-hl">[analysis purpose — investment research/credit assessment/competitor benchmark/course assignment]</span><br><br>Task: Complete financial ratio analysis:<br><br>1. PROFITABILITY RATIOS:<br>   - Gross margin = Gross profit / Revenue<br>   - Operating margin = EBIT / Revenue<br>   - Net margin = Net income / Revenue<br>   - ROE = Net income / Shareholders equity<br>   - ROA = Net income / Total assets<br>   Interpretation: What these numbers mean for THIS company in THIS industry<br><br>2. LIQUIDITY RATIOS:<br>   - Current ratio = Current assets / Current liabilities<br>   - Quick ratio = (Current assets - Inventory) / Current liabilities<br>   Interpretation: Can the company meet its short-term obligations?<br><br>3. LEVERAGE/SOLVENCY:<br>   - Debt-to-equity = Total debt / Total equity<br>   - Interest coverage = EBIT / Interest expense<br>   Interpretation: How much financial risk is the company carrying?<br><br>4. EFFICIENCY RATIOS:<br>   - Asset turnover = Revenue / Total assets<br>   - Inventory days = Inventory / (COGS / 365)<br>   Interpretation: How efficiently is the company using its assets?<br><br>5. SECTOR BENCHMARKS:<br>   How these ratios compare to the industry average<br><br>6. RED FLAGS:<br>   Any ratios that signal financial distress<br><br>7. OVERALL VERDICT:<br>   Financial health rating (Strong/Good/Adequate/Concerning/Distressed) with reasoning</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">FINANCIAL RATIO ANALYSIS: Hypothetical SaaS Co<br>DISCLAIMER: Educational — not regulated investment advice.<br><br>PROFITABILITY:<br><br>Gross Margin: £8M / £10M = 80% ✅ EXCELLENT<br>SaaS benchmark: 65–80%. This company is at the top of the range, indicating strong pricing power and efficient cloud infrastructure.<br><br>Operating Margin: £1M / £10M = 10% ✅ GOOD for this stage<br>SaaS benchmark: 5–20% for growth-stage. At £10M ARR, a 10% operating margin shows disciplined unit economics.<br><br>Net Margin: £0.8M / £10M = 8%<br><br>ROE: £0.8M / £3M = 26.7% ✅ STRONG<br>Indicates efficient use of shareholder capital.<br><br>LIQUIDITY:<br>Current Ratio: £3M / £1M = 3.0 ✅ COMFORTABLE<br>Benchmark: &gt;1.5 is healthy. This company has more than adequate liquidity.<br><br>LEVERAGE:<br>Debt-to-Equity: £2M / £3M = 0.67 ✅ MANAGEABLE<br>Interest Coverage: £1M / £0.15M = 6.7× ✅ COMFORTABLE<br>The company can service its debt comfortably.<br><br>RED FLAGS: None identified in this dataset. Watch: if growth spending increases, operating margin compression is expected.<br><br>OVERALL VERDICT: STRONG<br>This is a financially healthy SaaS business with excellent gross margins, manageable debt, and positive operating cash generation at an early stage.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Always compare ratios to the industry benchmark, not an absolute standard — a 5% net margin is concerning for a retailer and excellent for a law firm</div>
+<div class="tip-card">Trend analysis matters as much as point-in-time ratios — a declining gross margin is more alarming than a low one if it's been consistent</div>
+<div class="tip-card">Cash flow metrics often tell a different story than P&amp;L metrics — a company can show accounting profit while burning cash</div>
+<div class="tip-card">Free cash flow conversion (FCF / Net income) is often the most telling metric for assessing earnings quality</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Benchmarking against the wrong industry — a grocery store and a software company have vastly different normal ratios</div>
+<div class="mistake-card">Analysing a single year in isolation — patterns over 3–5 years reveal far more than any single period</div>
+<div class="mistake-card">Treating accounting ratios as definitive — financial statements have discretion built in; ratios are indicators, not truth</div>
+<div class="mistake-card">Ignoring off-balance-sheet items — operating lease obligations, contingent liabilities, and pension deficits can significantly change the leverage picture</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What financial data do I need for this analysis?</div><div class="faq-a">Minimum: Revenue, Gross profit, Operating income (EBIT), Net income, Current assets, Current liabilities, Total assets, Total debt/liabilities, Shareholders' equity. All available from a company's annual report (income statement + balance sheet).</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Where can I find this financial data?</div><div class="faq-a">Public companies: Investor Relations page on their website, SEC EDGAR (US), Companies House (UK), or financial databases like Macrotrends, Wisesheets, or Stockanalysis.com. Private companies: credit bureau reports, pitch deck disclosures, or request from the company directly.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which model is best for financial analysis?</div><div class="faq-a">Claude is strongest — it maintains numerical accuracy, follows complex calculation sequences, and provides appropriately cautious interpretation with relevant caveats. Always verify calculations independently; AI can make arithmetic errors.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Are these ratios suitable for all industries?</div><div class="faq-a">The ratio categories are universal, but the benchmarks vary enormously by industry. Asset-heavy industries (manufacturing, utilities) have lower ROA than asset-light (software, professional services). Always apply industry-specific benchmarks, not generic ones.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/investment-analysis.html"><div class="rc-title">Investment Opportunity Analyser</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/personal-financial-planner.html"><div class="rc-title">Personal Financial Plan Builder</div><div class="rc-cat">💰 Finance</div></a><a class="related-card" href="/prompts/chatgpt/business-plan-writer.html"><div class="rc-title">Business Plan Writer</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a certified financial analyst (CFA) specialising in fundamental analysis.\n\nDISCLAIMER: This is educational analysis only — not regulated investment advice. Consult a qualified financial adviser.\n\nCompany: [company name]\nIndustry: [industry — for sector-appropriate benchmarking]\nFinancial data: [paste key financial figures — revenue, profit, assets, liabilities, or describe the situation]\nAnalysis purpose: [analysis purpose — investment research/credit assessment/competitor benchmark/course assignment]\n\nTask: Complete financial ratio analysis:\n\n1. PROFITABILITY RATIOS:\n   - Gross margin = Gross profit / Revenue\n   - Operating margin = EBIT / Revenue\n   - Net margin = Net income / Revenue\n   - ROE = Net income / Shareholders equity\n   - ROA = Net income / Total assets\n   Interpretation: What these numbers mean for THIS company in THIS industry\n\n2. LIQUIDITY RATIOS:\n   - Current ratio = Current assets / Current liabilities\n   - Quick ratio = (Current assets - Inventory) / Current liabilities\n   Interpretation: Can the company meet its short-term obligations?\n\n3. LEVERAGE/SOLVENCY:\n   - Debt-to-equity = Total debt / Total equity\n   - Interest coverage = EBIT / Interest expense\n   Interpretation: How much financial risk is the company carrying?\n\n4. EFFICIENCY RATIOS:\n   - Asset turnover = Revenue / Total assets\n   - Inventory days = Inventory / (COGS / 365)\n   Interpretation: How efficiently is the company using its assets?\n\n5. SECTOR BENCHMARKS:\n   How these ratios compare to the industry average\n\n6. RED FLAGS:\n   Any ratios that signal financial distress\n\n7. OVERALL VERDICT:\n   Financial health rating (Strong/Good/Adequate/Concerning/Distressed) with reasoning";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'financial-ratio-analyser';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering Guide Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to master prompt engineering. RCTFE framework, chain-of-thought, few-shot learning, model-specific tips — techniques that improve any AI output quality.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/prompt-engineering-guide.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Prompt Engineering Masterclass Prompt">
+<meta property="og:description" content="Free AI prompt to master prompt engineering. RCTFE framework, chain-of-thought, few-shot learning, model-specific tips — techniques that improve any AI output quality.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/prompt-engineering-guide.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Prompt Engineering Masterclass Prompt">
+<meta name="twitter:description" content="Free AI prompt to master prompt engineering. RCTFE framework, chain-of-thought, few-shot learning, model-specific tips — techniques that improve any AI output quality.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "Prompt Engineering Masterclass", "item": "https://toolsnova.net/prompts/gemini/prompt-engineering-guide.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Prompt Engineering Masterclass Prompt", "description": "Free AI prompt to master prompt engineering. RCTFE framework, chain-of-thought, few-shot learning, model-specific tips — techniques that improve any AI output quality.", "url": "https://toolsnova.net/prompts/gemini/prompt-engineering-guide.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "prompt engineering, AI output quality, ChatGPT prompts, Claude prompts, RCTFE"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is RCTFE?", "acceptedAnswer": {"@type": "Answer", "text": "Role (who the AI is), Context (relevant background), Task (what to do), Format (output structure), Examples (show the quality/style). Using all five consistently produces dramatically better output than vague requests."}}, {"@type": "Question", "name": "Does the model matter for prompting?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Claude responds better to explicit instruction and complex formatting. GPT-4o is more creative with looser prompts. Gemini excels at research-heavy tasks. DeepSeek R1 reasons through complex problems more explicitly."}}, {"@type": "Question", "name": "How to know if my prompt is good?", "acceptedAnswer": {"@type": "Answer", "text": "Test it 3 times with slightly different inputs. If output is consistently good across all 3, the prompt is solid. If results vary wildly, the prompt has ambiguity — identify and fix it."}}, {"@type": "Question", "name": "Is there a prompt engineering certification worth doing?", "acceptedAnswer": {"@type": "Answer", "text": "Google's prompt engineering course and DeepLearning.ai's course are legitimate. For most practitioners, building a personal library of 20–30 tested prompts for your specific use case is more valuable than any certification."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Prompt Engineering Masterclass</span>
+    </div>
+    <h1>Gemini Prompt Engineering Masterclass Prompt</h1>
+    <p>Master prompt engineering techniques that consistently produce professional-grade AI output across any model and use case.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">4</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">prompt engineering</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">AI output quality</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">ChatGPT prompts</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">Claude prompts</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/prompt-engineering-guide.html">ChatGPT</a><a class="model-link" href="/prompts/claude/prompt-engineering-guide.html">Claude</a><a class="model-link active" href="/prompts/gemini/prompt-engineering-guide.html" style="border-color:#4285f4;color:#4285f4">Gemini</a><a class="model-link" href="/prompts/deepseek/prompt-engineering-guide.html">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>use case</label><input class="var-input" type="text" placeholder="SEO content writing" oninput="updatePrompt()" data-var="use case"></div>
+<div class="var-group"><label>AI model primarily used</label><input class="var-input" type="text" placeholder="AI model primarily used" oninput="updatePrompt()" data-var="AI model primarily used"></div>
+<div class="var-group"><label>experience level</label><input class="var-input" type="text" placeholder="experience level" oninput="updatePrompt()" data-var="experience level"></div>
+<div class="var-group"><label>biggest frustration with current output</label><input class="var-input" type="text" placeholder="biggest frustration with current output" oninput="updatePrompt()" data-var="biggest frustration with current output"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a prompt engineering specialist who has trained 500+ professionals to get dramatically better AI output.<br><br>Use case: <span class="var-hl">[content writing/coding/analysis/research/business/image generation]</span><br>AI model: <span class="var-hl">[ChatGPT/Claude/Gemini/DeepSeek/all]</span><br>Experience: <span class="var-hl">[beginner/intermediate]</span><br>Biggest frustration: <span class="var-hl">[generic output/inconsistent results/wrong format/too short/not specific enough]</span><br><br>Task: Build a complete prompt engineering guide for YOUR use case:<br><br>1. RCTFE FRAMEWORK (Role→Context→Task→Format→Examples):<br>   Apply to one of your actual prompts: before and after<br><br>2. 5 TECHNIQUES for <span class="var-hl">[use case]</span>: Each — name, when to use, before/after example<br><br>3. MODEL-SPECIFIC TRICKS for <span class="var-hl">[model]</span>: What works uniquely well<br><br>4. FORMAT CONTROL: How to get exact structure you need every time<br><br>5. ITERATION FRAMEWORK: When your first prompt fails, follow this exact process<br><br>6. COMPLETE TEMPLATE for your most common task: Copy-ready with <span class="var-hl">[variable]</span> slots<br><br>7. COMMON MISTAKES specific to <span class="var-hl">[use case]</span>: The errors most <span class="var-hl">[use case]</span> writers make</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">PROMPT ENGINEERING: SEO Content — ChatGPT<br><br>BEFORE (generic):<br>'Write an SEO article about keyword research for beginners.'<br>→ Generic 800-word article any SEO could have written.<br><br>AFTER (RCTFE):<br>ROLE: You are a senior SEO strategist writing for technical B2B marketers who are skeptical of conventional advice.<br><br>CONTEXT: My audience at [site] are B2B SaaS marketers with 3+ years experience. They've read the standard guides. They want what the guides miss.<br><br>TASK: Write a 1,200-word article on keyword research. Focus on intent-based keyword clusters and why volume-first approaches fail in low-search-volume B2B niches.<br><br>FORMAT: H1 → problem statement → 3 H2 sections with numbered tactics → key takeaway box → FAQ (3 questions). Write in paragraphs, not bullets.<br><br>EXAMPLES: [paste 2 paragraphs from a previous article you wrote]<br><br>5 TECHNIQUES FOR SEO CONTENT:<br>1. VOICE INJECTION: Paste 2–3 paragraphs of your own writing, ask AI to 'match this style exactly'<br>2. NEGATIVE CONSTRAINTS: 'Do not write generic tips or use: leverage, seamless, in today's digital landscape'<br>3. INTENT SPECIFICATION: 'The searcher behind this keyword is [specific person] trying to [specific goal]'<br>4. COMPETITOR GAP: Paste 3 competitor outlines, ask 'What unique angle do none of these cover?'<br>5. SECTION-BY-SECTION: Write each H2 separately with its specific goal<br><br>COMMON MISTAKES FOR SEO CONTENT:<br>• 'Write SEO content' without specifying keyword, search intent, and reader — AI guesses wrong<br>• No voice injection — all AI content sounds like AI without your examples<br>• One-shot entire article — section-by-section gives control of each argument<br>• Accepting the first draft without iterating on what specifically was wrong</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Examples (the E in RCTFE) are highest-leverage — a great example is worth 5 paragraphs of instructions</div>
+<div class="tip-card">Negative constraints ('do not use these phrases') are as powerful as positive instructions</div>
+<div class="tip-card">Paste your own best writing as a voice example — this single step makes output feel like you, not like AI</div>
+<div class="tip-card">Save your best prompts as templates — the first good prompt is hardest; reusing with variables is easy</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Vague role ('You are an expert') — 'You are a senior B2B SaaS strategist writing for skeptical founders' is 10× better</div>
+<div class="mistake-card">No format specification — AI uses its default format which may not match what you want</div>
+<div class="mistake-card">Accepting mediocre output — always tell AI specifically what was wrong and what to improve</div>
+<div class="mistake-card">Single long prompts for complex tasks — break complex tasks into sequential prompts</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What is RCTFE?</div><div class="faq-a">Role (who the AI is), Context (relevant background), Task (what to do), Format (output structure), Examples (show the quality/style). Using all five consistently produces dramatically better output than vague requests.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Does the model matter for prompting?</div><div class="faq-a">Yes. Claude responds better to explicit instruction and complex formatting. GPT-4o is more creative with looser prompts. Gemini excels at research-heavy tasks. DeepSeek R1 reasons through complex problems more explicitly.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to know if my prompt is good?</div><div class="faq-a">Test it 3 times with slightly different inputs. If output is consistently good across all 3, the prompt is solid. If results vary wildly, the prompt has ambiguity — identify and fix it.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is there a prompt engineering certification worth doing?</div><div class="faq-a">Google's prompt engineering course and DeepLearning.ai's course are legitimate. For most practitioners, building a personal library of 20–30 tested prompts for your specific use case is more valuable than any certification.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/chatgpt-system-prompt-writer.html"><div class="rc-title">ChatGPT Custom GPT System Prompt Writer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/code-reviewer.html"><div class="rc-title">Code Reviewer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/technical-documentation-writer.html"><div class="rc-title">Technical Documentation Writer</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/seo-blog-post-writer.html"><div class="rc-title">SEO Blog Post Writer</div><div class="rc-cat">✍️ Writing</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a prompt engineering specialist who has trained 500+ professionals to get dramatically better AI output.\n\nUse case: [content writing/coding/analysis/research/business/image generation]\nAI model: [ChatGPT/Claude/Gemini/DeepSeek/all]\nExperience: [beginner/intermediate]\nBiggest frustration: [generic output/inconsistent results/wrong format/too short/not specific enough]\n\nTask: Build a complete prompt engineering guide for YOUR use case:\n\n1. RCTFE FRAMEWORK (Role→Context→Task→Format→Examples):\n   Apply to one of your actual prompts: before and after\n\n2. 5 TECHNIQUES for [use case]: Each — name, when to use, before/after example\n\n3. MODEL-SPECIFIC TRICKS for [model]: What works uniquely well\n\n4. FORMAT CONTROL: How to get exact structure you need every time\n\n5. ITERATION FRAMEWORK: When your first prompt fails, follow this exact process\n\n6. COMPLETE TEMPLATE for your most common task: Copy-ready with [variable] slots\n\n7. COMMON MISTAKES specific to [use case]: The errors most [use case] writers make";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'prompt-engineering-guide';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

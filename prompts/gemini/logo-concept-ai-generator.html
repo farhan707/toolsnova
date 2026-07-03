@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Concept Generator Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to generate logo concepts and brand identity direction. AI image prompts, colour palette with hex codes, typography, and usage rules — a complete visual identity brief.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/logo-concept-ai-generator.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Logo Concept &amp; Brand Identity Generator Prompt">
+<meta property="og:description" content="Free AI prompt to generate logo concepts and brand identity direction. AI image prompts, colour palette with hex codes, typography, and usage rules — a complete visual identity brief.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/logo-concept-ai-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Logo Concept &amp; Brand Identity Generator Prompt">
+<meta name="twitter:description" content="Free AI prompt to generate logo concepts and brand identity direction. AI image prompts, colour palette with hex codes, typography, and usage rules — a complete visual identity brief.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Image AI", "item": "https://toolsnova.net/prompts/image/index.html"}, {"@type": "ListItem", "position": 5, "name": "Logo Concept & Brand Identity Generator", "item": "https://toolsnova.net/prompts/gemini/logo-concept-ai-generator.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Logo Concept & Brand Identity Generator Prompt", "description": "Free AI prompt to generate logo concepts and brand identity direction. AI image prompts, colour palette with hex codes, typography, and usage rules — a complete visual identity brief.", "url": "https://toolsnova.net/prompts/gemini/logo-concept-ai-generator.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "logo design, brand identity, AI image, Midjourney, visual identity"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I trademark an AI-generated logo?", "acceptedAnswer": {"@type": "Answer", "text": "This is evolving and jurisdiction-dependent. Purely AI-generated images have faced trademark challenges in the US. Most brands use AI for concept generation and have a designer create the final asset. Consult a trademark attorney for your situation."}}, {"@type": "Question", "name": "Midjourney vs DALL-E 3 for logos?", "acceptedAnswer": {"@type": "Answer", "text": "Neither produces print-ready vector logos. Midjourney produces more aesthetically polished concepts. DALL-E 3 follows text specifications more literally. Both outputs need vector conversion before professional use."}}, {"@type": "Question", "name": "How many logo concepts to explore?", "acceptedAnswer": {"@type": "Answer", "text": "3 is the professional standard — enough variety to represent genuinely different directions without overwhelming decision-makers."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces more nuanced brand positioning and strategic rationale. ChatGPT is faster and generates more prompt variations quickly."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/image/index.html">🎨 Image AI</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Logo Concept &amp; Brand Identity Generator</span>
+    </div>
+    <h1>Gemini Logo Concept &amp; Brand Identity Generator Prompt</h1>
+    <p>Generate logo concepts and brand identity direction with colour palette, typography guidance, and AI image prompts for Midjourney.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🎨 Image AI</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-image">🎨 Image AI</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">logo design</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">brand identity</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">AI image</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">Midjourney</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/logo-concept-ai-generator.html">ChatGPT</a><a class="model-link" href="/prompts/claude/logo-concept-ai-generator.html">Claude</a><a class="model-link active" href="/prompts/gemini/logo-concept-ai-generator.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>business name</label><input class="var-input" type="text" placeholder="business name" oninput="updatePrompt()" data-var="business name"></div>
+<div class="var-group"><label>industry</label><input class="var-input" type="text" placeholder="AI tools and productivity web platform" oninput="updatePrompt()" data-var="industry"></div>
+<div class="var-group"><label>target audience</label><input class="var-input" type="text" placeholder="target audience" oninput="updatePrompt()" data-var="target audience"></div>
+<div class="var-group"><label>3 brand personality words</label><input class="var-input" type="text" placeholder="3 brand personality words" oninput="updatePrompt()" data-var="3 brand personality words"></div>
+<div class="var-group"><label>logo style preference</label><input class="var-input" type="text" placeholder="logo style preference" oninput="updatePrompt()" data-var="logo style preference"></div>
+<div class="var-group"><label>AI image tool</label><input class="var-input" type="text" placeholder="AI image tool" oninput="updatePrompt()" data-var="AI image tool"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a brand identity designer who has created visual identities for 200+ companies.<br><br>Business name: <span class="var-hl">[name]</span><br>Industry: <span class="var-hl">[what the business does]</span><br>Target audience: <span class="var-hl">[primary customer]</span><br>Brand personality (3 words): <span class="var-hl">[e.g. trustworthy, modern, bold]</span><br>Style preference: <span class="var-hl">[minimal/geometric/wordmark/icon plus text/emblem/abstract]</span><br>AI tool: <span class="var-hl">[Midjourney/DALL-E 3/other]</span><br><br>Task:<br>1. BRAND POSITIONING: One sentence capturing what the brand should feel like<br>2. LOGO CONCEPTS (3 directions): Each with rationale, AI image prompt, colour palette with hex codes, typography direction<br>3. COLOUR PALETTE: Primary, secondary, accent with hex codes and emotional associations<br>4. TYPOGRAPHY: Heading style and body style with rationale<br>5. LOGO USAGE RULES: Where each version works — full colour, one-colour, reversed<br>6. WHAT TO AVOID: 3 visual directions sending the wrong message<br>7. NEXT STEPS: What a designer needs to refine from AI output to final asset</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">BRAND POSITIONING:<br>ToolsNova should feel like the smartest tool in the room that does not need to tell you it is smart.<br><br>CONCEPT 1 — THE SPARK:<br>Rationale: Geometric spark suggesting speed and insight without cliche<br>Prompt: /imagine ToolsNova minimal logo, abstract geometric spark icon, clean sans-serif wordmark, charcoal and electric blue, negative space design, vector flat style, white background, professional tech brand --ar 3:1 --v 6.1 --style raw<br>Palette: Charcoal #1a1a2e, Electric Blue #0066FF, White #ffffff<br><br>CONCEPT 2 — THE HEXAGON:<br>Rationale: Interconnected hexagons suggesting tools, structure, and precision<br>Prompt: /imagine ToolsNova logo, minimal hexagon grid icon, two hexagons intersecting, dark navy and gold, clean geometric wordmark, modern tech logo, vector flat, white background --ar 3:1 --v 6.1 --style raw<br>Palette: Navy #0d1b2a, Gold #f4a261, Light Grey #f8f8f8<br><br>COLOUR PALETTE (Concept 1):<br>#1a1a2e Charcoal — authority, depth, sophistication<br>#0066FF Electric Blue — intelligence, energy, digital<br>#ffffff White — clarity, space, cleanliness<br><br>TYPOGRAPHY:<br>Headings: Inter Bold or Syne — geometric, modern, highly legible on screens<br>Body: Inter Regular — maximum readability across all screen sizes<br>Avoid: serif fonts which read as traditional rather than tech-forward<br><br>AVOID:<br>1. Comic or bubbly fonts — undermines the reliable personality<br>2. Stock lightning bolt or cog icons — overused in tech branding<br>3. More than 3 colours in the primary logo — visual noise at small sizes</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Test your logo at 16x16 pixels (favicon size) — if the icon is readable, it is strong enough</div>
+<div class="tip-card">Logo must work in one colour only — if it needs multiple colours to be understood, the concept is too complex</div>
+<div class="tip-card">Avoid gradients in the primary logo — they do not print well and date quickly</div>
+<div class="tip-card">AI logo output is always a starting point — needs a designer for vector conversion, refinement, and proper file formats</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Choosing a concept that looks good large but breaks at small sizes — always test the smallest use case</div>
+<div class="mistake-card">Picking a trending style rather than timeless — logos need to work for 5-10 years</div>
+<div class="mistake-card">Too literal — a bakery logo does not need bread in it</div>
+<div class="mistake-card">Going straight to prompts without brand positioning — without it all concepts look generic</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I trademark an AI-generated logo?</div><div class="faq-a">This is evolving and jurisdiction-dependent. Purely AI-generated images have faced trademark challenges in the US. Most brands use AI for concept generation and have a designer create the final asset. Consult a trademark attorney for your situation.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Midjourney vs DALL-E 3 for logos?</div><div class="faq-a">Neither produces print-ready vector logos. Midjourney produces more aesthetically polished concepts. DALL-E 3 follows text specifications more literally. Both outputs need vector conversion before professional use.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many logo concepts to explore?</div><div class="faq-a">3 is the professional standard — enough variety to represent genuinely different directions without overwhelming decision-makers.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude produces more nuanced brand positioning and strategic rationale. ChatGPT is faster and generates more prompt variations quickly.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/product-photography-prompts.html"><div class="rc-title">Product Photography AI Prompt Generator</div><div class="rc-cat">🎨 Image AI</div></a><a class="related-card" href="/prompts/chatgpt/character-design-ai.html"><div class="rc-title">AI Character &amp; Comic Book Design Generator</div><div class="rc-cat">🎨 Image AI</div></a><a class="related-card" href="/prompts/chatgpt/ai-image-concept-generator.html"><div class="rc-title">AI Image Concept &amp; Direction Generator</div><div class="rc-cat">🎨 Image AI</div></a><a class="related-card" href="/prompts/chatgpt/brand-voice-guide.html"><div class="rc-title">Brand Voice &amp; Tone Guide Creator</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a brand identity designer who has created visual identities for 200+ companies.\n\nBusiness name: [name]\nIndustry: [what the business does]\nTarget audience: [primary customer]\nBrand personality (3 words): [e.g. trustworthy, modern, bold]\nStyle preference: [minimal/geometric/wordmark/icon plus text/emblem/abstract]\nAI tool: [Midjourney/DALL-E 3/other]\n\nTask:\n1. BRAND POSITIONING: One sentence capturing what the brand should feel like\n2. LOGO CONCEPTS (3 directions): Each with rationale, AI image prompt, colour palette with hex codes, typography direction\n3. COLOUR PALETTE: Primary, secondary, accent with hex codes and emotional associations\n4. TYPOGRAPHY: Heading style and body style with rationale\n5. LOGO USAGE RULES: Where each version works — full colour, one-colour, reversed\n6. WHAT TO AVOID: 3 visual directions sending the wrong message\n7. NEXT STEPS: What a designer needs to refine from AI output to final asset";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'logo-concept-ai-generator';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

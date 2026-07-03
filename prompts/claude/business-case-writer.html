@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Case Writer Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to write a compelling business case. Problem statement, ROI calculation, risk analysis, and clear recommendation — a structured business case that gets approved.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/business-case-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Business Case Writer Prompt">
+<meta property="og:description" content="Free AI prompt to write a compelling business case. Problem statement, ROI calculation, risk analysis, and clear recommendation — a structured business case that gets approved.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/business-case-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Business Case Writer Prompt">
+<meta name="twitter:description" content="Free AI prompt to write a compelling business case. Problem statement, ROI calculation, risk analysis, and clear recommendation — a structured business case that gets approved.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "Business Case Writer", "item": "https://toolsnova.net/prompts/claude/business-case-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Business Case Writer Prompt", "description": "Free AI prompt to write a compelling business case. Problem statement, ROI calculation, risk analysis, and clear recommendation — a structured business case that gets approved.", "url": "https://toolsnova.net/prompts/claude/business-case-writer.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "business case, ROI, budget approval, stakeholder management, proposal"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long?", "acceptedAnswer": {"@type": "Answer", "text": "Executive summary: 1 page. Full case: 4-8 pages plus appendix. Decision-makers read the summary and skim financials — the full document supports questions."}}, {"@type": "Question", "name": "Can't quantify benefits?", "acceptedAnswer": {"@type": "Answer", "text": "Quantify what you can, describe the unquantifiable qualitatively. Lead with numbers — don't ignore qualitative benefits but don't lead with them."}}, {"@type": "Question", "name": "How to pre-sell before formal submission?", "acceptedAnswer": {"@type": "Answer", "text": "Brief key stakeholders informally. Their questions tell you what to address in the document. Pre-existing support dramatically increases approval rates."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude — maintains formal professional register, performs calculations accurately (always verify independently), and structures evidence-based arguments with precision."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Business Case Writer</span>
+    </div>
+    <h1>Claude Business Case Writer Prompt</h1>
+    <p>Write a compelling business case that gets decision-maker buy-in and unlocks budget for your project or initiative.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ea4335">Advanced</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-advanced">Advanced</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">business case</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">ROI</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">budget approval</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">stakeholder management</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/business-case-writer.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/business-case-writer.html" style="border-color:#d07f59;color:#d07f59">Claude</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>project name and description</label><input class="var-input" type="text" placeholder="project name and description" oninput="updatePrompt()" data-var="project name and description"></div>
+<div class="var-group"><label>organisation type</label><input class="var-input" type="text" placeholder="organisation type" oninput="updatePrompt()" data-var="organisation type"></div>
+<div class="var-group"><label>decision makers</label><input class="var-input" type="text" placeholder="Head of Marketing and CFO" oninput="updatePrompt()" data-var="decision makers"></div>
+<div class="var-group"><label>budget required</label><input class="var-input" type="text" placeholder="budget required" oninput="updatePrompt()" data-var="budget required"></div>
+<div class="var-group"><label>primary benefit</label><input class="var-input" type="text" placeholder="primary benefit" oninput="updatePrompt()" data-var="primary benefit"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a management consultant who has written business cases approved for £50M+ in budget.<br><br>Project: <span class="var-hl">[project name and description]</span><br>Organisation: <span class="var-hl">[corporate/startup/public sector/nonprofit]</span><br>Decision makers: <span class="var-hl">[CFO/board/department head]</span><br>Budget required: <span class="var-hl">[approximate]</span><br>Primary benefit: <span class="var-hl">[cost savings/revenue increase/risk reduction/efficiency]</span><br><br>Task:<br>1. EXECUTIVE SUMMARY (250 words): Problem → solution → financial case → recommendation — for someone who will ONLY read this section<br>2. PROBLEM STATEMENT (300 words): Current state — what's broken, what it costs, evidence, cost of inaction<br>3. PROPOSED SOLUTION (300 words): What exactly, why this vs alternatives, implementation timeline<br>4. FINANCIAL ANALYSIS: Costs (one-time + ongoing), benefits (quantified), ROI, payback period<br>5. RISK ANALYSIS: Top 3 risks — likelihood, impact, mitigation<br>6. ALTERNATIVES CONSIDERED: 2 alternatives and why rejected<br>7. RECOMMENDATION: Clear unambiguous ask — what, by when, from whom<br>8. APPENDIX OUTLINE: Supporting materials to attach</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">BUSINESS CASE: Marketing AI Prompt Library<br><br>EXECUTIVE SUMMARY:<br>Our 12-person marketing team uses AI for content but without standardised prompts — quality varies significantly and 30-40% of AI drafts require substantial reworking before meeting publishable standards.<br><br>This case recommends a £8,000 investment in a standardised prompt library and training. Conservative estimates: saves ~4 hours editing time per person per week — worth £80,640/year at current loaded rates.<br><br>ROI: 1,635% in year 1. Payback period: 3 weeks.<br><br>FINANCIAL ANALYSIS:<br>COSTS:<br>• Subscription: £840/year (12 seats) | Implementation (5 days): £3,200 | Training: £600<br>• Total Year 1: £4,640 | Ongoing: £840/year<br><br>BENEFITS:<br>• 4 hours/person/week saved × 12 people × 48 weeks × £35 loaded rate = £80,640/year<br>ROI: (£80,640 - £4,640) ÷ £4,640 = 1,635%<br>Payback: 3 weeks<br><br>RISK 1: Team adoption — Likelihood: Medium | Impact: High<br>Mitigation: 2-week pilot with 2 team champions before full rollout<br><br>RECOMMENDATION:<br>Approve £8,000 for a 6-month pilot starting [date]. Review ROI at month 3 with go/no-go on permanent adoption.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Executive summary is the most important section — write it last but most decision-makers only read this</div>
+<div class="tip-card">Quantify everything — 'improved efficiency' is ignored; '£80,640 in recovered staff time' gets approved</div>
+<div class="tip-card">The risk section builds credibility — thinking through failure makes the recommendation more trustworthy, not less</div>
+<div class="tip-card">Show alternatives considered — without it, decision-makers ask 'did you consider X?' and your case looks incomplete</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Starting with the solution instead of the problem — they must believe the problem exists before caring about your solution</div>
+<div class="mistake-card">Vague financial claims — 'significant time savings' is not a benefit; a specific figure is</div>
+<div class="mistake-card">No risk section — business cases without risk analysis appear naive</div>
+<div class="mistake-card">Asking for too much upfront — a phased approach with a pilot is far easier to approve</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How long?</div><div class="faq-a">Executive summary: 1 page. Full case: 4-8 pages plus appendix. Decision-makers read the summary and skim financials — the full document supports questions.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can't quantify benefits?</div><div class="faq-a">Quantify what you can, describe the unquantifiable qualitatively. Lead with numbers — don't ignore qualitative benefits but don't lead with them.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to pre-sell before formal submission?</div><div class="faq-a">Brief key stakeholders informally. Their questions tell you what to address in the document. Pre-existing support dramatically increases approval rates.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude — maintains formal professional register, performs calculations accurately (always verify independently), and structures evidence-based arguments with precision.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/pitch-deck-outline.html"><div class="rc-title">Investor Pitch Deck Outline</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/grant-proposal-writer.html"><div class="rc-title">Grant Proposal Writer</div><div class="rc-cat">✍️ Writing</div></a><a class="related-card" href="/prompts/chatgpt/investor-update-writer.html"><div class="rc-title">Startup Investor Update Writer</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a management consultant who has written business cases approved for £50M+ in budget.\n\nProject: [project name and description]\nOrganisation: [corporate/startup/public sector/nonprofit]\nDecision makers: [CFO/board/department head]\nBudget required: [approximate]\nPrimary benefit: [cost savings/revenue increase/risk reduction/efficiency]\n\nTask:\n1. EXECUTIVE SUMMARY (250 words): Problem → solution → financial case → recommendation — for someone who will ONLY read this section\n2. PROBLEM STATEMENT (300 words): Current state — what's broken, what it costs, evidence, cost of inaction\n3. PROPOSED SOLUTION (300 words): What exactly, why this vs alternatives, implementation timeline\n4. FINANCIAL ANALYSIS: Costs (one-time + ongoing), benefits (quantified), ROI, payback period\n5. RISK ANALYSIS: Top 3 risks — likelihood, impact, mitigation\n6. ALTERNATIVES CONSIDERED: 2 alternatives and why rejected\n7. RECOMMENDATION: Clear unambiguous ask — what, by when, from whom\n8. APPENDIX OUTLINE: Supporting materials to attach";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'business-case-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

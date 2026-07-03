@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson Plan Creator Prompt | ChatGPT | ToolsNova</title>
+<meta name="description" content="Free AI prompt to create a complete lesson plan. Learning objectives, starter activity, main activities, differentiation, assessment, and plenary — a professional lesson plan in minutes.">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/lesson-plan-builder.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini Lesson Plan Creator Prompt">
+<meta property="og:description" content="Free AI prompt to create a complete lesson plan. Learning objectives, starter activity, main activities, differentiation, assessment, and plenary — a professional lesson plan in minutes.">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/lesson-plan-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Lesson Plan Creator Prompt">
+<meta name="twitter:description" content="Free AI prompt to create a complete lesson plan. Learning objectives, starter activity, main activities, differentiation, assessment, and plenary — a professional lesson plan in minutes.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Education", "item": "https://toolsnova.net/prompts/education/index.html"}, {"@type": "ListItem", "position": 5, "name": "Lesson Plan Creator", "item": "https://toolsnova.net/prompts/gemini/lesson-plan-builder.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini Lesson Plan Creator Prompt", "description": "Free AI prompt to create a complete lesson plan. Learning objectives, starter activity, main activities, differentiation, assessment, and plenary — a professional lesson plan in minutes.", "url": "https://toolsnova.net/prompts/gemini/lesson-plan-builder.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "lesson plan, teaching, education, curriculum, classroom"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How detailed should a lesson plan be?", "acceptedAnswer": {"@type": "Answer", "text": "Detailed enough that a substitute teacher could deliver it. Experienced teachers often work from abbreviated plans; newer teachers benefit from fuller scripts for the teaching input section."}}, {"@type": "Question", "name": "How to adapt for SEN students?", "acceptedAnswer": {"@type": "Answer", "text": "Ask what specific barrier this student has. Then: pre-teach vocabulary, break tasks into smaller steps, provide worked examples, allow alternative modes of response."}}, {"@type": "Question", "name": "Best lesson structure for 60 minutes?", "acceptedAnswer": {"@type": "Answer", "text": "Starter 8-10 min, Input 10-15 min, Guided practice 10-15 min, Independent practice 15-20 min, Plenary 5-8 min. Adjust ratios based on how much new content you are introducing."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "ChatGPT produces complete lesson plans quickly and responds well to subject-specific requests. Claude is better for highly differentiated plans or complex instructional design for advanced levels."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/education/index.html">📚 Education</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>Lesson Plan Creator</span>
+    </div>
+    <h1>Gemini Lesson Plan Creator Prompt</h1>
+    <p>Create a complete structured lesson plan with clear learning objectives, activities, differentiation strategies, and assessment methods.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📚 Education</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-education">📚 Education</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">lesson plan</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">teaching</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">education</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">curriculum</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/lesson-plan-builder.html">ChatGPT</a><a class="model-link" href="/prompts/claude/lesson-plan-builder.html">Claude</a><a class="model-link active" href="/prompts/gemini/lesson-plan-builder.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>subject</label><input class="var-input" type="text" placeholder="Computer Science" oninput="updatePrompt()" data-var="subject"></div>
+<div class="var-group"><label>lesson topic</label><input class="var-input" type="text" placeholder="lesson topic" oninput="updatePrompt()" data-var="lesson topic"></div>
+<div class="var-group"><label>year group or level</label><input class="var-input" type="text" placeholder="year group or level" oninput="updatePrompt()" data-var="year group or level"></div>
+<div class="var-group"><label>lesson length</label><input class="var-input" type="text" placeholder="lesson length" oninput="updatePrompt()" data-var="lesson length"></div>
+<div class="var-group"><label>class size</label><input class="var-input" type="text" placeholder="class size" oninput="updatePrompt()" data-var="class size"></div>
+<div class="var-group"><label>learning needs</label><input class="var-input" type="text" placeholder="learning needs" oninput="updatePrompt()" data-var="learning needs"></div>
+<div class="var-group"><label>available resources</label><input class="var-input" type="text" placeholder="available resources" oninput="updatePrompt()" data-var="available resources"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an experienced teacher and curriculum designer who has created lesson plans used in 200+ classrooms.<br><br>Subject: <span class="var-hl">[subject]</span><br>Topic: <span class="var-hl">[specific lesson topic]</span><br>Year group or level: <span class="var-hl">[age group or class level]</span><br>Lesson length: <span class="var-hl">[30/45/60/90 minutes]</span><br>Class size: <span class="var-hl">[approximate number]</span><br>Learning needs: <span class="var-hl">[EAL/SEN/mixed ability/gifted/no special needs]</span><br>Resources available: <span class="var-hl">[whiteboard/computers/tablets/textbooks/limited]</span><br><br>Task:<br>1. LEARNING OBJECTIVES (3-4): By the end of this lesson students will be able to — specific and measurable using action verbs<br>2. STARTER (5-10 min): Hook that activates prior knowledge<br>3. MAIN TEACHING INPUT: How you will introduce and explain the concept<br>4. STUDENT ACTIVITIES (2-3): Progressing from guided to independent practice<br>5. DIFFERENTIATION: Support for struggling students, extension for advanced students<br>6. ASSESSMENT FOR LEARNING: How you will know if students have understood<br>7. PLENARY (5-10 min): Close the lesson and check understanding<br>8. HOMEWORK if appropriate<br>9. RESOURCES NEEDED: Complete list</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">LESSON PLAN: Python Variables and Data Types — Year 9<br><br>LEARNING OBJECTIVES:<br>By the end students will be able to:<br>1. Define what a variable is and explain why variables are used in programming<br>2. Create variables in Python using correct syntax<br>3. Identify and use at least 3 data types: integer, string, float<br>4. Predict what a simple Python program will output before running it<br><br>STARTER (8 min):<br>Variable Hunt — Show 5 everyday scenarios on the projector such as a recipe that serves 4, what changes if it serves 8? Students discuss in pairs: what information would change? Bridge to: In programming, things that change are called variables.<br><br>MAIN INPUT (12 min):<br>Live coding demonstration — create a simple student profile: name as string, age as integer, height as float. Narrate every line. Analogy: A variable is like a labelled box — the label is the name, the contents are the value.<br><br>ACTIVITIES:<br>1. Guided (10 min): Students follow along to recreate the teacher's program<br>2. Structured (15 min): My Profile — create variables for 5 pieces of personal information using correct data types<br>3. Independent (10 min): Debug It — 3 programs with errors to find and fix<br><br>DIFFERENTIATION:<br>Support: Printed word bank of variable names and data types; pair EAL students with bilingual peer or provide key terms in home language<br>Extension: Add input() function to make program interactive; explore type errors<br><br>PLENARY (5 min):<br>Cold calling — 5 quick questions: If I write name = 42, what data type is 42? Address common misconceptions seen during activities.<br><br>EXIT TICKET:<br>3-question mini-quiz: write a variable, identify a data type, predict the output of a simple program.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#00a36c">ChatGPT</div>
+        <div style="font-size:.75rem;color:var(--text3)">ChatGPT (GPT-4o / GPT-5)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Learning objectives must use action verbs — identify, create, explain, predict — that are observable and assessable not vague like understand</div>
+<div class="tip-card">Starter should activate prior knowledge not introduce new content — build from what students already know</div>
+<div class="tip-card">Student activity time should exceed teacher input time after the initial explanation</div>
+<div class="tip-card">Exit tickets give you data on what to reteach before moving on in the next lesson</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Objectives too vague such as students will understand Python — understanding is not observable; creating and writing are</div>
+<div class="mistake-card">All activities teacher-led — students need to do the thing to learn it, not watch someone else do it</div>
+<div class="mistake-card">No differentiation plan — a class of 28 has students at very different levels; one pace loses most of them somewhere</div>
+<div class="mistake-card">Skipping the plenary because we ran out of time — this is the most commonly cut part and the one that most helps consolidation</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How detailed should a lesson plan be?</div><div class="faq-a">Detailed enough that a substitute teacher could deliver it. Experienced teachers often work from abbreviated plans; newer teachers benefit from fuller scripts for the teaching input section.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How to adapt for SEN students?</div><div class="faq-a">Ask what specific barrier this student has. Then: pre-teach vocabulary, break tasks into smaller steps, provide worked examples, allow alternative modes of response.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best lesson structure for 60 minutes?</div><div class="faq-a">Starter 8-10 min, Input 10-15 min, Guided practice 10-15 min, Independent practice 15-20 min, Plenary 5-8 min. Adjust ratios based on how much new content you are introducing.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">ChatGPT produces complete lesson plans quickly and responds well to subject-specific requests. Claude is better for highly differentiated plans or complex instructional design for advanced levels.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/book-club-guide.html"><div class="rc-title">Book Club Discussion Guide Creator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/academic-essay-planner.html"><div class="rc-title">Academic Essay Planner &amp; Structure Builder</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/debate-prep-coach.html"><div class="rc-title">Debate &amp; Argument Coach</div><div class="rc-cat">📚 Education</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an experienced teacher and curriculum designer who has created lesson plans used in 200+ classrooms.\n\nSubject: [subject]\nTopic: [specific lesson topic]\nYear group or level: [age group or class level]\nLesson length: [30/45/60/90 minutes]\nClass size: [approximate number]\nLearning needs: [EAL/SEN/mixed ability/gifted/no special needs]\nResources available: [whiteboard/computers/tablets/textbooks/limited]\n\nTask:\n1. LEARNING OBJECTIVES (3-4): By the end of this lesson students will be able to — specific and measurable using action verbs\n2. STARTER (5-10 min): Hook that activates prior knowledge\n3. MAIN TEACHING INPUT: How you will introduce and explain the concept\n4. STUDENT ACTIVITIES (2-3): Progressing from guided to independent practice\n5. DIFFERENTIATION: Support for struggling students, extension for advanced students\n6. ASSESSMENT FOR LEARNING: How you will know if students have understood\n7. PLENARY (5-10 min): Close the lesson and check understanding\n8. HOMEWORK if appropriate\n9. RESOURCES NEEDED: Complete list";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'lesson-plan-builder';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

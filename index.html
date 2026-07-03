@@ -1,49 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Anti-flash: must be first -->
 <script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolsNova — Free Online Developer, Finance & Trading Tools</title>
-<meta name="description" content="155+ free browser-based tools. Developer tools, finance calculators, trading tools, AI API cost calculator, token counter, Islamic mortgage, solar ROI, legal document analyzer and more. No signup, no ads, instant results.">
+<title>ToolsNova — 155+ Free Browser Tools &amp; 200+ AI Prompts | No Signup</title>
+<meta name="description" content="Find the right tool in 3 seconds. 155+ free browser-based tools for AI, developers, traders and finance, plus 200+ AI prompts for ChatGPT, Claude &amp; Gemini. 100% private, no signup required.">
 <link rel="canonical" href="https://toolsnova.net/">
+
+<!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/x-icon" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20">
-<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#7fff6f">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="ToolsNova">
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
 
+<!-- Open Graph -->
+<meta property="og:title" content="ToolsNova — 155+ Free Browser Tools &amp; 200+ AI Prompts">
+<meta property="og:description" content="Find the right tool in 3 seconds. Free browser-based tools for AI, developers, traders and finance. 100% private, no signup required.">
+<meta property="og:url" content="https://toolsnova.net">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ToolsNova — 155+ Free Browser Tools &amp; 200+ AI Prompts">
+<meta name="twitter:description" content="Find the right tool in 3 seconds. 100% private, no signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema: WebSite + SearchAction -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"ToolsNova","url":"https://toolsnova.net/","description":"Free browser-based developer utilities, finance calculators, and trading tools."}
+{"@context":"https://schema.org","@type":"WebSite","name":"ToolsNova","url":"https://toolsnova.net/","description":"Free browser-based tools for AI, developers, traders and finance, plus AI prompts for ChatGPT, Claude and Gemini.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://toolsnova.net/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
 </script>
-<style>
-.hero { padding:3rem 2rem 1.5rem; max-width:620px; }
-.hero h1 { font-family:var(--display);font-weight:800;font-size:2.2rem;letter-spacing:-.04em;line-height:1.1;margin-bottom:.8rem; }
-.hero h1 span { color:var(--accent); }
-.hero p { font-size:.83rem;color:var(--text2);line-height:1.8; }
-.pill-row { display:flex;gap:6px;flex-wrap:wrap;margin-top:.8rem; }
-.pill { font-size:.67rem;padding:.25rem .7rem;border-radius:99px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);letter-spacing:.04em; }
-.cat-section { padding:0 2rem 2rem; }
-.cat-label { font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.02em;color:var(--text);margin:2rem 0 .8rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem; }
-.cat-label span { font-size:.65rem;font-family:var(--mono);color:var(--text3);font-weight:400;letter-spacing:.06em; }
-.tools-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px; }
-.tool-card { background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;text-decoration:none;color:inherit;transition:border-color .15s,background .15s;display:flex;flex-direction:column;gap:.4rem; }
-.tool-card:hover { border-color:var(--border2);background:var(--surface2); }
-.tool-icon { font-size:1.1rem;opacity:.6;margin-bottom:.1rem; }
-.tool-name { font-family:var(--display);font-weight:700;font-size:.92rem;letter-spacing:-.02em;color:var(--text); }
-.tool-desc { font-size:.73rem;color:var(--text2);line-height:1.6; }
-.tool-go { font-size:.68rem;color:var(--accent);margin-top:auto;padding-top:.6rem;letter-spacing:.03em; }
-</style>
+
+<!-- Schema: Organization -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"ToolsNova","url":"https://toolsnova.net","logo":"https://toolsnova.net/icons/icon-192.png","sameAs":[]}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is ToolsNova free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every tool and every AI prompt on ToolsNova is completely free, with no hidden fees, subscriptions, or usage limits."}},
+{"@type":"Question","name":"Do you store my data?","acceptedAnswer":{"@type":"Answer","text":"No. All tools run entirely in your browser. Nothing you type or upload is sent to our servers."}},
+{"@type":"Question","name":"How many tools does ToolsNova have?","acceptedAnswer":{"@type":"Answer","text":"ToolsNova has 155+ free browser tools across AI, developer, trading, finance, health and utility categories, plus 200+ AI prompts for ChatGPT, Claude, Gemini, Grok and DeepSeek."}},
+{"@type":"Question","name":"Can I use ToolsNova on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. ToolsNova is fully responsive and works on desktop, tablet, and mobile. It also installs as a Progressive Web App for offline access."}},
+{"@type":"Question","name":"Does ToolsNova require signup?","acceptedAnswer":{"@type":"Answer","text":"No. You can use every tool and prompt immediately with no account, no email, and no signup required."}}
+]}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="css/homepage.css?v=20">
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -53,441 +78,472 @@ gtag('js', new Date());
 gtag('config', 'G-S6PPGS7N63');
 </script>
 
-<!-- Open Graph -->
-<meta property="og:title"       content="ToolsNova — 155+ Free Online Tools">
-<meta property="og:description" content="Free online tools for developers, students, traders, and everyday use. JSON formatter, calculators, converters, and more. No signup required.">
-<meta property="og:url"         content="https://toolsnova.net">
-<meta property="og:type"        content="website">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193"
-     crossorigin="anonymous"></script>
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
 </head>
 <body>
-<header class="site-header">
-  <a href="index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
-  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
-  <nav class="site-nav">
-    <span class="nav-category-label">Developer</span>
-    <a href="json-formatter.html"      class="nav-link">JSON Formatter</a>
-    <a href="base64-encoder.html"      class="nav-link">Base64 Encoder</a>
-    <a href="word-counter.html"        class="nav-link">Word Counter</a>
-    <a href="case-converter.html"      class="nav-link">Case Converter</a>
-    <a href="password-generator.html"  class="nav-link">Password Generator</a>
-    <a href="timestamp-converter.html" class="nav-link">Timestamp Converter</a>
-    <a href="lorem-ipsum.html"         class="nav-link">Lorem Ipsum</a>
-    <a href="url-encoder.html"         class="nav-link">URL Encoder</a>
-    <a href="uuid-generator.html"      class="nav-link">UUID Generator</a>
-    <a href="hash-generator.html"      class="nav-link">Hash Generator</a>
-    <a href="regex-tester.html"        class="nav-link">Regex Tester</a>
-    <a href="diff-checker.html"        class="nav-link">Diff Checker</a>
-    <a href="color-picker.html"        class="nav-link">Color Picker</a>
-    <a href="number-to-words.html"     class="nav-link">Number to Words</a>
-    <a href="text-repeater.html"       class="nav-link">Text Repeater</a>
-    <a href="random-number-generator.html" class="nav-link">Random Number</a>
-    <a href="jwt-decoder.html"         class="nav-link">JWT Decoder</a>
-    <a href="markdown-editor.html"     class="nav-link">Markdown Editor</a>
-    <a href="json-to-csv-converter.html" class="nav-link">JSON to CSV</a>
-    <a href="html-encoder-decoder.html" class="nav-link">HTML Encoder</a>
-    <a href="hex-binary-converter.html" class="nav-link">Hex/Binary</a>
-    <a href="css-minifier.html"        class="nav-link">CSS Minifier</a>
-    <a href="cron-expression-builder.html" class="nav-link">Cron Builder</a>
-    <a href="text-to-slug-converter.html" class="nav-link">Text to Slug</a>
-    <a href="number-base-converter.html" class="nav-link">Number Base</a>
-    <a href="color-code-converter.html" class="nav-link">Color Converter</a>
-    <a href="password-strength-checker.html" class="nav-link">Password Strength</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Utilities</span>
-    <a href="age-calculator.html"      class="nav-link">Age Calculator</a>
-    <a href="bmi-calculator.html"      class="nav-link">BMI Calculator</a>
-    <a href="percentage-calculator.html" class="nav-link">% Calculator</a>
-    <a href="qr-code-generator.html"   class="nav-link">QR Code Generator</a>
-    <a href="image-compressor.html"    class="nav-link">Image Compressor</a>
-    <a href="typing-speed-test.html"   class="nav-link">Typing Speed Test</a>
-    <a href="pomodoro-timer.html"      class="nav-link">Pomodoro Timer</a>
-    <a href="palworld-breeding-calculator.html" class="nav-link">Palworld Breeding</a>
-    <a href="stopwatch-timer.html"     class="nav-link">Stopwatch &amp; Timer</a>
-    <a href="aspect-ratio-calculator.html" class="nav-link">Aspect Ratio</a>
-    <a href="character-counter.html"   class="nav-link">Character Counter</a>
-    <a href="word-frequency-counter.html" class="nav-link">Word Frequency</a>
-    <a href="random-word-generator.html" class="nav-link">Random Words</a>
-    <a href="screen-resolution-calculator.html" class="nav-link">Screen Resolution</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Fun &amp; Niche</span>
-    <a href="sleep-calculator.html"    class="nav-link">Sleep Calculator</a>
-    <a href="love-calculator.html"     class="nav-link">Love Calculator</a>
-    <a href="lucky-number-generator.html" class="nav-link">Lucky Numbers</a>
-    <a href="coin-flip-dice-roller.html" class="nav-link">Coin Flip &amp; Dice</a>
-    <a href="days-between-dates.html"  class="nav-link">Days Between Dates</a>
-    <a href="zodiac-calculator.html"   class="nav-link">Zodiac Calculator</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Health &amp; Fitness</span>
-    <a href="calorie-calculator.html"    class="nav-link">Calorie Calculator</a>
-    <a href="tdee-calculator.html"       class="nav-link">TDEE Calculator</a>
-    <a href="macro-calculator.html"      class="nav-link">Macro Calculator</a>
-    <a href="ideal-weight-calculator.html" class="nav-link">Ideal Weight</a>
-    <a href="body-fat-calculator.html"   class="nav-link">Body Fat</a>
-    <a href="water-intake-calculator.html" class="nav-link">Water Intake</a>
-    <a href="pace-calculator.html"       class="nav-link">Pace Calculator</a>
-    <a href="fuel-cost-calculator.html"  class="nav-link">Fuel Cost</a>
-    <a href="calorie-burn-calculator.html" class="nav-link">Calorie Burn</a>
-    <a href="height-converter.html"      class="nav-link">Height Converter</a>
-    <a href="blood-pressure-checker.html" class="nav-link">Blood Pressure</a>
-    <a href="vitamin-d-calculator.html"  class="nav-link">Vitamin D</a>
-    <a href="blood-type-compatibility.html" class="nav-link">Blood Type</a>
-    <a href="pregnancy-due-date-calculator.html" class="nav-link">Pregnancy</a>
-    <a href="ovulation-calculator.html"  class="nav-link">Ovulation</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Student Tools</span>
-    <a href="gpa-calculator.html"        class="nav-link">GPA Calculator</a>
-    <a href="grade-calculator.html"      class="nav-link">Grade Calculator</a>
-    <a href="fraction-calculator.html"   class="nav-link">Fraction Calculator</a>
-    <a href="scientific-calculator.html" class="nav-link">Scientific Calculator</a>
-    <a href="percentage-error-calculator.html" class="nav-link">% Error Calculator</a>
-    <a href="roman-numeral-converter.html" class="nav-link">Roman Numerals</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Math &amp; Science</span>
-    <a href="quadratic-equation-solver.html" class="nav-link">Quadratic Solver</a>
-    <a href="triangle-calculator.html"   class="nav-link">Triangle Calculator</a>
-    <a href="standard-deviation-calculator.html" class="nav-link">Std Deviation</a>
-    <a href="significant-figures-calculator.html" class="nav-link">Sig Figures</a>
-    <a href="matrix-calculator.html"     class="nav-link">Matrix Calculator</a>
-    <a href="cgpa-calculator.html"       class="nav-link">CGPA Calculator</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Finance</span>
-    <a href="emi-calculator.html"      class="nav-link">EMI Calculator</a>
-    <a href="sip-calculator.html"      class="nav-link">SIP Calculator</a>
-    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
-    <a href="gst-calculator.html"      class="nav-link">GST Calculator</a>
-    <a href="salary-calculator.html"   class="nav-link">Salary Calculator</a>
-    <a href="vat-calculator.html"      class="nav-link">VAT Calculator</a>
-    <a href="discount-calculator.html" class="nav-link">Discount Calculator</a>
-    <a href="tip-calculator.html"      class="nav-link">Tip Calculator</a>
-    <a href="currency-converter.html"  class="nav-link">Currency Converter</a>
-    <a href="mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
-    <a href="auto-loan-calculator.html" class="nav-link">Auto Loan</a>
-    <a href="retirement-calculator.html" class="nav-link">Retirement</a>
-    <a href="net-worth-calculator.html" class="nav-link">Net Worth</a>
-    <a href="invoice-generator.html"   class="nav-link">Invoice Generator</a>
-    <a href="sales-tax-calculator.html" class="nav-link">Sales Tax</a>
-    <a href="roi-calculator.html"      class="nav-link">ROI Calculator</a>
-    <a href="inflation-calculator.html" class="nav-link">Inflation</a>
-    <a href="break-even-calculator.html" class="nav-link">Break-Even</a>
-    <a href="dividend-calculator.html" class="nav-link">Dividend</a>
-    <a href="electricity-cost-calculator.html" class="nav-link">Electricity Cost</a>
-    <a href="tip-split-calculator.html" class="nav-link">Tip Split</a>
-    <a href="meeting-time-zone-planner.html" class="nav-link">Meeting Planner</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Construction</span>
-    <a href="concrete-calculator.html" class="nav-link">Concrete</a>
-    <a href="paint-calculator.html"    class="nav-link">Paint Calculator</a>
-    <a href="square-footage-calculator.html" class="nav-link">Square Footage</a>
-    <a href="roof-pitch-calculator.html" class="nav-link">Roof Pitch</a>
-    <a href="flooring-calculator.html" class="nav-link">Flooring</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Converters</span>
-    <a href="temperature-converter.html" class="nav-link">Temperature</a>
-    <a href="length-converter.html"    class="nav-link">Length</a>
-    <a href="weight-converter.html"    class="nav-link">Weight</a>
-    <a href="speed-converter.html"     class="nav-link">Speed</a>
-    <a href="data-size-converter.html" class="nav-link">Data Size</a>
-    <a href="timezone-converter.html"  class="nav-link">Time Zone</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">Trading</span>
-    <a href="lot-size-calculator.html" class="nav-link">Lot Size</a>
-    <a href="risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
-    <a href="drawdown-calculator.html" class="nav-link">Drawdown</a>
-    <a href="margin-calculator.html"   class="nav-link">Margin</a>
-    <a href="gold-position-size-calculator.html" class="nav-link">Gold Position</a>
-    <a href="pip-value-calculator.html" class="nav-link">Pip Value</a>
-    <a href="forex-profit-calculator.html" class="nav-link">Forex Profit</a>
-    <a href="pivot-point-calculator.html" class="nav-link">Pivot Points</a>
-    <a href="fibonacci-calculator.html" class="nav-link">Fibonacci</a>
-    <a href="compound-trading-calculator.html" class="nav-link">Compound Growth</a>
-    <a href="risk-of-ruin-calculator.html" class="nav-link">Risk of Ruin</a>
-    <a href="leverage-calculator.html" class="nav-link">Leverage</a>
-    <a href="stop-loss-take-profit-calculator.html" class="nav-link">SL/TP Calculator</a>
-    <div class="nav-divider"></div>
-    <span class="nav-category-label">🏆 Prop Firm Tools</span>
-    <a href="prop-firm-challenge-calculator.html" class="nav-link">Challenge Calculator</a>
-    <a href="daily-drawdown-calculator.html"      class="nav-link">Daily Drawdown</a>
-    <a href="consistency-calculator.html"         class="nav-link">Consistency Calculator</a>
-    <a href="profit-target-tracker.html"          class="nav-link">Profit Target Tracker</a>
-    <a href="challenge-pass-probability.html"     class="nav-link">Pass Probability</a>
-    <a href="funded-account-roi-calculator.html"  class="nav-link">Funded ROI</a>
-    <a href="position-scaling-calculator.html"    class="nav-link">Position Scaling</a>
-    <a href="kelly-criterion-calculator.html"    class="nav-link">Kelly Criterion</a>
-    <a href="win-rate-expectancy-calculator.html"  class="nav-link">Win Rate &amp; Expectancy</a>
-    <a href="forex-swap-calculator.html"           class="nav-link">Forex Swap</a>
-    <a href="currency-correlation-calculator.html" class="nav-link">Currency Correlation</a>
-    <a href="monte-carlo-simulator.html"       class="nav-link">Monte Carlo Sim</a>
-    </nav>
-</header>
 
-<section class="hero">
-  <h1>Tools that <span>just work</span></h1>
-  <p>155+ free tools for developers, analysts, and traders. Everything runs in your browser — nothing uploaded, no account required.</p>
-  <div class="pill-row">
-    <span class="pill">100% client-side</span>
-    <span class="pill">no signup</span>
-    <span class="pill">instant results</span>
-    <span class="pill">toolsnova.net</span>
+<!-- ═══════════════════════════════════
+     SECTION 1 — NAVIGATION
+     ═══════════════════════════════════ -->
+<nav class="v2-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="v2-logo">Tools<span class="v2-logo-dot">.</span>Nova</a>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link-item">Home</a>
+      <div class="nav-link-item">
+        AI Workspace
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <div class="mega-menu">
+          <a href="ai-prompt-library.html"><span>📚</span> AI Prompt Library</a>
+          <a href="ai-prompt-studio.html"><span>🧠</span> AI Prompt Studio</a>
+          <a href="ai-token-counter.html"><span>🔢</span> AI Token Counter</a>
+          <a href="ai-api-cost-calculator.html"><span>💰</span> API Cost Calculator</a>
+          <a href="midjourney-prompt-builder.html"><span>🎨</span> Midjourney Builder</a>
+        </div>
+      </div>
+      <div class="nav-link-item">
+        Categories
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <div class="mega-menu">
+          <a href="json-formatter.html"><span>💻</span> Developer</a>
+          <a href="lot-size-calculator.html"><span>📊</span> Trading</a>
+          <a href="mortgage-calculator.html"><span>💰</span> Finance</a>
+          <a href="bmi-calculator.html"><span>❤️</span> Health</a>
+          <a href="temperature-converter.html"><span>🔄</span> Converters</a>
+        </div>
+      </div>
+      <a href="ai-prompt-library.html" class="nav-link-item">AI Prompts</a>
+      <a href="#collections" class="nav-link-item">Collections</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="v2-nav-search-btn" aria-label="Search" onclick="document.getElementById('v2-search').focus();document.getElementById('v2-search').scrollIntoView({behavior:'smooth',block:'center'})">🔍</button>
+      <a href="#bookmarks" class="nav-icon-btn" aria-label="Bookmarks">⭐</a>
+      <button class="nav-icon-btn" id="v2-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="v2-hamburger" onclick="tnNavToggle()" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="v2-mobile-nav">
+  <div class="mobile-nav-section">
+    <div class="mobile-nav-label">AI Workspace</div>
+    <a href="ai-prompt-library.html">📚 AI Prompt Library</a>
+    <a href="ai-prompt-studio.html">🧠 AI Prompt Studio</a>
+    <a href="ai-token-counter.html">🔢 AI Token Counter</a>
+    <a href="ai-api-cost-calculator.html">💰 API Cost Calculator</a>
+    <a href="midjourney-prompt-builder.html">🎨 Midjourney Builder</a>
+  </div>
+  <div class="mobile-nav-section">
+    <div class="mobile-nav-label">Categories</div>
+    <a href="json-formatter.html">💻 Developer</a>
+    <a href="lot-size-calculator.html">📊 Trading</a>
+    <a href="mortgage-calculator.html">💰 Finance</a>
+    <a href="bmi-calculator.html">❤️ Health</a>
+    <a href="temperature-converter.html">🔄 Converters</a>
+  </div>
+  <div class="mobile-nav-section">
+    <a href="#collections">📦 Collections</a>
+    <a href="ai-prompt-library.html">📚 Prompt Library</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     SECTION 2 — HERO
+     ═══════════════════════════════════ -->
+<section class="v2-hero">
+  <div class="hero-left">
+    <div class="hero-badge">⚡ 155+ Tools · 200+ AI Prompts · Always Free</div>
+    <h1 class="hero-h1">Find the right tool<br><span class="hero-h1-accent">in 3 seconds.</span></h1>
+    <p class="hero-sub">155+ free browser tools for AI, developers, traders and finance — plus 200+ AI prompts for ChatGPT, Claude &amp; Gemini. Fast. Private. No signup.</p>
+
+    <div class="hero-search-wrap">
+      <span class="hero-search-icon">🔍</span>
+      <input class="hero-search" type="search" id="v2-search" placeholder="Search tools, prompts, categories..." autocomplete="off" aria-label="Search ToolsNova">
+      <button class="hero-search-btn" id="v2-search-btn">Search</button>
+      <div class="hero-search-results" id="v2-search-results" role="listbox"></div>
+    </div>
+
+    <div class="hero-popular">
+      <span>Popular:</span>
+      <span class="popular-tag" data-query="AI Prompt Library">AI Prompt Library</span>
+      <span class="popular-tag" data-query="JSON Formatter">JSON Formatter</span>
+      <span class="popular-tag" data-query="Mortgage Calculator">Mortgage Calculator</span>
+      <span class="popular-tag" data-query="Lot Size Calculator">Lot Size Calculator</span>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#trending" class="btn-primary">Explore Tools →</a>
+      <a href="ai-prompt-library.html" class="btn-secondary">📚 AI Prompt Library</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-orbit-ring hero-orbit-ring-1"><span class="hero-orbit-dot"></span></div>
+    <div class="hero-orbit-ring hero-orbit-ring-2"></div>
+
+    <div class="hero-mockup">
+      <div class="hero-mockup-bar">
+        <span class="hero-mockup-dot hero-mockup-dot-r"></span>
+        <span class="hero-mockup-dot hero-mockup-dot-y"></span>
+        <span class="hero-mockup-dot hero-mockup-dot-g"></span>
+      </div>
+      <div class="hero-mockup-search">🔍 Search tools...</div>
+      <div class="hero-mockup-row"><span class="hero-mockup-row-icon icon-badge-sm icon-badge icon-badge-green">{}</span> JSON Formatter</div>
+      <div class="hero-mockup-row"><span class="hero-mockup-row-icon icon-badge-sm icon-badge icon-badge-purple">💳</span> Loan Calculator</div>
+      <div class="hero-mockup-row"><span class="hero-mockup-row-icon icon-badge-sm icon-badge icon-badge-blue">🖼️</span> Image Compressor</div>
+      <div class="hero-mockup-row"><span class="hero-mockup-row-icon icon-badge-sm icon-badge icon-badge-orange">🤖</span> AI Prompt Generator</div>
+    </div>
+
+    <div class="hero-float-badge hero-float-code">&lt;/&gt;</div>
+    <div class="hero-float-badge hero-float-calc">🧮</div>
+    <div class="hero-float-badge hero-float-bolt">⚡</div>
   </div>
 </section>
 
-<div class="cat-section">
-
-  <!-- DEVELOPER TOOLS -->
-  <div class="cat-label" style="border-color:var(--accent);color:var(--accent)">⚽ World Cup 2026 Tools <span style="color:var(--accent);background:var(--accent-dim);padding:2px 6px;border-radius:3px">🔴 LIVE NOW — 5 tools</span></div>
-  <div class="tools-grid">
-    <a href="world-cup-2026-calculator.html" class="tool-card" style="border-color:var(--accent)"><div class="tool-icon">🏆</div><div class="tool-name">Group Table Calculator</div><div class="tool-desc">Live standings for all 12 groups. Enter scores → see who qualifies. All 48 teams.</div><div class="tool-go">Open →</div></a>
-    <a href="world-cup-2026-schedule.html" class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Match Schedule + Time Zone</div><div class="tool-desc">All 104 matches converted to your local time. Pakistan, UK, India, US and 400+ zones.</div><div class="tool-go">Open →</div></a>
-    <a href="world-cup-2026-prize-money.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Prize Money Calculator</div><div class="tool-desc">$871M total pool. How much does each team earn? Calculate by round from group stage to final.</div><div class="tool-go">Open →</div></a>
-    <a href="world-cup-2026-third-place.html" class="tool-card"><div class="tool-icon">🔵</div><div class="tool-name">3rd Place Qualifier Tracker</div><div class="tool-desc">Which 8 third-place teams advance to Round of 32? Enter stats for all 12 groups.</div><div class="tool-go">Open →</div></a>
-    <a href="world-cup-2026-quiz.html" class="tool-card"><div class="tool-icon">🧠</div><div class="tool-name">World Cup 2026 Quiz</div><div class="tool-desc">20 questions about teams, groups, history and format. How well do you know the 2026 World Cup?</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     SECTION 3 — STATISTICS
+     ═══════════════════════════════════ -->
+<section class="v2-stats">
+  <div class="stats-grid">
+    <div class="v2-stat-card">
+      <div class="stat-icon icon-badge icon-badge-green">🧰</div>
+      <div><div class="stat-number" data-stat="tools" data-target="155" data-suffix="+">0</div><div class="stat-text">Free Tools<br>Browser Based</div></div>
+    </div>
+    <div class="v2-stat-card">
+      <div class="stat-icon icon-badge icon-badge-purple">✨</div>
+      <div><div class="stat-number" data-stat="prompts" data-target="200" data-suffix="+">0</div><div class="stat-text">AI Prompts<br>Ready to Use</div></div>
+    </div>
+    <div class="v2-stat-card">
+      <div class="stat-icon icon-badge icon-badge-blue">🗂️</div>
+      <div><div class="stat-number" data-stat="categories" data-target="12" data-suffix="">0</div><div class="stat-text">Categories<br>All in One Place</div></div>
+    </div>
+    <div class="v2-stat-card">
+      <div class="stat-icon icon-badge icon-badge-orange">🏆</div>
+      <div><div class="stat-number" data-target="50" data-suffix="K+">0</div><div class="stat-text">Happy Users<br>And Growing</div></div>
+    </div>
+    <div class="v2-stat-card">
+      <div class="stat-icon icon-badge icon-badge-green">🛡️</div>
+      <div><div class="stat-number" data-target="100" data-suffix="%">0</div><div class="stat-text">Privacy First<br>No Data Stored</div></div>
+    </div>
+    <div class="v2-stat-card">
+      <div class="stat-icon icon-badge icon-badge-pink">💚</div>
+      <div><div class="stat-number" data-target="0" data-suffix="">0</div><div class="stat-text">Signups<br>Always Free</div></div>
+    </div>
   </div>
+</section>
 
-  <div class="cat-label">⚖️ Legal &amp; Advanced Tools <span>5 tools</span></div>
-  <div class="tools-grid">
-    <a href="legal-document-analyzer.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Legal Document Analyzer</div><div class="tool-desc">Analyze legal documents instantly. Identify key clauses, obligations, risks and plain-English summaries.</div><div class="tool-go">Open →</div></a>
-    <a href="loan-emi-comparison.html" class="tool-card"><div class="tool-icon">💳</div><div class="tool-name">Loan EMI Comparison</div><div class="tool-desc">Compare EMI across multiple loans side by side. Find the best rate and term for your budget.</div><div class="tool-go">Open →</div></a>
-    <a href="mortgage-affordability-calculator.html" class="tool-card"><div class="tool-icon">🏠</div><div class="tool-name">Mortgage Affordability Calculator</div><div class="tool-desc">How much house can you afford? Calculate max mortgage based on income, debts and down payment.</div><div class="tool-go">Open →</div></a>
-    <a href="solar-panel-roi-calculator.html" class="tool-card"><div class="tool-icon">☀️</div><div class="tool-name">Solar Panel ROI Calculator</div><div class="tool-desc">Calculate solar panel payback period, ROI, and lifetime savings. See if solar is worth it for you.</div><div class="tool-go">Open →</div></a>
-    <a href="islamic-mortgage-calculator.html" class="tool-card"><div class="tool-icon">🕌</div><div class="tool-name">Islamic Mortgage Calculator</div><div class="tool-desc">Murabaha vs conventional mortgage comparator. Halal home finance calculator with full breakdown.</div><div class="tool-go">Open →</div></a>
+<hr class="v2-divider">
+
+<!-- ═══════════════════════════════════
+     SECTION 4 — TRENDING TOOLS
+     Dynamic — rendered by js/search.js from data/tools.json
+     ═══════════════════════════════════ -->
+<section class="v2-section" id="trending">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">🔥 Trending</div>
+      <h2 class="section-title">Trending Tools</h2>
+    </div>
+    <a href="#trending" class="section-view-all">View All →</a>
   </div>
-
-  <div class="cat-label" style="border-color:#7f5af0;color:#7f5af0">🤖 AI Tools <span style="color:#7f5af0;background:rgba(127,90,240,.1);padding:2px 6px;border-radius:3px">4 tools</span></div>
-  <div class="tools-grid">
-    <a href="ai-api-cost-calculator.html" class="tool-card" style="border-color:#7f5af0"><div class="tool-icon">💰</div><div class="tool-name">AI API Cost Calculator</div><div class="tool-desc">Compare GPT-4o, Claude, Gemini, DeepSeek costs instantly. 20+ models, real 2026 pricing. Find the cheapest AI API for your app.</div><div class="tool-go">Open →</div></a>
-    <a href="ai-token-counter.html" class="tool-card" style="border-color:#7f5af0"><div class="tool-icon">🔢</div><div class="tool-name">AI Token Counter</div><div class="tool-desc">Count tokens for GPT-4o, Claude 3.5, Gemini 2.0, DeepSeek, o3 &amp; 16 models. Monthly cost estimator + prompt caching savings. June 2026 pricing.</div><div class="tool-go">Open →</div></a>
-    <a href="ai-prompt-studio.html" class="tool-card" style="border-color:#7f5af0"><div class="tool-icon">🧠</div><div class="tool-name">AI Prompt Studio</div><div class="tool-desc">Build perfect prompts for ChatGPT, Claude &amp; Gemini. 3 modes: builder, improver, and 11 ready-to-use templates.</div><div class="tool-go">Open →</div></a>
-    <a href="midjourney-prompt-builder.html" class="tool-card" style="border-color:#7f5af0"><div class="tool-icon">🎨</div><div class="tool-name">Midjourney Prompt Builder</div><div class="tool-desc">Build detailed AI image prompts for Midjourney v6, DALL-E 3, Stable Diffusion &amp; Firefly. Styles, lighting, camera, mood &amp; more.</div><div class="tool-go">Open →</div></a>
+  <div class="tools-grid-4 scroll-fade" id="trending-tools-grid">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
   </div>
+</section>
 
-  <div class="cat-label">🛠 Developer Tools <span>26 tools</span></div>
-  <div class="tools-grid">
-    <a href="json-formatter.html" class="tool-card"><div class="tool-icon">{}</div><div class="tool-name">JSON Formatter</div><div class="tool-desc">Format, validate and beautify JSON with syntax highlighting.</div><div class="tool-go">Open →</div></a>
-    <a href="base64-encoder.html" class="tool-card"><div class="tool-icon">⇌</div><div class="tool-name">Base64 Encoder</div><div class="tool-desc">Encode or decode Base64 strings. Supports Unicode and emoji.</div><div class="tool-go">Open →</div></a>
-    <a href="case-converter.html" class="tool-card"><div class="tool-icon">Cc</div><div class="tool-name">Case Converter</div><div class="tool-desc">UPPER, lower, camelCase, PascalCase, snake_case, kebab-case.</div><div class="tool-go">Open →</div></a>
-    <a href="word-counter.html" class="tool-card"><div class="tool-icon">Aa</div><div class="tool-name">Word Counter</div><div class="tool-desc">Count words, characters, sentences, paragraphs and reading time.</div><div class="tool-go">Open →</div></a>
-    <a href="url-encoder.html" class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">URL Encoder</div><div class="tool-desc">Encode or decode URLs and query parameters with breakdown.</div><div class="tool-go">Open →</div></a>
-    <a href="timestamp-converter.html" class="tool-card"><div class="tool-icon">⏱</div><div class="tool-name">Timestamp Converter</div><div class="tool-desc">Unix epoch ↔ human date. UTC, ISO 8601, local timezone.</div><div class="tool-go">Open →</div></a>
-    <a href="password-generator.html" class="tool-card"><div class="tool-icon">🔑</div><div class="tool-name">Password Generator</div><div class="tool-desc">Cryptographically random strong passwords. Bulk generation.</div><div class="tool-go">Open →</div></a>
-    <a href="lorem-ipsum.html" class="tool-card"><div class="tool-icon">¶</div><div class="tool-name">Lorem Ipsum</div><div class="tool-desc">Generate placeholder text — words, sentences or paragraphs.</div><div class="tool-go">Open →</div></a>
-    <a href="uuid-generator.html" class="tool-card"><div class="tool-icon">⬡</div><div class="tool-name">UUID Generator</div><div class="tool-desc">Generate UUID v4 strings. Bulk, uppercase, and no-dash formats.</div><div class="tool-go">Open →</div></a>
-    <a href="hash-generator.html" class="tool-card"><div class="tool-icon">#</div><div class="tool-name">Hash Generator</div><div class="tool-desc">MD5, SHA-1, SHA-256, SHA-512 from any text. All at once.</div><div class="tool-go">Open →</div></a>
-    <a href="regex-tester.html" class="tool-card"><div class="tool-icon">.*</div><div class="tool-name">Regex Tester</div><div class="tool-desc">Live regex matching with match highlighting, flags, and quick-insert tokens.</div><div class="tool-go">Open →</div></a>
-    <a href="diff-checker.html" class="tool-card"><div class="tool-icon">⇄</div><div class="tool-name">Diff Checker</div><div class="tool-desc">Compare two texts or code files and see additions, deletions line by line.</div><div class="tool-go">Open →</div></a>
-    <a href="color-picker.html" class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Color Picker</div><div class="tool-desc">Pick colors and convert between HEX, RGB and HSL. Includes contrast checker.</div><div class="tool-go">Open →</div></a>
-    <a href="number-to-words.html" class="tool-card"><div class="tool-icon">123</div><div class="tool-name">Number to Words</div><div class="tool-desc">Convert any number to English words. For cheques, contracts and invoices.</div><div class="tool-go">Open →</div></a>
-    <a href="text-repeater.html" class="tool-card"><div class="tool-icon">↺</div><div class="tool-name">Text Repeater</div><div class="tool-desc">Repeat any text up to 1,000 times with a custom separator.</div><div class="tool-go">Open →</div></a>
-    <a href="random-number-generator.html" class="tool-card"><div class="tool-icon">🎲</div><div class="tool-name">Random Number Generator</div><div class="tool-desc">Cryptographically secure random numbers in any range. Dice roller included.</div><div class="tool-go">Open →</div></a>
-    <a href="jwt-decoder.html" class="tool-card"><div class="tool-icon">🔑</div><div class="tool-name">JWT Decoder</div><div class="tool-desc">Decode and inspect JWT tokens — header, payload, claims, and expiry status.</div><div class="tool-go">Open →</div></a>
-    <a href="markdown-editor.html" class="tool-card"><div class="tool-icon">📄</div><div class="tool-name">Markdown Editor</div><div class="tool-desc">Live Markdown preview with HTML output. Side-by-side editor and renderer.</div><div class="tool-go">Open →</div></a>
-    <a href="json-to-csv-converter.html" class="tool-card"><div class="tool-icon">⇄</div><div class="tool-name">JSON ↔ CSV</div><div class="tool-desc">Convert JSON arrays to CSV or CSV files to JSON. Bidirectional, instant.</div><div class="tool-go">Open →</div></a>
-    <a href="html-encoder-decoder.html" class="tool-card"><div class="tool-icon">&lt;/&gt;</div><div class="tool-name">HTML Encoder</div><div class="tool-desc">Encode text to HTML entities or decode entities back to plain text.</div><div class="tool-go">Open →</div></a>
-    <a href="hex-binary-converter.html" class="tool-card"><div class="tool-icon">0x</div><div class="tool-name">Hex/Binary Converter</div><div class="tool-desc">Convert between decimal, hex, binary and octal with ASCII and Unicode info.</div><div class="tool-go">Open →</div></a>
-    <a href="css-minifier.html" class="tool-card"><div class="tool-icon">{}→</div><div class="tool-name">CSS Minifier</div><div class="tool-desc">Minify CSS to reduce file size or format minified CSS for readability.</div><div class="tool-go">Open →</div></a>
-    <a href="cron-expression-builder.html" class="tool-card"><div class="tool-icon">⏰</div><div class="tool-name">Cron Expression Builder</div><div class="tool-desc">Build cron schedules visually with plain-English descriptions and presets.</div><div class="tool-go">Open →</div></a>
-    <a href="color-code-converter.html" class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Color Code Converter</div><div class="tool-desc">Convert HEX, RGB, RGBA, HSL, CMYK with tints and shades.</div><div class="tool-go">Open →</div></a>
-    <a href="number-base-converter.html" class="tool-card"><div class="tool-icon">🔢</div><div class="tool-name">Number Base Converter</div><div class="tool-desc">Binary, octal, decimal, hexadecimal — all bases at once.</div><div class="tool-go">Open →</div></a>
-    <a href="password-strength-checker.html" class="tool-card"><div class="tool-icon">🔐</div><div class="tool-name">Password Strength Checker</div><div class="tool-desc">Entropy score, crack time estimate, detailed improvement tips.</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     SECTION 5 — BROWSE CATEGORIES
+     Dynamic — rendered by js/search.js from data/tools.json
+     ═══════════════════════════════════ -->
+<section class="v2-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Explore</div>
+      <h2 class="section-title">Browse Categories</h2>
+    </div>
   </div>
-
-  <!-- GENERAL UTILITIES -->
-  <div class="cat-label">🧮 General Utilities <span>3 tools</span></div>
-  <div class="tools-grid">
-    <a href="age-calculator.html" class="tool-card"><div class="tool-icon">🎂</div><div class="tool-name">Age Calculator</div><div class="tool-desc">Exact age in years, months and days. Days to next birthday.</div><div class="tool-go">Open →</div></a>
-    <a href="bmi-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">BMI Calculator</div><div class="tool-desc">Body Mass Index in metric or imperial. Health category guidance.</div><div class="tool-go">Open →</div></a>
-    <a href="percentage-calculator.html" class="tool-card"><div class="tool-icon">%</div><div class="tool-name">Percentage Calculator</div><div class="tool-desc">X% of Y, percentage change, add/subtract %, and more.</div><div class="tool-go">Open →</div></a>
-    <a href="qr-code-generator.html" class="tool-card"><div class="tool-icon">⬛</div><div class="tool-name">QR Code Generator</div><div class="tool-desc">Generate QR codes for URLs, WiFi, text, email. Download PNG or SVG instantly.</div><div class="tool-go">Open →</div></a>
-    <a href="image-compressor.html" class="tool-card"><div class="tool-icon">🖼</div><div class="tool-name">Image Compressor</div><div class="tool-desc">Compress JPG, PNG, WebP in browser. No upload to server, no file size limit.</div><div class="tool-go">Open →</div></a>
-    <a href="typing-speed-test.html" class="tool-card"><div class="tool-icon">⌨</div><div class="tool-name">Typing Speed Test</div><div class="tool-desc">Test your WPM with accuracy and error tracking. 30s, 1 min, 2 min modes.</div><div class="tool-go">Open →</div></a>
-    <a href="pomodoro-timer.html" class="tool-card"><div class="tool-icon">🍅</div><div class="tool-name">Pomodoro Timer</div><div class="tool-desc">25-min focus timer with breaks, session counter, and background tab support.</div><div class="tool-go">Open →</div></a>
-    <a href="palworld-breeding-calculator.html" class="tool-card"><div class="tool-icon">🐾</div><div class="tool-name">Palworld Breeding Calculator</div><div class="tool-desc">Find parent combinations for any Pal using the breeding power formula. Forward & reverse lookup.</div><div class="tool-go">Open →</div></a>
-    <a href="stopwatch-timer.html" class="tool-card"><div class="tool-icon">⏱</div><div class="tool-name">Stopwatch &amp; Timer</div><div class="tool-desc">Stopwatch with laps and countdown timer with audio alert.</div><div class="tool-go">Open →</div></a>
-    <a href="aspect-ratio-calculator.html" class="tool-card"><div class="tool-icon">📐</div><div class="tool-name">Aspect Ratio Calculator</div><div class="tool-desc">Find ratio, scale to any width, compare to 16:9, 4:3, 21:9.</div><div class="tool-go">Open →</div></a>
-    <a href="screen-resolution-calculator.html" class="tool-card"><div class="tool-icon">🖥</div><div class="tool-name">Screen Resolution Calculator</div><div class="tool-desc">PPI, aspect ratio, pixel count and scale factors for any resolution.</div><div class="tool-go">Open →</div></a>
-    <a href="character-counter.html" class="tool-card"><div class="tool-icon">🔢</div><div class="tool-name">Character Counter</div><div class="tool-desc">Characters, words, sentences, reading time, platform limits.</div><div class="tool-go">Open →</div></a>
-    <a href="word-frequency-counter.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Word Frequency Counter</div><div class="tool-desc">Top keywords and density analysis for any text. SEO & writing.</div><div class="tool-go">Open →</div></a>
-    <a href="random-word-generator.html" class="tool-card"><div class="tool-icon">🎲</div><div class="tool-name">Random Word Generator</div><div class="tool-desc">Random nouns, adjectives, verbs for writing, games, prompts.</div><div class="tool-go">Open →</div></a>
-    <a href="text-to-slug-converter.html" class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">Text to Slug Converter</div><div class="tool-desc">Convert any title to a clean SEO-friendly URL slug instantly.</div><div class="tool-go">Open →</div></a>
+  <div class="categories-grid-5 scroll-fade" id="browse-categories-grid">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
   </div>
+</section>
 
-  <!-- FINANCE TOOLS -->
-  <div class="cat-label">💰 Finance Tools <span>9 tools</span></div>
-  <div class="tools-grid">
-    <a href="emi-calculator.html" class="tool-card"><div class="tool-icon">🏦</div><div class="tool-name">EMI Calculator</div><div class="tool-desc">Monthly loan EMI, total interest, and amortisation breakdown.</div><div class="tool-go">Open →</div></a>
-    <a href="sip-calculator.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">SIP Calculator</div><div class="tool-desc">SIP future value, total invested vs estimated returns.</div><div class="tool-go">Open →</div></a>
-    <a href="compound-interest-calculator.html" class="tool-card"><div class="tool-icon">🔁</div><div class="tool-name">Compound Interest</div><div class="tool-desc">CI with any frequency — annual, monthly, daily compounding.</div><div class="tool-go">Open →</div></a>
-    <a href="gst-calculator.html" class="tool-card"><div class="tool-icon">🧾</div><div class="tool-name">GST Calculator</div><div class="tool-desc">Add or remove GST at 5%, 12%, 18%, 28% slabs with CGST/SGST breakdown.</div><div class="tool-go">Open →</div></a>
-    <a href="salary-calculator.html" class="tool-card"><div class="tool-icon">💼</div><div class="tool-name">Salary Calculator</div><div class="tool-desc">Convert salary between hourly, daily, weekly, monthly and annual pay.</div><div class="tool-go">Open →</div></a>
-    <a href="vat-calculator.html" class="tool-card"><div class="tool-icon">🏷️</div><div class="tool-name">VAT Calculator</div><div class="tool-desc">Add or remove VAT at UK 20%, EU rates, or any custom rate instantly.</div><div class="tool-go">Open →</div></a>
-    <a href="discount-calculator.html" class="tool-card"><div class="tool-icon">🏷</div><div class="tool-name">Discount Calculator</div><div class="tool-desc">Calculate final price after any discount. Shows savings and comparison table.</div><div class="tool-go">Open →</div></a>
-    <a href="tip-calculator.html" class="tool-card"><div class="tool-icon">🍽️</div><div class="tool-name">Tip Calculator</div><div class="tool-desc">Calculate tip and split bill among any number of people instantly.</div><div class="tool-go">Open →</div></a>
-    <a href="currency-converter.html" class="tool-card"><div class="tool-icon">💱</div><div class="tool-name">Currency Converter</div><div class="tool-desc">Convert between 30 currencies — USD, PKR, INR, EUR, GBP, AED and more.</div><div class="tool-go">Open →</div></a>
-    <a href="mortgage-calculator.html" class="tool-card"><div class="tool-icon">🏠</div><div class="tool-name">Mortgage Calculator</div><div class="tool-desc">Monthly payment, total interest, amortisation schedule with tax & insurance.</div><div class="tool-go">Open →</div></a>
-    <a href="auto-loan-calculator.html" class="tool-card"><div class="tool-icon">🚗</div><div class="tool-name">Auto Loan Calculator</div><div class="tool-desc">Car payment with down payment, trade-in, and all loan terms compared.</div><div class="tool-go">Open →</div></a>
-    <a href="retirement-calculator.html" class="tool-card"><div class="tool-icon">👴</div><div class="tool-name">Retirement Calculator</div><div class="tool-desc">Project retirement savings with compound growth and monthly income forecast.</div><div class="tool-go">Open →</div></a>
-    <a href="net-worth-calculator.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Net Worth Calculator</div><div class="tool-desc">Enter assets and liabilities to calculate your total net worth instantly.</div><div class="tool-go">Open →</div></a>
-    <a href="invoice-generator.html" class="tool-card"><div class="tool-icon">🧾</div><div class="tool-name">Invoice Generator</div><div class="tool-desc">Create professional invoices with items, tax, and multiple currencies.</div><div class="tool-go">Open →</div></a>
-    <a href="sales-tax-calculator.html" class="tool-card"><div class="tool-icon">🏷️</div><div class="tool-name">Sales Tax Calculator</div><div class="tool-desc">Add or remove sales tax at any rate with full comparison table.</div><div class="tool-go">Open →</div></a>
-
+<!-- ═══════════════════════════════════
+     SECTION 6 — AI WORKSPACE ⭐ (flagship)
+     Dynamic tool grid — rendered from data/tools.json (category:"AI")
+     ═══════════════════════════════════ -->
+<section class="v2-section">
+  <div class="v2-featured">
+    <div class="featured-inner ai-workspace-layout">
+      <div class="ai-workspace-illustration">
+        <div class="ai-workspace-illustration-core">🧠</div>
+        <div class="ai-workspace-orbit-icon ai-workspace-orbit-icon-1">🤖</div>
+        <div class="ai-workspace-orbit-icon ai-workspace-orbit-icon-2">✨</div>
+      </div>
+      <div>
+        <div class="featured-flagship-badge">NEW</div>
+        <div class="featured-eyebrow">🤖 AI Workspace</div>
+        <h2 class="featured-title" id="workspace-heading">AI Workspace</h2>
+        <p class="featured-desc">Powerful AI tools and prompt library to supercharge your productivity.</p>
+        <div class="ai-workspace-items" id="ai-workspace-items">
+          <!-- Populated dynamically from data/tools.json (category: AI) -->
+        </div>
+        <a href="ai-prompt-library.html" class="featured-cta">Explore AI Workspace →</a>
+      </div>
+    </div>
   </div>
+</section>
 
-  
-  <!-- UNIT CONVERTERS -->
-  <div class="cat-label">🔄 Unit Converters <span>6 tools</span></div>
-  <div class="tools-grid">
-    <a href="temperature-converter.html" class="tool-card"><div class="tool-icon">🌡️</div><div class="tool-name">Temperature Converter</div><div class="tool-desc">Convert between Celsius, Fahrenheit, Kelvin and Rankine instantly.</div><div class="tool-go">Open →</div></a>
-    <a href="length-converter.html" class="tool-card"><div class="tool-icon">📏</div><div class="tool-name">Length Converter</div><div class="tool-desc">km, miles, metres, feet, inches, cm — all units at once.</div><div class="tool-go">Open →</div></a>
-    <a href="weight-converter.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Weight Converter</div><div class="tool-desc">kg, lbs, stones, grams, ounces — full conversion table.</div><div class="tool-go">Open →</div></a>
-    <a href="speed-converter.html" class="tool-card"><div class="tool-icon">💨</div><div class="tool-name">Speed Converter</div><div class="tool-desc">mph, km/h, m/s, knots, Mach — for drivers, pilots and students.</div><div class="tool-go">Open →</div></a>
-    <a href="data-size-converter.html" class="tool-card"><div class="tool-icon">💾</div><div class="tool-name">Data Size Converter</div><div class="tool-desc">Bits, Bytes, KB, MB, GB, TB, PB — developer essential.</div><div class="tool-go">Open →</div></a>
-    <a href="timezone-converter.html" class="tool-card"><div class="tool-icon">🌍</div><div class="tool-name">Time Zone Converter</div><div class="tool-desc">Convert time between 20+ world time zones. Shows all zones at once.</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     SECTION 7 — RECENTLY ADDED
+     Dynamic — rendered by js/search.js, sorted by dateAdded
+     ═══════════════════════════════════ -->
+<section class="v2-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">New</div>
+      <h2 class="section-title">Recently Added</h2>
+    </div>
   </div>
-
-  
-  <!-- HEALTH & FITNESS -->
-  
-  <!-- STUDENT TOOLS -->
-  <div class="cat-label">📚 Student Tools <span>6 tools</span></div>
-  <div class="tools-grid">
-    <a href="gpa-calculator.html" class="tool-card"><div class="tool-icon">🎓</div><div class="tool-name">GPA Calculator</div><div class="tool-desc">Calculate your GPA on the 4.0 scale with credits and letter grades.</div><div class="tool-go">Open →</div></a>
-    <a href="grade-calculator.html" class="tool-card"><div class="tool-icon">📝</div><div class="tool-name">Grade Calculator</div><div class="tool-desc">Weighted grade calculator — see your current grade and what you need on the final.</div><div class="tool-go">Open →</div></a>
-    <a href="fraction-calculator.html" class="tool-card"><div class="tool-icon">½</div><div class="tool-name">Fraction Calculator</div><div class="tool-desc">Add, subtract, multiply, divide fractions with step-by-step working.</div><div class="tool-go">Open →</div></a>
-    <a href="scientific-calculator.html" class="tool-card"><div class="tool-icon">🔬</div><div class="tool-name">Scientific Calculator</div><div class="tool-desc">sin, cos, tan, log, ln, sqrt, powers, factorial, π and e. Works in browser.</div><div class="tool-go">Open →</div></a>
-    <a href="percentage-error-calculator.html" class="tool-card"><div class="tool-icon">⚗️</div><div class="tool-name">Percentage Error</div><div class="tool-desc">Calculate % error between experimental and theoretical values with formula.</div><div class="tool-go">Open →</div></a>
-    <a href="roman-numeral-converter.html" class="tool-card"><div class="tool-icon">Ⅻ</div><div class="tool-name">Roman Numeral Converter</div><div class="tool-desc">Convert numbers to Roman numerals or Roman numerals to numbers (1–3999).</div><div class="tool-go">Open →</div></a>
+  <div class="tools-grid-4 scroll-fade" id="recently-added-grid">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
   </div>
+</section>
 
-  
-  <!-- NICHE CALCULATORS -->
-  <div class="cat-label">🎲 Fun & Niche Tools <span>7 tools</span></div>
-  <div class="tools-grid">
-    <a href="sleep-calculator.html" class="tool-card"><div class="tool-icon">😴</div><div class="tool-name">Sleep Calculator</div><div class="tool-desc">Best bedtime and wake-up times based on 90-min sleep cycles.</div><div class="tool-go">Open →</div></a>
-    <a href="love-calculator.html" class="tool-card"><div class="tool-icon">❤️</div><div class="tool-name">Love Calculator</div><div class="tool-desc">Calculate compatibility percentage between two names. Just for fun!</div><div class="tool-go">Open →</div></a>
-    <a href="lucky-number-generator.html" class="tool-card"><div class="tool-icon">🍀</div><div class="tool-name">Lucky Number Generator</div><div class="tool-desc">Personal lucky numbers from numerology, name, and date of birth.</div><div class="tool-go">Open →</div></a>
-    <a href="coin-flip-dice-roller.html" class="tool-card"><div class="tool-icon">🎲</div><div class="tool-name">Coin Flip & Dice Roller</div><div class="tool-desc">Flip coins and roll d4–d100 dice online with statistics.</div><div class="tool-go">Open →</div></a>
-    <a href="days-between-dates.html" class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Days Between Dates</div><div class="tool-desc">Exact days, weeks, months between any two dates with weekday count.</div><div class="tool-go">Open →</div></a>
-    <a href="zodiac-calculator.html" class="tool-card"><div class="tool-icon">♋</div><div class="tool-name">Zodiac Calculator</div><div class="tool-desc">Western zodiac, Chinese zodiac, and numerology from your birth date.</div><div class="tool-go">Open →</div></a>
-    <a href="world-cup-2026-calculator.html" class="tool-card"><div class="tool-icon">⚽</div><div class="tool-name">World Cup 2026 Calculator</div><div class="tool-desc">Live group standings for all 12 groups and 48 teams. Who qualifies? Updated in real time.</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     SECTION 8 — POPULAR COLLECTIONS
+     Dynamic — rendered by js/search.js from data/collections.json
+     ═══════════════════════════════════ -->
+<section class="v2-section" id="collections">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">⭐ Curated</div>
+      <h2 class="section-title">Popular Collections</h2>
+    </div>
   </div>
-
-  <div class="cat-label">💪 Health &amp; Fitness <span>6 tools</span></div>
-  <div class="tools-grid">
-    <a href="calorie-calculator.html" class="tool-card"><div class="tool-icon">🔥</div><div class="tool-name">Calorie Calculator</div><div class="tool-desc">Calculate daily calories, BMR, TDEE and macro targets for any weight goal.</div><div class="tool-go">Open →</div></a>
-    <a href="tdee-calculator.html" class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">TDEE Calculator</div><div class="tool-desc">Total Daily Energy Expenditure at all activity levels in one view.</div><div class="tool-go">Open →</div></a>
-    <a href="macro-calculator.html" class="tool-card"><div class="tool-icon">🥗</div><div class="tool-name">Macro Calculator</div><div class="tool-desc">Daily protein, fat, and carbs for weight loss, muscle building, or keto.</div><div class="tool-go">Open →</div></a>
-    <a href="ideal-weight-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Ideal Weight Calculator</div><div class="tool-desc">Find your ideal weight using four medical formulas with frame size adjustment.</div><div class="tool-go">Open →</div></a>
-    <a href="body-fat-calculator.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Body Fat Calculator</div><div class="tool-desc">Calculate body fat % using US Navy tape method or BMI-based formula.</div><div class="tool-go">Open →</div></a>
-    <a href="water-intake-calculator.html" class="tool-card"><div class="tool-icon">💧</div><div class="tool-name">Water Intake Calculator</div><div class="tool-desc">Daily water target adjusted for weight, activity, and climate.</div><div class="tool-go">Open →</div></a>
-    <a href="pace-calculator.html" class="tool-card"><div class="tool-icon">🏃</div><div class="tool-name">Pace Calculator</div><div class="tool-desc">Running pace, finish time, and split times for 5k to marathon.</div><div class="tool-go">Open →</div></a>
-    <a href="fuel-cost-calculator.html" class="tool-card"><div class="tool-icon">⛽</div><div class="tool-name">Fuel Cost Calculator</div><div class="tool-desc">Trip fuel cost in L/100km, MPG, or km/L with comparison table.</div><div class="tool-go">Open →</div></a>
+  <div class="collections-grid-compact scroll-fade" id="collections-grid">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
   </div>
+</section>
 
-  
-  <!-- MATH & SCIENCE -->
-  <div class="cat-label">🔢 Math &amp; Science <span>6 tools</span></div>
-  <div class="tools-grid">
-    <a href="quadratic-equation-solver.html" class="tool-card"><div class="tool-icon">x²</div><div class="tool-name">Quadratic Solver</div><div class="tool-desc">Solve ax²+bx+c=0 with discriminant and step-by-step working.</div><div class="tool-go">Open →</div></a>
-    <a href="triangle-calculator.html" class="tool-card"><div class="tool-icon">△</div><div class="tool-name">Triangle Calculator</div><div class="tool-desc">Calculate sides, angles, area and perimeter from any 3 values.</div><div class="tool-go">Open →</div></a>
-    <a href="standard-deviation-calculator.html" class="tool-card"><div class="tool-icon">σ</div><div class="tool-name">Standard Deviation</div><div class="tool-desc">Mean, median, variance, and standard deviation from any dataset.</div><div class="tool-go">Open →</div></a>
-    <a href="significant-figures-calculator.html" class="tool-card"><div class="tool-icon">🔬</div><div class="tool-name">Significant Figures</div><div class="tool-desc">Count sig figs and round any number to 1–5 significant figures.</div><div class="tool-go">Open →</div></a>
-    <a href="matrix-calculator.html" class="tool-card"><div class="tool-icon">⊞</div><div class="tool-name">Matrix Calculator</div><div class="tool-desc">Add, multiply, transpose matrices and calculate determinants.</div><div class="tool-go">Open →</div></a>
-    <a href="cgpa-calculator.html" class="tool-card"><div class="tool-icon">🎓</div><div class="tool-name">CGPA Calculator</div><div class="tool-desc">Convert CGPA to percentage on 4.0, 5.0, 7.0 and 10.0 scales.</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     SECTION 9 — BROWSE BY GOAL
+     ═══════════════════════════════════ -->
+<section class="v2-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">🎯 I want to...</div>
+      <h2 class="section-title">Browse by Goal</h2>
+    </div>
+    <a href="#" class="section-view-all">View All Goals →</a>
   </div>
-
-  <!-- CONSTRUCTION -->
-  <div class="cat-label">🏗️ Construction Tools <span>5 tools</span></div>
-  <div class="tools-grid">
-    <a href="concrete-calculator.html" class="tool-card"><div class="tool-icon">🏗</div><div class="tool-name">Concrete Calculator</div><div class="tool-desc">Cubic yards, cubic feet and bags needed for any slab or footing.</div><div class="tool-go">Open →</div></a>
-    <a href="paint-calculator.html" class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Paint Calculator</div><div class="tool-desc">Gallons needed for any room — accounts for doors and windows.</div><div class="tool-go">Open →</div></a>
-    <a href="square-footage-calculator.html" class="tool-card"><div class="tool-icon">📐</div><div class="tool-name">Square Footage</div><div class="tool-desc">Area of any room in sq ft, sq metres, sq yards and acres.</div><div class="tool-go">Open →</div></a>
-    <a href="roof-pitch-calculator.html" class="tool-card"><div class="tool-icon">🏠</div><div class="tool-name">Roof Pitch Calculator</div><div class="tool-desc">Pitch ratio, angle in degrees and slope multiplier from rise/run.</div><div class="tool-go">Open →</div></a>
-    <a href="flooring-calculator.html" class="tool-card"><div class="tool-icon">🟫</div><div class="tool-name">Flooring Calculator</div><div class="tool-desc">Square feet and boxes needed with waste allowance and cost.</div><div class="tool-go">Open →</div></a>
+  <div class="goals-grid scroll-fade">
+    <a href="ai-prompt-studio.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-green">✍️</div><div class="goal-text">Write with AI</div>
+    </a>
+    <a href="ai-token-counter.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-blue">📈</div><div class="goal-text">Analyze Data</div>
+    </a>
+    <a href="mortgage-calculator.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-cyan">🧮</div><div class="goal-text">Calculate Finance</div>
+    </a>
+    <a href="json-to-csv-converter.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-purple">🔄</div><div class="goal-text">Convert Files</div>
+    </a>
+    <a href="image-compressor.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-lime">🖼️</div><div class="goal-text">Compress Images</div>
+    </a>
+    <a href="password-generator.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-orange">🔑</div><div class="goal-text">Generate Password</div>
+    </a>
+    <a href="regex-tester.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-pink">🔤</div><div class="goal-text">Test Code</div>
+    </a>
+    <a href="gold-position-size-calculator.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-yellow">🥇</div><div class="goal-text">Trade Gold</div>
+    </a>
+    <a href="json-formatter.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-green">🐞</div><div class="goal-text">Debug JSON</div>
+    </a>
+    <a href="ai-prompt-library.html" class="goal-card">
+      <div class="goal-icon icon-badge icon-badge-purple">📚</div><div class="goal-text">Find AI Prompts</div>
+    </a>
   </div>
+</section>
 
-  <!-- HEALTH EXTENDED -->
-  <div class="cat-label">🏥 Health Extended <span>7 tools</span></div>
-  <div class="tools-grid">
-    <a href="pregnancy-due-date-calculator.html" class="tool-card"><div class="tool-icon">🤰</div><div class="tool-name">Pregnancy Calculator</div><div class="tool-desc">Due date, current week, trimester and all milestone dates.</div><div class="tool-go">Open →</div></a>
-    <a href="ovulation-calculator.html" class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Ovulation Calculator</div><div class="tool-desc">Fertile window, peak ovulation day and next 3 cycles.</div><div class="tool-go">Open →</div></a>
-    <a href="blood-pressure-checker.html" class="tool-card"><div class="tool-icon">❤️</div><div class="tool-name">Blood Pressure Checker</div><div class="tool-desc">BP category from AHA guidelines with health advice.</div><div class="tool-go">Open →</div></a>
-    <a href="vitamin-d-calculator.html" class="tool-card"><div class="tool-icon">☀️</div><div class="tool-name">Vitamin D Calculator</div><div class="tool-desc">Vitamin D from sun exposure by skin tone and location.</div><div class="tool-go">Open →</div></a>
-    <a href="calorie-burn-calculator.html" class="tool-card"><div class="tool-icon">🔥</div><div class="tool-name">Calorie Burn Calculator</div><div class="tool-desc">Calories burned for 14 activities by weight and duration.</div><div class="tool-go">Open →</div></a>
-    <a href="height-converter.html" class="tool-card"><div class="tool-icon">📏</div><div class="tool-name">Height Converter</div><div class="tool-desc">Convert cm to feet inches and all height units instantly.</div><div class="tool-go">Open →</div></a>
-    <a href="blood-type-compatibility.html" class="tool-card"><div class="tool-icon">🩸</div><div class="tool-name">Blood Type Compatibility</div><div class="tool-desc">Donor and recipient compatibility for all 8 blood types.</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     SECTION 10 — WHY TOOLSNOVA
+     ═══════════════════════════════════ -->
+<section class="v2-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">💚 Why ToolsNova</div>
+      <h2 class="section-title">Why ToolsNova?</h2>
+    </div>
   </div>
-
-  <!-- FINANCE EXTENDED -->
-  
-  <!-- PROP FIRM TOOLS -->
-  <div class="cat-label">🏆 Prop Firm Tools <span>7 tools</span></div>
-  <div class="tools-grid">
-    <a href="prop-firm-challenge-calculator.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">Challenge Calculator</div><div class="tool-desc">FTMO, MyForexFunds & all firms — targets, drawdowns & payout ROI.</div><div class="tool-go">Open →</div></a>
-    <a href="daily-drawdown-calculator.html" class="tool-card"><div class="tool-icon">📉</div><div class="tool-name">Daily Drawdown Calculator</div><div class="tool-desc">Know exactly how much you can lose today before breaching rules.</div><div class="tool-go">Open →</div></a>
-    <a href="consistency-calculator.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Consistency Calculator</div><div class="tool-desc">Check if your best day profit meets consistency rules for payout.</div><div class="tool-go">Open →</div></a>
-    <a href="profit-target-tracker.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">Profit Target Tracker</div><div class="tool-desc">Track challenge progress — daily needed, days left, on-track status.</div><div class="tool-go">Open →</div></a>
-    <a href="challenge-pass-probability.html" class="tool-card"><div class="tool-icon">🎲</div><div class="tool-name">Pass Probability</div><div class="tool-desc">Monte Carlo simulation — probability of passing based on your stats.</div><div class="tool-go">Open →</div></a>
-    <a href="funded-account-roi-calculator.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Funded Account ROI</div><div class="tool-desc">Is the challenge fee worth it? True ROI and break-even analysis.</div><div class="tool-go">Open →</div></a>
-    <a href="position-scaling-calculator.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">Position Scaling Calculator</div><div class="tool-desc">Scale lot sizes with fixed fractional, Kelly, anti-martingale methods.</div><div class="tool-go">Open →</div></a>
-    <a href="kelly-criterion-calculator.html" class="tool-card"><div class="tool-icon">📐</div><div class="tool-name">Kelly Criterion Calculator</div><div class="tool-desc">Optimal position size using Kelly formula — full, half and quarter Kelly.</div><div class="tool-go">Open →</div></a>
-    <a href="win-rate-expectancy-calculator.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Win Rate & Expectancy</div><div class="tool-desc">Calculate trading edge — win rate, expectancy, profit factor from trade history.</div><div class="tool-go">Open →</div></a>
-    <a href="forex-swap-calculator.html" class="tool-card"><div class="tool-icon">🔄</div><div class="tool-name">Forex Swap Calculator</div><div class="tool-desc">Overnight rollover cost for any pair — daily, weekly, monthly projections.</div><div class="tool-go">Open →</div></a>
-    <a href="currency-correlation-calculator.html" class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">Currency Correlation</div><div class="tool-desc">Correlation between any two pairs — avoid doubling risk on correlated trades.</div><div class="tool-go">Open →</div></a>
-    <a href="monte-carlo-simulator.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Monte Carlo Simulator</div><div class="tool-desc">100 simulated equity curves — see best, worst &amp; median outcomes for your strategy.</div><div class="tool-go">Open →</div></a>
+  <div class="why-grid-horizontal">
+    <div class="why-card-h"><div class="icon-badge icon-badge-orange">🏆</div><div><div class="why-card-h-title">Always Free</div><div class="why-card-h-desc">All tools are 100% free forever. No hidden cost.</div></div></div>
+    <div class="why-card-h"><div class="icon-badge icon-badge-green">🛡️</div><div><div class="why-card-h-title">Privacy First</div><div class="why-card-h-desc">Everything runs in your browser. Your data stays with you.</div></div></div>
+    <div class="why-card-h"><div class="icon-badge icon-badge-purple">⚡</div><div><div class="why-card-h-title">No Signups</div><div class="why-card-h-desc">Use all tools instantly. No registration required.</div></div></div>
+    <div class="why-card-h"><div class="icon-badge icon-badge-orange">🔶</div><div><div class="why-card-h-title">Fast &amp; Reliable</div><div class="why-card-h-desc">Optimized for speed and performance.</div></div></div>
+    <div class="why-card-h"><div class="icon-badge icon-badge-yellow">⭐</div><div><div class="why-card-h-title">Regular Updates</div><div class="why-card-h-desc">New tools added regularly.</div></div></div>
+    <div class="why-card-h"><div class="icon-badge icon-badge-green">🌍</div><div><div class="why-card-h-title">Made for Everyone</div><div class="why-card-h-desc">Developers, traders, students, creators and everyone.</div></div></div>
   </div>
+</section>
 
-  <div class="cat-label">💹 Finance Extended <span>7 tools</span></div>
-  <div class="tools-grid">
-    <a href="roi-calculator.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">ROI Calculator</div><div class="tool-desc">Return on investment, annualised ROI and return multiple.</div><div class="tool-go">Open →</div></a>
-    <a href="inflation-calculator.html" class="tool-card"><div class="tool-icon">💸</div><div class="tool-name">Inflation Calculator</div><div class="tool-desc">Future value of money and purchasing power loss over time.</div><div class="tool-go">Open →</div></a>
-    <a href="break-even-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Break-Even Calculator</div><div class="tool-desc">Units and revenue needed to break even with profit projections.</div><div class="tool-go">Open →</div></a>
-    <a href="dividend-calculator.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Dividend Calculator</div><div class="tool-desc">Annual dividend income, yield and growth projection.</div><div class="tool-go">Open →</div></a>
-    <a href="electricity-cost-calculator.html" class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">Electricity Cost</div><div class="tool-desc">Monthly and annual running cost for any appliance.</div><div class="tool-go">Open →</div></a>
-    <a href="tip-split-calculator.html" class="tool-card"><div class="tool-icon">🍽️</div><div class="tool-name">Tip & Bill Splitter</div><div class="tool-desc">Calculate tip and split any bill among multiple people.</div><div class="tool-go">Open →</div></a>
-    <a href="meeting-time-zone-planner.html" class="tool-card"><div class="tool-icon">🌍</div><div class="tool-name">Meeting Time Planner</div><div class="tool-desc">Schedule global meetings — shows time in 12 cities instantly.</div><div class="tool-go">Open →</div></a>
+<!-- ═══════════════════════════════════
+     FAQ
+     ═══════════════════════════════════ -->
+<section class="v2-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
   </div>
-
-  <!-- TRADING TOOLS -->
-  <div class="cat-label">📊 Trading Tools <span>13 tools</span></div>
-  <div class="tools-grid">
-    <a href="lot-size-calculator.html" class="tool-card"><div class="tool-icon">📐</div><div class="tool-name">Lot Size Calculator</div><div class="tool-desc">Forex position size from balance, risk %, entry and stop loss.</div><div class="tool-go">Open →</div></a>
-    <a href="risk-reward-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">Risk:Reward Ratio</div><div class="tool-desc">R:R ratio, P&L, and breakeven win rate for any trade.</div><div class="tool-go">Open →</div></a>
-    <a href="drawdown-calculator.html" class="tool-card"><div class="tool-icon">📉</div><div class="tool-name">Drawdown Calculator</div><div class="tool-desc">Drawdown loss and recovery % needed to break even.</div><div class="tool-go">Open →</div></a>
-    <a href="margin-calculator.html" class="tool-card"><div class="tool-icon">🏧</div><div class="tool-name">Margin Calculator</div><div class="tool-desc">Required margin for any forex/CFD position and leverage.</div><div class="tool-go">Open →</div></a>
-    <a href="gold-position-size-calculator.html" class="tool-card"><div class="tool-icon">🥇</div><div class="tool-name">Gold Position Size</div><div class="tool-desc">XAUUSD lot size calculator. Accounts for gold pip value.</div><div class="tool-go">Open →</div></a>
-    <a href="pip-value-calculator.html" class="tool-card"><div class="tool-icon">💹</div><div class="tool-name">Pip Value Calculator</div><div class="tool-desc">Calculate pip value for any pair and lot size in your account currency.</div><div class="tool-go">Open →</div></a>
-    <a href="forex-profit-calculator.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Forex Profit Calculator</div><div class="tool-desc">Calculate exact profit or loss for any forex trade before or after execution.</div><div class="tool-go">Open →</div></a>
-    <a href="pivot-point-calculator.html" class="tool-card"><div class="tool-icon">📌</div><div class="tool-name">Pivot Point Calculator</div><div class="tool-desc">Daily support & resistance levels. Standard, Fibonacci, Camarilla, Woodie.</div><div class="tool-go">Open →</div></a>
-    <a href="fibonacci-calculator.html" class="tool-card"><div class="tool-icon">🌀</div><div class="tool-name">Fibonacci Calculator</div><div class="tool-desc">Retracement & extension levels from any swing high and low.</div><div class="tool-go">Open →</div></a>
-    <a href="compound-trading-calculator.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">Compound Trading</div><div class="tool-desc">Project account growth with monthly compounding. With or without withdrawals.</div><div class="tool-go">Open →</div></a>
-    <a href="risk-of-ruin-calculator.html" class="tool-card"><div class="tool-icon">⚠️</div><div class="tool-name">Risk of Ruin</div><div class="tool-desc">Calculate if your trading strategy is sustainable and your edge is real.</div><div class="tool-go">Open →</div></a>
-    <a href="leverage-calculator.html" class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">Leverage Calculator</div><div class="tool-desc">Required margin, free margin, and max position size for any leverage ratio.</div><div class="tool-go">Open →</div></a>
-    <a href="stop-loss-take-profit-calculator.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">SL/TP Calculator</div><div class="tool-desc">Exact stop loss and take profit price levels from entry, risk, and R:R ratio.</div><div class="tool-go">Open →</div></a>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Is ToolsNova free?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>Yes. Every tool and every AI prompt on ToolsNova is completely free, with no hidden fees, subscriptions, or usage limits.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Do you store my data?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>No. All tools run entirely in your browser. Nothing you type or upload is sent to our servers.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">How many tools does ToolsNova have?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>ToolsNova has 155+ free browser tools across AI, developer, trading, finance, health and utility categories, plus 200+ AI prompts for ChatGPT, Claude, Gemini, Grok and DeepSeek. We add new tools and prompts regularly. Browse the <a href="ai-prompt-library.html" style="color:var(--accent)">AI Prompt Library</a> to see the latest additions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Can I use ToolsNova on mobile?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>Yes. ToolsNova is fully responsive and works on desktop, tablet, and mobile. It also installs as a Progressive Web App for offline access.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="tnFaqToggle(this)">Does ToolsNova require signup?<span class="faq-chevron">⌄</span></button>
+      <div class="faq-a" hidden>No. You can use every tool and prompt immediately with no account, no email, and no signup required.</div>
+    </div>
   </div>
+</section>
 
-</div>
+<!-- ═══════════════════════════════════
+     SECTION 11 — NEWSLETTER
+     ═══════════════════════════════════ -->
+<section class="v2-newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-content-row">
+      <div class="newsletter-icon-wrap">📧</div>
+      <div class="newsletter-text">
+        <h3>Stay updated with new tools<br>and productivity tips.</h3>
+        <p>Join 10,000+ users who get our weekly updates.</p>
+      </div>
+    </div>
+    <form class="newsletter-form" id="v2-newsletter-form" novalidate>
+      <input class="newsletter-input" type="email" id="v2-newsletter-email" placeholder="Enter your email address" required aria-label="Email address">
+      <button class="newsletter-btn" type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-msg" id="v2-newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+</section>
 
-<footer class="site-footer">
-  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
-  <nav class="footer-links">
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy-policy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-  </nav>
+<!-- ═══════════════════════════════════
+     SECTION 12 — MEGA FOOTER
+     ═══════════════════════════════════ -->
+<footer class="v2-footer">
+  <div class="footer-inner">
+    <div class="footer-grid-lg">
+      <div class="footer-brand">
+        <a href="index.html" class="v2-logo">Tools<span class="v2-logo-dot">.</span>Nova</a>
+        <p>155+ free browser tools and 200+ AI prompts for developers, traders, and everyday use. 100% private — everything runs in your browser.</p>
+        <div class="footer-social">
+          <a href="https://github.com/farhan707/toolsnova" aria-label="GitHub" target="_blank" rel="noopener noreferrer">GH</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a href="json-formatter.html">Developer</a>
+        <a href="lot-size-calculator.html">Trading</a>
+        <a href="mortgage-calculator.html">Finance</a>
+        <a href="bmi-calculator.html">Health</a>
+        <a href="temperature-converter.html">Converters</a>
+        <a href="concrete-calculator.html">Construction</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Popular Tools</h4>
+        <a href="json-formatter.html">JSON Formatter</a>
+        <a href="mortgage-calculator.html">Mortgage Calculator</a>
+        <a href="lot-size-calculator.html">Lot Size Calculator</a>
+        <a href="regex-tester.html">Regex Tester</a>
+        <a href="password-generator.html">Password Generator</a>
+        <a href="bmi-calculator.html">BMI Calculator</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>AI Resources</h4>
+        <a href="ai-prompt-library.html">AI Prompt Library</a>
+        <a href="ai-prompt-studio.html">AI Prompt Studio</a>
+        <a href="ai-token-counter.html">AI Token Counter</a>
+        <a href="ai-api-cost-calculator.html">API Cost Calculator</a>
+        <a href="midjourney-prompt-builder.html">Midjourney Builder</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="sitemap.xml">Sitemap</a>
+        <h4 style="margin-top:1rem">Legal</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy-v2">© 2026 ToolsNova — toolsnova.net — all processing happens in your browser</span>
+      <nav class="footer-bottom-links" aria-label="Footer legal links">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
 </footer>
-<script src="app.js?v=20"></script>
+
+<button class="back-to-top" id="v2-back-top" aria-label="Back to top">↑</button>
+
+<!-- ═══════════════════════════════════════════════════
+     EMBEDDED DATA FALLBACK
+     search.js tries fetch('data/tools.json') etc first — this is
+     the correct, live-updating path for real HTTP deployment
+     (Cloudflare Pages). fetch() is blocked entirely by all modern
+     browsers under file:// (a hard security restriction, not a bug
+     in this codebase — confirmed: relative AND absolute fetch paths
+     both fail identically under file://). These three inline JSON
+     blocks (tools, categories, collections — ~38KB total; prompts.json
+     is 1.2MB and intentionally NOT embedded) let search, Trending,
+     Browse Categories, AI Workspace, Recently Added and Popular
+     Collections all work correctly even when this file is opened
+     directly by double-click, with zero server. If data/tools.json
+     etc change, regenerate this block to match — do not hand-edit.
+     ═══════════════════════════════════════════════════ -->
+<script type="application/json" id="tn-embedded-tools">[{"name": "Match Schedule + Time Zone", "url": "world-cup-2026-schedule.html", "icon": "📅", "desc": "All 104 matches converted to your local time. Pakistan, UK, India, US and 400+ zones.", "category": "Utilities", "dateAdded": "2026-06-15", "featured": false}, {"name": "Prize Money Calculator", "url": "world-cup-2026-prize-money.html", "icon": "💰", "desc": "$871M total pool. How much does each team earn? Calculate by round from group stage to final.", "category": "Utilities", "dateAdded": "2026-06-15", "featured": false}, {"name": "3rd Place Qualifier Tracker", "url": "world-cup-2026-third-place.html", "icon": "🔵", "desc": "Which 8 third-place teams advance to Round of 32? Enter stats for all 12 groups.", "category": "Utilities", "dateAdded": "2026-06-15", "featured": false}, {"name": "World Cup 2026 Quiz", "url": "world-cup-2026-quiz.html", "icon": "🧠", "desc": "20 questions about teams, groups, history and format. How well do you know the 2026 World Cup?", "category": "Utilities", "dateAdded": "2026-06-15", "featured": false}, {"name": "Legal Document Analyzer", "url": "legal-document-analyzer.html", "icon": "⚖️", "desc": "Analyze legal documents instantly. Identify key clauses, obligations, risks and plain-English summaries.", "category": "Utilities", "dateAdded": "2026-06-24", "featured": false}, {"name": "Loan EMI Comparison", "url": "loan-emi-comparison.html", "icon": "💳", "desc": "Compare EMI across multiple loans side by side. Find the best rate and term for your budget.", "category": "Finance", "dateAdded": "2026-06-24", "featured": false}, {"name": "Mortgage Affordability Calculator", "url": "mortgage-affordability-calculator.html", "icon": "🏠", "desc": "How much house can you afford? Calculate max mortgage based on income, debts and down payment.", "category": "Utilities", "dateAdded": "2026-06-23", "featured": false}, {"name": "Solar Panel ROI Calculator", "url": "solar-panel-roi-calculator.html", "icon": "☀️", "desc": "Calculate solar panel payback period, ROI, and lifetime savings. See if solar is worth it for you.", "category": "Finance", "dateAdded": "2026-06-22", "featured": false}, {"name": "Islamic Mortgage Calculator", "url": "islamic-mortgage-calculator.html", "icon": "🕌", "desc": "Murabaha vs conventional mortgage comparator. Halal home finance calculator with full breakdown.", "category": "Utilities", "dateAdded": "2026-06-23", "featured": false}, {"name": "AI Token Counter", "url": "ai-token-counter.html", "icon": "🔢", "desc": "Count tokens and estimate API costs for GPT-4o, Claude 3.5, Gemini and more. Free, instant, no signup.", "category": "AI", "dateAdded": "2026-06-20", "featured": true}, {"name": "JSON Formatter", "url": "json-formatter.html", "icon": "{}", "desc": "Format, validate and beautify JSON with syntax highlighting.", "category": "Developer", "dateAdded": "2026-05-01", "featured": true}, {"name": "Base64 Encoder", "url": "base64-encoder.html", "icon": "⇌", "desc": "Encode or decode Base64 strings. Supports Unicode and emoji.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Case Converter", "url": "case-converter.html", "icon": "Cc", "desc": "UPPER, lower, camelCase, PascalCase, snake_case, kebab-case.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Word Counter", "url": "word-counter.html", "icon": "Aa", "desc": "Count words, characters, sentences, paragraphs and reading time.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "URL Encoder", "url": "url-encoder.html", "icon": "🔗", "desc": "Encode or decode URLs and query parameters with breakdown.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Timestamp Converter", "url": "timestamp-converter.html", "icon": "⏱", "desc": "Unix epoch ↔ human date. UTC, ISO 8601, local timezone.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Password Generator", "url": "password-generator.html", "icon": "🔑", "desc": "Cryptographically random strong passwords. Bulk generation.", "category": "Developer", "dateAdded": "2026-05-01", "featured": true}, {"name": "Lorem Ipsum", "url": "lorem-ipsum.html", "icon": "¶", "desc": "Generate placeholder text — words, sentences or paragraphs.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "UUID Generator", "url": "uuid-generator.html", "icon": "⬡", "desc": "Generate UUID v4 strings. Bulk, uppercase, and no-dash formats.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Hash Generator", "url": "hash-generator.html", "icon": "#", "desc": "MD5, SHA-1, SHA-256, SHA-512 from any text. All at once.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Regex Tester", "url": "regex-tester.html", "icon": ".*", "desc": "Live regex matching with match highlighting, flags, and quick-insert tokens.", "category": "Developer", "dateAdded": "2026-05-01", "featured": true}, {"name": "Diff Checker", "url": "diff-checker.html", "icon": "⇄", "desc": "Compare two texts or code files and see additions, deletions line by line.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Color Picker", "url": "color-picker.html", "icon": "🎨", "desc": "Pick colors and convert between HEX, RGB and HSL. Includes contrast checker.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Number to Words", "url": "number-to-words.html", "icon": "123", "desc": "Convert any number to English words. For cheques, contracts and invoices.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Text Repeater", "url": "text-repeater.html", "icon": "↺", "desc": "Repeat any text up to 1,000 times with a custom separator.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Random Number Generator", "url": "random-number-generator.html", "icon": "🎲", "desc": "Cryptographically secure random numbers in any range. Dice roller included.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "JWT Decoder", "url": "jwt-decoder.html", "icon": "🔑", "desc": "Decode and inspect JWT tokens — header, payload, claims, and expiry status.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Markdown Editor", "url": "markdown-editor.html", "icon": "📄", "desc": "Live Markdown preview with HTML output. Side-by-side editor and renderer.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "JSON ↔ CSV", "url": "json-to-csv-converter.html", "icon": "⇄", "desc": "Convert JSON arrays to CSV or CSV files to JSON. Bidirectional, instant.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "HTML Encoder", "url": "html-encoder-decoder.html", "icon": "&lt;/&gt;", "desc": "Encode text to HTML entities or decode entities back to plain text.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Hex/Binary Converter", "url": "hex-binary-converter.html", "icon": "0x", "desc": "Convert between decimal, hex, binary and octal with ASCII and Unicode info.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "CSS Minifier", "url": "css-minifier.html", "icon": "{}→", "desc": "Minify CSS to reduce file size or format minified CSS for readability.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Cron Expression Builder", "url": "cron-expression-builder.html", "icon": "⏰", "desc": "Build cron schedules visually with plain-English descriptions and presets.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Color Code Converter", "url": "color-code-converter.html", "icon": "🎨", "desc": "Convert HEX, RGB, RGBA, HSL, CMYK with tints and shades.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Number Base Converter", "url": "number-base-converter.html", "icon": "🔢", "desc": "Binary, octal, decimal, hexadecimal — all bases at once.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Password Strength Checker", "url": "password-strength-checker.html", "icon": "🔐", "desc": "Entropy score, crack time estimate, detailed improvement tips.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "Age Calculator", "url": "age-calculator.html", "icon": "🎂", "desc": "Exact age in years, months and days. Days to next birthday.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": true}, {"name": "BMI Calculator", "url": "bmi-calculator.html", "icon": "⚖️", "desc": "Body Mass Index in metric or imperial. Health category guidance.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": true}, {"name": "Percentage Calculator", "url": "percentage-calculator.html", "icon": "%", "desc": "X% of Y, percentage change, add/subtract %, and more.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "QR Code Generator", "url": "qr-code-generator.html", "icon": "⬛", "desc": "Generate QR codes for URLs, WiFi, text, email. Download PNG or SVG instantly.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": true}, {"name": "Image Compressor", "url": "image-compressor.html", "icon": "🖼", "desc": "Compress JPG, PNG, WebP in browser. No upload to server, no file size limit.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Typing Speed Test", "url": "typing-speed-test.html", "icon": "⌨", "desc": "Test your WPM with accuracy and error tracking. 30s, 1 min, 2 min modes.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Pomodoro Timer", "url": "pomodoro-timer.html", "icon": "🍅", "desc": "25-min focus timer with breaks, session counter, and background tab support.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Palworld Breeding Calculator", "url": "palworld-breeding-calculator.html", "icon": "🐾", "desc": "Find parent combinations for any Pal using the breeding power formula. Forward & reverse lookup.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Stopwatch &amp; Timer", "url": "stopwatch-timer.html", "icon": "⏱", "desc": "Stopwatch with laps and countdown timer with audio alert.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Aspect Ratio Calculator", "url": "aspect-ratio-calculator.html", "icon": "📐", "desc": "Find ratio, scale to any width, compare to 16:9, 4:3, 21:9.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Screen Resolution Calculator", "url": "screen-resolution-calculator.html", "icon": "🖥", "desc": "PPI, aspect ratio, pixel count and scale factors for any resolution.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Character Counter", "url": "character-counter.html", "icon": "🔢", "desc": "Characters, words, sentences, reading time, platform limits.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Word Frequency Counter", "url": "word-frequency-counter.html", "icon": "📊", "desc": "Top keywords and density analysis for any text. SEO & writing.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Random Word Generator", "url": "random-word-generator.html", "icon": "🎲", "desc": "Random nouns, adjectives, verbs for writing, games, prompts.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Text to Slug Converter", "url": "text-to-slug-converter.html", "icon": "🔗", "desc": "Convert any title to a clean SEO-friendly URL slug instantly.", "category": "Developer", "dateAdded": "2026-05-01", "featured": false}, {"name": "EMI Calculator", "url": "emi-calculator.html", "icon": "🏦", "desc": "Monthly loan EMI, total interest, and amortisation breakdown.", "category": "Finance", "dateAdded": "2026-05-01", "featured": true}, {"name": "SIP Calculator", "url": "sip-calculator.html", "icon": "📈", "desc": "SIP future value, total invested vs estimated returns.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Compound Interest", "url": "compound-interest-calculator.html", "icon": "🔁", "desc": "CI with any frequency — annual, monthly, daily compounding.", "category": "Finance", "dateAdded": "2026-05-01", "featured": true}, {"name": "GST Calculator", "url": "gst-calculator.html", "icon": "🧾", "desc": "Add or remove GST at 5%, 12%, 18%, 28% slabs with CGST/SGST breakdown.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Salary Calculator", "url": "salary-calculator.html", "icon": "💼", "desc": "Convert salary between hourly, daily, weekly, monthly and annual pay.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "VAT Calculator", "url": "vat-calculator.html", "icon": "🏷️", "desc": "Add or remove VAT at UK 20%, EU rates, or any custom rate instantly.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Discount Calculator", "url": "discount-calculator.html", "icon": "🏷", "desc": "Calculate final price after any discount. Shows savings and comparison table.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Tip Calculator", "url": "tip-calculator.html", "icon": "🍽️", "desc": "Calculate tip and split bill among any number of people instantly.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Currency Converter", "url": "currency-converter.html", "icon": "💱", "desc": "Convert between 30 currencies — USD, PKR, INR, EUR, GBP, AED and more.", "category": "Finance", "dateAdded": "2026-05-01", "featured": true}, {"name": "Mortgage Calculator", "url": "mortgage-calculator.html", "icon": "🏠", "desc": "Monthly payment, total interest, amortisation schedule with tax & insurance.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": true}, {"name": "Auto Loan Calculator", "url": "auto-loan-calculator.html", "icon": "🚗", "desc": "Car payment with down payment, trade-in, and all loan terms compared.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Retirement Calculator", "url": "retirement-calculator.html", "icon": "👴", "desc": "Project retirement savings with compound growth and monthly income forecast.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Net Worth Calculator", "url": "net-worth-calculator.html", "icon": "💰", "desc": "Enter assets and liabilities to calculate your total net worth instantly.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Invoice Generator", "url": "invoice-generator.html", "icon": "🧾", "desc": "Create professional invoices with items, tax, and multiple currencies.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Sales Tax Calculator", "url": "sales-tax-calculator.html", "icon": "🏷️", "desc": "Add or remove sales tax at any rate with full comparison table.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Temperature Converter", "url": "temperature-converter.html", "icon": "🌡️", "desc": "Convert between Celsius, Fahrenheit, Kelvin and Rankine instantly.", "category": "Converters", "dateAdded": "2026-05-01", "featured": false}, {"name": "Length Converter", "url": "length-converter.html", "icon": "📏", "desc": "km, miles, metres, feet, inches, cm — all units at once.", "category": "Converters", "dateAdded": "2026-05-01", "featured": false}, {"name": "Weight Converter", "url": "weight-converter.html", "icon": "⚖️", "desc": "kg, lbs, stones, grams, ounces — full conversion table.", "category": "Converters", "dateAdded": "2026-05-01", "featured": false}, {"name": "Speed Converter", "url": "speed-converter.html", "icon": "💨", "desc": "mph, km/h, m/s, knots, Mach — for drivers, pilots and students.", "category": "Converters", "dateAdded": "2026-05-01", "featured": false}, {"name": "Data Size Converter", "url": "data-size-converter.html", "icon": "💾", "desc": "Bits, Bytes, KB, MB, GB, TB, PB — developer essential.", "category": "Converters", "dateAdded": "2026-05-01", "featured": false}, {"name": "Time Zone Converter", "url": "timezone-converter.html", "icon": "🌍", "desc": "Convert time between 20+ world time zones. Shows all zones at once.", "category": "Converters", "dateAdded": "2026-05-01", "featured": false}, {"name": "GPA Calculator", "url": "gpa-calculator.html", "icon": "🎓", "desc": "Calculate your GPA on the 4.0 scale with credits and letter grades.", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Grade Calculator", "url": "grade-calculator.html", "icon": "📝", "desc": "Weighted grade calculator — see your current grade and what you need on the final.", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Fraction Calculator", "url": "fraction-calculator.html", "icon": "½", "desc": "Add, subtract, multiply, divide fractions with step-by-step working.", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Scientific Calculator", "url": "scientific-calculator.html", "icon": "🔬", "desc": "sin, cos, tan, log, ln, sqrt, powers, factorial, π and e. Works in browser.", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Percentage Error", "url": "percentage-error-calculator.html", "icon": "⚗️", "desc": "Calculate % error between experimental and theoretical values with formula.", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Roman Numeral Converter", "url": "roman-numeral-converter.html", "icon": "Ⅻ", "desc": "Convert numbers to Roman numerals or Roman numerals to numbers (1–3999).", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Sleep Calculator", "url": "sleep-calculator.html", "icon": "😴", "desc": "Best bedtime and wake-up times based on 90-min sleep cycles.", "category": "Fun", "dateAdded": "2026-05-01", "featured": false}, {"name": "Love Calculator", "url": "love-calculator.html", "icon": "❤️", "desc": "Calculate compatibility percentage between two names. Just for fun!", "category": "Fun", "dateAdded": "2026-05-01", "featured": false}, {"name": "Lucky Number Generator", "url": "lucky-number-generator.html", "icon": "🍀", "desc": "Personal lucky numbers from numerology, name, and date of birth.", "category": "Fun", "dateAdded": "2026-05-01", "featured": false}, {"name": "Coin Flip & Dice Roller", "url": "coin-flip-dice-roller.html", "icon": "🎲", "desc": "Flip coins and roll d4–d100 dice online with statistics.", "category": "Fun", "dateAdded": "2026-05-01", "featured": false}, {"name": "Days Between Dates", "url": "days-between-dates.html", "icon": "📅", "desc": "Exact days, weeks, months between any two dates with weekday count.", "category": "Fun", "dateAdded": "2026-05-01", "featured": false}, {"name": "Zodiac Calculator", "url": "zodiac-calculator.html", "icon": "♋", "desc": "Western zodiac, Chinese zodiac, and numerology from your birth date.", "category": "Fun", "dateAdded": "2026-05-01", "featured": false}, {"name": "World Cup 2026 Calculator", "url": "world-cup-2026-calculator.html", "icon": "⚽", "desc": "Live group standings for all 12 groups and 48 teams. Who qualifies? Updated in real time.", "category": "Utilities", "dateAdded": "2026-06-15", "featured": false}, {"name": "Calorie Calculator", "url": "calorie-calculator.html", "icon": "🔥", "desc": "Calculate daily calories, BMR, TDEE and macro targets for any weight goal.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "TDEE Calculator", "url": "tdee-calculator.html", "icon": "⚡", "desc": "Total Daily Energy Expenditure at all activity levels in one view.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Macro Calculator", "url": "macro-calculator.html", "icon": "🥗", "desc": "Daily protein, fat, and carbs for weight loss, muscle building, or keto.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Ideal Weight Calculator", "url": "ideal-weight-calculator.html", "icon": "⚖️", "desc": "Find your ideal weight using four medical formulas with frame size adjustment.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Body Fat Calculator", "url": "body-fat-calculator.html", "icon": "📊", "desc": "Calculate body fat % using US Navy tape method or BMI-based formula.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Water Intake Calculator", "url": "water-intake-calculator.html", "icon": "💧", "desc": "Daily water target adjusted for weight, activity, and climate.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Pace Calculator", "url": "pace-calculator.html", "icon": "🏃", "desc": "Running pace, finish time, and split times for 5k to marathon.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Fuel Cost Calculator", "url": "fuel-cost-calculator.html", "icon": "⛽", "desc": "Trip fuel cost in L/100km, MPG, or km/L with comparison table.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Quadratic Solver", "url": "quadratic-equation-solver.html", "icon": "x²", "desc": "Solve ax²+bx+c=0 with discriminant and step-by-step working.", "category": "Math", "dateAdded": "2026-05-01", "featured": false}, {"name": "Triangle Calculator", "url": "triangle-calculator.html", "icon": "△", "desc": "Calculate sides, angles, area and perimeter from any 3 values.", "category": "Math", "dateAdded": "2026-05-01", "featured": false}, {"name": "Standard Deviation", "url": "standard-deviation-calculator.html", "icon": "σ", "desc": "Mean, median, variance, and standard deviation from any dataset.", "category": "Math", "dateAdded": "2026-05-01", "featured": false}, {"name": "Significant Figures", "url": "significant-figures-calculator.html", "icon": "🔬", "desc": "Count sig figs and round any number to 1–5 significant figures.", "category": "Math", "dateAdded": "2026-05-01", "featured": false}, {"name": "Matrix Calculator", "url": "matrix-calculator.html", "icon": "⊞", "desc": "Add, multiply, transpose matrices and calculate determinants.", "category": "Math", "dateAdded": "2026-05-01", "featured": false}, {"name": "CGPA Calculator", "url": "cgpa-calculator.html", "icon": "🎓", "desc": "Convert CGPA to percentage on 4.0, 5.0, 7.0 and 10.0 scales.", "category": "Students", "dateAdded": "2026-05-01", "featured": false}, {"name": "Concrete Calculator", "url": "concrete-calculator.html", "icon": "🏗", "desc": "Cubic yards, cubic feet and bags needed for any slab or footing.", "category": "Construction", "dateAdded": "2026-05-01", "featured": false}, {"name": "Paint Calculator", "url": "paint-calculator.html", "icon": "🎨", "desc": "Gallons needed for any room — accounts for doors and windows.", "category": "Construction", "dateAdded": "2026-05-01", "featured": false}, {"name": "Square Footage", "url": "square-footage-calculator.html", "icon": "📐", "desc": "Area of any room in sq ft, sq metres, sq yards and acres.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "Roof Pitch Calculator", "url": "roof-pitch-calculator.html", "icon": "🏠", "desc": "Pitch ratio, angle in degrees and slope multiplier from rise/run.", "category": "Construction", "dateAdded": "2026-05-01", "featured": false}, {"name": "Flooring Calculator", "url": "flooring-calculator.html", "icon": "🟫", "desc": "Square feet and boxes needed with waste allowance and cost.", "category": "Construction", "dateAdded": "2026-05-01", "featured": false}, {"name": "Pregnancy Calculator", "url": "pregnancy-due-date-calculator.html", "icon": "🤰", "desc": "Due date, current week, trimester and all milestone dates.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Ovulation Calculator", "url": "ovulation-calculator.html", "icon": "📅", "desc": "Fertile window, peak ovulation day and next 3 cycles.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Blood Pressure Checker", "url": "blood-pressure-checker.html", "icon": "❤️", "desc": "BP category from AHA guidelines with health advice.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Vitamin D Calculator", "url": "vitamin-d-calculator.html", "icon": "☀️", "desc": "Vitamin D from sun exposure by skin tone and location.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Calorie Burn Calculator", "url": "calorie-burn-calculator.html", "icon": "🔥", "desc": "Calories burned for 14 activities by weight and duration.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Height Converter", "url": "height-converter.html", "icon": "📏", "desc": "Convert cm to feet inches and all height units instantly.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Blood Type Compatibility", "url": "blood-type-compatibility.html", "icon": "🩸", "desc": "Donor and recipient compatibility for all 8 blood types.", "category": "Health", "dateAdded": "2026-05-01", "featured": false}, {"name": "Challenge Calculator", "url": "prop-firm-challenge-calculator.html", "icon": "🎯", "desc": "FTMO, MyForexFunds & all firms — targets, drawdowns & payout ROI.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Daily Drawdown Calculator", "url": "daily-drawdown-calculator.html", "icon": "📉", "desc": "Know exactly how much you can lose today before breaching rules.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Consistency Calculator", "url": "consistency-calculator.html", "icon": "📊", "desc": "Check if your best day profit meets consistency rules for payout.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Profit Target Tracker", "url": "profit-target-tracker.html", "icon": "🎯", "desc": "Track challenge progress — daily needed, days left, on-track status.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Pass Probability", "url": "challenge-pass-probability.html", "icon": "🎲", "desc": "Monte Carlo simulation — probability of passing based on your stats.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Funded Account ROI", "url": "funded-account-roi-calculator.html", "icon": "💰", "desc": "Is the challenge fee worth it? True ROI and break-even analysis.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Position Scaling Calculator", "url": "position-scaling-calculator.html", "icon": "📈", "desc": "Scale lot sizes with fixed fractional, Kelly, anti-martingale methods.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Kelly Criterion Calculator", "url": "kelly-criterion-calculator.html", "icon": "📐", "desc": "Optimal position size using Kelly formula — full, half and quarter Kelly.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Win Rate & Expectancy", "url": "win-rate-expectancy-calculator.html", "icon": "📊", "desc": "Calculate trading edge — win rate, expectancy, profit factor from trade history.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "Forex Swap Calculator", "url": "forex-swap-calculator.html", "icon": "🔄", "desc": "Overnight rollover cost for any pair — daily, weekly, monthly projections.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Currency Correlation", "url": "currency-correlation-calculator.html", "icon": "🔗", "desc": "Correlation between any two pairs — avoid doubling risk on correlated trades.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Monte Carlo Simulator", "url": "monte-carlo-simulator.html", "icon": "📊", "desc": "100 simulated equity curves — see best, worst &amp; median outcomes for your strategy.", "category": "Prop Firm", "dateAdded": "2026-05-01", "featured": false}, {"name": "ROI Calculator", "url": "roi-calculator.html", "icon": "📈", "desc": "Return on investment, annualised ROI and return multiple.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Inflation Calculator", "url": "inflation-calculator.html", "icon": "💸", "desc": "Future value of money and purchasing power loss over time.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Break-Even Calculator", "url": "break-even-calculator.html", "icon": "⚖️", "desc": "Units and revenue needed to break even with profit projections.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Dividend Calculator", "url": "dividend-calculator.html", "icon": "💰", "desc": "Annual dividend income, yield and growth projection.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Electricity Cost", "url": "electricity-cost-calculator.html", "icon": "⚡", "desc": "Monthly and annual running cost for any appliance.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Tip & Bill Splitter", "url": "tip-split-calculator.html", "icon": "🍽️", "desc": "Calculate tip and split any bill among multiple people.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Meeting Time Planner", "url": "meeting-time-zone-planner.html", "icon": "🌍", "desc": "Schedule global meetings — shows time in 12 cities instantly.", "category": "Finance", "dateAdded": "2026-05-01", "featured": false}, {"name": "Lot Size Calculator", "url": "lot-size-calculator.html", "icon": "📐", "desc": "Forex position size from balance, risk %, entry and stop loss.", "category": "Trading", "dateAdded": "2026-05-01", "featured": true}, {"name": "Risk:Reward Ratio", "url": "risk-reward-calculator.html", "icon": "⚖️", "desc": "R:R ratio, P&L, and breakeven win rate for any trade.", "category": "Trading", "dateAdded": "2026-05-01", "featured": true}, {"name": "Drawdown Calculator", "url": "drawdown-calculator.html", "icon": "📉", "desc": "Drawdown loss and recovery % needed to break even.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Margin Calculator", "url": "margin-calculator.html", "icon": "🏧", "desc": "Required margin for any forex/CFD position and leverage.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Gold Position Size", "url": "gold-position-size-calculator.html", "icon": "🥇", "desc": "XAUUSD lot size calculator. Accounts for gold pip value.", "category": "Trading", "dateAdded": "2026-05-01", "featured": true}, {"name": "Pip Value Calculator", "url": "pip-value-calculator.html", "icon": "💹", "desc": "Calculate pip value for any pair and lot size in your account currency.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Forex Profit Calculator", "url": "forex-profit-calculator.html", "icon": "💰", "desc": "Calculate exact profit or loss for any forex trade before or after execution.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Pivot Point Calculator", "url": "pivot-point-calculator.html", "icon": "📌", "desc": "Daily support & resistance levels. Standard, Fibonacci, Camarilla, Woodie.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Fibonacci Calculator", "url": "fibonacci-calculator.html", "icon": "🌀", "desc": "Retracement & extension levels from any swing high and low.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Compound Trading", "url": "compound-trading-calculator.html", "icon": "📈", "desc": "Project account growth with monthly compounding. With or without withdrawals.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Risk of Ruin", "url": "risk-of-ruin-calculator.html", "icon": "⚠️", "desc": "Calculate if your trading strategy is sustainable and your edge is real.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "Leverage Calculator", "url": "leverage-calculator.html", "icon": "⚡", "desc": "Required margin, free margin, and max position size for any leverage ratio.", "category": "Utilities", "dateAdded": "2026-05-01", "featured": false}, {"name": "SL/TP Calculator", "url": "stop-loss-take-profit-calculator.html", "icon": "🎯", "desc": "Exact stop loss and take profit price levels from entry, risk, and R:R ratio.", "category": "Trading", "dateAdded": "2026-05-01", "featured": false}, {"name": "AI Prompt Library", "url": "ai-prompt-library.html", "icon": "📚", "category": "AI", "desc": "200+ professional AI prompt templates for ChatGPT, Claude, Gemini & DeepSeek", "dateAdded": "2026-06-30", "featured": true}, {"name": "AI API Cost Calculator", "url": "ai-api-cost-calculator.html", "icon": "💰", "category": "AI", "desc": "Compare GPT-4o, Claude, Gemini, DeepSeek API costs. 20+ models, real 2026 pricing", "dateAdded": "2026-06-27", "featured": false}, {"name": "AI Prompt Studio", "url": "ai-prompt-studio.html", "icon": "🧠", "category": "AI", "desc": "Build, improve and save prompts for ChatGPT, Claude and Gemini. 3 modes.", "dateAdded": "2026-06-27", "featured": true}, {"name": "Midjourney Prompt Builder", "url": "midjourney-prompt-builder.html", "icon": "🎨", "category": "AI", "desc": "Build AI image prompts for Midjourney v6, DALL-E 3 and Stable Diffusion", "dateAdded": "2026-06-27", "featured": false}]</script>
+<script type="application/json" id="tn-embedded-categories">[{"id": "writing", "label": "Writing", "emoji": "✍️", "desc": "Blog posts, emails, stories, scripts, and all forms of written content.", "color": "#7fff6f"}, {"id": "seo", "label": "SEO", "emoji": "🔍", "desc": "Keyword research, meta tags, content briefs, schema, and technical SEO.", "color": "#ea4335"}, {"id": "marketing", "label": "Marketing", "emoji": "📣", "desc": "Ad copy, landing pages, email campaigns, sales letters, and brand strategy.", "color": "#ffa400"}, {"id": "business", "label": "Business", "emoji": "💼", "desc": "Business plans, pitch decks, SWOT analysis, OKRs, and operational frameworks.", "color": "#4285f4"}, {"id": "coding", "label": "Coding", "emoji": "💻", "desc": "Code review, debugging, SQL, React, API docs, unit tests, and DevOps.", "color": "#7f5af0"}, {"id": "trading", "label": "Trading", "emoji": "📊", "desc": "Gold analysis, forex, SMC, ICT, prop firm strategy, and trading psychology.", "color": "#ffc800"}, {"id": "education", "label": "Education", "emoji": "📚", "desc": "Lesson plans, study guides, flashcards, quizzes, and curriculum design.", "color": "#00a36c"}, {"id": "social", "label": "Social Media", "emoji": "📱", "desc": "Twitter threads, Instagram captions, LinkedIn posts, TikTok scripts, and more.", "color": "#53aadd"}, {"id": "productivity", "label": "Productivity", "emoji": "🚀", "desc": "Task systems, email management, deep work, delegation, and automation.", "color": "#34d399"}, {"id": "image", "label": "Image AI", "emoji": "🎨", "desc": "Midjourney, DALL-E 3, Stable Diffusion, Flux, and Adobe Firefly prompts.", "color": "#d07f59"}, {"id": "finance", "label": "Finance", "emoji": "💰", "desc": "Financial models, investment analysis, budgeting, and personal finance planning.", "color": "#22d3ee"}, {"id": "career", "label": "Career", "emoji": "🎯", "desc": "Resumes, cover letters, interviews, salary negotiation, and LinkedIn profiles.", "color": "#f472b6"}]</script>
+<script type="application/json" id="tn-embedded-collections">[{"id": "forex-trading", "name": "Forex Trading Pack", "icon": "📈", "desc": "Everything a forex trader needs", "tools": ["lot-size-calculator.html", "risk-reward-calculator.html", "pip-value-calculator.html", "stop-loss-take-profit-calculator.html", "drawdown-calculator.html", "forex-profit-calculator.html"]}, {"id": "developer-starter", "name": "Developer Starter Pack", "icon": "💻", "desc": "Essential tools every developer uses daily", "tools": ["json-formatter.html", "base64-encoder.html", "regex-tester.html", "hash-generator.html", "password-generator.html", "jwt-decoder.html"]}, {"id": "ai-power", "name": "AI Power Pack", "icon": "🤖", "desc": "Get more out of every AI model", "tools": ["ai-prompt-library.html", "ai-prompt-studio.html", "ai-token-counter.html", "ai-api-cost-calculator.html", "midjourney-prompt-builder.html"]}, {"id": "student", "name": "Student Pack", "icon": "🎓", "desc": "Tools for assignments and exams", "tools": ["gpa-calculator.html", "grade-calculator.html", "scientific-calculator.html", "fraction-calculator.html", "percentage-error-calculator.html", "word-counter.html"]}, {"id": "finance-home", "name": "Finance & Home Pack", "icon": "🏠", "desc": "Plan your finances and home purchase", "tools": ["mortgage-calculator.html", "emi-calculator.html", "loan-emi-comparison.html", "retirement-calculator.html", "roi-calculator.html", "net-worth-calculator.html"]}]</script>
+<script src="app.js?v=20" defer></script>
+<script src="js/search.js?v=20" defer></script>
 <script>
-if ('serviceWorker' in navigator && location.hostname === 'toolsnova.net') {
-  window.addEventListener('load', () => {
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
     navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('[ToolsNova] SW registered:', reg.scope))
-      .catch(err => console.log('[ToolsNova] SW failed:', err));
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
   });
 }
 </script>
-<!-- Fixed theme toggle - always visible regardless of CSS -->
-<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
 </body>
 </html>

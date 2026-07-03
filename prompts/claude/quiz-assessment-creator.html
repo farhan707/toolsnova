@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz &amp; Assessment Creator Prompt for Claude | Free | ToolsNova</title>
+<meta name="description" content="Free quiz &amp; assessment creator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/quiz-assessment-creator.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Quiz &amp; Assessment Creator Prompt">
+<meta property="og:description" content="Free quiz &amp; assessment creator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/quiz-assessment-creator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Quiz &amp; Assessment Creator Prompt">
+<meta name="twitter:description" content="Free quiz &amp; assessment creator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Education", "item": "https://toolsnova.net/prompts/education/index.html"}, {"@type": "ListItem", "position": 5, "name": "Quiz & Assessment Creator", "item": "https://toolsnova.net/prompts/claude/quiz-assessment-creator.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Quiz & Assessment Creator Prompt", "description": "Free quiz & assessment creator prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/quiz-assessment-creator.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "quiz, assessment, multiple choice, education, exam prep"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What's a good passing grade for a technical quiz?", "acceptedAnswer": {"@type": "Answer", "text": "Practice quiz: 60–65%. Certification-level: 70–80%. Safety-critical (medical, electrical): 90%+. Always calibrate to the consequences of someone passing without genuinely understanding."}}, {"@type": "Question", "name": "Which AI model generates better quiz questions?", "acceptedAnswer": {"@type": "Answer", "text": "Claude follows complex question design templates consistently and writes higher-quality answer explanations. ChatGPT generates a large bank of questions faster. For quality over quantity, use Claude."}}, {"@type": "Question", "name": "How do I prevent cheating?", "acceptedAnswer": {"@type": "Answer", "text": "Randomise question and answer option order. Set a time limit preventing Google searches. Use scenario questions (hard to Google the specific answer). For high-stakes, use a proctoring tool."}}, {"@type": "Question", "name": "What's the difference between formative and summative assessment?", "acceptedAnswer": {"@type": "Answer", "text": "Formative: low-stakes, during learning, used to guide instruction (quizzes, checks for understanding). Summative: end of unit/course, measures achievement against standards (exams, final projects). Both use the same question design principles."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/education/index.html">📚 Education</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Quiz &amp; Assessment Creator</span>
+    </div>
+    <h1>Claude Quiz &amp; Assessment Creator Prompt</h1>
+    <p>You are an expert assessment designer with 15+ years creating educational assessments from primary to professional certi</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">📚 Education</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#00a36c">Beginner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-education">📚 Education</span> <span class="badge badge-beginner">Beginner</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">quiz</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">assessment</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">multiple choice</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">education</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/quiz-assessment-creator.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/quiz-assessment-creator.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/gemini/quiz-assessment-creator.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>subject</label><input class="var-input" type="text" placeholder="Python programming" oninput="updatePrompt()" data-var="subject"></div>
+<div class="var-group"><label>topic</label><input class="var-input" type="text" placeholder="AI tools for small business" oninput="updatePrompt()" data-var="topic"></div>
+<div class="var-group"><label>difficulty level</label><input class="var-input" type="text" placeholder="[example difficulty level]" oninput="updatePrompt()" data-var="difficulty level"></div>
+<div class="var-group"><label>number of questions</label><input class="var-input" type="text" placeholder="[example number of questions]" oninput="updatePrompt()" data-var="number of questions"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an expert assessment designer with 15+ years creating educational assessments from primary to professional certification level.<br><br>Subject: <span class="var-hl">[subject]</span><br>Topic: <span class="var-hl">[topic]</span><br>Difficulty: <span class="var-hl">[difficulty level — easy/medium/hard/mixed]</span><br>Questions: <span class="var-hl">[number of questions]</span><br><br>Task: Create a complete quiz with:<br><br>For EACH question:<br>- Clear, unambiguous question stem<br>- 4 answer options (A–D)<br>- Correct answer with explanation (why it's right)<br>- Distractor analysis (why each wrong option is plausibly tempting)<br>- Bloom's taxonomy level<br><br>MIX QUESTION TYPES:<br>- Multiple choice (single answer)<br>- True/False with justification required<br>- Scenario-based application<br><br>ALSO INCLUDE:<br>- Answer key with scoring<br>- Time allocation guide<br>- Pass mark recommendation<br>- Notes on common misconceptions the quiz reveals</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">QUIZ: Python Data Structures — Intermediate<br>15 questions | Time: 20 min | Pass: 10/15 (67%)<br><br>Q1 — Multiple Choice [Bloom: Understand]<br>What is the output?<br>```python<br>x = [1, 2, 3]<br>y = x<br>y.append(4)<br>print(x)<br>```<br>A) [1, 2, 3]<br>B) [1, 2, 3, 4]  ← CORRECT<br>C) [4]<br>D) TypeError<br><br>Explanation: y = x creates a reference, not a copy. Both point to the same list object, so appending to y modifies x.<br>Distractors: A) exploits misunderstanding of references. D) exploits confusion between lists (mutable) and tuples (immutable).<br><br>Q2 — True/False [Bloom: Remember]<br>'Python dicts maintain insertion order in Python 3.7+.'<br>A) True ← CORRECT   B) False<br>Explanation: Formalised as a language guarantee in 3.7 (was CPython implementation detail in 3.6).<br><br>Q3 — Scenario [Bloom: Apply]<br>You check membership in a 1M-element collection 1,000 times/second. Best structure?<br>A) list   B) tuple   C) set ← CORRECT   D) dict<br>Explanation: Set membership = O(1) hash lookup. List/tuple = O(n) scan. At this scale, set is ~1,000,000× faster.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Write the correct answer before writing distractors — then find plausible wrong answers</div>
+<div class="tip-card">Avoid 'which is NOT...' questions — they increase cognitive load and test reading skill more than subject knowledge</div>
+<div class="tip-card">Each question should stand alone — no question should hint at another's answer</div>
+<div class="tip-card">Test the quiz yourself first — obvious answers, ambiguous wording, and typos are invisible when you're too close to the content</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">'All of the above' and 'None of the above' as options — lazy distractors that don't test knowledge</div>
+<div class="mistake-card">Trick wording — good assessment tests knowledge, not reading comprehension traps</div>
+<div class="mistake-card">All questions at 'remember' level only — doesn't measure real understanding or application ability</div>
+<div class="mistake-card">Questions that share context — if Q3 depends on Q1's answer, you're testing sequencing, not knowledge</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's a good passing grade for a technical quiz?</div><div class="faq-a">Practice quiz: 60–65%. Certification-level: 70–80%. Safety-critical (medical, electrical): 90%+. Always calibrate to the consequences of someone passing without genuinely understanding.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Which AI model generates better quiz questions?</div><div class="faq-a">Claude follows complex question design templates consistently and writes higher-quality answer explanations. ChatGPT generates a large bank of questions faster. For quality over quantity, use Claude.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I prevent cheating?</div><div class="faq-a">Randomise question and answer option order. Set a time limit preventing Google searches. Use scenario questions (hard to Google the specific answer). For high-stakes, use a proctoring tool.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's the difference between formative and summative assessment?</div><div class="faq-a">Formative: low-stakes, during learning, used to guide instruction (quizzes, checks for understanding). Summative: end of unit/course, measures achievement against standards (exams, final projects). Both use the same question design principles.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/flashcard-generator.html"><div class="rc-title">Flashcard &amp; Anki Card Generator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/lesson-plan-creator.html"><div class="rc-title">Lesson Plan Creator</div><div class="rc-cat">📚 Education</div></a><a class="related-card" href="/prompts/chatgpt/study-plan-creator.html"><div class="rc-title">Personalised Study Plan Creator</div><div class="rc-cat">📚 Education</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an expert assessment designer with 15+ years creating educational assessments from primary to professional certification level.\n\nSubject: [subject]\nTopic: [topic]\nDifficulty: [difficulty level — easy/medium/hard/mixed]\nQuestions: [number of questions]\n\nTask: Create a complete quiz with:\n\nFor EACH question:\n- Clear, unambiguous question stem\n- 4 answer options (A–D)\n- Correct answer with explanation (why it's right)\n- Distractor analysis (why each wrong option is plausibly tempting)\n- Bloom's taxonomy level\n\nMIX QUESTION TYPES:\n- Multiple choice (single answer)\n- True/False with justification required\n- Scenario-based application\n\nALSO INCLUDE:\n- Answer key with scoring\n- Time allocation guide\n- Pass mark recommendation\n- Notes on common misconceptions the quiz reveals";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'quiz-assessment-creator';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

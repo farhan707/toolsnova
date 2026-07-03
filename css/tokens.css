@@ -1,0 +1,127 @@
+/* ═══════════════════════════════════════════════════
+   TOOLSNOVA — DESIGN TOKENS
+   Single source of truth for all CSS variables.
+   Both tool pages and the homepage use these tokens.
+   ═══════════════════════════════════════════════════ */
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* ── Dark mode tokens (default) ── */
+:root {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --bg:           #0c0c0e;
+  --bg2:          #0f1117;
+  --surface:      #141416;
+  --surface2:     #1c1c20;
+  --surface3:     #242428;
+
+  /* Cards (used by homepage V2 sections) */
+  --card:         #13161D;
+  --card2:        #181c26;
+
+  /* Borders */
+  --border:       rgba(255, 255, 255, 0.07);
+  --border2:      rgba(255, 255, 255, 0.13);
+
+  /* Text */
+  --text:         #f0f0f2;
+  --text2:        #9090a0;
+  --text3:        #5a5a6a;
+
+  /* Accent */
+  --accent:       #7fff6f;
+  --accent-dim:   rgba(127, 255, 111, 0.12);
+  --accent-glow:  rgba(127, 255, 111, 0.20);
+
+  /* Semantic */
+  --red:          #ff6b6b;
+  --red-dim:      rgba(255, 107, 107, 0.12);
+  --purple:       #9b7fff;
+  --purple-dim:   rgba(155, 127, 255, 0.10);
+
+  /* Typography */
+  --mono:         'IBM Plex Mono', monospace;
+  --display:      'Syne', sans-serif;
+  --sans:         'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm:    6px;
+  --radius:       10px;
+  --radius-md:    14px;
+  --radius-lg:    20px;
+  --radius-xl:    28px;
+
+  /* Shadows */
+  --shadow-card:  0 1px 3px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
+  --shadow-hover: 0 2px 8px rgba(0,0,0,.5), 0 8px 32px rgba(0,0,0,.4);
+
+  /* Animation */
+  --transition:   0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Light mode tokens ── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:           #f8f8f6;
+  --bg2:          #f8f9fb;
+  --surface:      #ffffff;
+  --surface2:     #f0f0ee;
+  --surface3:     #e8e8e6;
+  --card:         #ffffff;
+  --card2:        #f3f4f8;
+
+  --border:       rgba(0, 0, 0, 0.08);
+  --border2:      rgba(0, 0, 0, 0.14);
+
+  --text:         #111112;
+  --text2:        #555560;
+  --text3:        #888894;
+
+  --accent:       #1a8a0a;
+  --accent-dim:   rgba(26, 138, 10, 0.10);
+  --accent-glow:  rgba(26, 138, 10, 0.18);
+
+  --red:          #cc2222;
+  --red-dim:      rgba(204, 34, 34, 0.10);
+  --purple:       #7c3aed;
+  --purple-dim:   rgba(124, 58, 237, 0.10);
+
+  --shadow-card:  0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-hover: 0 2px 8px rgba(0,0,0,.10), 0 8px 32px rgba(0,0,0,.08);
+}
+
+/* ── Base HTML ── */
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Smooth theme transition (not for interactive elements) ── */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.1s ease;
+}
+button, a, input, textarea, select, .btn {
+  transition: all 0.15s !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar          { width: 5px; height: 5px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: var(--surface3); border-radius: 3px; }

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKR (Objectives &amp; Key Results) Writer Prompt for Claude | Free | </title>
+<meta name="description" content="Free okr (objectives &amp; key results) writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requir">
+<link rel="canonical" href="https://toolsnova.net/prompts/gemini/okr-writer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gemini OKR (Objectives &amp; Key Results) Writer Prompt">
+<meta property="og:description" content="Free okr (objectives &amp; key results) writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requir">
+<meta property="og:url" content="https://toolsnova.net/prompts/gemini/okr-writer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini OKR (Objectives &amp; Key Results) Writer Prompt">
+<meta name="twitter:description" content="Free okr (objectives &amp; key results) writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requir">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Gemini", "item": "https://toolsnova.net/prompts/gemini/index.html"}, {"@type": "ListItem", "position": 4, "name": "Business", "item": "https://toolsnova.net/prompts/business/index.html"}, {"@type": "ListItem", "position": 5, "name": "OKR (Objectives & Key Results) Writer", "item": "https://toolsnova.net/prompts/gemini/okr-writer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Gemini OKR (Objectives & Key Results) Writer Prompt", "description": "Free okr (objectives & key results) writer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup requir", "url": "https://toolsnova.net/prompts/gemini/okr-writer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "okr, goals, strategy, management, planning"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should every team member have OKRs?", "acceptedAnswer": {"@type": "Answer", "text": "Individual OKRs work best for senior contributors. For large operational teams, team-level OKRs with individual contribution tracked informally works better than individual KRs for everyone."}}, {"@type": "Question", "name": "What's a good OKR score?", "acceptedAnswer": {"@type": "Answer", "text": "0.7 is the Google-recommended target — consistently hitting 1.0 means targets are too easy. 0.6–0.8 quarter over quarter is excellent performance."}}, {"@type": "Question", "name": "How many OKRs should a company have?", "acceptedAnswer": {"@type": "Answer", "text": "Company level: 1–3 Objectives, 3–5 KRs each. Team: same. Individual: 1–2 Objectives. The discipline is choosing what NOT to include."}}, {"@type": "Question", "name": "Can I use Claude for OKR retrospectives?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — paste your previous quarter data and ask Claude to identify patterns and suggest better KR framing. This is one of Claude's strongest business use cases."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/business/index.html">💼 Business</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/gemini/index.html">Gemini</a><span class="breadcrumb-sep">›</span>
+      <span>OKR (Objectives &amp; Key Results) Writer</span>
+    </div>
+    <h1>Gemini OKR (Objectives &amp; Key Results) Writer Prompt</h1>
+    <p>You are an OKR coach who has implemented OKR frameworks at companies from 5 to 5,000 employees.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💼 Business</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-business">💼 Business</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">okr</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">goals</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">strategy</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">management</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/okr-writer.html">ChatGPT</a><a class="model-link" href="/prompts/claude/okr-writer.html">Claude</a><a class="model-link active" href="/prompts/gemini/okr-writer.html" style="border-color:#4285f4;color:#4285f4">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>company or team name</label><input class="var-input" type="text" placeholder="[example company or team name]" oninput="updatePrompt()" data-var="company or team name"></div>
+<div class="var-group"><label>time period</label><input class="var-input" type="text" placeholder="[example time period]" oninput="updatePrompt()" data-var="time period"></div>
+<div class="var-group"><label>strategic priority</label><input class="var-input" type="text" placeholder="[example strategic priority]" oninput="updatePrompt()" data-var="strategic priority"></div>
+<div class="var-group"><label>current performance baseline</label><input class="var-input" type="text" placeholder="[example current performance baseline]" oninput="updatePrompt()" data-var="current performance baseline"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are an OKR coach who has implemented OKR frameworks at companies from 5 to 5,000 employees.<br><br>Team/Company: <span class="var-hl">[company or team name]</span><br>Period: <span class="var-hl">[time period — Q3 2026 / H2 2026 / Annual]</span><br>Priority: <span class="var-hl">[strategic priority — growth/efficiency/product/customer success]</span><br>Baseline: <span class="var-hl">[current performance baseline]</span><br><br>Task: Write a complete OKR set:<br><br>1. OBJECTIVE (1): Ambitious, qualitative, inspiring rally-cry<br>2. KEY RESULTS (3–5): Each must be:<br>   - A measurable outcome (not a task or activity)<br>   - Achievable at 0.7 with stretch thinking<br>   - Unambiguous — scored without debate at end of quarter<br>3. SCORING GUIDE: What 0.3, 0.7, 1.0 looks like for each KR<br>4. ANTI-PATTERNS: Common OKR mistakes for this specific goal<br>5. WEEKLY CHECK-IN QUESTIONS (3): For the Monday stand-up<br>6. CASCADE NOTES: How this OKR maps to team-level OKRs<br><br>Format: Professional OKR document with rationale for each KR.</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Gemini</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">Q3 2026 OKR — ToolsNova Growth Team<br><br>OBJECTIVE: Establish ToolsNova as the definitive free AI tools destination for professionals<br><br>KR1: Grow monthly active users from 50K to 120K<br>Scoring: 0.3=70K, 0.7=120K, 1.0=150K<br>Rationale: Direct measure of 'destination' — people return because we're essential<br><br>KR2: Achieve page-1 ranking for 25 target AI prompt keywords<br>Scoring: 0.3=10 keywords, 0.7=25, 1.0=35<br>Rationale: Organic search compounds; each ranked keyword earns traffic forever<br><br>KR3: Earn 3 editorial backlinks from DA 70+ publications<br>Scoring: 0.3=1 link, 0.7=3, 1.0=5<br>Rationale: Authority signals that compound — each link helps all subsequent content rank faster<br><br>KR4: Reach NPS 65+ with 200+ responses (from current 52)<br>Scoring: 0.3=NPS 58, 0.7=NPS 65, 1.0=NPS 72<br>Rationale: Leading indicator of word-of-mouth growth and product quality<br><br>WEEKLY CHECK-IN:<br>1. Are we on track for this week's user number milestone?<br>2. Which KR is furthest behind — what's the blocker?<br>3. What is the single most important action this week?</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Write the Objective as a headline, not a metric — it should inspire without being measurable</div>
+<div class="tip-card">A good KR passes this test: if the team hit it by cheating, would you still be happy? If no, fix the metric</div>
+<div class="tip-card">OKRs should make 30% of the team nervous they're too ambitious — comfortable targets aren't OKRs</div>
+<div class="tip-card">Don't cascade OKRs top-down; co-create them with the team who owns the metrics</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Confusing Key Results with tasks ('Launch new homepage' is a task, not a KR)</div>
+<div class="mistake-card">Writing more than 5 KRs per Objective — dilutes focus</div>
+<div class="mistake-card">KRs that are 100% within the team's control — real KRs need external validation</div>
+<div class="mistake-card">Not reviewing OKRs weekly — an OKR reviewed only at quarter-end is just a wish list</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should every team member have OKRs?</div><div class="faq-a">Individual OKRs work best for senior contributors. For large operational teams, team-level OKRs with individual contribution tracked informally works better than individual KRs for everyone.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What's a good OKR score?</div><div class="faq-a">0.7 is the Google-recommended target — consistently hitting 1.0 means targets are too easy. 0.6–0.8 quarter over quarter is excellent performance.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How many OKRs should a company have?</div><div class="faq-a">Company level: 1–3 Objectives, 3–5 KRs each. Team: same. Individual: 1–2 Objectives. The discipline is choosing what NOT to include.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I use Claude for OKR retrospectives?</div><div class="faq-a">Yes — paste your previous quarter data and ask Claude to identify patterns and suggest better KR framing. This is one of Claude's strongest business use cases.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/business-plan-writer.html"><div class="rc-title">Business Plan Writer</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/swot-analysis-generator.html"><div class="rc-title">SWOT Analysis Generator</div><div class="rc-cat">💼 Business</div></a><a class="related-card" href="/prompts/chatgpt/financial-model-builder.html"><div class="rc-title">Financial Model Builder</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are an OKR coach who has implemented OKR frameworks at companies from 5 to 5,000 employees.\n\nTeam/Company: [company or team name]\nPeriod: [time period — Q3 2026 / H2 2026 / Annual]\nPriority: [strategic priority — growth/efficiency/product/customer success]\nBaseline: [current performance baseline]\n\nTask: Write a complete OKR set:\n\n1. OBJECTIVE (1): Ambitious, qualitative, inspiring rally-cry\n2. KEY RESULTS (3–5): Each must be:\n   - A measurable outcome (not a task or activity)\n   - Achievable at 0.7 with stretch thinking\n   - Unambiguous — scored without debate at end of quarter\n3. SCORING GUIDE: What 0.3, 0.7, 1.0 looks like for each KR\n4. ANTI-PATTERNS: Common OKR mistakes for this specific goal\n5. WEEKLY CHECK-IN QUESTIONS (3): For the Monday stand-up\n6. CASCADE NOTES: How this OKR maps to team-level OKRs\n\nFormat: Professional OKR document with rationale for each KR.";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://gemini.google.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'okr-writer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

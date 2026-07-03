@@ -1,0 +1,149 @@
+/* ═══════════════════════════════════════════════════
+   TOOLSNOVA — FOOTER
+   Used by: all pages
+   ═══════════════════════════════════════════════════ */
+
+/* ── Simple footer (tool pages) ── */
+.site-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: auto;
+}
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text3);
+}
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+.footer-links a {
+  font-size: 0.7rem;
+  color: var(--text3);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--text2); }
+
+/* ── Premium footer (homepage V2) ── */
+.v2-footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem 2rem;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.footer-grid-lg {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand p {
+  font-size: 0.8rem;
+  color: var(--text3);
+  line-height: 1.7;
+  margin-top: 0.75rem;
+  max-width: 260px;
+}
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.footer-social a {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text2);
+  transition: all 0.18s;
+  text-decoration: none;
+}
+.footer-social a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.footer-col h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 1rem;
+}
+.footer-col a {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text2);
+  text-decoration: none;
+  margin-bottom: 0.55rem;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy-v2 {
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-bottom-links a {
+  font-size: 0.75rem;
+  color: var(--text3);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-bottom-links a:hover { color: var(--text2); }
+
+/* ── Responsive footer grid ── */
+@media (max-width: 1100px) {
+  .footer-grid-lg {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .footer-grid-lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .v2-footer {
+    padding: 2.5rem 1.25rem 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .footer-grid-lg {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

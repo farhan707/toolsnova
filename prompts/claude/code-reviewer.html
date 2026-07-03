@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Reviewer Prompt for DeepSeek | Free | ToolsNova</title>
+<meta name="description" content="Free code reviewer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<link rel="canonical" href="https://toolsnova.net/prompts/claude/code-reviewer.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Claude Code Reviewer Prompt">
+<meta property="og:description" content="Free code reviewer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta property="og:url" content="https://toolsnova.net/prompts/claude/code-reviewer.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code Reviewer Prompt">
+<meta name="twitter:description" content="Free code reviewer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "Claude", "item": "https://toolsnova.net/prompts/claude/index.html"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://toolsnova.net/prompts/coding/index.html"}, {"@type": "ListItem", "position": 5, "name": "Code Reviewer", "item": "https://toolsnova.net/prompts/claude/code-reviewer.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Code Reviewer Prompt", "description": "Free code reviewer prompt for ChatGPT, Claude and Gemini. Copy, fill variables, get professional output instantly. No signup required.", "url": "https://toolsnova.net/prompts/claude/code-reviewer.html", "dateModified": "2026-06-28", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "code review, debugging, security, quality, programming"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is DeepSeek good for code review?", "acceptedAnswer": {"@type": "Answer", "text": "DeepSeek V3 and R1 are among the strongest models for code-related tasks. DeepSeek R1 is particularly strong because it 'thinks' through the code systematically before responding."}}, {"@type": "Question", "name": "Can I review code I didn't write?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — paste any code into the [code to review] section. The AI will analyse it regardless of authorship. For large files, review in sections of 100–200 lines for best results."}}, {"@type": "Question", "name": "What languages does this work for?", "acceptedAnswer": {"@type": "Answer", "text": "This prompt works for Python, JavaScript/TypeScript, React, Java, C#, PHP, Go, Rust, SQL, and most other mainstream languages. Specify the language clearly for best results."}}, {"@type": "Question", "name": "Should I use this before or after human review?", "acceptedAnswer": {"@type": "Answer", "text": "Use AI review first as a catch-all pre-screen, then human review for architecture decisions, business logic correctness, and team standards. AI misses context; humans miss details."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/coding/index.html">💻 Coding</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/claude/index.html">Claude</a><span class="breadcrumb-sep">›</span>
+      <span>Code Reviewer</span>
+    </div>
+    <h1>Claude Code Reviewer Prompt</h1>
+    <p>You are a senior software engineer with 15+ years of experience in code quality, security, and architecture.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">💻 Coding</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-28</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-coding">💻 Coding</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">code review</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">debugging</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">security</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">quality</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link" href="/prompts/chatgpt/code-reviewer.html">ChatGPT</a><a class="model-link active" href="/prompts/claude/code-reviewer.html" style="border-color:#d07f59;color:#d07f59">Claude</a><a class="model-link" href="/prompts/deepseek/code-reviewer.html">DeepSeek</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>programming language</label><input class="var-input" type="text" placeholder="Python" oninput="updatePrompt()" data-var="programming language"></div>
+<div class="var-group"><label>code purpose</label><input class="var-input" type="text" placeholder="[example code purpose]" oninput="updatePrompt()" data-var="code purpose"></div>
+<div class="var-group"><label>code to review</label><input class="var-input" type="text" placeholder="[example code to review]" oninput="updatePrompt()" data-var="code to review"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a senior software engineer with 15+ years of experience in code quality, security, and architecture.<br><br>Language: <span class="var-hl">[programming language]</span><br>Code purpose: <span class="var-hl">[code purpose]</span><br><br>CODE TO REVIEW:<br><span class="var-hl">[code to review]</span><br><br>Task: Provide a comprehensive code review covering:<br><br>1. BUGS &amp; ERRORS: Critical bugs, unhandled edge cases, off-by-one errors, null risks<br><br>2. SECURITY ISSUES: SQL injection, XSS, CSRF, auth flaws, data exposure, insecure dependencies<br><br>3. PERFORMANCE: O(n²) algorithms, N+1 query problems, memory leaks, caching opportunities<br><br>4. CODE QUALITY: Readability, SRP violations, poor naming, missing/wrong comments<br><br>5. REFACTORED VERSION: Rewrite the most problematic section with inline explanations<br><br>6. SUMMARY:<br>   - Critical (fix now): <span class="var-hl">[list]</span><br>   - Important (fix soon): <span class="var-hl">[list]</span><br>   - Nice to have: <span class="var-hl">[list]</span><br>   - Overall score: <span class="var-hl">[X/10]</span> with reasoning</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in Claude</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">CODE REVIEW: User authentication function — Python/Flask<br><br>🔴 CRITICAL ISSUES (fix before shipping):<br><br>1. SQL INJECTION VULNERABILITY (Line 12)<br>Buggy: cursor.execute(f&quot;SELECT * FROM users WHERE email = '{email}'&quot;)<br>Fixed: cursor.execute('SELECT * FROM users WHERE email = %s', (email,))<br>Risk: Attacker can input email = &quot;' OR '1'='1&quot; and bypass authentication entirely.<br><br>2. PLAINTEXT PASSWORD STORAGE (Line 18)<br>Buggy: db.save({'password': password})<br>Fixed: db.save({'password': bcrypt.hashpw(password.encode(), bcrypt.gensalt())})<br>Risk: If database is breached, all passwords are immediately exposed.<br><br>3. NO RATE LIMITING on /login endpoint<br>Risk: Brute-force attack can test millions of passwords per hour.<br>Fix: Use Flask-Limiter: @limiter.limit('5 per minute')<br><br>🟡 IMPORTANT:<br>4. No input validation on email field — add regex check before DB query<br>5. Auth token not expiring — JWT tokens should expire in 24h max<br><br>✅ OVERALL SCORE: 4/10 — Critical security flaws must be fixed before any deployment.</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#7f5af0">DeepSeek</div>
+        <div style="font-size:.75rem;color:var(--text3)">DeepSeek V3 / R1</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Always review security issues first — a working but insecure function is worse than a broken one</div>
+<div class="tip-card">When reviewing someone else's code, lead with what works well before pointing out problems — it's a practice, not just technical</div>
+<div class="tip-card">Use automated tools (Bandit for Python, ESLint for JS) alongside AI review for systematic coverage</div>
+<div class="tip-card">For large codebases, review one module at a time rather than the whole codebase at once</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">Reviewing style before substance — fix bugs and security issues before worrying about variable names</div>
+<div class="mistake-card">Suggesting rewrites without explaining why the original approach is a problem</div>
+<div class="mistake-card">Missing environment-specific issues — code that works locally may fail in production</div>
+<div class="mistake-card">Ignoring test coverage — a review without mentioning tests is incomplete</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Is DeepSeek good for code review?</div><div class="faq-a">DeepSeek V3 and R1 are among the strongest models for code-related tasks. DeepSeek R1 is particularly strong because it 'thinks' through the code systematically before responding.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Can I review code I didn't write?</div><div class="faq-a">Yes — paste any code into the [code to review] section. The AI will analyse it regardless of authorship. For large files, review in sections of 100–200 lines for best results.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">What languages does this work for?</div><div class="faq-a">This prompt works for Python, JavaScript/TypeScript, React, Java, C#, PHP, Go, Rust, SQL, and most other mainstream languages. Specify the language clearly for best results.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I use this before or after human review?</div><div class="faq-a">Use AI review first as a catch-all pre-screen, then human review for architecture decisions, business logic correctness, and team standards. AI misses context; humans miss details.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/python-debugger.html"><div class="rc-title">Python Debugger</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/unit-test-generator.html"><div class="rc-title">Unit Test Generator</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/code-refactor.html"><div class="rc-title">Code Refactoring Assistant</div><div class="rc-cat">💻 Coding</div></a><a class="related-card" href="/prompts/chatgpt/sql-query-generator.html"><div class="rc-title">SQL Query Generator</div><div class="rc-cat">💻 Coding</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a senior software engineer with 15+ years of experience in code quality, security, and architecture.\n\nLanguage: [programming language]\nCode purpose: [code purpose]\n\nCODE TO REVIEW:\n[code to review]\n\nTask: Provide a comprehensive code review covering:\n\n1. BUGS & ERRORS: Critical bugs, unhandled edge cases, off-by-one errors, null risks\n\n2. SECURITY ISSUES: SQL injection, XSS, CSRF, auth flaws, data exposure, insecure dependencies\n\n3. PERFORMANCE: O(n²) algorithms, N+1 query problems, memory leaks, caching opportunities\n\n4. CODE QUALITY: Readability, SRP violations, poor naming, missing/wrong comments\n\n5. REFACTORED VERSION: Rewrite the most problematic section with inline explanations\n\n6. SUMMARY:\n   - Critical (fix now): [list]\n   - Important (fix soon): [list]\n   - Nice to have: [list]\n   - Overall score: [X/10] with reasoning";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://claude.ai', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'code-reviewer';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

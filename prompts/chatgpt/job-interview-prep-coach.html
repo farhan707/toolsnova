@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Anti-flash: must be first -->
+<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("tn-theme")||"dark")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Prep Coach Prompt | Claude | ToolsNova</title>
+<meta name="description" content="Free AI prompt to prepare for a job interview. Tailored questions, STAR-format answers, salary negotiation prep, and strategies for handling the toughest interview moments.">
+<link rel="canonical" href="https://toolsnova.net/prompts/chatgpt/job-interview-prep-coach.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<!-- PWA -->
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#7fff6f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ToolsNova">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChatGPT Job Interview Preparation Coach Prompt">
+<meta property="og:description" content="Free AI prompt to prepare for a job interview. Tailored questions, STAR-format answers, salary negotiation prep, and strategies for handling the toughest interview moments.">
+<meta property="og:url" content="https://toolsnova.net/prompts/chatgpt/job-interview-prep-coach.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ToolsNova">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatGPT Job Interview Preparation Coach Prompt">
+<meta name="twitter:description" content="Free AI prompt to prepare for a job interview. Tailored questions, STAR-format answers, salary negotiation prep, and strategies for handling the toughest interview moments.">
+<meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
+<meta name="twitter:site" content="@toolsnova">
+
+<!-- Schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsNova", "item": "https://toolsnova.net/"}, {"@type": "ListItem", "position": 2, "name": "AI Prompt Library", "item": "https://toolsnova.net/ai-prompt-library.html"}, {"@type": "ListItem", "position": 3, "name": "ChatGPT", "item": "https://toolsnova.net/prompts/chatgpt/index.html"}, {"@type": "ListItem", "position": 4, "name": "Career", "item": "https://toolsnova.net/prompts/career/index.html"}, {"@type": "ListItem", "position": 5, "name": "Job Interview Preparation Coach", "item": "https://toolsnova.net/prompts/chatgpt/job-interview-prep-coach.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ChatGPT Job Interview Preparation Coach Prompt", "description": "Free AI prompt to prepare for a job interview. Tailored questions, STAR-format answers, salary negotiation prep, and strategies for handling the toughest interview moments.", "url": "https://toolsnova.net/prompts/chatgpt/job-interview-prep-coach.html", "dateModified": "2026-06-29", "author": {"@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net"}, "isAccessibleForFree": true, "keywords": "interview preparation, job interview, STAR method, behavioral questions, career"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far in advance should I prepare?", "acceptedAnswer": {"@type": "Answer", "text": "For a first-round screen: 2-3 hours. For a panel or final round: 5-8 hours across 2-3 days. The most important preparation is practising your STAR answers aloud — not just thinking about them."}}, {"@type": "Question", "name": "Should I memorise my answers?", "acceptedAnswer": {"@type": "Answer", "text": "Memorise the structure and key points, not the exact words. Memorised answers sound mechanical and fall apart when the question is phrased differently. Know your stories well enough to tell them naturally."}}, {"@type": "Question", "name": "How do I handle a question I do not know the answer to?", "acceptedAnswer": {"@type": "Answer", "text": "That is a great question — I want to think through that properly. Then take 10-15 seconds and give your best reasoned answer. Saying I do not know but here is how I would approach finding out is far better than bluffing."}}, {"@type": "Question", "name": "Best model?", "acceptedAnswer": {"@type": "Answer", "text": "Claude produces more nuanced interview coaching — particularly for handling difficult questions, calibrating the right level of vulnerability on weak spots, and generating questions that signal strategic thinking."}}]}</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles (shared platform CSS) -->
+<link rel="stylesheet" href="../../style.css?v=20">
+<link rel="stylesheet" href="../../css/prompt-library.css?v=20">
+
+<!-- Analytics (not deferred — must fire on load) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5507557143792193" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">Tools<span class="logo-dot">.</span>Nova</a>
+  <button class="nav-toggle" onclick="navToggle()">Menu ☰</button>
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <span class="nav-category-label">🤖 AI Tools</span>
+    <a href="/ai-prompt-library.html" class="nav-link">AI Prompt Library</a>
+    <a href="/ai-prompt-studio.html" class="nav-link">Prompt Studio</a>
+    <a href="/ai-token-counter.html" class="nav-link">Token Counter</a>
+    <a href="/ai-api-cost-calculator.html" class="nav-link">API Cost Calc</a>
+    <a href="/midjourney-prompt-builder.html" class="nav-link">Midjourney Builder</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Developer</span>
+    <a href="/json-formatter.html" class="nav-link">JSON Formatter</a>
+    <a href="/base64-encoder.html" class="nav-link">Base64 Encoder</a>
+    <a href="/word-counter.html" class="nav-link">Word Counter</a>
+    <a href="/regex-tester.html" class="nav-link">Regex Tester</a>
+    <a href="/password-generator.html" class="nav-link">Password Generator</a>
+    <a href="/markdown-editor.html" class="nav-link">Markdown Editor</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Finance</span>
+    <a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a>
+    <a href="/emi-calculator.html" class="nav-link">EMI Calculator</a>
+    <a href="/compound-interest-calculator.html" class="nav-link">Compound Interest</a>
+    <a href="/invoice-generator.html" class="nav-link">Invoice Generator</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Trading</span>
+    <a href="/lot-size-calculator.html" class="nav-link">Lot Size</a>
+    <a href="/risk-reward-calculator.html" class="nav-link">Risk:Reward</a>
+    <a href="/gold-position-size-calculator.html" class="nav-link">Gold Position</a>
+    <a href="/prop-firm-challenge-calculator.html" class="nav-link">Challenge Calc</a>
+    <div class="nav-divider" role="separator"></div>
+    <span class="nav-category-label">Health &amp; Utilities</span>
+    <a href="/bmi-calculator.html" class="nav-link">BMI Calculator</a>
+    <a href="/calorie-calculator.html" class="nav-link">Calorie Calculator</a>
+    <a href="/age-calculator.html" class="nav-link">Age Calculator</a>
+    <a href="/qr-code-generator.html" class="nav-link">QR Code Generator</a>
+  </nav>
+</header>
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">ToolsNova</a><span class="breadcrumb-sep">›</span>
+      <a href="/ai-prompt-library.html">Prompt Library</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/career/index.html">🎯 Career</a><span class="breadcrumb-sep">›</span>
+      <a href="/prompts/chatgpt/index.html">ChatGPT</a><span class="breadcrumb-sep">›</span>
+      <span>Job Interview Preparation Coach</span>
+    </div>
+    <h1>ChatGPT Job Interview Preparation Coach Prompt</h1>
+    <p>Prepare for any job interview with tailored questions, STAR-format answers, and a strategy for the toughest moments.</p>
+  </div>
+
+  <div class="stats-row" style="max-width:860px;margin:0 2rem 1rem">
+    <div class="stat-card">
+      <div class="stat-label">Category</div>
+      <div class="stat-value" style="font-size:1rem">🎯 Career</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value" style="font-size:1rem;color:#ffa400">Intermediate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Models</div>
+      <div class="stat-value" style="font-size:.85rem">3</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Updated</div>
+      <div class="stat-value" style="font-size:.8rem">2026-06-29</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 2rem;padding-bottom:3rem">
+
+    <div class="toolbar" style="margin-bottom:1rem">
+      <span class="badge badge-career">🎯 Career</span> <span class="badge badge-intermediate">Intermediate</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">interview preparation</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">job interview</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">STAR method</span> <span class="badge" style="background:var(--surface3);color:var(--text3)">behavioral questions</span>
+    </div>
+
+    <span class="pane-label">Works with</span>
+    <div class="model-switcher" style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.2rem">
+      <a class="model-link active" href="/prompts/chatgpt/job-interview-prep-coach.html" style="border-color:#00a36c;color:#00a36c">ChatGPT</a><a class="model-link" href="/prompts/claude/job-interview-prep-coach.html">Claude</a><a class="model-link" href="/prompts/gemini/job-interview-prep-coach.html">Gemini</a>
+    </div>
+
+    <div class="var-builder">
+<span class="section-label">⚙️ Fill in your variables</span>
+<div class="var-grid"><div class="var-group"><label>job title and company</label><input class="var-input" type="text" placeholder="job title and company" oninput="updatePrompt()" data-var="job title and company"></div>
+<div class="var-group"><label>relevant background</label><input class="var-input" type="text" placeholder="relevant background" oninput="updatePrompt()" data-var="relevant background"></div>
+<div class="var-group"><label>biggest strength for this role</label><input class="var-input" type="text" placeholder="biggest strength for this role" oninput="updatePrompt()" data-var="biggest strength for this role"></div>
+<div class="var-group"><label>biggest concern about your background</label><input class="var-input" type="text" placeholder="biggest concern about your background" oninput="updatePrompt()" data-var="biggest concern about your background"></div>
+<div class="var-group"><label>interview format</label><input class="var-input" type="text" placeholder="interview format" oninput="updatePrompt()" data-var="interview format"></div></div>
+<button class="paction paction-secondary" onclick="resetVars()" style="font-size:.75rem;padding:.3rem .7rem">↺ Reset variables</button>
+</div>
+
+    <span class="pane-label">📋 Prompt</span>
+    <div class="prompt-box-wrap" style="position:relative;margin-bottom:.75rem">
+      <div class="prompt-box" id="prompt-display" contenteditable="true">You are a career coach and former hiring manager who has conducted 500+ interviews.<br><br>Role: <span class="var-hl">[job title and company]</span><br>Your background: <span class="var-hl">[relevant experience in 3-4 sentences]</span><br>Your biggest strength for this role: <span class="var-hl">[what makes you stand out]</span><br>Your biggest concern: <span class="var-hl">[what might an interviewer question about your background]</span><br>Interview format: <span class="var-hl">[panel/one-on-one/case study/technical/competency-based]</span><br><br>Task:<br>1. LIKELY QUESTIONS (10): Based on the role — mix of behavioural, situational, and role-specific<br>2. STAR ANSWERS (3): For the 3 most likely behavioural questions — Situation, Task, Action, Result<br>3. YOUR QUESTIONS TO ASK (5): Questions that signal preparation and strategic thinking<br>4. HANDLING YOUR WEAK SPOT: How to address your biggest concern proactively and confidently<br>5. OPENING ANSWER: Tell me about yourself — a 90-second structured response<br>6. SALARY QUESTION: How to handle what are your salary expectations<br>7. CLOSING MOVE: How to end the interview strongly and stand out</div>
+    </div>
+    <div class="toolbar" style="margin-bottom:1.5rem">
+      <button class="btn primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+      <button class="btn" onclick="openInModel()">↗ Open in ChatGPT</button>
+      <button class="btn paction-fav" id="fav-btn" onclick="toggleFav()">☆ Save</button>
+    </div>
+
+    <span class="section-label">📄 Example output</span>
+<div class="example-box">LIKELY QUESTIONS:<br>1. Tell me about a product you built from 0 to 1 — what decisions shaped it most?<br>2. Describe a time you had to say no to a requested feature. How did you handle it?<br>3. How do you build trust with an engineering team?<br>4. Tell me about a product that failed. What did you learn?<br>5. How do you prioritise when there are competing stakeholder demands?<br>6. Describe your approach to defining success metrics for a new product<br>7. Tell me about a time you changed your mind based on user feedback<br>8. How do you stay close to the customer as the team scales?<br>9. What does good product documentation look like to you?<br>10. Where do you disagree with conventional product management wisdom?<br><br>STAR ANSWER: Describe a time you had to say no to a feature request<br>Situation: At my last role, our largest enterprise customer requested a custom reporting dashboard — our sales team was strongly advocating for it as a retention risk.<br>Task: I needed to evaluate the request honestly without damaging the customer relationship or caving to internal pressure.<br>Action: I ran a structured analysis — how many customers had requested this, what they actually needed vs what they asked for, and whether our roadmap had a better solution already planned. I presented data showing that 2 of 80 customers had requested it, and that our Q3 analytics upgrade would cover 80% of their actual need. I offered to loop in the customer directly to validate.<br>Result: Customer agreed to wait for Q3 release. Feature shipped to 80 customers vs being built for 2. Customer retained. Sales team alignment improved because they saw the process was principled not arbitrary.<br><br>HANDLING YOUR WEAK SPOT:<br>Do not wait for them to raise it — address it in your tell me about yourself. Frame it as: I have deliberately built my career at the intersection of small and large — I joined a startup after an enterprise role specifically to ship faster and own more. I am now ready to bring that velocity to a larger organisation, and I have been methodical about studying how the PM role scales.<br><br>SALARY QUESTION:<br>I am targeting a range of X to Y based on market data for this level in this location, and my experience leading products at this scale. I am flexible depending on the full package. What is the budgeted range for this role?<br>(Always give a range anchored at the top of what you want and flip the question back to them)</div>
+
+    <div class="stat-card" style="margin-bottom:1.25rem;display:flex;gap:.75rem;align-items:center">
+      <span style="font-size:1.5rem">🏆</span>
+      <div>
+        <div class="stat-label">Best model for this prompt</div>
+        <div style="font-size:.95rem;font-weight:700;color:#d07f59">Claude</div>
+        <div style="font-size:.75rem;color:var(--text3)">Claude (Opus 4 / Sonnet 4)</div>
+      </div>
+    </div>
+
+    <span class="pane-label">💡 Pro Tips</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="tip-card">Prepare 5 STAR stories that can each answer multiple question types — one good story about handling conflict can also be about influencing without authority, managing ambiguity, or showing resilience</div>
+<div class="tip-card">The question you ask at the end is evaluated too — ask something that signals you have thought seriously about the role, not something easily answered by reading the website</div>
+<div class="tip-card">Research the interviewers on LinkedIn before the panel — knowing their background lets you tailor answers and ask better follow-up questions</div>
+<div class="tip-card">Never speak negatively about a previous employer in an interview — reframe any difficult situation as a learning or a challenge you navigated professionally</div>
+    </div>
+
+    <span class="pane-label">⚠️ Common Mistakes</span>
+    <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem">
+      <div class="mistake-card">STAR answers with no result — the R in STAR is where you demonstrate impact; vague or missing results lose the interviewer</div>
+<div class="mistake-card">Tell me about yourself that runs more than 2 minutes — 90 seconds maximum; practise it until it feels natural</div>
+<div class="mistake-card">Asking no questions at the end — it signals low enthusiasm and low preparation</div>
+<div class="mistake-card">Answering what are your weaknesses with a strength disguised as a weakness — interviewers see through this immediately; give a real area you are working on with evidence of progress</div>
+    </div>
+
+    <span class="pane-label">❓ FAQ</span>
+    <ul class="faq-list" style="list-style:none;padding:0;margin:0 0 1.25rem"><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How far in advance should I prepare?</div><div class="faq-a">For a first-round screen: 2-3 hours. For a panel or final round: 5-8 hours across 2-3 days. The most important preparation is practising your STAR answers aloud — not just thinking about them.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Should I memorise my answers?</div><div class="faq-a">Memorise the structure and key points, not the exact words. Memorised answers sound mechanical and fall apart when the question is phrased differently. Know your stories well enough to tell them naturally.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">How do I handle a question I do not know the answer to?</div><div class="faq-a">That is a great question — I want to think through that properly. Then take 10-15 seconds and give your best reasoned answer. Saying I do not know but here is how I would approach finding out is far better than bluffing.</div></li><li class="faq-item"><div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Best model?</div><div class="faq-a">Claude produces more nuanced interview coaching — particularly for handling difficult questions, calibrating the right level of vulnerability on weak spots, and generating questions that signal strategic thinking.</div></li></ul>
+
+    <span class="pane-label">🔗 Related Prompts</span>
+    <div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:2rem">
+      <a class="related-card" href="/prompts/chatgpt/cover-letter-builder.html"><div class="rc-title">Cover Letter Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/resume-bullet-writer.html"><div class="rc-title">Resume Bullet Point Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/performance-review-self-assessment.html"><div class="rc-title">Performance Review Self-Assessment Writer</div><div class="rc-cat">🎯 Career</div></a><a class="related-card" href="/prompts/chatgpt/negotiation-strategy-builder.html"><div class="rc-title">Negotiation Script &amp; Strategy Builder</div><div class="rc-cat">💼 Business</div></a>
+    </div>
+
+  </div>
+</main>
+<div class="copy-toast" id="toast"></div>
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 ToolsNova — toolsnova.net — all processing in your browser</span>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</footer>
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-fab" aria-label="Toggle theme"></button>
+<script src="../../app.js?v=20" defer></script>
+<script>
+
+if('serviceWorker'in navigator&&location.hostname==='toolsnova.net'){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(r){console.log('[TN] SW:',r.scope);})
+      .catch(function(e){console.log('[TN] SW fail:',e);});
+  });
+}
+</script>
+<script>
+/* ── Prompt interactive logic ── */
+const PROMPT_RAW = "You are a career coach and former hiring manager who has conducted 500+ interviews.\n\nRole: [job title and company]\nYour background: [relevant experience in 3-4 sentences]\nYour biggest strength for this role: [what makes you stand out]\nYour biggest concern: [what might an interviewer question about your background]\nInterview format: [panel/one-on-one/case study/technical/competency-based]\n\nTask:\n1. LIKELY QUESTIONS (10): Based on the role — mix of behavioural, situational, and role-specific\n2. STAR ANSWERS (3): For the 3 most likely behavioural questions — Situation, Task, Action, Result\n3. YOUR QUESTIONS TO ASK (5): Questions that signal preparation and strategic thinking\n4. HANDLING YOUR WEAK SPOT: How to address your biggest concern proactively and confidently\n5. OPENING ANSWER: Tell me about yourself — a 90-second structured response\n6. SALARY QUESTION: How to handle what are your salary expectations\n7. CLOSING MOVE: How to end the interview strongly and stand out";
+let userVals = {};
+
+function updatePrompt() {
+  document.querySelectorAll('.var-input').forEach(inp => {
+    userVals[inp.getAttribute('data-var')] = inp.value.trim();
+  });
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = t.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function resetVars() {
+  document.querySelectorAll('.var-input').forEach(inp => inp.value = '');
+  userVals = {};
+  const box = document.getElementById('prompt-display');
+  box.innerHTML = PROMPT_RAW.replace(/\[([^\]]+)\]/g, '<span class="var-hl">[$1]</span>').replace(/\n/g, '<br>');
+}
+
+function copyPrompt() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t).then(() => showToast('✓ Prompt copied!'));
+}
+
+function openInModel() {
+  let t = PROMPT_RAW;
+  Object.entries(userVals).forEach(([k, v]) => { if (v) t = t.replaceAll('[' + k + ']', v); });
+  navigator.clipboard.writeText(t);
+  window.open('https://chat.openai.com', '_blank');
+}
+
+/* ── Favourites ── */
+const FAV_KEY = 'pl-favs';
+let favs = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+const SLUG = 'job-interview-prep-coach';
+
+function updateFavBtn() {
+  const btn = document.getElementById('fav-btn');
+  if (!btn) return;
+  const on = favs.includes(SLUG);
+  btn.textContent = on ? '⭐ Saved' : '☆ Save';
+  btn.classList.toggle('active', on);
+}
+
+function toggleFav() {
+  const i = favs.indexOf(SLUG);
+  if (i === -1) favs.push(SLUG); else favs.splice(i, 1);
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+  updateFavBtn();
+}
+
+/* ── Recently viewed ── */
+(function() {
+  const RV_KEY = 'pl-recent';
+  let rv = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+  rv = [SLUG, ...rv.filter(x => x !== SLUG)].slice(0, 12);
+  localStorage.setItem(RV_KEY, JSON.stringify(rv));
+})();
+
+updateFavBtn();
+</script>
+</body></html>

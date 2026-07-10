@@ -1,3 +1,11 @@
+
+# ⚠️ Mandatory
+
+Every AI assistant working on this repository MUST read the entire `/engineering` directory before modifying any production code.
+
+These documents are the official engineering specifications for ToolsNova.
+
+Failure to follow these standards may result in inconsistent implementations.
 # ToolsNova Engineering System
 
 This directory contains the engineering standards used for building every page on ToolsNova.

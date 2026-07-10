@@ -44,7 +44,7 @@ Treat those documents as contractual engineering specifications.
 
 If any instructions conflict, follow this precedence order:
 
-1. `/engineering/pages/height-converter.md`
+1. `/engineering/pages/<TARGET_PAGE>.spec.md`
 2. `/engineering/MASTER_ENGINEERING_PROMPT.md`
 3. `/engineering/standards/`
 4. `/engineering/templates/`

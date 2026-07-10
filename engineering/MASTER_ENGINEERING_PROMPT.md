@@ -32,6 +32,23 @@ Do not optimize pages to rank.
 Optimize pages to deserve to rank.
 
 ---
+## Product Mindset
+
+Think like the owner of the product rather than an HTML developer.
+
+Every implementation should improve:
+
+• User trust
+
+• User understanding
+
+• Product quality
+
+• Maintainability
+
+• AI understanding
+
+If a change benefits search engines but reduces user value, reject it.
 
 # Source of Truth
 
@@ -42,6 +59,8 @@ Before making any implementation decisions, read and follow every applicable doc
 Treat these documents as contractual engineering specifications.
 
 If multiple documents contain overlapping instructions, use this priority order:
+
+---
 
 1. engineering/pages/
 2. MASTER_ENGINEERING_PROMPT.md

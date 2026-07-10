@@ -1,4 +1,4 @@
-# Margin Calculator Specification
+# Forex Margin Calculator Specification
 
 Status: Draft
 
@@ -8,63 +8,60 @@ Priority: Tier 1
 
 ---
 
-# Page Information
+## Page Information
 
-## Page Name
+Page Name:
+Forex Margin Calculator
 
-Margin Calculator
+Category:
+Trading
 
-## Category
-
-Business
-
-## Archetype
-
+Archetype:
 Calculator
 
 ---
 
-# Purpose
+## Purpose
 
-Calculate profit margin, markup, revenue, cost, and profit quickly and accurately.
-
-Help business owners, ecommerce sellers, freelancers, accountants, and students understand pricing decisions.
+Help forex and CFD traders accurately calculate the margin required to open a trading position based on leverage, contract size, lot size, and market price.
 
 ---
 
-# Primary Entity
+## Primary Entity
 
-Profit Margin
-
----
-
-# Secondary Entities
-
-- Gross Margin
-- Profit
-- Revenue
-- Cost
-- Selling Price
-- Markup
-- Margin Percentage
-- Pricing Strategy
+Forex Margin
 
 ---
 
-# Search Intent
+## Secondary Entities
+
+- Margin Requirement
+- Used Margin
+- Free Margin
+- Leverage
+- Contract Size
+- Lot Size
+- Margin Level
+- Margin Call
+- CFD Margin
+- Position Size
+
+---
+
+## Search Intent
 
 Users visit this page to:
 
-- Calculate profit margin
-- Calculate markup
-- Convert markup to margin
-- Understand pricing
-- Learn business formulas
-- Compare pricing scenarios
+- Calculate forex margin
+- Calculate CFD margin
+- Determine required margin
+- Understand leverage requirements
+- Learn margin formulas
+- Avoid margin calls
 
 ---
 
-# Required Sections
+## Required Sections
 
 1. Hero
 
@@ -74,64 +71,60 @@ Users visit this page to:
 
 4. Quick Answer
 
-5. Definition
+5. What is Forex Margin?
 
-6. Formula
+6. Margin Formula
 
-7. Worked Examples
+7. Worked Trading Examples
 
-8. Practical Business Examples
+8. Margin Requirement Table
 
-9. Common Mistakes
+9. Margin vs Leverage Comparison
 
-10. FAQ
+10. Common Trading Mistakes
 
-11. Related Tools
+11. FAQ
 
-12. References
+12. Related Trading Tools
 
-13. Last Updated
+13. References
+
+14. Last Updated
 
 ---
 
-# Required Features
+## Required Features
 
 - Margin calculation
-- Markup calculation
-- Profit calculation
-- Revenue calculation
-- Cost calculation
-- Currency support
-- Percentage formatting
+- Multiple leverage ratios
+- Contract size support
+- Lot size support
+- Market price input
+- Currency formatting
+- Instant calculation
 
 ---
 
-# Related Tools
+## Related Tools
 
-- Profit Calculator
-- ROI Calculator
-- Discount Calculator
-- Percentage Calculator
-- GST Calculator
+- Pip Calculator
+- Position Size Calculator
+- Lot Size Calculator
+- Risk Reward Calculator
+- Drawdown Calculator
+- Swap Calculator
 
 ---
 
-# Success Criteria
+## Success Criteria
 
 Users should understand:
 
 - Margin
-- Markup
-- Profit
-- Cost
-- Selling Price
+- Leverage
+- Required Margin
+- Margin Level
+- Margin Calls
+- Risk Management
 
-----
-
-# Competitive Goal
-
-This page should not simply match competitors.
-
-It should become the reference page that competitors eventually copy.
-
-Every implementation should introduce at least one meaningful improvement beyond the current market standard.
+The page should become one of the best Forex Margin Calculator resources available.

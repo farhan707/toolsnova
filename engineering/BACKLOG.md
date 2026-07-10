@@ -69,3 +69,17 @@ Under Evaluation
 - Financial disclaimers
 - Formula diagrams
 - Result explanation cards
+
+---
+
+## Discovery Validation Rule
+
+Candidate for Engineering System v1.1
+
+Before beginning competitor research, verify that:
+
+- The page specification matches the existing implementation.
+- The primary entity matches the intended search intent.
+- The calculator type matches the specification.
+
+If a mismatch exists, stop and request clarification.

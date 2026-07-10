@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Height Converter","url":"https://toolsnova.net/height-converter","description":"Convert height between centimetres, metres, feet and inches instantly. Free online height converter with common height reference chart.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert cm to feet and inches?","acceptedAnswer":{"@type":"Answer","text":"Divide the centimetre value by 2.54 to get total inches, then divide by 12. The whole number is feet and the remainder is inches. Example: 175 cm ÷ 2.54 = 68.9 in = 5 ft 8.9 in ≈ 5'9\"."}},{"@type":"Question","name":"How tall is 6 feet in cm?","acceptedAnswer":{"@type":"Answer","text":"6 feet = 72 inches = 182.88 cm, usually rounded to 183 cm."}},{"@type":"Question","name":"Is 5'11\" the same as 5.11 feet?","acceptedAnswer":{"@type":"Answer","text":"No. 5'11\" = 5 feet + 11 inches = 5.917 feet = 180.3 cm. The number 5.11 feet means 5 feet 1.3 inches = 155.7 cm."}},{"@type":"Question","name":"How many cm is 5'7\"?","acceptedAnswer":{"@type":"Answer","text":"5'7\" is 67 inches, which is 170.2 cm (about 1.70 m)."}},{"@type":"Question","name":"What is the average height worldwide?","acceptedAnswer":{"@type":"Answer","text":"Global average male height is about 171 cm (5'7\") and female height about 159 cm (5'3\"), per the NCD Risk Factor Collaboration."}},{"@type":"Question","name":"Why is 1 inch exactly 2.54 cm?","acceptedAnswer":{"@type":"Answer","text":"The 1959 international yard-and-pound agreement defined the inch as exactly 2.54 cm, so conversions are exact rather than approximate."}},{"@type":"Question","name":"Should I enter my height in cm or feet and inches on a form?","acceptedAnswer":{"@type":"Answer","text":"Use centimetres for most international and medical forms; use feet and inches for US forms. When in doubt, provide both."}},{"@type":"Question","name":"Does my height change during the day?","acceptedAnswer":{"@type":"Answer","text":"Yes. Spinal discs compress under body weight, so most people are roughly 1-2 cm shorter by evening and recover overnight."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Health Tools","item":"https://toolsnova.net/health-tools/"},{"@type":"ListItem","position":3,"name":"Height Converter","item":"https://toolsnova.net/height-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -235,65 +237,210 @@ gtag('config', 'G-S6PPGS7N63');
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ht-output" onclick="copyEl('ht-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
-  <!-- EDUCATIONAL CONTENT -->
+  <!-- EDUCATIONAL CONTENT (CRS-001 compliant) -->
+  <style>
+  .edu-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin:.75rem 0}
+  .edu-table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:360px}
+  .edu-table th{position:sticky;top:0;background:var(--surface2);color:var(--text2);font-weight:600;text-align:left;padding:.55rem .8rem;border-bottom:1px solid var(--border);font-size:.72rem;letter-spacing:.03em}
+  .edu-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);color:var(--text2)}
+  .edu-table tbody tr:last-child td{border-bottom:none}
+  .edu-table tbody tr:nth-child(even) td{background:var(--surface2)}
+  .edu-table td:first-child{color:var(--text);font-family:var(--mono)}
+  .edu-callout{background:var(--accent-dim);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:.8rem 1rem;margin:.75rem 0;font-size:.83rem;color:var(--text2);line-height:1.7}
+  .edu-callout strong{color:var(--text)}
+  .edu-formula{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;margin:.6rem 0;font-family:var(--mono);font-size:.8rem;color:var(--text);line-height:1.9;overflow-x:auto}
+  .edu-formula .fx-label{color:var(--text3);font-family:var(--mono);font-size:.72rem;display:block;margin-top:.4rem}
+  .edu-refs{list-style:none;padding:0;margin:.5rem 0;font-size:.8rem}
+  .edu-refs li{padding:.4rem 0;border-bottom:1px solid var(--border);color:var(--text2);line-height:1.6}
+  .edu-refs li:last-child{border-bottom:none}
+  .edu-refs a{color:var(--accent)}
+  .edu-updated{font-size:.72rem;color:var(--text3);margin:1.6rem 0 .5rem;font-family:var(--mono)}
+  </style>
+
+  <section class="edu-section" aria-labelledby="ht-quick-answer">
+    <h2 id="ht-quick-answer">Quick Answer</h2>
+    <div class="edu-callout">
+      <strong>To convert centimetres to feet and inches,</strong> divide the centimetre value by 2.54 to get total inches, then divide by 12 — the whole number is feet and the remainder is inches. For example, 175&nbsp;cm ÷ 2.54 = 68.9&nbsp;in = <strong>5&nbsp;ft 9&nbsp;in</strong>. To go the other way, multiply (feet × 12 + inches) by 2.54, so 5&nbsp;ft 9&nbsp;in = 175.3&nbsp;cm. One inch is exactly 2.54&nbsp;cm, so every conversion here is precise rather than approximate.
+    </div>
+  </section>
 
   <section class="edu-section">
     <h2>How to Use the Height Converter</h2>
     <ol class="edu-steps">
       <li><strong>Enter your height value</strong> — in any format: centimetres (175), metres (1.75), inches (69), decimal feet (5.75), or feet and inches (5ft 9in or 5'9").</li>
       <li><strong>Select your input unit</strong> — choose from cm, metres, inches, feet (decimal), or feet+inches.</li>
-      <li><strong>Read all conversions</strong> — the calculator shows your height in all common units simultaneously: cm, metres, inches, total feet, and feet+inches format.</li>
-      <li><strong>Use the reference chart</strong> — common heights in both systems are shown for quick comparison without calculation.</li>
-      <li><strong>Share the result</strong> — copy the output for profiles, medical forms, or international communication.</li>
+      <li><strong>Read all conversions at once</strong> — the calculator shows cm, metres, inches, total feet, and the feet+inches format simultaneously.</li>
+      <li><strong>Check the reference table</strong> — common heights in both systems are listed below for quick comparison without any calculation.</li>
+      <li><strong>Copy the result</strong> — use the output for profiles, medical forms, or international communication.</li>
     </ol>
-    <div class="edu-highlight"><strong>🌍 Why height conversion matters:</strong> The US, Liberia, and Myanmar are the only countries that primarily use the imperial system (feet and inches). Every other country uses metric (centimetres and metres). International travel, dating profiles, medical consultations abroad, and online shopping for clothing all commonly require height conversion.</div>
-
   </section>
 
   <section class="edu-section">
-    <h2>Understanding Height Measurement Systems</h2>
-    <div class="edu-grid">
-      <div class="edu-card"><div class="edu-card-title">📏 Metric System (cm/m)</div><div class="edu-card-body">The international standard. 1 metre = 100 centimetres. Average adult height: men ~171cm globally, women ~159cm globally. Used in all medical and scientific contexts worldwide except the US. Simple decimal system makes calculations straightforward.</div></div>
-      <div class="edu-card"><div class="edu-card-title">📏 Imperial System (ft/in)</div><div class="edu-card-body">Primarily used in the United States. 1 foot = 12 inches. 1 yard = 3 feet. Average US adult height: men ~5'9" (175cm), women ~5'4" (163cm). The foot-and-inch system requires conversion to decimal feet or total inches for most calculations.</div></div>
-      <div class="edu-card"><div class="edu-card-title">🔢 Key Conversion Facts</div><div class="edu-card-body">1 inch = 2.54 centimetres exactly. 1 foot = 30.48 cm. 1 metre = 3.28084 feet = 39.3701 inches. Common heights: 5'0" = 152.4cm. 5'6" = 167.6cm. 5'9" = 175.3cm. 6'0" = 182.9cm. 6'3" = 190.5cm.</div></div>
-      <div class="edu-card"><div class="edu-card-title">🏥 Medical Context</div><div class="edu-card-body">Medical records use metric in most countries. Drug dosing, BMI calculation, and growth chart percentiles all require metric measurements. When visiting doctors abroad or using international health apps, knowing your height in both systems prevents confusion and potential errors.</div></div>
-      <div class="edu-card"><div class="edu-card-title">👗 Clothing and Shopping</div><div class="edu-card-body">Online clothing retailers from different countries use different size systems. European sizes use cm for height in trouser length and sleeve length. US clothing uses inches for inseam. Converting between systems ensures correct fit when buying internationally.</div></div>
-      <div class="edu-card"><div class="edu-card-title">🏀 Sports Context</div><div class="edu-card-body">Basketball player heights are reported in feet/inches in the NBA, cm in European leagues. The same player is 6'7" in US media and 200cm in European reports. Understanding both systems is necessary for following international sports.</div></div>
+    <h2>What Is Height Conversion?</h2>
+    <p>Height conversion is the process of expressing a single height in a different unit without changing the actual measurement. The world uses two systems for personal height. The <strong>metric system</strong> (centimetres and metres) is the standard for roughly 195 countries and for nearly all medical and scientific records. The <strong>imperial system</strong> (feet and inches) is used mainly in the United States, and informally in the United Kingdom, where official documents are metric but everyday speech stays imperial.</p>
+    <p>The two systems are linked by one exact number: <strong>1 inch = 2.54 centimetres</strong>. This is a defined value, not a measured approximation, so conversions between the systems are exact. Related derived values follow from it: 1 foot = 30.48&nbsp;cm, 1 metre = 39.3701&nbsp;in = 3.28084&nbsp;ft, and 1 metre = 100&nbsp;cm.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Height Conversion Formulas</h2>
+    <h3>Centimetres → feet and inches</h3>
+    <div class="edu-formula">
+      total_inches = cm ÷ 2.54
+      <span class="fx-label">then split into feet and inches:</span>
+      feet = ⌊ total_inches ÷ 12 ⌋
+      inches = total_inches − (feet × 12)
     </div>
-
+    <h3>Feet and inches → centimetres</h3>
+    <div class="edu-formula">
+      cm = ( (feet × 12) + inches ) × 2.54
+    </div>
+    <h3>Metres ↔ centimetres</h3>
+    <div class="edu-formula">
+      cm = metres × 100 &nbsp;·&nbsp; metres = cm ÷ 100
+    </div>
+    <div class="edu-callout"><strong>Exact conversion factors:</strong> 1&nbsp;in = 2.54&nbsp;cm · 1&nbsp;ft = 30.48&nbsp;cm · 1&nbsp;m = 100&nbsp;cm = 39.3701&nbsp;in = 3.28084&nbsp;ft. The 2.54&nbsp;cm/inch factor was fixed by the 1959 international yard-and-pound agreement and is maintained by NIST.</div>
   </section>
 
   <section class="edu-section">
-    <h2>Height in Health and Context</h2>
-    <h3>Height and health</h3>
-    <p>Height itself is not a modifiable health factor for adults — it is genetically determined and completed by early adulthood. However, height measurements are important for calculating BMI, medication dosing, assessing growth in children, and tracking growth disorders. Accurate height measurement requires: standing straight against a flat wall, heels together touching the wall, looking straight ahead, measuring at the top of the head without shoes.</p>
-    <h3>Children's height tracking</h3>
-    <p>In children, height tracking on growth charts is an important health monitoring tool. Pediatricians plot height and weight at each visit to track growth percentiles. A child consistently at the 50th percentile for height is average. Significant drops in percentile rank over time may indicate growth disorders, nutritional deficiencies, or other health conditions warranting evaluation.</p>
-    <h3>Average heights globally</h3>
-    <p>Global variation in average height is significant. Tallest countries: Netherlands (men avg 182.9cm), Montenegro, Denmark, Norway. Shortest average heights: Indonesia, Bolivia, Philippines (men avg ~160cm). These differences reflect genetic factors, nutrition, and healthcare access across generations. Average heights have increased dramatically in most countries over the past century due to improved nutrition.</p>
-    <div class="edu-highlight"><strong>📏 Quick conversion reference:</strong> 5'0" = 152cm · 5'3" = 160cm · 5'6" = 168cm · 5'9" = 175cm · 6'0" = 183cm · 6'3" = 191cm. For a quick mental conversion: height in feet × 30 gives approximate centimetres (5 × 30 = 150cm vs actual 152cm — close enough for everyday use).</div>
+    <h2>Worked Examples</h2>
+    <h3>Example 1 — 175 cm to feet and inches</h3>
+    <p>Divide by 2.54: 175 ÷ 2.54 = 68.9 inches. Divide by 12: 68.9 ÷ 12 = 5 feet with 8.9 inches left over. Result: <strong>5 ft 8.9 in ≈ 5'9"</strong>.</p>
+    <h3>Example 2 — 5 ft 10 in to centimetres</h3>
+    <p>Convert to total inches: (5 × 12) + 10 = 70 inches. Multiply by 2.54: 70 × 2.54 = <strong>177.8 cm</strong> (1.78 m).</p>
+    <h3>Example 3 — 1.68 m to feet and inches</h3>
+    <p>Metres to centimetres: 1.68 × 100 = 168 cm. Then 168 ÷ 2.54 = 66.14 inches = 5 feet 6.1 inches. Result: <strong>≈ 5'6"</strong>.</p>
+  </section>
 
+  <section class="edu-section">
+    <h2>Height Reference Table (cm ↔ feet &amp; inches)</h2>
+    <p>Common adult heights from 4'10" to 6'6", with exact centimetre, metre, and total-inch values. All figures use 1 inch = 2.54 cm.</p>
+    <div class="edu-table-wrap">
+      <table class="edu-table">
+        <thead>
+          <tr><th scope="col">Feet &amp; Inches</th><th scope="col">Centimetres</th><th scope="col">Metres</th><th scope="col">Total Inches</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4′ 10″</td><td>147.3 cm</td><td>1.47 m</td><td>58 in</td></tr>
+          <tr><td>4′ 11″</td><td>149.9 cm</td><td>1.50 m</td><td>59 in</td></tr>
+          <tr><td>5′ 0″</td><td>152.4 cm</td><td>1.52 m</td><td>60 in</td></tr>
+          <tr><td>5′ 1″</td><td>154.9 cm</td><td>1.55 m</td><td>61 in</td></tr>
+          <tr><td>5′ 2″</td><td>157.5 cm</td><td>1.57 m</td><td>62 in</td></tr>
+          <tr><td>5′ 3″</td><td>160.0 cm</td><td>1.60 m</td><td>63 in</td></tr>
+          <tr><td>5′ 4″</td><td>162.6 cm</td><td>1.63 m</td><td>64 in</td></tr>
+          <tr><td>5′ 5″</td><td>165.1 cm</td><td>1.65 m</td><td>65 in</td></tr>
+          <tr><td>5′ 6″</td><td>167.6 cm</td><td>1.68 m</td><td>66 in</td></tr>
+          <tr><td>5′ 7″</td><td>170.2 cm</td><td>1.70 m</td><td>67 in</td></tr>
+          <tr><td>5′ 8″</td><td>172.7 cm</td><td>1.73 m</td><td>68 in</td></tr>
+          <tr><td>5′ 9″</td><td>175.3 cm</td><td>1.75 m</td><td>69 in</td></tr>
+          <tr><td>5′ 10″</td><td>177.8 cm</td><td>1.78 m</td><td>70 in</td></tr>
+          <tr><td>5′ 11″</td><td>180.3 cm</td><td>1.80 m</td><td>71 in</td></tr>
+          <tr><td>6′ 0″</td><td>182.9 cm</td><td>1.83 m</td><td>72 in</td></tr>
+          <tr><td>6′ 1″</td><td>185.4 cm</td><td>1.85 m</td><td>73 in</td></tr>
+          <tr><td>6′ 2″</td><td>188.0 cm</td><td>1.88 m</td><td>74 in</td></tr>
+          <tr><td>6′ 3″</td><td>190.5 cm</td><td>1.91 m</td><td>75 in</td></tr>
+          <tr><td>6′ 4″</td><td>193.0 cm</td><td>1.93 m</td><td>76 in</td></tr>
+          <tr><td>6′ 5″</td><td>195.6 cm</td><td>1.96 m</td><td>77 in</td></tr>
+          <tr><td>6′ 6″</td><td>198.1 cm</td><td>1.98 m</td><td>78 in</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Metric vs Imperial: Quick Comparison</h2>
+    <div class="edu-table-wrap">
+      <table class="edu-table">
+        <thead>
+          <tr><th scope="col">Aspect</th><th scope="col">Metric (cm / m)</th><th scope="col">Imperial (ft / in)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Where used</td><td>~195 countries; all medical &amp; scientific records</td><td>United States; informal use in the UK</td></tr>
+          <tr><td>Base</td><td>Decimal — 1 m = 100 cm</td><td>Mixed — 1 ft = 12 in</td></tr>
+          <tr><td>Personal-height format</td><td>175 cm or 1.75 m</td><td>5′9″ (say "five foot nine")</td></tr>
+          <tr><td>Everyday precision</td><td>Nearest centimetre</td><td>Nearest inch</td></tr>
+          <tr><td>Average adult man</td><td>≈ 175 cm</td><td>≈ 5′9″</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="edu-callout"><strong>Note on spelling:</strong> "centimetre/metre" (British and Commonwealth) and "centimeter/meter" (American) refer to exactly the same units — only the spelling differs.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Where Height Conversion Is Used</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">🛂 Passports &amp; visas</div><div class="edu-card-body">Most non-US passport and visa forms request height in centimetres, while US forms use feet and inches. Converting correctly avoids a rejected or flagged application.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏥 Medical forms &amp; BMI</div><div class="edu-card-body">Drug dosing, growth charts, and BMI all use metric. If a formula needs your height, convert to metres first, since BMI = weight(kg) ÷ height(m)².</div></div>
+      <div class="edu-card"><div class="edu-card-title">👗 Clothing &amp; inseam</div><div class="edu-card-body">European sizing uses centimetres for inseam and sleeve length; US sizing uses inches. Converting ensures the right fit when shopping across borders.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🏀 Sports rosters</div><div class="edu-card-body">The same athlete is listed as 6′7″ in the NBA and 200 cm in European leagues. Converting lets you compare stats across competitions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">💬 Profiles &amp; travel</div><div class="edu-card-body">Dating profiles, forums, and international introductions often mix systems. A quick conversion makes a stated height instantly understandable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🪑 Ergonomics &amp; furniture</div><div class="edu-card-body">Desk, chair, and doorway sizing guidance is published in whichever system the manufacturer uses; converting helps you match specs to your own height.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes to Avoid</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">⚠️ 5′11″ ≠ 5.11 ft</div><div class="edu-card-body">Feet-and-inches is not a decimal. 5′11″ means 5 feet plus 11 inches = 5.917 ft = 180.3 cm. Typing "5.11 ft" means 5 ft 1.3 in = 155.7 cm — a 25 cm error.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Writing 5′12″</div><div class="edu-card-body">Inches only run from 0 to 11. If rounding pushes inches to 12, roll over to the next foot: 5′12″ should be written 6′0″.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Forgetting the inches</div><div class="edu-card-body">When converting feet-and-inches to cm, convert the whole height. For 5′10″ use (5×12)+10 = 70 in, not just 5×12 = 60 in.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚠️ Using 2.5 instead of 2.54</div><div class="edu-card-body">Rounding the factor to 2.5 cm/inch introduces a ~1.5% error — about 2.7 cm at adult heights. Always use the exact 2.54.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Height in Context</h2>
+    <h3>Average heights worldwide</h3>
+    <p>Global averages are roughly 171 cm (5′7″) for men and 159 cm (5′3″) for women, but they vary widely by country. The tallest national averages for men are in the Netherlands (about 183–184 cm), Montenegro, and Denmark; some of the shortest are in parts of South and Southeast Asia and Central America. These differences reflect genetics, nutrition, and healthcare access, and averages have risen substantially over the past century as living conditions improved.</p>
+    <h3>Height changes during the day</h3>
+    <p>You are measurably taller in the morning. Over a day, the spinal discs compress slightly under body weight, so most people lose roughly 1–2 cm by evening and regain it overnight. For consistent tracking, measure at the same time of day, standing straight against a wall with heels together and no shoes.</p>
+    <div class="edu-callout"><strong>Quick mental estimate:</strong> multiply height in feet by 30 for an approximate centimetre value (5 ft × 30 ≈ 150 cm vs an exact 152.4 cm). Close enough for a rough sense, but use the calculator above whenever accuracy matters.</div>
   </section>
 
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I convert cm to feet and inches?</div>
-    <div class="faq-a">Divide centimetres by 2.54 to get total inches. Then divide by 12 to get feet, and the remainder is inches. Example: 175cm ÷ 2.54 = 68.9in = 5ft 8.9in ≈ 5'9".</div>
+    <div class="faq-a">Divide the centimetre value by 2.54 to get total inches, then divide by 12. The whole number is feet and the remainder is inches. Example: 175 cm ÷ 2.54 = 68.9 in = 5 ft 8.9 in ≈ 5'9".</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How tall is 6 feet in cm?</div>
-    <div class="faq-a">6 feet = 72 inches = 182.88 cm ≈ 183 cm. Common conversions: 5'0" = 152cm, 5'6" = 168cm, 5'9" = 175cm, 6'0" = 183cm, 6'3" = 190cm.</div>
+    <div class="faq-a">6 feet = 72 inches = 182.88 cm, usually rounded to 183 cm. For reference: 5'0" = 152.4 cm, 5'6" = 167.6 cm, 5'9" = 175.3 cm, 6'0" = 182.9 cm, 6'3" = 190.5 cm.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q" onclick="faqToggle(this)">What is average height worldwide?</div>
-    <div class="faq-a">Global average male height: ~171cm (5'7"). Global average female height: ~159cm (5'3"). Tallest countries: Netherlands, Montenegro, Bosnia (men avg ~183cm). Shortest: Indonesia, Bolivia, Philippines (men avg ~160cm).</div>
+    <div class="faq-q" onclick="faqToggle(this)">Is 5'11" the same as 5.11 feet?</div>
+    <div class="faq-a">No. Feet-and-inches is not a decimal. 5'11" = 5 feet + 11 inches = 5.917 feet = 180.3 cm. The number 5.11 feet means 5 feet 1.3 inches = 155.7 cm — nearly 25 cm shorter.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">How many cm is 5'7"?</div>
+    <div class="faq-a">5'7" is 67 inches. Multiplying by 2.54 gives 170.2 cm (about 1.70 m), close to the global average height for men.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">What is the average height worldwide?</div>
+    <div class="faq-a">Global average male height is about 171 cm (5'7") and female height about 159 cm (5'3"). Averages are highest in the Netherlands, Montenegro, and Denmark, and lower in parts of South and Southeast Asia, per the NCD Risk Factor Collaboration.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Why is 1 inch exactly 2.54 cm?</div>
+    <div class="faq-a">The 1959 international yard-and-pound agreement defined the inch as exactly 2.54 cm. Because it is a defined value rather than a measurement, conversions between inches and centimetres are exact, not approximate.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Should I enter my height in cm or feet and inches on a form?</div>
+    <div class="faq-a">Use centimetres for most international and medical forms (Europe, Asia, South America, and most passport applications). Use feet and inches for US forms and US databases. When in doubt, provide both.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Does my height change during the day?</div>
+    <div class="faq-a">Yes. Spinal discs compress under body weight, so most people are roughly 1–2 cm shorter by evening and return to full height after resting overnight. For consistent records, measure at the same time each day.</div>
   </div>
 </section>
 
-
-
-
+  <section class="edu-section">
+    <h2>References</h2>
+    <ul class="edu-refs">
+      <li>National Institute of Standards and Technology (NIST) — definition of the inch and SI length units: <a href="https://www.nist.gov/pml/owm/si-units-length" target="_blank" rel="nofollow noopener">nist.gov/pml/owm/si-units-length</a></li>
+      <li>International Bureau of Weights and Measures (BIPM) — the metre, SI base unit: <a href="https://www.bipm.org/en/measurement-units" target="_blank" rel="nofollow noopener">bipm.org/en/measurement-units</a></li>
+      <li>NCD Risk Factor Collaboration — "A century of trends in adult human height," eLife (2016): <a href="https://ncdrisc.org" target="_blank" rel="nofollow noopener">ncdrisc.org</a></li>
+    </ul>
+    <p class="edu-updated">Last updated: 10 July 2026 · Conversions use the exact factor 1 inch = 2.54 cm.</p>
+  </section>
 
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->

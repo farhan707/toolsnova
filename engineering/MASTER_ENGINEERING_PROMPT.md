@@ -104,6 +104,18 @@ Never redesign simply for visual preference.
 
 # Engineering Workflow
 
+The Engineering System defines how work should be performed.
+
+Sprint or ticket prompts define only:
+
+- Target page
+- Current phase of work
+- Any unique constraints
+
+Do not expect sprint prompts to repeat engineering standards.
+
+The repository remains the authoritative source of engineering guidance.
+
 ## Phase 1 — Research
 
 Before writing any code:

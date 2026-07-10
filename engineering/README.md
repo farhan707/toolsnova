@@ -1,5 +1,10 @@
 # ToolsNova Engineering System
 
+Version: 1.0
+
+Last Updated: July 2026
+
+
 ## ⚠️ Mandatory
 
 Every AI assistant working on this repository MUST read this directory before modifying any production code.
@@ -28,6 +33,22 @@ The Engineering System exists to ensure every ToolsNova page is:
 Our goal is not simply to rank.
 
 Our goal is to build pages that deserve to rank.
+
+---
+
+## Repository-First Principle
+
+The repository is the primary source of truth.
+
+Engineering specifications always take precedence over assumptions.
+
+Use external research only when required by the Engineering System, such as:
+
+- Competitor research
+- Standards verification
+- Authoritative references
+
+Do not replace repository specifications with external assumptions.
 
 ---
 
@@ -150,22 +171,27 @@ Always preserve the existing design language.
 
 # Conversation Behaviour
 
-When starting a new conversation:
+## First Task in a New Conversation
+
+If this is the first engineering task in the current conversation:
 
 1. Read the Engineering System.
 2. Summarize your understanding.
 3. Wait for approval before implementation.
 
-During the same conversation:
+## Subsequent Tasks in the Same Conversation
 
-- Treat the Engineering System as the source of truth.
-- Do not reread engineering documents unless:
-  - the Engineering System has changed,
-  - a required document has not yet been read,
-  - you are explicitly instructed to reload it,
-  - or you determine that the current context is no longer sufficient.
+Assume the Engineering System already loaded remains the source of truth.
 
-When reloading is necessary, reload only the documents relevant to the current task whenever practical rather than the entire Engineering System.
+Do not reread engineering documents unless:
+
+- The Engineering System has been updated.
+- A required engineering document has not yet been read.
+- You are explicitly instructed to reload it.
+- Current conversation context is no longer sufficient.
+
+When reloading is necessary, reload only the documents required for the current task rather than the entire Engineering System.
+
 ---
 
 # Continuous Improvement

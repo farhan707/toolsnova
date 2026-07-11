@@ -775,29 +775,70 @@ function calcRR() {
   const tp     = parseFloat(document.getElementById('rr-tp')?.value);
   const size   = parseFloat(document.getElementById('rr-size')?.value||1);
   const out    = document.getElementById('rr-output');
+  const summary= document.getElementById('rr-summary');
   if (!out) return;
-  if (!entry||!sl||!tp) { out.textContent='Enter entry, stop loss, and take profit.'; out.className='output-box error'; return; }
+  if (!entry||!sl||!tp) {
+    out.textContent='Enter entry, stop loss, and take profit.'; out.className='output-box error';
+    setStatus('rr-status','','enter trade details');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (entry===sl) {
+    out.textContent='Stop loss cannot equal entry price — there is no risk distance to calculate from.'; out.className='output-box error';
+    setStatus('rr-status','err','⚠ stop loss equals entry price');
+    if (summary) summary.style.display='none';
+    return;
+  }
   const risk   = Math.abs(entry-sl)*size;
   const reward = Math.abs(tp-entry)*size;
   const rr     = reward/risk;
   const minWin = 1/(1+rr)*100;
+  const quality = rr>=3 ? 'Excellent' : rr>=2 ? 'Good' : rr>=1 ? 'Fair' : 'Poor';
+  const goodTier = rr>=2;
   out.className='output-box success';
   out.textContent=
     `Risk:           $${risk.toFixed(2)}\nReward:         $${reward.toFixed(2)}\nR:R Ratio:      1 : ${rr.toFixed(2)}\n\nBreakeven Win%: ${minWin.toFixed(1)}% (to be profitable)\n\nEntry:    ${entry}\nStop:     ${sl} (${Math.abs(entry-sl).toFixed(4)} away)\nTarget:   ${tp} (${Math.abs(tp-entry).toFixed(4)} away)`;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('rr-stat-ratio').textContent = `1 : ${rr.toFixed(2)}`;
+    document.getElementById('rr-stat-quality').textContent = quality;
+    document.getElementById('rr-stat-breakeven').textContent = `${minWin.toFixed(1)}%`;
+  }
+  setStatus('rr-status', goodTier?'ok':'err', `${goodTier?'✓':'⚠'} R:R 1:${rr.toFixed(2)} — ${quality}`);
 }
 
 function calcDrawdown() {
   const balance  = parseFloat(document.getElementById('dd-balance')?.value);
   const drawdown = parseFloat(document.getElementById('dd-pct')?.value);
   const out      = document.getElementById('dd-output');
+  const summary  = document.getElementById('dd-summary');
   if (!out) return;
-  if (!balance||!drawdown) { out.textContent='Enter balance and drawdown %.'; out.className='output-box error'; return; }
+  if (!balance||!drawdown) {
+    out.textContent='Enter balance and drawdown %.'; out.className='output-box error';
+    setStatus('dd-status','','enter balance and drawdown %');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (drawdown>=100) {
+    out.textContent='Drawdown must be less than 100% — a 100% drawdown means the account is fully lost and recovery is undefined.'; out.className='output-box error';
+    setStatus('dd-status','err','⚠ drawdown must be under 100%');
+    if (summary) summary.style.display='none';
+    return;
+  }
   const loss      = balance*drawdown/100;
   const remaining = balance-loss;
   const recovery  = loss/remaining*100;
+  const health    = drawdown<15 ? 'Healthy' : drawdown<25 ? 'Caution' : 'Severe';
   out.className='output-box success';
   out.textContent=
     `Starting Balance: $${balance.toLocaleString()}\nDrawdown:         ${drawdown}% = $${loss.toFixed(2)}\nRemaining:        $${remaining.toFixed(2)}\n\nRecovery Needed:  ${recovery.toFixed(2)}% gain to break even\n\nRule of thumb: A 50% drawdown requires 100% gain to recover.`;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('dd-stat-drawdown').textContent = `${drawdown}%`;
+    document.getElementById('dd-stat-status').textContent = health;
+    document.getElementById('dd-stat-recovery').textContent = `${recovery.toFixed(2)}%`;
+  }
+  setStatus('dd-status', drawdown<25?'ok':'err', `${drawdown<25?'✓':'⚠'} ${health} — ${recovery.toFixed(2)}% recovery needed`);
 }
 
 function calcMargin() {
@@ -2235,9 +2276,13 @@ function rorCalc() {
   const rr      = parseFloat(document.getElementById('ror-rr')?.value);
   const riskPct = parseFloat(document.getElementById('ror-risk')?.value)/100;
   const out     = document.getElementById('ror-output');
+  const summary = document.getElementById('ror-summary');
   if (!out) return;
   if (isNaN(winRate)||isNaN(rr)||isNaN(riskPct)||winRate<=0||winRate>=1) {
-    out.textContent='Enter valid win rate (1–99%), R:R ratio, and risk %.'; out.className='output-box error'; return;
+    out.textContent='Enter valid win rate (1–99%), R:R ratio, and risk %.'; out.className='output-box error';
+    setStatus('ror-status','','enter strategy parameters');
+    if (summary) summary.style.display='none';
+    return;
   }
 
   const lossRate  = 1-winRate;
@@ -2261,6 +2306,12 @@ function rorCalc() {
   const consec = Math.ceil(Math.log(0.01)/Math.log(1-riskPct));
 
   const expClass = expectancy>0 ? 'POSITIVE ✓' : 'NEGATIVE ✗';
+  const assessment = ror<2 ? 'Very Low' : ror<5 ? 'Low' : ror<20 ? 'Moderate' : 'High';
+  const recommendation = expectancy<=0
+    ? 'Reduce risk, improve win rate, or increase R:R before trading live.'
+    : ror<5 ? 'Suitable for conservative risk management.'
+    : ror<20 ? 'Reduce position size to lower long-term ruin risk.'
+    : 'High ruin risk — revise strategy before continuing.';
 
   out.className = expectancy>0 ? 'output-box success' : 'output-box error';
   out.textContent =
@@ -2277,13 +2328,20 @@ function rorCalc() {
     (expectancy>0
       ? `Strategy is PROFITABLE over time.\nRisk of ruin: ${ror<5?'LOW ✓':ror<20?'MODERATE ⚠':'HIGH ✗'}`
       : `Strategy is NOT profitable.\nReduce risk, improve win rate, or increase R:R.`);
-  setStatus('ror-status', expectancy>0?'ok':'err',
-    `Expectancy: ${expectancy>=0?'+':''}${(expectancy*100).toFixed(3)}%`);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('ror-stat-ror').textContent = `${ror.toFixed(2)}%`;
+    document.getElementById('ror-stat-assessment').textContent = assessment;
+    document.getElementById('ror-stat-rec').textContent = recommendation;
+  }
+  setStatus('ror-status', ror<20?'ok':'err', `${ror<20?'✓':'⚠'} Risk of Ruin: ${ror.toFixed(2)}% — ${assessment}`);
 }
 function rorClear() {
   ['ror-winrate','ror-rr','ror-risk'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('ror-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('ror-summary');
+  if(s) s.style.display='none';
   setStatus('ror-status','','enter strategy parameters');
 }
 
@@ -6217,9 +6275,13 @@ function dailyDrawdownCalc() {
   const ddPct     = parseFloat(document.getElementById('dd-pct')?.value) || 5;
   const ddType    = document.getElementById('dd-type')?.value || 'balance';
   const out       = document.getElementById('dd-output');
+  const summary   = document.getElementById('dd-summary');
   if (!out) return;
   if (isNaN(startBal)||isNaN(currentBal)||startBal<=0) {
-    out.textContent='Enter starting and current balance.'; out.className='output-box error'; return;
+    out.textContent='Enter starting and current balance.'; out.className='output-box error';
+    setStatus('dd-status','','enter start and current balance');
+    if (summary) summary.style.display='none';
+    return;
   }
 
   // Daily drawdown limit calculated from start-of-day balance (most common) or initial balance
@@ -6257,6 +6319,13 @@ function dailyDrawdownCalc() {
         }).join('\n')
       : `🚨 BREACH — Daily drawdown exceeded!\nStop trading for today.`
     );
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('dd-stat-remaining').textContent = safe ? `$${formatCur(remaining)}` : '$0';
+    document.getElementById('dd-stat-status').textContent = safe ? 'Safe' : 'Breached';
+    const trades1pct = Math.floor(Math.max(0,remaining)/(startBal*1/100));
+    document.getElementById('dd-stat-trades').textContent = safe ? `${trades1pct}` : '0';
+  }
   setStatus('dd-status', safe?'ok':'err',
     safe ? `✅ $${formatCur(remaining)} remaining` : '🚨 Limit breached');
 }

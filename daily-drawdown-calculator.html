@@ -214,7 +214,7 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="toolbar">
     <button class="btn primary" onclick="dailyDrawdownCalc()">Calculate</button>
     <button class="btn" onclick="copyEl('dd-output')">Copy</button>
-    <span class="status-badge" id="{status_id}">{status_text}</span>
+    <span class="status-badge" id="dd-status">enter start and current balance</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
@@ -237,7 +237,12 @@ gtag('config', 'G-S6PPGS7N63');
       </select>
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="dd-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Remaining Today</div><div class="stat-value accent" id="dd-stat-remaining">—</div></div>
+    <div class="stat-card"><div class="stat-label">Status</div><div class="stat-value" id="dd-stat-status">—</div></div>
+    <div class="stat-card"><div class="stat-label">Losing Trades Left (1% risk)</div><div class="stat-value" id="dd-stat-trades">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="dd-output" onclick="copyEl('dd-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
   
@@ -328,7 +333,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=25" defer></script>
+<script src="app.js?v=27" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

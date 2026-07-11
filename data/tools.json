@@ -1273,7 +1273,7 @@
     "url": "leverage-calculator.html",
     "icon": "⚡",
     "desc": "Required margin, free margin, and max position size for any leverage ratio.",
-    "category": "Utilities",
+    "category": "Trading",
     "dateAdded": "2026-05-01",
     "featured": false
   },

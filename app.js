@@ -745,6 +745,7 @@ function calcCI() {
 function calcLotSize() {
   const balance    = parseFloat(document.getElementById('ls-balance')?.value);
   const riskPct    = parseFloat(document.getElementById('ls-risk')?.value);
+  const pair       = document.getElementById('ls-pair')?.value || 'EUR/USD';
   const entry      = parseFloat(document.getElementById('ls-entry')?.value);
   const sl         = parseFloat(document.getElementById('ls-sl')?.value);
   const pipVal     = parseFloat(document.getElementById('ls-pipval')?.value||10);
@@ -752,12 +753,19 @@ function calcLotSize() {
   if (!out) return;
   if (!balance||!riskPct||!entry||!sl) { out.textContent='Enter all fields.'; out.className='output-box error'; return; }
   const riskAmt   = balance*riskPct/100;
-  const slPips    = Math.abs(entry-sl);
+  // Convert the raw price distance into an actual pip count using the
+  // pair's pip size (e.g. 0.0001 for most pairs, 0.01 for JPY pairs and
+  // gold) — a stop loss of "1.2500 -> 1.2450" is 50 pips, not 0.0050.
+  const pairData  = PIP_PAIRS[pair] || { pipPos:4 };
+  const pipSize   = Math.pow(10, -pairData.pipPos);
+  const priceDist = Math.abs(entry-sl);
+  const slPips    = priceDist/pipSize;
   const lots      = riskAmt/(slPips*pipVal);
-  const units     = lots*100000;
+  const contract  = pairData.contract || 100000;
+  const units     = lots*contract;
   out.className='output-box success';
   out.textContent=
-    `Risk Amount:    $${riskAmt.toFixed(2)}\nStop Loss Pips: ${slPips.toFixed(1)} pips\nLot Size:       ${lots.toFixed(4)} lots\nUnits:          ${Math.round(units).toLocaleString()}\n\nMax Loss:       $${riskAmt.toFixed(2)} (${riskPct}% of balance)`;
+    `Risk Amount:    $${riskAmt.toFixed(2)}\nPair:           ${pair}\nPrice Distance: ${priceDist.toFixed(pairData.pipPos)}\nStop Loss Pips: ${slPips.toFixed(1)} pips\nLot Size:       ${lots.toFixed(4)} lots\nUnits:          ${Math.round(units).toLocaleString()}\n\nMax Loss:       $${riskAmt.toFixed(2)} (${riskPct}% of balance)`;
 }
 
 function calcRR() {

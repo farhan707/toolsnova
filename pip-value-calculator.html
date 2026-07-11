@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pip Value Calculator","url":"https://toolsnova.net/pip-value-calculator","description":"Calculate the pip value for any forex pair and lot size in your account currency. Supports EUR/USD, GBP/USD, USD/JPY, gold, and 20+ pairs. Free online pip calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a pip?","acceptedAnswer":{"@type":"Answer","text":"A pip (percentage in point) is the smallest standard price move in a currency pair. For most pairs (EUR/USD, GBP/USD), 1 pip = 0.0001. For JPY pairs (USD/JPY, EUR/JPY), 1 pip = 0.01. For gold (XAU/USD), 1 pip = 0.01."}},{"@type":"Question","name":"How is pip value calculated?","acceptedAnswer":{"@type":"Answer","text":"Pip Value = (Pip Size × Lot Size × Contract Size) × (Quote Currency / Account Currency). For EUR/USD with 1 standard lot: 0.0001 × 1 × 100,000 = $10 per pip."}},{"@type":"Question","name":"Why does pip value matter?","acceptedAnswer":{"@type":"Answer","text":"Pip value tells you exactly how much money you gain or lose per pip movement. Without knowing pip value, you cannot accurately calculate position size, set stop losses in dollar terms, or manage risk properly."}},{"@type":"Question","name":"Is pip value different for gold?","acceptedAnswer":{"@type":"Answer","text":"Yes. Gold (XAU/USD) has a contract size of 100 oz, and 1 pip = $0.01. For 1 standard lot, pip value = $0.01 × 100 oz = $1 per 0.01 move, which equals $100 per $1 move in the gold price."}},{"@type":"Question","name":"What is a pipette?","acceptedAnswer":{"@type":"Answer","text":"A pipette (fractional pip) is 1/10th of a pip. Most modern brokers quote 5 decimal places for regular pairs and 3 for JPY pairs. The 5th decimal place is the pipette. 10 pipettes = 1 pip."}},{"@type":"Question","name":"Are the account-currency conversions exact?","acceptedAnswer":{"@type":"Answer","text":"Only when your account currency matches the pair's quote currency directly (e.g. EUR/USD on a USD account). For cross-currency conversions, this calculator uses an approximate static exchange-rate table rather than a live feed, so treat the account-currency figure as close, not exact."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Pip Value Calculator","item":"https://toolsnova.net/pip-value-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -267,7 +269,9 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div><div class="pane-label">Result — pip values at all sizes <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
-  <div class="output-box" id="pv-output" onclick="copyEl('pv-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
+  <div class="output-box" id="pv-output" onclick="copyEl('pv-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:.4rem">Account-currency conversions use an approximate static exchange-rate table, not a live feed — see "Pip Value Formula &amp; Worked Example" below.</p>
+  </div>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -309,6 +313,13 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Pip Value Formula &amp; Worked Example</h2>
+    <div class="edu-highlight"><strong>Pip Value</strong> = Pip Size × Contract Size × Lot Size, converted from the pair's quote currency into your account currency at the current exchange rate.</div>
+    <p>For USD/JPY at 1 standard lot: pip size 0.01 × contract size 100,000 = 1,000 JPY per pip. Converting to a USD account at an example rate of 1 USD ≈ 155 JPY gives roughly 1,000 ÷ 155 ≈ <strong>$6.45 per pip</strong>. For a directly USD-quoted pair like EUR/USD, no conversion step is needed: 0.0001 × 100,000 = <strong>$10 per pip</strong> for a USD account.</p>
+    <div class="edu-highlight"><strong>⚠️ Static exchange rate assumption:</strong> This calculator converts non-USD pip values using a fixed internal exchange-rate table, not a live market feed. Exchange rates move daily, so treat the account-currency figure as an approximation — for a pair quoted directly in your account currency (e.g. EUR/USD on a USD account), the result is exact regardless of this assumption.</div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -325,17 +336,27 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Is pip value different for gold?</div>
-    <div class="faq-a">Yes. Gold (XAU/USD) has a contract size of 100 oz. A $1 move = 100 pips at $0.01 per pip. So 1 standard lot of gold: 1 pip = $0.01 × 100,000 = Wait — gold pip value = $0.01 × 100 oz = $1 per 0.01 move = $100 per $1 move per lot.</div>
+    <div class="faq-a">Yes. Gold (XAU/USD) has a contract size of 100 oz, and 1 pip = $0.01. For 1 standard lot, pip value = $0.01 × 100 oz = $1 per 0.01 move, which equals $100 per $1 move in the gold price.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a pipette?</div>
     <div class="faq-a">A pipette (fractional pip) is 1/10th of a pip. Most modern brokers quote 5 decimal places for regular pairs and 3 for JPY pairs. The 5th decimal place is the pipette. 10 pipettes = 1 pip.</div>
   </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Are the account-currency conversions exact?</div>
+    <div class="faq-a">Only when your account currency matches the pair's quote currency directly (e.g. EUR/USD on a USD account). For cross-currency conversions, this calculator uses an approximate static exchange-rate table rather than a live feed, so treat the account-currency figure as close, not exact.</div>
+  </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail forex trading and risk-disclosure standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail forex/CFD framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Broker contract specs</div><div class="edu-card-body">Exact contract sizes for gold, silver, and index CFDs vary by broker — confirm pip/point values against your own broker's specification sheet.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 11 July 2026 · Account-currency conversions use an approximate static rate table (see disclosure above), not a live feed.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -348,7 +369,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a class="related-card" href="risk-reward-calculator.html"><span class="rc-icon">⚖️</span><div><div class="rc-name">Risk:Reward Ratio</div><div class="rc-desc">R:R ratio, P&amp;L, and breakeven win rate for any trade.</div></div></a>
     <a class="related-card" href="drawdown-calculator.html"><span class="rc-icon">📉</span><div><div class="rc-name">Drawdown Calculator</div><div class="rc-desc">Drawdown loss and recovery % needed to break even.</div></div></a>
   </div>
-  <a href="trading-tools/index.html" class="section-view-all" style="display:inline-block;margin-top:.75rem">Browse all 15+ Trading tools →</a>
+  <a href="trading-tools/index.html" class="section-view-all" style="display:inline-block;margin-top:.75rem">Browse all 16+ Trading tools →</a>
 </section>
 <!-- RELATED-TOOLS:END -->
 </main>
@@ -362,7 +383,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=21" defer></script>
+<script src="app.js?v=23" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

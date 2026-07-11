@@ -39,6 +39,8 @@
 {"@context":"https://schema.org","@type":"WebApplication","name":"Lot Size Calculator — Forex Position Size Calculator","url":"https://toolsnova.net/lot-size-calculator","description":"Calculate the correct forex lot size based on account balance, risk percentage, and stop loss. Free online forex lot size calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a lot in forex?","acceptedAnswer":{"@type":"Answer","text":"1 standard lot = 100,000 units of base currency. 1 mini lot = 10,000 units. 1 micro lot = 1,000 units. Most retail brokers allow trading in 0.01 lot increments."}},{"@type":"Question","name":"Why is position sizing critical?","acceptedAnswer":{"@type":"Answer","text":"Position sizing determines how much you lose on a bad trade. Risking 1% per trade means even 50 consecutive losses only reduces the account by ~40%. Risking 5% makes 20 losses catastrophic."}},{"@type":"Question","name":"What is the 1% risk rule?","acceptedAnswer":{"@type":"Answer","text":"Risk no more than 1–2% of account balance per trade. On a $10,000 account, 1% = $100 maximum loss. This ensures a long losing streak doesn't wipe the account."}},{"@type":"Question","name":"Why does the currency pair matter for lot size?","acceptedAnswer":{"@type":"Answer","text":"The pair determines the pip size used to convert your entry/stop-loss price distance into an actual pip count — 0.0001 for most pairs but 0.01 for JPY pairs and gold. Using the wrong pip size overstates or understates your stop distance and produces an incorrect lot size."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Lot Size Calculator","item":"https://toolsnova.net/lot-size-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -219,9 +221,22 @@ gtag('config', 'G-S6PPGS7N63');
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
       <div><div class="pane-label">Account balance ($)</div><input type="number" id="ls-balance" placeholder="10000" min="1" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
       <div><div class="pane-label">Risk per trade (%)</div><input type="number" id="ls-risk" placeholder="1" step="0.1" min="0.1" max="100" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+      <div><label for="ls-pair" class="pane-label" style="display:block">Currency pair</label><select id="ls-pair" class="mode-select" style="width:100%" onchange="calcLotSize()">
+          <option value="EUR/USD" selected>EUR/USD</option>
+          <option value="GBP/USD">GBP/USD</option>
+          <option value="AUD/USD">AUD/USD</option>
+          <option value="NZD/USD">NZD/USD</option>
+          <option value="USD/JPY">USD/JPY</option>
+          <option value="USD/CHF">USD/CHF</option>
+          <option value="USD/CAD">USD/CAD</option>
+          <option value="EUR/JPY">EUR/JPY</option>
+          <option value="GBP/JPY">GBP/JPY</option>
+          <option value="XAU/USD">XAU/USD (Gold)</option>
+          <option value="XAG/USD">XAG/USD (Silver)</option>
+      </select></div>
       <div><div class="pane-label">Entry price</div><input type="number" id="ls-entry" placeholder="1.2500" step="0.0001" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
       <div><div class="pane-label">Stop loss price</div><input type="number" id="ls-sl" placeholder="1.2450" step="0.0001" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
-      <div><div class="pane-label">Pip value ($)</div><input type="number" id="ls-pipval" placeholder="10" step="0.01" min="0.01" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
+      <div><div class="pane-label">Pip value ($/pip/lot)</div><input type="number" id="ls-pipval" placeholder="10" step="0.01" min="0.01" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
     </div>
     <button class="btn primary" onclick="calcLotSize()" style="max-width:160px">Calculate →</button>
   </div>
@@ -284,6 +299,18 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Lot Size Formula</h2>
+    <div class="edu-highlight"><strong>Lot Size</strong> = Risk Amount ÷ (Stop Loss in Pips × Pip Value per Lot), where Risk Amount = Balance × Risk %</div>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Risk Amount</div><div class="edu-card-body">The dollar amount you're willing to lose on this trade — your account balance multiplied by your chosen risk percentage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Stop Loss in Pips</div><div class="edu-card-body">The distance between entry and stop-loss price, converted into pips using the pair's pip size (0.0001 for most pairs, 0.01 for JPY pairs and gold) — not the raw price difference.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Pip Value per Lot</div><div class="edu-card-body">How much one pip of movement is worth for one standard lot of the pair — roughly $10 for most USD-quoted pairs, but check the exact figure with the Pip Value Calculator.</div></div>
+    </div>
+    <h3>Worked example</h3>
+    <p>$10,000 balance, 1% risk, EUR/USD entry 1.2500 → stop loss 1.2450: risk amount = $100; price distance 0.0050 ÷ 0.0001 pip size = 50 pips; lot size = 100 ÷ (50 × $10) = <strong>0.20 lots</strong>.</p>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -298,11 +325,21 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="faq-q" onclick="faqToggle(this)">What is the 1% risk rule?</div>
     <div class="faq-a">Risk no more than 1–2% of account balance per trade. On a $10,000 account, 1% = $100 maximum loss. This ensures a long losing streak doesn't wipe the account.</div>
   </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faqToggle(this)">Why does the currency pair matter for lot size?</div>
+    <div class="faq-a">The pair determines the pip size used to convert your entry/stop-loss price distance into an actual pip count — 0.0001 for most pairs but 0.01 for JPY pairs and gold. Using the wrong pip size overstates or understates your stop distance and produces an incorrect lot size.</div>
+  </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Position sizing and risk-disclosure guidance for retail forex — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail leverage and risk-management framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Broker contract specs</div><div class="edu-card-body">Exact pip value per lot varies slightly by broker and account currency — confirm against your broker's contract specification sheet before sizing a real position.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 11 July 2026 · Formulas use standard 100,000-unit contract sizing unless your broker specifies otherwise.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -315,7 +352,7 @@ gtag('config', 'G-S6PPGS7N63');
     <a class="related-card" href="drawdown-calculator.html"><span class="rc-icon">📉</span><div><div class="rc-name">Drawdown Calculator</div><div class="rc-desc">Drawdown loss and recovery % needed to break even.</div></div></a>
     <a class="related-card" href="margin-calculator.html"><span class="rc-icon">🏧</span><div><div class="rc-name">Margin Calculator</div><div class="rc-desc">Required margin for any forex/CFD position and leverage.</div></div></a>
   </div>
-  <a href="trading-tools/index.html" class="section-view-all" style="display:inline-block;margin-top:.75rem">Browse all 15+ Trading tools →</a>
+  <a href="trading-tools/index.html" class="section-view-all" style="display:inline-block;margin-top:.75rem">Browse all 16+ Trading tools →</a>
 </section>
 <!-- RELATED-TOOLS:END -->
 </main>
@@ -329,7 +366,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=21" defer></script>
+<script src="app.js?v=23" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

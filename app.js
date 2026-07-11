@@ -751,7 +751,7 @@ function calcLotSize() {
   const pipVal     = parseFloat(document.getElementById('ls-pipval')?.value||10);
   const out        = document.getElementById('ls-output');
   if (!out) return;
-  if (!balance||!riskPct||!entry||!sl) { out.textContent='Enter all fields.'; out.className='output-box error'; return; }
+  if (!balance||!riskPct||!entry||!sl) { out.textContent='Enter all fields.'; out.className='output-box error'; setStatus('ls-status','','enter trade details'); return; }
   const riskAmt   = balance*riskPct/100;
   // Convert the raw price distance into an actual pip count using the
   // pair's pip size (e.g. 0.0001 for most pairs, 0.01 for JPY pairs and
@@ -766,6 +766,7 @@ function calcLotSize() {
   out.className='output-box success';
   out.textContent=
     `Risk Amount:    $${riskAmt.toFixed(2)}\nPair:           ${pair}\nPrice Distance: ${priceDist.toFixed(pairData.pipPos)}\nStop Loss Pips: ${slPips.toFixed(1)} pips\nLot Size:       ${lots.toFixed(4)} lots\nUnits:          ${Math.round(units).toLocaleString()}\n\nMax Loss:       $${riskAmt.toFixed(2)} (${riskPct}% of balance)`;
+  setStatus('ls-status','ok',`✓ Lot Size: ${lots.toFixed(2)} lots`);
 }
 
 function calcRR() {
@@ -806,12 +807,13 @@ function calcMargin() {
   const contr  = parseFloat(document.getElementById('mg-contract')?.value||100000);
   const out    = document.getElementById('mg-output');
   if (!out) return;
-  if (!price||!lots||!lev) { out.textContent='Enter all fields.'; out.className='output-box error'; return; }
+  if (!price||!lots||!lev) { out.textContent='Enter all fields.'; out.className='output-box error'; setStatus('mg-status','','enter position details'); return; }
   const notional = lots*contr*price;
   const margin   = notional/lev;
   out.className='output-box success';
   out.textContent=
     `Required Margin:  $${margin.toFixed(2)}\nNotional Value:   $${notional.toFixed(2)}\nLeverage:         1:${lev}\n\nLots:     ${lots}\nPrice:    ${price}\nContract: ${contr.toLocaleString()} units`;
+  setStatus('mg-status','ok',`✓ Required Margin: $${margin.toFixed(2)}`);
 }
 
 function calcGoldPos() {
@@ -2294,7 +2296,7 @@ function leverageCalc() {
   const out      = document.getElementById('lev-output');
   if (!out) return;
   if (isNaN(balance)||isNaN(leverage)||isNaN(lots)||balance<=0||leverage<=0) {
-    out.textContent='Enter balance, leverage, and lot size.'; out.className='output-box error'; return;
+    out.textContent='Enter balance, leverage, and lot size.'; out.className='output-box error'; setStatus('lev-status','','enter account details'); return;
   }
 
   const contract  = 100000;
@@ -2320,7 +2322,7 @@ function leverageCalc() {
       const m = notional/l;
       return `  1:${String(l).padEnd(4)} → margin $${formatCur(m)} (${(m/balance*100).toFixed(1)}% of balance)`;
     }).join('\n');
-  setStatus('lev-status','ok',`✓ Margin: $${formatCur(margin)}`);
+  setStatus('lev-status','ok',`✓ Max Lots Possible: ${maxLots.toFixed(2)}`);
 }
 function levClear() {
   ['lev-balance','lev-leverage','lev-lots','lev-price'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});

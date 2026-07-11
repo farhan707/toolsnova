@@ -224,10 +224,23 @@ gtag('config', 'G-S6PPGS7N63');
       <div><div class="pane-label">Leverage (1:X)</div><input type="number" id="mg-leverage" placeholder="100" min="1" oninput="calcMargin()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
       <div><div class="pane-label">Contract size</div><input type="number" id="mg-contract" placeholder="100000" min="1" oninput="calcMargin()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
     </div>
-    <button class="btn primary" onclick="calcMargin()" style="max-width:160px">Calculate →</button>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="calcMargin()" style="max-width:160px">Calculate →</button>
+      <span class="status-badge" id="mg-status">enter position details</span>
+    </div>
   </div>
   <div><div class="pane-label">Result</div>
   <div class="output-box" id="mg-output" style="min-height:100px;white-space:pre;cursor:pointer" onclick="copyEl('mg-output')"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Margin ≠ risk</div><div class="edu-card-body">Required Margin is capital locked up, not capital at risk. Your actual risk on this trade is set by your stop-loss distance, not by this figure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check it against your balance</div><div class="edu-card-body">If this margin exceeds roughly 20% of your account balance for one position, you're leaning on leverage to cover an oversized position — reduce lots rather than raising leverage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Low margin isn't a green light</div><div class="edu-card-body">A small margin figure doesn't mean it's safe to add lots. Decide position size from risk (stop distance + risk %) first, then check the margin it requires — not the other way around.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Size the position by risk with the <a href="lot-size-calculator.html">Lot Size Calculator</a>, then confirm your maximum position at this leverage with the <a href="leverage-calculator.html">Leverage Calculator</a>.</div>
+  </section>
   <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
     <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About margin</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
@@ -299,6 +312,16 @@ gtag('config', 'G-S6PPGS7N63');
     <p><em>Assumption: contract size and available leverage vary by broker and instrument — always confirm the exact figures in your broker's contract specifications before sizing a real position.</em></p>
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Sizing by margin, not risk</div><div class="edu-card-body">Treating "how much margin is available" as "how much I should trade." Available margin is a broker limit, not a risk-management decision.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Raising leverage to trade bigger</div><div class="edu-card-body">Increasing leverage to open a larger position instead of accepting a smaller one only lowers the margin figure — it does not reduce your actual dollar risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating the figure as fixed</div><div class="edu-card-body">Required margin is a snapshot at your entered price. During fast moves, margin requirements can shift with the market — it isn't a guaranteed hold.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming one margin rate fits all</div><div class="edu-card-body">Forex majors, gold, and indices often carry different margin percentages at the same broker. Confirm the per-instrument rate rather than assuming forex figures apply everywhere.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -354,7 +377,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=23" defer></script>
+<script src="app.js?v=25" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

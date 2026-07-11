@@ -238,10 +238,23 @@ gtag('config', 'G-S6PPGS7N63');
       <div><div class="pane-label">Stop loss price</div><input type="number" id="ls-sl" placeholder="1.2450" step="0.0001" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
       <div><div class="pane-label">Pip value ($/pip/lot)</div><input type="number" id="ls-pipval" placeholder="10" step="0.01" min="0.01" oninput="calcLotSize()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
     </div>
-    <button class="btn primary" onclick="calcLotSize()" style="max-width:160px">Calculate →</button>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="calcLotSize()" style="max-width:160px">Calculate →</button>
+      <span class="status-badge" id="ls-status">enter trade details</span>
+    </div>
   </div>
   <div><div class="pane-label">Result</div>
   <div class="output-box" id="ls-output" style="min-height:130px;white-space:pre;cursor:pointer" onclick="copyEl('ls-output')"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Don't round up</div><div class="edu-card-body">This is your maximum position for this trade at your chosen risk %. If it rounds to a very small number, either your risk amount is too small for this stop distance, or your pip-value entry is too high — check both before widening the stop or rounding the lot size up.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Below broker minimum?</div><div class="edu-card-body">If the result is smaller than your broker's minimum lot increment (often 0.01), reduce your risk % or widen your stop loss rather than rounding up and quietly accepting extra risk.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Only accurate if the stop holds</div><div class="edu-card-body">This figure assumes your stop loss is honored exactly as entered. If you tend to move stops further away mid-trade, your real risk is higher than this result shows.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Confirm the pip value assumption above with the <a href="pip-value-calculator.html">Pip Value Calculator</a> for your exact pair, then check the <a href="margin-calculator.html">Margin Calculator</a> to make sure your broker's margin requirement doesn't limit this position before you enter.</div>
+  </section>
   <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
     <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About lot size calculation</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
@@ -311,6 +324,16 @@ gtag('config', 'G-S6PPGS7N63');
     <p>$10,000 balance, 1% risk, EUR/USD entry 1.2500 → stop loss 1.2450: risk amount = $100; price distance 0.0050 ÷ 0.0001 pip size = 50 pips; lot size = 100 ÷ (50 × $10) = <strong>0.20 lots</strong>.</p>
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Confusing risk amount with lot size</div><div class="edu-card-body">Risk Amount is your maximum dollar loss; Lot Size is how many units that translates to given your stop distance. An error in the stop distance breaks the whole result, not just one line.</div></div>
+      <div class="edu-card"><div class="edu-card-title">One lot size for every trade</div><div class="edu-card-body">Using the same lot size regardless of stop-loss distance. A wider stop at the same risk % always means a smaller lot size, and vice versa — recalculate every trade.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Wrong pair selected</div><div class="edu-card-body">Pip size differs by pair (0.0001 vs 0.01 for JPY/gold). Picking the wrong one in the dropdown silently produces a wrong lot size even if every other input is correct.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Guessing pip value</div><div class="edu-card-body">Leaving "Pip value" at a rough default like $10 for every pair. Pip value per lot varies by pair and account currency — check the exact figure with the Pip Value Calculator instead of assuming.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -366,7 +389,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=23" defer></script>
+<script src="app.js?v=25" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

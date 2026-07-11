@@ -241,6 +241,16 @@ gtag('config', 'G-S6PPGS7N63');
   <div><div class="pane-label">Leverage Analysis <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="lev-output" onclick="copyEl('lev-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div></div>
 
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Max Lots is a ceiling, not a target</div><div class="edu-card-body">It's the largest position your account can technically support at this leverage — not the size you should actually take. Real position size should come from the Lot Size Calculator's risk-based formula.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Watch Margin Used</div><div class="edu-card-body">If Margin Used is above roughly 50% of your balance for one position, you have very little room to absorb a losing streak or a margin call — even if the position itself seems affordable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">More leverage ≠ more profit</div><div class="edu-card-body">Use the leverage comparison in your result to see margin drop at higher tiers — but higher leverage only frees up margin, it does not reduce a position's actual dollar risk if price moves against you.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Take your actual planned lot size — sized by risk, not by Max Lots Possible — to the <a href="margin-calculator.html">Margin Calculator</a> or <a href="lot-size-calculator.html">Lot Size Calculator</a> to confirm the trade fits your risk budget before entering.</div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -287,6 +297,16 @@ gtag('config', 'G-S6PPGS7N63');
     <h3>Worked example</h3>
     <p>$5,000 balance, 1:100 leverage, EUR/USD at 1.1000: max lots = (5,000 × 100) ÷ (100,000 × 1.1) = 500,000 ÷ 110,000 = <strong>4.545 lots maximum</strong>. Opening the full 4.545 lots would use 100% of the account as margin — in practice, traders size well below this ceiling to leave free margin as a buffer.</p>
     <p><em>Assumption: contract size and leverage tiers vary by broker and instrument — confirm the exact figures in your broker's contract specifications before sizing a real position.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Sizing to Max Lots Possible</div><div class="edu-card-body">Just because your account can technically support a position doesn't mean it matches your stop-loss-based risk budget. Size from risk, not from the leverage ceiling.</div></div>
+      <div class="edu-card"><div class="edu-card-title">"More leverage" ≠ "more profit"</div><div class="edu-card-body">Leverage changes how much margin a position ties up, not how much money it makes — P&amp;L is identical at 1:50 and 1:500 for the same lot size and price move.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring free margin after entry</div><div class="edu-card-body">A thin free-margin buffer means normal price fluctuation — not just a large adverse move — can trigger a margin call.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing brokers on leverage alone</div><div class="edu-card-body">An offshore 1:500 account carries materially different protections than an ESMA-regulated 1:30 account — check the regulatory jurisdiction, not just the leverage number.</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -348,7 +368,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=23" defer></script>
+<script src="app.js?v=25" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

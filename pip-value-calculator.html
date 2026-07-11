@@ -273,6 +273,16 @@ gtag('config', 'G-S6PPGS7N63');
   <p style="font-size:.72rem;color:var(--text3);margin-top:.4rem">Account-currency conversions use an approximate static exchange-rate table, not a live feed — see "Pip Value Formula &amp; Worked Example" below.</p>
   </div>
 
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Turn this into dollar risk</div><div class="edu-card-body">Multiply this pip value by your planned stop-loss distance in pips to get your actual dollar risk for the lot size you entered — that number, not the pip value alone, should drive whether you take the trade.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Too small to matter?</div><div class="edu-card-body">If the pip value looks negligible, your position size may be too small relative to spread/commission costs to be worth the trade — check that before sizing up just to make the number look bigger.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Don't reuse across pairs</div><div class="edu-card-body">For a JPY or gold pair, don't carry over a $10/pip assumption from major USD pairs — always pull the pair-specific figure from here first.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Take this pip value straight into the <a href="lot-size-calculator.html">Lot Size Calculator</a>'s "Pip value" field to size your position by risk, rather than guessing a round number.</div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -318,6 +328,16 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="edu-highlight"><strong>Pip Value</strong> = Pip Size × Contract Size × Lot Size, converted from the pair's quote currency into your account currency at the current exchange rate.</div>
     <p>For USD/JPY at 1 standard lot: pip size 0.01 × contract size 100,000 = 1,000 JPY per pip. Converting to a USD account at an example rate of 1 USD ≈ 155 JPY gives roughly 1,000 ÷ 155 ≈ <strong>$6.45 per pip</strong>. For a directly USD-quoted pair like EUR/USD, no conversion step is needed: 0.0001 × 100,000 = <strong>$10 per pip</strong> for a USD account.</p>
     <div class="edu-highlight"><strong>⚠️ Static exchange rate assumption:</strong> This calculator converts non-USD pip values using a fixed internal exchange-rate table, not a live market feed. Exchange rates move daily, so treat the account-currency figure as an approximation — for a pair quoted directly in your account currency (e.g. EUR/USD on a USD account), the result is exact regardless of this assumption.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming pip value is universal</div><div class="edu-card-body">A pip on USD/JPY is not worth the same as a pip on EUR/USD, even at the same lot size — always check per pair rather than reusing a remembered figure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Mismatched lot size</div><div class="edu-card-body">Using this tool's pip value with a different lot size than what you actually plan to trade. Pip value scales directly with lot size, so a mismatch silently breaks your downstream risk calculation.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating the rate as live</div><div class="edu-card-body">The account-currency conversion uses a static approximate rate table. It's exact for pairs quoted directly in your account currency, but an estimate for any cross-currency conversion.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forex mental model on gold</div><div class="edu-card-body">Gold and silver use a different pip convention ($0.01 move = 1 pip) than standard forex pairs — plugging gold numbers into a forex mental model produces a misleading dollar figure.</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -383,7 +403,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=23" defer></script>
+<script src="app.js?v=25" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -1,0 +1,34 @@
+family:
+  id: TN-FAMILY-DEVELOPER-001
+
+inherits:
+
+  blueprint: developer
+
+purpose:
+
+  Build developer productivity tools.
+
+primary_intent:
+
+  Utility
+
+education:
+
+  required:
+
+    - Input Example
+
+    - Output Example
+
+    - Technical Notes
+
+quality:
+
+  prioritize:
+
+    - Correctness
+
+    - Speed
+
+    - Reliability

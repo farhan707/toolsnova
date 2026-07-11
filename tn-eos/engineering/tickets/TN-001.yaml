@@ -1,0 +1,38 @@
+ticket:
+  id: TN-001
+  version: 0.6.0
+  status: Ready
+
+target:
+
+  page: height-converter
+
+specification:
+
+  specs/height.yaml
+
+phase:
+
+  Discovery
+
+deliverables:
+
+  - Engineering Audit
+
+  - Competitor Research
+
+  - Gap Analysis
+
+  - Improvement Opportunities
+
+  - Implementation Plan
+
+constraints:
+
+  - Do not modify code
+
+  - Stop after Discovery
+
+success:
+
+  Wait for approval before Implementation.

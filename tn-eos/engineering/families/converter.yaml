@@ -1,0 +1,72 @@
+family:
+  id: TN-FAMILY-CONVERTER-001
+  version: 0.4.0
+  status: Stable
+
+inherits:
+
+  blueprint: converter
+
+rules:
+
+  - SEARCH
+
+  - CONTENT
+
+  - QA
+
+purpose:
+
+  Build accurate and educational unit conversion tools.
+
+primary_intent:
+
+  Informational
+
+entities:
+
+  required:
+
+    - Primary Entity
+
+    - Unit
+
+    - Conversion
+
+  common:
+
+    - Formula
+
+    - Measurement
+
+    - Standard
+
+educational_requirements:
+
+  - Explain units
+
+  - Explain conversion factor
+
+  - Include examples
+
+  - Include conversion table
+
+references:
+
+  preferred:
+
+    - Government Standards
+
+    - NIST
+
+    - SI Documentation
+
+quality:
+
+  prioritize:
+
+    - Accuracy
+
+    - Clarity
+
+    - Simplicity

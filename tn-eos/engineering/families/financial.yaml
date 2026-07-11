@@ -1,0 +1,38 @@
+family:
+  id: TN-FAMILY-FINANCIAL-001
+
+inherits:
+
+  blueprint: calculator
+
+domain:
+
+  FINANCIAL
+
+purpose:
+
+  Build trustworthy financial calculators.
+
+primary_intent:
+
+  Informational
+
+education:
+
+  required:
+
+    - Formula
+
+    - Variable Definitions
+
+    - Practical Examples
+
+quality:
+
+  prioritize:
+
+    - Accuracy
+
+    - Transparency
+
+    - Reproducibility

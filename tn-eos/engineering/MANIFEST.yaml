@@ -1,0 +1,10 @@
+tn_eos:
+  version: 0.2.0-alpha
+entry:
+  - README.md
+  - MASTER.md
+workflow:
+  - Discovery
+  - Implementation
+  - QA
+  - PullRequest

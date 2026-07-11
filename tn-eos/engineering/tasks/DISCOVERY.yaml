@@ -1,0 +1,73 @@
+---
+task:
+  id: TN-TASK-DISCOVERY-001
+  version: 1.0.0
+  status: Stable
+
+name: Discovery
+
+purpose:
+  Understand the target page before implementation.
+
+inputs:
+
+  required:
+    - Page Specification
+
+  optional:
+    - Existing Implementation
+    - Related Components
+    - Previous Reports
+
+execute:
+
+  - Load the page specification.
+
+  - Resolve the required Family.
+
+  - Resolve the required Blueprint.
+
+  - Resolve all referenced Rules.
+
+  - Resolve the required Domain (if applicable).
+
+  - Audit the current implementation.
+
+  - Research competing implementations.
+
+  - Identify strengths.
+
+  - Identify weaknesses.
+
+  - Identify opportunities.
+
+deliverables:
+
+  - Engineering Audit
+
+  - Competitor Research Summary
+
+  - Gap Analysis
+
+  - Recommended Improvements
+
+  - Implementation Plan
+
+constraints:
+
+  - Do not modify code.
+
+  - Do not skip required analysis.
+
+  - Stop after Discovery.
+
+success:
+
+  Wait for user approval before Implementation.
+  
+  
+  outputs:
+
+  save_as:
+
+    qa-report.md

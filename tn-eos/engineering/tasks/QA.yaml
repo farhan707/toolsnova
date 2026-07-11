@@ -1,0 +1,59 @@
+---
+task:
+  id: TN-TASK-QA-001
+  version: 1.0.0
+  status: Stable
+
+name: Quality Assurance
+
+purpose:
+  Verify that implementation satisfies TN-EOS quality requirements.
+
+inputs:
+
+  required:
+    - Updated Implementation
+
+execute:
+
+  - Execute QA Rules.
+
+  - Verify functionality.
+
+  - Verify content quality.
+
+  - Verify search quality.
+
+  - Verify accessibility.
+
+  - Verify responsive behaviour.
+
+  - Verify regressions.
+
+  - Document remaining issues.
+
+deliverables:
+
+  - QA Report
+
+  - Pass / Fail Status
+
+  - Remaining Issues
+
+  - Recommendations
+
+constraints:
+
+  - Do not modify implementation.
+
+  - Report findings objectively.
+
+success:
+
+  Task is complete only after QA results have been delivered.
+  
+  outputs:
+
+  save_as:
+
+    qa-report.md

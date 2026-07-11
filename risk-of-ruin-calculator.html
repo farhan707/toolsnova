@@ -232,7 +232,12 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="ror-risk" placeholder="e.g. 1" class="b2-input" oninput="rorCalc()" aria-label="Risk per Trade (%)">
     </div>
   </div>
-  <div><div class="pane-label">Strategy Analysis <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="ror-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Risk of Ruin</div><div class="stat-value accent" id="ror-stat-ror">—</div></div>
+    <div class="stat-card"><div class="stat-label">Assessment</div><div class="stat-value" id="ror-stat-assessment">—</div></div>
+    <div class="stat-card"><div class="stat-label">Recommendation</div><div class="stat-value" id="ror-stat-rec" style="font-size:1.05rem;line-height:1.3">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ror-output" onclick="copyEl('ror-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
 
   <!-- EDUCATIONAL CONTENT -->
@@ -324,7 +329,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=25" defer></script>
+<script src="app.js?v=27" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

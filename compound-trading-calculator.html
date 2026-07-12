@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Trading Calculator","url":"https://toolsnova.net/compound-trading-calculator","description":"Project your trading account growth with monthly compounding. See month-by-month balance with or without withdrawals. Free compound trading calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is compounding in trading?","acceptedAnswer":{"@type":"Answer","text":"Compounding means reinvesting profits back into your trading account instead of withdrawing them. This causes exponential growth — your profits generate more profits. A $10,000 account growing at 5%/month compounds to $34,000 in 24 months without withdrawals."}},{"@type":"Question","name":"What is a realistic monthly return for traders?","acceptedAnswer":{"@type":"Answer","text":"Professional traders typically target 3–8% per month consistently. 10%+ monthly is possible but unsustainable over years. Most retail traders who survive long-term aim for 2–5% per month. Never use unrealistic projections like 50%/month."}},{"@type":"Question","name":"Should I compound or withdraw profits?","acceptedAnswer":{"@type":"Answer","text":"Early in your trading journey: compound everything to grow the account faster. Once you reach your target balance: withdraw a portion monthly for income while still compounding the rest. The optimal split depends on your income needs and growth goals."}},{"@type":"Question","name":"How does compounding affect prop firm trading?","acceptedAnswer":{"@type":"Answer","text":"Prop firms provide capital and pay you a profit split (typically 70–90%). If you're keeping 80% of profits and compounding, you effectively grow your trading power without risking personal capital. Some prop firms allow scaling once you hit profit targets."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Compound Trading Calculator","item":"https://toolsnova.net/compound-trading-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -236,8 +238,23 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="ct-withdraw" placeholder="e.g. 500 (0 = compound all)" value="0" class="b2-input" oninput="compoundTradeCalc()" aria-label="Monthly Withdrawal ($)">
     </div>
   </div>
-  <div><div class="pane-label">Growth Projection <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="ct-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Final Balance</div><div class="stat-value accent" id="ct-stat-final">—</div></div>
+    <div class="stat-card"><div class="stat-label">Realism</div><div class="stat-value" id="ct-stat-realism" style="font-size:1.15rem">—</div></div>
+    <div class="stat-card"><div class="stat-label">Total Profit</div><div class="stat-value" id="ct-stat-profit">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Growth Projection <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ct-output" onclick="copyEl('ct-output')" style="min-height:280px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check the Realism card before trusting the projection</div><div class="edu-card-body">A "Realistic" or "Aggressive" rating means the projection is worth planning around. "Very Aggressive" or "Unrealistic" means the number is a mathematical illustration of compounding, not an achievable target — use a lower, sustainable rate instead.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Re-run this with your actual verified track record</div><div class="edu-card-body">Use your real historical average monthly return, not a hoped-for number, for a projection you can actually plan finances around.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Growth without protection is fragile</div><div class="edu-card-body">This projection assumes no losing streaks interrupt the compounding. Pair it with a realistic drawdown expectation before treating the final balance as a plan.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Stress-test this growth plan against a realistic losing streak with the <a href="drawdown-calculator.html">Drawdown Calculator</a>, or check your strategy's long-term survival odds with the <a href="risk-of-ruin-calculator.html">Risk of Ruin Calculator</a>.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -275,8 +292,26 @@ gtag('config', 'G-S6PPGS7N63');
     <p>The biggest obstacle to compounding is impatience. A trader making 5% monthly feels behind when they see others claiming 50% monthly returns. But the 5% trader compounds to 179% annual returns — far exceeding what most aggressive traders achieve consistently. Focus on monthly consistency, not monthly maximums.</p>
     <h3>Reinvesting challenge fees</h3>
     <p>A common mistake: withdrawing all profits and using personal funds for next challenge fees. Instead, keep one payout specifically for funding the next challenge level. This creates a self-funding progression: $100K account → first payout funds $200K challenge → second payout funds $400K challenge. Zero additional personal capital required after the first challenge.</p>
-    <div class="edu-highlight"><strong>🔄 The compound formula:</strong> Balance × (1 + monthly return%)^months. At just 4%/month for 24 months: starting $10,000 becomes $25,633. At 6%/month: $32,071. Consistency at moderate returns beats sporadic high returns every time.</div>
+    <div class="edu-highlight"><strong>🔄 The compound formula:</strong> Balance × (1 + monthly return%)^months. At just 4%/month for 24 months: starting $10,000 becomes $25,633. At 6%/month: $40,489. Consistency at moderate returns beats sporadic high returns every time.</div>
 
+  </section>
+
+  <section class="edu-section">
+    <h2>Compound Growth Formula</h2>
+    <div class="edu-highlight"><strong>Final Balance</strong> = Starting Balance × (1 + Monthly Return)^Months, applied month by month with any withdrawals subtracted before the next month compounds.</div>
+    <h3>Worked example</h3>
+    <p>$10,000 starting balance, 3% monthly return, 12 months, no withdrawals: Final Balance = 10,000 × (1.03)^12 = <strong>$14,258</strong>. Total profit = <strong>$4,258</strong>, a 42.6% return on capital over the year.</p>
+    <p><em>Assumption: this projection assumes the monthly return is achieved consistently every single month, with no losing months — real trading returns vary month to month even for a profitable long-term strategy.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Treating the projection as a guarantee</div><div class="edu-card-body">This is a mathematical illustration of compounding, not a forecast — real returns vary month to month, and a string of losing months can derail even a realistic long-term average.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Chasing an "Unrealistic" monthly return</div><div class="edu-card-body">If the Realism card flags your input, don't treat the resulting balance as a target — a sustainably lower monthly return compounds to strong results without requiring an unachievable win rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring drawdowns in the plan</div><div class="edu-card-body">A single bad month can erase several good ones. Pair this projection with a realistic drawdown expectation rather than assuming smooth, uninterrupted growth.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Withdrawing more than the strategy generates</div><div class="edu-card-body">Setting a monthly withdrawal higher than your typical monthly profit slowly drains the account instead of growing it — check the projection reflects your real, sustainable withdrawal rate.</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -299,9 +334,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail trading performance-disclosure standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail trading framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your own trading journal</div><div class="edu-card-body">The most accurate input for this calculator is your own verified historical average monthly return, not an aspirational figure.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Projection assumes consistent monthly returns with no losing months — a simplification real trading doesn't share.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -328,7 +369,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=29" defer></script>
+<script src="app.js?v=31" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

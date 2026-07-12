@@ -34,6 +34,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Currency Correlation Calculator","url":"https://toolsnova.net/currency-correlation-calculator","description":"Calculate correlation between any two forex pairs. Shows correlation strength, trading risk, and full correlation table. Avoid doubling exposure on correlated pairs.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is currency correlation?","acceptedAnswer":{"@type":"Answer","text":"Currency correlation measures how two pairs move relative to each other, on a scale of −1 to +1. +1 = perfect positive (move identically). −1 = perfect negative (move in opposite directions). 0 = no relationship. Knowing this helps you avoid accidentally doubling your risk or unknowingly hedging positions."}},{"@type":"Question","name":"Why do EURUSD and GBPUSD correlate?","acceptedAnswer":{"@type":"Answer","text":"Both pairs have USD as the counter currency. When USD strengthens, both EUR and GBP tend to weaken against it. Historical correlation is typically +0.85 to +0.95. Trading both long simultaneously is essentially the same as doubling your USD short position."}},{"@type":"Question","name":"How can I use correlation in trading?","acceptedAnswer":{"@type":"Answer","text":"1) Avoid risk doubling: don't go long EURUSD and long GBPUSD simultaneously — they're nearly the same trade. 2) Hedging: long EURUSD + long USDCHF partially hedges USD exposure (correlation ≈ −0.93). 3) Confirmation: if EURUSD and GBPUSD both break a level, the signal is stronger."}},{"@type":"Question","name":"Does correlation change over time?","acceptedAnswer":{"@type":"Answer","text":"Yes. Correlations shift with central bank policy changes, geopolitical events, and market regimes. The values in this calculator are historical averages — always verify with current data from your broker or trading platform, especially around major economic events."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Currency Correlation Calculator","item":"https://toolsnova.net/currency-correlation-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -253,12 +255,26 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.75rem;color:var(--text3)">
-    Correlations based on ~3-month historical averages (2025). Values change over time — treat as a guide, not live data.
+    ⚠️ Correlations are based on historical averages and are not live data. They drift over time with macro conditions — treat this as a directional guide, not an exact current figure.
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="corr-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Correlation</div><div class="stat-value accent" id="corr-stat-value">—</div></div>
+    <div class="stat-card"><div class="stat-label">Strength</div><div class="stat-value" id="corr-stat-strength" style="font-size:1.15rem">—</div></div>
+    <div class="stat-card"><div class="stat-label">Trading Implication</div><div class="stat-value" id="corr-stat-implication" style="font-size:1rem">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="corr-output" onclick="copyEl('corr-output')" style="min-height:320px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
-  
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Strong positive correlation = one bet, not two</div><div class="edu-card-body">If two pairs move together 70%+ of the time, holding both long is close to doubling your exposure to the same underlying move — size each position smaller, or pick one.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Strong negative correlation can hedge or cancel</div><div class="edu-card-body">Pairs that move in opposite directions can partially offset each other's risk — useful intentionally as a hedge, but a problem if you didn't realize two "different" trades were actually one net position.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Correlation drifts — recheck periodically</div><div class="edu-card-body">This data is a historical snapshot, not live. Central bank policy shifts and changing market regimes can move correlations meaningfully within months — don't treat any single value as permanent.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> If correlation is high, review your total exposure with the <a href="margin-calculator.html">Margin Calculator</a> or <a href="leverage-calculator.html">Leverage Calculator</a> before adding a correlated position.</div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -302,6 +318,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Correlation Formula</h2>
+    <div class="edu-highlight"><strong>Correlation Coefficient (r)</strong> ranges from −1 (perfectly opposite) to +1 (perfectly together), measuring how consistently two instruments' price moves track each other over a given period.</div>
+    <h3>Worked example</h3>
+    <p>EUR/USD and USD/CHF show a correlation of <strong>−0.93</strong> — near-perfect opposite movement, because CHF and EUR both trade heavily against USD from opposite sides. Going long both effectively creates two nearly offsetting positions rather than two independent trades.</p>
+    <p><em>Assumption: this calculator uses a static historical dataset, not a live-computed rolling correlation — treat the exact figure as a directional guide rather than today's precise value.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming three "different" trades are diversified</div><div class="edu-card-body">Three highly correlated pairs traded the same direction behave as one large position, not three independent ones — size accordingly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating correlation as fixed</div><div class="edu-card-body">Correlation shifts with macro regime changes and spikes toward ±1.0 during major news events — a value from calmer conditions can understate real-time overlap during high volatility.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring negative correlation as "safe"</div><div class="edu-card-body">Strongly negative correlation isn't automatically risk-free — it can silently cancel out an intended directional bet if you didn't mean to hedge.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Checking correlation after entering, not before</div><div class="edu-card-body">Reviewing correlation once positions are already open limits your options to closing rather than sizing correctly from the start.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -322,10 +356,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail forex risk-management standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail forex/CFD framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Live correlation data</div><div class="edu-card-body">For current, rolling correlation figures, check your broker's platform or a dedicated market-data provider — this tool's dataset is a historical snapshot, not a live feed.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Correlation values are historical averages and will drift from current market conditions.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -352,7 +391,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=29" defer></script>
+<script src="app.js?v=31" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

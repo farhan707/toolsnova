@@ -2163,9 +2163,19 @@ function pivotCalc() {
   const close  = parseFloat(document.getElementById('pp-close')?.value);
   const method = document.getElementById('pp-method')?.value || 'standard';
   const out    = document.getElementById('pp-output');
+  const summary= document.getElementById('pp-summary');
   if (!out) return;
-  if (isNaN(high)||isNaN(low)||isNaN(close)||high<=0) {
-    out.textContent='Enter High, Low, and Close prices.'; out.className='output-box error'; return;
+  if (isNaN(high)||isNaN(low)||isNaN(close)||high<=0||low<=0||close<=0) {
+    out.textContent='Enter High, Low, and Close prices.'; out.className='output-box error';
+    setStatus('pp-status','','enter high, low, close');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (high<=low) {
+    out.textContent='High must be greater than Low.'; out.className='output-box error';
+    setStatus('pp-status','err','⚠ High must be greater than Low');
+    if (summary) summary.style.display='none';
+    return;
   }
 
   const P = (high+low+close)/3;
@@ -2205,19 +2215,42 @@ function pivotCalc() {
     return `  ${bar} ${k.padEnd(4)} ${fmt(v)}`;
   });
 
+  // Actionable context: where does Close sit relative to the pivot, and
+  // which are the nearest resistance/support levels to trade against?
+  const pivotVal = levels.PP;
+  const bias = close === pivotVal ? 'Neutral' : close > pivotVal ? 'Bullish' : 'Bearish';
+  const resistances = Object.entries(levels).filter(([k])=>k.startsWith('R')).map(([,v])=>v).sort((a,b)=>a-b);
+  const supports = Object.entries(levels).filter(([k])=>k.startsWith('S')).map(([,v])=>v).sort((a,b)=>b-a);
+  const nearestR = resistances.find(v => v > close);
+  const nearestS = supports.find(v => v < close);
+
   out.className = 'output-box success';
   out.textContent =
     `Method: ${method.charAt(0).toUpperCase()+method.slice(1)}\n` +
     `High: ${high}  Low: ${low}  Close: ${close}\n` +
     `─────────────────────────────────\n` +
     lines.join('\n') + '\n\n' +
-    `▲ = Resistance  ▼ = Support  ━ = Pivot`;
-  setStatus('pp-status','ok','✓ levels calculated');
+    `▲ = Resistance  ▼ = Support  ━ = Pivot\n\n` +
+    `── Actionable Context ────────────\n` +
+    `Bias:              ${bias} (Close is ${close===pivotVal?'exactly at':close>pivotVal?'above':'below'} the pivot)\n` +
+    `Nearest resistance: ${nearestR!==undefined?fmt(nearestR):'none above Close'}\n` +
+    `Nearest support:    ${nearestS!==undefined?fmt(nearestS):'none below Close'}`;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('pp-stat-pivot').textContent = `${fmt(pivotVal)}`;
+    document.getElementById('pp-stat-bias').textContent = bias;
+    document.getElementById('pp-stat-nearest').textContent = nearestR!==undefined && nearestS!==undefined
+      ? `${fmt(nearestS)} / ${fmt(nearestR)}`
+      : (nearestR!==undefined ? `R ${fmt(nearestR)}` : (nearestS!==undefined ? `S ${fmt(nearestS)}` : '—'));
+  }
+  setStatus('pp-status','ok',`✓ Pivot ${fmt(pivotVal)} — ${bias}`);
 }
 function ppClear() {
   ['pp-high','pp-low','pp-close'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('pp-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('pp-summary');
+  if(s) s.style.display='none';
   setStatus('pp-status','','enter high, low, close');
 }
 
@@ -2226,13 +2259,21 @@ function fibCalc() {
   const high   = parseFloat(document.getElementById('fib-high')?.value);
   const low    = parseFloat(document.getElementById('fib-low')?.value);
   const trend  = document.getElementById('fib-trend')?.value || 'uptrend';
+  const current= parseFloat(document.getElementById('fib-current')?.value);
   const out    = document.getElementById('fib-output');
+  const summary= document.getElementById('fib-summary');
   if (!out) return;
   if (isNaN(high)||isNaN(low)||high<=0||low<=0) {
-    out.textContent='Enter High and Low prices.'; out.className='output-box error'; return;
+    out.textContent='Enter High and Low prices.'; out.className='output-box error';
+    setStatus('fib-status','','enter high and low prices');
+    if (summary) summary.style.display='none';
+    return;
   }
   if (high<=low) {
-    out.textContent='High must be greater than Low.'; out.className='output-box error'; return;
+    out.textContent='High must be greater than Low.'; out.className='output-box error';
+    setStatus('fib-status','err','⚠ High must be greater than Low');
+    if (summary) summary.style.display='none';
+    return;
   }
 
   const range = high-low;
@@ -2240,17 +2281,19 @@ function fibCalc() {
   const EXT_LEVELS = [1.272,1.414,1.618,2.0,2.618];
   const fmt = n => parseFloat(n.toFixed(5));
 
-  let retLines, extLines;
+  let retPrices, extPrices;
   if (trend==='uptrend') {
-    retLines = RET_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(high-range*l)}`);
-    extLines = EXT_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(low+range*l)}`);
+    retPrices = RET_LEVELS.map(l => high-range*l);
+    extPrices = EXT_LEVELS.map(l => low+range*l);
   } else {
-    retLines = RET_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(low+range*l)}`);
-    extLines = EXT_LEVELS.map(l => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(high-range*l)}`);
+    retPrices = RET_LEVELS.map(l => low+range*l);
+    extPrices = EXT_LEVELS.map(l => high-range*l);
   }
+  const retLines = RET_LEVELS.map((l,i) => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(retPrices[i])}`);
+  const extLines = EXT_LEVELS.map((l,i) => `  ${(l*100).toFixed(1).padEnd(7)}% → ${fmt(extPrices[i])}`);
 
   out.className = 'output-box success';
-  out.textContent =
+  let body =
     `Trend:   ${trend==='uptrend'?'↑ Uptrend (High→Low retracement)':'↓ Downtrend (Low→High retracement)'}\n` +
     `High:    ${high}\n` +
     `Low:     ${low}\n` +
@@ -2261,12 +2304,67 @@ function fibCalc() {
     `── Extension Levels ─────────────\n` +
     extLines.join('\n') + '\n\n' +
     `Key levels: 38.2%, 50%, 61.8% (golden ratio)`;
-  setStatus('fib-status','ok','✓ Fib levels calculated');
+
+  // Where does the current price sit relative to the retracement levels?
+  let zoneLabel = '—', implication = '—', keyLevelLabel = '61.8%';
+  if (!isNaN(current) && current>0) {
+    // p0/p100 are the actual 0%/100% retracement prices in trend-correct
+    // order (retPrices is built in the same order as RET_LEVELS, so index 0
+    // is always the 0% price and the last index is always the 100% price,
+    // regardless of trend direction). Bracket and "beyond" checks are done
+    // against these directly so the 0%/100% labels can never get swapped.
+    const p0 = retPrices[0], p100 = retPrices[retPrices.length-1];
+    const zeroIsHigher = p0 > p100;
+    let zoneText;
+    if (zeroIsHigher ? current > p0 : current < p0) {
+      zoneText = 'beyond 0% (past the swing extreme)';
+    } else if (zeroIsHigher ? current < p100 : current > p100) {
+      zoneText = 'beyond 100% (past the full retracement)';
+    } else {
+      const zones = RET_LEVELS.map((l,i)=>({pct:l, price:retPrices[i]})).sort((a,b)=>a.price-b.price);
+      zoneText = 'between 0.0% and 100.0%';
+      for (let i=0; i<zones.length-1; i++) {
+        const lo = zones[i], hi = zones[i+1];
+        if (current>=lo.price && current<=hi.price) {
+          const pctLo = Math.min(lo.pct, hi.pct), pctHi = Math.max(lo.pct, hi.pct);
+          zoneText = `between ${(pctLo*100).toFixed(1)}% and ${(pctHi*100).toFixed(1)}%`;
+          break;
+        }
+      }
+    }
+    const p382 = retPrices[RET_LEVELS.indexOf(0.382)];
+    const p618 = retPrices[RET_LEVELS.indexOf(0.618)];
+    const inGoldenZone = current>=Math.min(p382,p618) && current<=Math.max(p382,p618);
+    zoneLabel = zoneText;
+    implication = inGoldenZone
+      ? 'In the 38.2–61.8% "golden zone" — the area most often watched for a trend-continuation entry.'
+      : (current>=high || current<=low)
+      ? 'Outside the swing range — the retracement has fully reversed or extended beyond it.'
+      : 'A shallow or deep retracement — less commonly used as a standalone entry zone than the golden zone.';
+    keyLevelLabel = `${fmt(current)}`;
+    body += `\n\n── Current Price Context ─────────\n` +
+      `Current price:     ${fmt(current)}\n` +
+      `Sits:               ${zoneText}\n` +
+      `Implication:        ${implication}`;
+  }
+
+  out.textContent = body;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('fib-stat-key').textContent = !isNaN(current)&&current>0 ? keyLevelLabel : `${fmt(retPrices[RET_LEVELS.indexOf(0.618)])}`;
+    document.getElementById('fib-stat-zone').textContent = !isNaN(current)&&current>0 ? zoneLabel : '61.8% retracement';
+    document.getElementById('fib-stat-implication').textContent = !isNaN(current)&&current>0 ? implication : 'Enter current price for context';
+  }
+  setStatus('fib-status','ok', !isNaN(current)&&current>0
+    ? `✓ Price is ${zoneLabel}`
+    : `✓ Fib levels calculated`);
 }
 function fibClear() {
-  ['fib-high','fib-low'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  ['fib-high','fib-low','fib-current'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('fib-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('fib-summary');
+  if(s) s.style.display='none';
   setStatus('fib-status','','enter high and low prices');
 }
 
@@ -2277,9 +2375,13 @@ function compoundTradeCalc() {
   const months   = parseInt(document.getElementById('ct-months')?.value) || 12;
   const withdraw = parseFloat(document.getElementById('ct-withdraw')?.value) || 0;
   const out      = document.getElementById('ct-output');
+  const summary  = document.getElementById('ct-summary');
   if (!out) return;
   if (isNaN(balance)||isNaN(monthly)||balance<=0) {
-    out.textContent='Enter starting balance and monthly return %.'; out.className='output-box error'; return;
+    out.textContent='Enter starting balance and monthly return %.'; out.className='output-box error';
+    setStatus('ct-status','','enter account details');
+    if (summary) summary.style.display='none';
+    return;
   }
 
   let bal = balance;
@@ -2298,8 +2400,17 @@ function compoundTradeCalc() {
   }
 
   const totalProfit = bal+totalWithdrawn-balance;
-  out.className = 'output-box success';
+
+  // Sustained monthly return realism check — the math is correct regardless
+  // of the input, but very few real strategies sustain high monthly returns
+  // for long periods. Warn rather than silently presenting an astronomical
+  // projection as an achievable plan.
+  const realism = monthly<=5 ? 'Realistic' : monthly<=10 ? 'Aggressive' : monthly<=20 ? 'Very Aggressive — rarely sustained' : 'Unrealistic — essentially unachievable long-term';
+  const isUnrealistic = monthly > 10;
+
+  out.className = isUnrealistic ? 'output-box error' : 'output-box success';
   out.textContent =
+    (isUnrealistic ? `⚠️ WARNING: A sustained ${monthly}%/month return is ${monthly>20?'essentially unachievable':'extremely rare'} for real trading strategies over ${months} months. The math below is correct, but treat this projection as a mathematical illustration, not a realistic plan.\n\n` : '') +
     `Start:             $${formatCur(balance)}\n` +
     `Monthly return:    ${monthly}%\n` +
     `Period:            ${months} months\n` +
@@ -2310,13 +2421,28 @@ function compoundTradeCalc() {
     `Final Balance:     $${formatCur(bal)}\n` +
     `Total Withdrawn:   $${formatCur(totalWithdrawn)}\n` +
     `Total Profit:      $${formatCur(totalProfit)}\n` +
-    `Return on Capital: ${((totalProfit/balance)*100).toFixed(1)}%`;
-  setStatus('ct-status','ok',`✓ Final: $${formatCur(bal)}`);
+    `Return on Capital: ${((totalProfit/balance)*100).toFixed(1)}%\n\n` +
+    `── Realism Check ─────────────────\n` +
+    `${monthly}%/month is rated: ${realism}\n` +
+    `<=5%/month: realistic for a skilled discretionary or systematic trader.\n` +
+    `5-10%/month: aggressive; achieved by top traders in strong periods, rarely sustained for years.\n` +
+    `10-20%/month: very aggressive; consistent multi-year performance at this level is exceptionally rare.\n` +
+    `>20%/month: compounds to absurd figures within a few years — treat as a math exercise, not a plan.`;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('ct-stat-final').textContent = `$${formatCur(bal)}`;
+    document.getElementById('ct-stat-realism').textContent = realism;
+    document.getElementById('ct-stat-profit').textContent = `$${formatCur(totalProfit)}`;
+  }
+  setStatus('ct-status', isUnrealistic?'err':'ok',
+    isUnrealistic ? `⚠ ${realism} — Final: $${formatCur(bal)}` : `✓ Final: $${formatCur(bal)}`);
 }
 function ctClear() {
   ['ct-balance','ct-monthly','ct-months','ct-withdraw'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('ct-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('ct-summary');
+  if(s) s.style.display='none';
   setStatus('ct-status','','enter account details');
 }
 
@@ -2443,15 +2569,27 @@ function levClear() {
 function slTpCalc() {
   const entry   = parseFloat(document.getElementById('sl-entry')?.value);
   const riskAmt = parseFloat(document.getElementById('sl-risk')?.value);
-  const rr      = parseFloat(document.getElementById('sl-rr')?.value) || 2;
-  const lots    = parseFloat(document.getElementById('sl-lots')?.value) || 1;
+  const rr      = parseFloat(document.getElementById('sl-rr')?.value);
+  const lots    = parseFloat(document.getElementById('sl-lots')?.value);
   const pair    = document.getElementById('sl-pair')?.value || 'EUR/USD';
   const dir     = document.getElementById('sl-dir')?.value || 'buy';
   const out     = document.getElementById('sl-output');
+  const summary = document.getElementById('sl-summary');
   if (!out) return;
   if (isNaN(entry)||isNaN(riskAmt)||entry<=0||riskAmt<=0) {
-    out.textContent='Enter entry price and risk amount.'; out.className='output-box error'; return;
+    out.textContent='Enter entry price and risk amount.'; out.className='output-box error';
+    setStatus('sl-status','','enter trade details');
+    if (summary) summary.style.display='none';
+    return;
   }
+  if ((!isNaN(lots) && lots<=0) || (!isNaN(rr) && rr<=0)) {
+    out.textContent='Lot size and R:R ratio must be positive numbers.'; out.className='output-box error';
+    setStatus('sl-status','err','⚠ lots and R:R must be positive');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  const validRr   = isNaN(rr) ? 2 : rr;
+  const validLots = isNaN(lots) ? 1 : lots;
 
   const pairData = PIP_PAIRS[pair] || { pipPos:4, quote:'USD' };
   const pipSize  = Math.pow(10, -pairData.pipPos);
@@ -2459,13 +2597,13 @@ function slTpCalc() {
   const quoteUSD = ACCT_RATES[pairData.quote] || 1;
 
   // SL pips from risk amount
-  const pipValueUSD = pipSize * lots * contract * quoteUSD;
+  const pipValueUSD = pipSize * validLots * contract * quoteUSD;
   const slPips = riskAmt / pipValueUSD;
-  const tpPips = slPips * rr;
+  const tpPips = slPips * validRr;
 
   const slPrice = dir==='buy' ? entry-slPips*pipSize : entry+slPips*pipSize;
   const tpPrice = dir==='buy' ? entry+tpPips*pipSize : entry-tpPips*pipSize;
-  const tpProfit = riskAmt * rr;
+  const tpProfit = riskAmt * validRr;
 
   const fmt5 = n => parseFloat(n.toFixed(pairData.pipPos));
 
@@ -2474,9 +2612,9 @@ function slTpCalc() {
     `Direction:         ${dir.toUpperCase()}\n` +
     `Pair:              ${pair}\n` +
     `Entry:             ${entry}\n` +
-    `Lots:              ${lots}\n` +
+    `Lots:              ${validLots}\n` +
     `Risk Amount:       $${formatCur(riskAmt)}\n` +
-    `R:R Ratio:         1 : ${rr}\n` +
+    `R:R Ratio:         1 : ${validRr}\n` +
     `─────────────────────────────────\n` +
     `Stop Loss:         ${fmt5(slPrice)}  (${slPips.toFixed(1)} pips)\n` +
     `Take Profit:       ${fmt5(tpPrice)}  (${tpPips.toFixed(1)} pips)\n` +
@@ -2488,12 +2626,20 @@ function slTpCalc() {
       const tp = dir==='buy' ? entry+slPips*r*pipSize : entry-slPips*r*pipSize;
       return `  1:${String(r).padEnd(4)} TP ${fmt5(tp).toString().padEnd(10)} +$${formatCur(riskAmt*r)}`;
     }).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('sl-stat-stop').textContent = `${fmt5(slPrice)}`;
+    document.getElementById('sl-stat-target').textContent = `${fmt5(tpPrice)}`;
+    document.getElementById('sl-stat-rr').textContent = `1 : ${validRr}`;
+  }
   setStatus('sl-status','ok',`SL: ${fmt5(slPrice)} · TP: ${fmt5(tpPrice)}`);
 }
 function slClear() {
   ['sl-entry','sl-risk','sl-rr','sl-lots'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('sl-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('sl-summary');
+  if(s) s.style.display='none';
   setStatus('sl-status','','enter trade details');
 }
 
@@ -6945,6 +7091,7 @@ function correlationCalc() {
   const pair1 = document.getElementById('corr-pair1')?.value || 'EURUSD';
   const pair2 = document.getElementById('corr-pair2')?.value || 'GBPUSD';
   const out   = document.getElementById('corr-output');
+  const summary = document.getElementById('corr-summary');
   if (!out) return;
 
   // Historical correlation matrix (approximate 3-month averages, 2025)
@@ -6967,7 +7114,7 @@ function correlationCalc() {
 
   const corrVal = CORR[pair1]?.[pair2] ?? CORR[pair2]?.[pair1] ?? 0;
   const absCorr = Math.abs(corrVal);
-  const direction = corrVal > 0 ? 'Positive' : 'Negative';
+  const direction = corrVal === 0 ? 'Neutral' : corrVal > 0 ? 'Positive' : 'Negative';
   const strength  = absCorr>=0.9?'Very Strong':absCorr>=0.7?'Strong':absCorr>=0.5?'Moderate':absCorr>=0.3?'Weak':'Very Weak / None';
   const risk = corrVal > 0.7 ? 'HIGH — Trading both = doubling your exposure'
              : corrVal < -0.7 ? 'HIGH — Trading same direction = they cancel out'
@@ -6998,6 +7145,17 @@ function correlationCalc() {
         const bar='█'.repeat(Math.round(Math.abs(c)*10))+'░'.repeat(10-Math.round(Math.abs(c)*10));
         return `  ${p.padEnd(8)} ${c>=0?'+':''}${c.toFixed(2)} ${bar} ${c>=0.7?'⚠ high':c<=-0.7?'⚠ inverse':''}`;
       }).join('\n');
+  const implication = corrVal>=0.7
+    ? 'Avoid holding both — doubles exposure'
+    : corrVal<=-0.7
+    ? 'Can hedge or reduce risk'
+    : 'Low overlap — safe to combine';
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('corr-stat-value').textContent = `${corrVal>=0?'+':''}${corrVal.toFixed(2)}`;
+    document.getElementById('corr-stat-strength').textContent = `${strength} ${direction}`;
+    document.getElementById('corr-stat-implication').textContent = implication;
+  }
   setStatus('corr-status','ok',
     `✓ ${pair1}/${pair2}: ${corrVal.toFixed(2)} (${strength} ${direction})`);
 }

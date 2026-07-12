@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Fibonacci Calculator","url":"https://toolsnova.net/fibonacci-calculator","description":"Calculate Fibonacci retracement and extension levels for any forex pair or asset. Enter high and low swing points. Free online Fibonacci calculator for traders.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Fibonacci retracement?","acceptedAnswer":{"@type":"Answer","text":"Fibonacci retracement levels are horizontal lines that indicate potential support and resistance based on the Fibonacci sequence ratios. The key levels are 23.6%, 38.2%, 50%, 61.8% (the 'golden ratio'), and 78.6% of the previous price move."}},{"@type":"Question","name":"What is the golden ratio in trading?","acceptedAnswer":{"@type":"Answer","text":"The golden ratio (61.8%) is the most important Fibonacci level. It's derived from the Fibonacci sequence: each number divided by the next = ~0.618. Price frequently reverses at or near this level, making it the strongest support/resistance in Fibonacci analysis."}},{"@type":"Question","name":"What is the difference between retracement and extension?","acceptedAnswer":{"@type":"Answer","text":"Retracement levels (0–100%) show where price might pull back within an existing trend. Extension levels (127.2%, 141.4%, 161.8%, 200%) show where price might go after completing the retracement — potential take profit targets."}},{"@type":"Question","name":"How do I use Fibonacci in an uptrend?","acceptedAnswer":{"@type":"Answer","text":"In an uptrend: identify the swing low and swing high. Enter 'Buy' trades when price retraces to key levels (38.2%, 50%, 61.8%) with confirmation. Set take profit targets at extension levels (127.2%, 161.8%)."}},{"@type":"Question","name":"Why does Fibonacci work?","acceptedAnswer":{"@type":"Answer","text":"Fibonacci levels work largely because enough traders use them, creating self-fulfilling support and resistance. When millions of traders expect price to react at 61.8%, they place orders there, which causes the reaction they expected."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Fibonacci Calculator","item":"https://toolsnova.net/fibonacci-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -234,9 +236,28 @@ gtag('config', 'G-S6PPGS7N63');
           <option value="downtrend">↓ Downtrend (retrace up)</option>
       </select>
     </div>
+    <div>
+      <div class="pane-label">Current Price (optional)</div>
+      <input type="number" id="fib-current" placeholder="e.g. 1.2480" class="b2-input" oninput="fibCalc()" aria-label="Current Price (optional)">
+    </div>
   </div>
-  <div><div class="pane-label">Fibonacci Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="fib-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Key Level</div><div class="stat-value accent" id="fib-stat-key">—</div></div>
+    <div class="stat-card"><div class="stat-label">Current Zone</div><div class="stat-value" id="fib-stat-zone" style="font-size:1.1rem">—</div></div>
+    <div class="stat-card"><div class="stat-label">Implication</div><div class="stat-value" id="fib-stat-implication" style="font-size:1rem">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Fibonacci Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fib-output" onclick="copyEl('fib-output')" style="min-height:260px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">The golden zone is the highest-probability area</div><div class="edu-card-body">If your current price sits between 38.2% and 61.8%, that's the retracement zone most traders watch for a continuation entry — outside it, the setup is weaker or the move may have already failed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A level alone isn't an entry signal</div><div class="edu-card-body">Price reaching a Fibonacci level tells you where to watch, not when to act — wait for a candle pattern, volume, or another confluence factor before entering.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Extension levels are profit targets, not entries</div><div class="edu-card-body">Use the 127.2%/161.8%/261.8% extension levels to plan where to take profit on a continuation trade, not as a place to open a new position.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Cross-check these levels against the <a href="pivot-point-calculator.html">Pivot Point Calculator</a> for confluence, then turn a confirmed level into an exact trade with the <a href="stop-loss-take-profit-calculator.html">Stop Loss / Take Profit Calculator</a>.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -278,6 +299,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Fibonacci Formula</h2>
+    <div class="edu-highlight"><strong>Retracement Level</strong> = Swing High − (Range × Ratio) for an uptrend, where Range = High − Low and Ratio is one of the Fibonacci ratios (23.6%, 38.2%, 50%, 61.8%, 78.6%).</div>
+    <h3>Worked example</h3>
+    <p>Uptrend swing: High 1.2650, Low 1.2350 (Range = 0.0300). The 61.8% retracement = 1.2650 − (0.0300 × 0.618) = <strong>1.2465</strong>. If current price is 1.2480, it sits between the 50% (1.2500) and 61.8% (1.2465) levels — inside the golden zone.</p>
+    <p><em>Assumption: retracement direction depends on correctly identifying the swing High and Low from an actual completed move — an arbitrary or premature swing selection produces levels that don't correspond to real support/resistance.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Picking the wrong swing points</div><div class="edu-card-body">Fibonacci levels are only meaningful if the High and Low represent an actual significant swing — an arbitrary recent high/low produces levels with no real technical significance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trading every level equally</div><div class="edu-card-body">Not all Fibonacci levels are equal — 38.2%, 50%, and 61.8% are watched far more closely than 23.6% or 78.6%. Weight your expectations accordingly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring the trend direction setting</div><div class="edu-card-body">Selecting the wrong trend direction flips which levels are retracements versus extensions — always match it to your actual swing high-to-low or low-to-high move.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Entering without confirmation</div><div class="edu-card-body">A price touching a Fibonacci level is not a signal by itself — always require price-action or another confluence factor before entering.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -302,9 +341,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail trading education standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail trading framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your charting platform</div><div class="edu-card-body">Most platforms (TradingView, MT4/MT5) include a Fibonacci retracement drawing tool — use this calculator to verify exact price levels or plan before your session.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Fibonacci ratios (23.6%, 38.2%, 50%, 61.8%, 78.6%, and extensions) are standard published values.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -331,7 +376,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=29" defer></script>
+<script src="app.js?v=31" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

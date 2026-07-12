@@ -863,16 +863,55 @@ function calcGoldPos() {
   const entry    = parseFloat(document.getElementById('gp-entry')?.value);
   const sl       = parseFloat(document.getElementById('gp-sl')?.value);
   const out      = document.getElementById('gp-output');
+  const summary  = document.getElementById('gp-summary');
   if (!out) return;
-  if (!balance||!riskPct||!entry||!sl) { out.textContent='Enter all fields.'; out.className='output-box error'; return; }
+
+  // Proper numeric validation — rejects missing, non-numeric, zero, AND negative
+  // values. A falsy check (!balance) only catches 0/NaN and lets negatives
+  // silently through, so every field is checked explicitly here.
+  if (isNaN(balance)||isNaN(riskPct)||isNaN(entry)||isNaN(sl)) {
+    out.textContent='Enter all fields.'; out.className='output-box error';
+    setStatus('gp-status','','enter position details');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (balance<=0||riskPct<=0||entry<=0||sl<=0) {
+    out.textContent='Balance, risk %, entry, and stop loss must all be positive numbers.'; out.className='output-box error';
+    setStatus('gp-status','err','⚠ values must be positive');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (entry===sl) {
+    out.textContent='Stop loss cannot equal entry price — there is no risk distance to calculate from.'; out.className='output-box error';
+    setStatus('gp-status','err','⚠ stop loss equals entry price');
+    if (summary) summary.style.display='none';
+    return;
+  }
+
   const riskAmt  = balance*riskPct/100;
   const slDist   = Math.abs(entry-sl);
   // Gold: 1 lot = 100 troy oz; pip value ≈ $1 per 0.01 move per oz = $100 per lot per $1 move
   const lotSize  = riskAmt/(slDist*100);
   const oz       = lotSize*100;
-  out.className='output-box success';
-  out.textContent=
-    `Risk Amount:    $${riskAmt.toFixed(2)}\nSL Distance:    $${slDist.toFixed(2)} per oz\nPosition Size:  ${lotSize.toFixed(4)} lots\nOunces:         ${oz.toFixed(2)} oz\n\nEntry:          $${entry}\nStop Loss:      $${sl}\nMax Loss:       $${riskAmt.toFixed(2)}`;
+
+  // Practical minimum stop-distance safety layer: a stop distance this tight
+  // is inside normal gold spread/noise and produces a position size too large
+  // to be realistic — mathematically valid, practically unsafe. Warn rather
+  // than silently accept, consistent with the Position Scaling martingale check.
+  const isUnsafe = slDist < 0.50;
+
+  out.className = isUnsafe ? 'output-box error' : 'output-box success';
+  out.textContent =
+    (isUnsafe ? `⚠️ WARNING: A $${slDist.toFixed(2)} stop distance is inside normal gold spread/noise and produces an unrealistic position size. This is mathematically correct but not a safe or practical trade setup — widen your stop.\n\n` : '') +
+    `Risk Amount:    $${riskAmt.toFixed(2)}\nSL Distance:    $${slDist.toFixed(2)} per oz\nPosition Size:  ${lotSize.toFixed(2)} lots\nOunces:         ${oz.toFixed(2)} oz\n\nEntry:          $${entry}\nStop Loss:      $${sl}\nMax Loss:       $${riskAmt.toFixed(2)}`;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('gp-stat-lots').textContent = `${lotSize.toFixed(2)} lots`;
+    document.getElementById('gp-stat-loss').textContent = `$${riskAmt.toFixed(2)}`;
+    document.getElementById('gp-stat-oz').textContent = `${oz.toFixed(1)} oz`;
+  }
+  setStatus('gp-status', isUnsafe?'err':'ok',
+    isUnsafe ? `⚠ Unsafe — stop distance too tight` : `✓ ${lotSize.toFixed(2)} lots — $${riskAmt.toFixed(2)} max loss`);
 }
 
 /* ── Shared helpers ── */
@@ -2064,9 +2103,12 @@ function forexProfitCalc() {
   const dir    = document.getElementById('fp-dir')?.value || 'buy';
   const acct   = document.getElementById('fp-acct')?.value || 'USD';
   const out    = document.getElementById('fp-output');
+  const summary= document.getElementById('fp-summary');
   if (!out) return;
   if (isNaN(lots)||isNaN(entry)||isNaN(exit)||lots<=0) {
-    out.textContent='Enter all fields.'; out.className='output-box error'; return;
+    out.textContent='Enter all fields.'; out.className='output-box error';
+    if (summary) summary.style.display='none';
+    return;
   }
 
   const pairData = PIP_PAIRS[pair] || { pipPos:4, quote:'USD' };
@@ -2096,6 +2138,12 @@ function forexProfitCalc() {
       const pl = p * pipSize * lots * contract * quoteUSD / acctUSD;
       return `  ${String(p+'p').padEnd(6)} → ${pl>=0?'+':''}${formatCur(pl)} ${acct}`;
     }).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('fp-stat-pl').textContent = `${isProfit?'+':''}${formatCur(profitAcct)} ${acct}`;
+    document.getElementById('fp-stat-result').textContent = isProfit ? 'Profit' : 'Loss';
+    document.getElementById('fp-stat-pips').textContent = `${Math.abs(pips).toFixed(1)}`;
+  }
   setStatus('fp-status', isProfit?'ok':'err',
     `${isProfit?'Profit':'Loss'}: ${isProfit?'+':''}${formatCur(profitAcct)} ${acct}`);
 }
@@ -2103,6 +2151,8 @@ function fpClear() {
   ['fp-lots','fp-entry','fp-exit'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('fp-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('fp-summary');
+  if(s) s.style.display='none';
   setStatus('fp-status','','enter trade details');
 }
 
@@ -6554,18 +6604,29 @@ function fundedROICalc() {
 /* ── 7. POSITION SCALING CALCULATOR ── */
 function positionScalingCalc() {
   const balance  = parseFloat(document.getElementById('ps2-balance')?.value);
-  const riskPct  = parseFloat(document.getElementById('ps2-risk')?.value) || 1;
+  const riskPct  = parseFloat(document.getElementById('ps2-risk')?.value);
   const sl       = parseFloat(document.getElementById('ps2-sl')?.value);
   const symbol   = document.getElementById('ps2-symbol')?.value || 'XAUUSD';
   const method   = document.getElementById('ps2-method')?.value || 'fixed';
   const winStreak= parseInt(document.getElementById('ps2-streak')?.value) || 0;
   const out      = document.getElementById('ps2-output');
+  const summary  = document.getElementById('ps2-summary');
   if (!out) return;
   if (isNaN(balance)||isNaN(sl)||balance<=0||sl<=0) {
-    out.textContent='Enter balance and stop loss.'; out.className='output-box error'; return;
+    out.textContent='Enter balance and stop loss.'; out.className='output-box error';
+    setStatus('ps2-status','','enter position details');
+    if (summary) summary.style.display='none';
+    return;
   }
+  if (!isNaN(riskPct) && riskPct<=0) {
+    out.textContent='Risk per trade must be a positive percentage.'; out.className='output-box error';
+    setStatus('ps2-status','err','⚠ risk % must be positive');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  const validRiskPct = isNaN(riskPct) ? 1 : riskPct;
 
-  const riskAmt = balance * riskPct / 100;
+  const riskAmt = balance * validRiskPct / 100;
 
   // Pip/point values per lot
   const pipValues = {
@@ -6584,9 +6645,11 @@ function positionScalingCalc() {
     scaledLots = baseLots;
     methodDesc = 'Fixed fractional — same risk % every trade';
   } else if (method === 'kelly') {
-    // Simplified Kelly (need win rate and RR)
-    scaledLots = baseLots * 0.5; // half-Kelly is safer
-    methodDesc = 'Half-Kelly — conservative position scaling';
+    // NOT the Kelly Criterion formula — a flat conservative multiplier.
+    // For an edge-based Kelly calculation (needs win rate + R:R), see the
+    // dedicated Kelly Criterion Calculator instead.
+    scaledLots = baseLots * 0.5;
+    methodDesc = 'Conservative (0.5× fixed) — not a true Kelly calculation, see note below';
   } else if (method === 'martingale') {
     scaledLots = baseLots * Math.pow(2, winStreak);
     methodDesc = `Martingale (${winStreak} wins) — doubles each win ⚠ HIGH RISK`;
@@ -6602,10 +6665,16 @@ function positionScalingCalc() {
   const actualRisk = scaledLots * sl * pipVal;
   const actualRiskPct = actualRisk/balance*100;
 
-  out.className = 'output-box success';
+  // Mathematically valid but practically unsafe: the scaling method has pushed
+  // real risk well past what the trader said they were willing to risk.
+  // Warn rather than silently presenting this as a normal successful result.
+  const isUnsafe = actualRiskPct > validRiskPct * 3;
+
+  out.className = isUnsafe ? 'output-box error' : 'output-box success';
   out.textContent =
+    (isUnsafe ? `⚠️ WARNING: This method has scaled your position to ${actualRiskPct.toFixed(1)}% actual risk — more than 3× your intended ${validRiskPct}% risk per trade. This is mathematically correct but not a safe position size.\n\n` : '') +
     `Balance: $${formatCur(balance)}  |  Symbol: ${symbol}\n`+
-    `Risk: ${riskPct}% ($${formatCur(riskAmt)})  |  SL: ${sl} pips\n`+
+    `Risk: ${validRiskPct}% ($${formatCur(riskAmt)})  |  SL: ${sl} pips\n`+
     `Method: ${methodDesc}\n\n`+
     `── Position Size ─────────────────────\n`+
     `Lot size:       ${scaledLots} lots\n`+
@@ -6623,7 +6692,14 @@ function positionScalingCalc() {
       const pnl = mult > 0 ? scaledLots*tp*pipVal*mult : scaledLots*sl*pipVal*mult;
       return `  ${mult>0?mult+' win'+(mult>1?'s':''):Math.abs(mult)+' loss'+(Math.abs(mult)>1?'es':'')}: ${pnl>=0?'+':''}$${formatCur(pnl)}`;
     }).join('\n');
-  setStatus('ps2-status','ok',`✓ ${scaledLots} lots | $${formatCur(actualRisk)} at risk`);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('ps2-stat-lots').textContent = `${scaledLots} lots`;
+    document.getElementById('ps2-stat-safety').textContent = isUnsafe ? '⚠ Unsafe' : 'Safe';
+    document.getElementById('ps2-stat-risk').textContent = `$${formatCur(actualRisk)} (${actualRiskPct.toFixed(2)}%)`;
+  }
+  setStatus('ps2-status', isUnsafe?'err':'ok',
+    isUnsafe ? `⚠ Unsafe — ${actualRiskPct.toFixed(1)}% actual risk` : `✓ ${scaledLots} lots | $${formatCur(actualRisk)} at risk`);
 }
 
 /* ════════════════════════════════════
@@ -6742,6 +6818,7 @@ function winRateCalc() {
 // MODE 2: Use reference rates as estimates only
 function forexSwapCalc() {
   const out = document.getElementById('swap-output');
+  const summary = document.getElementById('swap-summary');
   if (!out) return;
 
   const mode = document.getElementById('swap-mode')?.value || 'manual';
@@ -6756,8 +6833,8 @@ function forexSwapCalc() {
     const dir       = document.getElementById('swap-dir')?.value || 'long';
     const pair      = document.getElementById('swap-pair')?.value || 'EURUSD';
 
-    if (isNaN(lots)||lots<=0) { out.textContent='Enter lot size.'; out.className='output-box error'; return; }
-    if (isNaN(longRate)||isNaN(shortRate)) { out.textContent='Enter your broker swap rates from MT4/MT5.'; out.className='output-box error'; return; }
+    if (isNaN(lots)||lots<=0) { out.textContent='Enter lot size.'; out.className='output-box error'; if (summary) summary.style.display='none'; return; }
+    if (isNaN(longRate)||isNaN(shortRate)) { out.textContent='Enter your broker swap rates from MT4/MT5.'; out.className='output-box error'; if (summary) summary.style.display='none'; return; }
 
     const swapPips   = dir==='long' ? longRate : shortRate;
     const dailyCost  = swapPips * pipVal * lots;
@@ -6788,6 +6865,13 @@ function forexSwapCalc() {
       `MT4/MT5: Right-click pair in Market Watch\n`+
       `→ Specification → Swap Long / Swap Short\n`+
       `✅ These results use YOUR broker's exact rates.`;
+    if (summary) {
+      summary.style.display='';
+      document.getElementById('swap-stat-daily').textContent = `${isEarned?'+':''}$${formatCur(Math.abs(dailyCost))}`;
+      document.getElementById('swap-stat-mode-label').textContent = 'Rate Source';
+      document.getElementById('swap-stat-mode').textContent = '✅ Your Broker';
+      document.getElementById('swap-stat-monthly').textContent = `${monthlyCost>=0?'+':'-'}$${formatCur(Math.abs(monthlyCost))}`;
+    }
     setStatus('swap-status', isEarned?'ok':'err',
       `$${formatCur(Math.abs(dailyCost))}/night ${isEarned?'earned':'cost'}`);
 
@@ -6798,7 +6882,7 @@ function forexSwapCalc() {
     const days   = parseInt(document.getElementById('swap-days')?.value) || 1;
     const dir    = document.getElementById('swap-dir')?.value || 'long';
 
-    if (isNaN(lots)||lots<=0) { out.textContent='Enter lot size.'; out.className='output-box error'; return; }
+    if (isNaN(lots)||lots<=0) { out.textContent='Enter lot size.'; out.className='output-box error'; if (summary) summary.style.display='none'; return; }
 
     // Reference swap rates — approximate industry averages
     // These WILL differ from your broker. Use manual mode for accuracy.
@@ -6844,6 +6928,13 @@ function forexSwapCalc() {
       `and change daily with interest rates.\n`+
       `For exact costs: use Manual mode above\n`+
       `(enter rates from MT4/MT5 Specification).`;
+    if (summary) {
+      summary.style.display='';
+      document.getElementById('swap-stat-daily').textContent = `~${isEarned?'+':''}$${formatCur(Math.abs(dailyCost))}`;
+      document.getElementById('swap-stat-mode-label').textContent = 'Rate Source';
+      document.getElementById('swap-stat-mode').textContent = '⚠️ Estimate';
+      document.getElementById('swap-stat-monthly').textContent = `~${monthlyCost>=0?'+':'-'}$${formatCur(Math.abs(monthlyCost))}`;
+    }
     setStatus('swap-status', isEarned?'ok':'err',
       `~$${formatCur(Math.abs(dailyCost))}/night (estimate)`);
   }

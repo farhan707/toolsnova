@@ -39,6 +39,8 @@
 {"@context":"https://schema.org","@type":"WebApplication","name":"Gold Position Size Calculator — XAUUSD Lot Size Calculator","url":"https://toolsnova.net/gold-position-size-calculator","description":"Calculate the correct gold (XAUUSD) position size based on account balance, risk percentage, and stop loss distance.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Gold contract spec?","acceptedAnswer":{"@type":"Answer","text":"1 standard lot of XAUUSD = 100 troy ounces. A $1 move in gold price = $100 P&L per standard lot. A mini lot (0.1) = $10 per $1 move."}},{"@type":"Question","name":"Why is gold position sizing different from forex?","acceptedAnswer":{"@type":"Answer","text":"Gold pip value changes with price level. Unlike forex pairs where pip value is relatively stable, gold's dollar-per-pip value is tied to the spot price."}},{"@type":"Question","name":"Typical stop loss for gold?","acceptedAnswer":{"@type":"Answer","text":"Gold can move $10–50 in a single session. Common stop losses range from $5–20 for day trades to $30–80 for swing trades. Always account for the spread ($0.20–0.50)."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Gold Position Size Calculator","item":"https://toolsnova.net/gold-position-size-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -222,9 +224,17 @@ gtag('config', 'G-S6PPGS7N63');
       <div><div class="pane-label">Entry price (XAUUSD)</div><input type="number" id="gp-entry" placeholder="2000" step="0.01" oninput="calcGoldPos()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
       <div><div class="pane-label">Stop loss (XAUUSD)</div><input type="number" id="gp-sl" placeholder="1990" step="0.01" oninput="calcGoldPos()" style="font-family:var(--mono);font-size:.85rem;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;padding:.5rem .8rem;outline:none;width:100%"></div>
     </div>
-    <button class="btn primary" onclick="calcGoldPos()" style="max-width:160px">Calculate →</button>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="calcGoldPos()" style="max-width:160px">Calculate →</button>
+      <span class="status-badge" id="gp-status">enter position details</span>
+    </div>
   </div>
-  <div><div class="pane-label">Result</div>
+  <div class="stats-row" id="gp-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Position Size</div><div class="stat-value accent" id="gp-stat-lots">—</div></div>
+    <div class="stat-card"><div class="stat-label">Max Loss</div><div class="stat-value" id="gp-stat-loss">—</div></div>
+    <div class="stat-card"><div class="stat-label">Ounces</div><div class="stat-value" id="gp-stat-oz">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown</div>
   <div class="output-box" id="gp-output" style="min-height:130px;white-space:pre;cursor:pointer" onclick="copyEl('gp-output')"></div></div>
   <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
     <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About gold position sizing</h2>
@@ -283,6 +293,39 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check against daily DD limit</div><div class="edu-card-body">Before entering, confirm this position's Max Loss fits comfortably inside your remaining daily drawdown budget — gold's volatility means a single stopped-out trade can consume a large share of a prop firm daily limit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Widen the stop, not the risk</div><div class="edu-card-body">If the position size looks too small to be worth trading, don't increase your risk % to compensate — gold needs room to move. A wider, more realistic stop with correctly-sized lots outperforms a tight stop with oversized lots.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Watch the correlation</div><div class="edu-card-body">If you're already long EUR/USD or AUD/USD, a same-direction gold position adds correlated risk on top of it, not independent risk — size accordingly rather than treating this as a fully separate trade.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> This tool is the fast, gold-only version of position sizing. For multi-pair risk sizing (forex majors, JPY crosses, or gold alongside other instruments) use the <a href="lot-size-calculator.html">Lot Size Calculator</a>, which covers the same math across 11 pairs including XAU/USD.</div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Gold Position Size Formula</h2>
+    <div class="edu-highlight"><strong>Position Size (lots)</strong> = Risk Amount ÷ (Stop Distance in $ × 100)</div>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Risk Amount</div><div class="edu-card-body">Account balance × risk % — the dollar amount you're willing to lose on this trade.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Stop Distance</div><div class="edu-card-body">The dollar distance between entry and stop loss on the XAUUSD price itself, not pips — gold moves in whole dollars.</div></div>
+      <div class="edu-card"><div class="edu-card-title">× 100</div><div class="edu-card-body">1 standard lot of gold = 100 troy ounces, so every $1 of price movement equals $100 of P&amp;L per lot.</div></div>
+    </div>
+    <h3>Worked example</h3>
+    <p>$10,000 balance, 1% risk, entry $2,400 → stop loss $2,390: risk amount = $100; stop distance = $10; position size = 100 ÷ (10 × 100) = <strong>0.10 lots</strong> (10 oz).</p>
+    <p><em>Assumption: uses standard 100 oz contract sizing — confirm your broker's exact gold contract specification, as mini and micro lot sizes vary.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Entering an identical stop</div><div class="edu-card-body">Setting stop loss equal to entry price isn't a valid trade setup — there's no risk distance for the calculator (or your broker) to size a position from.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using forex-tight stops on gold</div><div class="edu-card-body">A $2–3 stop that would be normal on a forex pair gets taken out by ordinary gold volatility before any real move happens. Use the wider ranges in the strategy section above.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring correlated exposure</div><div class="edu-card-body">Sizing a gold position as if it's independent from an existing EUR/USD or AUD/USD position, when the two move together roughly 65–75% of the time.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trading through news spread spikes</div><div class="edu-card-body">Entering right around major US data releases, when gold spread can widen from $0.20–0.50 to $2–5 — instantly putting a new position underwater regardless of position sizing.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -299,9 +342,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. CFTC</div><div class="edu-card-body">Retail leverage and margin rules covering metals — <a href="https://www.cftc.gov" target="_blank" rel="nofollow noopener">cftc.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail leverage limits for gold (20:1) — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Broker contract specs</div><div class="edu-card-body">Exact gold contract size and margin requirements vary by broker — confirm against your own broker's published specification sheet.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Formulas use standard 100 oz contract sizing unless your broker specifies otherwise.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -328,7 +377,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=27" defer></script>
+<script src="app.js?v=29" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

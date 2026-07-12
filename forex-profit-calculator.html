@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Forex Profit Calculator","url":"https://toolsnova.net/forex-profit-calculator","description":"Calculate forex profit or loss for any trade. Enter pair, direction, lot size, entry and exit price. Free online forex P&L calculator for all currency pairs.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is forex profit calculated?","acceptedAnswer":{"@type":"Answer","text":"Profit = (Exit Price − Entry Price) × Lots × Contract Size × Pip Value. For a Buy trade on EUR/USD: if you buy 1 lot at 1.2500 and close at 1.2600, the profit = 100 pips × $10/pip = $1,000."}},{"@type":"Question","name":"What is the difference between a buy and sell trade?","acceptedAnswer":{"@type":"Answer","text":"A Buy (Long) trade profits when price goes UP. A Sell (Short) trade profits when price goes DOWN. If you sell EUR/USD at 1.2500 and price falls to 1.2400, you profit 100 pips."}},{"@type":"Question","name":"How do lot sizes affect profit?","acceptedAnswer":{"@type":"Answer","text":"Profit scales linearly with lot size. 1 standard lot = $10/pip for EUR/USD. 0.1 lot (mini) = $1/pip. 0.01 lot (micro) = $0.10/pip. Doubling the lot size doubles both profit and loss."}},{"@type":"Question","name":"What is slippage and how does it affect profit?","acceptedAnswer":{"@type":"Answer","text":"Slippage is when your trade executes at a different price than requested, usually during high volatility or news events. It typically reduces your profit or increases your loss by a few pips. Always factor in spread + potential slippage when planning trades."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Forex Profit Calculator","item":"https://toolsnova.net/forex-profit-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -277,8 +279,23 @@ gtag('config', 'G-S6PPGS7N63');
       </select>
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="fp-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Profit / Loss</div><div class="stat-value accent" id="fp-stat-pl">—</div></div>
+    <div class="stat-card"><div class="stat-label">Result</div><div class="stat-value" id="fp-stat-result">—</div></div>
+    <div class="stat-card"><div class="stat-label">Pips</div><div class="stat-value" id="fp-stat-pips">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fp-output" onclick="copyEl('fp-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">This is a snapshot, not a forecast</div><div class="edu-card-body">The P&amp;L shown is only accurate for the exact entry and exit prices entered — use the Scenarios table in the full breakdown to see how the result changes as price moves further.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Compare against your planned risk</div><div class="edu-card-body">If this is a loss, check it against the maximum loss you sized the trade for (via the Lot Size Calculator) — a loss larger than planned means the position was sized incorrectly, not just that the trade didn't work out.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Account for spread and commission</div><div class="edu-card-body">This figure is the raw price-move P&amp;L — your broker's spread and any commission will reduce a profit or add to a loss beyond what's shown here.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> If this trade would have breached your intended risk, revisit position sizing with the <a href="lot-size-calculator.html">Lot Size Calculator</a> before your next entry.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -320,6 +337,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Profit/Loss Formula</h2>
+    <div class="edu-highlight"><strong>P&amp;L</strong> = (Exit − Entry, or Entry − Exit if short) × Lots × Contract Size, converted to your account currency.</div>
+    <h3>Worked example</h3>
+    <p>1 lot EUR/USD long, entry 1.0850 → exit 1.0920 (70 pips): (1.0920 − 1.0850) × 1 × 100,000 = <strong>+$700 profit</strong> on a USD account. The same trade sold short at those prices would show a <strong>-$700 loss</strong> instead.</p>
+    <p><em>Assumption: uses standard 100,000-unit contract sizing and doesn't include spread or commission — your broker's actual fill will differ slightly from a raw price-move calculation.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Forgetting spread and commission</div><div class="edu-card-body">This calculator shows the raw price-move P&amp;L. Your actual fill will be slightly worse due to spread, and commission-based accounts subtract a further per-lot fee not shown here.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Selecting the wrong direction</div><div class="edu-card-body">Buy vs Sell flips which price move counts as profit — double-check the direction dropdown matches your actual position before reading the result.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using this as a position-sizing tool</div><div class="edu-card-body">This calculator tells you the P&amp;L for a lot size you already chose — it doesn't tell you what lot size to use. Size the position first with the Lot Size Calculator, then check the P&amp;L here.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring account-currency conversion</div><div class="edu-card-body">For a non-USD account, the conversion uses an approximate static rate, not a live feed — treat cross-currency results as close, not exact.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -340,9 +375,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail forex trade execution and disclosure standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail forex/CFD framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Broker contract specs</div><div class="edu-card-body">Exact contract size and commission structure vary by broker — confirm against your own broker's specification sheet for precise P&amp;L.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Formulas use standard 100,000-unit contract sizing and exclude spread/commission unless your broker specifies otherwise.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -369,7 +410,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=27" defer></script>
+<script src="app.js?v=29" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

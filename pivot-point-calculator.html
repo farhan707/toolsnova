@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pivot Point Calculator","url":"https://toolsnova.net/pivot-point-calculator","description":"Calculate daily pivot points and support/resistance levels. Supports Standard, Fibonacci, Camarilla, and Woodie methods. Free online pivot point calculator for forex traders.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are pivot points?","acceptedAnswer":{"@type":"Answer","text":"Pivot points are price levels calculated from the previous session's High, Low, and Close. They act as potential support and resistance levels for the current session. Traders use them to identify likely turning points in price."}},{"@type":"Question","name":"What is the standard pivot point formula?","acceptedAnswer":{"@type":"Answer","text":"Pivot Point (PP) = (High + Low + Close) / 3. Then: R1 = 2×PP − Low, R2 = PP + (High − Low), S1 = 2×PP − High, S2 = PP − (High − Low). R = Resistance, S = Support."}},{"@type":"Question","name":"Which pivot method is most popular?","acceptedAnswer":{"@type":"Answer","text":"Standard (Classic) pivots are the most widely used by retail traders and are built into most trading platforms. Fibonacci pivots use Fibonacci ratios for the levels and are popular with technical traders. Camarilla pivots are used for intraday scalping."}},{"@type":"Question","name":"What timeframe should I use for pivot points?","acceptedAnswer":{"@type":"Answer","text":"For daily pivot points, use the previous day's High, Low, and Close. For weekly pivots, use the previous week's data. Daily pivots are most commonly used by day traders, while weekly pivots are preferred by swing traders."}},{"@type":"Question","name":"How do I trade pivot points?","acceptedAnswer":{"@type":"Answer","text":"Price approaching a resistance level (R1, R2, R3) may reverse downward — a sell opportunity. Price approaching a support level (S1, S2, S3) may bounce upward — a buy opportunity. The pivot point (PP) itself acts as the primary support/resistance for the day."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Pivot Point Calculator","item":"https://toolsnova.net/pivot-point-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -241,8 +243,23 @@ gtag('config', 'G-S6PPGS7N63');
       </select>
     </div>
   </div>
-  <div><div class="pane-label">Support & Resistance Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="pp-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Pivot Point</div><div class="stat-value accent" id="pp-stat-pivot">—</div></div>
+    <div class="stat-card"><div class="stat-label">Bias</div><div class="stat-value" id="pp-stat-bias">—</div></div>
+    <div class="stat-card"><div class="stat-label">Nearest Support / Resistance</div><div class="stat-value" id="pp-stat-nearest" style="font-size:1.15rem">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Support &amp; Resistance Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pp-output" onclick="copyEl('pp-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Use Bias as context, not a signal</div><div class="edu-card-body">Close above the pivot leans bullish, below leans bearish — but this alone isn't a trade trigger. Combine it with your own setup (candlestick pattern, trend, or another indicator) before acting.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Nearest levels are your first targets</div><div class="edu-card-body">The Nearest Support/Resistance card shows the levels price is most likely to react to next — natural places to plan a stop loss beyond, or a take profit into.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Levels are more reliable with confluence</div><div class="edu-card-body">A pivot level that lines up with a round number, a moving average, or a Fibonacci level is more significant than one standing alone.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Cross-check these levels against the <a href="fibonacci-calculator.html">Fibonacci Calculator</a> for confluence, then turn a confirmed level into an exact trade with the <a href="stop-loss-take-profit-calculator.html">Stop Loss / Take Profit Calculator</a>.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -284,6 +301,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Pivot Point Formula</h2>
+    <div class="edu-highlight"><strong>Standard Pivot</strong> = (Previous High + Previous Low + Previous Close) ÷ 3, with resistance/support levels derived from the pivot and the previous session's range.</div>
+    <h3>Worked example</h3>
+    <p>Previous session: High 1.2650, Low 1.2480, Close 1.2560 (Standard method): Pivot = (1.2650 + 1.2480 + 1.2560) ÷ 3 = <strong>1.2563</strong>. R1 = 2×1.2563 − 1.2480 = <strong>1.2647</strong>. S1 = 2×1.2563 − 1.2650 = <strong>1.2477</strong>.</p>
+    <p><em>Assumption: "Previous" refers to the prior completed session (day, week, or month depending on your trading style) — using the current, still-forming session's data will produce levels that don't reflect an actual completed range.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Swapping High and Low</div><div class="edu-card-body">Entering the previous Low as "High" and vice versa inverts every resistance and support level — this calculator now rejects that input, but always double-check your source data.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating a pivot touch as an automatic signal</div><div class="edu-card-body">Price reaching a pivot level isn't a trade trigger by itself — wait for price-action confirmation (rejection candle, break and retest) before entering.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using the wrong session's data</div><div class="edu-card-body">Day traders need the prior day's H/L/C; swing traders need the prior week's. Mixing timeframes produces levels that don't match your actual trading horizon.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring the calculation method mismatch</div><div class="edu-card-body">Standard, Fibonacci, Camarilla, and Woodie methods produce meaningfully different levels from the same H/L/C — confirm which method your broker or strategy expects before comparing levels across sources.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -308,9 +343,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail trading education standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail trading framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your charting platform</div><div class="edu-card-body">Most platforms (TradingView, MT4/MT5) can plot pivot points automatically — use this calculator to verify or cross-check the method and session data your platform is using.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Pivot formulas are standard published methods (Standard, Fibonacci, Camarilla, Woodie) — verified against their canonical definitions.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -337,7 +378,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=29" defer></script>
+<script src="app.js?v=31" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

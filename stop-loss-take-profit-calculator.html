@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Stop Loss & Take Profit Calculator","url":"https://toolsnova.net/stop-loss-take-profit-calculator","description":"Calculate exact stop loss and take profit price levels from entry price, risk amount, and R:R ratio. Free online SL/TP calculator for forex traders.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I set a stop loss?","acceptedAnswer":{"@type":"Answer","text":"Set your stop loss at a price level where your trade idea is proven wrong — usually below a key support (for buys) or above key resistance (for sells). Then calculate the pip distance and ensure the dollar risk matches your risk management rules (typically 1–2% of account)."}},{"@type":"Question","name":"How do I calculate take profit from R:R ratio?","acceptedAnswer":{"@type":"Answer","text":"Take Profit distance = Stop Loss distance × R:R ratio. If your SL is 50 pips away and your R:R is 1:2, your TP should be 100 pips away. This calculator does this automatically — enter your risk amount and R:R, and it gives you exact price levels."}},{"@type":"Question","name":"Should I always use a fixed R:R ratio?","acceptedAnswer":{"@type":"Answer","text":"No — the best traders use dynamic take profits based on market structure (next resistance level, measured moves, Fibonacci extensions). However, a minimum 1:1.5 R:R rule prevents taking trades with poor reward potential. Never risk more than you can win."}},{"@type":"Question","name":"What is a trailing stop loss?","acceptedAnswer":{"@type":"Answer","text":"A trailing stop moves your stop loss in the direction of profit as price moves in your favor, locking in gains. If price moves 50 pips in your favor with a 20-pip trailing stop, your SL moves 50 pips in your direction, guaranteeing a 30-pip profit minimum."}},{"@type":"Question","name":"How does risk amount relate to lot size?","acceptedAnswer":{"@type":"Answer","text":"If you risk $100 with a 50-pip SL on EUR/USD, the required lot size = $100 ÷ (50 pips × $10/pip) = 0.2 lots. This calculator combines your risk amount with lot size and pair to give you exact SL and TP prices simultaneously."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Stop Loss / Take Profit Calculator","item":"https://toolsnova.net/stop-loss-take-profit-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -265,8 +267,23 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="sl-rr" placeholder="e.g. 2 (for 1:2)" value="2" class="b2-input" oninput="slTpCalc()" aria-label="Risk:Reward Ratio">
     </div>
   </div>
-  <div><div class="pane-label">Stop Loss & Take Profit Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
-  <div class="output-box" id="sl-output" onclick="copyEl('sl-output')" style="min-height:260px;white-space:pre;cursor:pointer"></div></div>
+  <div class="pane-label">Stop Loss &amp; Take Profit Levels <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="sl-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Stop Loss</div><div class="stat-value" id="sl-stat-stop">—</div></div>
+    <div class="stat-card"><div class="stat-label">Take Profit</div><div class="stat-value accent" id="sl-stat-target">—</div></div>
+    <div class="stat-card"><div class="stat-label">Risk:Reward</div><div class="stat-value" id="sl-stat-rr">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="output-box" id="sl-output" onclick="copyEl('sl-output')" style="min-height:260px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Trading Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Place the stop where it belongs, not where it's convenient</div><div class="edu-card-body">This calculator derives Stop Loss from your risk amount — but the stop should also make technical sense (beyond a swing point or support/resistance level). If the two don't line up, adjust your position size or risk amount, not the stop's technical placement.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check the Multiple TP levels table before committing</div><div class="edu-card-body">Higher R:R targets are further from price and less likely to be hit — compare the 1:2 and 1:3 rows against where actual resistance/support levels sit before picking a target.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confirm the lot size matches your actual position</div><div class="edu-card-body">This tool's Stop Loss price depends on lot size — if you size your position differently at the broker, the pip distance (and therefore the price level) will be wrong.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Confirm this position size matches your risk tolerance with the <a href="lot-size-calculator.html">Lot Size Calculator</a>, or check the resulting Risk:Reward quality with the <a href="risk-reward-calculator.html">Risk:Reward Calculator</a>.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -308,6 +325,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>SL/TP Formula</h2>
+    <div class="edu-highlight"><strong>Stop Loss Pips</strong> = Risk Amount ÷ (Pip Size × Lots × Contract Size × Quote Rate), then converted to a price level from your entry. Take Profit uses the same pip distance multiplied by your R:R ratio.</div>
+    <h3>Worked example</h3>
+    <p>Entry 1.1000, $100 risk, 1 lot EUR/USD, 1:2 R:R, BUY: pip value = 0.0001 × 1 × 100,000 = $10/pip. Stop loss pips = 100 ÷ 10 = 10 pips → Stop Loss = <strong>1.0990</strong>. Take profit pips = 10 × 2 = 20 pips → Take Profit = <strong>1.1020</strong>.</p>
+    <p><em>Assumption: uses standard 100,000-unit contract sizing and the pair's standard pip size — confirm against your broker's exact contract specification for precise price levels.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Entering negative lot size or R:R</div><div class="edu-card-body">A negative lot size or R:R inverts the Stop Loss and Take Profit — the calculator now rejects this, but always sanity-check that your stop is on the correct side of entry before placing the order.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Moving the stop after entry</div><div class="edu-card-body">Widening a stop that price is approaching converts a small planned loss into a larger unplanned one — decide the stop before entering and don't revisit it mid-trade.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Picking a target with no technical basis</div><div class="edu-card-body">A 1:3 R:R target that lands in the middle of open space, with no resistance/support nearby, is less likely to be reached than one that aligns with an actual technical level.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting the lot size must match your broker</div><div class="edu-card-body">If the lot size you enter here doesn't match what you actually trade, the resulting price levels won't correspond to your real risk.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -332,9 +367,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. NFA</div><div class="edu-card-body">Retail forex risk-management standards — <a href="https://www.nfa.futures.org" target="_blank" rel="nofollow noopener">nfa.futures.org</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🇪🇺 ESMA</div><div class="edu-card-body">EU retail forex/CFD framework — <a href="https://www.esma.europa.eu" target="_blank" rel="nofollow noopener">esma.europa.eu</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Broker contract specs</div><div class="edu-card-body">Exact pip size and contract size vary by broker and instrument — confirm against your own broker's specification sheet for precise price levels.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 12 July 2026 · Formulas use standard 100,000-unit contract sizing unless your broker specifies otherwise.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -361,7 +402,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=29" defer></script>
+<script src="app.js?v=31" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

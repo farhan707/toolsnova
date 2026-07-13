@@ -1,0 +1,12 @@
+tn_eos:
+  version: 2.0.0-alpha
+  status: development
+entry:
+  readme: README.md
+  master: MASTER.md
+  architecture: ARCHITECTURE.md
+workflow:
+  - Discovery
+  - Implementation
+  - QA
+  - PullRequest

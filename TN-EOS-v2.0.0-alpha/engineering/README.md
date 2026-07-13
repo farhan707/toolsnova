@@ -1,3 +1,0 @@
-# Engineering
-
-Engineering entry point.

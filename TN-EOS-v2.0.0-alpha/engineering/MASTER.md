@@ -1,3 +1,0 @@
-# MASTER
-
-Engineering Constitution placeholder.

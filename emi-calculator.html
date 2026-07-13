@@ -39,6 +39,8 @@
 {"@context":"https://schema.org","@type":"WebApplication","name":"EMI Calculator Online — Loan & Mortgage EMI Calculator","url":"https://toolsnova.net/emi-calculator","description":"Calculate monthly EMI for any loan or mortgage. See total interest paid and principal breakdown. Free online EMI calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is EMI?","acceptedAnswer":{"@type":"Answer","text":"Equated Monthly Instalment — the fixed monthly payment covering both interest and principal repayment, structured so the loan is fully repaid by end of tenure."}},{"@type":"Question","name":"What is the EMI formula?","acceptedAnswer":{"@type":"Answer","text":"EMI = P × r × (1+r)ⁿ / ((1+r)ⁿ − 1), where P = principal, r = monthly rate (annual rate / 12 / 100), n = total months."}},{"@type":"Question","name":"Shorter vs longer tenure?","acceptedAnswer":{"@type":"Answer","text":"Shorter tenure = higher EMI but less total interest. Longer tenure = lower EMI but significantly more interest overall. Choose the shortest tenure your budget can support."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"EMI Calculator","item":"https://toolsnova.net/emi-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -230,11 +232,30 @@ gtag('config', 'G-S6PPGS7N63');
         </div>
       </div>
     </div>
-    <button class="btn primary" onclick="calcEMI()" style="max-width:160px">Calculate EMI →</button>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="calcEMI()" style="max-width:160px">Calculate EMI →</button>
+      <span class="status-badge" id="emi-status">enter loan details</span>
+    </div>
   </div>
-  <div><div class="pane-label">Result</div>
+  <div class="stats-row" id="emi-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Monthly EMI</div><div class="stat-value accent" id="emi-stat-emi">—</div></div>
+    <div class="stat-card"><div class="stat-label">Total Interest</div><div class="stat-value" id="emi-stat-interest">—</div></div>
+    <div class="stat-card"><div class="stat-label">Total Amount</div><div class="stat-value" id="emi-stat-total">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown</div>
   <div class="output-box" id="emi-output" style="min-height:120px;white-space:pre;cursor:pointer" onclick="copyEl('emi-output')"></div></div>
   <div id="emi-chart"></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check Interest % against the principal</div><div class="edu-card-body">If total interest is more than 50-60% of the principal, a shorter tenure or a lower rate would meaningfully reduce your total cost — this figure is shown directly in the breakdown above.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Compare against your income before committing</div><div class="edu-card-body">Most lenders cap EMI at 40-50% of net monthly income. Check this EMI against that threshold before treating the loan as affordable.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A longer tenure lowers EMI but raises total cost</div><div class="edu-card-body">Re-run this calculator at a shorter tenure to see the trade-off directly — a higher monthly payment now often means significantly less paid overall.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Comparing more than one loan offer? Use the <a href="loan-emi-comparison.html">Loan EMI Comparison Calculator</a> to see up to 4 loans side by side.</div>
+  </section>
+
   <section style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
     <h2 style="font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:.8rem;color:var(--text2)">About EMI</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
@@ -292,6 +313,29 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>EMI Formula</h2>
+    <div class="edu-highlight"><strong>EMI</strong> = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)</div>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">P — Principal</div><div class="edu-card-body">The loan amount borrowed, before interest.</div></div>
+      <div class="edu-card"><div class="edu-card-title">r — Monthly rate</div><div class="edu-card-body">Annual interest rate ÷ 12 ÷ 100, expressed as a decimal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">n — Tenure in months</div><div class="edu-card-body">Total number of monthly payments over the life of the loan.</div></div>
+    </div>
+    <h3>Worked example</h3>
+    <p>$500,000 principal, 8.5% annual rate, 20-year (240-month) tenure: monthly rate = 8.5 ÷ 12 ÷ 100 = 0.007083. EMI = 500,000 × 0.007083 × (1.007083)^240 ÷ ((1.007083)^240 − 1) = <strong>$4,339.12/month</strong>. Total paid over 240 months ≈ $1,041,388, of which <strong>≈$541,388 is interest</strong> — more than the original principal.</p>
+    <p><em>Assumption: uses the standard reducing-balance method most banks use — confirm your lender uses the same method, since a flat-rate loan at the same quoted rate produces a different, generally higher, effective cost.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Comparing rates without matching tenure</div><div class="edu-card-body">A lower rate over a longer tenure can cost more in total interest than a higher rate over a shorter one — always check total interest, not just the headline rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing flat rate with reducing balance</div><div class="edu-card-body">This calculator uses reducing balance (interest charged only on the outstanding principal). A flat-rate loan quoted at the same percentage costs meaningfully more — confirm which method your lender actually uses.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Sizing the loan to what's approved, not what's comfortable</div><div class="edu-card-body">Banks may approve an EMI up to 40-50% of income — that's a lending limit, not a recommendation for your own budget.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting fees and insurance</div><div class="edu-card-body">This calculator computes principal and interest only — processing fees, mandatory insurance, and other charges add to the real cost of the loan.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -308,9 +352,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ Consumer Financial Protection Bureau</div><div class="edu-card-body">U.S. loan and mortgage disclosure standards — <a href="https://www.consumerfinance.gov" target="_blank" rel="nofollow noopener">consumerfinance.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your lender's loan agreement</div><div class="edu-card-body">Exact rate, fees, and calculation method vary by lender — always confirm against your own loan's official terms.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 13 July 2026 · Uses the standard reducing-balance EMI formula unless your lender specifies a different method.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -337,7 +386,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=31" defer></script>
+<script src="app.js?v=33" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

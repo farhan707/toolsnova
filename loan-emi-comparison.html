@@ -59,60 +59,87 @@
   </script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is EMI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "EMI stands for Equated Monthly Installment. It is the fixed monthly payment you make to a bank or lender to repay a loan over a specified period. Each EMI consists of two components: principal repayment and interest. In early months, a larger portion goes toward interest; later months have more principal repayment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is EMI calculated?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "EMI is calculated using the formula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the principal loan amount, r is the monthly interest rate (annual rate divided by 12), and n is the loan tenure in months. This tool uses this standard formula for all calculations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between flat rate and reducing balance interest?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In a flat rate loan, interest is calculated on the full principal for the entire tenure. In a reducing balance loan (standard EMI), interest is calculated on the outstanding principal each month, which decreases as you repay. Reducing balance results in lower total interest paid and is the standard method used by most banks."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which loan is best — lower EMI or shorter tenure?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A longer tenure gives you a lower monthly EMI but results in significantly higher total interest paid. A shorter tenure means higher EMI but much lower total cost. If you can afford it, choosing a shorter tenure saves considerable money. Use this comparison tool to see exactly how much you save by adjusting the tenure."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much home loan can I get on my salary?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most banks allow a maximum EMI of 40–50% of your monthly net income. For example, if your monthly salary is PKR 100,000, your maximum EMI should be around PKR 40,000–50,000. You can use this calculator to find which loan amount and tenure combination keeps your EMI within that range."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is a good interest rate for a home loan in Pakistan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Home loan interest rates in Pakistan typically range from 18% to 24% per annum depending on the bank, loan tenure, and borrower profile. Islamic home finance (Murabaha or Diminishing Musharakah) rates are usually similar. Rates fluctuate with the State Bank of Pakistan policy rate."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is EMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EMI stands for Equated Monthly Installment — the fixed monthly payment you make to repay a loan. Each EMI covers both principal and interest. Early payments are interest-heavy; later payments are mostly principal repayment."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How is EMI calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is the tenure in months. This is the reducing balance method used by most banks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which loan is best — lower EMI or shorter tenure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A longer tenure gives lower monthly EMI but much higher total interest. A shorter tenure means higher EMI but significantly lower total cost. If you can afford it, a shorter tenure always saves money. Use this tool to see the exact difference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between flat rate and reducing balance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flat rate calculates interest on the full original principal throughout the tenure. Reducing balance calculates interest only on the outstanding principal each month, which decreases over time. Reducing balance results in lower total interest and is the standard method used by most banks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much home loan can I get on my salary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most banks allow a maximum EMI of 40–50% of your monthly net income. If your monthly salary is PKR 100,000, your maximum EMI should be around PKR 40,000–50,000. Use this calculator to find which loan amount and tenure keeps your EMI within that range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good interest rate for a home loan in Pakistan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Home loan rates in Pakistan typically range from 18% to 24% per annum depending on the bank, tenure, and borrower profile. Rates fluctuate with the State Bank of Pakistan policy rate. Compare multiple bank rates using this tool to find the best deal."
+      }
+    }
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ToolsNova",
+      "item": "https://toolsnova.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Finance Tools",
+      "item": "https://toolsnova.net/finance-tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Loan EMI Comparison Calculator",
+      "item": "https://toolsnova.net/loan-emi-comparison"
+    }
+  ]
+}
   </script>
 
   <style>
@@ -545,6 +572,35 @@
       <p>Making a larger down payment reduces the principal and therefore total interest paid. Choosing a shorter tenure increases monthly EMI but significantly reduces total interest cost. Even one extra EMI per year (prepayment) can shorten your loan by 2–3 years. Compare loans using this tool to find the optimal balance between affordable monthly payments and lowest total cost.</p>
     </div>
 
+    <div class="edu-section">
+      <h2>Decision Support</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">Don't just pick the lowest EMI</div><div class="edu-card-body">The lowest monthly payment usually comes from the longest tenure — check the "Total interest" and "Extra vs best" figures too, since a lower EMI can still mean paying far more over the life of the loan.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Use the "Best" highlight as a starting point, not a final answer</div><div class="edu-card-body">The card marked Best has the lowest EMI among the loans you entered — it isn't automatically the best overall deal if it also has a much longer tenure. Weigh both figures together.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Match the preset to your actual loan type</div><div class="edu-card-body">Home, car, personal, and business loan presets use realistic starting rates and tenures for each category — starting from the right preset gets you a more useful comparison faster than starting from Custom.</div></div>
+      </div>
+      <div class="edu-highlight"><strong>➜ Next step:</strong> Once you've picked a loan, run the exact numbers through the <a href="emi-calculator.html">EMI Calculator</a> for a single detailed breakdown, or check overall affordability with the <a href="auto-loan-calculator.html">Auto Loan Calculator</a> if you're financing a vehicle.</div>
+    </div>
+
+    <div class="edu-section">
+      <h2>Common Mistakes</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">Comparing rates without matching tenure</div><div class="edu-card-body">A lower rate with a longer tenure can still cost more in total interest than a higher rate with a shorter tenure — always compare the full picture, not the headline rate alone.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Ignoring fees and charges</div><div class="edu-card-body">This calculator compares principal, rate, and tenure — it doesn't include processing fees, insurance, or other bank charges that can meaningfully change which loan is actually cheapest.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Assuming flat rate and reducing balance are the same</div><div class="edu-card-body">A flat rate loan charges interest on the full original principal for the entire tenure, while reducing balance (used here) charges interest only on what's still owed — the same quoted rate produces very different real costs under each method.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Sizing the EMI to what a bank will approve, not what you can afford</div><div class="edu-card-body">Banks often approve EMIs up to 40–50% of net income, but approved doesn't mean comfortable — leave room in your budget for other expenses and financial goals.</div></div>
+      </div>
+    </div>
+
+    <div class="edu-section">
+      <h2>References</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">🏛️ State Bank of Pakistan</div><div class="edu-card-body">Policy rate and banking regulation — <a href="https://www.sbp.org.pk" target="_blank" rel="nofollow noopener">sbp.org.pk</a></div></div>
+        <div class="edu-card"><div class="edu-card-title">📄 Your bank's loan agreement</div><div class="edu-card-body">Exact rate, fees, and calculation method (flat vs. reducing balance) vary by bank — always confirm against your own loan's official terms before deciding.</div></div>
+      </div>
+      <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 13 July 2026 · Uses the standard reducing-balance EMI formula — confirm your bank uses the same method before comparing quoted rates directly.</p>
+    </div>
+
     <div class="faq-section">
       <h2>Frequently asked questions</h2>
 
@@ -611,7 +667,7 @@
   </nav>
 </footer>
 
-  <script src="app.js?v=31" defer></script>
+  <script src="app.js?v=33" defer></script>
   <script>
     const SYMBOLS = { PKR:'Rs ', USD:'$', INR:'₹', AED:'AED ', GBP:'£', SAR:'SAR ', BDT:'৳', MYR:'RM ' };
     const COLORS  = ['#2563eb','#10b981','#f59e0b','#8b5cf6'];
@@ -639,7 +695,7 @@
       return sym + Math.round(n).toLocaleString();
     }
 
-    function calcEMI(amount, annualRate, tenureYears) {
+    function calcLoanEMI(amount, annualRate, tenureYears) {
       const r = annualRate / 100 / 12;
       const n = tenureYears * 12;
       if (r === 0) return { emi: amount / n, total: amount, interest: 0, n };
@@ -655,7 +711,7 @@
       while (loans.length < count) loans.push({ name:'Loan ' + String.fromCharCode(65 + loans.length), amount:3000000, rate:20, tenure:10 });
       const grid = document.getElementById('loansGrid');
       grid.innerHTML = '';
-      const results = loans.slice(0, count).map(l => calcEMI(l.amount, l.rate, l.tenure));
+      const results = loans.slice(0, count).map(l => calcLoanEMI(l.amount, l.rate, l.tenure));
       const emis    = results.map(r => r.emi);
       const bestIdx = emis.indexOf(Math.min(...emis));
       const worstIdx= emis.indexOf(Math.max(...emis));
@@ -671,7 +727,7 @@
         card.className = 'loan-card' + (isBest ? ' best' : isWorst ? ' worst' : '');
         card.innerHTML = `
           <div class="loan-card-header">
-            <input class="loan-name-input" value="${escHtml(l.name)}" oninput="loans[${i}].name=this.value; updateComparisons()" style="color:${COLORS[i]}">
+            <input class="loan-name-input" value="${escLoanHtml(l.name)}" oninput="loans[${i}].name=this.value; updateComparisons()" style="color:${COLORS[i]}">
             ${isBest  ? '<span class="best-badge">&#10003; Best</span>'   : ''}
             ${isWorst ? '<span class="worst-badge">&#8593; Most costly</span>' : ''}
           </div>
@@ -703,7 +759,7 @@
 
     function updateComparisons() {
       const count   = getCount();
-      const results = loans.slice(0, count).map((l,i) => ({ ...calcEMI(l.amount, l.rate, l.tenure), name: l.name, color: COLORS[i] }));
+      const results = loans.slice(0, count).map((l,i) => ({ ...calcLoanEMI(l.amount, l.rate, l.tenure), name: l.name, color: COLORS[i] }));
       const emis    = results.map(r => r.emi);
       const totals  = results.map(r => r.total);
       const ints    = results.map(r => r.interest);
@@ -716,7 +772,7 @@
         <thead>
           <tr>
             <th>Metric</th>
-            ${results.map((r,i) => `<th style="color:${r.color}">${escHtml(r.name)}</th>`).join('')}
+            ${results.map((r,i) => `<th style="color:${r.color}">${escLoanHtml(r.name)}</th>`).join('')}
           </tr>
         </thead>
         <tbody>
@@ -761,14 +817,14 @@
             ${results.map((r,i) => `
               <div class="bar-legend">
                 <div class="bar-dot" style="background:${r.color}"></div>
-                ${escHtml(r.name)}: ${fmtFull(m.vals[i])}
+                ${escLoanHtml(r.name)}: ${fmtFull(m.vals[i])}
               </div>`).join('')}
           </div>
         </div>`).join('');
 
       const amortSel = document.getElementById('amortSelect');
       const prev = amortSel.value;
-      amortSel.innerHTML = results.map((r,i) => `<option value="${i}">${escHtml(r.name)}</option>`).join('');
+      amortSel.innerHTML = results.map((r,i) => `<option value="${i}">${escLoanHtml(r.name)}</option>`).join('');
       if (prev && parseInt(prev) < count) amortSel.value = prev;
       renderAmort();
     }
@@ -779,7 +835,7 @@
       if (!l) return;
       const r      = l.rate / 100 / 12;
       const n      = l.tenure * 12;
-      const emi    = calcEMI(l.amount, l.rate, l.tenure).emi;
+      const emi    = calcLoanEMI(l.amount, l.rate, l.tenure).emi;
       let balance  = l.amount;
       let rows     = '<thead><tr><th>#</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>';
       for (let m = 1; m <= n; m++) {
@@ -801,7 +857,7 @@
     function calcAll() {
       // Update only results — do NOT rebuild cards (would lose focus)
       const count   = getCount();
-      const results = loans.slice(0, count).map(l => calcEMI(l.amount, l.rate, l.tenure));
+      const results = loans.slice(0, count).map(l => calcLoanEMI(l.amount, l.rate, l.tenure));
       const emis    = results.map(r => r.emi);
       const bestIdx = emis.indexOf(Math.min(...emis));
       const worstIdx= emis.indexOf(Math.max(...emis));
@@ -856,7 +912,7 @@
       renderCards();
     }
 
-    function escHtml(s) {
+    function escLoanHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 

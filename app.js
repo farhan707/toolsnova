@@ -689,9 +689,15 @@ function calcEMI() {
   const n = parseFloat(document.getElementById('emi-tenure')?.value);
   const tenureType = document.getElementById('emi-tenure-type')?.value||'months';
   const out = document.getElementById('emi-output');
+  const summary = document.getElementById('emi-summary');
   if (!out) return;
   const months = tenureType==='years' ? n*12 : n;
-  if (!P||!r||!months||P<=0||r<=0||months<=0) { out.textContent='Enter valid loan details.'; out.className='output-box error'; return; }
+  if (!P||!r||!months||P<=0||r<=0||months<=0) {
+    out.textContent='Enter valid loan details.'; out.className='output-box error';
+    setStatus('emi-status','','enter loan details');
+    if (summary) summary.style.display='none';
+    return;
+  }
   const emi = P*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1);
   const totalAmt = emi*months;
   const totalInt = totalAmt-P;
@@ -699,6 +705,13 @@ function calcEMI() {
   out.textContent=
     `Monthly EMI:       ${formatCur(emi)}\nTotal Amount:      ${formatCur(totalAmt)}\nTotal Interest:    ${formatCur(totalInt)}\nPrincipal:         ${formatCur(P)}\n\nInterest %:        ${(totalInt/P*100).toFixed(2)}% of principal`;
   renderAmortChart('emi-chart', P, totalInt);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('emi-stat-emi').textContent = formatCur(emi);
+    document.getElementById('emi-stat-interest').textContent = formatCur(totalInt);
+    document.getElementById('emi-stat-total').textContent = formatCur(totalAmt);
+  }
+  setStatus('emi-status','ok',`✓ EMI: ${formatCur(emi)}/mo`);
 }
 
 /* ════════════════════════════════════
@@ -3923,20 +3936,36 @@ function mtgClear() {
 
 /* ── AUTO LOAN CALCULATOR ── */
 function autoLoanCalc() {
-  const price    = parseFloat(document.getElementById('auto-price')?.value);
-  const down     = parseFloat(document.getElementById('auto-down')?.value) || 0;
-  const trade    = parseFloat(document.getElementById('auto-trade')?.value) || 0;
-  const rate     = parseFloat(document.getElementById('auto-rate')?.value);
-  const months   = parseInt(document.getElementById('auto-months')?.value) || 60;
-  const tax      = parseFloat(document.getElementById('auto-tax')?.value) || 0;
+  const price     = parseFloat(document.getElementById('auto-price')?.value);
+  const down      = parseFloat(document.getElementById('auto-down')?.value) || 0;
+  const trade     = parseFloat(document.getElementById('auto-trade')?.value) || 0;
+  const rate      = parseFloat(document.getElementById('auto-rate')?.value);
+  const monthsRaw = parseInt(document.getElementById('auto-months')?.value);
+  const tax       = parseFloat(document.getElementById('auto-tax')?.value) || 0;
   const out      = document.getElementById('auto-output');
+  const summary  = document.getElementById('auto-summary');
   if (!out) return;
   if (isNaN(price)||isNaN(rate)||price<=0||rate<0) {
-    out.textContent='Enter vehicle price and interest rate.'; out.className='output-box error'; return;
+    out.textContent='Enter vehicle price and interest rate.'; out.className='output-box error';
+    setStatus('auto-status','','enter vehicle price and rate');
+    if (summary) summary.style.display='none';
+    return;
   }
+  if (!isNaN(monthsRaw) && monthsRaw<=0) {
+    out.textContent='Loan term must be a positive number of months.'; out.className='output-box error';
+    setStatus('auto-status','err','⚠ loan term must be positive');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  const months = isNaN(monthsRaw) ? 60 : monthsRaw;
   const taxAmt   = price * tax / 100;
   const principal= price + taxAmt - down - trade;
-  if (principal <= 0) { out.textContent='Down payment + trade-in exceeds vehicle price.'; out.className='output-box error'; return; }
+  if (principal <= 0) {
+    out.textContent='Down payment + trade-in exceeds vehicle price.'; out.className='output-box error';
+    setStatus('auto-status','err','⚠ down payment + trade-in exceeds price');
+    if (summary) summary.style.display='none';
+    return;
+  }
   const r   = rate / 100 / 12;
   let pmt;
   if (r === 0) { pmt = principal / months; }
@@ -3966,12 +3995,20 @@ function autoLoanCalc() {
       const ti = p*mo-principal;
       return `  ${mo} mo: ${formatCur(p)}/mo  (${formatCur(ti)} interest)`;
     }).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('auto-stat-pmt').textContent = `${formatCur(pmt)}/mo`;
+    document.getElementById('auto-stat-interest').textContent = formatCur(totalInt);
+    document.getElementById('auto-stat-loan').textContent = formatCur(principal);
+  }
   setStatus('auto-status','ok',`✓ ${formatCur(pmt)}/mo · ${formatCur(totalInt)} interest`);
 }
 function autoClear() {
   ['auto-price','auto-down','auto-trade','auto-rate','auto-months','auto-tax'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('auto-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('auto-summary');
+  if(s) s.style.display='none';
   setStatus('auto-status','','enter vehicle price and rate');
 }
 
@@ -5872,13 +5909,30 @@ function ovulationCalc() {
 
 /* ── 10. ROI CALCULATOR ── */
 function roiCalc() {
-  const invest   = parseFloat(document.getElementById('roi-invest')?.value);
-  const returns  = parseFloat(document.getElementById('roi-return')?.value);
-  const years    = parseFloat(document.getElementById('roi-years')?.value)||1;
+  const invest    = parseFloat(document.getElementById('roi-invest')?.value);
+  const returns   = parseFloat(document.getElementById('roi-return')?.value);
+  const yearsRaw  = parseFloat(document.getElementById('roi-years')?.value);
   const out      = document.getElementById('roi-output');
+  const summary  = document.getElementById('roi-summary');
   if (!out) return;
   if (isNaN(invest)||isNaN(returns)||invest<=0) {
-    out.textContent='Enter investment amount and net return.'; out.className='output-box error'; return;
+    out.textContent='Enter investment amount and net return.'; out.className='output-box error';
+    setStatus('roi-status','','enter investment details');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (!isNaN(yearsRaw) && yearsRaw<=0) {
+    out.textContent='Time period must be a positive number of years.'; out.className='output-box error';
+    setStatus('roi-status','err','⚠ time period must be positive');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  const years = isNaN(yearsRaw) ? 1 : yearsRaw;
+  if (returns<0) {
+    out.textContent='Total return cannot be negative — enter 0 if the investment is a total loss, or the actual dollar amount returned.'; out.className='output-box error';
+    setStatus('roi-status','err','⚠ return cannot be negative');
+    if (summary) summary.style.display='none';
+    return;
   }
   const netProfit = returns - invest;
   const roi = (netProfit/invest)*100;
@@ -5899,6 +5953,12 @@ function roiCalc() {
       const ann=(Math.pow(returns/invest,1/yr)-1)*100;
       return `  ${yr} yr${yr!==1?'s':' '}: ${ann.toFixed(2)}% annualised ROI`;
     }).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('roi-stat-roi').textContent = `${roi.toFixed(2)}%`;
+    document.getElementById('roi-stat-result').textContent = netProfit>=0 ? 'Profit' : 'Loss';
+    document.getElementById('roi-stat-annual').textContent = `${annualRoi.toFixed(2)}%/yr`;
+  }
   setStatus('roi-status',roi>=0?'ok':'err',`✓ ROI: ${roi.toFixed(2)}%`);
 }
 

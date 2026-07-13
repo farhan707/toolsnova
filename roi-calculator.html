@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ROI Calculator","url":"https://toolsnova.net/roi-calculator","description":"Calculate return on investment (ROI), annualised ROI, and return multiple. Shows profit/loss and compares different time periods. Free ROI calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is ROI?","acceptedAnswer":{"@type":"Answer","text":"Return on Investment (ROI) = (Net Profit / Investment Cost) × 100. A 50% ROI means you made 50 cents for every dollar invested. ROI doesn't account for time — a 50% ROI in 1 year is much better than 50% over 10 years."}},{"@type":"Question","name":"What is annualised ROI?","acceptedAnswer":{"@type":"Answer","text":"Annualised ROI (CAGR) accounts for time by calculating the equivalent yearly return. Formula: ((Final Value / Initial Value) ^ (1/years) - 1) × 100. This allows fair comparison between investments of different durations."}},{"@type":"Question","name":"What is a good ROI?","acceptedAnswer":{"@type":"Answer","text":"It depends on the investment type. Stock market average: 7-10%/year. Real estate: 8-12%/year. Savings account: 2-5%. Startup investment: 20%+. Always compare ROI to the risk taken — a higher ROI investment typically carries more risk."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"ROI Calculator","item":"https://toolsnova.net/roi-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -230,10 +232,24 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="roi-years" placeholder="e.g. 3" class="b2-input" oninput="roiCalc()" aria-label="Time Period (years)">
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="roi-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">ROI</div><div class="stat-value accent" id="roi-stat-roi">—</div></div>
+    <div class="stat-card"><div class="stat-label">Result</div><div class="stat-value" id="roi-stat-result">—</div></div>
+    <div class="stat-card"><div class="stat-label">Annualised ROI</div><div class="stat-value" id="roi-stat-annual">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="roi-output" onclick="copyEl('roi-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
-  
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Compare Annualised ROI against alternatives</div><div class="edu-card-body">A high total ROI over many years can still be a mediocre annual return — the Annualised ROI figure is the fair way to compare this investment against other opportunities.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check the Comparison table for consistency</div><div class="edu-card-body">If the annualised return changes dramatically across different time periods, the underlying growth wasn't steady — investigate what drove the difference before treating any single figure as representative.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A negative ROI needs a plan, not just a number</div><div class="edu-card-body">If Net Profit/Loss is negative, decide explicitly whether to hold, exit, or average down — don't let the calculator's output substitute for an actual decision.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Evaluating a trading account specifically? Use the <a href="funded-account-roi-calculator.html">Funded Account ROI Calculator</a> or the <a href="solar-panel-roi-calculator.html">Solar Panel ROI Calculator</a> for asset-specific analysis.</div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -274,6 +290,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>ROI Formula</h2>
+    <div class="edu-highlight"><strong>ROI</strong> = (Net Profit ÷ Investment) × 100, where Net Profit = Total Return − Investment. <strong>Annualised ROI</strong> = ((Total Return ÷ Investment)^(1 ÷ Years) − 1) × 100.</div>
+    <h3>Worked example</h3>
+    <p>$10,000 invested, $15,000 returned after 3 years: Net Profit = $15,000 − $10,000 = <strong>$5,000</strong>. ROI = (5,000 ÷ 10,000) × 100 = <strong>50%</strong>. Annualised ROI = ((15,000 ÷ 10,000)^(1/3) − 1) × 100 = <strong>14.47%/year</strong> — the fair comparison figure against a savings account or another investment's annual return.</p>
+    <p><em>Assumption: Total Return must be the actual dollar amount received back, not additional profit alone — entering only the profit figure will overstate the ROI.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Entering profit instead of total return</div><div class="edu-card-body">"Total Return" means the full amount received back (principal + gain), not just the profit portion — entering profit alone will double-count and overstate the ROI.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing ROI across different time periods directly</div><div class="edu-card-body">A 50% ROI over 1 year is far better than 50% over 10 years — always compare Annualised ROI, not raw ROI, when time periods differ.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring fees, taxes, and inflation</div><div class="edu-card-body">This calculator computes raw ROI on the numbers entered — transaction costs, taxes on gains, and inflation all reduce the real return below the headline figure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating a short backtest as a reliable annualised rate</div><div class="edu-card-body">A strong return over a few months, projected forward at the same rate for a year, usually overstates what's actually achievable — short periods have more variance than they appear to.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -290,10 +324,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. Securities and Exchange Commission</div><div class="edu-card-body">Investment return disclosure standards — <a href="https://www.sec.gov" target="_blank" rel="nofollow noopener">sec.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your brokerage statement</div><div class="edu-card-body">For exact realised returns, use the total return figure from your official account statement rather than an estimate.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 13 July 2026 · ROI figures shown are before fees, taxes, and inflation unless you factor them into your inputs.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -320,7 +358,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=31" defer></script>
+<script src="app.js?v=33" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

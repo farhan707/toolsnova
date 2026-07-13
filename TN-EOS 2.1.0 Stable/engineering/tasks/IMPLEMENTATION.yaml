@@ -1,0 +1,76 @@
+task:
+  id: TN-TASK-IMPLEMENTATION-001
+  name: Implementation
+  version: 0.4.0
+
+purpose: >
+  Implement approved engineering changes while preserving
+  architecture, maintainability, and regression safety.
+
+inputs:
+
+  - Discovery Report
+
+  - Specification
+
+resolve_context:
+
+  - Load Engineering Context
+
+execution:
+
+  - Implement approved changes
+
+  - Reuse existing components
+
+  - Preserve architecture
+
+  - Preserve styling
+
+  - Preserve accessibility
+
+  - Preserve SEO
+
+constraints:
+
+  - Stay within approved scope
+
+  - No unrelated improvements
+
+  - No speculative changes
+
+deliverables:
+
+  - Updated files
+
+  - Change summary
+
+self_verification:
+
+  Verify:
+
+    - Functional behavior
+
+    - Validation
+
+    - Business logic
+
+    - UX
+
+    - Search
+
+    - Regression
+
+exit_criteria:
+
+  - Implementation complete
+
+  - Self verification passed
+
+  - Scope preserved
+
+outputs:
+
+  save_as:
+
+    implementation-report.md

@@ -1,0 +1,55 @@
+family:
+  id: TN-FAMILY-DEVELOPER-001
+  name: Developer
+  version: 0.4.0
+  status: Stable
+  owner: TN-EOS
+
+compatible_with:
+  tn_eos: ">=2.1.0"
+
+inherits:
+  blueprint: developer
+
+domain: DEVELOPER
+
+purpose: >
+  Build reliable developer tools that preserve data integrity
+  and provide deterministic output.
+
+rules:
+  - CONTENT
+  - SEARCH
+  - QUALITY_GATE
+
+workflow:
+  discovery: required
+  implementation: required
+  qa: required
+  delivery: required
+
+entities:
+  required:
+    - JSON
+    - Base64
+    - URL Encoding
+    - Hashing
+    - Encoding
+
+education:
+  required:
+    - Input Examples
+    - Output Examples
+    - Technical Notes
+
+references:
+  preferred:
+    - RFC Documents
+    - MDN
+    - Official Specifications
+
+quality:
+  priorities:
+    - Correctness
+    - Determinism
+    - Data Integrity

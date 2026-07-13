@@ -1,0 +1,104 @@
+page:
+  id: TN-PAGE-HEIGHT-001
+  version: 0.5.0
+  status: Stable
+
+family: converter
+
+title: Height Converter
+
+slug: height-converter
+
+category: Converters
+
+primary_entity:
+
+  Height Converter
+
+secondary_entities:
+
+  - Height Conversion
+
+  - Feet
+
+  - Inches
+
+  - Centimeters
+
+  - Meters
+
+  - Metric System
+
+  - Imperial System
+
+search_intent:
+
+  Informational
+
+calculator:
+
+  type: converter
+
+units:
+
+  input:
+
+    - cm
+
+    - m
+
+    - ft
+
+    - in
+
+  output:
+
+    - cm
+
+    - m
+
+    - ft
+
+    - in
+
+unique_features:
+
+  - Feet and Inches Formatting
+
+  - Human Height Reference Chart
+
+  - Common Height Comparison
+
+related_tools:
+
+  - Weight Converter
+
+  - Length Converter
+
+  - BMI Calculator
+
+references:
+
+  preferred:
+
+    - NIST
+
+    - SI Brochure
+
+success:
+
+  users_can:
+
+    - Convert height accurately
+
+    - Understand measurement systems
+
+    - Compare common units
+
+out_of_scope:
+
+  - Medical diagnosis
+
+  - Growth prediction
+
+  - BMI calculation

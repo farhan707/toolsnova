@@ -1,0 +1,25 @@
+tn_eos:
+  version: 0.3.0
+  compatible_with:
+  tn_eos: ">=2.1.0"
+
+entry:
+  - README.md
+  - MASTER.md
+
+architecture:
+  version: 2.1
+
+workflow:
+  - Discovery
+  - Implementation
+  - SelfReview
+  - QA
+  - Delivery
+
+paths:
+  rules: engineering/rules/
+  blueprints: engineering/blueprints/
+  families: engineering/families/
+  specs: engineering/specs/
+  tasks: engineering/tasks/

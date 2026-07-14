@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Calculator","url":"https://toolsnova.net/retirement-calculator","description":"Project your retirement savings with monthly contributions and compound growth. See your retirement income using the 4% rule. Free retirement calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do I need to retire?","acceptedAnswer":{"@type":"Answer","text":"The most common rule: multiply your desired annual retirement income by 25. To generate $50,000/year, you need $1.25 million (using the 4% rule). This assumes your savings grow at 5–7% annually and you withdraw 4% per year."}},{"@type":"Question","name":"What is the 4% rule?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule states you can withdraw 4% of your retirement savings annually with a very low risk of running out of money over 30 years. Based on historical US market returns. Some advisors now recommend 3–3.5% due to lower expected future returns."}},{"@type":"Question","name":"What is a realistic investment return?","acceptedAnswer":{"@type":"Answer","text":"Historical US stock market average: ~10% annually before inflation, ~7% after inflation. A diversified portfolio (stocks + bonds) typically averages 5–8% real return. This calculator uses 7% as a default — adjust to match your actual investment mix."}},{"@type":"Question","name":"Should I max out my 401k or IRA?","acceptedAnswer":{"@type":"Answer","text":"Yes, especially if your employer offers matching contributions — that's a guaranteed 50–100% return on investment. For 2026: 401(k) limit is $24,500/year ($32,500 if 50+). IRA limit is $7,500/year. Prioritise: 1) employer match, 2) max IRA, 3) max 401(k)."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Retirement Calculator","item":"https://toolsnova.net/retirement-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -243,8 +245,23 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="ret-withdraw" placeholder="e.g. 4" value="4" class="b2-input" oninput="retirementCalc()" aria-label="Safe Withdrawal Rate (%)">
     </div>
   </div>
-  <div><div class="pane-label">Retirement Projection <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="ret-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Retirement Savings</div><div class="stat-value accent" id="ret-stat-total">—</div></div>
+    <div class="stat-card"><div class="stat-label">Monthly Income</div><div class="stat-value" id="ret-stat-income">—</div></div>
+    <div class="stat-card"><div class="stat-label">Years to Retire</div><div class="stat-value" id="ret-stat-years">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ret-output" onclick="copyEl('ret-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check Monthly Income against your real expenses</div><div class="edu-card-body">If Monthly Income falls short of your expected retirement spending, consider a higher monthly contribution, a longer working period, or a more realistic (not necessarily higher) growth assumption.</div></div>
+      <div class="edu-card"><div class="edu-card-title">See what this is really worth</div><div class="edu-card-body">A large Retirement Savings figure decades from now is worth less in today's purchasing power — check it against the <a href="inflation-calculator.html">Inflation Calculator</a> before treating it as your real spending power.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A 0% growth projection is your worst-case floor</div><div class="edu-card-body">Running this calculator at 0% growth shows what you'd have from contributions alone, with no market help — a useful conservative baseline to compare against the default 7% projection.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Check your current progress toward this target with the <a href="net-worth-calculator.html">Net Worth Calculator</a>.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -283,9 +300,28 @@ gtag('config', 'G-S6PPGS7N63');
     <h3>Multiple income streams in retirement</h3>
     <p>The most resilient retirement plans combine multiple income sources: investment portfolio withdrawals, rental property income, Social Security or pension, part-time consulting or freelancing, and dividend income. No single source is vulnerable to failure when income is diversified. Even a small pension dramatically reduces the corpus required from personal savings.</p>
     <h3>Tax-advantaged accounts first</h3>
-    <p>Maximize tax-advantaged retirement accounts before taxable investing. 401(k) up to employer match (free money), then Roth IRA ($7,000/year limit), then max 401(k) ($23,000/year), then HSA if eligible ($4,150/year), then taxable accounts. Each dollar in tax-advantaged accounts grows to a significantly larger after-tax amount than the equivalent in taxable accounts.</p>
+    <p>Maximize tax-advantaged retirement accounts before taxable investing. 401(k) up to employer match (free money), then Roth IRA ($7,500/year limit for 2026), then max 401(k) ($24,500/year for 2026), then HSA if eligible ($4,400/year self-only for 2026), then taxable accounts. Each dollar in tax-advantaged accounts grows to a significantly larger after-tax amount than the equivalent in taxable accounts.</p>
     <div class="edu-highlight"><strong>🎯 Retirement readiness check:</strong> Are you saving at least 15% of gross income for retirement? Is your retirement corpus target calculated? Do you have contributions automatically invested (removing decision friction)? Are you maximizing tax-advantaged accounts? If all four answers are yes, you are on track regardless of market fluctuations.</div>
 
+  </section>
+
+  <section class="edu-section">
+    <h2>Retirement Formula &amp; the 4% Rule</h2>
+    <div class="edu-highlight"><strong>Retirement Savings</strong> = (Current Savings compounded to retirement) + (Monthly Contributions compounded to retirement), then <strong>Annual Income</strong> = Retirement Savings × Withdrawal Rate.</div>
+    <p>The default 4% withdrawal rate comes from the <strong>4% rule</strong>, developed by financial planner William Bengen in 1994: historically, withdrawing 4% of a portfolio in the first year of retirement (adjusted for inflation each year after) had a high probability of lasting 30 years without running out, based on historical U.S. market returns. It's a widely-used starting point, not a guarantee — a more conservative 3–3.5% is common for early retirement or long time horizons.</p>
+    <h3>Worked example</h3>
+    <p>$10,000 current savings, $500/month, age 30 to 65 (35 years), 7% growth: Retirement Savings ≈ <strong>$1,015,589</strong>. At the default 4% withdrawal rate, that supports <strong>$40,624/year</strong> (≈$3,385/month) in retirement income.</p>
+    <p><em>Assumption: growth rate is assumed constant for the entire period — real returns vary year to year, and the 4% rule itself is based on historical U.S. market data, not a guarantee of future results.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Treating the growth rate as guaranteed</div><div class="edu-card-body">A 7% average is a reasonable long-term planning assumption, not a promise — actual returns will be higher in some years and negative in others.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring inflation's effect on the target</div><div class="edu-card-body">A dollar amount decades from now buys less than the same amount today — check the projected total against the <a href="inflation-calculator.html">Inflation Calculator</a> to understand its real purchasing power.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using the 4% rule without understanding its assumptions</div><div class="edu-card-body">The 4% rule is based on historical 30-year retirement periods in U.S. markets — a longer retirement, a more conservative allocation, or a different market environment can call for a lower withdrawal rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting other income sources</div><div class="edu-card-body">This calculator projects savings-based income only — Social Security, pensions, or rental income would supplement (or reduce the need for) the withdrawal amount shown here.</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -304,14 +340,18 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Should I max out my 401k or IRA?</div>
-    <div class="faq-a">Yes, especially if your employer offers matching contributions — that's a guaranteed 50–100% return on investment. For 2025: 401k limit is $23,500/year ($31,000 if 50+). IRA limit is $7,000/year. Prioritise: 1) employer match, 2) max IRA, 3) max 401k.</div>
+    <div class="faq-a">Yes, especially if your employer offers matching contributions — that's a guaranteed 50–100% return on investment. For 2026: 401(k) limit is $24,500/year ($32,500 if 50+). IRA limit is $7,500/year. Prioritise: 1) employer match, 2) max IRA, 3) max 401(k).</div>
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ Internal Revenue Service</div><div class="edu-card-body">Current 401(k)/IRA contribution limits — <a href="https://www.irs.gov" target="_blank" rel="nofollow noopener">irs.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. Dept. of Labor</div><div class="edu-card-body">Retirement planning guidance and Social Security integration — <a href="https://www.dol.gov" target="_blank" rel="nofollow noopener">dol.gov</a></div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 14 July 2026 · Contribution limits shown are for 2026. Projections assume constant growth and don't include Social Security, taxes, or pension income.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -338,7 +378,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=33" defer></script>
+<script src="app.js?v=34" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

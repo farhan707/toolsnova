@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Net Worth Calculator","url":"https://toolsnova.net/net-worth-calculator","description":"Calculate your net worth by entering all your assets and liabilities. See your total assets, liabilities, debt-to-asset ratio, and financial health score.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is net worth?","acceptedAnswer":{"@type":"Answer","text":"Net worth = Total Assets − Total Liabilities. Assets include cash, investments, property, vehicles, and valuables. Liabilities include mortgages, car loans, credit card debt, student loans, and other debts. A positive net worth means you own more than you owe."}},{"@type":"Question","name":"What is a good net worth by age?","acceptedAnswer":{"@type":"Answer","text":"General benchmarks: By 30: 1× annual salary. By 40: 3× annual salary. By 50: 6×. By 60: 8×. By 67 (retirement): 10×. These are averages — individual circumstances vary widely. The most important metric is whether your net worth is growing year over year."}},{"@type":"Question","name":"Should I include my home in net worth?","acceptedAnswer":{"@type":"Answer","text":"Yes, include the current market value of your home as an asset and the remaining mortgage as a liability. The difference is your home equity. However, since you can't easily spend home equity, some financial planners track 'liquid net worth' (excluding illiquid assets like real estate)."}},{"@type":"Question","name":"What is a debt-to-asset ratio?","acceptedAnswer":{"@type":"Answer","text":"Debt-to-asset ratio = Total Liabilities ÷ Total Assets. Below 50% is considered healthy. Above 80% means most of your assets are debt-financed. As you pay down debt and build savings, this ratio should decrease over time."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Net Worth Calculator","item":"https://toolsnova.net/net-worth-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -235,6 +237,16 @@ gtag('config', 'G-S6PPGS7N63');
   <div><div class="pane-label">Full Breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="nw-output" onclick="copyEl('nw-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem">Add assets and liabilities to calculate net worth.</div></div>
 
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check your Financial Health label, not just the number</div><div class="edu-card-body">The qualitative label (Strong/Positive/Break-even/Negative) tells you where you stand at a glance — a large net worth with a high Debt-to-Asset Ratio is a different situation than the same number with little debt.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A negative net worth early on is normal, not a crisis</div><div class="edu-card-body">Many people start with negative net worth (student loans, early career) — what matters is the trend over time, not a single snapshot.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Track this regularly, not once</div><div class="edu-card-body">Net worth is a point-in-time snapshot — recalculating quarterly or annually shows whether your financial decisions are actually moving you forward.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Project where consistent saving takes this number with the <a href="retirement-calculator.html">Retirement Calculator</a>, or see what today's dollar figure will really be worth with the <a href="inflation-calculator.html">Inflation Calculator</a>.</div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -246,7 +258,7 @@ gtag('config', 'G-S6PPGS7N63');
       <li><strong>Track over time</strong> — calculate monthly or quarterly and record the number. The trend matters more than the absolute figure.</li>
       <li><strong>Identify improvement areas</strong> — the breakdown shows which assets and liabilities have the most impact on your net worth trajectory.</li>
     </ol>
-    <div class="edu-highlight"><strong>📊 Net worth benchmarks by age (US median):</strong> Age 25: $10,000. Age 35: $76,000. Age 45: $168,000. Age 55: $290,000. Age 65: $385,000. These are medians — half of people are above, half below. The average (mean) is much higher due to wealthy outliers. Focus on your own trajectory, not comparisons.</div>
+    <div class="edu-highlight"><strong>📊 Net worth benchmarks by age (US median, Federal Reserve SCF data, inflation-adjusted):</strong> Under 35: $39,000. 35–44: $135,600. 45–54: $247,200. 55–64: $364,500. 65–74: $409,900. 75+: $335,600. These are medians — half of people are above, half below. The average (mean) is much higher (over $1 million) due to wealthy outliers skewing it upward. Focus on your own trajectory, not comparisons.</div>
 
   </section>
 
@@ -275,6 +287,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Net Worth Formula</h2>
+    <div class="edu-highlight"><strong>Net Worth</strong> = Total Assets − Total Liabilities. Everything you own, minus everything you owe.</div>
+    <h3>Worked example</h3>
+    <p>Assets: $15,000 cash, $85,000 retirement accounts, $120,000 home equity, $8,000 vehicle = <strong>$228,000 total assets</strong>. Liabilities: $180,000 mortgage balance, $12,000 car loan, $3,000 credit card = <strong>$195,000 total liabilities</strong>. Net Worth = 228,000 − 195,000 = <strong>$33,000</strong>.</p>
+    <p><em>Assumption: asset values reflect current market value, not purchase price — an outdated home or vehicle valuation will distort the result.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Using full home value instead of equity</div><div class="edu-card-body">Only your equity (market value minus remaining mortgage) is an asset — counting the full home value while separately listing the mortgage as a liability double-counts the debt-covered portion.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using purchase price instead of current value</div><div class="edu-card-body">Vehicles and most personal property depreciate — using what you paid rather than current market value inflates your assets and your net worth.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting less obvious liabilities</div><div class="edu-card-body">Tax owed, personal loans from family, and unpaid medical bills are real liabilities that are easy to forget but still reduce your true net worth.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing your number to someone else's without context</div><div class="edu-card-body">Age, income history, location, and family circumstances all affect net worth — your own trend over time is a more useful signal than a single comparison to a benchmark or peer.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -295,10 +325,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ Federal Reserve Survey of Consumer Finances</div><div class="edu-card-body">The authoritative source for U.S. household net worth data by age — <a href="https://www.federalreserve.gov/econres/scfindex.htm" target="_blank" rel="nofollow noopener">federalreserve.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your own account statements</div><div class="edu-card-body">For exact current values, use your latest bank, investment, and loan statements rather than estimates.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 14 July 2026 · Benchmark figures are inflation-adjusted from the Fed's 2022 Survey of Consumer Finances (the most recent available; the next survey publishes results in late 2026).</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -325,7 +359,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=33" defer></script>
+<script src="app.js?v=34" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

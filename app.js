@@ -722,15 +722,41 @@ function calcSIP() {
   const r   = parseFloat(document.getElementById('sip-rate')?.value)/100/12;
   const n   = parseFloat(document.getElementById('sip-tenure')?.value)*12;
   const out = document.getElementById('sip-output');
+  const summary = document.getElementById('sip-summary');
   if (!out) return;
-  if (!P||!r||!n||P<=0||n<=0) { out.textContent='Enter valid SIP details.'; out.className='output-box error'; return; }
-  const fv        = P*(Math.pow(1+r,n)-1)/r*(1+r);
+  if (isNaN(P)||isNaN(r)||isNaN(n)||P<=0||n<=0) {
+    out.textContent='Enter valid SIP details.'; out.className='output-box error';
+    setStatus('sip-status','','enter SIP details');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  // A negative or zero monthly rate is a legitimate scenario (a loss or flat
+  // return) — only reject where the math itself becomes undefined: a monthly
+  // growth factor (1 + r) at or below zero.
+  if (1 + r <= 0) {
+    out.textContent='This rate is too negative — the investment would be wiped out before the calculation is meaningful.';
+    out.className='output-box error';
+    setStatus('sip-status','err','⚠ rate too negative');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  // r=0 is a removable singularity in the annuity formula (division by r) —
+  // handled explicitly rather than producing NaN/Infinity: with no growth,
+  // the future value is simply the sum of contributions.
+  const fv = r === 0 ? P*n : P*(Math.pow(1+r,n)-1)/r*(1+r);
   const invested  = P*n;
   const returns   = fv-invested;
-  out.className='output-box success';
+  out.className = returns>=0 ? 'output-box success' : 'output-box error';
   out.textContent=
-    `Future Value:      ${formatCur(fv)}\nTotal Invested:    ${formatCur(invested)}\nTotal Returns:     ${formatCur(returns)}\nReturn %:          ${(returns/invested*100).toFixed(2)}%\n\nMonthly SIP:       ${formatCur(P)}\nTenure:            ${n/12} years (${n} months)`;
+    `Future Value:      ${formatCur(fv)}\nTotal Invested:    ${formatCur(invested)}\nTotal Returns:     ${returns>=0?'':'-'}${formatCur(Math.abs(returns))}\nReturn %:          ${(returns/invested*100).toFixed(2)}%\n\nMonthly SIP:       ${formatCur(P)}\nTenure:            ${n/12} years (${n} months)`;
   renderAmortChart('sip-chart', invested, returns);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('sip-stat-fv').textContent = formatCur(fv);
+    document.getElementById('sip-stat-returns').textContent = `${returns>=0?'':'-'}${formatCur(Math.abs(returns))}`;
+    document.getElementById('sip-stat-pct').textContent = `${(returns/invested*100).toFixed(2)}%`;
+  }
+  setStatus('sip-status', returns>=0?'ok':'err', `${returns>=0?'✓':'⚠'} Future Value: ${formatCur(fv)}`);
 }
 
 /* ════════════════════════════════════
@@ -742,14 +768,39 @@ function calcCI() {
   const t  = parseFloat(document.getElementById('ci-time')?.value);
   const n  = parseInt(document.getElementById('ci-freq')?.value||12);
   const out= document.getElementById('ci-output');
+  const summary = document.getElementById('ci-summary');
   if (!out) return;
-  if (!P||!r||!t||P<=0||t<=0) { out.textContent='Enter valid values.'; out.className='output-box error'; return; }
+  if (isNaN(P)||isNaN(r)||isNaN(t)||P<=0||t<=0) {
+    out.textContent='Enter valid values.'; out.className='output-box error';
+    setStatus('ci-status','','enter investment details');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  // A negative or zero rate is a legitimate scenario (a loss or flat return) —
+  // only reject the point where the math itself becomes undefined: if the
+  // per-period growth factor (1 + r/n) is zero or negative, raising it to a
+  // non-integer power produces NaN, and a negative base makes the result
+  // meaningless regardless.
+  if (1 + r/n <= 0) {
+    out.textContent='This rate is too negative for the selected compounding frequency — the investment would be wiped out before the calculation is meaningful.';
+    out.className='output-box error';
+    setStatus('ci-status','err','⚠ rate too negative');
+    if (summary) summary.style.display='none';
+    return;
+  }
   const A  = P*Math.pow(1+r/n, n*t);
   const ci = A-P;
-  out.className='output-box success';
+  out.className = ci>=0 ? 'output-box success' : 'output-box error';
   out.textContent=
-    `Final Amount:      ${formatCur(A)}\nCompound Interest: ${formatCur(ci)}\nPrincipal:         ${formatCur(P)}\nRate of Return:    ${(ci/P*100).toFixed(2)}%`;
+    `Final Amount:      ${formatCur(A)}\nCompound Interest: ${ci>=0?'':'-'}${formatCur(Math.abs(ci))}\nPrincipal:         ${formatCur(P)}\nRate of Return:    ${(ci/P*100).toFixed(2)}%`;
   renderAmortChart('ci-chart', P, ci);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('ci-stat-final').textContent = formatCur(A);
+    document.getElementById('ci-stat-interest').textContent = `${ci>=0?'':'-'}${formatCur(Math.abs(ci))}`;
+    document.getElementById('ci-stat-return').textContent = `${(ci/P*100).toFixed(2)}%`;
+  }
+  setStatus('ci-status', ci>=0?'ok':'err', `${ci>=0?'✓':'⚠'} Final: ${formatCur(A)}`);
 }
 
 /* ════════════════════════════════════
@@ -4014,28 +4065,54 @@ function autoClear() {
 
 /* ── RETIREMENT CALCULATOR ── */
 function retirementCalc() {
-  const current  = parseFloat(document.getElementById('ret-current')?.value) || 0;
-  const monthly  = parseFloat(document.getElementById('ret-monthly')?.value) || 0;
-  const retAge   = parseInt(document.getElementById('ret-retage')?.value) || 65;
-  const curAge   = parseInt(document.getElementById('ret-curage')?.value) || 30;
-  const growth   = parseFloat(document.getElementById('ret-growth')?.value) || 7;
-  const withdraw = parseFloat(document.getElementById('ret-withdraw')?.value) || 4;
-  const out      = document.getElementById('ret-output');
+  const current    = parseFloat(document.getElementById('ret-current')?.value) || 0;
+  const monthly    = parseFloat(document.getElementById('ret-monthly')?.value) || 0;
+  const retAge     = parseInt(document.getElementById('ret-retage')?.value) || 65;
+  const curAge     = parseInt(document.getElementById('ret-curage')?.value) || 30;
+  const growthRaw  = parseFloat(document.getElementById('ret-growth')?.value);
+  const withdrawRaw= parseFloat(document.getElementById('ret-withdraw')?.value);
+  const out        = document.getElementById('ret-output');
+  const summary    = document.getElementById('ret-summary');
   if (!out) return;
-  if (curAge>=retAge) { out.textContent='Current age must be less than retirement age.'; out.className='output-box error'; return; }
+  if (curAge>=retAge) {
+    out.textContent='Current age must be less than retirement age.'; out.className='output-box error';
+    if (summary) summary.style.display='none';
+    return;
+  }
+  // A falsy-fallback (||) would silently replace an intentional 0% with the
+  // default — 0% growth or 0% withdrawal are both legitimate, meaningful
+  // scenarios (a conservative projection, or "don't withdraw yet"), so they
+  // must be respected, not swapped out. Only an empty/non-numeric field
+  // should fall back to the default.
+  const growth   = isNaN(growthRaw) ? 7 : growthRaw;
+  const withdraw = isNaN(withdrawRaw) ? 4 : withdrawRaw;
+  if (withdraw < 0) {
+    out.textContent='Withdrawal rate cannot be negative — you cannot withdraw a negative amount of income.'; out.className='output-box error';
+    if (summary) summary.style.display='none';
+    return;
+  }
   const years  = retAge - curAge;
   const r      = growth / 100 / 12;
   const n      = years * 12;
-  // Future value of lump sum + future value of monthly contributions
+  // A negative or zero growth rate is a legitimate scenario — only reject
+  // where the math itself becomes undefined (growth factor at or below zero).
+  if (1 + r <= 0) {
+    out.textContent='This growth rate is too negative for a meaningful projection over this time period.'; out.className='output-box error';
+    if (summary) summary.style.display='none';
+    return;
+  }
+  // r=0 is a removable singularity in the annuity formula (division by r) —
+  // handled explicitly so an intentional 0% projection computes correctly
+  // instead of producing NaN/Infinity.
   const fvLump = current * Math.pow(1+r, n);
-  const fvPMT  = monthly * (Math.pow(1+r,n)-1) / r;
+  const fvPMT  = r === 0 ? monthly * n : monthly * (Math.pow(1+r,n)-1) / r;
   const total  = fvLump + fvPMT;
   const totalContrib = current + monthly * n;
   const totalGrowth  = total - totalContrib;
   const annualIncome = total * withdraw / 100;
   const monthlyIncome= annualIncome / 12;
 
-  out.className = 'output-box success';
+  out.className = totalGrowth>=0 ? 'output-box success' : 'output-box error';
   out.textContent =
     `── Retirement Projection ────────────\n` +
     `Years to retire:       ${years} years\n` +
@@ -4044,23 +4121,31 @@ function retirementCalc() {
     `Current savings:       ${formatCur(current)}\n` +
     `Monthly contributions: ${formatCur(monthly)} × ${n} mo = ${formatCur(monthly*n)}\n` +
     `Total contributions:   ${formatCur(totalContrib)}\n` +
-    `Investment growth:     ${formatCur(totalGrowth)}\n\n` +
+    `Investment growth:     ${totalGrowth>=0?'':'-'}${formatCur(Math.abs(totalGrowth))}\n\n` +
     `── Retirement Income (${withdraw}% rule) ────\n` +
     `Annual withdrawal:     ${formatCur(annualIncome)}\n` +
     `Monthly income:        ${formatCur(monthlyIncome)}\n\n` +
     `── Milestone projections ────────────\n` +
     [10,20,30,40].filter(y=>y<years).map(y => {
       const n2=y*12;
-      const t=current*Math.pow(1+r,n2)+monthly*(Math.pow(1+r,n2)-1)/r;
+      const t=current*Math.pow(1+r,n2) + (r===0 ? monthly*n2 : monthly*(Math.pow(1+r,n2)-1)/r);
       return `  Age ${curAge+y}: ${formatCur(t)}`;
     }).join('\n') +
     `\n  Age ${retAge}: ${formatCur(total)} (retirement)`;
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('ret-stat-total').textContent = formatCur(total);
+    document.getElementById('ret-stat-income').textContent = formatCur(monthlyIncome);
+    document.getElementById('ret-stat-years').textContent = `${years}`;
+  }
   setStatus('ret-status','ok',`✓ Retirement fund: ${formatCur(total)}`);
 }
 function retClear() {
   ['ret-current','ret-monthly','ret-retage','ret-curage','ret-growth','ret-withdraw'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('ret-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('ret-summary');
+  if(s) s.style.display='none';
   setStatus('ret-status','','enter your retirement details');
 }
 
@@ -5967,11 +6052,33 @@ function inflationCalc() {
   const amount  = parseFloat(document.getElementById('inf-amount')?.value);
   const from    = parseInt(document.getElementById('inf-from')?.value);
   const to      = parseInt(document.getElementById('inf-to')?.value);
-  const rate    = parseFloat(document.getElementById('inf-rate')?.value)||3.5;
+  const rateRaw = parseFloat(document.getElementById('inf-rate')?.value);
   const out     = document.getElementById('inf-output');
+  const summary = document.getElementById('inf-summary');
   if (!out) return;
   if (isNaN(amount)||isNaN(from)||isNaN(to)||amount<=0) {
-    out.textContent='Enter amount and years.'; out.className='output-box error'; return;
+    out.textContent='Enter amount and years.'; out.className='output-box error';
+    setStatus('inf-status','','enter amount and years');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (to < from) {
+    out.textContent='The "To" year must be the same as or after the "From" year.'; out.className='output-box error';
+    setStatus('inf-status','err','⚠ "To" year must be after "From" year');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  // A falsy-fallback (||) would silently replace an intentional 0% with the
+  // default — 0% inflation (a stable-price scenario) is a legitimate input
+  // and must be respected, not swapped out.
+  const rate = isNaN(rateRaw) ? 3.5 : rateRaw;
+  // Deflation (negative rate) is a real, valid economic scenario — only
+  // reject where the math itself becomes undefined.
+  if (1 + rate/100 <= 0) {
+    out.textContent='This inflation rate is too negative for a meaningful projection.'; out.className='output-box error';
+    setStatus('inf-status','err','⚠ rate too negative');
+    if (summary) summary.style.display='none';
+    return;
   }
   const years = to - from;
   const future = amount * Math.pow(1+rate/100, years);
@@ -5981,17 +6088,23 @@ function inflationCalc() {
   out.textContent=
     `Amount in ${from}:    ${formatCur(amount)}\n`+
     `Average inflation:  ${rate}%/year\n`+
-    `Years:              ${Math.abs(years)}\n\n`+
+    `Years:              ${years}\n\n`+
     `── Result ────────────────────────────\n`+
     `Value in ${to}:       ${formatCur(future)}\n`+
-    `Inflation impact:   +${formatCur(loss)}\n`+
-    `Purchasing power:   ${purchPower.toFixed(1)}% (lost ${(100-purchPower).toFixed(1)}%)\n\n`+
+    `Inflation impact:   ${loss>=0?'+':'-'}${formatCur(Math.abs(loss))}\n`+
+    `Purchasing power:   ${purchPower.toFixed(1)}% (${loss>=0?'lost':'gained'} ${Math.abs(100-purchPower).toFixed(1)}%)\n\n`+
     `── Year by year ──────────────────────\n`+
-    Array.from({length:Math.min(Math.abs(years),10)},(_,i)=>{
+    Array.from({length:Math.min(years,10)},(_,i)=>{
       const y=from+i+1;
       const v=amount*Math.pow(1+rate/100,i+1);
       return `  ${y}: ${formatCur(v)}`;
     }).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('inf-stat-future').textContent = formatCur(future);
+    document.getElementById('inf-stat-power').textContent = `${purchPower.toFixed(1)}%`;
+    document.getElementById('inf-stat-impact').textContent = `${loss>=0?'+':'-'}${formatCur(Math.abs(loss))}`;
+  }
   setStatus('inf-status','ok',`✓ ${formatCur(future)} in ${to}`);
 }
 

@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Inflation Calculator","url":"https://toolsnova.net/inflation-calculator","description":"Calculate the future value of money accounting for inflation. See how much purchasing power is lost over time at any inflation rate. Free inflation calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is inflation?","acceptedAnswer":{"@type":"Answer","text":"Inflation is the rate at which the general level of prices rises over time, reducing purchasing power. At 3% annual inflation, something costing $100 today costs $103 next year and $134 in 10 years."}},{"@type":"Question","name":"What is the average inflation rate?","acceptedAnswer":{"@type":"Answer","text":"US historical average: ~3.5%/year. UK: ~3%/year. India: ~5-6%/year. Pakistan: higher in recent years. Central banks (like the US Fed) target 2% inflation as the ideal for economic growth."}},{"@type":"Question","name":"Why does inflation matter for savings?","acceptedAnswer":{"@type":"Answer","text":"If your savings earn less than inflation, you're losing real purchasing power. A savings account at 2% when inflation is 4% means your money loses 2% of real value annually. This is why investing in assets that outpace inflation is important."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Inflation Calculator","item":"https://toolsnova.net/inflation-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -234,8 +236,23 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="inf-rate" placeholder="e.g. 3.5" class="b2-input" oninput="inflationCalc()" aria-label="Annual inflation rate (%)">
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="inf-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Future Value</div><div class="stat-value accent" id="inf-stat-future">—</div></div>
+    <div class="stat-card"><div class="stat-label">Purchasing Power</div><div class="stat-value" id="inf-stat-power">—</div></div>
+    <div class="stat-card"><div class="stat-label">Inflation Impact</div><div class="stat-value" id="inf-stat-impact">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="inf-output" onclick="copyEl('inf-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Use this to set a real, adjusted goal</div><div class="edu-card-body">If you're saving toward a future cost (retirement, a home, tuition), the Future Value figure is what you'll actually need — not today's price tag.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Compare Purchasing Power against your investment returns</div><div class="edu-card-body">If your savings are earning less than the inflation rate, their real purchasing power is shrinking even as the balance grows — check this against the <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A gain (not a loss) means deflation, not a bonus</div><div class="edu-card-body">If Inflation Impact is negative (a gain in purchasing power), you've modeled a deflationary scenario — historically rare and usually associated with broader economic trouble, not a sign to expect this normally.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Feed this inflation-adjusted figure into your <a href="retirement-calculator.html">Retirement Calculator</a> projection, or check where you stand today with the <a href="net-worth-calculator.html">Net Worth Calculator</a>.</div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -278,6 +295,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Inflation Formula</h2>
+    <div class="edu-highlight"><strong>Future Value</strong> = Amount × (1 + rate)^years, the same compound-growth formula used for investment returns, applied here to rising prices instead of growing money.</div>
+    <h3>Worked example</h3>
+    <p>$10,000 in 2015, 3.5% average annual inflation, projected to 2026 (11 years): Future Value = 10,000 × (1.035)^11 = <strong>$14,599.70</strong>. In other words, you'd need $14,599.70 in 2026 to buy what $10,000 bought in 2015 — a purchasing power loss of <strong>$4,599.70</strong>.</p>
+    <p><em>Assumption: uses a single constant average rate — real inflation varies year to year, and different categories of spending (housing, healthcare, energy) often inflate at different rates than the general CPI figure.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Ignoring inflation in long-term goals</div><div class="edu-card-body">A savings target set in today's dollars without adjusting for inflation will fall short by the time you actually need the money — always plan in future, inflation-adjusted dollars for goals more than a few years out.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using one national average for everything</div><div class="edu-card-body">Healthcare and education have historically inflated faster than the general CPI — a single average rate can understate the real future cost of specific categories.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing nominal returns to inflation incorrectly</div><div class="edu-card-body">A 4% investment return in a 3.5% inflation environment is only a 0.5% real gain, not 4% — always compare returns to inflation to understand actual purchasing-power growth.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming deflation is good news</div><div class="edu-card-body">Falling prices sound beneficial but sustained deflation historically correlates with reduced business revenue, employment, and economic contraction — it isn't simply the opposite of inflation in a good way.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -294,10 +329,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. Bureau of Labor Statistics</div><div class="edu-card-body">Official Consumer Price Index (CPI) data — <a href="https://www.bls.gov/cpi/" target="_blank" rel="nofollow noopener">bls.gov/cpi</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🏛️ Federal Reserve</div><div class="edu-card-body">Inflation targets and monetary policy — <a href="https://www.federalreserve.gov" target="_blank" rel="nofollow noopener">federalreserve.gov</a></div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 14 July 2026 · Uses a single constant average rate — real inflation varies year to year and by spending category.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -324,7 +363,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=33" defer></script>
+<script src="app.js?v=34" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

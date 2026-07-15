@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Break-Even Calculator","url":"https://toolsnova.net/break-even-calculator","description":"Calculate your break-even point in units and revenue. Shows contribution margin and profit at different sales volumes. Free break-even analysis calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the break-even point?","acceptedAnswer":{"@type":"Answer","text":"The break-even point is where total revenue equals total costs — profit is zero. Below it, you're making a loss. Above it, you're profitable. BEP (units) = Fixed Costs ÷ (Price - Variable Cost per Unit)."}},{"@type":"Question","name":"What is contribution margin?","acceptedAnswer":{"@type":"Answer","text":"Contribution Margin = Selling Price − Variable Cost per Unit. It's how much each unit sold contributes toward covering fixed costs. After fixed costs are covered, each unit sold generates profit equal to the contribution margin."}},{"@type":"Question","name":"How do I use break-even analysis?","acceptedAnswer":{"@type":"Answer","text":"Use it before launching a product to see if it's financially viable. If the break-even quantity seems unrealistically high, either reduce fixed costs, reduce variable costs, or increase the selling price."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Break-Even Calculator","item":"https://toolsnova.net/break-even-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -230,8 +232,23 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="be-price" placeholder="e.g. 15" class="b2-input" oninput="breakEvenCalc()" aria-label="Selling Price per Unit ($)">
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="be-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Units to Break Even</div><div class="stat-value accent" id="be-stat-units">—</div></div>
+    <div class="stat-card"><div class="stat-label">Revenue at BEP</div><div class="stat-value" id="be-stat-revenue">—</div></div>
+    <div class="stat-card"><div class="stat-label">Contribution Margin</div><div class="stat-value" id="be-stat-margin">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="be-output" onclick="copyEl('be-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check Contribution Margin against your industry</div><div class="edu-card-body">A low contribution margin means you need very high volume to break even — compare your margin % against typical ranges for your industry before committing to a price point.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Use the volume scenarios to set realistic targets</div><div class="edu-card-body">The "Profit at different volumes" table shows what happens above and below the break-even point — use it to set a genuinely achievable sales target, not just the bare minimum.</div></div>
+      <div class="edu-card"><div class="edu-card-title">This is a per-unit model — check it still applies to your business</div><div class="edu-card-body">This calculator assumes a consistent price and variable cost per unit — a business with highly variable per-unit economics (e.g. custom services) will need a more detailed model.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Once you know your break-even volume, check the overall return with the <a href="roi-calculator.html">ROI Calculator</a>, or work out how much a price increase would improve things with the <a href="percentage-calculator.html">Percentage Calculator</a>.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -273,6 +290,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Break-Even Formula</h2>
+    <div class="edu-highlight"><strong>Break-Even Units</strong> = Fixed Costs ÷ (Selling Price per Unit − Variable Cost per Unit). The denominator is the <strong>contribution margin</strong> — how much each unit sold contributes toward covering fixed costs.</div>
+    <h3>Worked example</h3>
+    <p>$5,000 monthly fixed costs, $12 variable cost per unit, $20 selling price: Contribution margin = 20 − 12 = <strong>$8/unit</strong>. Break-even units = 5,000 ÷ 8 = <strong>625 units</strong>. Revenue at break-even = 625 × $20 = <strong>$12,500</strong>.</p>
+    <p><em>Assumption: assumes constant price and variable cost per unit at any volume — real businesses often see costs change at scale (bulk discounts, overtime labor), which this simple model doesn't capture.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Forgetting a cost category entirely</div><div class="edu-card-body">Fixed costs should include rent, salaries, insurance, and loan payments — variable costs should include materials, packaging, and per-unit shipping. Omitting a category understates your real break-even point.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating break-even as a target, not a floor</div><div class="edu-card-body">Break-even means zero profit — a viable business needs to sell meaningfully above break-even, not just reach it.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming costs stay constant at any volume</div><div class="edu-card-body">Bulk purchasing discounts, overtime labor, and capacity constraints all change your real per-unit costs as volume scales — revisit the calculation at different volume levels, not just once.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring negative or zero contribution margin</div><div class="edu-card-body">If variable cost per unit is close to or above the selling price, no volume of sales will reach break-even — this calculator requires price to exceed variable cost for exactly this reason.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -289,10 +324,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ U.S. Small Business Administration</div><div class="edu-card-body">Business planning and break-even analysis guidance — <a href="https://www.sba.gov" target="_blank" rel="nofollow noopener">sba.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your own cost accounting records</div><div class="edu-card-body">For accurate fixed and variable cost figures, use your actual bookkeeping records rather than estimates.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 15 July 2026 · Assumes constant price and variable cost per unit at any sales volume.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -319,7 +358,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=35" defer></script>
+<script src="app.js?v=36" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

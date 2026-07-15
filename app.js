@@ -669,7 +669,21 @@ function calcPct() {
   const b    = parseFloat(document.getElementById('pct-b')?.value);
   const out  = document.getElementById('pct-output');
   if (!out) return;
-  if (isNaN(a)||isNaN(b)) { out.textContent='Enter both values.'; out.className='output-box error'; return; }
+  if (isNaN(a)||isNaN(b)) {
+    out.textContent='Enter both values.'; out.className='output-box error';
+    setStatus('pct-status','','enter both values');
+    return;
+  }
+  if (mode==='what-pct' && b===0) {
+    out.textContent='Y cannot be 0 — "X is what % of Y" is undefined when Y is zero.'; out.className='output-box error';
+    setStatus('pct-status','err','⚠ Y cannot be 0');
+    return;
+  }
+  if (mode==='pct-change' && a===0) {
+    out.textContent='The starting value (X) cannot be 0 — percentage change from zero is undefined.'; out.className='output-box error';
+    setStatus('pct-status','err','⚠ X cannot be 0');
+    return;
+  }
   let result='', label='';
   if      (mode==='pct-of')    { result=(a/100*b).toFixed(4); label=`${a}% of ${b} = ${parseFloat(result)}`; }
   else if (mode==='what-pct')  { result=(a/b*100).toFixed(4); label=`${a} is ${parseFloat(result)}% of ${b}`; }
@@ -678,6 +692,7 @@ function calcPct() {
   else if (mode==='sub-pct')   { result=(a*(1-b/100)).toFixed(4); label=`${a} − ${b}% = ${parseFloat(result)}`; }
   out.className='output-box success';
   out.textContent=label;
+  setStatus('pct-status','ok',`✓ ${parseFloat(result)}`);
 }
 
 /* ════════════════════════════════════
@@ -1545,10 +1560,14 @@ function gstCalc() {
   const rate    = parseFloat(document.getElementById('gst-rate')?.value);
   const mode    = document.getElementById('gst-mode')?.value || 'add';
   const out     = document.getElementById('gst-output');
+  const summary = document.getElementById('gst-summary');
   if (!out) return;
   if (isNaN(amount) || isNaN(rate) || amount <= 0 || rate < 0) {
     out.textContent = 'Please enter a valid amount and GST rate.';
-    out.className = 'output-box error'; return;
+    out.className = 'output-box error';
+    setStatus('gst-status','','enter amount and rate');
+    if (summary) summary.style.display='none';
+    return;
   }
   let original, gstAmt, total;
   if (mode === 'add') {
@@ -1569,6 +1588,13 @@ function gstCalc() {
     `CGST (${rate/2}%):          ${formatCur(gstAmt/2)}\n` +
     `SGST (${rate/2}%):          ${formatCur(gstAmt/2)}`;
   renderAmortChart('gst-chart', original, gstAmt);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('gst-stat-gst').textContent = formatCur(gstAmt);
+    document.getElementById('gst-stat-total').textContent = formatCur(total);
+    document.getElementById('gst-stat-rate').textContent = `${rate}%`;
+  }
+  setStatus('gst-status','ok',`✓ GST: ${formatCur(gstAmt)} · Total: ${formatCur(total)}`);
 }
 function gstSetRate(r) {
   const el = document.getElementById('gst-rate');
@@ -1581,9 +1607,12 @@ function gstClear() {
   const a = document.getElementById('gst-amount');
   const o = document.getElementById('gst-output');
   const c = document.getElementById('gst-chart');
+  const s = document.getElementById('gst-summary');
   if (a) a.value = '';
   if (o) { o.textContent = ''; o.className = 'output-box'; }
   if (c) c.innerHTML = '';
+  if (s) s.style.display = 'none';
+  setStatus('gst-status','','enter amount and rate');
 }
 
 /* ════════════════════════════════════
@@ -1640,10 +1669,14 @@ function vatCalc() {
   const rate   = parseFloat(document.getElementById('vat-rate')?.value);
   const mode   = document.getElementById('vat-mode')?.value || 'add';
   const out    = document.getElementById('vat-output');
+  const summary = document.getElementById('vat-summary');
   if (!out) return;
   if (isNaN(amount) || isNaN(rate) || amount <= 0 || rate < 0) {
     out.textContent = 'Please enter a valid amount and VAT rate.';
-    out.className = 'output-box error'; return;
+    out.className = 'output-box error';
+    setStatus('vat-status','','enter amount and rate');
+    if (summary) summary.style.display='none';
+    return;
   }
   let original, vatAmt, total;
   if (mode === 'add') {
@@ -1662,13 +1695,23 @@ function vatCalc() {
     `${'─'.repeat(34)}\n` +
     `Gross Amount (inc-VAT):  ${formatCur(total)}`;
   renderAmortChart('vat-chart', original, vatAmt);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('vat-stat-vat').textContent = formatCur(vatAmt);
+    document.getElementById('vat-stat-total').textContent = formatCur(total);
+    document.getElementById('vat-stat-rate').textContent = `${rate}%`;
+  }
+  setStatus('vat-status','ok',`✓ VAT: ${formatCur(vatAmt)} · Gross: ${formatCur(total)}`);
 }
 function vatClear() {
   ['vat-amount'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('vat-output');
   const c=document.getElementById('vat-chart');
+  const s=document.getElementById('vat-summary');
   if(o){o.textContent='';o.className='output-box';}
   if(c) c.innerHTML='';
+  if(s) s.style.display='none';
+  setStatus('vat-status','','enter amount and rate');
 }
 
 /* ════════════════════════════════════
@@ -1678,10 +1721,14 @@ function discountCalc() {
   const price    = parseFloat(document.getElementById('disc-price')?.value);
   const discount = parseFloat(document.getElementById('disc-pct')?.value);
   const out      = document.getElementById('disc-output');
+  const summary  = document.getElementById('disc-summary');
   if (!out) return;
   if (isNaN(price) || isNaN(discount) || price <= 0 || discount < 0 || discount > 100) {
     out.textContent = 'Please enter a valid price and discount percentage.';
-    out.className = 'output-box error'; return;
+    out.className = 'output-box error';
+    setStatus('disc-status','','enter price and discount');
+    if (summary) summary.style.display='none';
+    return;
   }
   const saving   = price * discount / 100;
   const finalPr  = price - saving;
@@ -1699,13 +1746,23 @@ function discountCalc() {
       return `${String(d).padStart(3)}% off → ${formatCur(price-s)} (save ${formatCur(s)})`;
     }).join('\n');
   renderAmortChart('disc-chart', finalPr, saving);
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('disc-stat-final').textContent = formatCur(finalPr);
+    document.getElementById('disc-stat-save').textContent = formatCur(saving);
+    document.getElementById('disc-stat-pct').textContent = `${discount}%`;
+  }
+  setStatus('disc-status','ok',`✓ Final: ${formatCur(finalPr)} · Save: ${formatCur(saving)}`);
 }
 function discountClear() {
   ['disc-price','disc-pct'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('disc-output');
   const c=document.getElementById('disc-chart');
+  const s=document.getElementById('disc-summary');
   if(o){o.textContent='';o.className='output-box';}
   if(c) c.innerHTML='';
+  if(s) s.style.display='none';
+  setStatus('disc-status','','enter price and discount');
 }
 
 /* ════════════════════════════════════
@@ -6136,10 +6193,21 @@ function breakEvenCalc() {
   const varCost = parseFloat(document.getElementById('be-var')?.value);
   const price   = parseFloat(document.getElementById('be-price')?.value);
   const out     = document.getElementById('be-output');
+  const summary = document.getElementById('be-summary');
   if (!out) return;
   if (isNaN(fixed)||isNaN(varCost)||isNaN(price)||price<=varCost) {
     out.textContent = price<=varCost ? 'Price must be greater than variable cost.' : 'Enter all values.';
-    out.className='output-box error'; return;
+    out.className='output-box error';
+    setStatus('be-status','','enter your costs and price');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  if (fixed<0 || varCost<0) {
+    out.textContent = 'Fixed costs and variable cost per unit cannot be negative.';
+    out.className='output-box error';
+    setStatus('be-status','err','⚠ costs cannot be negative');
+    if (summary) summary.style.display='none';
+    return;
   }
   const contrib  = price - varCost;
   const bepUnits = Math.ceil(fixed/contrib);
@@ -6160,6 +6228,12 @@ function breakEvenCalc() {
       const profit=units*contrib-fixed;
       return `  ${units.toLocaleString().padStart(8)} units → ${profit>=0?'+':''}${formatCur(profit)}`;
     }).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('be-stat-units').textContent = `${bepUnits.toLocaleString()}`;
+    document.getElementById('be-stat-revenue').textContent = formatCur(bepRev);
+    document.getElementById('be-stat-margin').textContent = `${margin.toFixed(1)}%`;
+  }
   setStatus('be-status','ok',`✓ BEP: ${bepUnits.toLocaleString()} units`);
 }
 

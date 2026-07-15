@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Discount Calculator Online","url":"https://toolsnova.net/discount-calculator","description":"Calculate the final price after any discount, how much you save, and see all common discounts on one price. Free online discount calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate discount percentage?","acceptedAnswer":{"@type":"Answer","text":"Discount % = ((Original Price − Sale Price) ÷ Original Price) × 100. Example: item was ₹2,000, now ₹1,500. Discount % = ((2000−1500) ÷ 2000) × 100 = 25%."}},{"@type":"Question","name":"How do I find the original price from a discounted price?","acceptedAnswer":{"@type":"Answer","text":"Original Price = Sale Price ÷ (1 − Discount%/100). Example: item costs ₹1,500 after 25% discount. Original = 1500 ÷ 0.75 = ₹2,000."}},{"@type":"Question","name":"What is the best discount for sales?","acceptedAnswer":{"@type":"Answer","text":"Research shows 20–30% discounts drive the highest conversion without significantly damaging brand perception. Discounts above 50% can signal low quality. Psychological pricing like '₹999' or '30% off' consistently outperforms round numbers."}},{"@type":"Question","name":"How do stacked discounts work?","acceptedAnswer":{"@type":"Answer","text":"Stacked (sequential) discounts are NOT additive. A 20% discount followed by an additional 10% off is NOT 30% total. It's: Final = Price × 0.80 × 0.90 = 72% of original = 28% total discount, not 30%."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Discount Calculator","item":"https://toolsnova.net/discount-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,6 +216,7 @@ gtag('config', 'G-S6PPGS7N63');
 <main>
   <div class="toolbar">
     <button class="btn primary" onclick="discountCalc()">Calculate</button>
+    <span class="status-badge" id="disc-status">enter price and discount</span>
     <button class="btn" onclick="discountClear()">Clear</button>
     <button class="btn" onclick="copyEl('disc-output')">Copy result</button>
   </div>
@@ -243,11 +246,25 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
-  <div>
-    <div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="disc-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Final Price</div><div class="stat-value accent" id="disc-stat-final">—</div></div>
+    <div class="stat-card"><div class="stat-label">You Save</div><div class="stat-value" id="disc-stat-save">—</div></div>
+    <div class="stat-card"><div class="stat-label">Discount</div><div class="stat-value" id="disc-stat-pct">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box" id="disc-output" onclick="copyEl('disc-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="disc-chart"></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Compare against the "Other discounts" table</div><div class="edu-card-body">The comparison table shows what 5% through 50% off would look like on the same price — a quick way to sanity-check whether a specific discount is actually attractive relative to typical ranges.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check if tax applies before or after the discount</div><div class="edu-card-body">Most jurisdictions apply sales tax/GST/VAT to the discounted price, not the original price — calculate the discount first, then run the final price through your tax calculator.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Stacked discounts don't simply add</div><div class="edu-card-body">Two 20% discounts applied in sequence give a 36% total discount, not 40% — each discount applies to the already-reduced price, not the original.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Need to apply tax to the discounted price? Use the <a href="gst-calculator.html">GST Calculator</a> or <a href="vat-calculator.html">VAT Calculator</a> next. For a quick percentage-of-a-number check, the <a href="percentage-calculator.html">Percentage Calculator</a> covers related calculations.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -282,11 +299,29 @@ gtag('config', 'G-S6PPGS7N63');
     <h3>Evaluating deals objectively</h3>
     <p>Retailers use psychological pricing to make discounts appear larger than they are. 'Was $99.99, now $79.99' uses charm pricing (ending in .99) and an artificially inflated 'was' price. Calculate the actual percentage discount and compare to alternative vendors before deciding. A 20% discount from an overpriced starting point may still be more expensive than a competitor's regular price.</p>
     <h3>Business discount strategy</h3>
-    <p>For businesses offering discounts: calculate the impact on profit margin before applying. At 40% gross margin, a 10% discount cuts your margin to 33% — a 17.5% reduction in profit per unit. You need to sell 25% more units to maintain the same total profit. Discounts are only worthwhile if they generate sufficient volume increase to compensate for the margin reduction.</p>
+    <p>For businesses offering discounts: calculate the impact on profit margin before applying. At 40% gross margin ($100 price, $60 cost, $40 profit/unit), a 10% discount drops the price to $90, cutting margin to 33.3% ($30 profit/unit) — a 25% reduction in profit per unit. You need to sell about 33% more units just to maintain the same total profit. Discounts are only worthwhile if they generate sufficient volume increase to compensate for the margin reduction.</p>
     <h3>Seasonal discount timing</h3>
     <p>Major discount events (Black Friday, end-of-season sales) offer genuine savings on some items and manufactured discounts on others. Use this calculator to verify that the 'original' price and discount percentage produce a final price that is genuinely competitive versus regular prices from other retailers.</p>
     <div class="edu-highlight"><strong>🛒 Smart discount evaluation:</strong> 1) Is the original price genuine or inflated? 2) What is the actual percentage saving? 3) Is the discounted price lower than the same item elsewhere at regular price? 4) Is the saving worth the purchase right now, or would waiting for a better deal make sense? These four questions prevent impulse purchases driven by the appearance of a good deal.</div>
 
+  </section>
+
+  <section class="edu-section">
+    <h2>Discount Formula</h2>
+    <div class="edu-highlight"><strong>Final Price</strong> = Original Price × (1 − Discount% ÷ 100). <strong>You Save</strong> = Original Price × Discount% ÷ 100.</div>
+    <h3>Worked example</h3>
+    <p>$80 item, 25% off: You Save = 80 × 25 ÷ 100 = <strong>$20</strong>. Final Price = 80 − 20 = <strong>$60</strong>.</p>
+    <p><em>Assumption: this calculates a single discount on the listed price — if tax applies, most jurisdictions calculate it on the discounted price, not the original (see Decision Support above).</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Adding two discounts together</div><div class="edu-card-body">Two 20% discounts applied in sequence give 36% off total, not 40% — each discount applies to the already-discounted price.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Applying tax before the discount</div><div class="edu-card-body">Most jurisdictions tax the post-discount price — calculating tax on the original price first will overstate what you actually owe.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trusting an inflated "original" price</div><div class="edu-card-body">Some retailers inflate the listed "before" price to make the discount look larger — compare the final price to other retailers' regular prices, not just the percentage claimed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Not checking the margin impact for business pricing</div><div class="edu-card-body">A discount that looks reasonable as a percentage can cut profit per unit dramatically — always check the effect on your actual margin, not just the customer-facing price.</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -309,9 +344,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ Federal Trade Commission</div><div class="edu-card-body">U.S. guidance on pricing and advertised discount claims — <a href="https://www.ftc.gov" target="_blank" rel="nofollow noopener">ftc.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Retailer's official price history</div><div class="edu-card-body">To verify a claimed discount is genuine, check the item's actual price history rather than relying on the advertised "original" price.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 15 July 2026 · Calculates a single listed discount — sales tax/GST/VAT and any additional stacked discounts are not included automatically.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -338,7 +378,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=35" defer></script>
+<script src="app.js?v=36" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

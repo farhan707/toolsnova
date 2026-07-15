@@ -114,6 +114,8 @@
     ]
   }
   </script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Mortgage Affordability Calculator","item":"https://toolsnova.net/mortgage-affordability-calculator"}]}</script>
+
 
   <style>
     .calc-container { max-width: 940px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
@@ -644,6 +646,16 @@
     </div>
 
     <div class="edu-section">
+      <h2>Decision Support</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">Check your DTI ratio, not just the loan amount</div><div class="edu-card-body">A large approved loan with a DTI close to 43% leaves little room for a rate increase, income disruption, or unexpected expenses — a lower DTI is a safer target even if it means a smaller loan.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Compare "afford" against "qualify" mode</div><div class="edu-card-body">The maximum you're approved for and the home price you're actually comfortable with can be different numbers — check both modes before deciding on a target price.</div></div>
+        <div class="edu-card"><div class="edu-card-title">A bigger down payment changes more than the loan size</div><div class="edu-card-body">Beyond reducing the loan amount, 20%+ down typically eliminates PMI/mortgage insurance and can improve your approved interest rate — factor both into the comparison, not just the smaller monthly payment.</div></div>
+      </div>
+      <div class="edu-highlight"><strong>➜ Next step:</strong> Once you know your target price range, explore <a href="islamic-mortgage-calculator.html">Sharia-compliant financing options</a>, or compare specific loan offers side by side with the <a href="loan-emi-comparison.html">Loan EMI Comparison Calculator</a>.</div>
+    </div>
+
+    <div class="edu-section">
       <h2>How mortgage affordability is calculated</h2>
       <p>Mortgage affordability is determined by your income, existing debts, down payment, interest rate, and loan tenure. Lenders use standardized rules to ensure your monthly mortgage payment remains manageable relative to your income.</p>
 
@@ -669,6 +681,25 @@
 
       <h3>Tips to improve mortgage affordability</h3>
       <p>Increasing your down payment directly reduces the loan amount and monthly EMI. Paying off existing debts improves your DTI ratio and may qualify you for a larger loan. Choosing a longer tenure reduces monthly payments but increases total interest. A co-borrower (spouse or family member) can combine income to qualify for a larger loan.</p>
+    </div>
+
+    <div class="edu-section">
+      <h2>Common Mistakes</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">Treating the maximum approved amount as the target</div><div class="edu-card-body">The largest loan you qualify for often leaves little financial cushion — a more conservative DTI leaves room for rate changes, job transitions, and unexpected expenses.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Forgetting property tax and insurance in the budget</div><div class="edu-card-body">These are included in this calculator's housing-ratio math, but if you're sanity-checking numbers elsewhere, don't compare a principal-and-interest-only figure against this tool's results.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Ignoring existing debt's impact on affordability</div><div class="edu-card-body">Car loans, student loans, and credit card balances all reduce how much mortgage you can qualify for under the 43% DTI rule — pay down high-interest debt first if you're close to the limit.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Not comparing all three modes</div><div class="edu-card-body">"How much can I afford," "can I afford this home," and "income needed" each answer a different question — check the one that matches what you're actually deciding, not just the default.</div></div>
+      </div>
+    </div>
+
+    <div class="edu-section">
+      <h2>References</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">🏛️ Consumer Financial Protection Bureau</div><div class="edu-card-body">U.S. mortgage affordability and DTI standards — <a href="https://www.consumerfinance.gov" target="_blank" rel="nofollow noopener">consumerfinance.gov</a></div></div>
+        <div class="edu-card"><div class="edu-card-title">📄 Your lender's pre-qualification</div><div class="edu-card-body">For your actual approved amount, get pre-qualified with a lender rather than relying on an estimate alone.</div></div>
+      </div>
+      <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 15 July 2026 · Uses standard 28/36/43% DTI thresholds — some lenders allow higher limits for strong credit profiles.</p>
     </div>
 
     <div class="faq-section">
@@ -737,7 +768,7 @@
 </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-  <script src="app.js?v=34" defer></script>
+  <script src="app.js?v=35" defer></script>
   <script>
     const SYMBOLS = { PKR:'Rs ',USD:'$',INR:'₹',AED:'AED ',GBP:'£',SAR:'SAR ',BDT:'৳',MYR:'RM ' };
     const DONUT_COLORS = ['#2563eb','#10b981','#f59e0b','#8b5cf6'];
@@ -801,7 +832,7 @@
       return sym + Math.round(n).toLocaleString();
     }
 
-    function calcEMI(principal, annualRate, years) {
+    function calcAffordEMI(principal, annualRate, years) {
       const r = annualRate / 100 / 12;
       const n = years * 12;
       if (r === 0 || principal <= 0) return { emi: principal / n, total: principal, interest: 0 };
@@ -826,6 +857,23 @@
       const insurance    = parseFloat(document.getElementById('insurance').value)    || 0;
       const housingRatio = parseFloat(document.getElementById('housingRatio').value) || 28;
 
+      // The down-payment slider is UI-bounded to 5-60%, so this isn't reachable
+      // through normal interaction — kept as defense-in-depth for consistency
+      // with the other two calculators in this family, in case the slider's
+      // own bounds are ever changed without updating this guard.
+      //
+      // The upper bound is < 100, not <= 100: the "afford" mode's formula
+      // (homeVal = loanAmt / (1 - downPct/100)) divides by zero at exactly
+      // 100%, producing Infinity. "qualify" and "salary" modes would handle
+      // exactly 100% safely on their own, but the guard runs before the mode
+      // branch and applies uniformly, so it's set to the tightest domain any
+      // mode actually requires.
+      if (downPct < 0 || downPct >= 100) {
+        document.getElementById('heroValue').textContent = 'Invalid input';
+        document.getElementById('heroSub').textContent = 'Down payment must be 0% or more, and less than 100%.';
+        return;
+      }
+
       const maxHousingBudget = income * housingRatio / 100;
       const maxTotalDebt     = income * 0.43;
       const debtHeadroom     = maxTotalDebt - existingDebt;
@@ -837,7 +885,7 @@
         loanAmt  = maxAffordableLoan(maxEMI, intRate, tenure);
         homeVal  = loanAmt / (1 - downPct/100);
         downAmt  = homeVal * downPct / 100;
-        const r  = calcEMI(loanAmt, intRate, tenure);
+        const r  = calcAffordEMI(loanAmt, intRate, tenure);
         emi      = r.emi;
         totalInt = r.interest;
         totalPay = r.total;
@@ -847,7 +895,7 @@
         homeVal  = parseFloat(document.getElementById('homePrice').value) || 0;
         downAmt  = homeVal * downPct / 100;
         loanAmt  = homeVal - downAmt;
-        const r  = calcEMI(loanAmt, intRate, tenure);
+        const r  = calcAffordEMI(loanAmt, intRate, tenure);
         emi      = r.emi;
         totalInt = r.interest;
         totalPay = r.total;
@@ -857,7 +905,7 @@
         homeVal  = parseFloat(document.getElementById('homePriceSalary').value) || 0;
         downAmt  = homeVal * downPct / 100;
         loanAmt  = homeVal - downAmt;
-        const r  = calcEMI(loanAmt, intRate, tenure);
+        const r  = calcAffordEMI(loanAmt, intRate, tenure);
         emi      = r.emi;
         totalInt = r.interest;
         totalPay = r.total;
@@ -952,7 +1000,7 @@
         document.getElementById('salaryGrid').innerHTML = multipliers.map(m => {
           const hp   = base * m;
           const loan = hp * (1 - downPct/100);
-          const e    = calcEMI(loan, intRate, tenure).emi;
+          const e    = calcAffordEMI(loan, intRate, tenure).emi;
           const req  = (e + propTax + insurance) / (housingRatio/100);
           return `<div class="salary-card">
             <div class="sc-price">${fmt(hp)}</div>

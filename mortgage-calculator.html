@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator","url":"https://toolsnova.net/mortgage-calculator","description":"Calculate your monthly mortgage payment including principal, interest, tax, and insurance. See total interest paid and amortisation schedule. Free mortgage calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a mortgage?","acceptedAnswer":{"@type":"Answer","text":"A mortgage is a loan secured by real property. The lender provides funds to purchase a home, and the borrower repays with interest over a set term (typically 15–30 years). The property serves as collateral — if payments stop, the lender can foreclose."}},{"@type":"Question","name":"What is included in a monthly mortgage payment?","acceptedAnswer":{"@type":"Answer","text":"A full monthly payment (PITI) includes: Principal (reduces your loan balance), Interest (cost of borrowing), Tax (property tax escrowed monthly), and Insurance (homeowner's insurance). This calculator includes all four components."}},{"@type":"Question","name":"What is amortisation?","acceptedAnswer":{"@type":"Answer","text":"Amortisation is the process of paying off a loan through regular payments. Early payments are mostly interest; later payments are mostly principal. This calculator shows the first and last months of your amortisation schedule so you can see how the balance changes over time."}},{"@type":"Question","name":"Should I choose 15 or 30 years?","acceptedAnswer":{"@type":"Answer","text":"A 15-year mortgage has higher monthly payments but significantly less total interest — often 40–50% less. A 30-year has lower payments but costs more overall. The 30-year is popular because lower payments provide more monthly flexibility. Compare both in this calculator."}},{"@type":"Question","name":"What is PMI?","acceptedAnswer":{"@type":"Answer","text":"Private Mortgage Insurance (PMI) is required when your down payment is less than 20%. It protects the lender if you default. PMI typically costs 0.5–1.5% of the loan amount annually. It can be cancelled once you have 20% equity in the home."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Mortgage Calculator","item":"https://toolsnova.net/mortgage-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -248,8 +250,23 @@ gtag('config', 'G-S6PPGS7N63');
       <input type="number" id="mtg-ins" placeholder="e.g. 1200 (optional)" class="b2-input" oninput="mortgageCalc()" aria-label="Annual Insurance ($)">
     </div>
   </div>
-  <div><div class="pane-label">Result with amortisation <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="mtg-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">Monthly Payment</div><div class="stat-value accent" id="mtg-stat-payment">—</div></div>
+    <div class="stat-card"><div class="stat-label">Total Interest</div><div class="stat-value" id="mtg-stat-interest">—</div></div>
+    <div class="stat-card"><div class="stat-label">Loan Amount</div><div class="stat-value" id="mtg-stat-loan">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown with amortisation <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="mtg-output" onclick="copyEl('mtg-output')" style="min-height:280px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check total interest against home price</div><div class="edu-card-body">If Total Interest is a large fraction of the home price, a larger down payment or a shorter term would meaningfully reduce your total cost — compare a few scenarios before committing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">This shows what you can borrow, not what you should</div><div class="edu-card-body">A lender may approve a larger loan than this payment feels comfortable at — size your down payment and term to a monthly payment you're confident carrying long-term, not just the maximum available.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Property tax and insurance change by location</div><div class="edu-card-body">These figures vary significantly by area — use your actual local estimates rather than a rough guess for an accurate total monthly payment.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Not sure how much home you can actually afford? Use the <a href="mortgage-affordability-calculator.html">Mortgage Affordability Calculator</a> to work backward from your income instead.</div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -293,6 +310,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Mortgage Formula</h2>
+    <div class="edu-highlight"><strong>Monthly Payment</strong> = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1), where P is the loan principal (home price minus down payment), r is the monthly interest rate, and n is the total number of monthly payments.</div>
+    <h3>Worked example</h3>
+    <p>$300,000 home, 20% down ($60,000), 6.5% annual rate, 30-year term: Principal = $240,000. Monthly rate = 6.5 ÷ 12 ÷ 100 = 0.005417. Monthly Payment ≈ <strong>$1,516.96</strong>, Total Interest over 30 years ≈ <strong>$306,107</strong>.</p>
+    <p><em>Assumption: uses a fixed rate for the full term — an adjustable-rate mortgage's payment will change when the rate resets, and this calculator doesn't model that.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Forgetting property tax and insurance</div><div class="edu-card-body">The principal-and-interest figure alone understates your real monthly cost — always include property tax and insurance for an accurate total.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Sizing the loan to what's approved, not what's comfortable</div><div class="edu-card-body">A lender's maximum approval isn't a recommendation — leave room in your budget for maintenance, emergencies, and other financial goals.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring the total interest over the full term</div><div class="edu-card-body">A lower monthly payment from a longer term usually means significantly more total interest — check both figures, not just the monthly number.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Entering a down payment outside 0-100%</div><div class="edu-card-body">A down payment can't exceed the home price or be negative — this calculator validates that range, but always double-check your own inputs make sense.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -317,10 +352,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ Consumer Financial Protection Bureau</div><div class="edu-card-body">U.S. mortgage and loan disclosure standards — <a href="https://www.consumerfinance.gov" target="_blank" rel="nofollow noopener">consumerfinance.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your lender's loan estimate</div><div class="edu-card-body">For exact rate, fees, and PMI cost, use the official Loan Estimate document from your lender rather than an approximation.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 15 July 2026 · Comparing more than one loan offer? See them side by side with the <a href="loan-emi-comparison.html">Loan EMI Comparison Calculator</a>.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -347,7 +386,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=34" defer></script>
+<script src="app.js?v=35" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

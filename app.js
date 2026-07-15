@@ -3922,17 +3922,31 @@ function romanClear(){
 
 /* ── MORTGAGE CALCULATOR ── */
 function mortgageCalc() {
-  const price    = parseFloat(document.getElementById('mtg-price')?.value);
-  const downPct  = parseFloat(document.getElementById('mtg-down')?.value) || 20;
-  const rate     = parseFloat(document.getElementById('mtg-rate')?.value);
-  const years    = parseInt(document.getElementById('mtg-years')?.value) || 30;
-  const tax      = parseFloat(document.getElementById('mtg-tax')?.value) || 0;
-  const insurance= parseFloat(document.getElementById('mtg-ins')?.value) || 0;
-  const out      = document.getElementById('mtg-output');
+  const price      = parseFloat(document.getElementById('mtg-price')?.value);
+  const downPctRaw = parseFloat(document.getElementById('mtg-down')?.value);
+  const rate       = parseFloat(document.getElementById('mtg-rate')?.value);
+  const years      = parseInt(document.getElementById('mtg-years')?.value) || 30;
+  const tax        = parseFloat(document.getElementById('mtg-tax')?.value) || 0;
+  const insurance  = parseFloat(document.getElementById('mtg-ins')?.value) || 0;
+  const out        = document.getElementById('mtg-output');
+  const summary    = document.getElementById('mtg-summary');
   if (!out) return;
   if (isNaN(price)||isNaN(rate)||price<=0||rate<=0) {
-    out.textContent='Enter home price and annual interest rate.'; out.className='output-box error'; return;
+    out.textContent='Enter home price and annual interest rate.'; out.className='output-box error';
+    setStatus('mtg-status','','enter home price and rate');
+    if (summary) summary.style.display='none';
+    return;
   }
+  // A falsy-fallback (||) would silently replace an intentional 0% down
+  // payment (a real scenario — some loan programs require no down payment)
+  // with the 20% default. Only an empty/non-numeric field should fall back.
+  if (!isNaN(downPctRaw) && (downPctRaw<0 || downPctRaw>100)) {
+    out.textContent='Down payment must be between 0% and 100%.'; out.className='output-box error';
+    setStatus('mtg-status','err','⚠ down payment must be 0-100%');
+    if (summary) summary.style.display='none';
+    return;
+  }
+  const downPct  = isNaN(downPctRaw) ? 20 : downPctRaw;
   const downAmt  = price * downPct / 100;
   const principal= price - downAmt;
   const r        = rate / 100 / 12;
@@ -3976,12 +3990,20 @@ function mortgageCalc() {
     `── Amortisation (first & last months)\n` +
     `  Mo    Interest    Principal    Balance\n` +
     rows.map(r => r ? `  ${String(r[0]).padEnd(5)} ${formatCur(r[1]).padStart(10)}  ${formatCur(r[2]).padStart(10)}  ${formatCur(r[3]).padStart(12)}` : `  ...`).join('\n');
+  if (summary) {
+    summary.style.display='';
+    document.getElementById('mtg-stat-payment').textContent = `${formatCur(total)}/mo`;
+    document.getElementById('mtg-stat-interest').textContent = formatCur(totalInt);
+    document.getElementById('mtg-stat-loan').textContent = formatCur(principal);
+  }
   setStatus('mtg-status','ok',`✓ Monthly: ${formatCur(total)} · Total interest: ${formatCur(totalInt)}`);
 }
 function mtgClear() {
   ['mtg-price','mtg-down','mtg-rate','mtg-years','mtg-tax','mtg-ins'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('mtg-output');
   if(o){o.textContent='';o.className='output-box';}
+  const s=document.getElementById('mtg-summary');
+  if(s) s.style.display='none';
   setStatus('mtg-status','','enter home price and rate');
 }
 

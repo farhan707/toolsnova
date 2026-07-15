@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VAT Calculator Online","url":"https://toolsnova.net/vat-calculator","description":"Add VAT to a price or remove VAT from a gross amount instantly. Supports UK 20%, EU rates, and any custom rate. Free online VAT calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is VAT?","acceptedAnswer":{"@type":"Answer","text":"VAT (Value Added Tax) is a consumption tax levied at each stage of the supply chain. Unlike sales tax (collected only at point of sale), VAT is collected at every stage but businesses reclaim the VAT they've paid on purchases, so only the end consumer bears the final cost."}},{"@type":"Question","name":"What is the VAT rate in the UK?","acceptedAnswer":{"@type":"Answer","text":"The UK has three VAT rates: Standard rate 20% (most goods and services), Reduced rate 5% (home energy, children's car seats, sanitary products), and Zero rate 0% (most food, books, children's clothing, public transport)."}},{"@type":"Question","name":"How do I remove VAT from a price?","acceptedAnswer":{"@type":"Answer","text":"Divide the VAT-inclusive (gross) price by (1 + VAT rate/100). For 20% VAT: Net = Gross ÷ 1.20. Example: £120 ÷ 1.20 = £100 net + £20 VAT. This calculator does this automatically in 'Remove VAT' mode."}},{"@type":"Question","name":"What is the difference between VAT and GST?","acceptedAnswer":{"@type":"Answer","text":"Both are consumption taxes on goods and services, but they have different names and rates by country. UK/EU uses VAT. India, Australia, Canada, and Singapore use GST. The calculation method is identical — they differ mainly in rate and administrative details."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"VAT Calculator","item":"https://toolsnova.net/vat-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,6 +216,7 @@ gtag('config', 'G-S6PPGS7N63');
 <main>
   <div class="toolbar">
     <button class="btn primary" onclick="vatCalc()">Calculate</button>
+    <span class="status-badge" id="vat-status">enter amount and rate</span>
     <button class="btn" onclick="vatClear()">Clear</button>
     <button class="btn" onclick="copyEl('vat-output')">Copy result</button>
   </div>
@@ -251,11 +254,25 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
-  <div>
-    <div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+  <div class="stats-row" id="vat-summary" style="margin-top:14px;display:none">
+    <div class="stat-card"><div class="stat-label">VAT Amount</div><div class="stat-value accent" id="vat-stat-vat">—</div></div>
+    <div class="stat-card"><div class="stat-label">Gross Amount</div><div class="stat-value" id="vat-stat-total">—</div></div>
+    <div class="stat-card"><div class="stat-label">Rate</div><div class="stat-value" id="vat-stat-rate">—</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box" id="vat-output" onclick="copyEl('vat-output')" style="min-height:100px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="vat-chart"></div>
+
+  <section class="edu-section">
+    <h2>Decision Support</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Confirm the correct rate for your country</div><div class="edu-card-body">VAT rates vary widely — UK 20%, EU 17-27% depending on country, UAE 5% — always confirm the exact current rate for your jurisdiction rather than assuming a standard figure.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check whether your item qualifies for a reduced or zero rate</div><div class="edu-card-body">Many countries apply reduced VAT rates to essentials like food, books, or children's items — verify your product's classification before using the standard rate by default.</div></div>
+      <div class="edu-card"><div class="edu-card-title">In India specifically, use GST, not VAT</div><div class="edu-card-body">India replaced VAT with GST in 2017 — if you're calculating tax for an Indian transaction, use the <a href="gst-calculator.html">GST Calculator</a> instead, which reflects the current India-specific structure.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Applying VAT after a discount? Use the <a href="discount-calculator.html">Discount Calculator</a> first, then run the discounted price through this tool.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -297,6 +314,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>VAT Formula</h2>
+    <div class="edu-highlight"><strong>VAT Amount</strong> = Net Amount × VAT Rate ÷ 100. To go the other way — <strong>Net Amount</strong> (removing VAT from a gross price) = Gross Amount ÷ (1 + VAT Rate ÷ 100).</div>
+    <h3>Worked example</h3>
+    <p>£1,000 net price, 20% VAT (UK standard rate): VAT Amount = 1,000 × 20 ÷ 100 = <strong>£200</strong>. Gross Amount (inc-VAT) = <strong>£1,200</strong>.</p>
+    <p><em>Assumption: uses the standard rate you enter — always confirm whether your specific goods/services qualify for a reduced or zero rate in your jurisdiction before using a default standard-rate assumption.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Common Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming one VAT rate applies everywhere</div><div class="edu-card-body">VAT rates vary by country and by product category within a country — always confirm the exact current rate rather than reusing a rate from a different jurisdiction or product type.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing "add" and "remove" mode</div><div class="edu-card-body">If your amount already includes VAT, use "Remove VAT" — running an inclusive price through "Add VAT" double-counts the tax.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Quoting VAT-inclusive prices to business customers</div><div class="edu-card-body">B2B customers typically expect VAT-exclusive pricing since they'll reclaim the VAT — quoting inclusive prices in a B2B context can cause confusion or lost deals.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using this for an Indian transaction</div><div class="edu-card-body">India uses GST, not VAT — use the <a href="gst-calculator.html">GST Calculator</a> for Indian tax calculations instead.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -317,9 +352,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ UK Government (GOV.UK)</div><div class="edu-card-body">Official UK VAT rates and registration guidance — <a href="https://www.gov.uk/vat-rates" target="_blank" rel="nofollow noopener">gov.uk/vat-rates</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">🏛️ European Commission</div><div class="edu-card-body">EU member-state VAT rates — <a href="https://taxation-customs.ec.europa.eu" target="_blank" rel="nofollow noopener">taxation-customs.ec.europa.eu</a></div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Last updated: 15 July 2026 · VAT rates vary by country and product category — always confirm the current rate for your specific jurisdiction and goods/services.</p>
+</section>
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->
 <section class="related-tools-section">
@@ -346,7 +386,7 @@ gtag('config', 'G-S6PPGS7N63');
   </nav>
 </footer>
 <div class="copy-toast" id="toast"></div>
-<script src="app.js?v=35" defer></script>
+<script src="app.js?v=36" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

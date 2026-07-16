@@ -5905,23 +5905,23 @@ function sigFigCalc() {
 
 /* ── 5. CONCRETE CALCULATOR ── */
 function concreteCalc() {
-  const shape = document.getElementById('con-shape')?.value || 'slab';
   const unit  = document.getElementById('con-unit')?.value || 'ft';
   const out   = document.getElementById('con-output');
   if (!out) return;
   const l = parseFloat(document.getElementById('con-l')?.value);
   const w = parseFloat(document.getElementById('con-w')?.value);
   const h = parseFloat(document.getElementById('con-h')?.value);
-  const d = parseFloat(document.getElementById('con-d')?.value)||0;
   if (isNaN(l)||isNaN(w)||isNaN(h)) { out.textContent='Enter all dimensions.'; out.className='output-box error'; return; }
   let volCubicFt;
   if (unit==='m') { volCubicFt = l*w*h*35.3147; }
   else { volCubicFt = l*w*h/12; } // ft + inches for h
   const volCubicYd = volCubicFt/27;
   const volCubicM  = volCubicFt*0.0283168;
-  // Add 10% waste
-  const bags60lb = Math.ceil(volCubicYd*45); // ~45 x 60lb bags per cu yd
-  const bags80lb = Math.ceil(volCubicYd*34);
+  // Verified bag yields: a 60lb bag yields ~0.45 ft³, an 80lb bag yields ~0.60 ft³ (Quikrete/Sakrete technical data).
+  // 10% waste allowance applied to volume before converting to bag counts, consistent with the "(inc. 10% waste)" label.
+  const volWithWaste = volCubicFt * 1.1;
+  const bags60lb = Math.ceil(volWithWaste / 0.45);
+  const bags80lb = Math.ceil(volWithWaste / 0.60);
   out.className='output-box success';
   out.textContent=
     `Dimensions: ${l} × ${w} × ${h} ${unit==='ft'?'ft (h in inches)':unit}\n\n`+
@@ -5979,13 +5979,16 @@ function paintAddRoom() {
   const div = document.createElement('div');
   div.style='background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem;margin-bottom:8px';
   div.className='paint-room';
-  div.innerHTML=`<div style="font-size:.75rem;color:var(--accent);margin-bottom:6px">Room ${n}</div>
+  div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <span style="font-size:.75rem;color:var(--accent)">Room ${n}</span>
+      <button onclick="this.closest('.paint-room').remove();paintCalc()" aria-label="Remove room" style="background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.7rem;padding:2px 8px">✕ Remove</button>
+    </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">
-      <div><div class="pane-label" style="font-size:.65rem">Length (ft)</div><input class="b2-input pr-l" type="number" placeholder="12" oninput="paintCalc()"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Width (ft)</div><input class="b2-input pr-w" type="number" placeholder="10" oninput="paintCalc()"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Height (ft)</div><input class="b2-input pr-h" type="number" placeholder="8" oninput="paintCalc()"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Doors</div><input class="b2-input pr-doors" type="number" placeholder="1" oninput="paintCalc()"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Windows</div><input class="b2-input pr-windows" type="number" placeholder="1" oninput="paintCalc()"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Length (ft)</div><input class="b2-input pr-l" type="number" placeholder="12" oninput="paintCalc()" aria-label="Room length (ft)"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Width (ft)</div><input class="b2-input pr-w" type="number" placeholder="10" oninput="paintCalc()" aria-label="Room width (ft)"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Height (ft)</div><input class="b2-input pr-h" type="number" placeholder="8" oninput="paintCalc()" aria-label="Room height (ft)"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Doors</div><input class="b2-input pr-doors" type="number" placeholder="1" oninput="paintCalc()" aria-label="Number of doors"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Windows</div><input class="b2-input pr-windows" type="number" placeholder="1" oninput="paintCalc()" aria-label="Number of windows"></div>
     </div>`;
   cont.appendChild(div);
   paintCalc();
@@ -6536,12 +6539,17 @@ function roofPitchCalc() {
   const out  = document.getElementById('rp-output');
   if (!out) return;
   if (isNaN(run)||isNaN(rise)||run<=0) { out.textContent='Enter run and rise.'; out.className='output-box error'; return; }
-  const pitch   = rise/run;
-  const angle   = Math.atan(pitch)*180/Math.PI;
+  const angle   = Math.atan(rise/run)*180/Math.PI;
   const slope   = Math.sqrt(run*run+rise*rise)/run;
-  const pitchStr= `${rise}:12`;
   // Normalize to per 12
   const riseP12 = (rise/run*12).toFixed(2);
+  const riseP12Num = parseFloat(riseP12);
+  // Classification aligned exactly with the FAQ's stated ranges: Low 1-3, Moderate 4-6, Steep 7-12, Very steep 12+
+  const classification =
+    riseP12Num < 1  ? 'Flat' :
+    riseP12Num <= 3 ? 'Low pitch' :
+    riseP12Num <= 6 ? 'Moderate pitch' :
+    riseP12Num <= 12 ? 'Steep' : 'Very steep';
   out.className='output-box success';
   out.textContent=
     `Run: ${run}  Rise: ${rise}\n\n`+
@@ -6551,7 +6559,7 @@ function roofPitchCalc() {
     `Slope factor:  ${slope.toFixed(4)}\n`+
     `Multiplier:    ${slope.toFixed(4)}x (multiply flat area)\n\n`+
     `── Pitch classification ──────────────\n`+
-    `${parseFloat(riseP12)<3?'Flat/low pitch':parseFloat(riseP12)<6?'Medium pitch':parseFloat(riseP12)<9?'Steep':parseFloat(riseP12)<12?'Very steep':'Extreme pitch'}\n\n`+
+    `${classification}\n\n`+
     `── Common pitches ────────────────────\n`+
     [2,3,4,5,6,7,8,9,10,12].map(r=>{
       const a=Math.atan(r/12)*180/Math.PI;

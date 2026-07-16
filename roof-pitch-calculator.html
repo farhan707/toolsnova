@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Roof Pitch Calculator","url":"https://toolsnova.net/roof-pitch-calculator","description":"Calculate roof pitch, angle in degrees, and slope multiplier from rise and run. Includes pitch classification and common pitch reference table.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is roof pitch?","acceptedAnswer":{"@type":"Answer","text":"Roof pitch is the slope of a roof expressed as a ratio of vertical rise to horizontal run, typically per 12 inches of run. A 6:12 pitch means the roof rises 6 inches for every 12 inches of horizontal run. Steeper pitch = higher number."}},{"@type":"Question","name":"What is a standard roof pitch?","acceptedAnswer":{"@type":"Answer","text":"Common residential pitches: 4:12 to 6:12 (moderate). Low pitch: 1:12 to 3:12. Steep: 7:12 to 12:12. Very steep: over 12:12. Most roofing materials work on pitches of 4:12 and above. Flat roofs use special waterproofing membranes."}},{"@type":"Question","name":"What is the slope multiplier?","acceptedAnswer":{"@type":"Answer","text":"The slope multiplier converts horizontal (flat) measurements to actual roof surface measurements. A 6:12 pitch has a multiplier of 1.118, meaning the actual roof area is 11.8% larger than the floor area below it."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Construction Tools","item":"https://toolsnova.net/construction-tools/"},{"@type":"ListItem","position":3,"name":"Roof Pitch Calculator","item":"https://toolsnova.net/roof-pitch-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -229,6 +231,15 @@ gtag('config', 'G-S6PPGS7N63');
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="rp-output" onclick="copyEl('rp-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
+  <section class="edu-section">
+    <h2>Using Your Pitch</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Use the multiplier for material estimates</div><div class="edu-card-body">Multiply your flat (plan-view) roof area by the slope factor shown to get actual roof surface area — this is what you need for shingles, underlayment, and other material calculators.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check your material's minimum pitch</div><div class="edu-card-body">Most shingle roofing needs at least 2:12-4:12 to shed water properly. Flatter pitches need a different roofing system (membrane, built-up roofing) — confirm your material is rated for your pitch before ordering.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Steeper isn't automatically better</div><div class="edu-card-body">Steep pitches shed water and snow faster but cost more in material and labour, and are more hazardous to work on. Classification is a starting point for material/safety planning, not a quality judgment.</div></div>
+    </div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -269,6 +280,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Pitch Formula</h2>
+    <div class="edu-highlight"><strong>Pitch (X:12)</strong> = (Rise ÷ Run) × 12. <strong>Angle</strong> = arctan(Rise ÷ Run). <strong>Slope Multiplier</strong> = √(Run² + Rise²) ÷ Run.</div>
+    <h3>Worked example</h3>
+    <p>A roof rising 8 inches over a 24-inch run: Pitch = (8 ÷ 24) × 12 = <strong>4:12</strong>. Angle = arctan(8/24) = <strong>18.43°</strong>. Slope multiplier = √(24² + 8²) ÷ 24 = √640 ÷ 24 = <strong>1.054×</strong> — a 1,000 sq ft flat footprint needs 1,054 sq ft of actual roofing material.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Measuring rise and run over different spans</div><div class="edu-card-body">Rise and run must be measured over the same horizontal distance for the ratio to be meaningful — don't mix a rise measured over 6 feet with a run measured over 12 feet.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using footprint area for material orders</div><div class="edu-card-body">Roofing material is sold by actual roof surface area, not the flat footprint below it. Always multiply by the slope factor before ordering shingles, underlayment, or other roofing material.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming pitch is always in whole numbers</div><div class="edu-card-body">Real-world roofs often measure to a fractional pitch (e.g. 5.5:12), not a clean industry-standard number — use your actual measured rise and run rather than rounding to the nearest reference pitch.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -285,8 +312,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Roofing material manufacturer specs</div><div class="edu-card-body">Minimum and maximum rated pitch varies by roofing material (asphalt shingle, metal, membrane) — check your specific product's installation guide before finalizing a material choice for your pitch.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🏠 Local building code</div><div class="edu-card-body">Minimum ventilation ratios and structural requirements for your pitch and climate zone are set locally — confirm with your building department for anything structural.</div></div>
+  </div>
+</section>
 
 
 

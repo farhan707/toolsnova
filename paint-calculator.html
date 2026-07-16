@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Paint Calculator","url":"https://toolsnova.net/paint-calculator","description":"Calculate how many gallons of paint you need for any room. Enter length, width, height, number of doors and windows. Supports multiple rooms and coats.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much paint do I need per room?","acceptedAnswer":{"@type":"Answer","text":"A standard bedroom (12×10×8ft) needs about 1.5 gallons for 2 coats. Calculate: 2×(L+W)×H = wall area, then subtract doors (21 sq ft each) and windows (15 sq ft each). Divide by coverage (usually 350-400 sq ft/gallon)."}},{"@type":"Question","name":"How many coats of paint do I need?","acceptedAnswer":{"@type":"Answer","text":"Most paint jobs require 2 coats for full coverage. Going from a dark colour to a light colour may need 3 coats. Premium paints sometimes cover in 1 coat. Always apply a primer when painting bare walls or drastic colour changes."}},{"@type":"Question","name":"What is paint coverage?","acceptedAnswer":{"@type":"Answer","text":"Paint coverage (or spread rate) is how much area one gallon covers. Most latex paints cover 350-400 sq ft per gallon. Cheaper paints may cover less. The coverage is usually printed on the paint can label."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Construction Tools","item":"https://toolsnova.net/construction-tools/"},{"@type":"ListItem","position":3,"name":"Paint Calculator","item":"https://toolsnova.net/paint-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -232,6 +234,15 @@ gtag('config', 'G-S6PPGS7N63');
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="paint-output" onclick="copyEl('paint-output')" style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
+  <section class="edu-section">
+    <h2>Before You Buy</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Round up, don't round down</div><div class="edu-card-body">Paint is sold in fixed can sizes. Running short mid-wall means a return trip and a risk of slight colour/batch variation — always round up to the next full gallon or quart.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Walls only, not ceiling</div><div class="edu-card-body">This estimate covers wall area only. If you're also painting the ceiling, calculate that separately (room length × width) and add it to your total.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check the can label for your specific paint</div><div class="edu-card-body">Coverage varies by product and surface — the default 400 sq ft/gallon is a common average, but your paint's actual coverage (printed on the can) may be higher or lower, especially on textured or porous surfaces.</div></div>
+    </div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -272,6 +283,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Wall Area &amp; Paint Formula</h2>
+    <div class="edu-highlight"><strong>Wall Area</strong> = 2 × (Length + Width) × Height − (Doors × 21) − (Windows × 15). <strong>Gallons</strong> = Wall Area × Coats ÷ Coverage per Gallon.</div>
+    <h3>Worked example</h3>
+    <p>A 12ft × 10ft room with 8ft ceilings, 1 door, 2 windows, 2 coats, at 400 sq ft/gallon coverage: Wall area = 2 × (12+10) × 8 − 21 − 30 = 352 − 51 = <strong>301 sq ft</strong>. Total to cover (2 coats) = 602 sq ft. Gallons = 602 ÷ 400 = <strong>1.50 gallons</strong>, round up to 2 gallons (1.66 with 10% extra, still 2 gallons).</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Forgetting doors and windows entirely</div><div class="edu-card-body">Skipping the door/window count overestimates paint needed — but guessing high on door/window count can underestimate it. Count them accurately per room.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming 1 coat is enough</div><div class="edu-card-body">Most jobs need 2 coats for even, full coverage — especially over a different colour. Budgeting for 1 coat often means a visible patchy finish and a second shopping trip.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Buying different batches for one room</div><div class="edu-card-body">Paint colour can vary slightly between manufacturing batches. Buy all cans for one room from the same batch number where possible, especially for larger walls.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring surface texture and porosity</div><div class="edu-card-body">Textured, unprimed, or very porous surfaces absorb more paint than the can's stated coverage assumes — budget extra for these surfaces rather than relying on the default coverage figure.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -288,8 +316,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🎨 Paint can label</div><div class="edu-card-body">Your specific paint's actual coverage, recommended coat count, and dry/recoat times are printed on the can — always defer to this over the generic 400 sq ft/gallon default used here.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Retailer colour-matching service</div><div class="edu-card-body">Most paint retailers can re-mix an exact colour from the code printed on your can — record this code when buying so future touch-ups match precisely.</div></div>
+  </div>
+</section>
 
 
 

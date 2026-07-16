@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Flooring Calculator","url":"https://toolsnova.net/flooring-calculator","description":"Calculate how much flooring you need for any room. Shows square feet with waste allowance, number of boxes, and total cost. Free flooring calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much extra flooring should I buy?","acceptedAnswer":{"@type":"Answer","text":"Always buy 10% extra for standard straight-lay installation. Buy 15% extra for diagonal installation or complex patterns. Buy 20% extra for herringbone or intricate designs. Buying extra is cheap insurance — matching flooring from different batches can vary in colour."}},{"@type":"Question","name":"How do I calculate flooring needed?","acceptedAnswer":{"@type":"Answer","text":"Multiply room length × width to get square footage. Add waste percentage. Divide by the square footage per box to get number of boxes. Always round up to the nearest whole box."}},{"@type":"Question","name":"What is the most durable flooring?","acceptedAnswer":{"@type":"Answer","text":"Hardwood: 25-100 years with refinishing. Porcelain tile: 50+ years. Luxury vinyl plank (LVP): 15-25 years. Laminate: 15-25 years. Carpet: 5-15 years. For high-traffic areas, porcelain tile or hardwood are the most durable options."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Construction Tools","item":"https://toolsnova.net/construction-tools/"},{"@type":"ListItem","position":3,"name":"Flooring Calculator","item":"https://toolsnova.net/flooring-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -227,7 +229,7 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
     <div>
       <div class="pane-label">Waste factor</div>
-      <select id="fl-waste" class="mode-select" style="width:100%" onchange="flooringCalc()">
+      <select id="fl-waste" class="mode-select" style="width:100%" onchange="flooringCalc()" aria-label="Waste factor">
           <option value="5">5% (straight lay)</option>
           <option value="10" selected>10% (standard)</option>
           <option value="15">15% (diagonal/pattern)</option>
@@ -245,6 +247,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fl-output" onclick="copyEl('fl-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Before You Order</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Match waste factor to your layout</div><div class="edu-card-body">A straight lay wastes the least material; diagonal and pattern layouts (herringbone, chevron) create more offcuts. Pick the waste factor that matches your actual planned layout, not just the room shape.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Buy from the same production run</div><div class="edu-card-body">Flooring colour and finish can vary slightly between production batches (dye lots). Buy all boxes for one room together, and check the lot number matches, especially for natural materials like hardwood or stone.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Round up to full boxes, always</div><div class="edu-card-body">Flooring is sold by the box, not by the square foot. The box count shown already rounds up — don't order fewer boxes than shown expecting to buy the exact remainder later at the same price or batch.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -287,6 +298,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Flooring Quantity Formula</h2>
+    <div class="edu-highlight"><strong>Boxes Needed</strong> = ⌈ (Room Area × (1 + Waste % ÷ 100)) ÷ Sq Ft per Box ⌉</div>
+    <h3>Worked example</h3>
+    <p>A 12ft × 10ft room, 10% waste, boxes covering 20 sq ft each: Room area = 120 sq ft. With waste = 120 × 1.10 = <strong>132 sq ft</strong>. Boxes = 132 ÷ 20 = 6.6, round up to <strong>7 boxes</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Using too low a waste factor for the layout</div><div class="edu-card-body">A diagonal or patterned layout genuinely needs more waste allowance than a straight lay — using a straight-lay waste factor on a diagonal job will leave you short partway through.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting closets and alcoves</div><div class="edu-card-body">A simple length × width room measurement misses closets, alcoves, and irregular nooks. Measure and add these separately rather than assuming the main room dimensions cover the whole space.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Buying the exact box count with no reserve for future repairs</div><div class="edu-card-body">Beyond installation waste, keep a box or two aside for future repairs — matching flooring from a later production run may not be available or may not match exactly.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -303,8 +330,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Manufacturer installation guide</div><div class="edu-card-body">Recommended waste factor, expansion gap, and subfloor requirements vary by product and manufacturer — check your specific flooring's installation guide before finalizing quantities.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🏬 Retailer dye-lot / batch policy</div><div class="edu-card-body">Ask your retailer's policy on matching dye lots if you need to order more later — some products change appearance meaningfully between production runs.</div></div>
+  </div>
+</section>
 
 
 

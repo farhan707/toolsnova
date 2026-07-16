@@ -1634,24 +1634,41 @@ function salaryCalc() {
   const weekly  = annual / 52;
   const daily   = annual / 260;
   const hourly  = annual / 2080;
-  // Simple tax estimate (generic brackets)
-  const taxRate = annual <= 12500 ? 0 : annual <= 50000 ? 0.20 : annual <= 150000 ? 0.40 : 0.45;
-  const taxAmt  = annual * taxRate;
-  const takeHome = annual - taxAmt;
+  // Illustrative progressive (marginal) tax model — generic, not tied to any single country's actual code.
+  // Only the portion of income within each bracket is taxed at that bracket's rate.
+  const brackets = [
+    { upTo: 12500,     rate: 0.00 },
+    { upTo: 50000,     rate: 0.20 },
+    { upTo: 150000,    rate: 0.40 },
+    { upTo: Infinity,  rate: 0.45 },
+  ];
+  let taxAmt = 0, prevThreshold = 0, marginalRate = 0;
+  for (const b of brackets) {
+    if (annual > prevThreshold) {
+      const taxableInBracket = Math.min(annual, b.upTo) - prevThreshold;
+      taxAmt += taxableInBracket * b.rate;
+      marginalRate = b.rate;
+      prevThreshold = b.upTo;
+    } else break;
+  }
+  const takeHome    = annual - taxAmt;
+  const effRate     = annual > 0 ? (taxAmt / annual * 100) : 0;
+  const fmt = n => '$' + formatCur(n);
   out.className = 'output-box success';
   out.textContent =
     `── Salary Breakdown ──────────────\n` +
-    `Hourly:          ${formatCur(hourly)}\n` +
-    `Daily:           ${formatCur(daily)}\n` +
-    `Weekly:          ${formatCur(weekly)}\n` +
-    `Monthly:         ${formatCur(monthly)}\n` +
-    `Annual:          ${formatCur(annual)}\n\n` +
-    `── Estimated Tax (generic) ───────\n` +
-    `Tax rate:        ${(taxRate*100).toFixed(0)}%\n` +
-    `Est. tax/year:   ${formatCur(taxAmt)}\n` +
-    `Est. take-home:  ${formatCur(takeHome)}/yr\n` +
-    `                 ${formatCur(takeHome/12)}/mo\n\n` +
-    `Note: Tax estimate is illustrative only.\nConsult a tax advisor for accurate figures.`;
+    `Hourly:          ${fmt(hourly)}\n` +
+    `Daily:           ${fmt(daily)}\n` +
+    `Weekly:          ${fmt(weekly)}\n` +
+    `Monthly:         ${fmt(monthly)}\n` +
+    `Annual:          ${fmt(annual)}\n\n` +
+    `── Estimated Tax (generic, progressive) ─\n` +
+    `Marginal rate:   ${(marginalRate*100).toFixed(0)}% (top bracket reached)\n` +
+    `Effective rate:  ${effRate.toFixed(1)}% (average across all income)\n` +
+    `Est. tax/year:   ${fmt(taxAmt)}\n` +
+    `Est. take-home:  ${fmt(takeHome)}/yr\n` +
+    `                 ${fmt(takeHome/12)}/mo\n\n` +
+    `Note: This is an illustrative generic progressive-tax model, not a specific\ncountry's actual tax code and not currency-specific. Consult a tax advisor\nfor accurate figures for your jurisdiction.`;
   renderAmortChart('sal-chart', takeHome, taxAmt);
 }
 function salaryClear() {
@@ -6991,7 +7008,6 @@ function fundedROICalc() {
   const target    = parseFloat(document.getElementById('fr-target')?.value) || 8;
   const split     = parseFloat(document.getElementById('fr-split')?.value) || 80;
   const cycles    = parseInt(document.getElementById('fr-cycles')?.value) || 3;
-  const scale     = document.getElementById('fr-scale')?.value || 'no';
   const out       = document.getElementById('fr-output');
   if (!out) return;
   if (isNaN(fee)||isNaN(accountSz)||fee<=0||accountSz<=0) {
@@ -7010,14 +7026,14 @@ function fundedROICalc() {
     `Account Size:       $${formatCur(accountSz)}\n`+
     `Profit Target:      ${target}%\n`+
     `Profit Split:       ${split}%\n\n`+
-    `── Per payout cycle ──────────────────\n`+
-    `Gross profit:       $${formatCur(accountSz*target/100)}\n`+
-    `Your share (${split}%):  $${formatCur(profitPerCycle)}\n`+
-    `Break even after:   ${breakEvenCycles} payout${breakEvenCycles!==1?'s':''}\n\n`+
-    `── ${cycles} payout cycles ─────────────────\n`+
+    `── Bottom line (${cycles} payout cycles) ─────\n`+
     `Total earned:       $${formatCur(totalEarned)}\n`+
     `Net (after fee):    $${formatCur(netProfit)}\n`+
-    `ROI on fee:         ${roi.toFixed(1)}%\n\n`+
+    `ROI on fee:         ${roi.toFixed(1)}%\n`+
+    `Break even after:   ${breakEvenCycles} payout${breakEvenCycles!==1?'s':''}\n\n`+
+    `── Per payout cycle ──────────────────\n`+
+    `Gross profit:       $${formatCur(accountSz*target/100)}\n`+
+    `Your share (${split}%):  $${formatCur(profitPerCycle)}\n\n`+
     `── Payout timeline ───────────────────\n`+
     Array.from({length:Math.min(cycles,8)},(_,i)=>{
       const earned=(i+1)*profitPerCycle;

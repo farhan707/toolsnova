@@ -51,7 +51,7 @@
     "name": "Solar Panel ROI Calculator",
     "url": "https://toolsnova.net/solar-panel-roi-calculator",
     "description": "Calculate solar panel return on investment, payback period, lifetime savings, and CO2 offset for residential and commercial installations.",
-    "applicationCategory": "UtilityApplication",
+    "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "ToolsNova", "url": "https://toolsnova.net" }
@@ -59,61 +59,88 @@
   </script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How long does it take for solar panels to pay for themselves?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The average solar panel payback period ranges from 5 to 12 years depending on system cost, electricity rates, daily sunlight hours, and available subsidies. In countries with high electricity tariffs and good sun exposure like Pakistan and India, payback periods can be as short as 4-6 years."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is a good ROI for solar panels?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A good solar panel ROI is typically 10-20% per year, better than most fixed-income investments. Over a 25-year system lifespan, most residential solar installations return 2-4 times the initial investment in electricity savings."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does a 5kW solar system cost in Pakistan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A 5kW on-grid solar system in Pakistan typically costs between PKR 700,000 and PKR 1,200,000 depending on panel brand and inverter type. With current NEPRA electricity rates, most 5kW systems achieve payback in 4-7 years."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How many solar panels do I need for my home?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Divide your daily electricity consumption (kWh) by peak sun hours in your area, then add 20% for system losses. A home using 20 kWh/day in Pakistan (5 peak sun hours) needs 20 divided by 5 times 1.2 equals 4.8 kW, or approximately 10-12 panels of 400W each."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is net metering and how does it affect solar ROI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Net metering allows you to export excess solar electricity back to the grid and receive credit on your bill. This significantly improves solar ROI as it monetizes energy you cannot use immediately. Pakistan, India, UAE, and most developed countries support net metering for residential solar installations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much CO2 does a solar panel system offset?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "On average, 1 kWh of solar electricity offsets approximately 0.5 kg of CO2. A 5kW solar system generating 25 kWh per day offsets roughly 4-5 tonnes of CO2 per year, equivalent to planting approximately 180-220 trees annually."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take for solar panels to pay for themselves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The average payback period ranges from 5 to 12 years depending on system cost, electricity rates, daily sunlight hours, and subsidies. In Pakistan and India with high electricity tariffs and good sun exposure, payback can be as short as 4–6 years. After payback, the system generates essentially free electricity for the remaining lifespan."
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good ROI for solar panels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A good solar ROI is typically 10–20% per year, better than most fixed-income investments. Over a 25-year lifespan, most residential installations return 2–4 times the initial investment in electricity savings. ROI improves further as electricity tariffs rise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a 5kW solar system cost in Pakistan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 5kW on-grid solar system in Pakistan typically costs PKR 700,000 to PKR 1,200,000 depending on panel brand and inverter type. With current NEPRA electricity rates, most 5kW systems achieve payback in 4–7 years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many solar panels do I need for my home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide your daily electricity consumption (kWh) by peak sun hours in your area, then add 20% for system losses. A home using 20 kWh/day in Pakistan (5 peak sun hours) needs 4.8 kW, or approximately 10–12 panels of 400W each."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is net metering and how does it affect solar ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Net metering lets you export excess solar electricity to the grid and receive credit on your bill. This significantly improves ROI by monetizing energy you cannot use immediately. Pakistan, India, UAE, and most developed countries support net metering for residential installations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much CO2 does a solar system offset?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On average, 1 kWh of solar electricity offsets approximately 0.5 kg of CO2. A 5kW system generating 25 kWh/day offsets roughly 4–5 tonnes of CO2 per year, equivalent to planting 180–220 trees annually."
+      }
+    }
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ToolsNova",
+      "item": "https://toolsnova.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Finance Tools",
+      "item": "https://toolsnova.net/finance-tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Solar Panel ROI Calculator",
+      "item": "https://toolsnova.net/solar-panel-roi-calculator"
+    }
+  ]
+}
+</script>
 
   <style>
     .calc-container { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
@@ -138,7 +165,7 @@
     @media (max-width: 680px) { .main-layout { grid-template-columns: 1fr; } }
 
     .input-card {
-      background: var(--surface));
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px; padding: 18px; margin-bottom: 14px;
     }
@@ -167,7 +194,7 @@
     .results-panel { display: flex; flex-direction: column; gap: 12px; }
 
     .roi-hero {
-      background: var(--surface)beb; border: 1px solid #f59e0b;
+      background: var(--surface); border: 1px solid #f59e0b;
       border-radius: 14px; padding: 20px; text-align: center;
     }
     .roi-hero .rh-label { font-size: 0.78rem; color: var(--text2); font-weight: 500; margin-bottom: 4px; }
@@ -216,9 +243,9 @@
       font-weight: 600; color: var(--text2); font-size: 0.72rem;
     }
     .year-table th:first-child { text-align: center; }
-    .year-table td { text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--border)); color: var(--text); }
+    .year-table td { text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text); }
     .year-table td:first-child { text-align: center; color: var(--text3); }
-    .year-table tr.payback-row td { background: var(--surface)beb; font-weight: 600; }
+    .year-table tr.payback-row td { background: rgba(245,158,11,0.12); font-weight: 600; }
     .year-table tr:last-child td { border-bottom: none; }
     .year-table tr:nth-child(even):not(.payback-row) td { background: var(--surface,#fafafa); }
 
@@ -229,7 +256,7 @@
 
     .country-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.75rem; }
     .country-table th { text-align: left; padding: 8px 10px; background: var(--surface,var(--surface2)); border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text2); font-size: 0.75rem; }
-    .country-table td { padding: 8px 10px; border-bottom: 1px solid var(--border)); color: var(--text); }
+    .country-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text); }
     .country-table tr:last-child td { border-bottom: none; }
     .c-good { color: var(--text); font-weight: 600; }
     .c-warn { color: #f59e0b; font-weight: 600; }
@@ -446,7 +473,7 @@
         <div class="input-card">
           <div class="card-title">System details</div>
           <div class="field">
-            <label>Currency</label>
+            <label for="currency">Currency</label>
             <select id="currency" onchange="calc()">
               <option value="PKR">PKR — Pakistani Rupee</option>
               <option value="USD">USD — US Dollar</option>
@@ -459,15 +486,15 @@
             </select>
           </div>
           <div class="field">
-            <label>System size (kW)</label>
+            <label for="systemKw">System size (kW)</label>
             <input type="number" id="systemKw" value="5" min="0.5" max="1000" step="0.5" oninput="calc()">
           </div>
           <div class="field">
-            <label>Total installation cost</label>
+            <label for="installCost">Total installation cost</label>
             <input type="number" id="installCost" value="900000" min="1" oninput="calc()">
           </div>
           <div class="field">
-            <label>Government subsidy / incentive</label>
+            <label for="subsidy">Government subsidy / incentive</label>
             <input type="number" id="subsidy" value="0" min="0" oninput="calc()">
           </div>
           <div class="slider-field">
@@ -475,21 +502,21 @@
               <span class="sl-label">Peak sun hours per day</span>
               <span class="sl-val" id="sunLabel">5.0 hrs</span>
             </div>
-            <input type="range" id="sunHours" min="2" max="9" step="0.5" value="5" oninput="document.getElementById('sunLabel').textContent=parseFloat(this.value).toFixed(1)+' hrs';calc()">
+            <input type="range" id="sunHours" min="2" max="9" step="0.5" value="5" aria-label="Peak sun hours per day" oninput="document.getElementById('sunLabel').textContent=parseFloat(this.value).toFixed(1)+' hrs';calc()">
           </div>
           <div class="slider-field">
             <div class="slider-top">
               <span class="sl-label">System efficiency / losses</span>
               <span class="sl-val" id="effLabel">80%</span>
             </div>
-            <input type="range" id="sysEff" min="60" max="95" step="1" value="80" oninput="document.getElementById('effLabel').textContent=this.value+'%';calc()">
+            <input type="range" id="sysEff" min="60" max="95" step="1" value="80" aria-label="System efficiency" oninput="document.getElementById('effLabel').textContent=this.value+'%';calc()">
           </div>
         </div>
 
         <div class="input-card">
           <div class="card-title">Electricity &amp; financial</div>
           <div class="field">
-            <label>Current electricity tariff (per kWh)</label>
+            <label for="tariff">Current electricity tariff (per kWh)</label>
             <input type="number" id="tariff" value="50" min="0.01" step="0.5" oninput="calc()">
           </div>
           <div class="slider-field">
@@ -497,17 +524,17 @@
               <span class="sl-label">Annual electricity price increase</span>
               <span class="sl-val" id="tariffIncLabel">5.0%</span>
             </div>
-            <input type="range" id="tariffInc" min="0" max="20" step="0.5" value="5" oninput="document.getElementById('tariffIncLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
+            <input type="range" id="tariffInc" min="0" max="20" step="0.5" value="5" aria-label="Annual electricity price increase" oninput="document.getElementById('tariffIncLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
           </div>
           <div class="slider-field">
             <div class="slider-top">
               <span class="sl-label">Panel degradation per year</span>
               <span class="sl-val" id="degradeLabel">0.5%</span>
             </div>
-            <input type="range" id="degrade" min="0" max="2" step="0.1" value="0.5" oninput="document.getElementById('degradeLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
+            <input type="range" id="degrade" min="0" max="2" step="0.1" value="0.5" aria-label="Panel degradation per year" oninput="document.getElementById('degradeLabel').textContent=parseFloat(this.value).toFixed(1)+'%';calc()">
           </div>
           <div class="field">
-            <label>Annual maintenance cost</label>
+            <label for="maintCost">Annual maintenance cost</label>
             <input type="number" id="maintCost" value="15000" min="0" oninput="calc()">
           </div>
           <div class="slider-field">
@@ -515,14 +542,15 @@
               <span class="sl-label">System lifespan (years)</span>
               <span class="sl-val" id="lifespanLabel">25 yrs</span>
             </div>
-            <input type="range" id="lifespan" min="10" max="35" step="1" value="25" oninput="document.getElementById('lifespanLabel').textContent=this.value+' yrs';calc()">
+            <input type="range" id="lifespan" min="10" max="35" step="1" value="25" aria-label="System lifespan in years" oninput="document.getElementById('lifespanLabel').textContent=this.value+' yrs';calc()">
           </div>
           <div class="slider-field">
             <div class="slider-top">
               <span class="sl-label">Net metering export (%)</span>
               <span class="sl-val" id="exportLabel">0%</span>
             </div>
-            <input type="range" id="exportPct" min="0" max="100" step="5" value="0" oninput="document.getElementById('exportLabel').textContent=this.value+'%';calc()">
+            <input type="range" id="exportPct" min="0" max="100" step="5" value="0" aria-label="Net metering export percentage" oninput="document.getElementById('exportLabel').textContent=this.value+'%';calc()">
+            <div style="font-size:.68rem;color:var(--text3);margin-top:4px">Exported units are credited at 70% of your retail tariff by default, a common (but not universal) net metering assumption — check your local scheme, some credit exports at the full retail rate.</div>
           </div>
         </div>
       </div>
@@ -593,6 +621,25 @@
         </tbody>
       </table>
     </div>
+
+    <section class="edu-section">
+      <h2>Avoid These Mistakes</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">Assuming full retail credit for every exported unit</div><div class="edu-card-body">Many net metering and feed-in schemes credit exported electricity below your full retail tariff — this calculator now assumes 70% by default. Check your local scheme's actual export rate rather than assuming 1:1 credit.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Ignoring installer quotes vs. the estimate here</div><div class="edu-card-body">This tool gives a planning estimate. Actual installed cost varies with panel brand, inverter type, roof condition, and local labor rates — always get 2-3 real installer quotes before deciding.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Overlooking maintenance and inverter replacement</div><div class="edu-card-body">Inverters typically need replacement once within a 25-year system lifespan, at a real cost. Make sure your maintenance cost input reflects this, not just annual cleaning.</div></div>
+        <div class="edu-card"><div class="edu-card-title">Comparing payback period alone across systems</div><div class="edu-card-body">A shorter payback isn't automatically the better deal — check total lifetime savings and ROI together, since a slightly longer payback can still produce far more total value over 25 years.</div></div>
+      </div>
+    </section>
+
+    <section class="edu-section">
+      <h2>References</h2>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="edu-card-title">🇵🇰 NEPRA (Pakistan)</div><div class="edu-card-body">Pakistan's National Electric Power Regulatory Authority publishes current net metering rules and electricity tariffs used as the basis for the Pakistan presets.</div></div>
+        <div class="edu-card"><div class="edu-card-title">🇬🇧 Ofgem / Smart Export Guarantee (UK)</div><div class="edu-card-body">The UK's SEG scheme sets export payment rules for UK installations — rates vary by supplier and are set independently of the standard electricity tariff.</div></div>
+        <div class="edu-card"><div class="edu-card-title">📄 Your local installer / utility</div><div class="edu-card-body">Actual system costs, subsidies, and net metering export rates are set locally and change over time — confirm current figures with a licensed installer or your utility before relying on any preset or default value shown here.</div></div>
+      </div>
+    </section>
 
     <div class="faq-section">
       <h2>Frequently asked questions</h2>
@@ -727,7 +774,8 @@
         const kwh        = annualKwh * currentEff;
         const selfUse    = kwh * (1 - exportPct / 100);
         const exported   = kwh * (exportPct / 100);
-        const saving     = (selfUse + exported) * currentTariff - maintCost;
+        const EXPORT_CREDIT_RATE = 0.7; // many net metering / feed-in schemes credit exported units below full retail tariff
+        const saving     = (selfUse * currentTariff + exported * currentTariff * EXPORT_CREDIT_RATE) - maintCost;
         cumSaving       += saving;
 
         if (paybackYearExact === null && cumSaving >= netCost) {

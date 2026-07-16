@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Funded Account ROI Calculator","url":"https://toolsnova.net/funded-account-roi-calculator","description":"Calculate the true return on investment for any prop firm challenge. Is the fee worth it? See ROI, break-even payouts, and projected earnings over multiple cycles.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a prop firm challenge worth the fee?","acceptedAnswer":{"@type":"Answer","text":"It depends on your win rate and consistency. A $550 FTMO challenge on a $100K account: first payout = $100K × 8% × 80% = $6,400. ROI on fee = ($6,400 - $550)/$550 = 1,064%. Even if you pass only 1 in 3 attempts, the expected value is strongly positive with a profitable strategy."}},{"@type":"Question","name":"What is the best account size to challenge?","acceptedAnswer":{"@type":"Answer","text":"Larger accounts have better ROI relative to challenge fees. A $100K account fee is not 10× a $10K fee — fees scale less than linearly. The $100K account often gives 5-8× better ROI per dollar of fee than the $10K account."}},{"@type":"Question","name":"Can I get refunded the challenge fee?","acceptedAnswer":{"@type":"Answer","text":"Some firms refund the challenge fee after your first successful payout (FTMO does this). If the fee is refunded, your net ROI is 100% of your first payout. Always check if your firm offers fee refunds — it significantly changes the math."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Funded Account ROI Calculator","item":"https://toolsnova.net/funded-account-roi-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,7 +216,7 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="toolbar">
     <button class="btn primary" onclick="fundedROICalc()">Calculate</button>
     <button class="btn" onclick="copyEl('fr-output')">Copy</button>
-    <span class="status-badge" id="{status_id}">{status_text}</span>
+    <span class="status-badge" id="fr-status">enter details to calculate</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
@@ -265,7 +267,7 @@ gtag('config', 'G-S6PPGS7N63');
       <div class="edu-card"><div class="edu-card-title">✂️ Net Payout</div><div class="edu-card-body">Your actual payout after the profit split. At 80% split: $8,000 × 80% = $6,400 per cycle. At 90% split: $7,200. The split percentage matters more on larger accounts.</div></div>
       <div class="edu-card"><div class="edu-card-title">🔄 Break-Even Cycles</div><div class="edu-card-body">How many payouts to recover the challenge fee. $550 fee ÷ $6,400 payout = 0.086 — meaning you recover the fee within the first payout. Most challenges break even in 1–2 payouts.</div></div>
       <div class="edu-card"><div class="edu-card-title">📈 True ROI</div><div class="edu-card-body">Net earnings over multiple cycles minus the fee, divided by the fee. A $550 fee generating $6,400 on the first payout = 1,064% ROI. Even adjusting for 50% pass rate: 532% expected ROI per attempt.</div></div>
-      <div class="edu-card"><div class="edu-card-title">⚡ Scaling Benefits</div><div class="edu-card-body">Many firms offer scaling — increasing your account size as you prove consistent profitability. FTMO scales up to $2,000,000. Each scale-up multiplies your payout proportionally with no additional fee.</div></div>
+      <div class="edu-card"><div class="edu-card-title">⚡ Scaling Benefits</div><div class="edu-card-body">Many firms offer scaling — increasing your account size as you prove consistent profitability. FTMO's scaling plan adds roughly 25% per milestone, capping at $400,000. Each scale-up multiplies your payout proportionally with no additional fee. Scaling caps and terms vary by firm and change over time — confirm current terms before relying on this figure.</div></div>
       <div class="edu-card"><div class="edu-card-title">🎯 Account Size Optimisation</div><div class="edu-card-body">Larger accounts have better ROI on fees. A $200K account often costs less than 2× the $100K fee but earns 2× the payout. Always check the fee-to-account-size ratio before choosing your challenge level.</div></div>
     </div>
 
@@ -283,6 +285,16 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Ignoring pass rate in your real expected value</div><div class="edu-card-body">This calculator shows ROI *if you pass and hit target*. Multiply by your realistic pass probability before treating the ROI figure as an expected outcome — a 1,000% ROI on a 20% pass rate is a very different bet than the headline number suggests.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting the fee isn't always refunded</div><div class="edu-card-body">Some firms refund the challenge fee after your first payout — but only if you actually reach a profitable payout. Fail the challenge, or pass but never profit on the funded account, and the fee is gone regardless of the refund policy.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing account sizes by fee alone</div><div class="edu-card-body">A larger account's fee isn't proportional to a smaller one's — check the fee-to-payout ratio (shown in the "Compare account sizes" section), not just which fee is cheaper upfront.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming scaling terms are fixed and universal</div><div class="edu-card-body">Scaling percentages, caps, and milestone requirements vary by firm and change over time. Confirm your specific firm's current published terms rather than assuming industry-typical figures apply.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -296,6 +308,14 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Can I get refunded the challenge fee?</div>
     <div class="faq-a">Some firms refund the challenge fee after your first successful payout (FTMO does this). If the fee is refunded, your net ROI is 100% of your first payout. Always check if your firm offers fee refunds — it significantly changes the math.</div>
+  </div>
+</section>
+
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your prop firm's published terms</div><div class="edu-card-body">Challenge fees, profit splits, scaling caps, and refund policies vary by firm and change over time. Always confirm current terms on your specific firm's official pricing/rules page before relying on figures from this or any third-party source.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📊 Published pass-rate data</div><div class="edu-card-body">Most prop firms don't officially publish pass rates. Independent trader communities and review sites periodically estimate them — treat any pass-rate figure, including examples on this page, as an illustrative estimate, not a guarantee.</div></div>
   </div>
 </section>
 

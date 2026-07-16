@@ -35,7 +35,9 @@
 <meta name="twitter:description" content="Calculate tip amount, total bill, and split between any number of people. Free online tip calculator with common tip percentage shortcuts.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tip Calculator Online","url":"https://toolsnova.net/tip-calculator","description":"Calculate tip amount, total bill, and split between any number of people. Free online tip calculator with common tip percentage shortcuts.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tip Calculator Online","url":"https://toolsnova.net/tip-calculator","description":"Calculate tip amount, total bill, and split between any number of people. Free online tip calculator with common tip percentage shortcuts.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much should I tip at a restaurant?","acceptedAnswer":{"@type":"Answer","text":"Standard tipping norms: 10% for adequate service, 15% for good service, 18–20% for excellent service, 25%+ for exceptional service. In the US, 18–20% is now considered standard. In the UK, 10–12.5% is typical."}},{"@type":"Question","name":"Should I tip on the pre-tax or post-tax amount?","acceptedAnswer":{"@type":"Answer","text":"In the US, it's customary to tip on the pre-tax total. However, many people tip on the full bill for simplicity. The difference is small — on a $100 bill with 10% tax, the tip difference between pre/post-tax is about $1.50 at 15%."}},{"@type":"Question","name":"How do I split a bill unequally?","acceptedAnswer":{"@type":"Answer","text":"This calculator splits equally by default. For unequal splits, calculate the total (bill + tip) then divide according to what each person ordered. A common approach: each person pays for what they ordered, then split the tip equally."}},{"@type":"Question","name":"Is tipping mandatory?","acceptedAnswer":{"@type":"Answer","text":"Tipping is legally optional in most countries, but it is a significant cultural expectation in the US, Canada, and some Middle Eastern countries. In Japan and South Korea, tipping is considered rude. In most of Europe and Australia, it's appreciated but not expected."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Tip Calculator","item":"https://toolsnova.net/tip-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -252,6 +254,15 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="tip-output" onclick="copyEl('tip-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div>
   </div>
 
+  <section class="edu-section">
+    <h2>Tipping With Confidence</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Match the tip to the service type</div><div class="edu-card-body">Sit-down restaurants, delivery, and counter service have different tipping norms. Use the quick-select buttons as a starting point, then adjust for exceptional or poor service.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Splitting evenly is a shortcut, not a rule</div><div class="edu-card-body">The per-person split assumes everyone ordered roughly the same. For very uneven orders, treat this as a quick estimate rather than the fairest possible split.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check for an included service charge</div><div class="edu-card-body">Large parties often already have gratuity built into the bill. Check before adding a full tip on top of one that's already there.</div></div>
+    </div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -292,6 +303,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Tip &amp; Split Formula</h2>
+    <div class="edu-highlight"><strong>Per Person</strong> = (Bill + Tip) ÷ Number of People, where Tip = Bill × Tip % ÷ 100</div>
+    <h3>Worked example</h3>
+    <p>An $85 bill at 20% tip, split 3 ways: Tip = $85 × 20 ÷ 100 = $17, Total = $102. Per person = $102 ÷ 3 = <strong>$34</strong>, of which $5.67 is that person's share of the tip.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Double-tipping on an included service charge</div><div class="edu-card-body">Check your bill for an automatic gratuity before adding a full tip on top — common on large-party bills.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming an equal split is always fair</div><div class="edu-card-body">Equal splits work well for similar orders but can shortchange someone who ordered far less than the table average — itemize instead when the gap is large.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Skipping the tip entirely over minor issues</div><div class="edu-card-body">Most service problems aren't the server's fault. A reduced tip plus a word to the manager addresses the issue without penalizing the server's income for something outside their control.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -312,7 +339,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Restaurant policy</div><div class="edu-card-body">Automatic gratuity thresholds and rates for large parties vary by restaurant — check your bill or ask staff before adding a tip on top of an included service charge.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🌍 Tipping customs vary by country</div><div class="edu-card-body">The percentages here reflect common US practice. Norms differ significantly elsewhere — check local custom when traveling before assuming US-style tipping applies.</div></div>
+  </div>
+</section>
 
 
 

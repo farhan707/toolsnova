@@ -35,7 +35,9 @@
 <meta name="twitter:description" content="Convert salary between hourly, daily, weekly, monthly and annual pay instantly. Includes estimated tax and take-home pay breakdown. Free salary calculator.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Salary Calculator Online","url":"https://toolsnova.net/salary-calculator","description":"Convert salary between hourly, daily, weekly, monthly and annual pay instantly. Includes estimated tax and take-home pay breakdown. Free salary calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Salary Calculator Online","url":"https://toolsnova.net/salary-calculator","description":"Convert salary between hourly, daily, weekly, monthly and annual pay instantly. Includes estimated tax and take-home pay breakdown. Free salary calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert hourly to annual salary?","acceptedAnswer":{"@type":"Answer","text":"Multiply your hourly rate by the number of working hours per year. Assuming 40 hours/week × 52 weeks = 2,080 working hours. So $25/hour × 2,080 = $52,000/year."}},{"@type":"Question","name":"How do I calculate monthly salary from annual?","acceptedAnswer":{"@type":"Answer","text":"Divide annual salary by 12. Example: $60,000/year ÷ 12 = $5,000/month. For weekly: divide by 52. For daily: divide by 260 (52 weeks × 5 working days)."}},{"@type":"Question","name":"What is CTC vs take-home salary?","acceptedAnswer":{"@type":"Answer","text":"CTC (Cost to Company) includes everything the employer pays: base salary, allowances, employer's PF contribution, gratuity, and benefits. Take-home (in-hand) salary is what you actually receive after deducting income tax, PF, and other deductions — typically 70–80% of CTC."}},{"@type":"Question","name":"How is income tax calculated on salary?","acceptedAnswer":{"@type":"Answer","text":"Income tax is calculated on taxable income (salary minus exemptions and deductions). Tax slabs vary by country. In India, the new regime starts taxing at 5% above ₹3 lakh. The tax estimate shown here is illustrative — consult a CA for accurate calculations."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Salary Calculator","item":"https://toolsnova.net/salary-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -226,7 +228,7 @@ gtag('config', 'G-S6PPGS7N63');
       </div>
       <div>
         <div class="pane-label">Per</div>
-        <select id="sal-from" class="mode-select" onchange="salaryCalc()" style="width:100%">
+        <select id="sal-from" class="mode-select" onchange="salaryCalc()" style="width:100%" aria-label="Per">
           <option value="annual">Year (Annual)</option>
           <option value="monthly">Month</option>
           <option value="weekly">Week</option>
@@ -242,6 +244,15 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="output-box" id="sal-output" onclick="copyEl('sal-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div>
   </div>
   <div id="sal-chart"></div>
+
+  <section class="edu-section">
+    <h2>Reading Your Breakdown</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Marginal vs. effective rate</div><div class="edu-card-body">Your marginal rate is what you pay on your *next* dollar earned — useful for deciding if a raise or bonus is worth it. Your effective rate is your *average* rate across all income — the more useful number for budgeting your actual take-home pay.</div></div>
+      <div class="edu-card"><div class="edu-card-title">This is a generic illustration</div><div class="edu-card-body">The bracket thresholds here are a simplified, generic progressive structure — not any specific country's real tax code, and not tied to a currency. Use it to understand how progressive taxation works, then check your actual local tax rules for real numbers.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Compare pay frequencies before negotiating</div><div class="edu-card-body">A monthly figure can look large or small out of context — compare it against your actual monthly expenses, not just the headline annual number, before evaluating a job offer.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -283,6 +294,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Progressive Tax Formula</h2>
+    <div class="edu-highlight"><strong>Tax</strong> = sum of (income within each bracket × that bracket's rate) — never a single flat rate applied to all income.</div>
+    <h3>Worked example</h3>
+    <p>$50,000 annual income against brackets of 0% to $12,500, 20% to $50,000, 40% to $150,000, 45% above: Tax = ($12,500 − $0) × 0% + ($50,000 − $12,500) × 20% = <strong>$7,500</strong>. Take-home = $42,500 (effective rate 15.0%). One dollar more, at $50,001, adds only 40 cents of extra tax on that dollar — take-home rises smoothly to $42,500.60, with no cliff.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Confusing marginal rate with your actual tax bill</div><div class="edu-card-body">"I'm in the 40% bracket" doesn't mean 40% of your whole income goes to tax — only the portion above that bracket's threshold does. Your effective rate (shown separately) is always lower than your marginal rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Turning down a raise to "avoid the next bracket"</div><div class="edu-card-body">Because only income above a threshold is taxed at the higher rate, crossing into a new bracket never reduces your take-home pay — it only means the portion above the line is taxed a bit more.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using annual working-hour assumptions blindly</div><div class="edu-card-body">Hourly-to-annual conversion here assumes 2,080 hours/year (40hrs × 52 weeks). If you work part-time, overtime, or a non-standard schedule, your real annual figure will differ — adjust accordingly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating this as your actual tax bill</div><div class="edu-card-body">This is a generic illustrative model, not your country's real tax code, and doesn't account for deductions, credits, or social security/national insurance contributions that apply in most real systems.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -303,7 +331,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your local tax authority</div><div class="edu-card-body">This calculator's brackets are a generic illustration, not real tax law. Your country's tax authority (IRS, HMRC, Income Tax Department, FBR, etc.) publishes the actual current brackets, deductions, and credits that apply to you.</div></div>
+    <div class="edu-card"><div class="edu-card-title">💼 Your payslip / employer HR</div><div class="edu-card-body">Your actual take-home pay also depends on employer-specific deductions (retirement contributions, health insurance, social security) not modeled here — your payslip or HR department has the definitive breakdown.</div></div>
+  </div>
+</section>
 
 
 

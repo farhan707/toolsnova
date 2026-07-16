@@ -34,7 +34,9 @@
 <meta name="twitter:description" content="Calculate annual dividend income from your shares. Shows per-payment, annual, and monthly income with dividend yield and growth projection. Free dividend calculator.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dividend Calculator","url":"https://toolsnova.net/dividend-calculator","description":"Calculate annual dividend income from your shares. Shows per-payment, annual, and monthly income with dividend yield and growth projection. Free dividend calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dividend Calculator","url":"https://toolsnova.net/dividend-calculator","description":"Calculate annual dividend income from your shares. Shows per-payment, annual, and monthly income with dividend yield and growth projection. Free dividend calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is dividend yield?","acceptedAnswer":{"@type":"Answer","text":"Dividend Yield = (Annual Dividend per Share / Stock Price) × 100. If a stock pays $2/year and trades at $40, yield = 5%. Higher yield means more income relative to price, but extremely high yields can signal a falling stock price."}},{"@type":"Question","name":"What is DRIP?","acceptedAnswer":{"@type":"Answer","text":"Dividend Reinvestment Plan (DRIP) automatically reinvests your dividends to buy more shares instead of paying cash. Over time, this compounds your position significantly. Many brokers offer free DRIP."}},{"@type":"Question","name":"What is a good dividend yield?","acceptedAnswer":{"@type":"Answer","text":"2-4% is generally considered healthy for established companies. Below 2%: growth-focused company. 4-6%: good income stock. Above 6%: potentially unsustainable — check the payout ratio. A payout ratio above 80% may indicate the dividend is at risk."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Dividend Calculator","item":"https://toolsnova.net/dividend-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -227,7 +229,7 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
     <div>
       <div class="pane-label">Payment frequency</div>
-      <select id="div-freq" class="mode-select" style="width:100%" onchange="dividendCalc()">
+      <select id="div-freq" class="mode-select" style="width:100%" onchange="dividendCalc()" aria-label="Payment frequency">
           <option value="annual">Annual</option>
           <option value="semi">Semi-annual</option>
           <option value="quarterly" selected>Quarterly</option>
@@ -245,6 +247,16 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="div-output" onclick="copyEl('div-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Investment Decision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Yield alone isn't the decision</div><div class="edu-card-body">A high yield can mean a genuinely strong income stock, or it can mean the price has fallen because the market expects a dividend cut. Check the payout ratio and recent price history before treating a high number as a buy signal.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Compare against your income goal</div><div class="edu-card-body">This calculator shows what your current holding produces — compare that figure against how much passive income you're actually trying to build, not just against the stock's headline yield.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Growth rate is a projection, not a promise</div><div class="edu-card-body">The growth projection assumes the entered rate holds for 10 years. Dividend growth rates change with company performance — treat the projection as a planning estimate, not a guarantee.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Comparing this against a growth-focused alternative? Use the <a href="compound-interest-calculator.html">Compound Interest Calculator</a> to see how reinvested dividends (DRIP) compound over time.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -282,9 +294,26 @@ gtag('config', 'G-S6PPGS7N63');
     <h3>Sector diversification for dividend income</h3>
     <p>A diversified dividend portfolio spans multiple sectors: utilities (3–5% yield, very stable), consumer staples (2–4%, recession-resistant), financials (3–5%, sensitive to interest rates), healthcare (2–4%, demographic tailwind), REITs (4–8%, inflation protection), and industrial companies (2–3%, long dividend history). Concentrating in one sector exposes income to sector-specific risks.</p>
     <h3>Tax efficiency of dividends</h3>
-    <p>Qualified dividends (from US companies held over 60 days) are taxed at preferential capital gains rates: 0% below $47,025, 15% up to $518,900, 20% above (2024). Ordinary dividends are taxed as income. REITs and foreign stocks often pay non-qualified dividends taxed at higher income rates. Hold high-yield, non-qualified dividend payers in tax-advantaged accounts (IRA, 401k) and qualified dividend payers in taxable accounts for maximum tax efficiency.</p>
+    <p>Qualified dividends (from US companies held over 60 days) are taxed at preferential capital gains rates. For the 2025 tax year, the 0% bracket applies to taxable income up to $48,350 (single filers), 15% up to $533,400, and 20% above that — these thresholds rise slightly each year for inflation (2026: $49,450 and $545,500). Ordinary dividends are taxed as income. REITs and foreign stocks often pay non-qualified dividends taxed at higher income rates. Hold high-yield, non-qualified dividend payers in tax-advantaged accounts (IRA, 401k) and qualified dividend payers in taxable accounts for maximum tax efficiency.</p>
     <div class="edu-highlight"><strong>💰 Dividend income milestone:</strong> Calculate your 'dividend cover ratio' — annual dividend income ÷ annual expenses. At 25% coverage, dividends pay for one quarter of living expenses. At 100% coverage, dividends alone cover all expenses — financial independence. Tracking this ratio monthly shows concrete progress toward income independence.</div>
 
+  </section>
+
+  <section class="edu-section">
+    <h2>Dividend Income Formula</h2>
+    <div class="edu-highlight"><strong>Annual Dividend</strong> = Shares × Dividend per Share × Payments per Year. <strong>Yield</strong> = Annual Dividend ÷ (Shares × Price) × 100.</div>
+    <h3>Worked example</h3>
+    <p>1,000 shares paying $0.50 per share quarterly, with a $50 share price: Annual Dividend = 1,000 × $0.50 × 4 = <strong>$2,000/year</strong> ($166.67/month). Yield = $2,000 ÷ (1,000 × $50) × 100 = <strong>4.00%</strong>. At a 5% annual dividend growth rate, that income grows to $2,552.56/year by Year 5 with no additional shares purchased.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Chasing yield without checking sustainability</div><div class="edu-card-body">An 8–10%+ yield often means the price has already fallen on bad news. Check the payout ratio and recent earnings trend before assuming a high yield is safe income.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring dividend tax treatment</div><div class="edu-card-body">Qualified and non-qualified dividends are taxed very differently. Assuming all your dividend income gets the lower qualified rate can leave you underpaying — check your 1099-DIV.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating the growth projection as guaranteed</div><div class="edu-card-body">The 10-year projection compounds whatever growth rate you enter — it's a planning tool, not a forecast. Companies can freeze, cut, or accelerate dividend growth at any time.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Concentrating in one sector for yield</div><div class="edu-card-body">Reaching for yield often means overweighting a single high-yield sector (e.g. REITs or energy). A sector-specific downturn then hits both your income and your capital at once.</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -303,8 +332,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ IRS — Qualified Dividends</div><div class="edu-card-body">Official holding-period and tax-rate rules for qualified vs. ordinary dividends — <a href="https://www.irs.gov/taxtopics/tc404" target="_blank" rel="nofollow noopener">irs.gov</a></div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Company investor relations</div><div class="edu-card-body">Dividend per share, payment frequency, and dividend history are published directly by each company — check their investor relations page for the authoritative figures before relying on third-party summaries.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📊 Broker 1099-DIV</div><div class="edu-card-body">Your broker's Form 1099-DIV is the definitive source for how much of your dividend income was qualified vs. ordinary in a given tax year.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Tax bracket figures reflect 2025–2026 IRS thresholds and are adjusted annually for inflation — confirm the current year's figures before filing.</p>
+</section>
 
 
 

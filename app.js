@@ -6265,22 +6265,23 @@ function dividendCalc() {
   const paymentsPerYear=freqMap[freq]||1;
   const annualDiv=shares*divPerSh*paymentsPerYear;
   const yieldPct=price>0?(annualDiv/(shares*price)*100):0;
+  const fmt=n=>'$'+formatCur(n);
   out.className='output-box success';
   out.textContent=
     `Shares:              ${shares.toLocaleString()}\n`+
-    `Dividend per share:  ${formatCur(divPerSh)} (${freq})\n`+
-    (price>0?`Share price:         ${formatCur(price)}\n`:'')+
+    `Dividend per share:  ${fmt(divPerSh)} (${freq})\n`+
+    (price>0?`Share price:         ${fmt(price)}\n`:'')+
     `\n── Income ─────────────────────────────\n`+
-    `Per payment:         ${formatCur(shares*divPerSh)}\n`+
-    `Annual dividend:     ${formatCur(annualDiv)}\n`+
-    `Monthly income:      ${formatCur(annualDiv/12)}\n`+
+    `Per payment:         ${fmt(shares*divPerSh)}\n`+
+    `Annual dividend:     ${fmt(annualDiv)}\n`+
+    `Monthly income:      ${fmt(annualDiv/12)}\n`+
     (price>0?`Dividend yield:      ${yieldPct.toFixed(2)}%\n`:'')+
     `\n── Growth projection ─────────────────\n`+
     [1,3,5,10].map(yr=>{
       const d=annualDiv*Math.pow(1+growth/100,yr);
-      return `  Year ${yr}: ${formatCur(d)}/year`;
+      return `  Year ${yr}: ${fmt(d)}/year`;
     }).join('\n');
-  setStatus('div-status','ok',`✓ ${formatCur(annualDiv)}/year`);
+  setStatus('div-status','ok',`✓ ${fmt(annualDiv)}/year`);
 }
 
 /* ── 14. ELECTRICITY COST CALCULATOR ── */
@@ -6308,10 +6309,10 @@ function electricityCalc() {
     `── Appliance breakdown ───────────────\n`+
     items.map(i=>`  ${i.name.padEnd(18)} ${i.watts}W × ${i.hours}h = ${i.kwhDay.toFixed(3)} kWh/day`).join('\n')+
     `\n\n── Total cost ────────────────────────\n`+
-    `Daily:   ${totalDailyKwh.toFixed(3)} kWh = ${formatCur(totalDailyKwh*rate)}\n`+
-    `Monthly: ${monthly.toFixed(1)} kWh = ${formatCur(monthly*rate)}\n`+
-    `Yearly:  ${yearly.toFixed(0)} kWh = ${formatCur(yearly*rate)}`;
-  setStatus('elec-status','ok',`✓ ${formatCur(monthly*rate)}/month`);
+    `Daily:   ${totalDailyKwh.toFixed(3)} kWh = $${formatCur(totalDailyKwh*rate)}\n`+
+    `Monthly: ${monthly.toFixed(1)} kWh = $${formatCur(monthly*rate)}\n`+
+    `Yearly:  ${yearly.toFixed(0)} kWh = $${formatCur(yearly*rate)}`;
+  setStatus('elec-status','ok',`✓ $${formatCur(monthly*rate)}/month`);
 }
 function elecAddRow() {
   const cont=document.getElementById('elec-rows');
@@ -6320,10 +6321,10 @@ function elecAddRow() {
   div.className='elec-row';
   div.style='display:grid;grid-template-columns:1fr 80px 80px 32px;gap:6px;margin-bottom:6px;align-items:center';
   div.innerHTML=`
-    <input class="b2-input er-name" placeholder="Appliance name" style="font-size:.78rem" oninput="electricityCalc()">
-    <input class="b2-input er-watts" type="number" placeholder="Watts" style="font-size:.78rem" oninput="electricityCalc()">
-    <input class="b2-input er-hours" type="number" placeholder="Hrs/day" style="font-size:.78rem" oninput="electricityCalc()">
-    <button onclick="this.parentElement.remove();electricityCalc()" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>`;
+    <input class="b2-input er-name" placeholder="Appliance name" style="font-size:.78rem" oninput="electricityCalc()" aria-label="Appliance name">
+    <input class="b2-input er-watts" type="number" placeholder="Watts" style="font-size:.78rem" oninput="electricityCalc()" aria-label="Appliance watts">
+    <input class="b2-input er-hours" type="number" placeholder="Hrs/day" style="font-size:.78rem" oninput="electricityCalc()" aria-label="Hours per day">
+    <button onclick="this.parentElement.remove();electricityCalc()" aria-label="Remove appliance" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>`;
   cont.appendChild(div);
   electricityCalc();
 }
@@ -6408,21 +6409,22 @@ function tipSplitCalc() {
   const total    = bill+tipAmt;
   const perPerson= total/people;
   const tipPer   = tipAmt/people;
+  const fmt=n=>'$'+formatCur(n);
   out.className='output-box success';
   out.textContent=
-    `Bill:          ${formatCur(bill)}\n`+
-    `Tip (${tip}%):    ${formatCur(tipAmt)}\n`+
-    `Total:         ${formatCur(total)}\n`+
+    `Bill:          ${fmt(bill)}\n`+
+    `Tip (${tip}%):    ${fmt(tipAmt)}\n`+
+    `Total:         ${fmt(total)}\n`+
     `People:        ${people}\n\n`+
     `── Per person ────────────────────────\n`+
-    `Each pays:     ${formatCur(perPerson)}\n`+
-    `Each tips:     ${formatCur(tipPer)}\n\n`+
+    `Each pays:     ${fmt(perPerson)}\n`+
+    `Each tips:     ${fmt(tipPer)}\n\n`+
     `── Quick tip reference ───────────────\n`+
     [10,15,18,20,25].map(t=>{
       const ta=bill*t/100;
-      return `  ${t}% tip: ${formatCur(ta)} total → ${formatCur((bill+ta)/people)}/person`;
+      return `  ${t}% tip: ${fmt(ta)} total → ${fmt((bill+ta)/people)}/person`;
     }).join('\n');
-  setStatus('ts-status','ok',`✓ ${formatCur(perPerson)}/person`);
+  setStatus('ts-status','ok',`✓ ${fmt(perPerson)}/person`);
 }
 
 /* ── 18. MEETING TIME ZONE PLANNER ── */
@@ -6446,11 +6448,15 @@ function meetingCalc() {
     ['Berlin','Europe/Berlin','🇩🇪'],
     ['Paris','Europe/Paris','🇫🇷'],
   ];
-  const base = date ? new Date(`${date}T${time}`) : new Date(`2000-01-01T${time}`);
+  const todayStr = new Date().toISOString().slice(0,10);
+  const base = date ? new Date(`${date}T${time}`) : new Date(`${todayStr}T${time}`);
+  let yourZone = '';
+  try { yourZone = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e){}
   out.className='output-box success';
   out.textContent=
-    `Meeting time: ${time}${date?' on '+date:''}\n\n`+
-    `── Global times ──────────────────────\n`+
+    `Meeting time: ${time}${date?' on '+date:' (entered in your device\'s local time — no date selected, so today is assumed)'}\n`+
+    (yourZone?`📍 Your timezone: ${yourZone}\n`:'')+
+    `\n── Global times ──────────────────────\n`+
     zones.map(([city,tz,flag])=>{
       try {
         const t=base.toLocaleTimeString('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:true});

@@ -34,7 +34,9 @@
 <meta name="twitter:description" content="Calculate electricity cost for any appliance. Enter watts, hours per day, and electricity rate. Shows daily, monthly, and annual running costs. Free electricity cost calculator.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Electricity Cost Calculator","url":"https://toolsnova.net/electricity-cost-calculator","description":"Calculate electricity cost for any appliance. Enter watts, hours per day, and electricity rate. Shows daily, monthly, and annual running costs. Free electricity cost calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Electricity Cost Calculator","url":"https://toolsnova.net/electricity-cost-calculator","description":"Calculate electricity cost for any appliance. Enter watts, hours per day, and electricity rate. Shows daily, monthly, and annual running costs. Free electricity cost calculator.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate electricity cost?","acceptedAnswer":{"@type":"Answer","text":"Cost = (Watts × Hours per day × Days) ÷ 1000 × Rate per kWh. Example: a 1000W air conditioner running 8 hours/day at $0.17/kWh (current US average) costs 1000 × 8 × 30 ÷ 1000 × 0.17 = $40.80/month."}},{"@type":"Question","name":"What are the most expensive appliances to run?","acceptedAnswer":{"@type":"Answer","text":"Electric water heater: 4000-5000W. Electric dryer: 5000W. Air conditioner: 900-5000W. Electric oven: 2000-5000W. Refrigerator: 100-400W (runs 24/7). Space heater: 750-1500W."}},{"@type":"Question","name":"How can I reduce electricity bills?","acceptedAnswer":{"@type":"Answer","text":"Replace incandescent bulbs with LEDs (saves 75%). Unplug devices on standby — they still use power. Use cold water for laundry. Set AC 2-3°C higher in summer. Run dishwasher and washing machine on off-peak hours."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Electricity Cost Calculator","item":"https://toolsnova.net/electricity-cost-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -229,11 +231,21 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
     <div class="pane-label">Electricity rate ($/kWh)</div>
-    <input type="number" id="elec-rate" value="0.12" step="0.01" class="b2-input" style="max-width:160px" oninput="electricityCalc()">
-    <div style="font-size:.7rem;color:var(--text3);margin-top:4px">US average: $0.12 · UK: £0.28 · Pakistan: ~$0.06</div>
+    <input type="number" id="elec-rate" value="0.17" step="0.01" class="b2-input" style="max-width:160px" oninput="electricityCalc()" aria-label="Electricity rate ($/kWh)">
+    <div style="font-size:.7rem;color:var(--text3);margin-top:4px">US average: ~$0.17/kWh · UK: ~26p/kWh (~$0.33) · Pakistan: ~$0.06 blended average, but highly slab-dependent (roughly Rs 4–47+/unit) — rates vary widely by region, provider, and usage tier, so check your utility bill for your actual rate</div>
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="elec-output" onclick="copyEl('elec-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>What To Do With This Number</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Compare, don't just calculate</div><div class="edu-card-body">A single appliance's cost means little on its own — add your other major appliances to see which ones actually drive your bill. Heating, cooling, and water heating are usually the biggest contributors, not small electronics.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Use your actual rate</div><div class="edu-card-body">The default rate is a rough average. Your real cost depends on your provider, region, and — in tiered/slab systems — how much you consume overall. Enter your bill's actual per-kWh rate for an accurate estimate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Yearly cost reveals the real stakes</div><div class="edu-card-body">A small daily cost can look trivial but add up to a meaningful yearly total. Use the yearly figure, not the daily one, when deciding whether a more efficient appliance or a usage change is worth it.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Considering solar to offset this cost? Use the <a href="solar-panel-roi-calculator.html">Solar Panel ROI Calculator</a> to estimate payback period against your actual usage.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -275,11 +287,28 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Electricity Cost Formula</h2>
+    <div class="edu-highlight"><strong>Cost</strong> = (Watts × Hours per day ÷ 1000) × Rate per kWh × Days</div>
+    <h3>Worked example</h3>
+    <p>A 1500W air conditioner running 6 hours/day at $0.17/kWh: Daily = 1500 × 6 ÷ 1000 = 9 kWh × $0.17 = <strong>$1.53/day</strong>. Monthly = 9 × 30 = 270 kWh × $0.17 = <strong>$45.90/month</strong>. Yearly = 9 × 365 = 3,285 kWh × $0.17 = <strong>$558.45/year</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Using the default rate without checking your bill</div><div class="edu-card-body">The pre-filled rate is a rough average. Your actual rate — especially in slab/tiered billing systems — can be significantly higher or lower. Always confirm against your own utility bill.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing watts with watt-hours</div><div class="edu-card-body">Watts is the appliance's power draw; kWh is energy used over time. A 1000W appliance running 1 hour uses 1 kWh — running it 24 hours uses 24 kWh, not 1.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring standby/phantom power</div><div class="edu-card-body">Devices left plugged in on standby (TVs, chargers, game consoles) draw small but continuous power. Over a year, several standby devices can add up to a meaningful cost this calculator won't capture unless you add them explicitly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming a flat rate in a tiered billing system</div><div class="edu-card-body">Many utilities (including slab-based systems like Pakistan's) charge a higher rate per unit as consumption rises. A flat per-kWh estimate can understate your true marginal cost once you cross into a higher usage tier.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I calculate electricity cost?</div>
-    <div class="faq-a">Cost = (Watts × Hours per day × Days) ÷ 1000 × Rate per kWh. Example: a 1000W air conditioner running 8 hours/day at $0.12/kWh costs 1000 × 8 × 30 ÷ 1000 × 0.12 = $28.80/month.</div>
+    <div class="faq-a">Cost = (Watts × Hours per day × Days) ÷ 1000 × Rate per kWh. Example: a 1000W air conditioner running 8 hours/day at $0.17/kWh (current US average) costs 1000 × 8 × 30 ÷ 1000 × 0.17 = $40.80/month.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What are the most expensive appliances to run?</div>
@@ -291,8 +320,15 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ EIA — US Electricity Data</div><div class="edu-card-body">US Energy Information Administration publishes current average residential electricity prices by state and nationally.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🇬🇧 Ofgem — UK Price Cap</div><div class="edu-card-body">Ofgem sets and publishes the UK's quarterly energy price cap, the basis for current UK per-kWh rates.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your utility provider</div><div class="edu-card-body">Rates shown here are broad averages. Your actual per-kWh rate, including any tiered/slab pricing, is on your own electricity bill or your provider's published tariff.</div></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--text3);margin-top:1rem">Rate figures reflect approximate 2026 averages and change frequently with fuel costs and policy — confirm current figures before relying on them for budgeting.</p>
+</section>
 
 
 

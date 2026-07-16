@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Meeting Time Zone Planner","url":"https://toolsnova.net/meeting-time-zone-planner","description":"Plan meetings across time zones. Enter a time and see it converted to 12 major cities instantly. Shows work hours status for each location. Free meeting planner.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I schedule a meeting across time zones?","acceptedAnswer":{"@type":"Answer","text":"Enter your meeting time and this tool shows it in 12 global cities instantly. Green ✅ means it's during standard work hours (9AM-6PM). Yellow 🟡 means early/late but reasonable. Red 🔴 means it's night time."}},{"@type":"Question","name":"What is UTC/GMT?","acceptedAnswer":{"@type":"Answer","text":"UTC (Coordinated Universal Time) and GMT (Greenwich Mean Time) are essentially the same reference point. All time zones are expressed as offsets from UTC, and that offset can change with Daylight Saving Time. For example, Pakistan Standard Time (PKT) is a fixed UTC+5 year-round, while New York shifts between UTC-5 (EST, winter) and UTC-4 (EDT, summer) — which is why this tool always calculates from a real date rather than a fixed offset table."}},{"@type":"Question","name":"What is the best time for global meetings?","acceptedAnswer":{"@type":"Answer","text":"9-10 AM US Eastern time works well for US + Europe (2-3 PM UK, 3-4 PM Central Europe). For US + Asia/Pacific: early morning US is afternoon/evening Asia. Avoid 12 PM - 1 PM as it's lunch in most places."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Meeting Time Zone Planner","item":"https://toolsnova.net/meeting-time-zone-planner"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -229,6 +231,15 @@ gtag('config', 'G-S6PPGS7N63');
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="meet-output" onclick="copyEl('meet-output')" style="min-height:280px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
+  <section class="edu-section">
+    <h2>Finding a Time That Works</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">The entered time is your own local time</div><div class="edu-card-body">Whatever you type is interpreted using your device's own timezone (shown above your results) — not UTC and not any of the listed cities. Double-check the "Your timezone" line matches where you actually are.</div></div>
+      <div class="edu-card"><div class="edu-card-title">"Ok" doesn't mean ideal</div><div class="edu-card-body">The 🟡 status covers a wide early-morning/evening window. For a genuinely convenient meeting, aim for as many ✅ "Work hours" results as possible across your key attendees' locations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Always set a date for recurring or future meetings</div><div class="edu-card-body">Daylight Saving Time shifts several of these zones by an hour at different points in the year. For anything beyond "right now," enter the actual meeting date so the conversion reflects the correct DST state.</div></div>
+    </div>
+  </section>
+
   <!-- EDUCATIONAL CONTENT -->
 
   <section class="edu-section">
@@ -269,6 +280,16 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming a time zone name means a fixed offset</div><div class="edu-card-body">"Eastern Time" isn't always UTC-5 — it's UTC-4 for roughly half the year (EDT). Always let a tool calculate from an actual date rather than memorizing a single offset per city.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Scheduling recurring meetings without rechecking DST</div><div class="edu-card-body">A recurring meeting that lands at a good time in one season can shift by an hour for some attendees after a DST change, even though the meeting's local time on your own calendar hasn't moved.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Not confirming your own detected timezone</div><div class="edu-card-body">This tool reads your timezone from your device. If you're traveling or your device's clock/timezone setting is wrong, the "Your timezone" line — and every converted time — will be wrong too. Check it before sending an invite.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating 🟡 "Ok" as equivalent to normal hours</div><div class="edu-card-body">A 🟡 result means early morning or evening for that attendee, not a normal workday slot — fine occasionally, a real burden if repeated weekly.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -277,7 +298,7 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is UTC/GMT?</div>
-    <div class="faq-a">UTC (Coordinated Universal Time) and GMT (Greenwich Mean Time) are essentially the same reference point. All time zones are expressed as offsets from UTC. For example, Pakistan Standard Time (PKT) is UTC+5, New York (EST) is UTC-5.</div>
+    <div class="faq-a">UTC (Coordinated Universal Time) and GMT (Greenwich Mean Time) are essentially the same reference point. All time zones are expressed as offsets from UTC, and that offset can change with Daylight Saving Time. For example, Pakistan Standard Time (PKT) is a fixed UTC+5 year-round, while New York shifts between UTC-5 (EST, winter) and UTC-4 (EDT, summer) — which is why this tool always calculates from a real date rather than a fixed offset table.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the best time for global meetings?</div>
@@ -285,7 +306,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🌐 IANA Time Zone Database</div><div class="edu-card-body">The authoritative source for time zone and Daylight Saving Time rules worldwide — the same database used by browsers (including this tool) to compute accurate local times.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📅 Your calendar app</div><div class="edu-card-body">For a meeting you're actually sending invites for, your calendar software's own time zone conversion (Google Calendar, Outlook) is the definitive source once the invite is created — use this tool for planning, then confirm in the invite itself.</div></div>
+  </div>
+</section>
 
 
 

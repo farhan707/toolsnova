@@ -94,6 +94,7 @@
 .edu-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: .75rem; }
 .edu-card-title { font-size: .78rem; font-weight: 600; color: var(--accent); font-family: var(--mono); margin-bottom: .35rem; }
 .edu-card-body  { font-size: .76rem; color: var(--text3); line-height: 1.6; }
+.rate-note { font-size: .72rem; color: var(--text3); line-height: 1.6; margin: .5rem 0 0; }
 [data-theme="light"] .edu-card { box-shadow: 0 1px 3px rgba(0,0,0,.06); }
 
 /* ── Scientific calculator ── */

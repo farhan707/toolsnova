@@ -1,0 +1,76 @@
+task:
+  id: TN-TASK-DISCOVERY-001
+  name: Discovery
+  version: 0.4.0
+
+purpose: >
+  Understand the engineering problem before implementation.
+  Discovery gathers evidence, identifies opportunities,
+  and produces an implementation plan without modifying code.
+
+inputs:
+  - User Request
+  - Specification
+  - Family
+  - Blueprint
+
+resolve_context:
+  - Load MANIFEST
+  - Load Family
+  - Load Blueprint
+  - Load Domain Rules
+  - Load Engineering Rules
+
+execution:
+
+  - Audit existing implementation
+
+  - Review specification
+
+  - Research competitors (when appropriate)
+
+  - Identify gaps
+
+  - Identify risks
+
+  - Identify reusable components
+
+  - Produce implementation strategy
+
+constraints:
+
+  - Never modify source code
+
+  - Never implement solutions
+
+  - Never change specifications
+
+deliverables:
+
+  - Engineering Audit
+
+  - Gap Analysis
+
+  - Risk Assessment
+
+  - Implementation Plan
+
+exit_criteria:
+
+  - Existing implementation understood
+
+  - Specification reviewed
+
+  - Risks documented
+
+  - Implementation plan completed
+
+  - No source code modified
+
+  - User approval received
+
+outputs:
+
+  save_as:
+
+    discovery-report.md

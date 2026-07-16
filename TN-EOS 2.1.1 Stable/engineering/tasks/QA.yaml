@@ -1,0 +1,74 @@
+task:
+  id: TN-TASK-QA-001
+  name: Quality Assurance
+  version: 0.4.0
+
+purpose: >
+  Independently verify implementation quality using
+  adversarial engineering review.
+
+inputs:
+
+  - Implementation Report
+
+resolve_context:
+
+  - Load Engineering Context
+
+execution:
+
+  Verify:
+
+    - Functionality
+
+    - Validation
+
+    - Business Logic
+
+    - UX
+
+    - Accessibility
+
+    - Search
+
+    - Content
+
+    - Performance
+
+    - Regression
+
+verification_evidence:
+
+  - Manual calculations
+
+  - Edge-case testing
+
+  - HTML validation
+
+  - JSON-LD validation
+
+  - Visual inspection
+  
+  - Result presentation review
+
+issue_severity:
+
+  - Critical
+
+  - Major
+
+  - Minor
+
+exit_criteria:
+
+  - Every finding classified
+
+  - Evidence documented
+
+  - PASS or FAIL determined
+
+outputs:
+
+  save_as:
+
+    qa-report.md

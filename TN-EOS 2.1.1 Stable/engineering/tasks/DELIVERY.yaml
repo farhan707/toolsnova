@@ -1,0 +1,58 @@
+task:
+  id: TN-TASK-DELIVERY-001
+  name: Delivery
+  version: 0.4.0
+
+purpose: >
+  Package engineering work for release and provide
+  complete delivery artifacts.
+
+inputs:
+
+  - QA Report
+
+resolve_context:
+
+  - Load Engineering Context
+
+execution:
+
+  Prepare:
+
+    - Modified Files List
+
+    - Core Patch
+
+    - Full Patch
+
+    - Delivery ZIP
+
+    - Delivery Manifest
+
+    - Verification Summary
+
+constraints:
+
+  - Deliver only approved work
+
+  - Preserve repository structure
+
+verification:
+
+  - Patch applies cleanly
+
+  - Delivery artifacts complete
+
+exit_criteria:
+
+  - All artifacts generated
+
+  - Verification completed
+
+  - Delivery package finalized
+
+outputs:
+
+  save_as:
+
+    delivery-manifest.md

@@ -1,0 +1,70 @@
+page:
+  id: TN-PAGE-MARGIN-001
+
+family: trading
+
+title: Forex Margin Calculator
+
+slug: margin-calculator
+
+primary_entity:
+
+  Forex Margin Calculator
+
+secondary_entities:
+
+  - Margin
+
+  - Leverage
+
+  - Lot Size
+
+  - Contract Size
+
+search_intent:
+
+  Informational
+
+calculator:
+
+  type: trading
+
+unique_features:
+
+  - Margin Requirement
+
+  - Leverage Impact
+
+  - Trading Examples
+
+related_tools:
+
+  - Pip Calculator
+
+  - Position Size Calculator
+
+  - Drawdown Calculator
+
+references:
+
+  preferred:
+
+    - Broker Specifications
+
+    - Exchange Documentation
+
+success:
+
+  users_can:
+
+    - Calculate margin
+
+    - Understand leverage
+
+    - Estimate capital requirements
+
+out_of_scope:
+
+  - Trade prediction
+
+  - Buy/Sell signals

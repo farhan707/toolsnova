@@ -1,0 +1,51 @@
+family:
+  id: TN-FAMILY-CONVERTER-001
+  name: Converter
+  version: 0.4.0
+  status: Stable
+  owner: TN-EOS
+
+compatible_with:
+  tn_eos: ">=2.1.0"
+
+inherits:
+  blueprint: converter
+
+domain: CONVERTER
+
+purpose: >
+  Build precise conversion tools with clear educational guidance.
+
+rules:
+  - CONTENT
+  - SEARCH
+  - QUALITY_GATE
+
+workflow:
+  discovery: required
+  implementation: required
+  qa: required
+  delivery: required
+
+entities:
+  required:
+    - Units
+    - Conversion Factors
+
+education:
+  required:
+    - Unit Definitions
+    - Practical Usage
+    - Common Mistakes
+
+references:
+  preferred:
+    - SI Standards
+    - NIST
+    - Official Unit Standards
+
+quality:
+  priorities:
+    - Precision
+    - Consistency
+    - Simplicity

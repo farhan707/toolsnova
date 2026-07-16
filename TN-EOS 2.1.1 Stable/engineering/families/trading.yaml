@@ -1,0 +1,57 @@
+family:
+  id: TN-FAMILY-TRADING-001
+  name: Trading
+  version: 0.4.0
+  status: Stable
+  owner: TN-EOS
+
+compatible_with:
+  tn_eos: ">=2.1.0"
+
+inherits:
+  blueprint: trading
+
+domain: TRADING
+
+purpose: >
+  Build professional trading calculators that emphasize
+  education, transparency, and responsible risk management.
+
+rules:
+  - CONTENT
+  - SEARCH
+  - QUALITY_GATE
+
+workflow:
+  discovery: required
+  implementation: required
+  qa: required
+  delivery: required
+
+entities:
+  required:
+    - Margin
+    - Leverage
+    - Pip
+    - Lot Size
+    - Drawdown
+    - Risk Reward
+
+education:
+  required:
+    - Trading Concepts
+    - Risk Management
+    - Formula Transparency
+    - Decision Support
+
+references:
+  preferred:
+    - Broker Documentation
+    - Exchange Specifications
+    - Regulatory Publications
+
+quality:
+  priorities:
+    - Accuracy
+    - Risk Awareness
+    - Transparency

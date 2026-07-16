@@ -1,0 +1,55 @@
+family:
+  id: TN-FAMILY-FINANCIAL-001
+  name: Financial
+  version: 0.4.0
+  status: Stable
+  owner: TN-EOS
+
+compatible_with:
+  tn_eos: ">=2.1.0"
+
+inherits:
+  blueprint: calculator
+
+domain: FINANCIAL
+
+purpose: >
+  Build financial calculators that provide transparent,
+  accurate, and educational financial guidance.
+
+rules:
+  - CONTENT
+  - SEARCH
+  - QUALITY_GATE
+
+workflow:
+  discovery: required
+  implementation: required
+  qa: required
+  delivery: required
+
+entities:
+  required:
+    - Interest
+    - Loan
+    - EMI
+    - Investment
+    - ROI
+
+education:
+  required:
+    - Formula
+    - Financial Concepts
+    - Practical Examples
+
+references:
+  preferred:
+    - Government Sources
+    - Central Banks
+    - Financial Standards
+
+quality:
+  priorities:
+    - Accuracy
+    - Transparency
+    - Practical Guidance

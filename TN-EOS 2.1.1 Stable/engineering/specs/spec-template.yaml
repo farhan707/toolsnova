@@ -1,0 +1,71 @@
+page:
+  id:
+  name:
+  version: 1.0.0
+  status: Draft
+  owner: TN-EOS
+
+compatible_with:
+  tn_eos: ">=2.1.0"
+
+family:
+
+inherits:
+  blueprint:
+  family:
+
+purpose: >
+
+intent:
+  primary:
+  secondary:
+
+entities:
+  primary:
+  secondary: []
+
+calculator:
+
+content:
+
+  introduction: required
+
+  explanation: required
+
+  formula: optional
+
+  worked_example: optional
+
+  interpretation: required
+
+  decision_support: required
+
+  faq: required
+
+  references: recommended
+
+validation:
+
+  required_fields: []
+
+  business_rules: []
+
+  edge_cases: []
+
+workflow:
+
+  previous:
+
+  next:
+
+related_tools: []
+
+references:
+
+  preferred: []
+
+success_criteria:
+
+  users_can:
+
+out_of_scope: []

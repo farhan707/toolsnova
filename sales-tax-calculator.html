@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sales Tax Calculator","url":"https://toolsnova.net/sales-tax-calculator","description":"Calculate sales tax on any purchase. Add tax to a price or remove tax from a total. Shows tax comparison table for all common US and global tax rates.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is sales tax in the US?","acceptedAnswer":{"@type":"Answer","text":"US sales tax rates vary by state and locality. States range from 0% (Oregon, Montana, New Hampshire) to 7.25% (California). With local taxes added, combined rates can reach 10%+. Tennessee has the highest combined rate at ~9.5%."}},{"@type":"Question","name":"How do I calculate sales tax?","acceptedAnswer":{"@type":"Answer","text":"Tax Amount = Price × Tax Rate / 100. Total = Price + Tax Amount. Example: $100 item at 8.5% tax = $8.50 tax = $108.50 total. To find the pre-tax price from a tax-inclusive amount: Pre-tax = Total / (1 + Rate/100)."}},{"@type":"Question","name":"What is the difference between sales tax and VAT?","acceptedAnswer":{"@type":"Answer","text":"Sales tax is collected only at the final point of sale to the consumer (US system). VAT (Value Added Tax) is collected at each stage of production and distribution (EU/UK system). The end consumer pays the same amount under both systems, but the collection mechanism differs."}},{"@type":"Question","name":"Are some items tax-exempt?","acceptedAnswer":{"@type":"Answer","text":"Yes. Common exemptions: groceries (many US states), prescription medicines, children's clothing (some states), agricultural supplies. Exemptions vary significantly by state and country. Always check your specific jurisdiction's rules for the product category."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Finance Tools","item":"https://toolsnova.net/finance-tools/"},{"@type":"ListItem","position":3,"name":"Sales Tax Calculator","item":"https://toolsnova.net/sales-tax-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -228,7 +230,7 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
         <div>
       <div class="pane-label">Mode</div>
-      <select id="stx-mode" class="mode-select" style="width:100%" onchange="salesTaxCalc()">
+      <select id="stx-mode" class="mode-select" style="width:100%" onchange="salesTaxCalc()" aria-label="Mode">
           <option value="add" selected>Add tax to amount</option>
           <option value="remove">Remove tax from amount</option>
       </select>
@@ -236,6 +238,16 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="stx-output" onclick="copyEl('stx-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Using This Result</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Use your combined local rate</div><div class="edu-card-body">Enter your specific state + city/county combined rate, not just the state rate — actual sales tax due can be several points higher once local tax is included.</div></div>
+      <div class="edu-card"><div class="edu-card-title">"Add" vs "Remove" mode</div><div class="edu-card-body">Use Add tax when you have a pre-tax price and want the checkout total. Use Remove tax when you already know the tax-inclusive total and want to back out the original price.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Compare table is for reference only</div><div class="edu-card-body">The rate comparison table shows what the same price would cost at other common rates — useful for budgeting across locations, not a substitute for your actual jurisdiction's rate.</div></div>
+    </div>
+    <div class="edu-highlight"><strong>➜ Next step:</strong> Building a full invoice for this sale? Use the <a href="invoice-generator.html">Invoice Generator</a> and enter this tax rate directly.</div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -277,6 +289,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Sales Tax Formula</h2>
+    <div class="edu-highlight"><strong>Add tax:</strong> Tax = Price × Rate ÷ 100, Total = Price + Tax &nbsp;·&nbsp; <strong>Remove tax:</strong> Pre-tax Price = Total ÷ (1 + Rate ÷ 100)</div>
+    <h3>Worked example</h3>
+    <p>A $100 item at an 8.5% combined rate: Tax = $100 × 8.5 ÷ 100 = $8.50, Total = $108.50. Working backward from a $108.50 tax-inclusive total at the same 8.5% rate: Pre-tax Price = $108.50 ÷ 1.085 = <strong>$100.00</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Using state rate only</div><div class="edu-card-body">The state rate alone usually understates what you'll actually pay. Local city/county tax is often added on top — use your full combined rate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing sales tax with VAT</div><div class="edu-card-body">US sales tax applies once, at the final sale. VAT (used in the EU/UK and elsewhere) is collected at every stage of production. Don't mix the two systems when comparing prices internationally.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Dividing instead of subtracting when removing tax</div><div class="edu-card-body">To back out tax from a total, divide by (1 + rate/100) — don't simply subtract the rate percentage from the total, which understates the pre-tax price.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming all items are taxed the same</div><div class="edu-card-body">Groceries, medicine, and clothing are exempt or taxed differently in many states. Verify the category-specific rule for the item you're pricing.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -297,8 +326,14 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ State Department of Revenue</div><div class="edu-card-body">Each US state publishes its own current sales tax rate and rules. Search "[your state] Department of Revenue sales tax" for the authoritative current rate.</div></div>
+    <div class="edu-card"><div class="edu-card-title">⚖️ South Dakota v. Wayfair (2018)</div><div class="edu-card-body">The US Supreme Court decision establishing economic nexus for online sellers — the legal basis for out-of-state sales tax collection referenced in this page's content.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Local city/county tax office</div><div class="edu-card-body">Combined rates (state + local) are set locally and change periodically — confirm the current combined rate with your city or county before relying on any published figure, including this page.</div></div>
+  </div>
+</section>
 
 
 

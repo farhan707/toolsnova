@@ -1857,7 +1857,7 @@ function currencyConvert() {
       const r = (v/rateFrom)*rateTo;
       return `${String(v).padStart(5)} ${from} = ${r.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} ${to}`;
     }).join('\n');
-  if (note) note.textContent = '⚠ Rates are indicative and updated periodically. Use a bank or broker for live rates.';
+  if (note) note.textContent = '⚠ This tool uses reference exchange rates for estimation purposes only, not live market data. Actual transaction rates vary by bank, broker, and payment provider — always confirm the live rate before sending money.';
   setStatus('cx-status','ok',`✓ ${from} → ${to}`);
 }
 function currencySwap() {
@@ -4294,13 +4294,13 @@ function invRender(){
   if(!t)return;
   t.innerHTML=invItems.map(r=>`
     <div style="display:grid;grid-template-columns:1fr 70px 100px 32px;gap:5px;margin-bottom:5px;align-items:center">
-      <input class="b2-input" style="font-size:.78rem" value="${r.desc}" placeholder="Item description"
+      <input class="b2-input" style="font-size:.78rem" value="${r.desc}" placeholder="Item description" aria-label="Item description"
         oninput="invItems.find(x=>x.id==${r.id}).desc=this.value;invCalc()">
-      <input class="b2-input" style="font-size:.78rem;text-align:center" type="number" value="${r.qty}" min="0.1" step="0.1"
+      <input class="b2-input" style="font-size:.78rem;text-align:center" type="number" value="${r.qty}" min="0.1" step="0.1" aria-label="Item quantity"
         oninput="invItems.find(x=>x.id==${r.id}).qty=parseFloat(this.value)||0;invCalc()">
-      <input class="b2-input" style="font-size:.78rem;text-align:right" type="number" value="${r.price||''}" placeholder="0.00"
+      <input class="b2-input" style="font-size:.78rem;text-align:right" type="number" value="${r.price||''}" placeholder="0.00" aria-label="Item unit price"
         oninput="invItems.find(x=>x.id==${r.id}).price=parseFloat(this.value)||0;invCalc()">
-      <button onclick="invRemoveItem(${r.id})" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>
+      <button onclick="invRemoveItem(${r.id})" aria-label="Remove item" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.75rem;height:32px">✕</button>
     </div>`).join('');
 }
 function invCalc(){
@@ -4314,7 +4314,14 @@ function invCalc(){
   const taxRate=parseFloat(document.getElementById('inv-tax')?.value)||0;
   const curr   =document.getElementById('inv-curr')?.value||'$';
   const fmt    =n=>`${curr}${n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-  const subtotal=invItems.reduce((s,r)=>s+r.qty*r.price,0);
+  if(!invItems.length){
+    out.className='output-box';
+    out.textContent='Fill in the form above and add items to preview your invoice.';
+    setStatus('inv-status','','fill in details and add items');
+    return;
+  }
+  const validItems=invItems.filter(r=>r.qty>0&&r.price>=0);
+  const subtotal=validItems.reduce((s,r)=>s+r.qty*r.price,0);
   const taxAmt =subtotal*taxRate/100;
   const total  =subtotal+taxAmt;
   out.className='output-box success';
@@ -4329,17 +4336,21 @@ function invCalc(){
     `${'─'.repeat(48)}\n`+
     `  Description             Qty      Amount\n`+
     `${'─'.repeat(48)}\n`+
-    (invItems.length?invItems.map(r=>{
+    (validItems.length?validItems.map(r=>{
       const amt=r.qty*r.price;
       return `  ${(r.desc||'Item').padEnd(22)} ${String(r.qty).padEnd(8)} ${fmt(amt).padStart(12)}`;
-    }).join('\n'):'  (no items added)')+
+    }).join('\n'):'  (no valid items — check quantity and price)')+
     `\n${'─'.repeat(48)}\n`+
     `  ${'Subtotal:'.padEnd(38)} ${fmt(subtotal).padStart(8)}\n`+
     (taxRate>0?`  ${'Tax ('+taxRate+'%):'.padEnd(38)} ${fmt(taxAmt).padStart(8)}\n`:'')+
     `${'═'.repeat(48)}\n`+
     `  ${'TOTAL:'.padEnd(38)} ${fmt(total).padStart(8)}\n`+
     `${'═'.repeat(48)}`;
-  setStatus('inv-status','ok',`✓ Total: ${fmt(total)}`);
+  if(validItems.length){
+    setStatus('inv-status','ok',`✓ Total: ${fmt(total)}`);
+  } else {
+    setStatus('inv-status','err','⚠ Add a quantity and price to at least one item');
+  }
 }
 function invClear(){invItems=[];invRender();const o=document.getElementById('inv-output');if(o){o.textContent='';o.className='output-box';}setStatus('inv-status','','fill in details and add items');}
 function invCopy(){copyEl('inv-output');}
@@ -4355,18 +4366,19 @@ function salesTaxCalc(){
   let pre,tax,total;
   if(mode==='add'){pre=price;tax=price*rate/100;total=price+tax;}
   else{total=price;pre=price/(1+rate/100);tax=total-pre;}
+  const fmt=n=>'$'+formatCur(n);
   out.className='output-box success';
   out.textContent=
-    `${mode==='add'?'Pre-tax Amount':'Pre-tax Amount'}:    ${formatCur(pre)}\n`+
-    `Sales Tax (${rate}%):      ${formatCur(tax)}\n`+
+    `${mode==='add'?'Pre-tax Amount':'Pre-tax Amount'}:    ${fmt(pre)}\n`+
+    `Sales Tax (${rate}%):      ${fmt(tax)}\n`+
     `${'─'.repeat(32)}\n`+
-    `${mode==='add'?'Total (with tax)':'VAT-inclusive Price'}:    ${formatCur(total)}\n\n`+
+    `${mode==='add'?'Total (with tax)':'Total (tax-inclusive)'}:    ${fmt(total)}\n\n`+
     `── Compare tax rates ────────────────\n`+
     [0,5,6,7,8,8.5,9,10,13,15,20].map(r=>{
       const t=pre*(r/100);
-      return `  ${String(r+'%').padEnd(7)} tax: ${formatCur(t).padStart(10)} → total ${formatCur(pre+t)}`;
+      return `  ${String(r+'%').padEnd(7)} tax: ${fmt(t).padStart(10)} → total ${fmt(pre+t)}`;
     }).join('\n');
-  setStatus('stx-status','ok',`✓ Tax: ${formatCur(tax)} · Total: ${formatCur(total)}`);
+  setStatus('stx-status','ok',`✓ Tax: ${fmt(tax)} · Total: ${fmt(total)}`);
 }
 function stxClear(){['stx-price','stx-rate'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const o=document.getElementById('stx-output');if(o){o.textContent='';o.className='output-box';}setStatus('stx-status','','enter price and tax rate');}
 

@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Length Converter Online","url":"https://toolsnova.net/length-converter","description":"Convert length between kilometres, miles, metres, feet, inches, cm, mm and more. Free online length converter with all units shown at once.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many kilometres in a mile?","acceptedAnswer":{"@type":"Answer","text":"1 mile = 1.60934 kilometres. Conversely, 1 kilometre = 0.621371 miles. A quick approximation: multiply miles by 1.6 to get km, or multiply km by 0.6 to get miles."}},{"@type":"Question","name":"How many cm in an inch?","acceptedAnswer":{"@type":"Answer","text":"1 inch = 2.54 centimetres exactly. This is the defined conversion. So 1 foot (12 inches) = 30.48 cm, and 1 metre = 39.3701 inches."}},{"@type":"Question","name":"How do I convert feet and inches to centimetres?","acceptedAnswer":{"@type":"Answer","text":"First convert feet to inches (multiply by 12), add the remaining inches, then multiply by 2.54. Example: 5 feet 11 inches = (5×12 + 11) × 2.54 = 71 × 2.54 = 180.34 cm."}},{"@type":"Question","name":"What is a nautical mile?","acceptedAnswer":{"@type":"Answer","text":"A nautical mile is 1,852 metres (1.852 km), defined as one minute of arc along a meridian of the Earth. It is used in aviation and maritime navigation. 1 nautical mile ≈ 1.15078 statute miles."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Converter Tools","item":"https://toolsnova.net/converter-tools/"},{"@type":"ListItem","position":3,"name":"Length Converter","item":"https://toolsnova.net/length-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -226,7 +228,7 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="uc-grid">
       <div>
         <div class="pane-label">From</div>
-      <select id="len-from" class="uc-select" onchange="lenConvert()">
+      <select id="len-from" class="uc-select" onchange="lengthConvert()" aria-label="From unit">
         <option value="m">m — Metres</option>
         <option value="km" selected>km — Kilometres</option>
         <option value="cm">cm — Centimetres</option>
@@ -245,7 +247,7 @@ gtag('config', 'G-S6PPGS7N63');
   var tmp=f.value;f.value=t.value;t.value=tmp;lengthConvert()">⇌</button>
       <div>
         <div class="pane-label">To</div>
-      <select id="len-to" class="uc-select" onchange="lenConvert()">
+      <select id="len-to" class="uc-select" onchange="lengthConvert()" aria-label="To unit">
         <option value="m">m — Metres</option>
         <option value="km">km — Kilometres</option>
         <option value="cm">cm — Centimetres</option>
@@ -266,10 +268,21 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
+  <div class="result-summary-card" id="len-summary"></div>
+
   <div>
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="len-output" onclick="copyEl('len-output')" aria-label="Conversion result"></div>
   </div>
+
+  <section class="edu-section">
+    <h2>Choosing the Right Precision</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Everyday and construction use</div><div class="edu-card-body">Metres, feet, and inches cover most everyday and construction measurements — round to a practical precision (e.g. nearest mm or 1/16 inch) rather than the full decimal output.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Engineering and scientific use</div><div class="edu-card-body">For machining, CAD, or scientific work, keep the full precision shown — micrometres and nanometres matter, and rounding early can compound into meaningful error over a chain of calculations.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Navigation and aviation</div><div class="edu-card-body">Nautical miles are the standard for marine and air navigation — don't substitute statute miles when working with charts, flight plans, or speed in knots.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -312,6 +325,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Conversion Formula</h2>
+    <div class="edu-highlight"><strong>Result</strong> = Value × (source unit's metre equivalent) ÷ (target unit's metre equivalent) — every unit converts through metres as the common base.</div>
+    <h3>Worked example</h3>
+    <p>Converting 26.219 miles (a marathon) to kilometres: 26.219 × 1609.344 m ÷ 1000 = <strong>42.195 km</strong>. Converting the same distance to feet: 26.219 × 1609.344 ÷ 0.3048 = <strong>138,436 ft</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Mixing nautical and statute miles</div><div class="edu-card-body">A nautical mile (1,852 m) is about 15% longer than a statute mile (1,609.344 m) — using the wrong one in navigation or flight planning produces a meaningful distance error.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Rounding too early in a multi-step calculation</div><div class="edu-card-body">For engineering or scientific work, keep full precision through intermediate steps and only round the final answer — early rounding compounds across multiple conversions.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing yards and metres</div><div class="edu-card-body">A yard (0.9144 m) is close to but not the same as a metre — for track and field or field-sport distances, confirm which unit the field markings actually use.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -332,8 +361,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ International Bureau of Weights and Measures (BIPM)</div><div class="edu-card-body">The metre is defined by BIPM as the SI base unit of length, currently defined via the speed of light — the authoritative source for the metric system.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 NIST — International inch/yard agreement</div><div class="edu-card-body">The exact inch (2.54 cm) and yard (0.9144 m) definitions used here follow the 1959 international agreement adopted by the US, UK, and other English-speaking countries.</div></div>
+  </div>
+</section>
 
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->

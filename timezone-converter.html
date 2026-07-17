@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Time Zone Converter Online","url":"https://toolsnova.net/timezone-converter","description":"Convert time between any two time zones instantly. Supports UTC, PKT, IST, EST, GMT, PST and 20+ more. Shows all time zones at once. Free online time zone converter.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is UTC?","acceptedAnswer":{"@type":"Answer","text":"UTC (Coordinated Universal Time) is the world's primary time standard. All other time zones are defined as offsets from UTC. It replaced GMT as the standard in 1967 and does not observe daylight saving time."}},{"@type":"Question","name":"What is the difference between EST and EDT?","acceptedAnswer":{"@type":"Answer","text":"EST (Eastern Standard Time) is UTC−5, used in winter. EDT (Eastern Daylight Time) is UTC−4, used in summer when clocks are moved forward one hour. The US switches between them twice a year."}},{"@type":"Question","name":"What time zone is Pakistan?","acceptedAnswer":{"@type":"Answer","text":"Pakistan uses PKT (Pakistan Standard Time) = UTC+5. Pakistan does not observe daylight saving time. When it's 12:00 noon UTC, it's 5:00 PM in Pakistan."}},{"@type":"Question","name":"How do I schedule a meeting across time zones?","acceptedAnswer":{"@type":"Answer","text":"Enter the meeting time in your local timezone and check the result for all participants' timezones. Key Pakistan-friendly times: 9 AM PKT = 4 AM UTC = 12 AM EST = 11 AM IST. For US West Coast: 9 AM PST = 10 PM PKT (next day)."}},{"@type":"Question","name":"What is daylight saving time?","acceptedAnswer":{"@type":"Answer","text":"Daylight saving time (DST) moves clocks forward by 1 hour in spring and back in autumn to make better use of daylight. Not all countries observe DST — Pakistan, India, China, and Japan do not. The US, UK, and most of Europe do."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Converter Tools","item":"https://toolsnova.net/converter-tools/"},{"@type":"ListItem","position":3,"name":"Time Zone Converter","item":"https://toolsnova.net/timezone-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -227,54 +229,85 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="uc-grid">
       <div>
         <div class="pane-label">From timezone</div>
-        <select id="tz-from" class="uc-select" onchange="tzConvert()">
+        <select id="tz-from" class="uc-select" onchange="tzConvert()" aria-label="From timezone">
           <option value="UTC">UTC — Coordinated Universal Time</option>
           <option value="PKT" selected>PKT — Pakistan Standard Time</option>
           <option value="IST">IST — India Standard Time</option>
           <option value="EST">EST — Eastern Standard (US)</option>
           <option value="EDT">EDT — Eastern Daylight (US)</option>
           <option value="CST">CST — Central Standard (US)</option>
+          <option value="CDT">CDT — Central Daylight (US)</option>
+          <option value="MST">MST — Mountain Standard (US)</option>
           <option value="PST">PST — Pacific Standard (US)</option>
+          <option value="PDT">PDT — Pacific Daylight (US)</option>
           <option value="GMT">GMT — Greenwich Mean Time</option>
           <option value="BST">BST — British Summer Time</option>
           <option value="CET">CET — Central European Time</option>
+          <option value="CEST">CEST — Central European Summer</option>
+          <option value="EET">EET — Eastern European Time</option>
+          <option value="MSK">MSK — Moscow Standard Time</option>
           <option value="GST">GST — Gulf Standard Time</option>
           <option value="AST">AST — Arabia Standard (KSA)</option>
           <option value="BDT">BDT — Bangladesh Standard</option>
+          <option value="ICT">ICT — Indochina Time</option>
+          <option value="CST8">CST — China Standard Time</option>
           <option value="SGT">SGT — Singapore Time</option>
           <option value="JST">JST — Japan Standard Time</option>
-          <option value="AEST">AEST — Australian Eastern</option>
+          <option value="AEST">AEST — Australian Eastern Standard</option>
+          <option value="AEDT">AEDT — Australian Eastern Daylight</option>
+          <option value="NZST">NZST — New Zealand Standard</option>
         </select>
       </div>
       <button class="swap-btn" onclick="var f=document.getElementById('tz-from'),t=document.getElementById('tz-to');var tmp=f.value;f.value=t.value;t.value=tmp;tzConvert()">⇌</button>
       <div>
         <div class="pane-label">To timezone</div>
-        <select id="tz-to" class="uc-select" onchange="tzConvert()">
+        <select id="tz-to" class="uc-select" onchange="tzConvert()" aria-label="To timezone">
           <option value="UTC">UTC — Coordinated Universal Time</option>
           <option value="PKT">PKT — Pakistan Standard Time</option>
           <option value="IST">IST — India Standard Time</option>
           <option value="EST">EST — Eastern Standard (US)</option>
           <option value="EDT" selected>EDT — Eastern Daylight (US)</option>
           <option value="CST">CST — Central Standard (US)</option>
+          <option value="CDT">CDT — Central Daylight (US)</option>
+          <option value="MST">MST — Mountain Standard (US)</option>
           <option value="PST">PST — Pacific Standard (US)</option>
+          <option value="PDT">PDT — Pacific Daylight (US)</option>
           <option value="GMT">GMT — Greenwich Mean Time</option>
           <option value="BST">BST — British Summer Time</option>
           <option value="CET">CET — Central European Time</option>
+          <option value="CEST">CEST — Central European Summer</option>
+          <option value="EET">EET — Eastern European Time</option>
+          <option value="MSK">MSK — Moscow Standard Time</option>
           <option value="GST">GST — Gulf Standard Time</option>
           <option value="AST">AST — Arabia Standard (KSA)</option>
           <option value="BDT">BDT — Bangladesh Standard</option>
+          <option value="ICT">ICT — Indochina Time</option>
+          <option value="CST8">CST — China Standard Time</option>
           <option value="SGT">SGT — Singapore Time</option>
           <option value="JST">JST — Japan Standard Time</option>
-          <option value="AEST">AEST — Australian Eastern</option>
+          <option value="AEST">AEST — Australian Eastern Standard</option>
+          <option value="AEDT">AEDT — Australian Eastern Daylight</option>
+          <option value="NZST">NZST — New Zealand Standard</option>
         </select>
       </div>
     </div>
   </div>
 
+  <div class="result-summary-card" id="tz-summary"></div>
+
   <div>
     <div class="pane-label">Result — all timezones <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="tz-output" onclick="copyEl('tz-output')" aria-label="Time zone conversion result"></div>
   </div>
+
+  <section class="edu-section">
+    <h2>Picking the Right Zone</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Check whether DST is active first</div><div class="edu-card-body">This converter uses fixed zone abbreviations (e.g. EST vs EDT) rather than a live calendar — confirm whether Daylight Saving Time is currently in effect for the zone you need before picking Standard or Daylight.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Zones with no DST are always safe</div><div class="edu-card-body">UTC, GMT, PKT, IST, GST, AST, most of Asia, and Arizona-style zones never change for DST — these are reliable picks year-round with no seasonal ambiguity.</div></div>
+      <div class="edu-card"><div class="edu-card-title">For a specific future meeting, double-check in your calendar app</div><div class="edu-card-body">This tool is built for quick, lightweight time-of-day conversion. For scheduling a specific dated meeting where DST transitions could be a factor, confirm the final time in your calendar app once the invite is created.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -316,6 +349,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Time Zone Conversion Formula</h2>
+    <div class="edu-highlight"><strong>Target time</strong> = Source time + (Target UTC offset − Source UTC offset), carrying over to the next or previous day if the result crosses midnight.</div>
+    <h3>Worked example</h3>
+    <p>Converting 3:00 PM UTC to Pakistan Standard Time (UTC+5): offset difference = +5 − 0 = +5 hours. 3:00 PM + 5 hours = <strong>8:00 PM PKT</strong>, same day. Converting 11:00 PM EST (UTC−5) to JST (UTC+9): offset difference = +9 − (−5) = +14 hours. 11:00 PM + 14 hours = 1:00 PM, rolling into <strong>the next day (+1 day) in JST</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Picking Standard time during Daylight Saving season</div><div class="edu-card-body">EST and EDT (or CST/CDT, PST/PDT) are not interchangeable — using the wrong one for the current season produces a result that's off by exactly one hour.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming "CST" always means the same zone</div><div class="edu-card-body">CST is used for both US Central Standard Time (UTC−6) and China Standard Time (UTC+8) — an 14-hour difference. Double-check which "CST" you actually mean.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting the date can change</div><div class="edu-card-body">A large offset difference can push the converted time into the next or previous day — always check the "+1 day"/"−1 day" marker in the result before confirming a meeting time.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -340,8 +389,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🌐 IANA Time Zone Database</div><div class="edu-card-body">The authoritative source for time zone and DST transition rules worldwide, used by browsers, operating systems, and most scheduling software.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📅 Your calendar app</div><div class="edu-card-body">For a dated meeting invite, your calendar software's own time zone handling (Google Calendar, Outlook) is the definitive source once the invite is created — use this tool for quick planning, then confirm in the actual invite.</div></div>
+  </div>
+</section>
 
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->

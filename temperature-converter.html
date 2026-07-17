@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Temperature Converter Online","url":"https://toolsnova.net/temperature-converter","description":"Convert temperature between Celsius, Fahrenheit, Kelvin and Rankine instantly. Free online temperature converter with all unit results and reference points.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert Celsius to Fahrenheit?","acceptedAnswer":{"@type":"Answer","text":"Formula: °F = (°C × 9/5) + 32. Example: 100°C = (100 × 9/5) + 32 = 180 + 32 = 212°F. For a quick mental estimate: double the Celsius, subtract 10%, add 32."}},{"@type":"Question","name":"How do I convert Fahrenheit to Celsius?","acceptedAnswer":{"@type":"Answer","text":"Formula: °C = (°F − 32) × 5/9. Example: 98.6°F = (98.6 − 32) × 5/9 = 66.6 × 0.556 = 37°C (normal body temperature)."}},{"@type":"Question","name":"What is Kelvin and when is it used?","acceptedAnswer":{"@type":"Answer","text":"Kelvin is the SI base unit for temperature, used in science and engineering. 0K is absolute zero — the coldest possible temperature. Kelvin = Celsius + 273.15. There are no negative Kelvin values."}},{"@type":"Question","name":"What is normal body temperature?","acceptedAnswer":{"@type":"Answer","text":"37°C = 98.6°F = 310.15K. A temperature above 38°C (100.4°F) is generally considered a fever. Normal body temperature can vary between 36.1°C and 37.2°C depending on the person and time of day."}},{"@type":"Question","name":"What temperature does water boil and freeze?","acceptedAnswer":{"@type":"Answer","text":"At sea level (1 atm pressure): water freezes at 0°C (32°F, 273.15K) and boils at 100°C (212°F, 373.15K). At higher altitudes, boiling point decreases because atmospheric pressure is lower."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Converter Tools","item":"https://toolsnova.net/converter-tools/"},{"@type":"ListItem","position":3,"name":"Temperature Converter","item":"https://toolsnova.net/temperature-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -226,7 +228,7 @@ gtag('config', 'G-S6PPGS7N63');
       </div>
       <div>
         <div class="pane-label">From unit</div>
-        <select id="temp-from" class="uc-select" onchange="tempConvert()">
+        <select id="temp-from" class="uc-select" onchange="tempConvert()" aria-label="From unit">
           <option value="C">°C — Celsius</option>
           <option value="F">°F — Fahrenheit</option>
           <option value="K">K — Kelvin</option>
@@ -248,10 +250,21 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
+  <div class="result-summary-card" id="temp-summary"></div>
+
   <div>
     <div class="pane-label">Result — all scales <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="temp-output" onclick="copyEl('temp-output')" aria-label="Temperature conversion result"></div>
   </div>
+
+  <section class="edu-section">
+    <h2>Which Scale Should You Use?</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Cooking and weather (US)</div><div class="edu-card-body">Fahrenheit is standard for US kitchens and weather reports — most US oven dials and recipes use °F.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Cooking and weather (most other countries)</div><div class="edu-card-body">Celsius is the global standard elsewhere — most ovens, weather reports, and body-temperature readings outside the US use °C.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Science and engineering</div><div class="edu-card-body">Kelvin is the SI base unit, used whenever a calculation involves absolute temperature (gas laws, thermodynamics) — it has no negative values, since 0K is absolute zero.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -294,6 +307,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Conversion Formulas</h2>
+    <div class="edu-highlight"><strong>°F</strong> = °C × 9/5 + 32 &nbsp;·&nbsp; <strong>°C</strong> = (°F − 32) × 5/9 &nbsp;·&nbsp; <strong>K</strong> = °C + 273.15 &nbsp;·&nbsp; <strong>°R</strong> = (°C + 273.15) × 9/5</div>
+    <h3>Worked example</h3>
+    <p>Converting 100°C (boiling water at sea level): °F = 100 × 9/5 + 32 = <strong>212°F</strong>. K = 100 + 273.15 = <strong>373.15 K</strong>. °R = 373.15 × 9/5 = <strong>671.67°R</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Confusing a difference with an absolute value</div><div class="edu-card-body">A change of 1°C equals a change of 1.8°F — but that's not the same as saying 1°C absolute equals 1.8°F absolute. Convert absolute readings with the full formula, not just a scaling factor.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting Kelvin has no negative values</div><div class="edu-card-body">0 K is absolute zero — there is no such thing as a negative Kelvin reading. If a calculation produces one, the input or formula has an error.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Mixing up Rankine with Kelvin</div><div class="edu-card-body">Both start at absolute zero, but Rankine uses Fahrenheit-sized degrees while Kelvin uses Celsius-sized degrees — they are not interchangeable without their own conversion.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -318,7 +347,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ International System of Units (SI)</div><div class="edu-card-body">Kelvin is one of the seven SI base units, formally defined via the Boltzmann constant since the 2019 SI redefinition.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 NIST</div><div class="edu-card-body">The US National Institute of Standards and Technology publishes the official Celsius-Fahrenheit-Kelvin-Rankine conversion formulas and reference points used here.</div></div>
+  </div>
+</section>
 
 
 

@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Weight Converter Online","url":"https://toolsnova.net/weight-converter","description":"Convert weight between kilograms, pounds, stones, grams, ounces and tonnes instantly. Free online weight converter with all units.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many pounds in a kilogram?","acceptedAnswer":{"@type":"Answer","text":"1 kilogram = 2.20462 pounds. Conversely, 1 pound = 0.453592 kg. Quick estimate: multiply kg by 2.2 to get pounds."}},{"@type":"Question","name":"How do I convert kg to stones and pounds?","acceptedAnswer":{"@type":"Answer","text":"1 stone = 14 pounds = 6.35029 kg. To convert kg: divide by 6.35029 to get stones, then multiply the decimal part by 14 for extra pounds. Example: 75 kg = 11.81 stone = 11 stone 11.4 lbs."}},{"@type":"Question","name":"What is the difference between mass and weight?","acceptedAnswer":{"@type":"Answer","text":"Mass is the amount of matter in an object (measured in kg). Weight is the force of gravity on that mass (measured in Newtons). In everyday usage, weight and mass are used interchangeably, but scientifically 1 kg of mass weighs about 9.81 Newtons on Earth."}},{"@type":"Question","name":"How many grams in an ounce?","acceptedAnswer":{"@type":"Answer","text":"1 ounce (oz) = 28.3495 grams. 1 pound = 16 ounces = 453.592 grams. In cooking, recipes often use both metric (grams) and imperial (ounces) measurements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Converter Tools","item":"https://toolsnova.net/converter-tools/"},{"@type":"ListItem","position":3,"name":"Weight Converter","item":"https://toolsnova.net/weight-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -226,7 +228,7 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="uc-grid">
       <div>
         <div class="pane-label">From</div>
-      <select id="wt-from" class="uc-select" onchange="wtConvert()">
+      <select id="wt-from" class="uc-select" onchange="weightConvert()" aria-label="From unit">
         <option value="kg" selected>kg — Kilograms</option>
         <option value="g">g — Grams</option>
         <option value="mg">mg — Milligrams</option>
@@ -243,7 +245,7 @@ gtag('config', 'G-S6PPGS7N63');
   var tmp=f.value;f.value=t.value;t.value=tmp;weightConvert()">⇌</button>
       <div>
         <div class="pane-label">To</div>
-      <select id="wt-to" class="uc-select" onchange="wtConvert()">
+      <select id="wt-to" class="uc-select" onchange="weightConvert()" aria-label="To unit">
         <option value="kg">kg — Kilograms</option>
         <option value="g">g — Grams</option>
         <option value="mg">mg — Milligrams</option>
@@ -262,10 +264,21 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
+  <div class="result-summary-card" id="wt-summary"></div>
+
   <div>
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="wt-output" onclick="copyEl('wt-output')" aria-label="Conversion result"></div>
   </div>
+
+  <section class="edu-section">
+    <h2>Which Unit Fits Your Task</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Body weight (UK)</div><div class="edu-card-body">Stones and pounds remain the everyday standard for body weight in the UK and Ireland — 1 stone = 14 lb, so "11 stone 6" means 11×14+6 = 160 lb.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Shipping and freight</div><div class="edu-card-body">Confirm whether a quoted "ton" is a US short ton (2,000 lb) or a metric tonne (1,000 kg, ≈2,204.6 lb) — the roughly 10% difference matters at freight scale.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Cooking and small quantities</div><div class="edu-card-body">Grams and ounces cover most kitchen and small-parcel needs — for very small or precise amounts (jewellery, lab work), milligrams or micrograms are more appropriate.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -308,6 +321,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Conversion Formula</h2>
+    <div class="edu-highlight"><strong>Result</strong> = Value × (source unit's kg equivalent) ÷ (target unit's kg equivalent) — every unit converts through kilograms as the common base.</div>
+    <h3>Worked example</h3>
+    <p>Converting 11 stone 6 lb (a common UK body-weight format) to kilograms: 11 stone = 154 lb, plus 6 lb = 160 lb total. 160 × 0.453592 = <strong>72.57 kg</strong>. In pounds directly: 160 lb.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Confusing metric tonnes with US or UK tons</div><div class="edu-card-body">A metric tonne (1,000 kg ≈ 2,204.6 lb) is not the same as a US short ton (2,000 lb ≈ 907.2 kg) or a UK long ton (2,240 lb ≈ 1,016 kg) — confirm which one a quote or contract actually means before ordering freight.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating weight and mass as interchangeable everywhere</div><div class="edu-card-body">For everyday purposes kilograms and pounds work as mass units, but true weight is a force that depends on gravity — this distinction matters in physics and engineering contexts, not daily use.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Dropping the stone when converting UK body weight</div><div class="edu-card-body">"11 stone" alone is 154 lb, not 11 lb — always convert the full stone-and-pounds figure together, not just the trailing pounds portion.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -328,8 +357,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ International Bureau of Weights and Measures (BIPM)</div><div class="edu-card-body">The kilogram is the SI base unit of mass, defined since 2019 via the Planck constant — the authoritative source for the metric system.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 NIST — International pound agreement</div><div class="edu-card-body">The exact pound (0.45359237 kg) used here follows the 1959 international avoirdupois pound agreement adopted by the US, UK, and other English-speaking countries.</div></div>
+  </div>
+</section>
 
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->

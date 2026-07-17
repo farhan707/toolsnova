@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Speed Converter Online","url":"https://toolsnova.net/speed-converter","description":"Convert speed between mph, km/h, m/s, knots, ft/s and Mach instantly. Free online speed converter for drivers, pilots, and students.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert mph to km/h?","acceptedAnswer":{"@type":"Answer","text":"Multiply mph by 1.60934. Example: 60 mph = 60 × 1.60934 = 96.56 km/h. Quick estimate: multiply by 1.6. To go the other way: multiply km/h by 0.621371."}},{"@type":"Question","name":"What is a knot in mph?","acceptedAnswer":{"@type":"Answer","text":"1 knot = 1 nautical mile per hour = 1.15078 mph = 1.852 km/h. Knots are used in aviation and maritime navigation. Wind speed in weather reports is often given in knots."}},{"@type":"Question","name":"How fast is Mach 1?","acceptedAnswer":{"@type":"Answer","text":"Mach 1 is the speed of sound — approximately 343 m/s (1,235 km/h or 767 mph) at sea level at 20°C. The speed of sound varies with temperature and altitude: it's slower at higher altitudes where air is colder and thinner."}},{"@type":"Question","name":"What is the speed of light?","acceptedAnswer":{"@type":"Answer","text":"The speed of light in a vacuum is exactly 299,792,458 metres per second (approximately 300,000 km/s or 186,000 miles/second). Nothing with mass can reach or exceed this speed."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Converter Tools","item":"https://toolsnova.net/converter-tools/"},{"@type":"ListItem","position":3,"name":"Speed Converter","item":"https://toolsnova.net/speed-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -226,7 +228,7 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="uc-grid">
       <div>
         <div class="pane-label">From</div>
-      <select id="sp-from" class="uc-select" onchange="spConvert()">
+      <select id="sp-from" class="uc-select" onchange="speedConvert()" aria-label="From unit">
         <option value="km/h">km/h — Kilometres/hour</option>
         <option value="mph" selected>mph — Miles/hour</option>
         <option value="m/s">m/s — Metres/second</option>
@@ -241,7 +243,7 @@ gtag('config', 'G-S6PPGS7N63');
   var tmp=f.value;f.value=t.value;t.value=tmp;speedConvert()">⇌</button>
       <div>
         <div class="pane-label">To</div>
-      <select id="sp-to" class="uc-select" onchange="spConvert()">
+      <select id="sp-to" class="uc-select" onchange="speedConvert()" aria-label="To unit">
         <option value="km/h" selected>km/h — Kilometres/hour</option>
         <option value="mph">mph — Miles/hour</option>
         <option value="m/s">m/s — Metres/second</option>
@@ -258,10 +260,21 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
+  <div class="result-summary-card" id="sp-summary"></div>
+
   <div>
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="sp-output" onclick="copyEl('sp-output')" aria-label="Conversion result"></div>
   </div>
+
+  <section class="edu-section">
+    <h2>Choosing the Right Unit</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Road speed</div><div class="edu-card-body">km/h is the global standard for road speed limits and vehicle speedometers, except in the US and UK, which use mph — check which your speedometer displays before comparing to a posted limit abroad.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Marine and air navigation</div><div class="edu-card-body">Knots (nautical miles per hour) are the standard for boats and aircraft — don't substitute mph or km/h when reading a nautical chart or ATC clearance.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Physics and aerospace</div><div class="edu-card-body">m/s is the SI unit used in physics calculations; Mach number and fractions of the speed of light are used specifically for aerospace and relativistic contexts, not everyday speed.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -303,6 +316,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Conversion Formula</h2>
+    <div class="edu-highlight"><strong>Result</strong> = Value × (source unit's m/s equivalent) ÷ (target unit's m/s equivalent) — every unit converts through metres per second as the common base.</div>
+    <h3>Worked example</h3>
+    <p>Converting a 100 km/h car speed to mph: 100 ÷ 3.6 = 27.78 m/s, then 27.78 ÷ 0.44704 = <strong>62.14 mph</strong>. In knots: 27.78 ÷ 0.514444 = <strong>54.0 knots</strong>.</p>
+    <p><em>Note on Mach: this calculator uses 343 m/s, the speed of sound at sea level and ~20°C. The actual speed of sound — and therefore Mach 1 — changes with altitude and air temperature, dropping to roughly 295 m/s at typical cruising altitude. Mach conversions here are a sea-level approximation, not an aerospace-precision figure.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Treating Mach as a fixed speed</div><div class="edu-card-body">Mach 1 is not a constant number of km/h or mph — it depends on air temperature and altitude. A Mach number only converts to a fixed speed at the specific conditions assumed.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Mixing up knots with mph</div><div class="edu-card-body">A knot (1.852 km/h) is meaningfully faster than a mile per hour (1.609 km/h) — using the wrong one in marine or aviation contexts introduces a real navigation error.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting to convert before physics formulas</div><div class="edu-card-body">Kinetic energy, momentum, and force calculations require SI units (m/s) — plugging in km/h or mph directly into a physics formula will give a wrong answer even if the formula itself is correct.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -323,8 +353,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ International System of Units (SI)</div><div class="edu-card-body">Metres per second is the SI derived unit of speed; the speed of light (299,792,458 m/s exactly) is itself the basis for the SI definition of the metre.</div></div>
+    <div class="edu-card"><div class="edu-card-title">✈️ ICAO — International Civil Aviation Organization</div><div class="edu-card-body">Knots are the ICAO-standard unit for aviation speed worldwide; the standard atmosphere model ICAO publishes is the reference for how the speed of sound (and Mach 1) varies with altitude.</div></div>
+  </div>
+</section>
 
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->

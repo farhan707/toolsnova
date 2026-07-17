@@ -1901,8 +1901,14 @@ function ucConvert(units, fromId, toId, inputId, outputId, precision) {
   const from = document.getElementById(fromId)?.value;
   const to   = document.getElementById(toId)?.value;
   const out  = document.getElementById(outputId);
+  const summaryId = outputId.replace('output','summary');
+  const summary = document.getElementById(summaryId);
   if (!out) return;
-  if (isNaN(val)) { out.textContent = ''; out.className = 'output-box'; return; }
+  if (isNaN(val)) {
+    out.textContent = ''; out.className = 'output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
   // Convert to base unit then to target
   const toBase   = units[from]?.toBase   || (v => v);
@@ -1927,6 +1933,10 @@ function ucConvert(units, fromId, toId, inputId, outputId, precision) {
 
   out.textContent = mainLine + '\n\n── All units ──────────────────\n' + table;
   out.className = 'output-box success';
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${val.toLocaleString()} ${from} = ${fmt(result)} ${to}</div><div class="rsc-sub">Full unit breakdown below</div>`;
+  }
   setStatus(outputId.replace('output','status'), 'ok', `✓ ${from} → ${to}`);
 }
 
@@ -1937,8 +1947,13 @@ function tempConvert() {
   const val  = parseFloat(document.getElementById('temp-input')?.value);
   const from = document.getElementById('temp-from')?.value || 'C';
   const out  = document.getElementById('temp-output');
+  const summary = document.getElementById('temp-summary');
   if (!out) return;
-  if (isNaN(val)) { out.textContent = ''; out.className = 'output-box'; return; }
+  if (isNaN(val)) {
+    out.textContent = ''; out.className = 'output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
   // Convert to Celsius first
   let celsius;
@@ -1956,6 +1971,12 @@ function tempConvert() {
 
   const fmt = n => parseFloat(n.toFixed(4)).toLocaleString('en-US', {maximumFractionDigits:4});
 
+  if (summary) {
+    const unitLabel = {C:'°C',F:'°F',K:'K',R:'°R'}[from];
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${fmt(val)}${unitLabel} = ${fmt(results['Celsius (°C)'])}°C = ${fmt(results['Fahrenheit (°F)'])}°F</div><div class="rsc-sub">All 4 scales below</div>`;
+  }
+
   const lines = Object.entries(results)
     .map(([unit, v]) => `  ${(unit+':').padEnd(20)} ${fmt(v)}`)
     .join('\n');
@@ -1966,8 +1987,10 @@ function tempConvert() {
 function tempClear() {
   const i=document.getElementById('temp-input');
   const o=document.getElementById('temp-output');
+  const s=document.getElementById('temp-summary');
   if(i) i.value='';
   if(o){o.textContent='';o.className='output-box';}
+  if(s) s.classList.remove('show');
 }
 
 /* ════════════════════════════════════
@@ -2027,11 +2050,18 @@ function speedClear() { clearUC('sp-input','sp-output'); }
 const DATA_UNITS = {
   'bit':  { toBase: v=>v,             fromBase: v=>v,             name:'Bits' },
   'B':    { toBase: v=>v*8,           fromBase: v=>v/8,           name:'Bytes' },
-  'KB':   { toBase: v=>v*8*1024,      fromBase: v=>v/(8*1024),    name:'Kilobytes' },
-  'MB':   { toBase: v=>v*8*1024**2,   fromBase: v=>v/(8*1024**2), name:'Megabytes' },
-  'GB':   { toBase: v=>v*8*1024**3,   fromBase: v=>v/(8*1024**3), name:'Gigabytes' },
-  'TB':   { toBase: v=>v*8*1024**4,   fromBase: v=>v/(8*1024**4), name:'Terabytes' },
-  'PB':   { toBase: v=>v*8*1024**5,   fromBase: v=>v/(8*1024**5), name:'Petabytes' },
+  // Decimal (SI/IEC 80000-13), 1000-based — used by storage manufacturers, network speeds, file size marketing
+  'KB':   { toBase: v=>v*8*1000,      fromBase: v=>v/(8*1000),    name:'Kilobytes (decimal, 1000)' },
+  'MB':   { toBase: v=>v*8*1000**2,   fromBase: v=>v/(8*1000**2), name:'Megabytes (decimal, 1000)' },
+  'GB':   { toBase: v=>v*8*1000**3,   fromBase: v=>v/(8*1000**3), name:'Gigabytes (decimal, 1000)' },
+  'TB':   { toBase: v=>v*8*1000**4,   fromBase: v=>v/(8*1000**4), name:'Terabytes (decimal, 1000)' },
+  'PB':   { toBase: v=>v*8*1000**5,   fromBase: v=>v/(8*1000**5), name:'Petabytes (decimal, 1000)' },
+  // Binary (IEC 80000-13), 1024-based — used by operating systems, RAM, file systems
+  'KiB':  { toBase: v=>v*8*1024,      fromBase: v=>v/(8*1024),    name:'Kibibytes (binary, 1024)' },
+  'MiB':  { toBase: v=>v*8*1024**2,   fromBase: v=>v/(8*1024**2), name:'Mebibytes (binary, 1024)' },
+  'GiB':  { toBase: v=>v*8*1024**3,   fromBase: v=>v/(8*1024**3), name:'Gibibytes (binary, 1024)' },
+  'TiB':  { toBase: v=>v*8*1024**4,   fromBase: v=>v/(8*1024**4), name:'Tebibytes (binary, 1024)' },
+  'PiB':  { toBase: v=>v*8*1024**5,   fromBase: v=>v/(8*1024**5), name:'Pebibytes (binary, 1024)' },
   'Kbit': { toBase: v=>v*1000,        fromBase: v=>v/1000,        name:'Kilobits' },
   'Mbit': { toBase: v=>v*1e6,         fromBase: v=>v/1e6,         name:'Megabits' },
   'Gbit': { toBase: v=>v*1e9,         fromBase: v=>v/1e9,         name:'Gigabits' },
@@ -2075,8 +2105,13 @@ function tzConvert() {
   const from    = document.getElementById('tz-from')?.value || 'UTC';
   const to      = document.getElementById('tz-to')?.value   || 'PKT';
   const out     = document.getElementById('tz-output');
+  const summary = document.getElementById('tz-summary');
   if (!out) return;
-  if (!timeStr) { out.textContent = ''; out.className = 'output-box'; return; }
+  if (!timeStr) {
+    out.textContent = ''; out.className = 'output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
   // Parse time — accept HH:MM, H:MM AM/PM, or full datetime
   let hours = 0, mins = 0;
@@ -2091,7 +2126,9 @@ function tzConvert() {
     }
   } else {
     out.textContent = 'Enter time as HH:MM or H:MM AM/PM (e.g. 14:30 or 2:30 PM)';
-    out.className = 'output-box error'; return;
+    out.className = 'output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
   }
 
   const fromOffset = TIMEZONES[from]?.offset ?? 0;
@@ -2112,6 +2149,11 @@ function tzConvert() {
     return `${h12}:${String(m).padStart(2,'0')} ${ap}`;
   };
   const dayLabel = dayOffset === 0 ? '' : dayOffset > 0 ? ` (+${dayOffset} day)` : ` (${dayOffset} day)`;
+
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${fmt12(hours,mins)} ${from} = ${fmt12(newHours,newMins)} ${to}${dayLabel}</div><div class="rsc-sub">All zones below</div>`;
+  }
 
   out.textContent =
     `Input:    ${fmt24(hours,mins)} (${fmt12(hours,mins)}) ${from}\n` +
@@ -2142,16 +2184,20 @@ function tzNow() {
 function tzClear() {
   const i=document.getElementById('tz-input');
   const o=document.getElementById('tz-output');
+  const s=document.getElementById('tz-summary');
   if(i) i.value='';
   if(o){o.textContent='';o.className='output-box';}
+  if(s) s.classList.remove('show');
 }
 
 /* Shared clear helper */
 function clearUC(inputId, outputId) {
   const i=document.getElementById(inputId);
   const o=document.getElementById(outputId);
+  const s=document.getElementById(outputId.replace('output','summary'));
   if(i) i.value='';
   if(o){o.textContent='';o.className='output-box';}
+  if(s) s.classList.remove('show');
 }
 
 /* ════════════════════════════════════

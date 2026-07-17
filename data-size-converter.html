@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Data Size Converter Online","url":"https://toolsnova.net/data-size-converter","description":"Convert data sizes between bits, bytes, KB, MB, GB, TB and PB instantly. Free online data storage converter for developers and students.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many MB in a GB?","acceptedAnswer":{"@type":"Answer","text":"1 GB = 1,024 MB (binary, used by operating systems) or 1,000 MB (decimal, used by storage manufacturers). This discrepancy is why a '1TB' hard drive shows as ~931 GB in Windows."}},{"@type":"Question","name":"What is the difference between Megabits and Megabytes?","acceptedAnswer":{"@type":"Answer","text":"1 Byte = 8 bits. Internet speeds are measured in Megabits per second (Mbps), while file sizes use Megabytes (MB). So a 100 Mbps connection transfers 12.5 MB per second. This is why download speeds appear lower than your advertised connection speed."}},{"@type":"Question","name":"How large is a 4K movie?","acceptedAnswer":{"@type":"Answer","text":"A typical 4K movie is 50–100 GB in high-quality Blu-ray format, or 15–25 GB in compressed streaming format (Netflix/Disney+). A 1080p HD movie is roughly 4–10 GB. A standard DVD (480p) holds about 4.7 GB."}},{"@type":"Question","name":"What is a Petabyte?","acceptedAnswer":{"@type":"Answer","text":"1 Petabyte (decimal) = 1,000 Terabytes = 1,000,000 Gigabytes. (The binary equivalent, 1 Pebibyte, = 1,024 Tebibytes = 1,048,576 Gibibytes.) To put it in perspective: 1 PB could store approximately 250,000 HD movies or 20 million 4-drawer filing cabinets full of text."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Converter Tools","item":"https://toolsnova.net/converter-tools/"},{"@type":"ListItem","position":3,"name":"Data Size Converter","item":"https://toolsnova.net/data-size-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -226,14 +228,19 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="uc-grid">
       <div>
         <div class="pane-label">From</div>
-      <select id="dt-from" class="uc-select" onchange="dtConvert()">
+      <select id="dt-from" class="uc-select" onchange="dataConvert()" aria-label="From unit">
         <option value="bit">bit — Bits</option>
         <option value="B">B — Bytes</option>
-        <option value="KB">KB — Kilobytes</option>
-        <option value="MB">MB — Megabytes</option>
-        <option value="GB" selected>GB — Gigabytes</option>
-        <option value="TB">TB — Terabytes</option>
-        <option value="PB">PB — Petabytes</option>
+        <option value="KB">KB — Kilobytes (decimal, 1000)</option>
+        <option value="MB">MB — Megabytes (decimal, 1000)</option>
+        <option value="GB" selected>GB — Gigabytes (decimal, 1000)</option>
+        <option value="TB">TB — Terabytes (decimal, 1000)</option>
+        <option value="PB">PB — Petabytes (decimal, 1000)</option>
+        <option value="KiB">KiB — Kibibytes (binary, 1024)</option>
+        <option value="MiB">MiB — Mebibytes (binary, 1024)</option>
+        <option value="GiB">GiB — Gibibytes (binary, 1024)</option>
+        <option value="TiB">TiB — Tebibytes (binary, 1024)</option>
+        <option value="PiB">PiB — Pebibytes (binary, 1024)</option>
         <option value="Kbit">Kbit — Kilobits</option>
         <option value="Mbit">Mbit — Megabits</option>
         <option value="Gbit">Gbit — Gigabits</option>
@@ -244,14 +251,19 @@ gtag('config', 'G-S6PPGS7N63');
   var tmp=f.value;f.value=t.value;t.value=tmp;dataConvert()">⇌</button>
       <div>
         <div class="pane-label">To</div>
-      <select id="dt-to" class="uc-select" onchange="dtConvert()">
+      <select id="dt-to" class="uc-select" onchange="dataConvert()" aria-label="To unit">
         <option value="bit">bit — Bits</option>
         <option value="B">B — Bytes</option>
-        <option value="KB">KB — Kilobytes</option>
-        <option value="MB" selected>MB — Megabytes</option>
-        <option value="GB">GB — Gigabytes</option>
-        <option value="TB">TB — Terabytes</option>
-        <option value="PB">PB — Petabytes</option>
+        <option value="KB">KB — Kilobytes (decimal, 1000)</option>
+        <option value="MB" selected>MB — Megabytes (decimal, 1000)</option>
+        <option value="GB">GB — Gigabytes (decimal, 1000)</option>
+        <option value="TB">TB — Terabytes (decimal, 1000)</option>
+        <option value="PB">PB — Petabytes (decimal, 1000)</option>
+        <option value="KiB">KiB — Kibibytes (binary, 1024)</option>
+        <option value="MiB">MiB — Mebibytes (binary, 1024)</option>
+        <option value="GiB">GiB — Gibibytes (binary, 1024)</option>
+        <option value="TiB">TiB — Tebibytes (binary, 1024)</option>
+        <option value="PiB">PiB — Pebibytes (binary, 1024)</option>
         <option value="Kbit">Kbit — Kilobits</option>
         <option value="Mbit">Mbit — Megabits</option>
         <option value="Gbit">Gbit — Gigabits</option>
@@ -264,10 +276,21 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
   </div>
 
+  <div class="result-summary-card" id="dt-summary"></div>
+
   <div>
     <div class="pane-label">Result — all units <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
     <div class="output-box uc-output" id="dt-output" onclick="copyEl('dt-output')" aria-label="Conversion result"></div>
   </div>
+
+  <section class="edu-section">
+    <h2>Picking Decimal or Binary</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Comparing to a purchased drive or plan</div><div class="edu-card-body">Storage manufacturers and cloud/mobile data plans quote decimal (KB/MB/GB/TB) — use these units to check whether a drive or plan matches its advertised size.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing to what your OS displays</div><div class="edu-card-body">Windows, macOS, and Linux file managers typically report binary values (often still labeled GB/TB by the OS, but actually computed as GiB/TiB) — use the KiB/MiB/GiB/TiB units here to match what your computer shows you.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Network speed vs. file size</div><div class="edu-card-body">ISPs advertise connection speed in bits (Mbps, Gbps); file sizes are in bytes (MB, GB). Divide a bits-per-second speed by 8 to get bytes-per-second before comparing to a file size.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -276,7 +299,7 @@ gtag('config', 'G-S6PPGS7N63');
     <ol class="edu-steps">
       <li><strong>Enter your data size value</strong> — type the number of bytes, kilobytes, megabytes, or any unit.</li>
       <li><strong>Select the input unit</strong> — choose from bits, bytes, kilobytes, megabytes, gigabytes, terabytes, or petabytes.</li>
-      <li><strong>Choose binary or decimal</strong> — 1 KB = 1,024 bytes (binary, used by operating systems) or 1 KB = 1,000 bytes (decimal, used by storage manufacturers). This difference matters for large drives.</li>
+      <li><strong>Choose binary or decimal</strong> — use KB/MB/GB/TB for the decimal (1,000-based) convention that storage manufacturers and network speeds use, or KiB/MiB/GiB/TiB for the binary (1,024-based) convention operating systems and file managers use. Both are available as separate units below.</li>
       <li><strong>Read all conversions</strong> — see your data size expressed in all units simultaneously.</li>
       <li><strong>Use for storage planning</strong> — calculate how many files fit on a drive, compare file sizes, or understand download times.</li>
     </ol>
@@ -305,8 +328,24 @@ gtag('config', 'G-S6PPGS7N63');
     <p>Professional photographers and videographers need to plan storage carefully. RAW photos: 20–45 MB each depending on camera. A 1-day professional shoot: 500–2,000 photos = 10–90 GB. 4K video: 4–8 GB per hour (H.264), 20–50 GB per hour (ProRes). A wedding videographer shooting 8 hours at 4K: 30–400 GB of footage. Best practice: 3-2-1 backup rule — 3 copies of data, on 2 different media types, with 1 offsite. For 100 GB of photos: local drive + external drive + cloud = 3 copies total.</p>
     <h3>Data centre and enterprise scale</h3>
     <p>Modern data centres operate at petabyte and exabyte scale. Facebook stores approximately 250 billion photos (approximately 100 petabytes). YouTube receives 500 hours of video per minute. The entire printed collection of the US Library of Congress is approximately 10 TB. All human speech ever spoken is estimated at approximately 5 exabytes. Understanding the scale from bytes to zettabytes contextualises both individual file management decisions and the infrastructure requirements of large-scale digital services.</p>
-    <div class="edu-highlight"><strong>💾 Data size quick reference:</strong> 1 KB = 1,024 bytes (binary). 1 MB = 1,048,576 bytes. 1 GB = 1,073,741,824 bytes. 1 TB = 1,099,511,627,776 bytes. Network: 1 Mbps = 0.125 MB/s. Common: 1 GB file at 10 Mbps = 800 seconds. 1 TB drive = 931 GB displayed in Windows. A typical smartphone holds 64–256 GB. Average photo: 3–8 MB (JPEG), 20–40 MB (RAW). These reference points make data size decisions intuitive.</div>
+    <div class="edu-highlight"><strong>💾 Data size quick reference:</strong> Decimal (SI): 1 KB = 1,000 bytes. 1 MB = 1,000,000 bytes. 1 GB = 1,000,000,000 bytes. 1 TB = 1,000,000,000,000 bytes. Binary (IEC): 1 KiB = 1,024 bytes. 1 MiB = 1,048,576 bytes. 1 GiB = 1,073,741,824 bytes. 1 TiB = 1,099,511,627,776 bytes. Network: 1 Mbps = 0.125 MB/s. Common: 1 GB file at 10 Mbps = 800 seconds. 1 TB drive = 931 GiB displayed in Windows. A typical smartphone holds 64–256 GB. Average photo: 3–8 MB (JPEG), 20–40 MB (RAW). These reference points make data size decisions intuitive.</div>
 
+  </section>
+
+  <section class="edu-section">
+    <h2>Conversion Formula</h2>
+    <div class="edu-highlight"><strong>Decimal:</strong> 1 KB = 1,000 B, 1 MB = 1,000² B, 1 GB = 1,000³ B, 1 TB = 1,000⁴ B. &nbsp;<strong>Binary:</strong> 1 KiB = 1,024 B, 1 MiB = 1,024² B, 1 GiB = 1,024³ B, 1 TiB = 1,024⁴ B.</div>
+    <h3>Worked example</h3>
+    <p>A "1 TB" hard drive (decimal, as sold) contains exactly 1,000,000,000,000 bytes. Converted to binary units: 1,000,000,000,000 ÷ 1,073,741,824 = <strong>931.32 GiB</strong> — which is exactly the figure Windows/macOS shows for a "1 TB" drive, since the OS reports in binary (GiB) but often still labels it "GB."</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming "GB" always means the same thing</div><div class="edu-card-body">A drive manufacturer's GB (decimal, 1,000-based) and your operating system's displayed GB (usually actually binary, 1,024-based, and more accurately called GiB) are different units wearing the same label — this is the single most common data-size confusion.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing bits and bytes in network speeds</div><div class="edu-card-body">"100 Mbps" is 100 megabits per second, not megabytes — divide by 8 to get the actual download speed in MB/s (100 Mbps ≈ 12.5 MB/s).</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming a drive's "missing" space is a defect</div><div class="edu-card-body">A "1 TB" drive showing ~931 GB in your file manager isn't missing capacity — it's decimal-to-binary unit conversion, not lost storage (a small amount is separately used for the file system itself, which is a different, much smaller effect).</div></div>
+    </div>
   </section>
 
   <section class="faq-section">
@@ -325,12 +364,17 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a Petabyte?</div>
-    <div class="faq-a">1 Petabyte = 1,024 Terabytes = 1,048,576 Gigabytes. To put it in perspective: 1 PB could store approximately 250,000 HD movies or 20 million 4-drawer filing cabinets full of text.</div>
+    <div class="faq-a">1 Petabyte (decimal) = 1,000 Terabytes = 1,000,000 Gigabytes. (The binary equivalent, 1 Pebibyte, = 1,024 Tebibytes = 1,048,576 Gibibytes.) To put it in perspective: 1 PB could store approximately 250,000 HD movies or 20 million 4-drawer filing cabinets full of text.</div>
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ IEC 80000-13</div><div class="edu-card-body">The International Electrotechnical Commission standard that formally defines the binary prefixes (KiB, MiB, GiB, TiB) to distinguish them from the decimal SI prefixes (KB, MB, GB, TB) used here.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Storage manufacturer specifications</div><div class="edu-card-body">Drive and storage manufacturers publish decimal capacity on packaging and spec sheets — confirm against your specific product's data sheet if the displayed capacity doesn't match expectations.</div></div>
+  </div>
+</section>
 
 
 <!-- RELATED-TOOLS:START (auto-generated by inject_related_tools.py — do not hand-edit) -->

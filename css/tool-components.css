@@ -113,3 +113,67 @@
 
 /* ── Light mode mark ── */
 [data-theme="light"] mark { background: rgba(26,138,10,0.15); color: inherit; }
+
+/* ── Unit Converter components (uc-*) — used by Converters family ── */
+.uc-input, .uc-select {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  padding: 0.65rem 0.8rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.uc-input:focus, .uc-select:focus { border-color: var(--accent); }
+.uc-input::placeholder { color: var(--text3); }
+.uc-select { cursor: pointer; }
+[data-theme="light"] .uc-input, [data-theme="light"] .uc-select { background: var(--surface); }
+
+.quick-vals { display: flex; flex-wrap: wrap; gap: 6px; }
+.qv-btn {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.7rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.qv-btn:hover, .qv-btn:focus-visible { background: var(--surface3); color: var(--text); border-color: rgba(255,255,255,0.2); }
+.qv-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ── Result Summary Card — sits above the detailed output box ── */
+.result-summary-card {
+  background: var(--accent-dim);
+  border: 1px solid rgba(127,255,111,0.35);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  display: none;
+}
+.result-summary-card.show { display: block; }
+.result-summary-card .rsc-label {
+  font-size: 0.65rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  margin-bottom: 4px;
+}
+.result-summary-card .rsc-value {
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.3;
+  word-break: break-word;
+}
+.result-summary-card .rsc-sub {
+  font-size: 0.72rem;
+  color: var(--text2);
+  margin-top: 4px;
+}

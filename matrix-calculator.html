@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matrix Calculator — Add, Multiply, Transpose & Determinant</title>
-<meta name="description" content="Calculate matrix addition, subtraction, multiplication, transpose, and determinant online. Enter matrices as rows. Free online matrix calculator.">
+<meta name="description" content="Calculate matrix addition, subtraction, multiplication, transpose, determinant, and inverse online. Enter matrices as rows. Free online matrix calculator.">
 <link rel="canonical" href="https://toolsnova.net/matrix-calculator">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
@@ -22,7 +22,7 @@
 <meta name="apple-mobile-web-app-title" content="ToolsNova">
 <link rel="apple-touch-icon" href="/icons/icon-192.png">
 <meta property="og:title" content="Matrix Calculator — Add, Multiply, Transpose & Determinant">
-<meta property="og:description" content="Calculate matrix addition, subtraction, multiplication, transpose, and determinant online. Enter matrices as rows. Free online matrix calculator.">
+<meta property="og:description" content="Calculate matrix addition, subtraction, multiplication, transpose, determinant, and inverse online. Enter matrices as rows. Free online matrix calculator.">
 <meta property="og:url" content="https://toolsnova.net/matrix-calculator">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
@@ -31,10 +31,12 @@
 <meta property="og:site_name" content="ToolsNova">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Matrix Calculator — Add, Multiply, Transpose & Determinant">
-<meta name="twitter:description" content="Calculate matrix addition, subtraction, multiplication, transpose, and determinant online. Enter matrices as rows. Free online matrix calculator.">
+<meta name="twitter:description" content="Calculate matrix addition, subtraction, multiplication, transpose, determinant, and inverse online. Enter matrices as rows. Free online matrix calculator.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Matrix Calculator","url":"https://toolsnova.net/matrix-calculator","description":"Calculate matrix addition, subtraction, multiplication, transpose, and determinant online. Enter matrices as rows. Free online matrix calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Matrix Calculator","url":"https://toolsnova.net/matrix-calculator","description":"Calculate matrix addition, subtraction, multiplication, transpose, determinant, and inverse online. Enter matrices as rows. Free online matrix calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I enter a matrix?","acceptedAnswer":{"@type":"Answer","text":"Enter each row on a new line, with values separated by spaces or commas. Example: a 2×3 matrix would be entered as two lines with 3 values each: '1 2 3' on line 1, '4 5 6' on line 2."}},{"@type":"Question","name":"When can I multiply two matrices?","acceptedAnswer":{"@type":"Answer","text":"Matrix multiplication A×B is only possible when the number of columns in A equals the number of rows in B. A 2×3 matrix can multiply a 3×4 matrix (result: 2×4). Matrix multiplication is not commutative — A×B ≠ B×A in general."}},{"@type":"Question","name":"What is a determinant?","acceptedAnswer":{"@type":"Answer","text":"The determinant is a scalar value calculated from a square matrix. It tells you if the matrix is invertible (non-zero determinant) or singular (zero determinant). Used in solving systems of equations, finding area/volume, and linear algebra."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Math Tools","item":"https://toolsnova.net/math-tools/"},{"@type":"ListItem","position":3,"name":"Matrix Calculator","item":"https://toolsnova.net/matrix-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -208,7 +210,7 @@ gtag('config', 'G-S6PPGS7N63');
 </header>
 <div class="page-hero">
   <h1>Matrix Calculator</h1>
-  <p>Perform matrix operations online: addition, subtraction, multiplication, transpose, and determinant. Enter rows separated by newlines, values by spaces.</p>
+  <p>Perform matrix operations online: addition, subtraction, multiplication, transpose, determinant, and inverse. Enter rows separated by newlines, values by spaces.</p>
 </div>
 <main>
   <div class="toolbar">
@@ -219,29 +221,40 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Operation</div>
-      <select id="mat-op" class="mode-select" style="width:100%" onchange="matrixCalc()">
+      <select id="mat-op" class="uc-select" onchange="matrixCalc()" aria-label="Matrix operation">
           <option value="add" selected>A + B (addition)</option>
           <option value="sub">A − B (subtraction)</option>
           <option value="mul">A × B (multiplication)</option>
           <option value="transpose">Transpose A</option>
           <option value="det">Determinant of A</option>
+          <option value="inverse">Inverse of A</option>
       </select>
     </div>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
       <div class="pane-label">Matrix A</div>
-      <textarea id="mat-a" rows="4" placeholder="1 2 3&#10;4 5 6&#10;7 8 9"
-        style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;color:var(--text);padding:.5rem;font-family:var(--mono);font-size:.8rem;resize:vertical;outline:none" oninput="matrixCalc()"></textarea>
+      <textarea id="mat-a" rows="4" class="uc-input" placeholder="1 2 3&#10;4 5 6&#10;7 8 9" aria-label="Matrix A" oninput="matrixCalc()"></textarea>
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
       <div class="pane-label">Matrix B (for A±B, A×B)</div>
-      <textarea id="mat-b" rows="4" placeholder="9 8 7&#10;6 5 4&#10;3 2 1"
-        style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:6px;color:var(--text);padding:.5rem;font-family:var(--mono);font-size:.8rem;resize:vertical;outline:none" oninput="matrixCalc()"></textarea>
+      <textarea id="mat-b" rows="4" class="uc-input" placeholder="9 8 7&#10;6 5 4&#10;3 2 1" aria-label="Matrix B" oninput="matrixCalc()"></textarea>
     </div>
   </div>
+
+  <div class="result-summary-card" id="mat-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="mat-output" onclick="copyEl('mat-output')" style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Choosing the Right Operation</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Combining or comparing datasets</div><div class="edu-card-body">Addition and subtraction combine matrices element-by-element — useful when each matrix represents a layer of the same kind of data (e.g. sales by region in two different months).</div></div>
+      <div class="edu-card"><div class="edu-card-title">Transforming or chaining transformations</div><div class="edu-card-body">Multiplication is how you apply or chain linear transformations (rotations, scaling, systems of equations) — remember it's not commutative, so A×B usually isn't the same as B×A.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Solving a system of linear equations</div><div class="edu-card-body">The inverse of a matrix lets you solve Ax=b directly as x=A⁻¹b. This only works when A is square and its determinant is non-zero — if it's singular, the system either has no unique solution or infinitely many.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -283,6 +296,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Matrix Inverse Formula</h2>
+    <div class="edu-highlight">A matrix has an inverse only if it's square and det(A) ≠ 0. This calculator finds A⁻¹ using Gauss-Jordan elimination: augment A with the identity matrix, row-reduce A to the identity, and the identity side becomes A⁻¹.</div>
+    <h3>Worked example</h3>
+    <p>For A = [[4, 7], [2, 6]]: det(A) = 4×6 − 7×2 = 24 − 14 = <strong>10</strong> (non-zero, so an inverse exists). For a 2×2 matrix specifically, A⁻¹ = (1/det) × [[d, −b], [−c, a]] = (1/10) × [[6, −7], [−2, 4]] = <strong>[[0.6, −0.7], [−0.2, 0.4]]</strong>. Check: A × A⁻¹ should give the identity matrix [[1,0],[0,1]].</p>
+    <p><em>If det(A) = 0, the matrix is singular — no inverse exists. This calculator detects this and explains why, rather than showing a broken or infinite result.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Adding or subtracting mismatched dimensions</div><div class="edu-card-body">A and B must have identical dimensions for addition/subtraction. A 2×3 matrix can't be added to a 2×2 — the calculator now checks this and explains exactly which dimensions don't match.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming matrix multiplication is commutative</div><div class="edu-card-body">A×B usually isn't equal to B×A, and one order might not even be defined while the other is. Always check which order your problem actually requires.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trying to invert a non-square or singular matrix</div><div class="edu-card-body">Only square matrices can have an inverse, and even then only if the determinant is non-zero. A singular matrix (det = 0) has no inverse — this isn't a calculation error, it's a mathematical fact about that specific matrix.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -299,8 +329,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📐 Gauss-Jordan Elimination</div><div class="edu-card-body">The row-reduction method this calculator uses to compute the inverse — standard material in any linear algebra course, and the same method taught for solving systems of linear equations.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your linear algebra course or textbook</div><div class="edu-card-body">This tool covers the six most common matrix operations for practical-sized matrices — for eigenvalues, eigenvectors, or other advanced linear algebra topics, consult your course material.</div></div>
+  </div>
+</section>
 
 
 

@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Triangle Calculator","url":"https://toolsnova.net/triangle-calculator","description":"Calculate triangle area, angles, and sides from any combination of known values. Supports SSS, SAS, and ASA methods. Free triangle calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is SSS, SAS, ASA, and SSA?","acceptedAnswer":{"@type":"Answer","text":"SSS: you know all 3 sides. SAS: you know 2 sides and the included angle. ASA: you know 2 angles and the included side. SSS, SAS, and ASA each fully define a unique triangle. SSA (2 sides and a non-included angle) is the exception — it can have zero, one, or two valid triangles for the same inputs, known as the ambiguous case."}},{"@type":"Question","name":"How do I find the area of a triangle?","acceptedAnswer":{"@type":"Answer","text":"Using Heron's formula: Area = √(s(s-a)(s-b)(s-c)) where s = (a+b+c)/2. Alternatively: Area = ½ × base × height. This calculator uses Heron's formula which works from side lengths alone."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Math Tools","item":"https://toolsnova.net/math-tools/"},{"@type":"ListItem","position":3,"name":"Triangle Calculator","item":"https://toolsnova.net/triangle-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -208,7 +210,7 @@ gtag('config', 'G-S6PPGS7N63');
 </header>
 <div class="page-hero">
   <h1>Triangle Calculator</h1>
-  <p>Calculate all properties of any triangle — sides, angles, area, and perimeter. Enter any 3 values using SSS, SAS, or ASA method.</p>
+  <p>Calculate all properties of any triangle — sides, angles, area, and perimeter. Enter any 3 values using SSS, SAS, ASA, or SSA method — including the ambiguous SSA case, which can have zero, one, or two valid solutions.</p>
 </div>
 <main>
   <div class="toolbar">
@@ -219,35 +221,48 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Method</div>
-      <select id="tri-mode" class="mode-select" style="width:100%" onchange="triangleCalc()">
+      <select id="tri-mode" class="uc-select" onchange="triangleCalc()" aria-label="Solving method">
           <option value="sss" selected>SSS (3 sides)</option>
           <option value="sas">SAS (2 sides + angle)</option>
           <option value="asa">ASA (2 angles + side)</option>
+          <option value="ssa">SSA (2 sides + non-included angle)</option>
       </select>
     </div>
     <div>
       <div class="pane-label">Side a</div>
-      <input type="number" id="tri-a" placeholder="e.g. 3" class="b2-input" oninput="triangleCalc()" aria-label="Side a">
+      <input type="number" id="tri-a" placeholder="e.g. 3" class="uc-input" oninput="triangleCalc()" aria-label="Side a">
     </div>
     <div>
       <div class="pane-label">Side b</div>
-      <input type="number" id="tri-b" placeholder="e.g. 4" class="b2-input" oninput="triangleCalc()" aria-label="Side b">
+      <input type="number" id="tri-b" placeholder="e.g. 4" class="uc-input" oninput="triangleCalc()" aria-label="Side b">
     </div>
     <div>
       <div class="pane-label">Side c (SSS)</div>
-      <input type="number" id="tri-c" placeholder="e.g. 5" class="b2-input" oninput="triangleCalc()" aria-label="Side c (SSS)">
+      <input type="number" id="tri-c" placeholder="e.g. 5" class="uc-input" oninput="triangleCalc()" aria-label="Side c (SSS)">
     </div>
     <div>
       <div class="pane-label">Angle A (°)</div>
-      <input type="number" id="tri-A" placeholder="e.g. 45" class="b2-input" oninput="triangleCalc()" aria-label="Angle A (°)">
+      <input type="number" id="tri-A" placeholder="e.g. 45" class="uc-input" oninput="triangleCalc()" aria-label="Angle A (°)">
     </div>
     <div>
       <div class="pane-label">Angle B (°)</div>
-      <input type="number" id="tri-B" placeholder="e.g. 60" class="b2-input" oninput="triangleCalc()" aria-label="Angle B (°)">
+      <input type="number" id="tri-B" placeholder="e.g. 60" class="uc-input" oninput="triangleCalc()" aria-label="Angle B (°)">
     </div>
   </div>
+
+  <div class="result-summary-card" id="tri-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="tri-output" onclick="copyEl('tri-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Picking the Right Method</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Know all 3 sides?</div><div class="edu-card-body">Use SSS. This is the most common case for a triangle you've physically measured — three side lengths fully determine a unique triangle.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Know 2 sides and the angle between them?</div><div class="edu-card-body">Use SAS. The included angle is the one formed where the two known sides meet — a unique triangle always results.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Know 2 sides and an angle NOT between them?</div><div class="edu-card-body">Use SSA — but be aware this is the one case that can have zero, one, or two valid triangles for the same inputs. The calculator will show you all valid solutions.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -289,11 +304,30 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Formulas Used</h2>
+    <div class="edu-highlight"><strong>Law of Cosines:</strong> c² = a² + b² − 2ab·cos(C) &nbsp;·&nbsp; <strong>Law of Sines:</strong> a/sin(A) = b/sin(B) = c/sin(C) &nbsp;·&nbsp; <strong>Area (Heron's):</strong> √(s(s−a)(s−b)(s−c)), where s = perimeter/2</div>
+    <h3>Worked example (SSS)</h3>
+    <p>Sides 3, 4, 5 (a classic right triangle): s = (3+4+5)/2 = 6. Area = √(6×3×2×1) = √36 = <strong>6</strong>. Angle C (opposite side 5) = arccos((3²+4²−5²)/(2×3×4)) = arccos(0) = <strong>90°</strong> — confirming this is a right triangle.</p>
+    <h3>Worked example (SSA — ambiguous case)</h3>
+    <p>a=7, b=10, A=40°: sin(B) = 10×sin(40°)/7 = 0.918, giving B = 66.66° <em>or</em> B = 113.34° (its supplement). Both keep A+B under 180°, so <strong>two valid triangles exist</strong> — one with C≈73.3°, one with C≈26.7°. This is why SSA is called the ambiguous case.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Entering sides that can't form a triangle</div><div class="edu-card-body">The sum of any two sides must exceed the third (e.g. sides 1, 1, 10 are impossible — 1+1 doesn't reach 10). The calculator now checks this and will tell you clearly rather than showing a broken result.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming SSA always gives one answer</div><div class="edu-card-body">Unlike SSS, SAS, and ASA, SSA can have zero, one, or two valid triangles for the same three inputs — check which case applies before assuming your answer is unique.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Mixing up which angle is "included"</div><div class="edu-card-body">SAS requires the angle between the two given sides. If your known angle is opposite one of the sides instead, that's SSA, not SAS — using the wrong method's formula gives a wrong answer.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting angles must sum to 180°</div><div class="edu-card-body">For ASA, if your two given angles already sum to 180° or more, no valid triangle exists — there's no room left for the third angle.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
-    <div class="faq-q" onclick="faqToggle(this)">What is SSS, SAS, ASA?</div>
-    <div class="faq-a">SSS: you know all 3 sides. SAS: you know 2 sides and the included angle. ASA: you know 2 angles and the included side. Any of these combinations fully defines a unique triangle.</div>
+    <div class="faq-q" onclick="faqToggle(this)">What is SSS, SAS, ASA, and SSA?</div>
+    <div class="faq-a">SSS: you know all 3 sides. SAS: you know 2 sides and the included angle. ASA: you know 2 angles and the included side. SSS, SAS, and ASA each fully define a unique triangle. SSA (2 sides and a non-included angle) is the exception — it can have zero, one, or two valid triangles for the same inputs, known as the ambiguous case.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How do I find the area of a triangle?</div>
@@ -301,7 +335,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📐 Law of Sines &amp; Cosines</div><div class="edu-card-body">Standard trigonometric identities taught in most high school and college trigonometry courses — this calculator's SSS, SAS, ASA, and SSA methods all derive from these two laws.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Heron of Alexandria</div><div class="edu-card-body">Heron's area formula, used here, dates to antiquity and remains the standard method for computing triangle area from three side lengths alone, without needing to know any angle.</div></div>
+  </div>
+</section>
 
 
 

@@ -5788,14 +5788,46 @@ function quadraticSolve() {
   const b = parseFloat(document.getElementById('quad-b')?.value);
   const c = parseFloat(document.getElementById('quad-c')?.value);
   const out = document.getElementById('quad-output');
+  const summary = document.getElementById('quad-summary');
   if (!out) return;
-  if (isNaN(a)||isNaN(b)||isNaN(c)||a===0) {
-    out.textContent = a===0 ? 'Coefficient a cannot be 0 (not quadratic).' : 'Enter values for a, b, and c.';
-    out.className = 'output-box error'; return;
+  if (isNaN(a)||isNaN(b)||isNaN(c)) {
+    out.textContent = 'Enter values for a, b, and c.';
+    out.className = 'output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
   }
-  const disc = b*b - 4*a*c;
   const fmt = n => parseFloat(n.toFixed(6)).toString();
   out.className = 'output-box success';
+
+  if (a === 0) {
+    // Not quadratic — falls back to the linear equation bx + c = 0.
+    if (b === 0) {
+      out.className = 'output-box error';
+      out.textContent = c === 0
+        ? `With a = 0 and b = 0, the equation reduces to ${c} = 0, which is true for every x — infinitely many solutions, not a single equation to solve.`
+        : `With a = 0 and b = 0, the equation reduces to ${c} = 0, which is never true — there is no solution.`;
+      if (summary) summary.classList.remove('show');
+      setStatus('quad-status','err','⚠ no unique solution');
+      return;
+    }
+    const x = -c/b;
+    out.textContent =
+      `Equation: ${a}x² + ${b}x + ${c} = 0\n\n`+
+      `Note: a = 0, so this is not actually quadratic — it reduces to the linear\n`+
+      `equation ${b}x + ${c} = 0, solved directly rather than with the quadratic formula.\n\n`+
+      `── Solution ───────────────────────────\n`+
+      `x = ${fmt(x)}\n\n`+
+      `── Steps ─────────────────────────────\n`+
+      `${b}x + ${c} = 0\n`+
+      `${b}x = ${-c}\n`+
+      `x = ${-c} / ${b}\n`+
+      `x = ${fmt(x)}`;
+    if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result (linear fallback)</div><div class="rsc-value">x = ${fmt(x)}</div><div class="rsc-sub">a = 0, so this reduced to a linear equation</div>`; }
+    setStatus('quad-status','ok',`✓ x = ${fmt(x)} (linear)`);
+    return;
+  }
+
+  const disc = b*b - 4*a*c;
   if (disc > 0) {
     const x1 = (-b + Math.sqrt(disc))/(2*a);
     const x2 = (-b - Math.sqrt(disc))/(2*a);
@@ -5812,12 +5844,25 @@ function quadraticSolve() {
       `x = (-b ± √discriminant) / 2a\n`+
       `x₁ = (${-b} + ${fmt(Math.sqrt(disc))}) / ${2*a} = ${fmt(x1)}\n`+
       `x₂ = (${-b} - ${fmt(Math.sqrt(disc))}) / ${2*a} = ${fmt(x2)}`;
+    if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">x₁ = ${fmt(x1)}, x₂ = ${fmt(x2)}</div><div class="rsc-sub">Discriminant ${fmt(disc)} > 0 · two real roots</div>`; }
+    setStatus('quad-status','ok','✓ solved');
   } else if (disc === 0) {
     const x = -b/(2*a);
     out.textContent =
       `Equation: ${a}x² + ${b}x + ${c} = 0\n\n`+
       `Discriminant: 0 (one repeated root)\n\n`+
-      `x = -b / 2a = ${-b} / ${2*a} = ${fmt(x)}`;
+      `── Solution ───────────────────────────\n`+
+      `x = ${fmt(x)}\n\n`+
+      `── Steps ─────────────────────────────\n`+
+      `Discriminant = b² - 4ac\n`+
+      `             = ${b}² - 4(${a})(${c})\n`+
+      `             = ${b*b} - ${4*a*c}\n`+
+      `             = 0\n\n`+
+      `x = -b / 2a (the ± term vanishes since √0 = 0)\n`+
+      `x = ${-b} / ${2*a}\n`+
+      `x = ${fmt(x)}`;
+    if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">x = ${fmt(x)} (repeated root)</div><div class="rsc-sub">Discriminant = 0 · the parabola touches the x-axis at exactly one point</div>`; }
+    setStatus('quad-status','ok','✓ solved');
   } else {
     const re = -b/(2*a);
     const im = Math.sqrt(-disc)/(2*a);
@@ -5826,15 +5871,26 @@ function quadraticSolve() {
       `Discriminant: ${fmt(disc)} (< 0 → complex roots)\n\n`+
       `── Complex Solutions ─────────────────\n`+
       `x₁ = ${fmt(re)} + ${fmt(im)}i\n`+
-      `x₂ = ${fmt(re)} - ${fmt(im)}i`;
+      `x₂ = ${fmt(re)} - ${fmt(im)}i\n\n`+
+      `── Steps ─────────────────────────────\n`+
+      `Discriminant = b² - 4ac\n`+
+      `             = ${b}² - 4(${a})(${c})\n`+
+      `             = ${b*b} - ${4*a*c}\n`+
+      `             = ${fmt(disc)}  (negative, so the roots are complex)\n\n`+
+      `x = (-b ± √discriminant) / 2a\n`+
+      `√${fmt(disc)} = √(${fmt(-disc)} × -1) = ${fmt(Math.sqrt(-disc))}i\n`+
+      `x₁ = (${-b} + ${fmt(Math.sqrt(-disc))}i) / ${2*a} = ${fmt(re)} + ${fmt(im)}i\n`+
+      `x₂ = (${-b} - ${fmt(Math.sqrt(-disc))}i) / ${2*a} = ${fmt(re)} - ${fmt(im)}i`;
+    if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">x = ${fmt(re)} ± ${fmt(im)}i</div><div class="rsc-sub">Discriminant ${fmt(disc)} < 0 · two complex conjugate roots, not "no solution"</div>`; }
+    setStatus('quad-status','ok','✓ solved (complex roots)');
   }
-  setStatus('quad-status','ok','✓ solved');
 }
 
 /* ── 2. TRIANGLE CALCULATOR ── */
 function triangleCalc() {
   const mode = document.getElementById('tri-mode')?.value || 'sss';
   const out  = document.getElementById('tri-output');
+  const summary = document.getElementById('tri-summary');
   if (!out) return;
   const a = parseFloat(document.getElementById('tri-a')?.value) || 0;
   const b = parseFloat(document.getElementById('tri-b')?.value) || 0;
@@ -5843,47 +5899,125 @@ function triangleCalc() {
   const B = parseFloat(document.getElementById('tri-B')?.value) * Math.PI/180 || 0;
   const fmt = n => parseFloat(n.toFixed(4)).toString();
   const deg = r => parseFloat((r*180/Math.PI).toFixed(4));
+  const fail = msg => { out.textContent=msg; out.className='output-box error'; if(summary) summary.classList.remove('show'); };
+  const classify = (x,y,z) => {
+    const tol = 1e-6 * Math.max(x,y,z);
+    if (Math.abs(x-y)<tol && Math.abs(y-z)<tol) return 'Equilateral';
+    if (Math.abs(x-y)<tol || Math.abs(y-z)<tol || Math.abs(x-z)<tol) return 'Isosceles';
+    return 'Scalene';
+  };
+  const describe = (sa,sb,sc,sA,sB,sC) => {
+    const perim = sa+sb+sc;
+    const s = perim/2;
+    const area = Math.sqrt(Math.max(0, s*(s-sa)*(s-sb)*(s-sc)));
+    return `── Sides ─────────────────────────────\n`+
+      `a = ${fmt(sa)}\nb = ${fmt(sb)}\nc = ${fmt(sc)}\n\n`+
+      `── Angles ────────────────────────────\n`+
+      `A = ${deg(sA)}°\nB = ${deg(sB)}°\nC = ${deg(sC)}°\n\n`+
+      `── Properties ────────────────────────\n`+
+      `Perimeter: ${fmt(perim)}\nArea: ${fmt(area)}\n`+
+      `Type: ${classify(sa,sb,sc)}`;
+  };
   try {
+    if (mode === 'ssa') {
+      if (!a||!b||!A) return fail('Enter two sides (a, b) and the angle opposite side a.');
+      const sinB = b*Math.sin(A)/a;
+      const solutions = [];
+      if (sinB <= 1.0000001) {
+        const clamped = Math.min(sinB, 1);
+        const B1 = Math.asin(clamped);
+        const C1 = Math.PI - A - B1;
+        if (C1 > 1e-9) {
+          const c1 = a*Math.sin(C1)/Math.sin(A);
+          solutions.push({sa:a, sb:b, sc:c1, sA:A, sB:B1, sC:C1});
+        }
+        const B2 = Math.PI - B1;
+        const C2 = Math.PI - A - B2;
+        if (C2 > 1e-9 && Math.abs(B2-B1) > 1e-6) {
+          const c2 = a*Math.sin(C2)/Math.sin(A);
+          solutions.push({sa:a, sb:b, sc:c2, sA:A, sB:B2, sC:C2});
+        }
+      }
+      if (solutions.length === 0) {
+        out.className = 'output-box error';
+        const minA = b*Math.sin(A);
+        out.textContent = `No triangle exists with a=${fmt(a)}, b=${fmt(b)}, A=${deg(A)}°.\n\nSide a is too short to reach side b at this angle — side a must be at least b·sin(A) = ${fmt(minA)} for any triangle to close.`;
+        if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">No valid triangle</div><div class="rsc-sub">a is shorter than the minimum required distance</div>`; }
+        setStatus('tri-status','err','⚠ no triangle possible');
+        return;
+      }
+      out.className = 'output-box success';
+      if (solutions.length === 1) {
+        const s1 = solutions[0];
+        out.textContent = `SSA — exactly one triangle exists (a=${fmt(a)} ≥ b=${fmt(b)}, or the right-angle case).\n\n`+describe(s1.sa,s1.sb,s1.sc,s1.sA,s1.sB,s1.sC);
+        if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">One triangle: C = ${deg(s1.sC)}°, c = ${fmt(s1.sc)}</div><div class="rsc-sub">SSA has a single solution here</div>`; }
+        setStatus('tri-status','ok','✓ one triangle (SSA)');
+      } else {
+        const [s1,s2] = solutions;
+        out.textContent = `SSA — this is the ambiguous case: TWO valid triangles exist for these inputs (a=${fmt(a)} < b=${fmt(b)}).\n\n`+
+          `── Triangle 1 (acute) ────────────────\n`+describe(s1.sa,s1.sb,s1.sc,s1.sA,s1.sB,s1.sC)+
+          `\n\n── Triangle 2 (obtuse) ───────────────\n`+describe(s2.sa,s2.sb,s2.sc,s2.sA,s2.sB,s2.sC);
+        if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result — Ambiguous Case</div><div class="rsc-value">2 triangles: C = ${deg(s1.sC)}° or C = ${deg(s2.sC)}°</div><div class="rsc-sub">Both are valid — SSA doesn't uniquely determine the triangle</div>`; }
+        setStatus('tri-status','ok','✓ 2 triangles (ambiguous case)');
+      }
+      return;
+    }
+
     let sa=a,sb=b,sc=c,sA=A,sB=B,sC;
     if (mode==='sss') {
-      if(!sa||!sb||!sc) { out.textContent='Enter all 3 sides.'; out.className='output-box error'; return; }
+      if(!sa||!sb||!sc) return fail('Enter all 3 sides.');
+      if (sa+sb<=sc || sb+sc<=sa || sa+sc<=sb) {
+        return fail(`These sides cannot form a triangle: ${fmt(sa)}, ${fmt(sb)}, ${fmt(sc)}. The sum of any two sides must exceed the third (triangle inequality) — check your values.`);
+      }
       sA=Math.acos((sb*sb+sc*sc-sa*sa)/(2*sb*sc));
       sB=Math.acos((sa*sa+sc*sc-sb*sb)/(2*sa*sc));
       sC=Math.PI-sA-sB;
     } else if (mode==='sas') {
-      if(!sa||!sb||!sB) { out.textContent='Enter two sides and included angle.'; out.className='output-box error'; return; }
+      if(!sa||!sb||!sB) return fail('Enter two sides and included angle.');
       sc=Math.sqrt(sa*sa+sb*sb-2*sa*sb*Math.cos(sB));
       sA=Math.acos((sb*sb+sc*sc-sa*sa)/(2*sb*sc));
       sC=Math.PI-sA-sB;
     } else if (mode==='asa') {
-      if(!sA||!sB||!sc) { out.textContent='Enter two angles and included side.'; out.className='output-box error'; return; }
+      if(!sA||!sB||!sc) return fail('Enter two angles and included side.');
+      if (sA+sB >= Math.PI) return fail(`Angles A (${deg(sA)}°) and B (${deg(sB)}°) sum to ${deg(sA+sB)}°, which leaves no room for angle C — the two angles must sum to less than 180°.`);
       sC=Math.PI-sA-sB;
       sa=sc*Math.sin(sA)/Math.sin(sC);
       sb=sc*Math.sin(sB)/Math.sin(sC);
     }
-    const perim = sa+sb+sc;
-    const s = perim/2;
-    const area = Math.sqrt(s*(s-sa)*(s-sb)*(s-sc));
     out.className='output-box success';
-    out.textContent=
-      `── Sides ─────────────────────────────\n`+
-      `a = ${fmt(sa)}\nb = ${fmt(sb)}\nc = ${fmt(sc)}\n\n`+
-      `── Angles ────────────────────────────\n`+
-      `A = ${deg(sA)}°\nB = ${deg(sB)}°\nC = ${deg(Math.PI-sA-sB)}°\n\n`+
-      `── Properties ────────────────────────\n`+
-      `Perimeter: ${fmt(perim)}\nArea: ${fmt(area)}\n`+
-      `Type: ${sa===sb&&sb===sc?'Equilateral':sa===sb||sb===sc||sa===sc?'Isosceles':'Scalene'}`;
+    out.textContent = describe(sa,sb,sc,sA,sB,Math.PI-sA-sB);
+    if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">${classify(sa,sb,sc)} triangle · Area: ${fmt(Math.sqrt(Math.max(0,(sa+sb+sc)/2*((sa+sb+sc)/2-sa)*((sa+sb+sc)/2-sb)*((sa+sb+sc)/2-sc))))}</div><div class="rsc-sub">Perimeter: ${fmt(sa+sb+sc)} · Full breakdown below</div>`; }
     setStatus('tri-status','ok','✓ solved');
-  } catch(e) { out.textContent='Invalid triangle values.'; out.className='output-box error'; }
+  } catch(e) { fail('Invalid triangle values.'); }
 }
 
 /* ── 3. STANDARD DEVIATION CALCULATOR ── */
 function stdDevCalc() {
   const raw = document.getElementById('std-input')?.value || '';
   const out = document.getElementById('std-output');
+  const summary = document.getElementById('std-summary');
   if (!out) return;
-  const nums = raw.split(/[\s,;]+/).map(Number).filter(n=>!isNaN(n)&&n!==null);
-  if (nums.length < 2) { out.textContent='Enter at least 2 numbers separated by commas or spaces.'; out.className='output-box error'; return; }
+  // Split, then drop empty tokens (from leading/trailing/repeated separators) BEFORE numeric
+  // conversion — Number('') is 0, not NaN, so empty tokens must never reach the parser.
+  const tokens = raw.split(/[\s,;]+/).map(t=>t.trim()).filter(t=>t.length>0);
+  const invalidTokens = tokens.filter(t=>isNaN(Number(t)));
+  const nums = tokens.filter(t=>!isNaN(Number(t))).map(Number);
+  if (tokens.length === 0) {
+    out.textContent='Enter at least 2 numbers separated by commas or spaces.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
+  if (invalidTokens.length > 0) {
+    out.textContent=`"${invalidTokens[0]}" is not a valid number. Remove it or fix the entry and try again.`;
+    out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
+  if (nums.length < 2) {
+    out.textContent='Enter at least 2 numbers separated by commas or spaces.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const n = nums.length;
   const mean = nums.reduce((s,x)=>s+x,0)/n;
   const variance = nums.reduce((s,x)=>s+(x-mean)**2,0)/(n-1); // sample
@@ -5909,6 +6043,10 @@ function stdDevCalc() {
     `Pop. Variance:      ${fmt(popVariance)}\n\n`+
     `── Data ──────────────────────────────\n`+
     `${sorted.join(', ')}`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">Mean: ${fmt(mean)} · Sample StdDev: ${fmt(std)}</div><div class="rsc-sub">n=${n} · Population StdDev: ${fmt(popStd)} · Full breakdown below</div>`;
+  }
   setStatus('std-status','ok',`✓ Mean: ${fmt(mean)} · StdDev: ${fmt(std)}`);
 }
 
@@ -5917,23 +6055,38 @@ function sigFigCalc() {
   const inp = document.getElementById('sf-input')?.value?.trim();
   const round = parseInt(document.getElementById('sf-round')?.value)||3;
   const out = document.getElementById('sf-output');
+  const summary = document.getElementById('sf-summary');
   if (!out) return;
-  if (!inp) { out.textContent='Enter a number.'; out.className='output-box'; return; }
+  if (!inp) {
+    out.textContent='Enter a number.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const n = parseFloat(inp);
-  if (isNaN(n)) { out.textContent='Invalid number.'; out.className='output-box error'; return; }
-  // Count sig figs in input
+  if (isNaN(n)) {
+    out.textContent='Invalid number.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
+  // Count sig figs in input — mantissa only; exponent digits (scientific notation) are never significant.
   const countSigFigs = s => {
     s = s.replace(/^-/,'').replace(',','.');
-    if (s.includes('.')) return s.replace('.','').replace(/^0+/,'').length;
-    return s.replace(/0+$/,'').replace(/^0+/,'').length || 1;
+    const mantissa = s.split(/[eE]/)[0]; // strip any exponent (e.g. "1.50e-3" -> "1.50")
+    if (mantissa.includes('.')) return mantissa.replace('.','').replace(/^0+/,'').length || 1;
+    return mantissa.replace(/0+$/,'').replace(/^0+/,'').length || 1;
   };
   const originalSF = countSigFigs(inp);
+  const isSciNotation = /[eE]/.test(inp);
   // Round to N sig figs
   const rounded = parseFloat(n.toPrecision(round));
   out.className='output-box success';
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${inp} has ${originalSF} significant figure${originalSF!==1?'s':''}</div><div class="rsc-sub">Rounded to ${round} sig figs: ${rounded.toPrecision(round)}</div>`;
+  }
   out.textContent=
     `Input:                  ${inp}\n`+
-    `Significant figures:    ${originalSF}\n\n`+
+    `Significant figures:    ${originalSF}${isSciNotation?' (exponent digits not counted)':''}\n\n`+
     `── Rounded to sig figs ───────────────\n`+
     `${round} sig figs: ${rounded.toPrecision(round)}\n`+
     `1 sig fig:  ${n.toPrecision(1)}\n`+
@@ -6539,43 +6692,95 @@ function meetingCalc() {
 function matrixCalc() {
   const op  = document.getElementById('mat-op')?.value||'add';
   const out = document.getElementById('mat-output');
+  const summary = document.getElementById('mat-summary');
   if (!out) return;
   const parseMatrix = id => {
     const val = document.getElementById(id)?.value?.trim();
     if (!val) return null;
     return val.split('\n').map(row=>row.trim().split(/[\s,]+/).map(Number));
   };
+  const dims = m => `${m.length}×${m[0]?.length||0}`;
+  const isRagged = m => m.some(row=>row.length!==m[0].length || row.some(v=>isNaN(v)));
   const A = parseMatrix('mat-a');
   const B = parseMatrix('mat-b');
-  if (!A) { out.textContent='Enter matrix A (rows separated by newlines, values by spaces or commas).'; out.className='output-box'; return; }
+  const fail = msg => { out.textContent=msg; out.className='output-box error'; if(summary) summary.classList.remove('show'); };
+  if (!A) { out.textContent='Enter matrix A (rows separated by newlines, values by spaces or commas).'; out.className='output-box'; if(summary) summary.classList.remove('show'); return; }
+  if (isRagged(A)) return fail('Matrix A has rows of different lengths or invalid values — every row must have the same number of entries.');
   const fmtMatrix = m => m.map(r=>r.map(v=>String(parseFloat(v.toFixed(4))).padStart(8)).join(' ')).join('\n');
+
+  const det = m => {
+    if (m.length===1) return m[0][0];
+    if (m.length===2) return m[0][0]*m[1][1]-m[0][1]*m[1][0];
+    return m[0].reduce((s,v,j)=>s+(j%2===0?1:-1)*v*det(m.slice(1).map(r=>[...r.slice(0,j),...r.slice(j+1)])),0);
+  };
+  // General matrix inverse via Gauss-Jordan elimination with partial pivoting.
+  const invert = m => {
+    const n = m.length;
+    const aug = m.map((row,i)=>[...row, ...Array.from({length:n},(_,j)=>i===j?1:0)]);
+    for (let col=0; col<n; col++) {
+      let pivotRow = col;
+      for (let r=col; r<n; r++) if (Math.abs(aug[r][col]) > Math.abs(aug[pivotRow][col])) pivotRow = r;
+      if (Math.abs(aug[pivotRow][col]) < 1e-10) return null; // singular — no inverse exists
+      [aug[col], aug[pivotRow]] = [aug[pivotRow], aug[col]];
+      const pivot = aug[col][col];
+      for (let j=0; j<2*n; j++) aug[col][j] /= pivot;
+      for (let r=0; r<n; r++) {
+        if (r===col) continue;
+        const factor = aug[r][col];
+        for (let j=0; j<2*n; j++) aug[r][j] -= factor*aug[col][j];
+      }
+    }
+    return aug.map(row=>row.slice(n));
+  };
+
   try {
     let result;
     if (op==='add'||op==='sub') {
-      if (!B) { out.textContent='Enter both matrices.'; out.className='output-box error'; return; }
+      if (!B) return fail('Enter both matrices.');
+      if (isRagged(B)) return fail('Matrix B has rows of different lengths or invalid values — every row must have the same number of entries.');
+      if (A.length!==B.length || A[0].length!==B[0].length) {
+        return fail(`Cannot ${op==='add'?'add':'subtract'}: Matrix A is ${dims(A)} but Matrix B is ${dims(B)}. Both matrices must have the same dimensions for addition or subtraction.`);
+      }
       result = A.map((row,i)=>row.map((v,j)=>op==='add'?v+B[i][j]:v-B[i][j]));
     } else if (op==='mul') {
-      if (!B) { out.textContent='Enter both matrices.'; out.className='output-box error'; return; }
+      if (!B) return fail('Enter both matrices.');
+      if (isRagged(B)) return fail('Matrix B has rows of different lengths or invalid values — every row must have the same number of entries.');
+      if (A[0].length !== B.length) {
+        return fail(`Cannot multiply: Matrix A is ${dims(A)} but Matrix B is ${dims(B)}. The number of columns in A (${A[0].length}) must equal the number of rows in B (${B.length}).`);
+      }
       result = A.map((row,i)=>B[0].map((_,j)=>row.reduce((s,_,k)=>s+A[i][k]*B[k][j],0)));
     } else if (op==='transpose') {
       result = A[0].map((_,i)=>A.map(row=>row[i]));
     } else if (op==='det') {
-      if (A.length!==A[0].length) { out.textContent='Determinant requires a square matrix.'; out.className='output-box error'; return; }
-      const det = m => {
-        if(m.length===1) return m[0][0];
-        if(m.length===2) return m[0][0]*m[1][1]-m[0][1]*m[1][0];
-        return m[0].reduce((s,v,j)=>s+(j%2===0?1:-1)*v*det(m.slice(1).map(r=>[...r.slice(0,j),...r.slice(j+1)])),0);
-      };
+      if (A.length!==A[0].length) return fail(`Determinant requires a square matrix — Matrix A is ${dims(A)}.`);
       const d = det(A);
       out.className='output-box success';
       out.textContent=`Matrix A:\n${fmtMatrix(A)}\n\nDeterminant = ${parseFloat(d.toFixed(6))}`;
+      if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">Determinant = ${parseFloat(d.toFixed(6))}</div><div class="rsc-sub">${dims(A)} matrix</div>`; }
       setStatus('mat-status','ok',`✓ det = ${parseFloat(d.toFixed(4))}`);
+      return;
+    } else if (op==='inverse') {
+      if (A.length!==A[0].length) return fail(`Matrix inverse requires a square matrix — Matrix A is ${dims(A)}.`);
+      const d = det(A);
+      if (Math.abs(d) < 1e-10) {
+        out.className='output-box error';
+        out.textContent=`Matrix A:\n${fmtMatrix(A)}\n\nDeterminant = 0 — this matrix is singular and has no inverse.\n\nA matrix only has an inverse when its determinant is non-zero. A determinant of 0 means the matrix's rows (or columns) are linearly dependent — the matrix collapses space into a lower dimension, which can't be undone by any inverse transformation.`;
+        if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">No inverse exists</div><div class="rsc-sub">Matrix is singular (determinant = 0)</div>`; }
+        setStatus('mat-status','err','⚠ singular — no inverse');
+        return;
+      }
+      const inv = invert(A);
+      out.className='output-box success';
+      out.textContent=`Matrix A:\n${fmtMatrix(A)}\n\nDeterminant = ${parseFloat(d.toFixed(6))}\n\nA⁻¹ =\n${fmtMatrix(inv)}`;
+      if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">Inverse calculated (det = ${parseFloat(d.toFixed(4))})</div><div class="rsc-sub">${dims(A)} matrix · full inverse below</div>`; }
+      setStatus('mat-status','ok','✓ inverse calculated');
       return;
     }
     out.className='output-box success';
     out.textContent=`Result:\n${fmtMatrix(result)}`;
+    if (summary) { summary.classList.add('show'); summary.innerHTML=`<div class="rsc-label">Result</div><div class="rsc-value">${dims(result)} matrix calculated</div><div class="rsc-sub">Full result below</div>`; }
     setStatus('mat-status','ok','✓ calculated');
-  } catch(e) { out.textContent='Matrix dimensions incompatible for this operation.'; out.className='output-box error'; }
+  } catch(e) { fail('Matrix dimensions incompatible for this operation.'); }
 }
 
 /* ── 20. ROOF PITCH CALCULATOR ── */

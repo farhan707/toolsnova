@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Standard Deviation Calculator","url":"https://toolsnova.net/standard-deviation-calculator","description":"Calculate standard deviation, mean, median, variance, and range from any dataset. Shows both sample and population statistics. Free online statistics calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is standard deviation?","acceptedAnswer":{"@type":"Answer","text":"Standard deviation measures how spread out numbers are from the mean. A low SD means data points are clustered close to the mean. A high SD means data is widely spread. It's used in statistics, finance, science, and quality control."}},{"@type":"Question","name":"Sample vs population standard deviation?","acceptedAnswer":{"@type":"Answer","text":"Sample SD (s) divides by n-1 and is used when your data is a sample from a larger population. Population SD (σ) divides by n and is used when you have the entire population. For most real-world data analysis, use sample SD."}},{"@type":"Question","name":"What is variance?","acceptedAnswer":{"@type":"Answer","text":"Variance is the square of standard deviation. It measures the average squared distance from the mean. Standard deviation is preferred for interpretation because it's in the same units as the original data."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Math Tools","item":"https://toolsnova.net/math-tools/"},{"@type":"ListItem","position":3,"name":"Standard Deviation Calculator","item":"https://toolsnova.net/standard-deviation-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -218,15 +220,26 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem">
     <div class="pane-label">Numbers (separated by commas, spaces, or new lines)</div>
-    <textarea id="std-input" rows="4" placeholder="e.g. 2, 4, 4, 4, 5, 5, 7, 9" oninput="stdDevCalc()"
-      style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);padding:.6rem;font-family:var(--mono);font-size:.82rem;resize:vertical;outline:none"></textarea>
+    <textarea id="std-input" rows="4" class="uc-input" placeholder="e.g. 2, 4, 4, 4, 5, 5, 7, 9" oninput="stdDevCalc()" aria-label="Numbers separated by commas, spaces, or new lines"></textarea>
     <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
       <button class="btn" onclick="document.getElementById('std-input').value='2,4,4,4,5,5,7,9';stdDevCalc()">Sample dataset</button>
       <button class="btn" onclick="document.getElementById('std-input').value='10,20,30,40,50,60,70,80,90,100';stdDevCalc()">1–100 (×10)</button>
     </div>
   </div>
+
+  <div class="result-summary-card" id="std-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="std-output" onclick="copyEl('std-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Sample or Population?</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Use Sample Std Dev when...</div><div class="edu-card-body">Your data is a subset used to estimate a larger population — e.g. a survey of 200 customers standing in for your whole customer base. This is the more common real-world case.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Use Population Std Dev when...</div><div class="edu-card-body">Your dataset IS the entire population you care about — e.g. the test scores of every student in one specific class, with no intent to generalize beyond them.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Not sure? Sample is usually safer</div><div class="edu-card-body">Sample standard deviation is slightly larger (a more conservative estimate) and is the standard default in statistics software when population status is ambiguous.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -269,6 +282,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Standard Deviation Formula</h2>
+    <div class="edu-highlight"><strong>Sample:</strong> s = √(Σ(x−mean)² ÷ (n−1)) &nbsp;·&nbsp; <strong>Population:</strong> σ = √(Σ(x−mean)² ÷ n)</div>
+    <h3>Worked example</h3>
+    <p>Dataset: 2, 4, 4, 4, 5, 5, 7, 9 (n=8). Mean = (2+4+4+4+5+5+7+9)/8 = 40/8 = <strong>5</strong>. Sum of squared deviations = (2−5)²+(4−5)²×3+(5−5)²×2+(7−5)²+(9−5)² = 9+3+0+4+16 = 32. Sample variance = 32/(8−1) = 4.571, Sample Std Dev = √4.571 = <strong>2.138</strong>. Population variance = 32/8 = 4, Population Std Dev = √4 = <strong>2.0</strong>.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Using the wrong denominator</div><div class="edu-card-body">Sample std dev divides by (n−1), not n — this is Bessel's correction, which corrects for the bias of estimating a population's spread from a smaller sample. Using n instead of (n−1) understates the true variability.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trailing commas or stray separators</div><div class="edu-card-body">A trailing comma, extra space, or leading comma should never silently add a zero to your dataset — this calculator explicitly filters out empty entries so your count and statistics stay accurate no matter how you format the list.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing std dev across differently-scaled datasets</div><div class="edu-card-body">A std dev of 5 means something very different for a dataset averaging 10 versus one averaging 10,000. Use the coefficient of variation (std dev ÷ mean) to compare variability across differently-scaled datasets.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -285,8 +314,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📊 Bessel's Correction</div><div class="edu-card-body">The mathematical justification for dividing by (n−1) rather than n when computing sample variance — standard material in any introductory statistics course or textbook.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your statistics course or textbook</div><div class="edu-card-body">If your coursework specifies which formula (sample or population) to use for an assignment, follow that instruction — this tool computes both so you can check either.</div></div>
+  </div>
+</section>
 
 
 

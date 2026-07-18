@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Quadratic Equation Solver","url":"https://toolsnova.net/quadratic-equation-solver","description":"Solve any quadratic equation ax² + bx + c = 0 instantly. Shows discriminant, real and complex roots, and step-by-step working. Free online quadratic solver.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a quadratic equation?","acceptedAnswer":{"@type":"Answer","text":"A quadratic equation has the form ax² + bx + c = 0, where a ≠ 0. The highest power of x is 2. They appear in physics (projectile motion), engineering, finance (break-even analysis), and many real-world problems."}},{"@type":"Question","name":"What is the discriminant?","acceptedAnswer":{"@type":"Answer","text":"The discriminant is b² - 4ac. If positive: two distinct real roots. If zero: one repeated root. If negative: two complex (imaginary) roots. The discriminant tells you how many solutions exist before solving."}},{"@type":"Question","name":"What is the quadratic formula?","acceptedAnswer":{"@type":"Answer","text":"x = (-b ± √(b² - 4ac)) / 2a. This formula always works for any quadratic equation. The ± means you get two solutions: one with + and one with −."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Math Tools","item":"https://toolsnova.net/math-tools/"},{"@type":"ListItem","position":3,"name":"Quadratic Equation Solver","item":"https://toolsnova.net/quadratic-equation-solver"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -219,19 +221,30 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">a (x² coefficient)</div>
-      <input type="number" id="quad-a" placeholder="e.g. 1" class="b2-input" oninput="quadraticSolve()" aria-label="a (x² coefficient)">
+      <input type="number" id="quad-a" placeholder="e.g. 1" class="uc-input" oninput="quadraticSolve()" aria-label="a (x² coefficient)">
     </div>
     <div>
       <div class="pane-label">b (x coefficient)</div>
-      <input type="number" id="quad-b" placeholder="e.g. -5" class="b2-input" oninput="quadraticSolve()" aria-label="b (x coefficient)">
+      <input type="number" id="quad-b" placeholder="e.g. -5" class="uc-input" oninput="quadraticSolve()" aria-label="b (x coefficient)">
     </div>
     <div>
       <div class="pane-label">c (constant)</div>
-      <input type="number" id="quad-c" placeholder="e.g. 6" class="b2-input" oninput="quadraticSolve()" aria-label="c (constant)">
+      <input type="number" id="quad-c" placeholder="e.g. 6" class="uc-input" oninput="quadraticSolve()" aria-label="c (constant)">
     </div>
   </div>
+  <div class="result-summary-card" id="quad-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="quad-output" onclick="copyEl('quad-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Reading Your Roots</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Two real roots means the parabola crosses the x-axis twice</div><div class="edu-card-body">Graphically, this is the most common case for a parabola that opens upward from below zero or downward from above zero — the two x-values are where the curve crosses y=0.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A repeated root means the parabola just touches the x-axis</div><div class="edu-card-body">The vertex of the parabola sits exactly on the x-axis — there's only one x-intercept, counted with "multiplicity 2" in algebra.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Complex roots mean the parabola never touches the x-axis</div><div class="edu-card-body">This isn't "no solution" — the equation still has two solutions, they're just not real numbers. The parabola stays entirely above or entirely below the x-axis.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -274,6 +287,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>The Quadratic Formula</h2>
+    <div class="edu-highlight"><strong>x</strong> = (−b ± √(b² − 4ac)) ÷ 2a, where the discriminant (b² − 4ac) determines the root type: positive → two real roots, zero → one repeated root, negative → two complex roots.</div>
+    <h3>Worked example</h3>
+    <p>Solving x² − 5x + 6 = 0 (a=1, b=−5, c=6): Discriminant = (−5)² − 4(1)(6) = 25 − 24 = <strong>1</strong>. Since 1 > 0: x = (5 ± √1) / 2 = (5 ± 1) / 2, giving <strong>x₁ = 3</strong> and <strong>x₂ = 2</strong>. Check: (x−2)(x−3) = x² − 5x + 6 ✓.</p>
+    <p><em>Linear fallback: if a = 0, the equation isn't quadratic at all — it reduces to bx + c = 0, solved directly as x = −c/b (when b ≠ 0). For example, with a=0, b=2, c=−8: 2x − 8 = 0 → x = 4.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Concluding "no solution" for a negative discriminant</div><div class="edu-card-body">A negative discriminant means the roots are complex, not that the equation has no solutions. Every quadratic equation has exactly two roots (real or complex) — a negative discriminant just means they're not real numbers.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting the ± sign</div><div class="edu-card-body">Dropping the ± and computing only one value misses half the solutions — always compute both x₁ and x₂ unless the discriminant is exactly 0.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Sign errors substituting negative coefficients</div><div class="edu-card-body">When b or c is negative, −b and −4ac need careful sign handling — e.g. for b=−5, −b=5, not −5. Substitute the raw values into the formula and simplify step by step rather than doing the arithmetic in your head.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating a=0 as an error instead of a linear equation</div><div class="edu-card-body">If the leading coefficient is 0, the equation is linear, not invalid — it still has a solution (unless b is also 0), just found by simpler algebra than the quadratic formula.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -290,8 +321,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📐 Fundamental Theorem of Algebra</div><div class="edu-card-body">Guarantees every quadratic equation has exactly two roots (counting multiplicity) over the complex numbers — the mathematical basis for why a negative discriminant still yields two valid (complex) solutions rather than none.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your course textbook or instructor</div><div class="edu-card-body">This tool covers the quadratic formula method. If your coursework requires solving by factoring or completing the square, use this tool to check your answer, not to replace showing that specific method's working.</div></div>
+  </div>
+</section>
 
 
 

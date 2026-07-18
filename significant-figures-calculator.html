@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Significant Figures Calculator","url":"https://toolsnova.net/significant-figures-calculator","description":"Count significant figures in any number and round to any number of sig figs. Shows rules and all rounding levels. Free significant figures calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are significant figures?","acceptedAnswer":{"@type":"Answer","text":"Significant figures (sig figs) are the meaningful digits in a number that contribute to its precision. They indicate how precisely a value was measured. 4500 has 2 sig figs, 4500. has 4, and 4500.0 has 5."}},{"@type":"Question","name":"How do I count significant figures?","acceptedAnswer":{"@type":"Answer","text":"Rules: 1) All non-zero digits are significant (1-9). 2) Zeros between non-zero digits are significant (101 = 3 sig figs). 3) Leading zeros are NOT significant (0.004 = 1 sig fig). 4) Trailing zeros after a decimal point ARE significant (2.50 = 3 sig figs)."}},{"@type":"Question","name":"Why are sig figs important?","acceptedAnswer":{"@type":"Answer","text":"Significant figures prevent false precision. If you measure something to the nearest centimetre (28 cm), you can't claim millimetre precision in your calculations. Sig figs communicate the precision of measurements in science and engineering."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Math Tools","item":"https://toolsnova.net/math-tools/"},{"@type":"ListItem","position":3,"name":"Significant Figures Calculator","item":"https://toolsnova.net/significant-figures-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -219,11 +221,11 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Number</div>
-      <input type="text" id="sf-input" placeholder="e.g. 0.004560" class="b2-input" oninput="sigFigCalc()" aria-label="Number">
+      <input type="text" id="sf-input" placeholder="e.g. 0.004560" class="uc-input" oninput="sigFigCalc()" aria-label="Number">
     </div>
     <div>
       <div class="pane-label">Round to sig figs</div>
-      <select id="sf-round" class="mode-select" style="width:100%" onchange="sigFigCalc()">
+      <select id="sf-round" class="uc-select" onchange="sigFigCalc()" aria-label="Round to how many significant figures">
           <option value="1">1 sig fig</option>
           <option value="2">2 sig figs</option>
           <option value="3" selected>3 sig figs</option>
@@ -232,8 +234,20 @@ gtag('config', 'G-S6PPGS7N63');
       </select>
     </div>
   </div>
+
+  <div class="result-summary-card" id="sf-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="sf-output" onclick="copyEl('sf-output')" style="min-height:200px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Why Sig Figs Matter</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Reporting a measurement</div><div class="edu-card-body">Significant figures communicate how precisely something was measured. Writing "5.00 cm" instead of "5 cm" tells the reader the measurement is precise to the nearest hundredth, not just the nearest whole unit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Rounding a calculated result</div><div class="edu-card-body">A calculation's result shouldn't claim more precision than its least-precise input — rounding to the correct number of sig figs keeps the reported precision honest.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Scientific notation removes ambiguity</div><div class="edu-card-body">A number like "1500" is ambiguous (2 to 4 sig figs depending on intent). Writing it as 1.500×10³ makes the precision unambiguous — this is why scientists prefer scientific notation for reporting results.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -275,6 +289,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Counting Rules</h2>
+    <div class="edu-highlight"><strong>Significant:</strong> all non-zero digits, zeros between non-zero digits, trailing zeros after a decimal point. <strong>Not significant:</strong> leading zeros. <strong>Scientific notation:</strong> only the mantissa counts — exponent digits are never significant.</div>
+    <h3>Worked example</h3>
+    <p><strong>0.00500</strong> has 3 sig figs (5, 0, 0 — the three leading zeros aren't counted, but the two trailing zeros after the decimal are). <strong>1500.</strong> (with an explicit trailing decimal point) has 4 sig figs — the point signals the trailing zeros are precise, not just placeholders. <strong>1.50×10³</strong> (scientific notation) has 3 sig figs — only "1", "5", "0" in the mantissa count; the exponent's "3" is never a significant figure.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Counting exponent digits in scientific notation</div><div class="edu-card-body">In 1.50×10⁻³, only "1.50" is the mantissa (3 sig figs) — the exponent "-3" describes magnitude, not precision, and should never be counted.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming a whole number like "1500" has 4 sig figs</div><div class="edu-card-body">Without a decimal point, trailing zeros in a whole number are ambiguous — "1500" is commonly read as 2 sig figs. Write "1500." or "1.500×10³" if you mean all four digits are precise.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Rounding intermediate steps too early</div><div class="edu-card-body">Round only the final answer to the correct number of sig figs — rounding intermediate calculation steps compounds error through a multi-step problem.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -291,8 +321,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🔬 NIST — Rules for Significant Figures</div><div class="edu-card-body">The US National Institute of Standards and Technology publishes standard guidance on significant figures and measurement uncertainty used throughout science and engineering.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your lab manual or course syllabus</div><div class="edu-card-body">Some instructors use slightly different conventions for ambiguous cases (e.g. whole numbers without a decimal point) — follow your specific course's stated convention for graded work.</div></div>
+  </div>
+</section>
 
 
 

@@ -126,6 +126,8 @@
   color: var(--text);
   outline: none;
   transition: border-color 0.15s;
+  resize: vertical;
+  line-height: 1.5;
 }
 .uc-input:focus, .uc-select:focus { border-color: var(--accent); }
 .uc-input::placeholder { color: var(--text3); }

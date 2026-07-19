@@ -143,6 +143,11 @@
   align-items: end;
 }
 .uc-grid > div { min-width: 0; }
+/* GPA/Grade calculator dynamic rows — input/select are direct grid children (no wrapper div),
+   so they need their own min-width:0 override; without it, CSS Grid's default min-width:auto
+   on grid items blocks the 1fr name column from shrinking below its content's intrinsic width,
+   which can force the row wider than the viewport on narrow screens. */
+.gpa-row > input, .gpa-row > select, .grade-row > input, .grade-row > select { min-width: 0; }
 .swap-btn {
   width: 38px;
   height: 38px;
@@ -197,6 +202,18 @@
   .uc-input, .uc-select { font-size: 16px; padding: 0.7rem 0.8rem; }
   /* Larger touch targets for quick-value chips on touch devices */
   .qv-btn { padding: 0.5rem 0.85rem; font-size: 0.78rem; min-height: 38px; }
+  /* GPA/Grade calculator dynamic rows — same full-stack pattern as uc-grid/uc-two-col above.
+     The delete button gets its own row, right-aligned, rather than squeezing into the stack. */
+  .gpa-row, .grade-row {
+    grid-template-columns: 1fr !important;
+  }
+  .gpa-row > button, .grade-row > button {
+    justify-self: end;
+    width: auto;
+    padding: 4px 14px;
+  }
+  /* Column-header labels become redundant once rows stack to one column */
+  .gpa-header, .grade-header { display: none; }
 }
 
 /* ── Result Summary Card — sits above the detailed output box ── */

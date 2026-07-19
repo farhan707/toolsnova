@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Grade Calculator","url":"https://toolsnova.net/grade-calculator","description":"Calculate your current grade in any course with our weighted grade calculator. Enter assignments, scores, and weights to see your grade and what you need on the final.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a weighted grade?","acceptedAnswer":{"@type":"Answer","text":"A weighted grade accounts for the fact that different assignments contribute different amounts to your final grade. A final exam worth 40% of your grade matters more than a quiz worth 5%. This calculator multiplies each score by its weight to give an accurate overall grade."}},{"@type":"Question","name":"What score do I need on my final exam?","acceptedAnswer":{"@type":"Answer","text":"Enter all completed work with their weights, then add a 'Final Exam' row with score blank and just the weight. The calculator shows what score you need on the remaining work to hit target grades of 60%, 70%, 80%, 90%, and 95%."}},{"@type":"Question","name":"What does the weight percentage represent?","acceptedAnswer":{"@type":"Answer","text":"Weight is the percentage of your total grade that assignment contributes. All weights should add up to 100%. Example: Homework 20% + Midterm 30% + Final 50% = 100%. If your weights don't add to 100%, the calculator shows what's left unassigned."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Student Tools","item":"https://toolsnova.net/student-tools/"},{"@type":"ListItem","position":3,"name":"Grade Calculator","item":"https://toolsnova.net/grade-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -219,7 +221,7 @@ gtag('config', 'G-S6PPGS7N63');
     <span class="status-badge" id="grade-status">add assignments to begin</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
-    <div style="display:grid;grid-template-columns:1fr 70px 70px 70px 36px;gap:6px;margin-bottom:6px">
+    <div class="grade-header" style="display:grid;grid-template-columns:1fr minmax(48px,70px) minmax(48px,70px) minmax(48px,70px) 32px;gap:6px;margin-bottom:6px">
       <div class="pane-label">Assignment</div>
       <div class="pane-label" style="text-align:center">Score</div>
       <div class="pane-label" style="text-align:center">Out of</div>
@@ -229,8 +231,20 @@ gtag('config', 'G-S6PPGS7N63');
     <div id="grade-rows"></div>
     <button class="btn" onclick="gradeAddRow()" style="width:100%;margin-top:6px">+ Add assignment</button>
   </div>
+
+  <div class="result-summary-card" id="grade-summary"></div>
+
   <div><div class="pane-label">Grade Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="grade-output" onclick="copyEl('grade-output')" style="min-height:180px;white-space:pre;cursor:pointer">Add assignments above to calculate your grade.</div></div>
+
+  <section class="edu-section">
+    <h2>Planning Your Remaining Work</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Weight is what matters, not item count</div><div class="edu-card-body">Five small quizzes worth 5% each affect your grade less than one final worth 30% — focus your study time proportionally to weight, not to how many items remain.</div></div>
+      <div class="edu-card"><div class="edu-card-title">"What you need on remaining work" assumes perfect scoring is possible</div><div class="edu-card-body">If the calculator says you need 105% to hit a target, that target is mathematically out of reach with the weight remaining — aim for the next realistic target instead.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Update this as the term progresses</div><div class="edu-card-body">Re-enter each new grade as it's posted — the "remaining work needed" figures become more accurate and more useful the closer you get to the end of the term.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -272,6 +286,15 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Weights that don't sum correctly</div><div class="edu-card-body">Double-check that all assignment weights across the whole course add up to 100% — if your entered weights don't match the syllabus total, the "remaining work needed" projections will be off.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring dropped-score policies</div><div class="edu-card-body">Some courses drop your lowest quiz or homework score automatically — this calculator doesn't know about that policy, so manually exclude a score you know will be dropped.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing points possible with weight percentage</div><div class="edu-card-body">"Out of" (the raw points a score is graded on, e.g. 85/100) and "Weight %" (how much that item counts toward the final grade) are different numbers — entering one where the other belongs will silently produce a wrong result.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -288,8 +311,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your course syllabus</div><div class="edu-card-body">Assignment weights, dropped-score policies, and exact letter-grade cutoffs are set by your specific course — the syllabus is the authoritative source, not this or any generic calculator.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🎓 Your instructor</div><div class="edu-card-body">For borderline grades or disputed calculations, your instructor has the final say and access to the actual gradebook — use this tool to plan and estimate, not as an official record.</div></div>
+  </div>
+</section>
 
 
 

@@ -3733,55 +3733,68 @@ function gpaRender() {
   if (!tbl) return;
   const gradeOpts = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','D-','F'];
   tbl.innerHTML = gpaRows.map(r => `
-    <div style="display:grid;grid-template-columns:1fr 80px 100px 36px;gap:6px;margin-bottom:6px;align-items:center">
+    <div class="gpa-row" style="display:grid;grid-template-columns:1fr minmax(52px,80px) minmax(72px,100px) 32px;gap:6px;margin-bottom:6px;align-items:center">
       <input type="text" value="${r.course}" placeholder="Course name (optional)"
-        class="b2-input" style="font-size:.78rem"
+        class="uc-input" style="font-size:.78rem" aria-label="Course name"
         oninput="gpaRows.find(x=>x.id==${r.id}).course=this.value">
       <input type="number" value="${r.credits}" min="0.5" max="12" step="0.5"
-        class="b2-input" style="font-size:.78rem;text-align:center"
+        class="uc-input" style="font-size:.78rem;text-align:center" aria-label="Credit hours"
         oninput="gpaRows.find(x=>x.id==${r.id}).credits=parseFloat(this.value)||0;gpaCalc()">
-      <select class="mode-select" style="font-size:.78rem"
+      <select class="uc-select" style="font-size:.78rem" aria-label="Grade"
         onchange="gpaRows.find(x=>x.id==${r.id}).grade=this.value;gpaCalc()">
         ${gradeOpts.map(g=>`<option value="${g}"${g===r.grade?' selected':''}>${g}</option>`).join('')}
       </select>
-      <button onclick="gpaRemoveRow(${r.id})" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.8rem;height:34px">✕</button>
+      <button onclick="gpaRemoveRow(${r.id})" aria-label="Remove course" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.8rem;height:34px">✕</button>
     </div>`).join('');
 }
 const GPA_MAP = {'A+':4.3,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0};
 function gpaCalc() {
   const out = document.getElementById('gpa-output');
+  const summary = document.getElementById('gpa-summary');
   if (!out) return;
   const valid = gpaRows.filter(r => r.credits > 0);
-  if (!valid.length) { out.textContent='Add courses to calculate GPA.'; out.className='output-box'; return; }
+  if (!valid.length) {
+    out.textContent='Add courses to calculate GPA.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   let totalPts = 0, totalCreds = 0;
   valid.forEach(r => { const pts = (GPA_MAP[r.grade]||0)*r.credits; totalPts+=pts; totalCreds+=r.credits; });
   const gpa = totalPts / totalCreds;
-  const letter = gpa>=3.7?'A':gpa>=3.3?'A-':gpa>=3.0?'B+':gpa>=2.7?'B':gpa>=2.3?'B-':gpa>=2.0?'C':gpa>=1.0?'D':'F';
+  // Uses the same 13 boundaries as GPA_MAP itself, so the reverse mapping is exactly as
+  // granular as the forward one (previously collapsed several grades into one bucket).
+  const letter = gpa>=4.15?'A+':gpa>=3.85?'A':gpa>=3.5?'A-':gpa>=3.15?'B+':gpa>=2.85?'B':gpa>=2.5?'B-':gpa>=2.15?'C+':gpa>=1.85?'C':gpa>=1.5?'C-':gpa>=1.15?'D+':gpa>=0.85?'D':gpa>=0.35?'D-':'F';
   out.className = 'output-box success';
   out.textContent =
-    `GPA:              ${gpa.toFixed(2)} / 4.0\n` +
+    `GPA:              ${gpa.toFixed(2)} / 4.3\n` +
     `Letter grade:     ${letter}\n` +
     `Total credits:    ${totalCreds}\n` +
     `Quality points:   ${totalPts.toFixed(2)}\n\n` +
     `── Course breakdown ──────────────────\n` +
     valid.map(r=>`  ${(r.course||'Course').padEnd(20)} ${r.grade.padEnd(4)} ${r.credits}cr → ${((GPA_MAP[r.grade]||0)*r.credits).toFixed(2)}pts`).join('\n') +
     '\n\n── GPA scale reference ─────────────\n' +
-    '  4.0 = A   3.7 = A-  3.3 = B+\n  3.0 = B   2.7 = B-  2.3 = C+\n  2.0 = C   1.7 = C-  1.0 = D';
+    '  4.3 = A+  4.0 = A   3.7 = A-\n  3.3 = B+  3.0 = B   2.7 = B-\n  2.3 = C+  2.0 = C   1.7 = C-\n  1.3 = D+  1.0 = D   0.7 = D-  0.0 = F';
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">GPA: ${gpa.toFixed(2)} / 4.3 (${letter})</div><div class="rsc-sub">${totalCreds} total credits · full breakdown below</div>`;
+  }
   setStatus('gpa-status','ok',`✓ GPA: ${gpa.toFixed(2)}`);
 }
 function gpaClear() {
   gpaRows = [];
   gpaRender();
   const o=document.getElementById('gpa-output');
+  const s=document.getElementById('gpa-summary');
   if(o){o.textContent='';o.className='output-box';}
+  if(s) s.classList.remove('show');
   setStatus('gpa-status','','add courses to begin');
 }
 
 /* ── GRADE CALCULATOR ── */
 function gradeCalc() {
   const rows  = document.querySelectorAll('.grade-row');
-  const scale = document.getElementById('grade-scale')?.value || 'standard';
   const out   = document.getElementById('grade-output');
+  const summary = document.getElementById('grade-summary');
   if (!out) return;
   let totalWeighted = 0, totalWeight = 0, items = [];
   rows.forEach(row => {
@@ -3796,7 +3809,11 @@ function gradeCalc() {
       items.push({ name, score, total, weight, pct });
     }
   });
-  if (!items.length) { out.textContent='Add at least one graded item.'; out.className='output-box'; return; }
+  if (!items.length) {
+    out.textContent='Add at least one graded item.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const grade = totalWeight > 0 ? totalWeighted / totalWeight : 0;
   const toGPA = g => g>=90?4.0:g>=80?3.0:g>=70?2.0:g>=60?1.0:0;
   const toLetter = g => g>=97?'A+':g>=93?'A':g>=90?'A-':g>=87?'B+':g>=83?'B':g>=80?'B-':g>=77?'C+':g>=73?'C':g>=70?'C-':g>=67?'D+':g>=63?'D':g>=60?'D-':'F';
@@ -3813,6 +3830,10 @@ function gradeCalc() {
       const needed = (target*100 - totalWeighted) / rem;
       return `  To get ${target}%: need ${needed.toFixed(1)}% on remaining work`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${grade.toFixed(2)}% (${toLetter(grade)})</div><div class="rsc-sub">${totalWeight}% weight assigned · GPA ${toGPA(grade).toFixed(1)}</div>`;
+  }
   setStatus('grade-status','ok',`✓ ${grade.toFixed(1)}%  ${toLetter(grade)}`);
 }
 function gradeAddRow() {
@@ -3820,21 +3841,23 @@ function gradeAddRow() {
   if (!cont) return;
   const div = document.createElement('div');
   div.className = 'grade-row';
-  div.style = 'display:grid;grid-template-columns:1fr 70px 70px 70px 36px;gap:6px;margin-bottom:6px;align-items:center';
+  div.style = 'display:grid;grid-template-columns:1fr minmax(48px,70px) minmax(48px,70px) minmax(48px,70px) 32px;gap:6px;margin-bottom:6px;align-items:center';
   div.innerHTML = `
-    <input class="b2-input grade-name" placeholder="Assignment" style="font-size:.78rem" oninput="gradeCalc()">
-    <input class="b2-input grade-score" placeholder="Score" type="number" style="font-size:.78rem" oninput="gradeCalc()">
-    <input class="b2-input grade-total" placeholder="Total" type="number" value="100" style="font-size:.78rem" oninput="gradeCalc()">
-    <input class="b2-input grade-weight" placeholder="Weight%" type="number" style="font-size:.78rem" oninput="gradeCalc()">
-    <button onclick="this.parentElement.remove();gradeCalc()" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.8rem;height:34px">✕</button>`;
+    <input class="uc-input grade-name" placeholder="Assignment" style="font-size:.78rem" aria-label="Assignment name" oninput="gradeCalc()">
+    <input class="uc-input grade-score" placeholder="Score" type="number" style="font-size:.78rem" aria-label="Score" oninput="gradeCalc()">
+    <input class="uc-input grade-total" placeholder="Total" type="number" value="100" style="font-size:.78rem" aria-label="Total possible" oninput="gradeCalc()">
+    <input class="uc-input grade-weight" placeholder="Weight%" type="number" style="font-size:.78rem" aria-label="Weight percent" oninput="gradeCalc()">
+    <button onclick="this.parentElement.remove();gradeCalc()" aria-label="Remove assignment" style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.8rem;height:34px">✕</button>`;
   cont.appendChild(div);
   gradeCalc();
 }
 function gradeClear() {
   const cont = document.getElementById('grade-rows');
   const o = document.getElementById('grade-output');
+  const s = document.getElementById('grade-summary');
   if(cont) cont.innerHTML='';
   if(o){o.textContent='';o.className='output-box';}
+  if(s) s.classList.remove('show');
   setStatus('grade-status','','add assignments to begin');
 }
 
@@ -3843,6 +3866,16 @@ function gcd(a,b){return b===0?a:gcd(b,a%b);}
 function simplify(n,d){const g=gcd(Math.abs(n),Math.abs(d));return[n/g,d/g];}
 function fracParse(str){
   str=str.trim();
+  // Mixed number: "1 1/2" (whole number, space, fraction) — including negative wholes like "-1 1/2"
+  const mixedMatch = str.match(/^(-?\d+)\s+(\d+)\/(\d+)$/);
+  if (mixedMatch) {
+    const whole = parseInt(mixedMatch[1]);
+    const num = parseInt(mixedMatch[2]);
+    const den = parseInt(mixedMatch[3]);
+    if (den===0) return null;
+    const sign = whole < 0 ? -1 : 1;
+    return [sign*(Math.abs(whole)*den + num), den];
+  }
   if(str.includes('/')){const[n,d]=str.split('/').map(Number);return isNaN(n)||isNaN(d)||d===0?null:[n,d];}
   const n=parseFloat(str);
   if(isNaN(n)) return null;
@@ -3857,14 +3890,19 @@ function fracCalc() {
   const b = fracParse(document.getElementById('frac-b')?.value||'');
   const op = document.getElementById('frac-op')?.value||'+';
   const out = document.getElementById('frac-output');
+  const summary = document.getElementById('frac-summary');
   if (!out) return;
-  if (!a||!b){out.textContent='Enter two fractions (e.g. 3/4 or 1.5).';out.className='output-box error';return;}
+  if (!a||!b){
+    out.textContent='Enter two fractions (e.g. 3/4, 1.5, or a mixed number like 1 1/2).';out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const [an,ad]=[...a], [bn,bd]=[...b];
   let rn,rd;
   if(op==='+'){rn=an*bd+bn*ad;rd=ad*bd;}
   else if(op==='-'){rn=an*bd-bn*ad;rd=ad*bd;}
   else if(op==='×'){rn=an*bn;rd=ad*bd;}
-  else{if(bn===0){out.textContent='Cannot divide by zero.';out.className='output-box error';return;}rn=an*bd;rd=ad*bn;}
+  else{if(bn===0){out.textContent='Cannot divide by zero.';out.className='output-box error';if(summary)summary.classList.remove('show');return;}rn=an*bd;rd=ad*bn;}
   const [sn,sd]=simplify(rn,rd);
   const decimal=(sn/sd);
   const mixed = Math.abs(sn)>=Math.abs(sd) && sd!==1
@@ -3892,6 +3930,10 @@ function fracCalc() {
       `  Reciprocal of ${bn}/${bd} = ${bd}/${bn}\n`+
       `  ${an}/${ad} × ${bd}/${bn} = ${rn}/${rd} = ${sn}/${sd}`
     );
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${sn}/${sd}${mixed?' = '+mixed:''}</div><div class="rsc-sub">= ${decimal.toFixed(4)} · full steps below</div>`;
+  }
   setStatus('frac-status','ok',`✓ ${sn}/${sd} = ${decimal.toFixed(4)}`);
 }
 function fracClear(){
@@ -3903,6 +3945,34 @@ function fracClear(){
 
 /* ── SCIENTIFIC CALCULATOR ── */
 let sciExpr = '';
+let sciAngleMode = 'DEG'; // DEG is the more intuitive default for general/student use
+function sciToggleAngleMode() {
+  sciAngleMode = sciAngleMode === 'DEG' ? 'RAD' : 'DEG';
+  const btn = document.getElementById('sci-anglemode');
+  if (btn) btn.textContent = sciAngleMode;
+  setStatus('sci-status', '', `Angle mode: ${sciAngleMode}`);
+}
+// Rewrites every N! (N = a number or a parenthesized expression) into FACT(N), handling
+// nested parentheses and multiple factorials in one expression — not just literal digit runs.
+function sciPreprocessFactorial(expr) {
+  let guard = 0;
+  while (expr.includes('!') && guard++ < 50) {
+    const idx = expr.indexOf('!');
+    let start;
+    if (expr[idx-1] === ')') {
+      let depth = 1, i = idx-2;
+      while (i >= 0 && depth > 0) { if (expr[i]===')') depth++; else if (expr[i]==='(') depth--; i--; }
+      start = i+1;
+    } else {
+      let i = idx-1;
+      while (i >= 0 && /[0-9.]/.test(expr[i])) i--;
+      start = i+1;
+    }
+    const operand = expr.slice(start, idx);
+    expr = expr.slice(0,start) + `FACT(${operand})` + expr.slice(idx+1);
+  }
+  return expr;
+}
 function sciPress(val) {
   const disp = document.getElementById('sci-display');
   const expr = document.getElementById('sci-expr');
@@ -3914,14 +3984,32 @@ function sciPress(val) {
       let e = sciExpr
         .replace(/×/g,'*').replace(/÷/g,'/')
         .replace(/π/g,'Math.PI').replace(/e(?![0-9])/g,'Math.E')
-        .replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(')
-        .replace(/asin\(/g,'Math.asin(').replace(/acos\(/g,'Math.acos(').replace(/atan\(/g,'Math.atan(')
+        // Inverse trig (asin/acos/atan) MUST be replaced before sin/cos/tan — otherwise the
+        // sin/cos/tan replacement matches the "sin("/"cos("/"tan(" substring inside them first
+        // and corrupts them (e.g. "asin(" -> "aMath.sin(" -> ReferenceError). This was a real,
+        // 100%-reproducible bug: every inverse trig button threw "aMath is not defined".
+        .replace(/asin\(/g,'ASIN(').replace(/acos\(/g,'ACOS(').replace(/atan\(/g,'ATAN(')
+        .replace(/sin\(/g,'SIN(').replace(/cos\(/g,'COS(').replace(/tan\(/g,'TAN(')
         .replace(/log\(/g,'Math.log10(').replace(/ln\(/g,'Math.log(')
         .replace(/sqrt\(/g,'Math.sqrt(').replace(/cbrt\(/g,'Math.cbrt(')
-        .replace(/abs\(/g,'Math.abs(').replace(/\^/g,'**')
-        .replace(/(\d+)!/g,'(()=>{let f=1;for(let i=2;i<=$1;i++)f*=i;return f;})()');
+        .replace(/abs\(/g,'Math.abs(').replace(/\^/g,'**');
+      e = sciPreprocessFactorial(e);
+      // Angle-mode-aware trig: converts degrees to radians going in, and radians back to
+      // degrees coming out of inverse functions, only when in DEG mode.
+      const toRad   = x => sciAngleMode === 'DEG' ? x*Math.PI/180 : x;
+      const fromRad = x => sciAngleMode === 'DEG' ? x*180/Math.PI : x;
+      const SIN  = x => Math.sin(toRad(x));
+      const COS  = x => Math.cos(toRad(x));
+      const TAN  = x => Math.tan(toRad(x));
+      const ASIN = x => fromRad(Math.asin(x));
+      const ACOS = x => fromRad(Math.acos(x));
+      const ATAN = x => fromRad(Math.atan(x));
+      const FACT = n => {
+        if (n < 0 || !Number.isInteger(n)) throw new Error('Factorial requires a non-negative integer');
+        let f = 1; for (let i=2;i<=n;i++) f*=i; return f;
+      };
       // eslint-disable-next-line no-eval
-      const res = Function('"use strict";return ('+e+')')();
+      const res = Function('SIN','COS','TAN','ASIN','ACOS','ATAN','FACT','"use strict";return ('+e+')')(SIN,COS,TAN,ASIN,ACOS,ATAN,FACT);
       if(disp) disp.textContent = Number.isFinite(res) ? parseFloat(res.toPrecision(12)).toString() : 'Error';
       sciExpr = Number.isFinite(res) ? parseFloat(res.toPrecision(12)).toString() : '';
     } catch(_) { if(disp)disp.textContent='Error'; sciExpr=''; }
@@ -3942,9 +4030,18 @@ function pctErrCalc() {
   const exp = parseFloat(document.getElementById('pe-experimental')?.value);
   const theo = parseFloat(document.getElementById('pe-theoretical')?.value);
   const out = document.getElementById('pe-output');
+  const summary = document.getElementById('pe-summary');
   if (!out) return;
-  if (isNaN(exp)||isNaN(theo)) { out.textContent='Enter experimental and theoretical values.'; out.className='output-box error'; return; }
-  if (theo===0) { out.textContent='Theoretical value cannot be zero.'; out.className='output-box error'; return; }
+  if (isNaN(exp)||isNaN(theo)) {
+    out.textContent='Enter experimental and theoretical values.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
+  if (theo===0) {
+    out.textContent='Theoretical value cannot be zero.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const absErr = Math.abs(exp - theo);
   const relErr = absErr / Math.abs(theo);
   const pctErr = relErr * 100;
@@ -3966,6 +4063,10 @@ function pctErrCalc() {
     `        = ${absErr.toFixed(6)} / ${Math.abs(theo)} × 100\n` +
     `        = ${pctErr.toFixed(4)}%\n\n` +
     `Verdict: ${pctErr<1?'Excellent (<1%)':pctErr<5?'Good (<5%)':pctErr<10?'Acceptable (<10%)':'High error (>10%) — check your method'}`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${pctErr.toFixed(4)}% error</div><div class="rsc-sub">${pctErr<1?'Excellent':pctErr<5?'Good':pctErr<10?'Acceptable':'High error — check your method'}</div>`;
+  }
   setStatus('pe-status', isHighErr?'err':'ok', `✓ Error: ${pctErr.toFixed(2)}%`);
 }
 function pctErrClear() {
@@ -3986,7 +4087,10 @@ function toRoman(n) {
 function fromRoman(s) {
   const map={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
   s=s.toUpperCase();
-  if(!/^[IVXLCDM]+$/.test(s)) return null;
+  // Validates actual Roman numeral grammar (repeat limits + only the 6 standard subtractive
+  // pairs), not just "are these valid Roman letters" — rejects non-standard forms like IIII,
+  // VV, XXXX, LL, IL, IC, IIV that the character-only check previously accepted.
+  if(!/^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/.test(s) || s.length===0) return null;
   let total=0;
   for(let i=0;i<s.length;i++){
     const cur=map[s[i]],nxt=map[s[i+1]]||0;
@@ -3998,11 +4102,20 @@ function romanConvert() {
   const inp = document.getElementById('rom-input')?.value?.trim();
   const mode = document.getElementById('rom-mode')?.value || 'toRoman';
   const out = document.getElementById('rom-output');
+  const summary = document.getElementById('rom-summary');
   if (!out) return;
-  if (!inp) { out.textContent=''; out.className='output-box'; return; }
+  if (!inp) {
+    out.textContent=''; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   if (mode === 'toRoman') {
     const n = parseInt(inp);
-    if (isNaN(n)||n<=0||n>3999) { out.textContent='Enter a number between 1 and 3999.'; out.className='output-box error'; return; }
+    if (isNaN(n)||n<=0||n>3999) {
+      out.textContent='Enter a number between 1 and 3999.'; out.className='output-box error';
+      if (summary) summary.classList.remove('show');
+      return;
+    }
     const roman = toRoman(n);
     out.className='output-box success';
     out.textContent=
@@ -4013,9 +4126,17 @@ function romanConvert() {
         .filter(Boolean).join('\n')+
       `\n\n── Quick reference ─────────────────\n`+
       `  I=1  V=5  X=10  L=50  C=100  D=500  M=1000`;
+    if (summary) {
+      summary.classList.add('show');
+      summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${n} = ${roman}</div><div class="rsc-sub">Full breakdown below</div>`;
+    }
   } else {
     const n = fromRoman(inp);
-    if (n===null||n<=0) { out.textContent='Invalid Roman numeral. Use I, V, X, L, C, D, M only.'; out.className='output-box error'; return; }
+    if (n===null||n<=0) {
+      out.textContent='Invalid Roman numeral. Check the standard rules: I, X, C, M may repeat up to 3 times; V, L, D never repeat; subtractive notation is limited to IV, IX, XL, XC, CD, CM.'; out.className='output-box error';
+      if (summary) summary.classList.remove('show');
+      return;
+    }
     out.className='output-box success';
     out.textContent=
       `${inp.toUpperCase()} = ${n}\n\n`+
@@ -4025,6 +4146,10 @@ function romanConvert() {
         const nxt={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}[a[i+1]]||0;
         return `  ${c} = ${cur}${cur<nxt?' (subtracted)':''}`;
       }).join('\n');
+    if (summary) {
+      summary.classList.add('show');
+      summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${inp.toUpperCase()} = ${n}</div><div class="rsc-sub">Full breakdown below</div>`;
+    }
   }
   setStatus('rom-status','ok',`✓ converted`);
 }
@@ -7141,8 +7266,13 @@ function cgpaCalc() {
   const gpa  = parseFloat(document.getElementById('cgpa-gpa')?.value);
   const scale= parseFloat(document.getElementById('cgpa-scale')?.value)||4.0;
   const out  = document.getElementById('cgpa-output');
+  const summary = document.getElementById('cgpa-summary');
   if (!out) return;
-  if (isNaN(gpa)||gpa<0||gpa>scale) { out.textContent=`Enter GPA between 0 and ${scale}.`; out.className='output-box error'; return; }
+  if (isNaN(gpa)||gpa<0||gpa>scale) {
+    out.textContent=`Enter GPA between 0 and ${scale}.`; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const pct = (gpa/scale*100).toFixed(2);
   const grade = gpa>=scale*0.9?'A+':gpa>=scale*0.8?'A':gpa>=scale*0.7?'B':gpa>=scale*0.6?'C':gpa>=scale*0.5?'D':'F';
   out.className='output-box success';
@@ -7161,6 +7291,10 @@ function cgpaCalc() {
     `\n\n── Scale conversions ─────────────────\n`+
     [[4.0,'US'],[5.0,'India (some)'],[7.0,'India (some)'],[10.0,'India/Pakistan']]
     .map(([s,c])=>`  ${c} ${s}-scale: ${(gpa/scale*s).toFixed(2)}`).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${pct}% (${grade})</div><div class="rsc-sub">${gpa} / ${scale} scale · full conversions below</div>`;
+  }
   setStatus('cgpa-status','ok',`✓ ${pct}% = ${grade}`);
 }
 

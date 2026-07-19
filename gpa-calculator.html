@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GPA Calculator — Calculate Your GPA on 4.0 Scale</title>
-<meta name="description" content="Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on the 4.0 scale with full quality point breakdown.">
+<meta name="description" content="Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on a 4.3-point scale with full quality point breakdown.">
 <link rel="canonical" href="https://toolsnova.net/gpa-calculator">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
 <meta property="og:title" content="GPA Calculator — Calculate Your GPA on 4.0 Scale">
-<meta property="og:description" content="Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on the 4.0 scale with full quality point breakdown.">
+<meta property="og:description" content="Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on a 4.3-point scale with full quality point breakdown.">
 <meta property="og:url" content="https://toolsnova.net/gpa-calculator">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://toolsnova.net/icons/og-image.png">
@@ -31,10 +31,12 @@
 <meta property="og:site_name" content="ToolsNova">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GPA Calculator — Calculate Your GPA on 4.0 Scale">
-<meta name="twitter:description" content="Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on the 4.0 scale with full quality point breakdown.">
+<meta name="twitter:description" content="Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on a 4.3-point scale with full quality point breakdown.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GPA Calculator","url":"https://toolsnova.net/gpa-calculator","description":"Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on the 4.0 scale with full quality point breakdown.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GPA Calculator","url":"https://toolsnova.net/gpa-calculator","description":"Calculate your GPA with our free online GPA calculator. Enter courses, credits, and letter grades. Supports A+ to F on a 4.3-point scale with full quality point breakdown.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is GPA?","acceptedAnswer":{"@type":"Answer","text":"Grade Point Average (GPA) is a numerical summary of a student's academic performance. In the US 4.0 scale: A=4.0, B=3.0, C=2.0, D=1.0, F=0. Each grade is weighted by credit hours — a 4-credit course affects GPA more than a 1-credit course."}},{"@type":"Question","name":"What is a good GPA?","acceptedAnswer":{"@type":"Answer","text":"3.7–4.0 = Summa cum laude / Dean's List. 3.5–3.7 = Magna cum laude. 3.0–3.5 = Good standing. 2.0–3.0 = Satisfactory. Below 2.0 = Academic probation risk. For graduate school admission, most programs require 3.0+ minimum, with competitive programs expecting 3.5+."}},{"@type":"Question","name":"How do I raise my GPA?","acceptedAnswer":{"@type":"Answer","text":"Focus on high-credit courses first — a better grade in a 4-credit course moves GPA more than in a 1-credit elective. Retaking failed courses (grade replacement) is one of the fastest ways to raise a low GPA. Consistent B+ performance over time will gradually bring up a poor GPA."}},{"@type":"Question","name":"What is a weighted vs unweighted GPA?","acceptedAnswer":{"@type":"Answer","text":"Unweighted GPA treats all courses equally. Weighted GPA gives extra points for honours, AP, or IB courses — often adding 0.5–1.0 per course, sometimes on a 5.0 scale. This calculator computes unweighted GPA only, using a fixed 4.3-point scale (A+ = 4.3, A = 4.0, down to F = 0) — it does not add bonus points for honours or AP courses."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Student Tools","item":"https://toolsnova.net/student-tools/"},{"@type":"ListItem","position":3,"name":"GPA Calculator","item":"https://toolsnova.net/gpa-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -208,7 +210,7 @@ gtag('config', 'G-S6PPGS7N63');
 </header>
 <div class="page-hero">
   <h1>GPA Calculator</h1>
-  <p>Enter your courses, credit hours, and letter grades to calculate your GPA on the 4.0 scale instantly. Shows quality points breakdown for each course.</p>
+  <p>Enter your courses, credit hours, and letter grades to calculate your GPA on a 4.3-point scale instantly (A+ = 4.3). Shows quality points breakdown for each course.</p>
 </div>
 <main>
   <div class="toolbar">
@@ -219,7 +221,7 @@ gtag('config', 'G-S6PPGS7N63');
     <span class="status-badge" id="gpa-status">add courses to begin</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
-    <div style="display:grid;grid-template-columns:1fr 80px 100px 36px;gap:6px;margin-bottom:6px">
+    <div class="gpa-header" style="display:grid;grid-template-columns:1fr minmax(52px,80px) minmax(72px,100px) 32px;gap:6px;margin-bottom:6px">
       <div class="pane-label">Course Name</div>
       <div class="pane-label" style="text-align:center">Credits</div>
       <div class="pane-label">Grade</div>
@@ -228,8 +230,20 @@ gtag('config', 'G-S6PPGS7N63');
     <div id="gpa-table"></div>
     <button class="btn" onclick="gpaAddRow();gpaCalc()" style="width:100%;margin-top:6px">+ Add course</button>
   </div>
+
+  <div class="result-summary-card" id="gpa-summary"></div>
+
   <div><div class="pane-label">GPA Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="gpa-output" onclick="copyEl('gpa-output')" style="min-height:160px;white-space:pre;cursor:pointer">Add courses above to calculate your GPA.</div></div>
+
+  <section class="edu-section">
+    <h2>Reading Your GPA</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">This scale tops out at 4.3, not 4.0</div><div class="edu-card-body">A+ is scored 4.3 here — a common convention some schools use for plus/minus grading. If your institution caps GPA at exactly 4.0 (A+ = A = 4.0), adjust your expectations for straight-A+ semesters accordingly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Credit hours matter as much as grades</div><div class="edu-card-body">A B+ in a 4-credit course affects your GPA more than an A in a 1-credit course — this is why quality points (grade value × credits), not just the grade itself, drive the final number.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check which scale your school actually uses</div><div class="edu-card-body">GPA scales vary by institution and country. Use this calculator to understand the mechanics, then confirm your school's exact grade-point values against your official transcript or catalog.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -238,7 +252,7 @@ gtag('config', 'G-S6PPGS7N63');
     <h2>How to Use the GPA Calculator</h2>
     <ol class="edu-steps">
       <li><strong>Add your courses</strong> — enter each course name, the grade received (A, B+, C, etc.), and the number of credit hours.</li>
-      <li><strong>Set your grade scale</strong> — choose between standard 4.0 scale or your institution's specific scale.</li>
+      <li><strong>Check the grade scale reference</strong> — this calculator uses a fixed 4.3-point scale (A+ = 4.3 down to F = 0), shown in the result output for reference.</li>
       <li><strong>Add all courses for the semester</strong> — the calculator weights each grade by credit hours automatically.</li>
       <li><strong>Read semester GPA</strong> — see your calculated GPA, total credit hours, and total quality points.</li>
       <li><strong>Calculate cumulative GPA</strong> — enter your previous CGPA and credit hours to see the updated cumulative GPA after this semester.</li>
@@ -272,6 +286,15 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Forgetting credit hours change the impact of each grade</div><div class="edu-card-body">A single low grade in a high-credit course (like a 4-credit lab science) drags your GPA down more than the same grade in a 1-credit seminar — don't judge overall GPA impact by grade letter alone.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Assuming every school uses the same scale</div><div class="edu-card-body">This calculator's A+ = 4.3 convention isn't universal — some schools cap GPA at exactly 4.0 with no bonus for a plus grade. Always check your specific institution's official scale for anything that matters (transcripts, applications).</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing this with a weighted-GPA calculator</div><div class="edu-card-body">This tool computes unweighted GPA only — it doesn't add bonus points for Honors, AP, or IB courses the way some high school weighted scales do.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -288,12 +311,17 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a weighted vs unweighted GPA?</div>
-    <div class="faq-a">Unweighted GPA treats all courses equally (standard 4.0 scale). Weighted GPA gives extra points for honours, AP, or IB courses — often on a 5.0 scale. This calculator uses the standard unweighted 4.0 scale used by most US colleges.</div>
+    <div class="faq-a">Unweighted GPA treats all courses equally. Weighted GPA gives extra points for honours, AP, or IB courses — often adding 0.5–1.0 per course, sometimes on a 5.0 scale. This calculator computes unweighted GPA only, using a fixed 4.3-point scale (A+ = 4.3, A = 4.0, down to F = 0) — it does not add bonus points for honours or AP courses.</div>
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🎓 Your institution's official catalog</div><div class="edu-card-body">Your school's registrar or academic catalog publishes the authoritative grade-point scale used on your actual transcript — always confirm against that, not a generic online convention.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your academic advisor</div><div class="edu-card-body">For GPA-related academic standing questions (probation thresholds, honors eligibility, graduation requirements), your advisor or registrar's office has the definitive answer for your specific program.</div></div>
+  </div>
+</section>
 
 
 

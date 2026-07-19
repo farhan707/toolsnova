@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Fraction Calculator","url":"https://toolsnova.net/fraction-calculator","description":"Calculate fractions online with step-by-step working. Add, subtract, multiply, and divide any fractions. Shows simplified result, mixed number, and decimal equivalent.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add fractions?","acceptedAnswer":{"@type":"Answer","text":"Find a common denominator, convert both fractions, then add the numerators. Example: 1/3 + 1/4. Common denominator = 12. 1/3 = 4/12, 1/4 = 3/12. Sum = 7/12. This calculator shows each step."}},{"@type":"Question","name":"How do I multiply fractions?","acceptedAnswer":{"@type":"Answer","text":"Multiply numerators together and denominators together, then simplify. Example: 2/3 × 3/4 = 6/12 = 1/2. Much simpler than addition — no common denominator needed."}},{"@type":"Question","name":"How do I divide fractions?","acceptedAnswer":{"@type":"Answer","text":"Multiply by the reciprocal of the second fraction. Flip the second fraction and multiply. Example: 2/3 ÷ 4/5 = 2/3 × 5/4 = 10/12 = 5/6."}},{"@type":"Question","name":"What is a mixed number?","acceptedAnswer":{"@type":"Answer","text":"A mixed number has a whole number part and a fraction part, like 2¾. This calculator automatically converts improper fractions (like 11/4) to mixed numbers (2¾) in the result — and you can also type a mixed number directly as input, like \"2 3/4\" (with a space between the whole number and the fraction)."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Student Tools","item":"https://toolsnova.net/student-tools/"},{"@type":"ListItem","position":3,"name":"Fraction Calculator","item":"https://toolsnova.net/fraction-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -218,14 +220,14 @@ gtag('config', 'G-S6PPGS7N63');
     <span class="status-badge" id="frac-status">enter two fractions</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem">
-    <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:10px;align-items:end">
+    <div class="uc-grid">
       <div>
         <div class="pane-label">First fraction</div>
-        <input type="text" id="frac-a" placeholder="e.g. 3/4 or 1.5" class="b2-input" oninput="fracCalc()" spellcheck="false">
+        <input type="text" id="frac-a" placeholder="e.g. 3/4, 1.5, or 1 1/2" class="uc-input" oninput="fracCalc()" spellcheck="false" aria-label="First fraction">
       </div>
       <div>
         <div class="pane-label">Operation</div>
-        <select id="frac-op" class="mode-select" style="width:100%" onchange="fracCalc()">
+        <select id="frac-op" class="uc-select" onchange="fracCalc()" aria-label="Operation">
           <option value="+">+ Add</option>
           <option value="-">− Subtract</option>
           <option value="×">× Multiply</option>
@@ -234,7 +236,7 @@ gtag('config', 'G-S6PPGS7N63');
       </div>
       <div>
         <div class="pane-label">Second fraction</div>
-        <input type="text" id="frac-b" placeholder="e.g. 1/3 or 0.25" class="b2-input" oninput="fracCalc()" spellcheck="false">
+        <input type="text" id="frac-b" placeholder="e.g. 1/3, 0.25, or 2 1/4" class="uc-input" oninput="fracCalc()" spellcheck="false" aria-label="Second fraction">
       </div>
     </div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
@@ -243,8 +245,20 @@ gtag('config', 'G-S6PPGS7N63');
       <button class="btn" onclick="document.getElementById('frac-a').value='5/6';document.getElementById('frac-b').value='7/8';fracCalc()">5/6 × 7/8</button>
     </div>
   </div>
+
+  <div class="result-summary-card" id="frac-summary"></div>
+
   <div><div class="pane-label">Result with steps <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="frac-output" onclick="copyEl('frac-output')" style="min-height:180px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Working With Fractions</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Three input formats accepted</div><div class="edu-card-body">Enter a plain fraction (3/4), a decimal (1.5), or a mixed number (1 1/2, with a space between the whole number and the fraction) — the calculator recognizes all three.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Results are always shown simplified</div><div class="edu-card-body">The output reduces to lowest terms automatically and shows the mixed-number form when the result is greater than 1, alongside the decimal equivalent.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Step-by-step working matches how you'd show it by hand</div><div class="edu-card-body">The common-denominator (for +/−) or numerator/denominator (for ×/÷) breakdown mirrors standard classroom method, useful for checking your own hand-worked steps.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -286,6 +300,15 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Adding denominators directly</div><div class="edu-card-body">1/2 + 1/3 is NOT 2/5 — you must find a common denominator first (1/2 + 1/3 = 3/6 + 2/6 = 5/6). Denominators are never simply added or multiplied together for addition/subtraction.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting to flip for division</div><div class="edu-card-body">Dividing by a fraction means multiplying by its reciprocal — a/b ÷ c/d = a/b × d/c. Skipping the flip is one of the most common fraction errors.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Leaving a mixed number unconverted before multiplying</div><div class="edu-card-body">Convert mixed numbers to improper fractions before multiplying or dividing — multiplying the whole-number and fraction parts separately gives a wrong result.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -302,12 +325,16 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a mixed number?</div>
-    <div class="faq-a">A mixed number has a whole number part and a fraction part, like 2¾. This calculator automatically converts improper fractions (like 11/4) to mixed numbers (2¾) in the result.</div>
+    <div class="faq-a">A mixed number has a whole number part and a fraction part, like 2¾. This calculator automatically converts improper fractions (like 11/4) to mixed numbers (2¾) in the result — and you can also type a mixed number directly as input, like "2 3/4" (with a space between the whole number and the fraction).</div>
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your math textbook or course</div><div class="edu-card-body">Fraction arithmetic rules (common denominators, keep-change-flip for division) are standard across virtually every math curriculum — this calculator follows the same conventions taught in most classrooms.</div></div>
+  </div>
+</section>
 
 
 

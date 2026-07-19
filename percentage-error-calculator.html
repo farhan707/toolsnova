@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Percentage Error Calculator","url":"https://toolsnova.net/percentage-error-calculator","description":"Calculate percentage error between experimental and theoretical values. Shows absolute error, relative error, and step-by-step formula. Free online percent error calculator.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is percentage error?","acceptedAnswer":{"@type":"Answer","text":"Percentage error measures how close an experimental measurement is to the true (theoretical) value. Formula: % Error = |Experimental − Theoretical| / |Theoretical| × 100. It is always expressed as a positive value."}},{"@type":"Question","name":"What is a good percentage error?","acceptedAnswer":{"@type":"Answer","text":"In most school labs: <1% = excellent, 1–5% = good, 5–10% = acceptable. Above 10% usually means something went wrong with the experiment — check your method, equipment calibration, or calculations. Different fields have different tolerances."}},{"@type":"Question","name":"What is the difference between error and uncertainty?","acceptedAnswer":{"@type":"Answer","text":"Error compares your result to a known value. Uncertainty describes the range of possible values in a single measurement. Error tells you how accurate your experiment was. Uncertainty tells you how precise your instruments are."}},{"@type":"Question","name":"Why do we use absolute value in the formula?","acceptedAnswer":{"@type":"Answer","text":"Because error is always positive — it represents a magnitude of difference, not a direction. Whether your result is higher or lower than the true value, the error amount is the same. Removing the sign makes comparison between different experiments meaningful."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Student Tools","item":"https://toolsnova.net/student-tools/"},{"@type":"ListItem","position":3,"name":"Percentage Error Calculator","item":"https://toolsnova.net/percentage-error-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -217,18 +219,30 @@ gtag('config', 'G-S6PPGS7N63');
     <button class="btn" onclick="copyEl('pe-output')">Copy</button>
     <span class="status-badge" id="pe-status">enter experimental and theoretical values</span>
   </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem" class="uc-two-col">
     <div>
       <div class="pane-label">Experimental value (measured)</div>
-      <input type="number" id="pe-experimental" placeholder="e.g. 9.8" class="b2-input" oninput="pctErrCalc()" aria-label="Experimental value">
+      <input type="number" id="pe-experimental" placeholder="e.g. 9.8" class="uc-input" oninput="pctErrCalc()" aria-label="Experimental value">
     </div>
     <div>
       <div class="pane-label">Theoretical value (accepted/true)</div>
-      <input type="number" id="pe-theoretical" placeholder="e.g. 9.81" class="b2-input" oninput="pctErrCalc()" aria-label="Theoretical value">
+      <input type="number" id="pe-theoretical" placeholder="e.g. 9.81" class="uc-input" oninput="pctErrCalc()" aria-label="Theoretical value">
     </div>
   </div>
+
+  <div class="result-summary-card" id="pe-summary"></div>
+
   <div><div class="pane-label">Result with formula <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pe-output" onclick="copyEl('pe-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Reading Your Error</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Under 5% is typically good for a student lab</div><div class="edu-card-body">Most introductory physics/chemistry labs consider under 5% error acceptable given basic equipment — check your specific lab's rubric for the exact threshold expected.</div></div>
+      <div class="edu-card"><div class="edu-card-title">High error points to a specific place to check</div><div class="edu-card-body">Error over 10% usually means a measurement mistake, wrong units, or a setup error — recheck your method before assuming the theoretical value itself is wrong.</div></div>
+      <div class="edu-card"><div class="edu-card-title">The sign of the raw difference tells you the direction</div><div class="edu-card-body">Percentage error is always reported as positive (using absolute value), but knowing whether your experimental value was too high or too low can help you diagnose systematic error in your method.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -270,6 +284,15 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Swapping experimental and theoretical values</div><div class="edu-card-body">Percentage error always divides by the theoretical (accepted/true) value, not the experimental one — entering them in the wrong fields changes the result, especially when the two values differ significantly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Reporting a negative percentage error</div><div class="edu-card-body">Percentage error uses the absolute difference and is conventionally reported as a positive number — a negative sign usually means a units or sign-entry mistake, not a meaningful "negative error."</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating a low error as proof the experiment was flawless</div><div class="edu-card-body">A low percentage error only means your result was close to the accepted value — it doesn't rule out compensating errors (two mistakes that happen to cancel out) or confirm your method was actually sound.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -290,8 +313,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🔬 Your lab manual or course rubric</div><div class="edu-card-body">Acceptable error thresholds vary by field and course level — check your specific lab's rubric or manual for the exact tolerance expected, rather than relying on general guidelines.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📐 NIST measurement uncertainty guidelines</div><div class="edu-card-body">For rigorous treatment of the distinction between error and uncertainty, the US National Institute of Standards and Technology publishes standard guidance used throughout experimental science.</div></div>
+  </div>
+</section>
 
 
 

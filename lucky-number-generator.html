@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lucky Number Generator","url":"https://toolsnova.net/lucky-number-generator","description":"Generate your lucky numbers based on your name and date of birth. Includes numerology life path, destiny, soul urge, and personality numbers.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a life path number?","acceptedAnswer":{"@type":"Answer","text":"Your Life Path number is calculated from your date of birth by adding all digits together and reducing to a single digit (or master number 11, 22, 33). It's the most important number in numerology, said to reveal your life purpose and natural tendencies."}},{"@type":"Question","name":"What is numerology?","acceptedAnswer":{"@type":"Answer","text":"Numerology is the study of the mystical relationship between numbers and events. It assigns numerical values to letters (A=1, B=2... Z=26) and uses these to calculate personality numbers from names and dates. It has no scientific basis but has been practised across many cultures for thousands of years."}},{"@type":"Question","name":"What are master numbers?","acceptedAnswer":{"@type":"Answer","text":"Master numbers (11, 22, 33) are not reduced to single digits because they carry special significance in numerology. 11 = intuition and spiritual insight, 22 = the 'master builder' who can turn dreams into reality, 33 = the 'master teacher' with great compassion and wisdom."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Fun Tools","item":"https://toolsnova.net/fun-tools/"},{"@type":"ListItem","position":3,"name":"Lucky Number Generator","item":"https://toolsnova.net/lucky-number-generator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -217,17 +219,29 @@ gtag('config', 'G-S6PPGS7N63');
     <button class="btn" onclick="copyEl('lucky-output')">Copy</button>
     <span class="status-badge" id="lucky-status">enter your name or date of birth</span>
   </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem" class="uc-two-col">
     <div>
       <div class="pane-label">Your full name (optional)</div>
-      <input type="text" id="lucky-name" placeholder="e.g. John Smith" class="b2-input" oninput="luckyNumberCalc()" spellcheck="false">
+      <input type="text" id="lucky-name" placeholder="e.g. John Smith" class="uc-input" oninput="luckyNumberCalc()" spellcheck="false" aria-label="Your full name (optional)">
     </div>
     <div>
       <div class="pane-label">Date of birth (optional)</div>
-      <input type="date" id="lucky-dob" class="b2-input" oninput="luckyNumberCalc()">
+      <input type="date" id="lucky-dob" class="uc-input" oninput="luckyNumberCalc()" aria-label="Date of birth (optional)">
     </div>
   </div>
+
+  <div class="result-summary-card" id="lucky-summary"></div>
+
   <div class="output-box" id="lucky-output" onclick="copyEl('lucky-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div>
+
+  <section class="edu-section">
+    <h2>Using Your Numbers</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Same inputs, same numbers every time</div><div class="edu-card-body">This is deterministic, not random — entering the same name and date of birth will always produce the same lucky numbers, so you can treat them as "yours" rather than a fresh roll each visit.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Leave a field blank for a different starting point</div><div class="edu-card-body">Providing just a name, just a date of birth, or both changes the seed used to generate your numbers — try different combinations if you want to explore.</div></div>
+      <div class="edu-card"><div class="edu-card-title">For entertainment, not for financial decisions</div><div class="edu-card-body">These numbers have no predictive power for lotteries or games of chance, which are independently random regardless of any numerology calculation.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -269,6 +283,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>How the Numbers Are Calculated</h2>
+    <div class="edu-highlight">This tool uses the standard Pythagorean numerology convention (A=1, B=2, ... Z=26, digits reduced to a single number) — a documented convention, not a scientifically validated method. Your lucky numbers themselves are generated from your name and date of birth as a seed, so the same inputs always produce the same numbers.</div>
+    <h3>Worked example</h3>
+    <p>Life Path Number for a birth date of 1990-05-15: sum the digits 1+9+9+0+0+5+1+5 = 30, then reduce: 3+0 = <strong>3</strong>. Destiny Number for "JOHN": J(10)+O(15)+H(8)+N(14) = 47, reduce: 4+7 = <strong>11</strong> — an 11 is a "master number" and isn't reduced further in this convention.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Treating numerology as scientifically validated</div><div class="edu-card-body">Numerology is a centuries-old cultural convention, not a field with scientific evidence behind it — enjoy it as such, not as a predictive tool.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using these numbers for actual lottery or gambling decisions</div><div class="edu-card-body">Lottery draws and casino games use independent random processes — no numerology method, including this one, changes the odds of any number being drawn.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Expecting different numbers on every visit</div><div class="edu-card-body">This generator is intentionally deterministic — the same name and birth date will always produce the same numbers, which is a feature (so they feel like "yours"), not a bug.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -285,8 +315,12 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Pythagorean numerology convention</div><div class="edu-card-body">The A=1...Z=26 letter-to-number mapping and digit-reduction method used here is the standard, widely-documented convention — presented as a cultural/entertainment framework, not a scientifically validated practice.</div></div>
+  </div>
+</section>
 
 
 

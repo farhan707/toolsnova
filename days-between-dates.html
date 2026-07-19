@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Days Between Dates Calculator","url":"https://toolsnova.net/days-between-dates","description":"Calculate the number of days between two dates. Shows weeks, months, years, weekdays, and weekends. Free online date difference calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are days between dates calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator finds the absolute difference between two dates in milliseconds, then divides by 86,400,000 (milliseconds in a day). Weekdays are counted by iterating through each day and checking if it falls on a Monday–Friday."}},{"@type":"Question","name":"What counts as a business day?","acceptedAnswer":{"@type":"Answer","text":"Business days (weekdays) exclude Saturdays and Sundays. This calculator does not exclude public holidays, which vary by country. For legal and contract purposes, always check whether holidays are excluded in your specific jurisdiction."}},{"@type":"Question","name":"How many days until a specific date?","acceptedAnswer":{"@type":"Answer","text":"Set the start date to today and the end date to your target date. The calculator shows the exact number of days, weeks, and months remaining, along with a breakdown of weekdays and weekends."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Fun Tools","item":"https://toolsnova.net/fun-tools/"},{"@type":"ListItem","position":3,"name":"Days Between Dates","item":"https://toolsnova.net/days-between-dates"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -216,18 +218,21 @@ gtag('config', 'G-S6PPGS7N63');
     <button class="btn" onclick="copyEl('dbd-output')">Copy</button>
     <span class="status-badge" id="dbd-status">select two dates</span>
   </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem" class="uc-two-col">
     <div>
       <div class="pane-label">Start date</div>
-      <input type="date" id="dbd-date1" class="b2-input" oninput="daysBetween()" aria-label="Start date">
+      <input type="date" id="dbd-date1" class="uc-input" oninput="daysBetween()" aria-label="Start date">
       <button class="btn" onclick="dbdSetToday('dbd-date1')" style="margin-top:5px;font-size:.72rem;width:100%">Set to today</button>
     </div>
     <div>
       <div class="pane-label">End date</div>
-      <input type="date" id="dbd-date2" class="b2-input" oninput="daysBetween()" aria-label="End date">
+      <input type="date" id="dbd-date2" class="uc-input" oninput="daysBetween()" aria-label="End date">
       <button class="btn" onclick="dbdSetToday('dbd-date2')" style="margin-top:5px;font-size:.72rem;width:100%">Set to today</button>
     </div>
   </div>
+
+  <div class="result-summary-card" id="dbd-summary"></div>
+
   <div class="output-box" id="dbd-output" onclick="copyEl('dbd-output')" style="min-height:200px;white-space:pre;cursor:pointer"></div>
 
   
@@ -271,6 +276,31 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Inclusive or Exclusive?</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Use exclusive for "how much time has passed"</div><div class="edu-card-body">Age, time-until-event, and elapsed-time questions normally use exclusive counting — the calendar difference between two dates, not counting either endpoint twice.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Use inclusive for "how many days does this span cover"</div><div class="edu-card-body">Hotel-night-style counting, "how many days is this event," or payroll/billing periods often need inclusive counting — both the start and end date counted as full days.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Both figures are shown so you don't have to guess</div><div class="edu-card-body">This calculator shows both the exclusive and inclusive day counts explicitly labeled, rather than picking one convention silently.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>How the Duration Is Calculated</h2>
+    <div class="edu-highlight"><strong>Days (exclusive)</strong> = calendar days between the two dates. <strong>Months</strong> = calendar months between them, adjusted for day-of-month so a partial month never outweighs a fuller one.</div>
+    <h3>Worked example</h3>
+    <p>From January 31 to February 1 (1 calendar day apart): months = 0, since a full calendar month hasn't elapsed — the day-of-month adjustment prevents this from misleadingly showing "1 month" for a single day. From January 1 to March 1 (a full 2 calendar months later, same day-of-month): months = 2 exactly.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming a month is always ~30 days</div><div class="edu-card-body">Calendar months range from 28 to 31 days — for precise legal, financial, or contractual purposes, always work from actual calendar dates, not a flat 30-day assumption.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting which counting convention you need</div><div class="edu-card-body">"3 nights in a hotel" (inclusive-style span) and "3 days until my flight" (exclusive elapsed time) are different questions — check which figure this tool's output matches your actual need before using it.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Not accounting for leap years in long-range calculations</div><div class="edu-card-body">A year is 365 or 366 days depending on the leap year — this calculator works from actual calendar dates so leap years are automatically handled correctly, but manual estimates using "365 days/year" won't be.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -287,8 +317,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📅 Gregorian Calendar</div><div class="edu-card-body">Leap year rules (every 4 years, except centuries not divisible by 400) follow the standard Gregorian calendar used internationally — this calculator's date arithmetic is built on JavaScript's native Date handling, which correctly implements these rules.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your specific contract or jurisdiction</div><div class="edu-card-body">For legal, payroll, or contractual date calculations, confirm whether your specific context uses inclusive or exclusive counting and whether public holidays are excluded — conventions vary and this tool doesn't know your jurisdiction's holiday calendar.</div></div>
+  </div>
+</section>
 
 
 

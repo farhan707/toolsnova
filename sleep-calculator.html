@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sleep Calculator","url":"https://toolsnova.net/sleep-calculator","description":"Calculate the best time to go to sleep or wake up based on 90-minute sleep cycles. Never wake up groggy again with our free sleep cycle calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long is a sleep cycle?","acceptedAnswer":{"@type":"Answer","text":"A sleep cycle lasts approximately 90 minutes. Each cycle includes light sleep (N1, N2), deep sleep (N3), and REM sleep. Adults typically complete 4–6 cycles per night. Waking up at the end of a cycle, rather than in the middle, significantly reduces sleep inertia (the groggy feeling)."}},{"@type":"Question","name":"How many hours of sleep do I need?","acceptedAnswer":{"@type":"Answer","text":"Adults (18–64): 7–9 hours (5–6 cycles). Teenagers (14–17): 8–10 hours. Children (6–13): 9–11 hours. Older adults (65+): 7–8 hours. Consistently sleeping fewer than 6 hours increases risk of obesity, cardiovascular disease, and cognitive impairment."}},{"@type":"Question","name":"Why do I still feel tired after 8 hours?","acceptedAnswer":{"@type":"Answer","text":"You may have woken up during a deep sleep (N3) or REM phase. Sleep quality matters as much as duration. Other factors include sleep apnoea, irregular sleep schedule, blue light exposure before bed, caffeine, alcohol, or underlying health conditions."}},{"@type":"Question","name":"What is REM sleep?","acceptedAnswer":{"@type":"Answer","text":"Rapid Eye Movement (REM) sleep is the stage where most dreaming occurs. It's essential for memory consolidation, emotional processing, and creativity. REM periods get longer in later cycles — the final cycles of a full night's sleep have the most REM. Cutting sleep short loses disproportionately more REM."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Fun Tools","item":"https://toolsnova.net/fun-tools/"},{"@type":"ListItem","position":3,"name":"Sleep Calculator","item":"https://toolsnova.net/sleep-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -216,21 +218,34 @@ gtag('config', 'G-S6PPGS7N63');
     <button class="btn" onclick="copyEl('slp-output')">Copy</button>
     <span class="status-badge" id="slp-status">select a time</span>
   </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem" class="uc-two-col">
     <div>
       <div class="pane-label">Mode</div>
-      <select id="slp-mode" class="mode-select" style="width:100%" onchange="sleepCalc()">
+      <select id="slp-mode" class="uc-select" onchange="sleepCalc()" aria-label="Mode">
         <option value="wake">I want to wake up at...</option>
         <option value="bed">I am going to bed at...</option>
       </select>
     </div>
     <div>
       <div class="pane-label">Time</div>
-      <input type="time" id="slp-time" class="b2-input" oninput="sleepCalc()" value="07:00">
+      <input type="time" id="slp-time" class="uc-input" oninput="sleepCalc()" value="07:00" aria-label="Time">
     </div>
   </div>
+
+  <div class="result-summary-card" id="slp-summary"></div>
+  <div class="result-summary-card" id="slp-timeline"></div>
+
   <div><div class="pane-label">Sleep schedule <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="slp-output" onclick="copyEl('slp-output')" style="min-height:220px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Choosing Your Target</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">5-6 cycles for a normal night</div><div class="edu-card-body">Aim for the "Ideal" options (5-6 cycles) on a typical night — this is the range most adults need to feel properly rested.</div></div>
+      <div class="edu-card"><div class="edu-card-title">4 cycles when time is tight</div><div class="edu-card-body">A "Good" 4-cycle night (6 hours) is a reasonable compromise occasionally, but isn't a sustainable long-term schedule.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Consistency matters more than any single night</div><div class="edu-card-body">Waking at the same time daily — including weekends — improves sleep quality more than optimizing any one night's cycle count.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -273,6 +288,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>How the Times Are Calculated</h2>
+    <div class="edu-highlight"><strong>Bedtime</strong> = Wake time − 14 min (to fall asleep) − (Cycles × 90 min). <strong>Wake time</strong> = Bedtime + 14 min + (Cycles × 90 min).</div>
+    <h3>Worked example</h3>
+    <p>Waking at 7:00 AM, targeting 5 cycles: 7:00 AM − 14 min − (5 × 90 min) = 7:00 AM − 14 min − 7h30m = <strong>11:16 PM bedtime</strong>. For 6 cycles: 7:00 AM − 14 min − 9h = <strong>9:46 PM bedtime</strong>.</p>
+    <p><em>90 minutes and 14 minutes are practical averages, not exact biological constants for every individual — see the note in the detailed output above.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Chasing the "perfect" cycle count every single night</div><div class="edu-card-body">These times are a helpful starting point, not a rigid rule — individual variation means the exact minute matters less than roughly aligning with a cycle boundary.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring how you actually feel</div><div class="edu-card-body">If a calculated time consistently leaves you groggy, trust your own body's feedback over the calculator — adjust the cycle length assumption for yourself over time.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating this as medical advice</div><div class="edu-card-body">Persistent sleep problems (chronic insomnia, loud snoring, extreme daytime sleepiness) warrant a conversation with a doctor, not just a bedtime adjustment.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -293,8 +325,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏥 National Sleep Foundation / AASM</div><div class="edu-card-body">Age-based sleep duration guidelines and general sleep-cycle science referenced here follow recommendations published by the National Sleep Foundation and the American Academy of Sleep Medicine.</div></div>
+    <div class="edu-card"><div class="edu-card-title">👩‍⚕️ Your doctor</div><div class="edu-card-body">This tool provides general scheduling guidance, not medical advice. Persistent sleep problems are worth discussing with a healthcare provider — sleep disorders often need professional diagnosis.</div></div>
+  </div>
+</section>
 
 
 

@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Coin Flip & Dice Roller","url":"https://toolsnova.net/coin-flip-dice-roller","description":"Flip a coin or roll dice online. Supports d4, d6, d8, d10, d12, d20, d100. Multiple flips and rolls with statistics. Free coin flip and dice roller.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a coin flip truly random?","acceptedAnswer":{"@type":"Answer","text":"This coin flip uses JavaScript's Math.random() which is a pseudo-random number generator (PRNG) — deterministic but statistically uniform. For cryptographic purposes it's not truly random, but for games and decisions it's indistinguishable from a real coin flip. Each flip is independent with exactly 50/50 probability."}},{"@type":"Question","name":"What are the standard RPG dice?","acceptedAnswer":{"@type":"Answer","text":"Standard tabletop RPG dice: d4 (4 sides), d6 (6 sides — standard), d8 (8 sides), d10 (10 sides), d12 (12 sides), d20 (20 sides — most iconic in D&D), d100/d% (percentile). In Dungeons & Dragons, the d20 is used for most rolls including attacks, ability checks, and saving throws."}},{"@type":"Question","name":"What is the probability of rolling a 20 on a d20?","acceptedAnswer":{"@type":"Answer","text":"1 in 20, or 5%. In D&D, a natural 20 is called a 'critical hit' and doubles your damage dice. The probability of rolling two 20s in a row is 1/400 (0.25%). Advantage (rolling two d20s and taking the higher) raises the probability of getting at least one 20 to ~9.75%."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Fun Tools","item":"https://toolsnova.net/fun-tools/"},{"@type":"ListItem","position":3,"name":"Coin Flip & Dice Roller","item":"https://toolsnova.net/coin-flip-dice-roller"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -211,23 +213,29 @@ gtag('config', 'G-S6PPGS7N63');
   <p>Flip a coin or roll any dice (d4–d100) online. Flip up to 100 coins at once or roll up to 20 dice simultaneously with full statistics.</p>
 </div>
 <main>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <div class="uc-two-col">
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem">
       <div class="pane-label" style="font-size:.9rem;color:var(--text);margin-bottom:10px">🪙 Coin Flip</div>
       <div>
         <div class="pane-label">Number of flips</div>
-        <input type="number" id="coin-count" value="1" min="1" max="100" class="b2-input" aria-label="Number of coin flips">
+        <input type="number" id="coin-count" value="1" min="1" max="100" class="uc-input" aria-label="Number of coin flips">
       </div>
       <button class="btn primary" onclick="coinFlip()" style="width:100%;margin-top:8px">Flip</button>
       <span class="status-badge" id="coin-status" style="display:block;margin-top:6px">press Flip</span>
-      <div class="output-box" id="coin-output" style="min-height:60px;margin-top:8px;white-space:pre;font-size:.78rem"></div>
+      <div class="result-summary-card" id="coin-summary" style="margin-top:8px"></div>
+      <div class="output-box" id="coin-output" onclick="copyEl('coin-output')" style="min-height:60px;margin-top:8px;white-space:pre;font-size:.78rem;cursor:pointer"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <div class="pane-label" style="margin-bottom:0">Roll history (this session)</div>
+        <button class="btn" style="font-size:.68rem;padding:3px 8px" onclick="coinClearHistory()">Clear</button>
+      </div>
+      <div class="output-box" id="coin-history" style="min-height:60px;max-height:140px;overflow-y:auto;margin-top:6px;white-space:pre;font-size:.72rem">No flips yet this session.</div>
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem">
       <div class="pane-label" style="font-size:.9rem;color:var(--text);margin-bottom:10px">🎲 Dice Roller</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="uc-two-col" style="gap:8px">
         <div>
           <div class="pane-label">Dice type</div>
-          <select id="dice-sides" class="mode-select" style="width:100%">
+          <select id="dice-sides" class="uc-select" aria-label="Dice type">
             <option value="4">d4</option>
             <option value="6" selected>d6</option>
             <option value="8">d8</option>
@@ -239,12 +247,18 @@ gtag('config', 'G-S6PPGS7N63');
         </div>
         <div>
           <div class="pane-label">Number of dice</div>
-          <input type="number" id="dice-count" value="1" min="1" max="20" class="b2-input" aria-label="Number of dice">
+          <input type="number" id="dice-count" value="1" min="1" max="20" class="uc-input" aria-label="Number of dice">
         </div>
       </div>
       <button class="btn primary" onclick="diceRoll()" style="width:100%;margin-top:8px">Roll</button>
       <span class="status-badge" id="dice-status" style="display:block;margin-top:6px">press Roll</span>
-      <div class="output-box" id="dice-output" style="min-height:60px;margin-top:8px;white-space:pre;font-size:.78rem"></div>
+      <div class="result-summary-card" id="dice-summary" style="margin-top:8px"></div>
+      <div class="output-box" id="dice-output" onclick="copyEl('dice-output')" style="min-height:60px;margin-top:8px;white-space:pre;font-size:.78rem;cursor:pointer"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <div class="pane-label" style="margin-bottom:0">Roll history (this session)</div>
+        <button class="btn" style="font-size:.68rem;padding:3px 8px" onclick="diceClearHistory()">Clear</button>
+      </div>
+      <div class="output-box" id="dice-history" style="min-height:60px;max-height:140px;overflow-y:auto;margin-top:6px;white-space:pre;font-size:.72rem">No rolls yet this session.</div>
     </div>
   </div>
 
@@ -287,6 +301,24 @@ gtag('config', 'G-S6PPGS7N63');
     <p>While individual random events are unpredictable, averages over many trials converge to expected values. A fair coin flipped 10 times may land heads 7 times (70%). Flipped 10,000 times: very close to 50%. Casinos rely on this law — each bet is unpredictable, but millions of bets reliably produce the expected house edge. Insurance companies rely on the same law — individual claims are unpredictable, but large pools of policyholders produce predictable total claims. The law of large numbers is the mathematical foundation of both gambling businesses and financial risk management.</p>
     <div class="edu-highlight"><strong>🎲 Probability quick reference:</strong> Coin flip: 50/50. d6: 16.7% per face. d20: 5% per face. Rolling 7 on 2d6: 16.7% (most likely sum). Rolling 2 or 12 on 2d6: 2.8% each (least likely). D&D advantage: ~13.8 average (vs 10.5 normal). D&D disadvantage: ~7.2 average. Probability of rolling 20 on d20: 5%. Rolling 20 twice in a row: 0.25%. Three times: 0.0125%. These quick reference values help evaluate game balance and plan decisions.</div>
 
+  </section>
+
+  <section class="edu-section">
+    <h2>Using This Tool</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Genuinely random, every time</div><div class="edu-card-body">Unlike the Love Calculator or Lucky Number Generator, this tool uses your browser's random number generator directly — there's no seed or pattern, so results aren't reproducible and can't be predicted.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Your roll history stays on this device</div><div class="edu-card-body">History is kept only in your browser for this session — nothing is sent anywhere or saved once you close or refresh the page.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Multiple dice for RPG mechanics</div><div class="edu-card-body">Roll several dice at once for mechanics like "roll 4d6, drop the lowest" — read the individual results in the detailed output, not just the sum.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Believing in "due" outcomes</div><div class="edu-card-body">After several heads in a row, tails isn't "due" — each flip is independent, and the coin has no memory of previous results (the gambler's fallacy).</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing a die's average with its most likely single roll</div><div class="edu-card-body">A d20's average is 10.5, but every single face (1 through 20) is equally likely — there's no "typical" roll on a fair die the way there is with 2d6.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Expecting exact 50/50 over a small sample</div><div class="edu-card-body">10 flips landing 7 heads / 3 tails isn't an unfair coin — real 50/50 fairness only becomes visually obvious over hundreds or thousands of flips (the law of large numbers).</div></div>
+    </div>
   </section>
 
   <section class="faq-section">

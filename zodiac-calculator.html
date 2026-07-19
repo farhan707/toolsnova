@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Zodiac Calculator","url":"https://toolsnova.net/zodiac-calculator","description":"Find your Western zodiac sign, Chinese zodiac animal, and numerology life path number from your date of birth. Free astrology and horoscope calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the 12 zodiac signs?","acceptedAnswer":{"@type":"Answer","text":"Aries (Mar 21–Apr 19), Taurus (Apr 20–May 20), Gemini (May 21–Jun 20), Cancer (Jun 21–Jul 22), Leo (Jul 23–Aug 22), Virgo (Aug 23–Sep 22), Libra (Sep 23–Oct 22), Scorpio (Oct 23–Nov 21), Sagittarius (Nov 22–Dec 21), Capricorn (Dec 22–Jan 19), Aquarius (Jan 20–Feb 18), Pisces (Feb 19–Mar 20)."}},{"@type":"Question","name":"What are the four elements in astrology?","acceptedAnswer":{"@type":"Answer","text":"Fire (Aries, Leo, Sagittarius): energetic, passionate, enthusiastic. Earth (Taurus, Virgo, Capricorn): practical, grounded, reliable. Air (Gemini, Libra, Aquarius): intellectual, communicative, social. Water (Cancer, Scorpio, Pisces): emotional, intuitive, empathetic."}},{"@type":"Question","name":"What is the Chinese zodiac?","acceptedAnswer":{"@type":"Answer","text":"The Chinese zodiac assigns one of 12 animals to each lunar year in a 12-year cycle: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig. Unlike Western astrology, it's based on the Chinese lunar calendar year, which starts at Lunar New Year (a date that shifts between roughly January 21 and February 20 each year) — not January 1. This calculator checks your exact birth date against each year's actual Lunar New Year date, so January/February birthdays get the correct animal."}},{"@type":"Question","name":"Which zodiac signs are most compatible?","acceptedAnswer":{"@type":"Answer","text":"Signs of the same element tend to be compatible: Fire signs (Aries, Leo, Sagittarius) work well together. Signs two apart on the wheel (trine) are also highly compatible. Opposite signs (Aries–Libra, Taurus–Scorpio) can attract but require more work. All pairings can work with communication and respect."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Fun Tools","item":"https://toolsnova.net/fun-tools/"},{"@type":"ListItem","position":3,"name":"Zodiac Calculator","item":"https://toolsnova.net/zodiac-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -218,8 +220,11 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem">
     <div class="pane-label">Date of birth</div>
-    <input type="date" id="zod-dob" class="b2-input" oninput="zodiacCalc()" aria-label="Date of birth" style="max-width:260px">
+    <input type="date" id="zod-dob" class="uc-input" oninput="zodiacCalc()" aria-label="Date of birth" style="max-width:260px">
   </div>
+
+  <div class="result-summary-card" id="zod-summary"></div>
+
   <div class="output-box" id="zod-output" onclick="copyEl('zod-output')" style="min-height:240px;white-space:pre;cursor:pointer"></div>
 
   <!-- EDUCATIONAL CONTENT -->
@@ -262,6 +267,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Born in January or February?</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Your Chinese zodiac may differ from your birth year's "official" animal</div><div class="edu-card-body">The Chinese zodiac year starts at Lunar New Year, not January 1 — which falls on a different date each year (typically between Jan 21 and Feb 20). This calculator checks the actual Lunar New Year date for your birth year, not just the calendar year number.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Western zodiac isn't affected by this</div><div class="edu-card-body">The Western (tropical) zodiac follows fixed solar calendar dates every year, so there's no equivalent boundary ambiguity — the sign shown is exact.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Numerology is separate from both zodiac systems</div><div class="edu-card-body">Your Life Path number is calculated directly from your birth date digits — it doesn't depend on either zodiac system's calendar boundaries.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming Chinese zodiac = birth year number</div><div class="edu-card-body">"I was born in 2023, so I'm a Rabbit" is only correct if your birthday falls on or after that year's Lunar New Year (January 22, 2023) — anyone born January 1-21, 2023 is actually a Tiger (2022's sign).</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating either zodiac system as predictive</div><div class="edu-card-body">Both Western and Chinese zodiac signs are cultural and astrological frameworks, not scientifically validated predictors of personality or life events.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting leap-day (Feb 29) birthdays work normally</div><div class="edu-card-body">A February 29 birthday resolves correctly to Pisces under the Western zodiac — no special handling is needed since the calculation compares month and day directly.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -274,7 +297,7 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is the Chinese zodiac?</div>
-    <div class="faq-a">The Chinese zodiac assigns one of 12 animals to each year in a 12-year cycle: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig. Unlike Western astrology based on birth month, Chinese zodiac is based on birth year. The cycle began in 2020 with the Year of the Rat.</div>
+    <div class="faq-a">The Chinese zodiac assigns one of 12 animals to each lunar year in a 12-year cycle: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig. Unlike Western astrology, it's based on the Chinese lunar calendar year, which starts at Lunar New Year (a date that shifts between roughly January 21 and February 20 each year) — not January 1. This calculator checks your exact birth date against each year's actual Lunar New Year date, so January/February birthdays get the correct animal.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Which zodiac signs are most compatible?</div>
@@ -282,8 +305,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">⭐ Western tropical zodiac dates</div><div class="edu-card-body">The Western zodiac date ranges used here follow the standard tropical zodiac convention used by most Western astrology publications.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🐉 Chinese zodiac year charts</div><div class="edu-card-body">Lunar New Year dates used in this calculator's lookup table (1948–2031) are sourced from published Chinese zodiac year charts; dates outside this range are estimated using the animal cycle's exact 12-year rotation with an approximate boundary date.</div></div>
+  </div>
+</section>
 
 
 

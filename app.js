@@ -4908,12 +4908,19 @@ function sleepCalc() {
   const mode   = document.getElementById('slp-mode')?.value || 'wake';
   const timeIn = document.getElementById('slp-time')?.value;
   const out    = document.getElementById('slp-output');
+  const summary = document.getElementById('slp-summary');
+  const timeline = document.getElementById('slp-timeline');
   if (!out) return;
-  if (!timeIn) { out.textContent = 'Select a time.'; out.className='output-box'; return; }
+  if (!timeIn) {
+    out.textContent = 'Select a time.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    if (timeline) timeline.classList.remove('show');
+    return;
+  }
 
   const [h, m] = timeIn.split(':').map(Number);
   const totalMins = h * 60 + m;
-  // Sleep cycle = 90 minutes, fall asleep in ~14 mins
+  // Sleep cycle = 90 minutes (a practical average — see note below), fall asleep in ~14 mins
   const CYCLE = 90, DOZE = 14;
 
   const fmt = mins => {
@@ -4921,12 +4928,29 @@ function sleepCalc() {
     return d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true});
   };
 
+  // Renders a simple 24-hour horizontal timeline with the sleep window highlighted (no animation).
+  const renderTimeline = (sleepStart, sleepEnd, label) => {
+    if (!timeline) return;
+    const startPct = (sleepStart/1440*100).toFixed(2);
+    let widthPct = ((sleepEnd - sleepStart + 1440) % 1440) / 1440 * 100;
+    if (widthPct === 0) widthPct = 100;
+    timeline.classList.add('show');
+    timeline.innerHTML =
+      `<div class="rsc-label">${label}</div>` +
+      `<div class="slp-bar">
+        <div class="slp-bar-fill" style="left:${startPct}%;width:${widthPct.toFixed(2)}%"></div>
+        <div class="slp-bar-marks">
+          <span>12am</span><span>6am</span><span>12pm</span><span>6pm</span><span>12am</span>
+        </div>
+      </div>`;
+  };
+
   let lines = [];
   if (mode === 'wake') {
     // Given wake time, when should I sleep?
     for (let cycles = 6; cycles >= 2; cycles--) {
       const bedtime = ((totalMins - DOZE - cycles * CYCLE) + 1440) % 1440;
-      lines.push({ cycles, time: fmt(bedtime), quality: cycles >= 5 ? '✅ Ideal' : cycles === 4 ? '✅ Good' : cycles === 3 ? '⚠ Acceptable' : '❌ Too short' });
+      lines.push({ cycles, time: fmt(bedtime), mins: bedtime, quality: cycles >= 5 ? '✅ Ideal' : cycles === 4 ? '✅ Good' : cycles === 3 ? '⚠ Acceptable' : '❌ Too short' });
     }
     out.className = 'output-box success';
     out.textContent =
@@ -4934,17 +4958,27 @@ function sleepCalc() {
       `── Recommended bedtimes ─────────────\n` +
       lines.map(l => `  ${l.time.padEnd(12)} ${l.cycles} cycles (${(l.cycles*1.5).toFixed(1)}h)  ${l.quality}`).join('\n') +
       `\n\n── Sleep cycle facts ────────────────\n` +
-      `  1 sleep cycle = 90 minutes\n` +
+      `  1 sleep cycle ≈ 90 minutes (practical average — see note below)\n` +
       `  Optimal sleep = 5–6 cycles (7.5–9h)\n` +
-      `  You take ~14 min to fall asleep\n` +
+      `  You take ~14 min to fall asleep on average\n` +
       `  REM sleep peaks in later cycles\n` +
-      `  Wake between cycles = feel refreshed`;
+      `  Wake between cycles = feel refreshed\n\n` +
+      `Note: 90 minutes is a practical average, not an exact biological constant —\n` +
+      `individual sleep cycles commonly range from about 70 to 120 minutes and can\n` +
+      `vary night to night for the same person. Use these times as a starting point,\n` +
+      `then adjust based on how refreshed you actually feel.`;
+    const ideal = lines.find(l=>l.cycles===5) || lines[0];
+    if (summary) {
+      summary.classList.add('show');
+      summary.innerHTML = `<div class="rsc-label">Best bedtime</div><div class="rsc-value">${ideal.time}</div><div class="rsc-sub">${ideal.cycles} cycles (${(ideal.cycles*1.5).toFixed(1)}h) · ${ideal.quality}</div>`;
+    }
+    renderTimeline(ideal.mins, totalMins, `Sleep window — ${ideal.time} to ${fmt(totalMins)}`);
   } else {
     // Given bedtime, when will I wake feeling refreshed?
     const sleepTime = totalMins + DOZE;
     for (let cycles = 3; cycles <= 7; cycles++) {
       const wake = (sleepTime + cycles * CYCLE) % 1440;
-      lines.push({ cycles, time: fmt(wake), quality: cycles >= 5 ? '✅ Ideal' : cycles === 4 ? '✅ Good' : '⚠ Short' });
+      lines.push({ cycles, time: fmt(wake), mins: wake, quality: cycles >= 5 ? '✅ Ideal' : cycles === 4 ? '✅ Good' : '⚠ Short' });
     }
     out.className = 'output-box success';
     out.textContent =
@@ -4955,7 +4989,17 @@ function sleepCalc() {
       `\n\n── Tips ─────────────────────────────\n` +
       `  Set alarm for a cycle boundary above\n` +
       `  Waking mid-cycle = groggy feeling\n` +
-      `  Consistent schedule improves quality`;
+      `  Consistent schedule improves quality\n\n` +
+      `Note: 90 minutes is a practical average, not an exact biological constant —\n` +
+      `individual sleep cycles commonly range from about 70 to 120 minutes and can\n` +
+      `vary night to night for the same person. Use these times as a starting point,\n` +
+      `then adjust based on how refreshed you actually feel.`;
+    const ideal = lines.find(l=>l.cycles===5) || lines[0];
+    if (summary) {
+      summary.classList.add('show');
+      summary.innerHTML = `<div class="rsc-label">Best wake-up time</div><div class="rsc-value">${ideal.time}</div><div class="rsc-sub">${ideal.cycles} cycles (${(ideal.cycles*1.5).toFixed(1)}h) · ${ideal.quality}</div>`;
+    }
+    renderTimeline(totalMins, ideal.mins, `Sleep window — ${fmt(totalMins)} to ${ideal.time}`);
   }
   setStatus('slp-status', 'ok', '✓ Sleep times calculated');
 }
@@ -4965,17 +5009,27 @@ function loveCalc() {
   const n1  = document.getElementById('love-name1')?.value?.trim();
   const n2  = document.getElementById('love-name2')?.value?.trim();
   const out = document.getElementById('love-output');
+  const summary = document.getElementById('love-summary');
   if (!out) return;
-  if (!n1 || !n2) { out.textContent='Enter both names.'; out.className='output-box'; return; }
+  if (!n1 || !n2) {
+    out.textContent='Enter both names.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
-  // Deterministic but fun hash — same names always give same result
+  // Deterministic but fun hash — same two names always give the same result,
+  // regardless of which name box each one was typed into (order-independent).
   const hash = str => {
     let h = 0;
     for (let i=0; i<str.length; i++) h = (h * 31 + str.charCodeAt(i)) & 0xffffffff;
     return Math.abs(h);
   };
-  const combined = (n1+n2).toLowerCase().replace(/\s/g,'') + (n2+n1).toLowerCase().replace(/\s/g,'');
-  const pct = 40 + (hash(combined) % 55); // range 40–94 (always looks plausible)
+  // Sort the two (lowercased, space-stripped) names first, so "Alice"+"Bob" and "Bob"+"Alice"
+  // always produce the identical base string.
+  const clean = s => s.toLowerCase().replace(/\s/g,'');
+  const [nameA, nameB] = [clean(n1), clean(n2)].sort();
+  const base = nameA + '|' + nameB;
+  const pct = 40 + (hash(base) % 55); // range 40–94 (always looks plausible)
 
   const msg = pct >= 90 ? ['💞 Soulmates!', 'An extraordinary connection. The stars align perfectly for you two.']
     : pct >= 80 ? ['💕 Great match!', 'Strong compatibility. You bring out the best in each other.']
@@ -4985,17 +5039,28 @@ function loveCalc() {
 
   const bar = '█'.repeat(Math.round(pct/5)) + '░'.repeat(20-Math.round(pct/5));
 
+  // Every sub-score is derived from the same order-independent base (with a distinct salt each),
+  // so the full breakdown — not just the headline percentage — is symmetric too.
+  const communication = 30 + hash(base+'|communication') % 65;
+  const trust          = 35 + hash(base+'|trust') % 60;
+  const chemistry       = 40 + hash(base+'|chemistry') % 55;
+  const longTerm         = 30 + hash(base+'|longterm') % 65;
+
   out.className = 'output-box success';
   out.textContent =
     `${n1}  ❤️  ${n2}\n\n` +
     `${bar}  ${pct}%\n\n` +
     `${msg[0]}\n${msg[1]}\n\n` +
     `── Compatibility breakdown ───────────\n` +
-    `  Communication: ${30 + hash(n1.toLowerCase()) % 65}%\n` +
-    `  Trust:         ${35 + hash(n2.toLowerCase()) % 60}%\n` +
-    `  Chemistry:     ${40 + hash(combined.slice(0,8)) % 55}%\n` +
-    `  Long-term:     ${30 + hash(combined.slice(-8)) % 65}%\n\n` +
+    `  Communication: ${communication}%\n` +
+    `  Trust:         ${trust}%\n` +
+    `  Chemistry:     ${chemistry}%\n` +
+    `  Long-term:     ${longTerm}%\n\n` +
     `  ✨ Just for fun — love is what you make it!`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${n1} ❤️ ${n2} — ${pct}% ${msg[0]}</div><div class="rsc-sub">Same result no matter which name goes first · full breakdown below</div>`;
+  }
   setStatus('love-status','ok',`✓ ${pct}% compatibility`);
 }
 function loveClear(){
@@ -5010,6 +5075,7 @@ function luckyNumberCalc() {
   const name = document.getElementById('lucky-name')?.value?.trim() || '';
   const dob  = document.getElementById('lucky-dob')?.value || '';
   const out  = document.getElementById('lucky-output');
+  const summary = document.getElementById('lucky-summary');
   if (!out) return;
 
   // Numerology: reduce to single digit
@@ -5037,7 +5103,7 @@ function luckyNumberCalc() {
     lines.push(`Personality Number: ${persona}  (consonants)`);
   }
 
-  // Generate 5 lucky numbers based on inputs
+  // Generate 7 distinct lucky numbers (1-49) based on inputs
   const seed = (name + dob).split('').reduce((s,c)=>s+c.charCodeAt(0),0) || 42;
   const luckies = [];
   let x = seed;
@@ -5049,6 +5115,22 @@ function luckyNumberCalc() {
 
   const meanings = {1:'Leadership',2:'Harmony',3:'Creativity',4:'Stability',5:'Freedom',6:'Nurturing',7:'Wisdom',8:'Abundance',9:'Completion',11:'Intuition',22:'Master Builder',33:'Master Teacher'};
 
+  // Lucky days — genuinely derived from the actual generated lucky numbers (each number's value
+  // picks a day), while guaranteeing exactly 3 DISTINCT days every time, never an empty result.
+  const dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  const dayIdx = [];
+  for (const n of luckies) {
+    const di = n % 7;
+    if (!dayIdx.includes(di)) dayIdx.push(di);
+    if (dayIdx.length === 3) break;
+  }
+  let fallback = 0;
+  while (dayIdx.length < 3) {
+    if (!dayIdx.includes(fallback)) dayIdx.push(fallback);
+    fallback++;
+  }
+  const luckyDays = dayIdx.map(i => dayNames[i]);
+
   out.className = 'output-box success';
   out.textContent =
     (lines.length ? `── Your numerology numbers ──────────\n${lines.map(l=>`  ${l}`).join('\n')}\n\n` : '') +
@@ -5057,23 +5139,41 @@ function luckyNumberCalc() {
     `  Personal:    ${luckies.slice(0,5).join('  ')}\n` +
     `  Lottery pick: ${luckies.slice(0,6).sort((a,b)=>a-b).join('  ')}\n\n` +
     `── Lucky days this week ─────────────\n` +
-    ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-      .filter((_,i) => luckies[i%7] % 3 === 0 ? false : i % 3 !== 2)
-      .slice(0,3).map(d=>`  ✨ ${d}`).join('\n') + '\n\n' +
+    luckyDays.map(d=>`  ✨ ${d}`).join('\n') + '\n\n' +
     `  ✨ For entertainment only — make your own luck!`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">Lucky numbers: ${luckies.slice(0,5).join(', ')}</div><div class="rsc-sub">Lucky days: ${luckyDays.join(', ')} · full breakdown below</div>`;
+  }
   setStatus('lucky-status','ok','✓ Lucky numbers generated');
 }
 function luckyClear(){
   ['lucky-name','lucky-dob'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
   const o=document.getElementById('lucky-output');
+  const s=document.getElementById('lucky-summary');
   if(o){o.textContent='';o.className='output-box';}
+  if(s) s.classList.remove('show');
   setStatus('lucky-status','','enter your name or date of birth');
 }
 
 /* ── COIN FLIP & DICE ROLLER ── */
+let coinHistory = [];
+let diceHistory = [];
+
+function renderCoinHistory() {
+  const h = document.getElementById('coin-history');
+  if (!h) return;
+  h.textContent = coinHistory.length ? coinHistory.join('\n') : 'No flips yet this session.';
+}
+function coinClearHistory() {
+  coinHistory = [];
+  renderCoinHistory();
+}
+
 function coinFlip() {
   const count = parseInt(document.getElementById('coin-count')?.value) || 1;
   const out   = document.getElementById('coin-output');
+  const summary = document.getElementById('coin-summary');
   if (!out) return;
   const results = Array.from({length:Math.min(count,100)}, ()=> Math.random()<0.5 ? 'Heads' : 'Tails');
   const heads = results.filter(r=>r==='Heads').length;
@@ -5087,13 +5187,34 @@ function coinFlip() {
         `Heads: ${heads}/${results.length}  ${bar(heads)}  ${(heads/results.length*100).toFixed(1)}%\n` +
         `Tails: ${tails}/${results.length}  ${bar(tails)}  ${(tails/results.length*100).toFixed(1)}%`
     );
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = count===1
+      ? `<div class="rsc-label">Result</div><div class="rsc-value">🪙 ${results[0]}</div><div class="rsc-sub">Flip again for another result</div>`
+      : `<div class="rsc-label">Result</div><div class="rsc-value">${heads} Heads / ${tails} Tails</div><div class="rsc-sub">${count} flips · ${(heads/results.length*100).toFixed(1)}% heads</div>`;
+  }
+  const stamp = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  coinHistory.unshift(count===1 ? `${stamp}  ${results[0]}` : `${stamp}  ${count} flips — H:${heads} T:${tails}`);
+  if (coinHistory.length > 20) coinHistory.length = 20;
+  renderCoinHistory();
   setStatus('coin-status','ok', count===1 ? `✓ ${results[0]}` : `✓ H:${heads} T:${tails}`);
+}
+
+function renderDiceHistory() {
+  const h = document.getElementById('dice-history');
+  if (!h) return;
+  h.textContent = diceHistory.length ? diceHistory.join('\n') : 'No rolls yet this session.';
+}
+function diceClearHistory() {
+  diceHistory = [];
+  renderDiceHistory();
 }
 
 function diceRoll() {
   const sides = parseInt(document.getElementById('dice-sides')?.value) || 6;
   const count = parseInt(document.getElementById('dice-count')?.value) || 1;
   const out   = document.getElementById('dice-output');
+  const summary = document.getElementById('dice-summary');
   if (!out) return;
   const results = Array.from({length:Math.min(count,20)}, ()=>Math.floor(Math.random()*sides)+1);
   const sum = results.reduce((s,n)=>s+n,0);
@@ -5104,6 +5225,16 @@ function diceRoll() {
       ? `🎲 Rolled: ${results[0]}  (d${sides})`
       : `${count}d${sides}:\n  ${results.join('  ')}\n\n  Sum: ${sum}  Average: ${avg.toFixed(1)}\n  Min: ${Math.min(...results)}  Max: ${Math.max(...results)}`
     );
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = count===1
+      ? `<div class="rsc-label">Result</div><div class="rsc-value">🎲 ${results[0]} (d${sides})</div><div class="rsc-sub">Roll again for another result</div>`
+      : `<div class="rsc-label">Result</div><div class="rsc-value">Sum: ${sum}</div><div class="rsc-sub">${count}d${sides} · average ${avg.toFixed(1)}</div>`;
+  }
+  const stamp = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  diceHistory.unshift(count===1 ? `${stamp}  d${sides} → ${results[0]}` : `${stamp}  ${count}d${sides} → [${results.join(',')}] sum ${sum}`);
+  if (diceHistory.length > 20) diceHistory.length = 20;
+  renderDiceHistory();
   setStatus('dice-status','ok', count===1 ? `✓ Rolled ${results[0]}` : `✓ Sum: ${sum}`);
 }
 
@@ -5112,17 +5243,32 @@ function daysBetween() {
   const d1  = document.getElementById('dbd-date1')?.value;
   const d2  = document.getElementById('dbd-date2')?.value;
   const out = document.getElementById('dbd-output');
+  const summary = document.getElementById('dbd-summary');
   if (!out) return;
-  if (!d1||!d2) { out.textContent='Select both dates.'; out.className='output-box'; return; }
+  if (!d1||!d2) {
+    out.textContent='Select both dates.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
   const date1 = new Date(d1), date2 = new Date(d2);
   const diff  = Math.abs(date2-date1);
-  const days  = Math.round(diff/86400000);
-  const weeks = Math.floor(days/7);
-  const months= Math.abs((date2.getFullYear()-date1.getFullYear())*12 + date2.getMonth()-date1.getMonth());
-  const years = Math.abs(date2.getFullYear()-date1.getFullYear());
+  const daysExclusive = Math.round(diff/86400000);   // calendar days between the two dates (not counting either endpoint twice)
+  const daysInclusive = daysExclusive + 1;             // both start and end date counted (e.g. hotel-night-style "span" counting)
+  const weeks = Math.floor(daysExclusive/7);
   const earlier = date1 <= date2 ? date1 : date2;
   const later   = date1 <= date2 ? date2 : date1;
+
+  // Month/year difference, day-of-month aware — avoids the classic bug where a naive
+  // (year*12+month) subtraction can report MORE months for FEWER days near a month boundary
+  // (e.g. Jan 31 -> Feb 1 is 1 day apart but was previously reported as "1 month").
+  let months = (later.getFullYear()-earlier.getFullYear())*12 + (later.getMonth()-earlier.getMonth());
+  if (later.getDate() < earlier.getDate()) months--;
+  if (months < 0) months = 0;
+
+  let years = later.getFullYear() - earlier.getFullYear();
+  if (later.getMonth() < earlier.getMonth() || (later.getMonth()===earlier.getMonth() && later.getDate() < earlier.getDate())) years--;
+  if (years < 0) years = 0;
 
   // Workdays (Mon–Fri)
   let workdays = 0;
@@ -5130,9 +5276,8 @@ function daysBetween() {
     const wd = d.getDay();
     if (wd!==0 && wd!==6) workdays++;
   }
-  const weekends = days - workdays;
+  const weekends = daysExclusive - workdays;
 
-  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const fmtDate = d => d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
   out.className = 'output-box success';
@@ -5140,17 +5285,22 @@ function daysBetween() {
     `From: ${fmtDate(earlier)}\n` +
     `To:   ${fmtDate(later)}\n\n` +
     `── Duration ──────────────────────────\n` +
-    `${days.toLocaleString()} days total\n` +
-    `${weeks} weeks + ${days%7} days\n` +
-    `~${months} months\n` +
-    `~${years > 0 ? years+' year'+(years!==1?'s':'')+' and ':''}${months%12} month${months%12!==1?'s':''}\n\n` +
+    `${daysExclusive.toLocaleString()} days (exclusive — calendar days between the two dates)\n` +
+    `${daysInclusive.toLocaleString()} days (inclusive — counting both the start and end date)\n` +
+    `${weeks} weeks + ${daysExclusive%7} days\n` +
+    `${months} month${months!==1?'s':''} (calendar months, day-of-month aware)\n` +
+    `${years > 0 ? years+' year'+(years!==1?'s':'')+' and ':''}${months%12} month${months%12!==1?'s':''}\n\n` +
     `── Breakdown ─────────────────────────\n` +
     `  Weekdays:    ${workdays.toLocaleString()} days\n` +
     `  Weekends:    ${weekends.toLocaleString()} days\n` +
-    `  Hours:       ${(days*24).toLocaleString()}\n` +
-    `  Minutes:     ${(days*24*60).toLocaleString()}\n` +
-    `  Seconds:     ${(days*24*3600).toLocaleString()}`;
-  setStatus('dbd-status','ok',`✓ ${days.toLocaleString()} days`);
+    `  Hours:       ${(daysExclusive*24).toLocaleString()}\n` +
+    `  Minutes:     ${(daysExclusive*24*60).toLocaleString()}\n` +
+    `  Seconds:     ${(daysExclusive*24*3600).toLocaleString()}`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${daysExclusive.toLocaleString()} days (${daysInclusive.toLocaleString()} inclusive)</div><div class="rsc-sub">${years>0?years+' yr ':''}${months%12} mo · ${weeks} weeks + ${daysExclusive%7} days</div>`;
+  }
+  setStatus('dbd-status','ok',`✓ ${daysExclusive.toLocaleString()} days`);
 }
 function dbdSetToday(id) {
   const el = document.getElementById(id);
@@ -5161,8 +5311,13 @@ function dbdSetToday(id) {
 function zodiacCalc() {
   const dob = document.getElementById('zod-dob')?.value;
   const out = document.getElementById('zod-output');
+  const summary = document.getElementById('zod-summary');
   if (!out) return;
-  if (!dob) { out.textContent='Select your date of birth.'; out.className='output-box'; return; }
+  if (!dob) {
+    out.textContent='Select your date of birth.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
   // Parse date parts directly from YYYY-MM-DD (HTML date input format)
   // Avoids timezone shifts that cause getDate() to return wrong day
@@ -5186,21 +5341,13 @@ function zodiacCalc() {
     {sign:'Sagittarius',symbol:'♐',date:'Nov 22 – Dec 21', el:'Fire',   rule:'Jupiter', trait:'Adventurous, optimistic, philosophical'},
   ];
 
-  const getSign = (m,d) => {
-    const dates = [[1,20],[2,19],[3,21],[4,20],[5,21],[6,21],[7,23],[8,23],[9,23],[10,23],[11,22],[12,22]];
-    for (let i=0;i<12;i++) { if(m===dates[i][0]&&d>=dates[i][1]) return SIGNS[(i+1)%12]; if(m===(dates[i][0]%12)+1&&d<dates[i][1]) return SIGNS[(i+1)%12]; }
-    return SIGNS[0];
-  };
-
-  // Better sign lookup
-  // Each entry = [month, day, sign that STARTS on this date]
-  // If date is before this boundary, return the PREVIOUS sign
+  // Western zodiac lookup — each entry = [month, day, sign that STARTS on this date].
+  // If date is before this boundary, use the previous sign.
   const boundaries = [
     [1,20,'Aquarius'],[2,19,'Pisces'],[3,21,'Aries'],[4,20,'Taurus'],
     [5,21,'Gemini'],[6,21,'Cancer'],[7,23,'Leo'],[8,23,'Virgo'],
     [9,23,'Libra'],[10,23,'Scorpio'],[11,22,'Sagittarius'],[12,22,'Capricorn']
   ];
-  // Signs in order — when date is before a boundary, use the previous sign
   const signOrder = ['Capricorn','Aquarius','Pisces','Aries','Taurus','Gemini',
                      'Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn'];
   let signName = 'Capricorn';
@@ -5213,9 +5360,46 @@ function zodiacCalc() {
   }
   const s = SIGNS.find(x=>x.sign===signName) || SIGNS[0];
 
-  // Chinese zodiac
-  const CHINESE = ['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'];
-  const chinese = CHINESE[(year-1900)%12];
+  // Chinese zodiac — accurate Lunar New Year lookup table (1948–2031), sourced from published
+  // Chinese zodiac year charts. Each entry: Gregorian year -> [LNY month, LNY day, animal that starts].
+  // For dates before that year's LNY, the PREVIOUS entry's animal applies (handles Jan/Feb birthdays correctly).
+  const LNY = {
+    1948:[2,10,'Rat'],1949:[1,29,'Ox'],1950:[2,17,'Tiger'],1951:[2,6,'Rabbit'],1952:[1,27,'Dragon'],
+    1953:[2,14,'Snake'],1954:[2,3,'Horse'],1955:[1,24,'Goat'],1956:[2,12,'Monkey'],1957:[1,31,'Rooster'],
+    1958:[2,18,'Dog'],1959:[2,8,'Pig'],1960:[1,28,'Rat'],1961:[2,15,'Ox'],1962:[2,5,'Tiger'],
+    1963:[1,25,'Rabbit'],1964:[2,13,'Dragon'],1965:[2,2,'Snake'],1966:[1,21,'Horse'],1967:[2,9,'Goat'],
+    1968:[1,30,'Monkey'],1969:[2,17,'Rooster'],1970:[2,6,'Dog'],1971:[1,27,'Pig'],1972:[2,15,'Rat'],
+    1973:[2,3,'Ox'],1974:[1,23,'Tiger'],1975:[2,11,'Rabbit'],1976:[1,31,'Dragon'],1977:[2,18,'Snake'],
+    1978:[2,7,'Horse'],1979:[1,28,'Goat'],1980:[2,16,'Monkey'],1981:[2,5,'Rooster'],1982:[1,25,'Dog'],
+    1983:[2,13,'Pig'],1984:[2,2,'Rat'],1985:[2,19,'Ox'],1986:[2,9,'Tiger'],1987:[1,29,'Rabbit'],
+    1988:[2,17,'Dragon'],1989:[2,6,'Snake'],1990:[1,27,'Horse'],1991:[2,15,'Goat'],1992:[2,4,'Monkey'],
+    1993:[1,23,'Rooster'],1994:[2,10,'Dog'],1995:[1,30,'Pig'],1996:[2,19,'Rat'],1997:[2,7,'Ox'],
+    1998:[1,28,'Tiger'],1999:[2,16,'Rabbit'],2000:[2,5,'Dragon'],2001:[1,24,'Snake'],2002:[2,12,'Horse'],
+    2003:[2,1,'Goat'],2004:[1,22,'Monkey'],2005:[2,9,'Rooster'],2006:[1,29,'Dog'],2007:[2,17,'Pig'],
+    2008:[2,7,'Rat'],2009:[1,26,'Ox'],2010:[2,14,'Tiger'],2011:[2,3,'Rabbit'],2012:[1,23,'Dragon'],
+    2013:[2,10,'Snake'],2014:[1,31,'Horse'],2015:[2,19,'Goat'],2016:[2,8,'Monkey'],2017:[1,28,'Rooster'],
+    2018:[2,16,'Dog'],2019:[2,5,'Pig'],2020:[1,25,'Rat'],2021:[2,12,'Ox'],2022:[2,1,'Tiger'],
+    2023:[1,22,'Rabbit'],2024:[2,10,'Dragon'],2025:[1,29,'Snake'],2026:[2,17,'Horse'],2027:[2,6,'Goat'],
+    2028:[1,26,'Monkey'],2029:[2,13,'Rooster'],2030:[2,3,'Dog'],2031:[1,22,'Pig'],
+  };
+  const CYCLE = ['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'];
+  function chineseSignFor(y, m, d) {
+    const minY = 1948, maxY = 2031;
+    if (y >= minY && y <= maxY) {
+      const [lnyM, lnyD, signAtY] = LNY[y];
+      if (m > lnyM || (m === lnyM && d >= lnyD)) return { animal: signAtY, exact: true };
+      const prev = LNY[y-1];
+      return { animal: prev ? prev[2] : signAtY, exact: true };
+    }
+    // Outside the sourced table: extrapolate the animal cycle (exact, 12-year rotation never drifts)
+    // using Feb 4 as an approximate Lunar New Year boundary (the long-run historical average date).
+    const anchorYear = 2023, anchorIndex = 3; // 2023 = Rabbit, confirmed in the table above
+    const effectiveYear = (m > 2 || (m === 2 && d >= 4)) ? y : y - 1;
+    const offset = ((effectiveYear - anchorYear) % 12 + 12) % 12;
+    return { animal: CYCLE[(anchorIndex + offset) % 12], exact: false };
+  }
+  const chineseResult = chineseSignFor(year, month, day);
+  const chinese = chineseResult.animal;
 
   // Life path
   const digits = dob.replace(/-/g,'');
@@ -5232,7 +5416,8 @@ function zodiacCalc() {
     `  Ruling planet:${s.rule}\n` +
     `  Traits:       ${s.trait}\n\n` +
     `── Chinese Zodiac ────────────────────\n` +
-    `  Year ${year}: ${chinese}\n\n` +
+    `  Animal:       ${chinese}${chineseResult.exact ? '' : ' (estimated — outside verified date range)'}\n` +
+    `  Based on:     Lunar New Year, not Jan 1 — accounts for Jan/Feb birthdays\n\n` +
     `── Numerology ───────────────────────\n` +
     `  Life Path:    ${lp}\n\n` +
     `── Compatible signs ──────────────────\n` +
@@ -5240,6 +5425,10 @@ function zodiacCalc() {
      s.el==='Earth' ?'  Taurus, Virgo, Capricorn (Earth)\n  Cancer, Scorpio, Pisces (Water)':
      s.el==='Air'   ?'  Gemini, Libra, Aquarius (Air)\n  Aries, Leo, Sagittarius (Fire)':
                      '  Cancer, Scorpio, Pisces (Water)\n  Taurus, Virgo, Capricorn (Earth)');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${s.symbol} ${s.sign} · 🐉 ${chinese}</div><div class="rsc-sub">Life Path ${lp} · Full breakdown below</div>`;
+  }
   setStatus('zod-status','ok',`✓ ${s.symbol} ${s.sign}`);
 }
 

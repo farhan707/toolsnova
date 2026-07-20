@@ -221,15 +221,15 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Room length (ft)</div>
-      <input type="number" id="fl-l" placeholder="e.g. 12" class="b2-input" oninput="flooringCalc()" aria-label="Room length (ft)">
+      <input type="number" id="fl-l" placeholder="e.g. 12" class="uc-input" oninput="flooringCalc()" aria-label="Room length (ft)">
     </div>
     <div>
       <div class="pane-label">Room width (ft)</div>
-      <input type="number" id="fl-w" placeholder="e.g. 10" class="b2-input" oninput="flooringCalc()" aria-label="Room width (ft)">
+      <input type="number" id="fl-w" placeholder="e.g. 10" class="uc-input" oninput="flooringCalc()" aria-label="Room width (ft)">
     </div>
     <div>
       <div class="pane-label">Waste factor</div>
-      <select id="fl-waste" class="mode-select" style="width:100%" onchange="flooringCalc()" aria-label="Waste factor">
+      <select id="fl-waste" class="uc-select" onchange="flooringCalc()" aria-label="Waste factor">
           <option value="5">5% (straight lay)</option>
           <option value="10" selected>10% (standard)</option>
           <option value="15">15% (diagonal/pattern)</option>
@@ -238,14 +238,17 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
     <div>
       <div class="pane-label">Price per sq ft ($)</div>
-      <input type="number" id="fl-price" placeholder="e.g. 3.50 (optional)" class="b2-input" oninput="flooringCalc()" aria-label="Price per sq ft ($)">
+      <input type="number" id="fl-price" placeholder="e.g. 3.50 (optional)" class="uc-input" oninput="flooringCalc()" aria-label="Price per sq ft ($)">
     </div>
     <div>
       <div class="pane-label">Sq ft per box</div>
-      <input type="number" id="fl-box" placeholder="e.g. 20 (optional)" class="b2-input" oninput="flooringCalc()" aria-label="Sq ft per box">
+      <input type="number" id="fl-box" placeholder="e.g. 20 (optional)" class="uc-input" oninput="flooringCalc()" aria-label="Sq ft per box">
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+
+  <div class="result-summary-card" id="fl-summary"></div>
+
+  <div><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="fl-output" onclick="copyEl('fl-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
   <section class="edu-section">

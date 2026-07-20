@@ -221,14 +221,17 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Run (horizontal distance)</div>
-      <input type="number" id="rp-run" placeholder="e.g. 12 (inches)" class="b2-input" oninput="roofPitchCalc()" aria-label="Run (horizontal distance)">
+      <input type="number" id="rp-run" placeholder="e.g. 12 (inches)" class="uc-input" oninput="roofPitchCalc()" aria-label="Run (horizontal distance)">
     </div>
     <div>
       <div class="pane-label">Rise (vertical distance)</div>
-      <input type="number" id="rp-rise" placeholder="e.g. 6 (inches)" class="b2-input" oninput="roofPitchCalc()" aria-label="Rise (vertical distance)">
+      <input type="number" id="rp-rise" placeholder="e.g. 6 (inches)" class="uc-input" oninput="roofPitchCalc()" aria-label="Rise (vertical distance)">
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+
+  <div class="result-summary-card" id="rp-summary"></div>
+
+  <div><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="rp-output" onclick="copyEl('rp-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
   <section class="edu-section">

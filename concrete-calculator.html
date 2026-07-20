@@ -221,25 +221,28 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Unit system</div>
-      <select id="con-unit" class="mode-select" style="width:100%" onchange="concreteCalc()" aria-label="Unit system">
+      <select id="con-unit" class="uc-select" onchange="concreteCalc()" aria-label="Unit system">
           <option value="ft" selected>Feet (height in inches)</option>
           <option value="m">Metres</option>
       </select>
     </div>
     <div>
       <div class="pane-label">Length</div>
-      <input type="number" id="con-l" placeholder="e.g. 10" class="b2-input" oninput="concreteCalc()" aria-label="Length">
+      <input type="number" id="con-l" placeholder="e.g. 10" class="uc-input" oninput="concreteCalc()" aria-label="Length">
     </div>
     <div>
       <div class="pane-label">Width</div>
-      <input type="number" id="con-w" placeholder="e.g. 12" class="b2-input" oninput="concreteCalc()" aria-label="Width">
+      <input type="number" id="con-w" placeholder="e.g. 12" class="uc-input" oninput="concreteCalc()" aria-label="Width">
     </div>
     <div>
       <div class="pane-label">Depth/Thickness</div>
-      <input type="number" id="con-h" placeholder="e.g. 4 (inches if ft)" class="b2-input" oninput="concreteCalc()" aria-label="Depth/Thickness">
+      <input type="number" id="con-h" placeholder="e.g. 4 (inches if ft)" class="uc-input" oninput="concreteCalc()" aria-label="Depth/Thickness">
     </div>
   </div>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+
+  <div class="result-summary-card" id="con-summary"></div>
+
+  <div><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="con-output" onclick="copyEl('con-output')" style="min-height:180px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
   <section class="edu-section">

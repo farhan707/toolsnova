@@ -222,16 +222,19 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Coats of paint</div>
-      <input type="number" id="paint-coats" placeholder="e.g. 2" class="b2-input" oninput="paintCalc()" aria-label="Coats of paint">
+      <input type="number" id="paint-coats" placeholder="e.g. 2" class="uc-input" oninput="paintCalc()" aria-label="Coats of paint">
     </div>
     <div>
       <div class="pane-label">Coverage (sq ft/gallon)</div>
-      <input type="number" id="paint-coverage" placeholder="e.g. 400" class="b2-input" oninput="paintCalc()" aria-label="Coverage (sq ft/gallon)">
+      <input type="number" id="paint-coverage" placeholder="e.g. 400" class="uc-input" oninput="paintCalc()" aria-label="Coverage (sq ft/gallon)">
     </div>
   </div>
   <div id="paint-rooms"></div>
   <button class="btn" onclick="paintAddRoom()" style="width:100%;margin-bottom:10px">+ Add another room</button>
-  <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
+
+  <div class="result-summary-card" id="paint-summary"></div>
+
+  <div><div class="pane-label">Full breakdown <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="paint-output" onclick="copyEl('paint-output')" style="min-height:160px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
 
   <section class="edu-section">

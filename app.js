@@ -6420,11 +6420,16 @@ function sigFigCalc() {
 function concreteCalc() {
   const unit  = document.getElementById('con-unit')?.value || 'ft';
   const out   = document.getElementById('con-output');
+  const summary = document.getElementById('con-summary');
   if (!out) return;
   const l = parseFloat(document.getElementById('con-l')?.value);
   const w = parseFloat(document.getElementById('con-w')?.value);
   const h = parseFloat(document.getElementById('con-h')?.value);
-  if (isNaN(l)||isNaN(w)||isNaN(h)) { out.textContent='Enter all dimensions.'; out.className='output-box error'; return; }
+  if (isNaN(l)||isNaN(w)||isNaN(h)) {
+    out.textContent='Enter all dimensions.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   let volCubicFt;
   if (unit==='m') { volCubicFt = l*w*h*35.3147; }
   else { volCubicFt = l*w*h/12; } // ft + inches for h
@@ -6447,6 +6452,10 @@ function concreteCalc() {
     `80 lb bags:  ${bags80lb} bags (inc. 10% waste)\n\n`+
     `── Ready-mix concrete ────────────────\n`+
     `Order:       ${(volCubicYd*1.1).toFixed(2)} yd³ (with 10% extra)`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${volCubicYd.toFixed(2)} yd³</div><div class="rsc-sub">${bags60lb} × 60lb bags or ${bags80lb} × 80lb bags · full breakdown below</div>`;
+  }
   setStatus('con-status','ok',`✓ ${volCubicYd.toFixed(2)} yd³`);
 }
 
@@ -6456,6 +6465,7 @@ function paintCalc() {
   const coats = parseInt(document.getElementById('paint-coats')?.value)||2;
   const coverage = parseFloat(document.getElementById('paint-coverage')?.value)||400; // sq ft per gallon
   const out = document.getElementById('paint-output');
+  const summary = document.getElementById('paint-summary');
   if (!out) return;
   let totalSqFt = 0;
   rooms.forEach(room => {
@@ -6467,7 +6477,11 @@ function paintCalc() {
     const wallArea = 2*(l+w)*h - doors*21 - windows*15;
     totalSqFt += Math.max(0,wallArea);
   });
-  if (totalSqFt===0) { out.textContent='Add room dimensions.'; out.className='output-box'; return; }
+  if (totalSqFt===0) {
+    out.textContent='Add room dimensions.'; out.className='output-box';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const totalWithCoats = totalSqFt * coats;
   const gallons = totalWithCoats/coverage;
   const quarts  = gallons*4;
@@ -6483,6 +6497,10 @@ function paintCalc() {
     `── Buy ───────────────────────────────\n`+
     `Round up: ${Math.ceil(gallons)} gallons\n`+
     `With 10% extra: ${Math.ceil(gallons*1.1)} gallons`;
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${Math.ceil(gallons)} gallons</div><div class="rsc-sub">${coats} coats · ${coverage} sq ft/gal coverage · full breakdown below</div>`;
+  }
   setStatus('paint-status','ok',`✓ ${Math.ceil(gallons)} gallons needed`);
 }
 function paintAddRoom() {
@@ -6497,11 +6515,11 @@ function paintAddRoom() {
       <button onclick="this.closest('.paint-room').remove();paintCalc()" aria-label="Remove room" style="background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--red);cursor:pointer;font-size:.7rem;padding:2px 8px">✕ Remove</button>
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">
-      <div><div class="pane-label" style="font-size:.65rem">Length (ft)</div><input class="b2-input pr-l" type="number" placeholder="12" oninput="paintCalc()" aria-label="Room length (ft)"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Width (ft)</div><input class="b2-input pr-w" type="number" placeholder="10" oninput="paintCalc()" aria-label="Room width (ft)"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Height (ft)</div><input class="b2-input pr-h" type="number" placeholder="8" oninput="paintCalc()" aria-label="Room height (ft)"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Doors</div><input class="b2-input pr-doors" type="number" placeholder="1" oninput="paintCalc()" aria-label="Number of doors"></div>
-      <div><div class="pane-label" style="font-size:.65rem">Windows</div><input class="b2-input pr-windows" type="number" placeholder="1" oninput="paintCalc()" aria-label="Number of windows"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Length (ft)</div><input class="uc-input pr-l" type="number" placeholder="12" oninput="paintCalc()" aria-label="Room length (ft)"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Width (ft)</div><input class="uc-input pr-w" type="number" placeholder="10" oninput="paintCalc()" aria-label="Room width (ft)"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Height (ft)</div><input class="uc-input pr-h" type="number" placeholder="8" oninput="paintCalc()" aria-label="Room height (ft)"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Doors</div><input class="uc-input pr-doors" type="number" placeholder="1" oninput="paintCalc()" aria-label="Number of doors"></div>
+      <div><div class="pane-label" style="font-size:.65rem">Windows</div><input class="uc-input pr-windows" type="number" placeholder="1" oninput="paintCalc()" aria-label="Number of windows"></div>
     </div>`;
   cont.appendChild(div);
   paintCalc();
@@ -7102,8 +7120,13 @@ function roofPitchCalc() {
   const run  = parseFloat(document.getElementById('rp-run')?.value);
   const rise = parseFloat(document.getElementById('rp-rise')?.value);
   const out  = document.getElementById('rp-output');
+  const summary = document.getElementById('rp-summary');
   if (!out) return;
-  if (isNaN(run)||isNaN(rise)||run<=0) { out.textContent='Enter run and rise.'; out.className='output-box error'; return; }
+  if (isNaN(run)||isNaN(rise)||run<=0) {
+    out.textContent='Enter run and rise.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const angle   = Math.atan(rise/run)*180/Math.PI;
   const slope   = Math.sqrt(run*run+rise*rise)/run;
   // Normalize to per 12
@@ -7131,6 +7154,10 @@ function roofPitchCalc() {
       const s=Math.sqrt(144+r*r)/12;
       return `  ${String(r+':12').padEnd(6)} ${a.toFixed(1)}° slope×${s.toFixed(3)}`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${riseP12}:12 · ${angle.toFixed(1)}°</div><div class="rsc-sub">${classification} · ${slope.toFixed(3)}x slope multiplier</div>`;
+  }
   setStatus('rp-status','ok',`✓ ${riseP12}:12 = ${angle.toFixed(1)}°`);
 }
 
@@ -7142,8 +7169,13 @@ function flooringCalc() {
   const price  = parseFloat(document.getElementById('fl-price')?.value)||0;
   const boxSz  = parseFloat(document.getElementById('fl-box')?.value)||20;
   const out    = document.getElementById('fl-output');
+  const summary = document.getElementById('fl-summary');
   if (!out) return;
-  if (isNaN(l)||isNaN(w)||l<=0||w<=0) { out.textContent='Enter room dimensions.'; out.className='output-box error'; return; }
+  if (isNaN(l)||isNaN(w)||l<=0||w<=0) {
+    out.textContent='Enter room dimensions.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
   const sqFt    = l*w;
   const withWaste = sqFt*(1+waste/100);
   const boxes   = Math.ceil(withWaste/boxSz);
@@ -7158,6 +7190,10 @@ function flooringCalc() {
     `Sq metres:     ${(withWaste*0.0929).toFixed(2)} m²\n`+
     (boxSz>0?`Boxes needed:  ${boxes} boxes (${boxSz} sq ft/box)\n`:'')+
     (price>0?`\n── Cost ──────────────────────────────\n$${totalCost.toFixed(2)} @ $${price}/sq ft\n`:'');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${sqFt.toFixed(0)} sq ft${boxSz>0?' · '+boxes+' boxes':''}</div><div class="rsc-sub">${withWaste.toFixed(0)} sq ft with ${waste}% waste included · full breakdown below</div>`;
+  }
   setStatus('fl-status','ok',`✓ ${withWaste.toFixed(0)} sq ft needed`);
 }
 

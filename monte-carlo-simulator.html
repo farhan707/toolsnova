@@ -33,6 +33,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monte Carlo Trading Simulator","url":"https://toolsnova.net/monte-carlo-simulator","description":"Simulate 100 equity curves for any trading strategy using Monte Carlo simulation.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Monte Carlo simulation in trading?","acceptedAnswer":{"@type":"Answer","text":"Monte Carlo simulation runs hundreds of randomised trade sequences using your strategy's statistics (win rate, R:R, risk per trade) to show the full range of possible outcomes. Instead of one expected equity curve, you see 100 different paths your account could realistically take — from best case to worst case. It's used by professional quant traders and fund managers to stress-test strategies before deploying real capital."}},{"@type":"Question","name":"Why do the curves look so different even with the same stats?","acceptedAnswer":{"@type":"Answer","text":"Because of variance — the natural randomness in trade outcomes. Even a profitable strategy with 55% win rate will sometimes produce 8-10 consecutive losses purely by chance. Monte Carlo reveals this reality: your strategy might end up +40% or barely break even after 100 trades, even with a genuine edge. The median curve (green) shows the most likely path, while the spread of curves shows the realistic range of outcomes."}},{"@type":"Question","name":"How do I use this for prop firm challenge planning?","acceptedAnswer":{"@type":"Answer","text":"Enable the Prop Firm Rules overlays — set your max drawdown (e.g. 10%) and profit target (e.g. 8%). If your firm also enforces a daily loss limit, enable Daily DD and set \"Trades/day\" to how many trades you realistically take in a day, so the simulation correctly checks cumulative same-day losses rather than just one trade at a time. The simulator then shows how many curves hit the target without breaching either limit, giving you your real probability of passing. If less than 50% of curves pass, you need to adjust your risk per trade, increase your win rate, or improve your R:R before attempting the challenge."}},{"@type":"Question","name":"What is the maximum drawdown in the simulation?","acceptedAnswer":{"@type":"Answer","text":"The simulator tracks the maximum peak-to-trough decline for each equity curve across all trades. The worst-case max drawdown shown in the stats is the highest drawdown seen across all simulated curves — this represents the worst scenario your strategy could realistically face given your statistics. Your risk per trade is the primary lever to control maximum drawdown."}},{"@type":"Question","name":"How many simulations should I run?","acceptedAnswer":{"@type":"Answer","text":"100 simulations gives a reliable visual picture and is fast. 500 simulations gives more statistically precise probability estimates (e.g. exact pass rate). For final strategy validation before a real prop firm challenge, run 500. For quick visual checks of a strategy change, 100 is sufficient."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Monte Carlo Simulator","item":"https://toolsnova.net/monte-carlo-simulator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S6PPGS7N63');</script>
@@ -295,27 +297,27 @@
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1rem">
     <div>
       <div class="pane-label">Win Rate (%)</div>
-      <input type="number" id="mc-wr" value="55" min="1" max="99" class="b2-input" aria-label="Win rate">
+      <input type="number" id="mc-wr" value="55" min="1" max="99" class="uc-input" aria-label="Win rate">
     </div>
     <div>
       <div class="pane-label">Risk per Trade (%)</div>
-      <input type="number" id="mc-risk" value="1" min="0.1" max="10" step="0.1" class="b2-input" aria-label="Risk per trade">
+      <input type="number" id="mc-risk" value="1" min="0.1" max="10" step="0.1" class="uc-input" aria-label="Risk per trade">
     </div>
     <div>
       <div class="pane-label">Reward Ratio (R)</div>
-      <input type="number" id="mc-rr" value="1.5" min="0.1" step="0.1" class="b2-input" aria-label="Reward ratio">
+      <input type="number" id="mc-rr" value="1.5" min="0.1" step="0.1" class="uc-input" aria-label="Reward ratio">
     </div>
     <div>
       <div class="pane-label">Number of Trades</div>
-      <input type="number" id="mc-trades" value="100" min="10" max="500" class="b2-input" aria-label="Number of trades">
+      <input type="number" id="mc-trades" value="100" min="10" max="500" class="uc-input" aria-label="Number of trades">
     </div>
     <div>
       <div class="pane-label">Starting Balance ($)</div>
-      <input type="number" id="mc-balance" value="10000" class="b2-input" aria-label="Starting balance">
+      <input type="number" id="mc-balance" value="10000" class="uc-input" aria-label="Starting balance">
     </div>
     <div>
       <div class="pane-label">Simulations</div>
-      <select id="mc-sims" class="mode-select" style="width:100%">
+      <select id="mc-sims" class="uc-select" aria-label="Number of simulations">
         <option value="50">50 curves</option>
         <option value="100" selected>100 curves</option>
         <option value="200">200 curves</option>
@@ -328,16 +330,19 @@
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem 1rem;margin-bottom:1rem;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
     <div style="font-size:.75rem;color:var(--text2);font-weight:600">Prop Firm Rules:</div>
     <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text2);cursor:pointer">
-      <input type="checkbox" id="mc-maxdd-on"> Max Drawdown
-      <input type="number" id="mc-maxdd" value="10" min="1" max="50" style="width:52px" class="b2-input">%
+      <input type="checkbox" id="mc-maxdd-on" aria-label="Enable Max Drawdown limit"> Max Drawdown
+      <input type="number" id="mc-maxdd" value="10" min="1" max="50" style="width:52px" class="uc-input" aria-label="Max Drawdown percent">%
     </label>
     <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text2);cursor:pointer">
-      <input type="checkbox" id="mc-target-on"> Profit Target
-      <input type="number" id="mc-target" value="8" min="1" max="50" style="width:52px" class="b2-input">%
+      <input type="checkbox" id="mc-target-on" aria-label="Enable Profit Target"> Profit Target
+      <input type="number" id="mc-target" value="8" min="1" max="50" style="width:52px" class="uc-input" aria-label="Profit Target percent">%
     </label>
     <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text2);cursor:pointer">
-      <input type="checkbox" id="mc-dailydd-on"> Daily DD
-      <input type="number" id="mc-dailydd" value="5" min="1" max="20" style="width:52px" class="b2-input">%
+      <input type="checkbox" id="mc-dailydd-on" aria-label="Enable Daily Drawdown limit"> Daily DD
+      <input type="number" id="mc-dailydd" value="5" min="1" max="20" style="width:52px" class="uc-input" aria-label="Daily Drawdown percent">%
+      <span style="color:var(--text3)">·</span>
+      <span title="How many trades count as one trading day, for the Daily DD check">trades/day</span>
+      <input type="number" id="mc-tradesperday" value="5" min="1" max="50" style="width:52px" class="uc-input" aria-label="Trades per day (for Daily DD calculation)">
     </label>
   </div>
 
@@ -467,6 +472,22 @@
     </div>
   </section>
 
+  <section class="edu-section">
+    <h2>How the Simulation Works</h2>
+    <div class="edu-highlight"><strong>Per trade:</strong> balance × (1 + risk × R:R) on a win, balance × (1 − risk) on a loss — compounding against your current balance, not a fixed starting amount. <strong>Max Drawdown:</strong> trailing, measured from the highest balance reached so far. <strong>Daily Drawdown:</strong> cumulative loss since the start of the current simulated day (every "Trades/day" trades), not just the most recent single trade.</div>
+    <h3>Worked example — why Trades/day matters</h3>
+    <p>2% risk per trade, 5% daily drawdown limit, 5 trades/day: three losses in a row within the same day compound to roughly 1 − (0.98)³ ≈ <strong>5.9% cumulative loss</strong> — over the 5% daily limit, correctly flagged as a failed day, even though each individual loss (2%) was well under the limit on its own. Set "Trades/day" to match how many trades you realistically take per day for an accurate daily-drawdown check.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Leaving Trades/day at the default without checking it</div><div class="edu-card-body">If you typically take 10 trades a day but leave this at the default of 5, the Daily DD check will reset too often and understate your real risk of breaching it — set this to match your actual trading frequency.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Running too few simulations for a stable estimate</div><div class="edu-card-body">100 simulations can vary noticeably between runs due to randomness alone — use 1,000+ for a result you can trust to be stable if you ran it again.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Comparing results directly against other Monte Carlo tools</div><div class="edu-card-body">This simulator compounds risk against your current balance and checks trailing drawdown — other tools (including ToolsNova's own Pass Probability calculator) may use a simpler, non-compounding model, so the same inputs won't necessarily give the same output across tools.</div></div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="faq-section">
     <h2 class="faq-title">Frequently Asked Questions</h2>
@@ -480,7 +501,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="faqToggle(this)">How do I use this for prop firm challenge planning?</div>
-      <div class="faq-a">Enable the Prop Firm Rules overlays — set your max drawdown (e.g. 10%) and profit target (e.g. 8%). The simulator then shows how many curves hit the target without breaching the drawdown, giving you your real probability of passing. If less than 50% of curves pass, you need to adjust your risk per trade, increase your win rate, or improve your R:R before attempting the challenge.</div>
+      <div class="faq-a">Enable the Prop Firm Rules overlays — set your max drawdown (e.g. 10%) and profit target (e.g. 8%). If your firm also enforces a daily loss limit, enable Daily DD and set "Trades/day" to how many trades you realistically take in a day, so the simulation correctly checks cumulative same-day losses rather than just one trade at a time. The simulator then shows how many curves hit the target without breaching either limit, giving you your real probability of passing. If less than 50% of curves pass, you need to adjust your risk per trade, increase your win rate, or improve your R:R before attempting the challenge.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="faqToggle(this)">What is the maximum drawdown in the simulation?</div>
@@ -489,6 +510,14 @@
     <div class="faq-item">
       <div class="faq-q" onclick="faqToggle(this)">How many simulations should I run?</div>
       <div class="faq-a">100 simulations gives a reliable visual picture and is fast. 500 simulations gives more statistically precise probability estimates (e.g. exact pass rate). For final strategy validation before a real prop firm challenge, run 500. For quick visual checks of a strategy change, 100 is sufficient.</div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>References</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">📊 Your trading journal</div><div class="edu-card-body">Win rate and R:R inputs are only as useful as the real, logged trading history behind them — use actual statistics from 50+ trades, not a hopeful estimate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📄 Your firm's official rules page</div><div class="edu-card-body">Confirm your firm's exact drawdown methodology (trailing vs. static), daily loss limit, and profit target directly — this simulator uses one specific, disclosed set of assumptions, not a universal rule.</div></div>
     </div>
   </section>
 
@@ -547,13 +576,18 @@ function mcRun() {
   const maxDDPct= parseFloat(document.getElementById('mc-maxdd').value) / 100;
   const tgtPct  = parseFloat(document.getElementById('mc-target').value) / 100;
   const dailyPct= parseFloat(document.getElementById('mc-dailydd').value) / 100;
+  const tradesPerDayRaw = parseInt(document.getElementById('mc-tradesperday')?.value);
+  const tradesPerDay = (!isNaN(tradesPerDayRaw) && tradesPerDayRaw > 0) ? tradesPerDayRaw : 1;
 
   if (isNaN(wr)||isNaN(risk)||isNaN(rr)||isNaN(trades)||isNaN(balance)||
       wr<=0||wr>=1||risk<=0||rr<=0||trades<10||balance<=0) {
     setStatus('mc-status','err','Invalid inputs — check values'); return;
   }
+  if (dailyOn && tradesPerDay<=0) {
+    setStatus('mc-status','err','Trades per day must be at least 1'); return;
+  }
 
-  mcParams = { wr, risk, rr, trades, balance, sims, maxDDOn, targetOn, dailyOn, maxDDPct, tgtPct, dailyPct };
+  mcParams = { wr, risk, rr, trades, balance, sims, maxDDOn, targetOn, dailyOn, maxDDPct, tgtPct, dailyPct, tradesPerDay };
 
   // Show progress bar
   const prog = document.getElementById('mc-progress-wrap');
@@ -569,8 +603,15 @@ function mcRun() {
     for (let s = 0; s < CHUNK && done < sims; s++, done++) {
       const curve = [balance];
       let bal = balance, peak = balance, failed = false, won = false;
+      // Balance at the start of the CURRENT simulated day — resets every `tradesPerDay`
+      // trades. Daily drawdown is checked as cumulative P/L since this reference point,
+      // not against a single preceding trade, so several same-day losing trades that each
+      // individually stay under the limit but add up past it are correctly caught.
+      let dayStartBal = balance;
 
       for (let t = 0; t < trades; t++) {
+        if (dailyOn && t % tradesPerDay === 0) dayStartBal = bal;
+
         const isWin = Math.random() < wr;
         if (isWin) bal *= (1 + risk * rr);
         else       bal *= (1 - risk);
@@ -579,7 +620,7 @@ function mcRun() {
 
         // Check prop firm rules
         if (maxDDOn && (peak - bal) / peak >= maxDDPct) { failed = true; }
-        if (dailyOn && (curve[curve.length-1] - bal) / curve[curve.length-1] >= dailyPct) { failed = true; }
+        if (dailyOn && (dayStartBal - bal) / dayStartBal >= dailyPct) { failed = true; }
         if (targetOn && (bal - balance) / balance >= tgtPct) { won = true; }
 
         curve.push(failed ? null : bal);
@@ -881,8 +922,9 @@ function mcShowStats() {
     `Monte Carlo Trading Simulator — ToolsNova\n`+
     `${'─'.repeat(42)}\n`+
     `Strategy:   WR ${(mcParams.wr*100).toFixed(0)}% | RR 1:${mcParams.rr} | Risk ${(mcParams.risk*100).toFixed(1)}%/trade\n`+
-    `Simulations:${n} curves | ${trades} trades each | Start $${balance.toLocaleString()}\n\n`+
-    `── Results ──────────────────────────\n`+
+    `Simulations:${n} curves | ${trades} trades each | Start $${balance.toLocaleString()}\n`+
+    (mcParams.dailyOn ? `Daily DD:   ${(mcParams.dailyPct*100).toFixed(1)}% checked every ${mcParams.tradesPerDay} trades (1 simulated day)\n` : '') +
+    `\n── Results ──────────────────────────\n`+
     `Median result:     ${fmt(median)} (${pct(median)})\n`+
     `Mean result:       ${fmt(mean)} (${(((mean-balance)/balance)*100).toFixed(1)}%)\n`+
     `Profitable curves: ${profitable}/${n} (${profitPct}%)\n`+
@@ -893,6 +935,11 @@ function mcShowStats() {
     `Worst max drawdown:${worstDD.toFixed(2)}%\n`+
     (failed>0?`DD breach rate:    ${failed}/${n} curves (${(failed/n*100).toFixed(0)}%)\n`:'')+
     (passed!==null?`Challenge pass:    ${passed}/${n} curves (${(passed/n*100).toFixed(0)}%)\n`:'')+
+    `\nMethodology note: this simulator risks a fixed % of your CURRENT balance on every\n`+
+    `trade (compounding) and checks max drawdown as trailing-from-peak. ToolsNova's\n`+
+    `Pass Probability calculator uses a different, simpler model (fixed % of your\n`+
+    `starting balance, non-compounding) — the two tools can give different results for\n`+
+    `the same inputs by design; this one is the more realistic of the two.\n`+
     `\nGenerated by ToolsNova.net`;
   document.getElementById('mc-results').style.display='block';
 

@@ -35,7 +35,7 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Position Scaling Calculator","url":"https://toolsnova.net/position-scaling-calculator","description":"Calculate scaled position sizes using fixed fractional, conservative, anti-martingale, or linear scaling. Optimise your lot size for any trading strategy.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is fixed fractional position sizing?","acceptedAnswer":{"@type":"Answer","text":"Fixed fractional means risking the same percentage of your account on every trade (e.g. 1%). As your account grows, your position size grows proportionally. As it shrinks, your size reduces. This is the safest and most recommended method for consistent long-term growth."}},{"@type":"Question","name":"Does the \"Conservative\" method use the Kelly Criterion?","acceptedAnswer":{"@type":"Answer","text":"No. The Kelly Criterion is a formula that calculates optimal bet size from your actual win rate and risk:reward (Kelly % = Win Rate − (Loss Rate ÷ RR)), typically halved in practice for lower variance. This calculator's Conservative method is simply half of your fixed-fractional position size — it doesn't take win rate or R:R as inputs, so it isn't a Kelly calculation. For a real edge-based size, use the dedicated Kelly Criterion Calculator."}},{"@type":"Question","name":"What is anti-martingale scaling?","acceptedAnswer":{"@type":"Answer","text":"Anti-martingale increases position size after winning trades and decreases after losing trades — the opposite of martingale. This lets you capitalise on winning streaks while protecting capital during losing streaks. It's much safer than martingale and used by many professional traders."}},{"@type":"Question","name":"Is martingale safe for prop firms?","acceptedAnswer":{"@type":"Answer","text":"No. This calculator's Martingale option doubles your position size after each consecutive win, which compounds into an extremely large position after just a handful of wins — this calculator flags it as Unsafe once actual risk passes 3× your intended risk %. Most prop firms explicitly prohibit or heavily discourage aggressive scaling strategies like this. Use fixed fractional instead."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is fixed fractional position sizing?","acceptedAnswer":{"@type":"Answer","text":"Fixed fractional means risking the same percentage of your account on every trade (e.g. 1%). As your account grows, your position size grows proportionally. As it shrinks, your size reduces. This is the safest and most recommended method for consistent long-term growth."}},{"@type":"Question","name":"Does the \"Conservative\" method use the Kelly Criterion?","acceptedAnswer":{"@type":"Answer","text":"No. The Kelly Criterion is a formula that calculates optimal bet size from your actual win rate and risk:reward (Kelly % = Win Rate − (Loss Rate ÷ RR)), typically halved in practice for lower variance. This calculator's Conservative method is simply half of your fixed-fractional position size — it doesn't take win rate or R:R as inputs, so it isn't a Kelly calculation. For a real edge-based size, use the dedicated Kelly Criterion Calculator."}},{"@type":"Question","name":"What is anti-martingale scaling?","acceptedAnswer":{"@type":"Answer","text":"Anti-martingale increases position size after winning trades and decreases after losing trades — the opposite of martingale. This lets you capitalise on winning streaks while protecting capital during losing streaks. It's much safer than martingale and used by many professional traders."}},{"@type":"Question","name":"Is martingale safe for prop firms?","acceptedAnswer":{"@type":"Answer","text":"No. This calculator's Martingale option doubles your position size after each consecutive loss, attempting to recover prior losses with the next win — this compounds into an extremely large position after just a handful of losses, and this calculator flags it as Unsafe once actual risk passes 3× your intended risk %. Most prop firms explicitly prohibit or heavily discourage aggressive recovery strategies like this. Use fixed fractional instead."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Trading Tools","item":"https://toolsnova.net/trading-tools/"},{"@type":"ListItem","position":3,"name":"Position Scaling Calculator","item":"https://toolsnova.net/position-scaling-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
@@ -221,19 +221,19 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Account balance ($)</div>
-      <input type="number" id="ps2-balance" placeholder="e.g. 10000" class="b2-input" oninput="positionScalingCalc()" aria-label="Account balance ($)">
+      <input type="number" id="ps2-balance" placeholder="e.g. 10000" class="uc-input" oninput="positionScalingCalc()" aria-label="Account balance ($)">
     </div>
     <div>
       <div class="pane-label">Risk per trade (%)</div>
-      <input type="number" id="ps2-risk" placeholder="e.g. 1" value="1" class="b2-input" oninput="positionScalingCalc()" aria-label="Risk per trade (%)">
+      <input type="number" id="ps2-risk" placeholder="e.g. 1" value="1" class="uc-input" oninput="positionScalingCalc()" aria-label="Risk per trade (%)">
     </div>
     <div>
       <div class="pane-label">Stop loss (pips/points)</div>
-      <input type="number" id="ps2-sl" placeholder="e.g. 20" class="b2-input" oninput="positionScalingCalc()" aria-label="Stop loss (pips/points)">
+      <input type="number" id="ps2-sl" placeholder="e.g. 20" class="uc-input" oninput="positionScalingCalc()" aria-label="Stop loss (pips/points)">
     </div>
     <div>
       <div class="pane-label">Symbol</div>
-      <select id="ps2-symbol" class="mode-select" style="width:100%" onchange="positionScalingCalc()">
+      <select id="ps2-symbol" class="uc-select" onchange="positionScalingCalc()" aria-label="Symbol">
           <option value="XAUUSD" selected>XAUUSD (Gold)</option>
           <option value="EURUSD">EURUSD</option>
           <option value="GBPUSD">GBPUSD</option>
@@ -245,7 +245,7 @@ gtag('config', 'G-S6PPGS7N63');
     </div>
     <div>
       <div class="pane-label">Scaling method</div>
-      <select id="ps2-method" class="mode-select" style="width:100%" onchange="positionScalingCalc()">
+      <select id="ps2-method" class="uc-select" onchange="ps2UpdateStreakLabel();positionScalingCalc()" aria-label="Scaling method">
           <option value="fixed" selected>Fixed Fractional (recommended)</option>
           <option value="kelly">Conservative (0.5× fixed)</option>
           <option value="antimartingale">Anti-Martingale</option>
@@ -254,8 +254,8 @@ gtag('config', 'G-S6PPGS7N63');
       </select>
     </div>
     <div>
-      <div class="pane-label">Consecutive wins (for scaling)</div>
-      <input type="number" id="ps2-streak" placeholder="e.g. 3" value="0" min="0" max="10" class="b2-input" oninput="positionScalingCalc()" aria-label="Consecutive wins (for scaling)">
+      <div class="pane-label" id="ps2-streak-label">Consecutive wins (for scaling)</div>
+      <input type="number" id="ps2-streak" placeholder="e.g. 3" value="0" min="0" max="10" class="uc-input" oninput="positionScalingCalc()" aria-label="Consecutive wins (for scaling)">
     </div>
   </div>
   <div class="stats-row" id="ps2-summary" style="margin-top:14px;display:none">
@@ -270,7 +270,7 @@ gtag('config', 'G-S6PPGS7N63');
     <h2>Trading Decision</h2>
     <div class="edu-grid">
       <div class="edu-card"><div class="edu-card-title">Check the Safety card first</div><div class="edu-card-body">If it reads "Unsafe," the chosen scaling method has pushed your real risk well past the risk % you entered — this is a warning to stop and reconsider, not a number to trade as-is.</div></div>
-      <div class="edu-card"><div class="edu-card-title">Martingale needs a hard limit you set yourself</div><div class="edu-card-body">This calculator won't stop you from entering a large win streak, but the position size grows exponentially — decide your own maximum streak before you start, not after you're several trades in.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Martingale needs a hard limit you set yourself</div><div class="edu-card-body">This calculator won't stop you from entering a large losing streak, but the position size grows exponentially as it tries to recover — decide your own maximum consecutive-loss cutoff before you start, not after you're several trades deep.</div></div>
       <div class="edu-card"><div class="edu-card-title">"Conservative" isn't the same as "optimal"</div><div class="edu-card-body">The Conservative method here is a flat 0.5× multiplier, not a formula derived from your actual edge. If you know your win rate and R:R, a true Kelly-based size will differ from this estimate.</div></div>
     </div>
     <div class="edu-highlight"><strong>➜ Next step:</strong> For a position size derived from your actual win rate and risk:reward — not a flat multiplier — use the <a href="kelly-criterion-calculator.html">Kelly Criterion Calculator</a>. If you're tracking real trading results, verify your edge is genuine first with the <a href="win-rate-expectancy-calculator.html">Win Rate &amp; Expectancy Calculator</a>.</div>
@@ -322,17 +322,17 @@ gtag('config', 'G-S6PPGS7N63');
     <div class="edu-highlight"><strong>Base Position</strong> = (Balance × Risk %) ÷ (Stop Loss × Pip Value per Lot), then adjusted by the chosen scaling method's multiplier.</div>
     <div class="edu-grid">
       <div class="edu-card"><div class="edu-card-title">Fixed Fractional</div><div class="edu-card-body">Base position, unchanged — the same risk % on every trade regardless of streak.</div></div>
-      <div class="edu-card"><div class="edu-card-title">Martingale</div><div class="edu-card-body">Base × 2^(win streak) — doubles every consecutive win. Grows exponentially and has no built-in ceiling.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Martingale</div><div class="edu-card-body">Base × 2^(consecutive losses) — doubles size after every loss, attempting to recover prior losses with the next win. Grows exponentially and has no built-in ceiling.</div></div>
       <div class="edu-card"><div class="edu-card-title">Anti-Martingale / Linear</div><div class="edu-card-body">Base × (1 + streak × 0.5) or × (1 + streak × 0.25) — grow more gently on winning streaks, scaling back down automatically once the streak ends.</div></div>
     </div>
     <h3>Worked example</h3>
-    <p>$10,000 balance, 1% risk, 20-pip stop on XAUUSD ($10/pip/lot): base position = $100 ÷ (20 × 10) = <strong>0.5 lots</strong>. With Fixed Fractional this stays 0.5 lots on every trade. With Martingale after 3 straight wins: 0.5 × 2³ = <strong>4 lots</strong> — 8% actual risk, already flagged Unsafe by this calculator's built-in check.</p>
+    <p>$10,000 balance, 1% risk, 20-pip stop on XAUUSD ($10/pip/lot): base position = $100 ÷ (20 × 10) = <strong>0.5 lots</strong>. With Fixed Fractional this stays 0.5 lots on every trade. With Martingale after 3 straight losses: 0.5 × 2³ = <strong>4 lots</strong>, sized up to try to recover the prior losses with one win — 8% actual risk on that single trade, already flagged Unsafe by this calculator's built-in check.</p>
   </section>
 
   <section class="edu-section">
     <h2>Avoid These Mistakes</h2>
     <div class="edu-grid">
-      <div class="edu-card"><div class="edu-card-title">Trusting martingale because the math "checks out"</div><div class="edu-card-body">Doubling after every win is mathematically consistent, but a handful of wins in a row compounds a small starting position into an account-threatening one. Correct math doesn't mean safe sizing.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trusting martingale because the math "checks out"</div><div class="edu-card-body">Doubling after every loss is mathematically consistent as a recovery scheme, but a handful of losses in a row compounds a small starting position into an account-threatening one. Correct math doesn't mean safe sizing — this is precisely why martingale is infamous.</div></div>
       <div class="edu-card"><div class="edu-card-title">Treating "Conservative" as a true Kelly size</div><div class="edu-card-body">This method is a flat half-size multiplier, not an edge-based calculation. Don't quote it as "my Kelly size" — use the dedicated Kelly Criterion Calculator if you need the real formula.</div></div>
       <div class="edu-card"><div class="edu-card-title">Setting the stop loss to fit a lot size</div><div class="edu-card-body">Reverse risk management — deciding the position size first and shrinking the stop to match produces stops too tight for real market structure.</div></div>
       <div class="edu-card"><div class="edu-card-title">Ignoring correlated positions</div><div class="edu-card-body">Running this calculator per-trade without accounting for other open, correlated positions understates your real total exposure.</div></div>
@@ -355,7 +355,7 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">Is martingale safe for prop firms?</div>
-    <div class="faq-a">No. This calculator's Martingale option doubles your position size after each consecutive win, which compounds into an extremely large position after just a handful of wins — this calculator flags it as Unsafe once actual risk passes 3× your intended risk %. Most prop firms explicitly prohibit or heavily discourage aggressive scaling strategies like this. Use fixed fractional instead.</div>
+    <div class="faq-a">No. This calculator's Martingale option doubles your position size after each consecutive loss, attempting to recover prior losses with the next win — this compounds into an extremely large position after just a handful of losses, and this calculator flags it as Unsafe once actual risk passes 3× your intended risk %. Most prop firms explicitly prohibit or heavily discourage aggressive recovery strategies like this. Use fixed fractional instead.</div>
   </div>
 </section>
 

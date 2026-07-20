@@ -34,6 +34,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kelly Criterion Calculator","url":"https://toolsnova.net/kelly-criterion-calculator","description":"Calculate the mathematically optimal position size using the Kelly Criterion. Shows full Kelly, half-Kelly, and quarter-Kelly with dollar amounts. Free Kelly calculator for traders.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Kelly Criterion?","acceptedAnswer":{"@type":"Answer","text":"The Kelly Criterion is a mathematical formula that calculates the optimal fraction of your capital to risk on each trade to maximise long-term growth: Kelly% = Win Rate − (Loss Rate ÷ Risk:Reward). A positive Kelly% means you have a positive edge; negative means you don't."}},{"@type":"Question","name":"Why use Half-Kelly instead of Full Kelly?","acceptedAnswer":{"@type":"Answer","text":"Full Kelly maximises long-term growth mathematically, but creates massive drawdowns in practice — sometimes 50%+ swings. Half-Kelly gives approximately 75% of the growth with dramatically lower variance. Most professional traders and quant funds use fractional Kelly (25-50%) for this reason."}},{"@type":"Question","name":"What does a negative Kelly mean?","acceptedAnswer":{"@type":"Answer","text":"A negative Kelly means your strategy has no mathematical edge — you're expected to lose money over time. This happens when your win rate is too low for your R:R ratio (or vice versa). Fix: increase your win rate, increase your R:R, or both."}},{"@type":"Question","name":"Is Kelly Criterion suitable for prop firm trading?","acceptedAnswer":{"@type":"Answer","text":"Yes, but use conservative fractions (Quarter-Kelly or less). Prop firms have strict drawdown limits that punish large position sizes during losing streaks. The Kelly Criterion tells you your mathematical edge — combine it with your firm's daily drawdown limit to set your actual risk per trade."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Kelly Criterion Calculator","item":"https://toolsnova.net/kelly-criterion-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -218,19 +220,31 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Win rate (%)</div>
-      <input type="number" id="kelly-wr" placeholder="e.g. 55" class="b2-input" oninput="kellyCalc()">
+      <input type="number" id="kelly-wr" placeholder="e.g. 55" class="uc-input" oninput="kellyCalc()" aria-label="Win rate (%)">
     </div>
     <div>
       <div class="pane-label">Risk:Reward ratio</div>
-      <input type="number" id="kelly-rr" placeholder="e.g. 1.5 (for 1:1.5)" class="b2-input" oninput="kellyCalc()">
+      <input type="number" id="kelly-rr" placeholder="e.g. 1.5 (for 1:1.5)" class="uc-input" oninput="kellyCalc()" aria-label="Risk:Reward ratio">
     </div>
     <div>
       <div class="pane-label">Account balance ($, optional)</div>
-      <input type="number" id="kelly-bal" placeholder="e.g. 10000" class="b2-input" oninput="kellyCalc()">
+      <input type="number" id="kelly-bal" placeholder="e.g. 10000" class="uc-input" oninput="kellyCalc()" aria-label="Account balance ($, optional)">
     </div>
   </div>
+
+  <div class="result-summary-card" id="kelly-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="kelly-output" onclick="copyEl('kelly-output')" style="min-height:280px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Choosing Your Kelly Fraction</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Half-Kelly is the standard professional default</div><div class="edu-card-body">It captures roughly 75% of Full Kelly's growth rate while cutting variance substantially — this is what most professional traders and bettors actually use, not Full Kelly.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Go smaller than Half-Kelly if your edge estimate is uncertain</div><div class="edu-card-body">Kelly assumes your win rate and R:R are exactly correct. If they're based on a small sample or a hunch rather than a solid trading history, Quarter-Kelly or less is more appropriate.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A negative Kelly means stop, not size down</div><div class="edu-card-body">If Full Kelly is negative, no position size — however small — makes the strategy profitable on average. Fix the edge first.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -275,6 +289,24 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Risk of Ruin &amp; Sample Size</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">💀 What "risk of ruin" means</div><div class="edu-card-body">Risk of ruin is the probability your account falls so low you effectively can't continue — commonly defined as dropping below about 10% of your starting balance, since recovering from there requires a 10x gain just to get back to even. Even a genuinely positive edge doesn't reduce this to zero; it only makes it low.</div></div>
+      <div class="edu-card"><div class="edu-card-title">🎲 Full Kelly carries real ruin risk even with an edge</div><div class="edu-card-body">At Full Kelly, a 50% drawdown from peak happens roughly once per year of normal trading, even when your edge estimate is exactly correct. Half-Kelly cuts that to roughly 25%, Quarter-Kelly to roughly 12% — this is the real, quantified reason professionals size down from Full Kelly, not just caution for its own sake.</div></div>
+      <div class="edu-card"><div class="edu-card-title">📉 Small samples lie</div><div class="edu-card-body">The math behind Kelly is exact, but your win rate and R:R inputs come from your trading history — and 20-30 trades is not enough to know your true win rate with any confidence. If your Kelly number is built on a small sample, treat it as a hypothesis to keep testing, not a precise number to size by.</div></div>
+    </div>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Sizing at Full Kelly in real trading</div><div class="edu-card-body">Mathematically optimal for long-run growth, but the drawdowns are real and frequent — almost no trader can psychologically tolerate them, leading to abandoning the system at exactly the wrong time.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trusting a Kelly number from too few trades</div><div class="edu-card-body">Kelly is only as good as your win rate and R:R inputs. A win rate from 20-30 trades can easily be off by 10+ percentage points from your true long-run rate — use a conservative fraction until your sample is larger.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Applying Kelly to correlated positions independently</div><div class="edu-card-body">Kelly assumes each bet is independent. Running several correlated positions (e.g. multiple USD pairs) at full Kelly size each effectively multiplies your real risk beyond what any single Kelly calculation accounts for.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -295,8 +327,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📖 J. L. Kelly Jr., "A New Interpretation of Information Rate" (1956)</div><div class="edu-card-body">The original Bell Labs paper the Kelly Criterion is named after — foundational reading for understanding where the formula comes from.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📊 Your own trading journal</div><div class="edu-card-body">Kelly is only as accurate as the win rate and R:R you feed it — a real, logged trading history of 50+ trades gives a far more trustworthy input than an estimate or a short recent streak.</div></div>
+  </div>
+</section>
 
 
 

@@ -7710,13 +7710,33 @@ function fundedROICalc() {
 }
 
 /* ── 7. POSITION SCALING CALCULATOR ── */
+// The single "streak" input means something different depending on the selected method:
+// consecutive WINS for Anti-Martingale/Linear scaling, but consecutive LOSSES for genuine
+// Martingale (which recovers losses by doubling size, not wins). This keeps the field's
+// visible label and aria-label in sync with what it actually means for the current method.
+function ps2UpdateStreakLabel() {
+  const method = document.getElementById('ps2-method')?.value || 'fixed';
+  const labelEl = document.getElementById('ps2-streak-label');
+  const input = document.getElementById('ps2-streak');
+  if (!labelEl || !input) return;
+  if (method === 'martingale') {
+    labelEl.textContent = 'Consecutive losses (for scaling)';
+    input.setAttribute('aria-label', 'Consecutive losses (for scaling)');
+    input.placeholder = 'e.g. 3';
+  } else {
+    labelEl.textContent = 'Consecutive wins (for scaling)';
+    input.setAttribute('aria-label', 'Consecutive wins (for scaling)');
+    input.placeholder = 'e.g. 3';
+  }
+}
+
 function positionScalingCalc() {
   const balance  = parseFloat(document.getElementById('ps2-balance')?.value);
   const riskPct  = parseFloat(document.getElementById('ps2-risk')?.value);
   const sl       = parseFloat(document.getElementById('ps2-sl')?.value);
   const symbol   = document.getElementById('ps2-symbol')?.value || 'XAUUSD';
   const method   = document.getElementById('ps2-method')?.value || 'fixed';
-  const winStreak= parseInt(document.getElementById('ps2-streak')?.value) || 0;
+  const streak   = parseInt(document.getElementById('ps2-streak')?.value) || 0;
   const out      = document.getElementById('ps2-output');
   const summary  = document.getElementById('ps2-summary');
   if (!out) return;
@@ -7759,14 +7779,20 @@ function positionScalingCalc() {
     scaledLots = baseLots * 0.5;
     methodDesc = 'Conservative (0.5× fixed) — not a true Kelly calculation, see note below';
   } else if (method === 'martingale') {
-    scaledLots = baseLots * Math.pow(2, winStreak);
-    methodDesc = `Martingale (${winStreak} wins) — doubles each win ⚠ HIGH RISK`;
+    // Genuine martingale: doubles size after each consecutive LOSS, attempting to
+    // recover prior losses with the next win. This is the streak field interpreted
+    // as "consecutive losses" — the field's label switches to match via
+    // ps2UpdateStreakLabel() when this method is selected.
+    scaledLots = baseLots * Math.pow(2, streak);
+    methodDesc = `Martingale (${streak} consecutive losses) — doubles size after each loss to attempt recovery ⚠ HIGH RISK`;
   } else if (method === 'antimartingale') {
-    scaledLots = winStreak > 0 ? baseLots * (1 + winStreak*0.5) : baseLots;
-    methodDesc = `Anti-martingale (${winStreak} wins) — scale up on winning streaks`;
+    // Anti-martingale: scales UP after consecutive WINS, using the profits themselves
+    // as the increased risk capital, rather than chasing losses.
+    scaledLots = streak > 0 ? baseLots * (1 + streak*0.5) : baseLots;
+    methodDesc = `Anti-martingale (${streak} consecutive wins) — scale up on winning streaks`;
   } else if (method === 'linear') {
-    scaledLots = baseLots * (1 + winStreak * 0.25);
-    methodDesc = `Linear scaling (+25% per win, ${winStreak} wins)`;
+    scaledLots = baseLots * (1 + streak * 0.25);
+    methodDesc = `Linear scaling (+25% per win, ${streak} wins)`;
   }
 
   scaledLots = Math.max(0.01, Math.round(scaledLots * 100) / 100);
@@ -7820,10 +7846,13 @@ function kellyCalc() {
   const rr    = parseFloat(document.getElementById('kelly-rr')?.value);
   const bal   = parseFloat(document.getElementById('kelly-bal')?.value) || 0;
   const out   = document.getElementById('kelly-output');
+  const summary = document.getElementById('kelly-summary');
   if (!out) return;
   if (isNaN(wr)||isNaN(rr)||wr<=0||wr>=100||rr<=0) {
     out.textContent='Enter win rate (%) and risk:reward ratio.';
-    out.className='output-box error'; return;
+    out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
   }
   const w = wr/100, l = 1-w;
   const kelly    = w - (l/rr);           // Full Kelly %
@@ -7839,6 +7868,10 @@ function kellyCalc() {
       `Expected loss per trade: ${(kelly*100).toFixed(2)}%\n\n`+
       `Fix: Increase win rate OR increase R:R ratio\n`+
       `Break-even win rate at ${rr}:1 RR: ${(1/(1+rr)*100).toFixed(1)}%`;
+    if (summary) {
+      summary.classList.add('show');
+      summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">❌ Negative edge (${(kelly*100).toFixed(2)}%)</div><div class="rsc-sub">Do not trade this edge — fix win rate or R:R first</div>`;
+    }
     setStatus('kelly-status','err','❌ Negative edge — do not trade');
     return;
   }
@@ -7868,6 +7901,10 @@ function kellyCalc() {
       const k=w2-(l2/rr);
       return `  WR ${wr2}%: Kelly=${k>0?(k*100).toFixed(1)+'%':'negative ❌'}`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">Half Kelly: ${(halfKelly*100).toFixed(2)}%${bal>0?' ($'+formatCur(bal*halfKelly)+')':''}</div><div class="rsc-sub">Full Kelly: ${(kelly*100).toFixed(2)}% · recommended sizing below</div>`;
+  }
   setStatus('kelly-status','ok',`✓ Half-Kelly: ${(halfKelly*100).toFixed(2)}%`);
 }
 
@@ -7879,11 +7916,18 @@ function winRateCalc() {
   const avgLoss= parseFloat(document.getElementById('we-avgloss')?.value);
   const trades = parseInt(document.getElementById('we-trades')?.value) || 100;
   const out    = document.getElementById('we-output');
+  const summary= document.getElementById('we-summary');
   if (!out) return;
-  if (isNaN(wins)||isNaN(losses)||isNaN(avgWin)||isNaN(avgLoss)) {
-    out.textContent='Enter wins, losses, avg win and avg loss.';
-    out.className='output-box error'; return;
-  }
+
+  const fail = msg => { out.textContent=msg; out.className='output-box error'; if(summary) summary.classList.remove('show'); };
+  if (isNaN(wins)||isNaN(losses)||isNaN(avgWin)||isNaN(avgLoss)) return fail('Enter wins, losses, avg win and avg loss.');
+  if (wins<0) return fail('Number of wins cannot be negative.');
+  if (losses<0) return fail('Number of losses cannot be negative.');
+  if (wins===0 && losses===0) return fail('Enter at least one win or loss — 0 wins and 0 losses gives no trades to analyze.');
+  if (avgWin<=0) return fail('Average win must be greater than 0.');
+  if (avgLoss<=0) return fail('Average loss must be greater than 0 (enter it as a positive number — the calculator treats it as an amount lost, not a signed value).');
+  if (losses===0) return fail('Profit Factor and Risk:Reward require at least 1 loss to calculate (dividing by zero losses is undefined). If you genuinely have a 100% win rate so far, that\'s a very small, unrepresentative sample — trade more before relying on these stats.');
+
   const total   = wins+losses;
   const wr      = wins/total;
   const rr      = avgWin/avgLoss;
@@ -7917,6 +7961,10 @@ function winRateCalc() {
       const bwr=1/(1+rr2);
       return `  RR 1:${rr2} → need ${(bwr*100).toFixed(1)}% WR to break even`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${(wr*100).toFixed(1)}% WR · ${expect>=0?'✅':'❌'} $${formatCur(expect)}/trade</div><div class="rsc-sub">Profit Factor ${profFactor.toFixed(2)}x · full breakdown below</div>`;
+  }
   setStatus('we-status',expect>=0?'ok':'err',
     `✓ WR: ${(wr*100).toFixed(1)}% | Expectancy: $${formatCur(expect)}/trade | PF: ${profFactor.toFixed(2)}`);
 }

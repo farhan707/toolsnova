@@ -7305,48 +7305,76 @@ function cgpaCalc() {
 /* ── 1. PROP FIRM CHALLENGE CALCULATOR ── */
 function challengeCalc() {
   const balance  = parseFloat(document.getElementById('ch-balance')?.value);
-  const target   = parseFloat(document.getElementById('ch-target')?.value) || 8;
-  const maxDD    = parseFloat(document.getElementById('ch-maxdd')?.value) || 10;
-  const dailyDD  = parseFloat(document.getElementById('ch-dailydd')?.value) || 5;
-  const days     = parseInt(document.getElementById('ch-days')?.value) || 30;
+  const target   = parseFloat(document.getElementById('ch-target')?.value);
+  const maxDD    = parseFloat(document.getElementById('ch-maxdd')?.value);
+  const dailyDD  = parseFloat(document.getElementById('ch-dailydd')?.value);
+  const days     = parseInt(document.getElementById('ch-days')?.value);
   const fee      = parseFloat(document.getElementById('ch-fee')?.value) || 0;
   const split    = parseFloat(document.getElementById('ch-split')?.value) || 80;
   const out      = document.getElementById('ch-output');
+  const summary  = document.getElementById('ch-summary');
   if (!out) return;
-  if (isNaN(balance)||balance<=0) { out.textContent='Enter account balance.'; out.className='output-box error'; return; }
 
-  const targetAmt  = balance * target / 100;
-  const maxDDAmt   = balance * maxDD / 100;
-  const dailyDDAmt = balance * dailyDD / 100;
-  const minPerDay  = targetAmt / days;
+  // Apply sensible defaults only for truly empty fields; explicit invalid values are rejected below
+  // rather than silently falling back (the old `value || default` pattern let negative numbers
+  // through unnoticed, since only 0/empty is "falsy" in JS — a negative day count or profit target
+  // would previously compute a nonsensical negative result with no warning).
+  const targetV  = isNaN(target)  ? 8  : target;
+  const maxDDV   = isNaN(maxDD)   ? 10 : maxDD;
+  const dailyDDV = isNaN(dailyDD) ? 5  : dailyDD;
+  const daysV    = isNaN(days)    ? 30 : days;
+
+  const fail = msg => { out.textContent=msg; out.className='output-box error'; if(summary) summary.classList.remove('show'); };
+  if (isNaN(balance)||balance<=0) return fail('Enter account balance.');
+  if (targetV<=0) return fail('Profit target must be greater than 0%.');
+  if (maxDDV<=0) return fail('Max drawdown must be greater than 0%.');
+  if (dailyDDV<=0) return fail('Daily drawdown must be greater than 0%.');
+  if (daysV<=0) return fail('Trading days must be greater than 0.');
+  if (dailyDDV > maxDDV) return fail(`Daily drawdown (${dailyDDV}%) cannot exceed max drawdown (${maxDDV}%) — no real prop firm allows a daily loss limit larger than the total drawdown limit. Check your inputs.`);
+
+  const targetAmt  = balance * targetV / 100;
+  const maxDDAmt   = balance * maxDDV / 100;
+  const dailyDDAmt = balance * dailyDDV / 100;
+  const minPerDay  = targetAmt / daysV;
 
   // ROI after passing (assuming 1 funded payout cycle)
   const fundedBalance = balance;
-  const firstPayout   = fundedBalance * target / 100 * split / 100;
+  const firstPayout   = fundedBalance * targetV / 100 * split / 100;
   const roiOnFee      = fee > 0 ? ((firstPayout - fee) / fee * 100) : 0;
 
   out.className = 'output-box success';
   out.textContent =
     `Account: $${balance.toLocaleString()}  |  Fee: ${fee>0?'$'+fee:'N/A'}\n\n`+
     `── Challenge Rules ───────────────────\n`+
-    `Profit Target:     ${target}%  =  $${formatCur(targetAmt)}\n`+
-    `Max Drawdown:      ${maxDD}%   =  $${formatCur(maxDDAmt)}\n`+
-    `Daily Drawdown:    ${dailyDD}% =  $${formatCur(dailyDDAmt)}\n`+
-    `Time Limit:        ${days} trading days\n\n`+
+    `Profit Target:     ${targetV}%  =  $${formatCur(targetAmt)}\n`+
+    `Max Drawdown:      ${maxDDV}%   =  $${formatCur(maxDDAmt)}\n`+
+    `Daily Drawdown:    ${dailyDDV}% =  $${formatCur(dailyDDAmt)}\n`+
+    `Time Limit:        ${daysV} trading days\n\n`+
+    `Note: drawdown here is calculated as a fixed % of your INITIAL balance (static\n`+
+    `drawdown) and does not trail your equity as it grows — this matches firms like\n`+
+    `FTMO's 2-Step and The5%ers, but some firms/plans (e.g. FTMO's 1-Step, TopStep)\n`+
+    `use a TRAILING drawdown that moves with your equity peak instead. Confirm which\n`+
+    `model your specific firm and plan use before relying on these numbers.\n\n`+
     `── What you need ─────────────────────\n`+
-    `Min profit/day:    $${formatCur(minPerDay)} (${(target/days).toFixed(2)}%/day)\n`+
+    `Min profit/day:    $${formatCur(minPerDay)} (${(targetV/daysV).toFixed(2)}%/day)\n`+
     `Trades to target:  Depends on your R:R and win rate\n`+
     `Max loss allowed:  $${formatCur(maxDDAmt)} total  /  $${formatCur(dailyDDAmt)} per day\n\n`+
     `── Funded payout projection ──────────\n`+
     `First payout (${split}% split): $${formatCur(firstPayout)}\n`+
     (fee>0?`ROI on challenge fee: ${roiOnFee.toFixed(1)}%\n`:'')+
-    `Annual (12 payouts): $${formatCur(firstPayout*12)}\n\n`+
+    `Annual (12 payouts): $${formatCur(firstPayout*12)}\n`+
+    `  (assumes you hit this same target every month for 12 months without a reset —\n`+
+    `  a best-case projection, not a typical or guaranteed outcome)\n\n`+
     `── Risk per trade to stay safe ───────\n`+
     [0.5,1,1.5,2].map(r=>{
       const riskAmt = balance*r/100;
       const tradesBefore = Math.floor(dailyDDAmt/riskAmt);
       return `  ${r}% risk ($${formatCur(riskAmt)}/trade) → max ${tradesBefore} losses/day`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">Target: $${formatCur(targetAmt)} · Daily limit: $${formatCur(dailyDDAmt)}</div><div class="rsc-sub">$${formatCur(minPerDay)}/day needed over ${daysV} days · full breakdown below</div>`;
+  }
   setStatus('ch-status','ok',`✓ Target: $${formatCur(targetAmt)} | Daily limit: $${formatCur(dailyDDAmt)}`);
 }
 
@@ -7418,11 +7446,18 @@ function consistencyCalc() {
   const bestDay  = parseFloat(document.getElementById('con2-best')?.value);
   const threshold= parseFloat(document.getElementById('con2-threshold')?.value) || 30;
   const out      = document.getElementById('con2-output');
+  const summary  = document.getElementById('con2-summary');
   if (!out) return;
   if (isNaN(total)||isNaN(bestDay)||total<=0||bestDay<=0) {
-    out.textContent='Enter total profit and best day profit.'; out.className='output-box error'; return;
+    out.textContent='Enter total profit and best day profit.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
   }
-  if (bestDay > total) { out.textContent='Best day cannot exceed total profit.'; out.className='output-box error'; return; }
+  if (bestDay > total) {
+    out.textContent='Best day cannot exceed total profit.'; out.className='output-box error';
+    if (summary) summary.classList.remove('show');
+    return;
+  }
 
   const score    = (bestDay/total*100);
   const passes   = score <= threshold;
@@ -7438,6 +7473,9 @@ function consistencyCalc() {
     `Total Profit:         $${formatCur(total)}\n`+
     `Best Single Day:      $${formatCur(bestDay)}\n`+
     `Consistency Rule:     ≤${threshold}% of total from one day\n\n`+
+    `Note: not every firm enforces a numeric consistency rule, and among those that do,\n`+
+    `the exact threshold and measurement method vary and change over time — confirm\n`+
+    `your specific firm's current rule directly with them before relying on this figure.\n\n`+
     `── Your Score ────────────────────────\n`+
     `Consistency Score:    ${score.toFixed(1)}%\n`+
     `Max allowed (${threshold}%):   $${formatCur(maxAllowed)}\n`+
@@ -7445,13 +7483,17 @@ function consistencyCalc() {
     (!passes ? `── How to fix ────────────────────────\n`+
       `Excess on best day:  $${formatCur(excess)}\n`+
       `Earn $${formatCur(neededMore)} more on other days to qualify\n`+
-      `Or: Reduce best day target to $${formatCur(maxAllowed)}\n\n` : '')+
+      `Or: keep future single-day profits under $${formatCur(maxAllowed)}\n\n` : '')+
     `── Simulate future days ──────────────\n`+
     [50,100,200,300,500].map(extra=>{
       const newTotal=total+extra;
       const newScore=(bestDay/newTotal*100);
       return `  +$${extra}/day more → score becomes ${newScore.toFixed(1)}% ${newScore<=threshold?'✅':'❌'}`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${score.toFixed(1)}% — ${passes?'✅ Consistent':'❌ Inconsistent'}</div><div class="rsc-sub">Rule: ≤${threshold}% from one day · full breakdown below</div>`;
+  }
   setStatus('con2-status', passes?'ok':'err',
     `Score: ${score.toFixed(1)}% — ${passes?'CONSISTENT ✅':'INCONSISTENT ❌'}`);
 }
@@ -7460,23 +7502,39 @@ function consistencyCalc() {
 function profitTargetTracker() {
   const initial   = parseFloat(document.getElementById('pt-initial')?.value);
   const current   = parseFloat(document.getElementById('pt-current')?.value);
-  const target    = parseFloat(document.getElementById('pt-target')?.value) || 8;
-  const daysTotal = parseInt(document.getElementById('pt-days')?.value) || 30;
-  const daysUsed  = parseInt(document.getElementById('pt-daysused')?.value) || 0;
+  const target    = parseFloat(document.getElementById('pt-target')?.value);
+  const daysTotal = parseInt(document.getElementById('pt-days')?.value);
+  const daysUsed  = parseInt(document.getElementById('pt-daysused')?.value);
   const out       = document.getElementById('pt-output');
+  const summary   = document.getElementById('pt-summary');
   if (!out) return;
-  if (isNaN(initial)||isNaN(current)||initial<=0) {
-    out.textContent='Enter initial and current balance.'; out.className='output-box error'; return;
-  }
 
-  const targetAmt    = initial * target / 100;
+  const targetV    = isNaN(target) ? 8 : target;
+  const daysTotalV = isNaN(daysTotal) ? 30 : daysTotal;
+  const daysUsedV  = isNaN(daysUsed) ? 0 : daysUsed;
+
+  const fail = msg => { out.textContent=msg; out.className='output-box error'; if(summary) summary.classList.remove('show'); };
+  if (isNaN(initial)||isNaN(current)||initial<=0) return fail('Enter initial and current balance.');
+  if (targetV<=0) return fail('Profit target must be greater than 0%.');
+  if (daysTotalV<=0) return fail('Total trading days must be greater than 0.');
+  if (daysUsedV<0) return fail('Days used cannot be negative.');
+  if (daysUsedV > daysTotalV) return fail(`Days used (${daysUsedV}) cannot exceed total trading days (${daysTotalV}). If your challenge window changed, update the total days field first.`);
+
+  const targetAmt    = initial * targetV / 100;
   const targetBal    = initial + targetAmt;
   const currentProfit= current - initial;
   const remaining    = targetAmt - currentProfit;
   const progressPct  = Math.max(0,Math.min(100,(currentProfit/targetAmt)*100));
-  const daysLeft     = daysTotal - daysUsed;
+  const daysLeft     = daysTotalV - daysUsedV;
   const neededPerDay = daysLeft > 0 ? remaining/daysLeft : remaining;
-  const onTrack      = daysLeft > 0 && (currentProfit/(daysUsed||1)) >= (targetAmt/daysTotal);
+  const onTrack       = daysLeft > 0 && (currentProfit/(daysUsedV||1)) >= (targetAmt/daysTotalV);
+  // Distinguishes an active loss (drawing down the account) from simply not having started yet —
+  // these are materially different risk situations, and the old code showed the same mild
+  // "No profit yet" message for both, understating how serious an active loss is.
+  const paceLabel = onTrack ? '✅ On track'
+    : currentProfit < 0 ? `🔻 Currently in a loss ($${formatCur(Math.abs(currentProfit))})`
+    : currentProfit === 0 ? '⚠ No profit yet'
+    : '⚠ Behind pace';
 
   const bar = '█'.repeat(Math.round(progressPct/5)) + '░'.repeat(20-Math.round(progressPct/5));
 
@@ -7488,10 +7546,10 @@ function profitTargetTracker() {
     `Profit so far:  $${formatCur(currentProfit)} of $${formatCur(targetAmt)}\n`+
     `Still needed:   $${formatCur(Math.max(0,remaining))}\n\n`+
     `── Time ──────────────────────────────\n`+
-    `Days used:  ${daysUsed} / ${daysTotal}\n`+
+    `Days used:  ${daysUsedV} / ${daysTotalV}\n`+
     `Days left:  ${daysLeft}\n`+
     `Need/day:   $${formatCur(Math.max(0,neededPerDay))} (${(Math.max(0,neededPerDay)/initial*100).toFixed(2)}%/day)\n`+
-    `Pace:       ${onTrack ? '✅ On track' : currentProfit<=0 ? '⚠ No profit yet' : '⚠ Behind pace'}\n\n`+
+    `Pace:       ${paceLabel}\n\n`+
     (progressPct>=100
       ? `🎉 TARGET REACHED! You can request evaluation phase 2 or payout.\n`
       : `── Daily profit needed ───────────────\n`+
@@ -7499,6 +7557,10 @@ function profitTargetTracker() {
           const ppd=remaining/d;
           return `  In ${d} days: $${formatCur(ppd)}/day (${(ppd/initial*100).toFixed(2)}%)`;
         }).join('\n'));
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${progressPct.toFixed(1)}% complete</div><div class="rsc-sub">${paceLabel} · ${daysLeft} days left · full breakdown below</div>`;
+  }
   setStatus('pt-status',
     progressPct>=100?'ok':onTrack?'ok':'err',
     `${progressPct.toFixed(1)}% complete — ${progressPct>=100?'TARGET HIT! 🎉':'$'+formatCur(Math.max(0,remaining))+' to go'}`);
@@ -7508,44 +7570,49 @@ function profitTargetTracker() {
 function challengePassProb() {
   const winRate  = parseFloat(document.getElementById('cpp-winrate')?.value);
   const rr       = parseFloat(document.getElementById('cpp-rr')?.value);
-  const trades   = parseInt(document.getElementById('cpp-trades')?.value) || 30;
-  const target   = parseFloat(document.getElementById('cpp-target')?.value) || 8;
-  const maxDD    = parseFloat(document.getElementById('cpp-maxdd')?.value) || 10;
-  const riskPct  = parseFloat(document.getElementById('cpp-risk')?.value) || 1;
+  const trades   = parseInt(document.getElementById('cpp-trades')?.value);
+  const target   = parseFloat(document.getElementById('cpp-target')?.value);
+  const maxDD    = parseFloat(document.getElementById('cpp-maxdd')?.value);
+  const riskPct  = parseFloat(document.getElementById('cpp-risk')?.value);
   const out      = document.getElementById('cpp-output');
+  const summary  = document.getElementById('cpp-summary');
   if (!out) return;
-  if (isNaN(winRate)||isNaN(rr)||winRate<=0||winRate>=100||rr<=0) {
-    out.textContent='Enter win rate (%), risk:reward ratio, and number of trades.'; out.className='output-box error'; return;
-  }
+
+  const tradesV  = isNaN(trades) ? 30 : trades;
+  const targetV  = isNaN(target) ? 8  : target;
+  const maxDDV   = isNaN(maxDD)  ? 10 : maxDD;
+  const riskPctV = isNaN(riskPct)? 1  : riskPct;
+
+  const fail = msg => { out.textContent=msg; out.className='output-box error'; if(summary) summary.classList.remove('show'); };
+  if (isNaN(winRate)||isNaN(rr)||winRate<=0||winRate>=100||rr<=0) return fail('Enter win rate (%), risk:reward ratio, and number of trades.');
+  if (tradesV<=0) return fail('Number of trades must be greater than 0.');
+  if (targetV<=0) return fail('Profit target must be greater than 0%.');
+  if (maxDDV<=0) return fail('Max drawdown must be greater than 0%.');
+  if (riskPctV<=0) return fail('Risk per trade must be greater than 0%.');
 
   const wr = winRate/100;
   const lr = 1 - wr;
   // Expectancy per trade (in R)
   const expectancy = wr*rr - lr;
   // Expected profit in % after N trades
-  const expectedProfit = expectancy * riskPct * trades;
-  // Simple pass probability using normal approximation
-  const stdDev = Math.sqrt(trades) * riskPct * Math.sqrt(wr*rr*rr + lr);
-  const zScore = (target - expectedProfit) / stdDev;
-  // Probability of reaching target before hitting max DD
-  // Simplified: P(profit >= target) assuming normal distribution
-  const passProbRaw = 1 - 0.5*(1+Math.sign(zScore)*Math.min(0.9999,
-    1-Math.exp(-0.147*(zScore*zScore)+0.14*(Math.abs(zScore)))
-  ));
-  const passProb = Math.max(1,Math.min(99, passProbRaw*100));
+  const expectedProfit = expectancy * riskPctV * tradesV;
 
-  // Monte Carlo (1000 simple simulations)
+  // Monte Carlo simulation. Note: this models risk as a FIXED percentage of the ORIGINAL
+  // balance on every trade (not compounding against the current, growing/shrinking balance),
+  // and checks BOTH a trailing (from peak) and a static (from initial) drawdown condition —
+  // whichever is breached first. Real firms use one or the other, not both combined; see the
+  // disclosure note in the output for what this means for your specific firm.
   let passes = 0;
   const SIMS = 2000;
   for (let s=0; s<SIMS; s++) {
     let bal = 100, maxBal = 100, failed = false;
-    for (let t=0; t<trades; t++) {
-      if (Math.random() < wr) bal += riskPct*rr;
-      else bal -= riskPct;
+    for (let t=0; t<tradesV; t++) {
+      if (Math.random() < wr) bal += riskPctV*rr;
+      else bal -= riskPctV;
       if (bal > maxBal) maxBal = bal;
-      if ((maxBal-bal) >= maxDD || bal < (100-maxDD)) { failed=true; break; }
+      if ((maxBal-bal) >= maxDDV || bal < (100-maxDDV)) { failed=true; break; }
     }
-    if (!failed && (bal-100) >= target) passes++;
+    if (!failed && (bal-100) >= targetV) passes++;
   }
   const mcProb = (passes/SIMS*100).toFixed(1);
 
@@ -7553,31 +7620,41 @@ function challengePassProb() {
   out.textContent =
     `Win Rate:   ${winRate}%\n`+
     `Risk:Reward: 1:${rr}\n`+
-    `Risk/Trade:  ${riskPct}%\n`+
-    `Trades:     ${trades}\n`+
-    `Target:     ${target}%\n`+
-    `Max DD:     ${maxDD}%\n\n`+
+    `Risk/Trade:  ${riskPctV}%\n`+
+    `Trades:     ${tradesV}\n`+
+    `Target:     ${targetV}%\n`+
+    `Max DD:     ${maxDDV}%\n\n`+
     `── Pass Probability ──────────────────\n`+
     `Monte Carlo (${SIMS} sims): ${mcProb}%\n\n`+
+    `Note: this simulation checks both a trailing (from your equity peak) and a static\n`+
+    `(from initial balance) drawdown limit and fails on whichever is breached first —\n`+
+    `a conservative combined check, not an exact match for any single firm's rule (some\n`+
+    `firms use only static, others only trailing). Risk per trade is also modeled as a\n`+
+    `fixed % of your starting balance throughout, not compounded on a growing/shrinking\n`+
+    `balance. Treat this as a directional estimate, not an exact firm-specific figure.\n\n`+
     `── Your edge ─────────────────────────\n`+
     `Expectancy:     ${expectancy.toFixed(3)}R per trade\n`+
-    `Expected profit: ${expectedProfit.toFixed(2)}% after ${trades} trades\n`+
+    `Expected profit: ${expectedProfit.toFixed(2)}% after ${tradesV} trades\n`+
     `${expectancy>0?'✅ Positive edge':'❌ Negative edge — fix strategy first'}\n\n`+
     `── Improve your odds ─────────────────\n`+
     [[winRate+5,rr],[winRate,rr+0.2],[winRate+5,rr+0.2]].map(([wr2,rr2])=>{
       let p2=0;
       for(let s=0;s<1000;s++){
         let b=100,m=100,f=false;
-        for(let t=0;t<trades;t++){
-          if(Math.random()<wr2/100)b+=riskPct*rr2;
-          else b-=riskPct;
+        for(let t=0;t<tradesV;t++){
+          if(Math.random()<wr2/100)b+=riskPctV*rr2;
+          else b-=riskPctV;
           if(b>m)m=b;
-          if((m-b)>=maxDD||b<(100-maxDD)){f=true;break;}
+          if((m-b)>=maxDDV||b<(100-maxDDV)){f=true;break;}
         }
-        if(!f&&(b-100)>=target)p2++;
+        if(!f&&(b-100)>=targetV)p2++;
       }
       return `  WR${wr2.toFixed(0)}% / RR${rr2.toFixed(1)} → ${(p2/10).toFixed(0)}% pass rate`;
     }).join('\n');
+  if (summary) {
+    summary.classList.add('show');
+    summary.innerHTML = `<div class="rsc-label">Result</div><div class="rsc-value">${mcProb}% pass probability</div><div class="rsc-sub">${expectancy>0?'Positive':'Negative'} edge (${expectancy.toFixed(3)}R/trade) · based on ${SIMS} simulated runs</div>`;
+  }
   setStatus('cpp-status',
     parseFloat(mcProb)>=50?'ok':'err',
     `✓ Pass probability: ${mcProb}%`);

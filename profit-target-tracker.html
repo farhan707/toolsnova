@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prop Firm Profit Target Tracker","url":"https://toolsnova.net/profit-target-tracker","description":"Track your progress toward your prop firm profit target. Shows percentage complete, daily profit needed, and whether you're on pace to pass your challenge.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I track my prop firm challenge progress?","acceptedAnswer":{"@type":"Answer","text":"Enter your initial balance, current balance, profit target percentage, total days allowed, and days used. The tracker shows your current progress percentage, remaining profit needed, days left, and required daily profit to finish on time."}},{"@type":"Question","name":"What if I'm behind pace?","acceptedAnswer":{"@type":"Answer","text":"If you're behind pace, don't panic and start over-trading. Increase your trade frequency slightly rather than your risk per trade. Sticking to your risk management rules is more important than hitting the target — many traders fail by chasing the target with oversized positions."}},{"@type":"Question","name":"Should I rush to hit the target quickly?","acceptedAnswer":{"@type":"Answer","text":"No. Passing a challenge in 5 days by taking huge risks puts you at high chance of blowing the drawdown limit. Steady, consistent progress over the full period demonstrates to the firm that you have a sustainable strategy. Take your time."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Profit Target Tracker","item":"https://toolsnova.net/profit-target-tracker"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,32 +216,44 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="toolbar">
     <button class="btn primary" onclick="profitTargetTracker()">Calculate</button>
     <button class="btn" onclick="copyEl('pt-output')">Copy</button>
-    <span class="status-badge" id="{status_id}">{status_text}</span>
+    <span class="status-badge" id="pt-status">enter initial and current balance</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Initial account balance ($)</div>
-      <input type="number" id="pt-initial" placeholder="e.g. 100000" class="b2-input" oninput="profitTargetTracker()" aria-label="Initial account balance ($)">
+      <input type="number" id="pt-initial" placeholder="e.g. 100000" class="uc-input" oninput="profitTargetTracker()" aria-label="Initial account balance ($)">
     </div>
     <div>
       <div class="pane-label">Current balance ($)</div>
-      <input type="number" id="pt-current" placeholder="e.g. 103500" class="b2-input" oninput="profitTargetTracker()" aria-label="Current balance ($)">
+      <input type="number" id="pt-current" placeholder="e.g. 103500" class="uc-input" oninput="profitTargetTracker()" aria-label="Current balance ($)">
     </div>
     <div>
       <div class="pane-label">Profit target (%)</div>
-      <input type="number" id="pt-target" placeholder="e.g. 8" value="8" class="b2-input" oninput="profitTargetTracker()" aria-label="Profit target (%)">
+      <input type="number" id="pt-target" placeholder="e.g. 8" value="8" class="uc-input" oninput="profitTargetTracker()" aria-label="Profit target (%)">
     </div>
     <div>
       <div class="pane-label">Total days allowed</div>
-      <input type="number" id="pt-days" placeholder="e.g. 30" value="30" class="b2-input" oninput="profitTargetTracker()" aria-label="Total days allowed">
+      <input type="number" id="pt-days" placeholder="e.g. 30" value="30" class="uc-input" oninput="profitTargetTracker()" aria-label="Total days allowed">
     </div>
     <div>
       <div class="pane-label">Days used so far</div>
-      <input type="number" id="pt-daysused" placeholder="e.g. 10" value="0" class="b2-input" oninput="profitTargetTracker()" aria-label="Days used so far">
+      <input type="number" id="pt-daysused" placeholder="e.g. 10" value="0" class="uc-input" oninput="profitTargetTracker()" aria-label="Days used so far">
     </div>
   </div>
+
+  <div class="result-summary-card" id="pt-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="pt-output" onclick="copyEl('pt-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Reading Your Pace</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">"In a loss" and "no profit yet" are different situations</div><div class="edu-card-body">Being in an active loss means you're also eating into your drawdown allowance, not just behind on the target — treat it as a signal to review your risk, not just your pace.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Front-load your buffer when you can</div><div class="edu-card-body">Getting ahead of the required daily pace early gives you room to trade smaller or sit out on days when your setup isn't there, rather than being forced to chase the target near the deadline.</div></div>
+      <div class="edu-card"><div class="edu-card-title">"Days left" assumes your total-days field is accurate</div><div class="edu-card-body">If your challenge window changed (extension, reset), update the total-days field first — the pace and daily-target figures are only as accurate as that number.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -282,6 +296,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>The Pace Formula</h2>
+    <div class="edu-highlight"><strong>Progress %</strong> = (Current profit ÷ Target amount) × 100. <strong>Needed per day</strong> = (Target amount − Current profit) ÷ Days remaining.</div>
+    <h3>Worked example</h3>
+    <p>$100,000 account, 8% target ($8,000), currently at $103,500 (i.e. $3,500 profit) after 10 of 30 days: Progress = 3,500/8,000 × 100 = <strong>43.75%</strong>. Remaining = $8,000 − $3,500 = $4,500, over 20 days left = <strong>$225/day needed</strong> going forward.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Confusing "no profit yet" with "in a loss"</div><div class="edu-card-body">Not having reached the target yet is normal early on. Actively losing money is a different, more urgent situation — check which one you're actually in, not just your progress percentage.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Chasing the daily average after a slow start</div><div class="edu-card-body">A slow first week doesn't mean you need to force bigger trades later — increasing risk to "catch up" is a common way challenges end early. Stick to your normal risk per trade regardless of pace.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Forgetting the days-used field resets per challenge attempt</div><div class="edu-card-body">If you reset or restart a challenge, "days used" should reset to 0 too — carrying over a stale value distorts every pace figure in the output.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -298,8 +328,12 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your firm's official rules page</div><div class="edu-card-body">Minimum trading days, time limits, and profit target percentages are set by each firm and can change — confirm current figures directly with your firm rather than relying on a remembered or default number.</div></div>
+  </div>
+</section>
 
 
 

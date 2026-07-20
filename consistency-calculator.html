@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prop Firm Consistency Calculator","url":"https://toolsnova.net/consistency-calculator","description":"Check if your trading meets prop firm consistency rules. Calculate your consistency score and see if your best day profit is within the allowed threshold for payout.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the consistency rule?","acceptedAnswer":{"@type":"Answer","text":"Most prop firms require that no single trading day accounts for more than a certain percentage (usually 30%) of your total profits. This ensures you didn't just get lucky on one big day. Example: if your total profit is $5,000, no single day should have earned more than $1,500 (30%)."}},{"@type":"Question","name":"Why do prop firms have consistency rules?","acceptedAnswer":{"@type":"Answer","text":"Firms want to fund traders with sustainable, repeatable strategies — not traders who made all their profit on one lucky trade. Consistent daily profits demonstrate a reliable edge rather than gambling. This protects the firm from funding risky traders."}},{"@type":"Question","name":"How do I fix a consistency rule violation?","acceptedAnswer":{"@type":"Answer","text":"The only way is to earn more profits spread across more days. If one day made too large a percentage, keep trading (within safe limits) to spread your profits more evenly. You cannot remove the big day — you can only balance it by earning more on other days."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Consistency Calculator","item":"https://toolsnova.net/consistency-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,27 +216,39 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="toolbar">
     <button class="btn primary" onclick="consistencyCalc()">Calculate</button>
     <button class="btn" onclick="copyEl('con2-output')">Copy</button>
-    <span class="status-badge" id="{status_id}">{status_text}</span>
+    <span class="status-badge" id="con2-status">enter total profit and best day</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Total profit ($)</div>
-      <input type="number" id="con2-total" placeholder="e.g. 5000" class="b2-input" oninput="consistencyCalc()" aria-label="Total profit ($)">
+      <input type="number" id="con2-total" placeholder="e.g. 5000" class="uc-input" oninput="consistencyCalc()" aria-label="Total profit ($)">
     </div>
     <div>
       <div class="pane-label">Best single day profit ($)</div>
-      <input type="number" id="con2-best" placeholder="e.g. 2000" class="b2-input" oninput="consistencyCalc()" aria-label="Best single day profit ($)">
+      <input type="number" id="con2-best" placeholder="e.g. 2000" class="uc-input" oninput="consistencyCalc()" aria-label="Best single day profit ($)">
     </div>
     <div>
       <div class="pane-label">Consistency threshold (%)</div>
-      <input type="number" id="con2-threshold" placeholder="e.g. 30" value="30" class="b2-input" oninput="consistencyCalc()" aria-label="Consistency threshold (%)">
+      <input type="number" id="con2-threshold" placeholder="e.g. 30" value="30" class="uc-input" oninput="consistencyCalc()" aria-label="Consistency threshold (%)">
     </div>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.75rem;color:var(--text3)">
-    Common thresholds: FTMO = 30% · FundedNext = 30% · The5ers = no rule · MyForexFunds = 30%
+    Illustrative examples only, not guaranteed current — always verify with your firm directly: FTMO ≈30% · FundedNext ≈30% · The5%ers historically no fixed rule · MyForexFunds ≈30%
   </div>
+
+  <div class="result-summary-card" id="con2-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="con2-output" onclick="copyEl('con2-output')" style="min-height:240px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Managing Concentration Risk</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Spread profit across sessions deliberately</div><div class="edu-card-body">If you tend to make most of your money in one or two high-conviction sessions, that trading style is exactly what consistency rules are designed to catch — plan for it rather than being surprised at payout time.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Check before you request payout, not after</div><div class="edu-card-body">Run this calculation using your actual trading log before submitting a payout request — finding out you're inconsistent after the request is a wasted cycle.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A big winning day isn't inherently bad</div><div class="edu-card-body">The rule only becomes a problem if that one day dominates your total. The fix isn't "avoid big wins" — it's "keep earning on other days too" so no single day is too large a share.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -277,6 +291,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>The Consistency Formula</h2>
+    <div class="edu-highlight"><strong>Consistency score</strong> = (Best single day profit ÷ Total profit) × 100. Passes if the score is ≤ the threshold.</div>
+    <h3>Worked example</h3>
+    <p>Total profit $1,000, best day $400, 30% threshold: score = 400/1000 × 100 = <strong>40%</strong> — fails (exceeds 30%). Maximum allowed for a $400 best day would be a total of 400 ÷ 0.30 = <strong>$1,333.33</strong>, meaning $333.33 more profit from other days brings the score down to exactly 30%.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Assuming every firm has the same rule</div><div class="edu-card-body">Thresholds and even whether a consistency rule exists at all vary by firm and change over time — don't assume the number you saw for one firm applies to yours.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Trying to "fix" a past day</div><div class="edu-card-body">A big day that already happened can't be reduced retroactively — the only real fix going forward is earning more on other days, or capping future single-day profit targets.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Checking consistency only at the very end</div><div class="edu-card-body">Run this calculation periodically through the evaluation, not just right before requesting payout — catching a concentration problem early leaves more room to fix it.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -293,8 +323,12 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your firm's official rules page</div><div class="edu-card-body">Whether a consistency rule applies at all, and its exact threshold, is set by each individual firm and changes over time — confirm directly with your firm rather than relying on any third-party figure, including this one.</div></div>
+  </div>
+</section>
 
 
 

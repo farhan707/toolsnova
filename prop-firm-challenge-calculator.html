@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prop Firm Challenge Calculator","url":"https://toolsnova.net/prop-firm-challenge-calculator","description":"Calculate prop firm challenge rules: profit target, daily drawdown limit, max drawdown, and funded account payout. Works with FTMO, MyForexFunds, FundedNext, The5ers.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a prop firm challenge?","acceptedAnswer":{"@type":"Answer","text":"A prop firm (proprietary trading firm) challenge is an evaluation where traders pay a fee to prove they can trade profitably within set rules. If you pass, the firm funds you with a larger account (up to $200K+) and you keep 70-90% of profits. Major firms include FTMO, MyForexFunds, FundedNext, and The5ers."}},{"@type":"Question","name":"What are the typical challenge rules?","acceptedAnswer":{"@type":"Answer","text":"Most firms require: Profit target of 8-10%, Maximum drawdown of 8-12% (from initial balance), Daily drawdown of 4-5% (from highest balance that day), Minimum trading days of 4-10, and a time limit of 30-60 days. Rules vary by firm — always check your specific firm's conditions."}},{"@type":"Question","name":"How is daily drawdown calculated?","acceptedAnswer":{"@type":"Answer","text":"It depends on the firm. This calculator computes daily drawdown as a fixed percentage of your initial balance (static), which matches firms like FTMO's 2-Step and The5%ers. Other firms — including FTMO's 1-Step and TopStep — use a trailing daily drawdown instead, recalculated from the highest equity/balance reached that day (e.g. if your account reaches $105,000 during the day, a 5% trailing floor for that day would be $105,000 × (1-5%) = $99,750). Confirm which model your specific firm and plan use — the two produce different dollar floors as your account grows."}},{"@type":"Question","name":"What is a profit split?","acceptedAnswer":{"@type":"Answer","text":"After passing the challenge and getting funded, you keep a percentage of profits. Standard splits are 70-90%. FTMO offers up to 90%, FundedNext up to 90%. The firm keeps the remainder as their fee for providing the capital."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Challenge Calculator","item":"https://toolsnova.net/prop-firm-challenge-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,36 +216,36 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="toolbar">
     <button class="btn primary" onclick="challengeCalc()">Calculate</button>
     <button class="btn" onclick="copyEl('ch-output')">Copy</button>
-    <span class="status-badge" id="{status_id}">{status_text}</span>
+    <span class="status-badge" id="ch-status">enter account details to begin</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Account Size ($)</div>
-      <input type="number" id="ch-balance" placeholder="e.g. 100000" class="b2-input" oninput="challengeCalc()" aria-label="Account Size ($)">
+      <input type="number" id="ch-balance" placeholder="e.g. 100000" class="uc-input" oninput="challengeCalc()" aria-label="Account Size ($)">
     </div>
     <div>
       <div class="pane-label">Profit Target (%)</div>
-      <input type="number" id="ch-target" placeholder="e.g. 8" value="8" class="b2-input" oninput="challengeCalc()" aria-label="Profit Target (%)">
+      <input type="number" id="ch-target" placeholder="e.g. 8" value="8" class="uc-input" oninput="challengeCalc()" aria-label="Profit Target (%)">
     </div>
     <div>
       <div class="pane-label">Max Drawdown (%)</div>
-      <input type="number" id="ch-maxdd" placeholder="e.g. 10" value="10" class="b2-input" oninput="challengeCalc()" aria-label="Max Drawdown (%)">
+      <input type="number" id="ch-maxdd" placeholder="e.g. 10" value="10" class="uc-input" oninput="challengeCalc()" aria-label="Max Drawdown (%)">
     </div>
     <div>
       <div class="pane-label">Daily Drawdown (%)</div>
-      <input type="number" id="ch-dailydd" placeholder="e.g. 5" value="5" class="b2-input" oninput="challengeCalc()" aria-label="Daily Drawdown (%)">
+      <input type="number" id="ch-dailydd" placeholder="e.g. 5" value="5" class="uc-input" oninput="challengeCalc()" aria-label="Daily Drawdown (%)">
     </div>
     <div>
       <div class="pane-label">Time Limit (days)</div>
-      <input type="number" id="ch-days" placeholder="e.g. 30" value="30" class="b2-input" oninput="challengeCalc()" aria-label="Time Limit (days)">
+      <input type="number" id="ch-days" placeholder="e.g. 30" value="30" class="uc-input" oninput="challengeCalc()" aria-label="Time Limit (days)">
     </div>
     <div>
       <div class="pane-label">Challenge Fee ($)</div>
-      <input type="number" id="ch-fee" placeholder="e.g. 550 (optional)" class="b2-input" oninput="challengeCalc()" aria-label="Challenge Fee ($)">
+      <input type="number" id="ch-fee" placeholder="e.g. 550 (optional)" class="uc-input" oninput="challengeCalc()" aria-label="Challenge Fee ($)">
     </div>
     <div>
       <div class="pane-label">Profit Split (%)</div>
-      <input type="number" id="ch-split" placeholder="e.g. 80" value="80" class="b2-input" oninput="challengeCalc()" aria-label="Profit Split (%)">
+      <input type="number" id="ch-split" placeholder="e.g. 80" value="80" class="uc-input" oninput="challengeCalc()" aria-label="Profit Split (%)">
     </div>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem">
@@ -255,8 +257,20 @@ gtag('config', 'G-S6PPGS7N63');
       <button class="btn" onclick="document.getElementById('ch-balance').value=25000;document.getElementById('ch-target').value=8;document.getElementById('ch-maxdd').value=8;document.getElementById('ch-dailydd').value=4;document.getElementById('ch-fee').value=167;challengeCalc()">FundedNext $25K</button>
     </div>
   </div>
+
+  <div class="result-summary-card" id="ch-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="ch-output" onclick="copyEl('ch-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Before You Buy a Challenge</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Know your drawdown model before you start</div><div class="edu-card-body">This calculator assumes static drawdown (fixed from your initial balance). If your firm uses trailing drawdown instead, your actual floor moves as your equity grows — confirm which model applies before trading.</div></div>
+      <div class="edu-card"><div class="edu-card-title">The daily limit usually kills accounts first</div><div class="edu-card-body">More challenge attempts fail from breaching the daily loss limit in one bad session than from hitting the overall max drawdown — size your per-trade risk against the daily number, not just the total.</div></div>
+      <div class="edu-card"><div class="edu-card-title">The annual payout figure is a ceiling, not a forecast</div><div class="edu-card-body">It assumes you hit the same target every month for a year with no reset — useful for understanding upside potential, not a number to plan your finances around.</div></div>
+    </div>
+  </section>
 
   
   <!-- EDUCATIONAL CONTENT -->
@@ -301,6 +315,22 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>The Core Formulas</h2>
+    <div class="edu-highlight"><strong>Profit target ($)</strong> = Account × Target%. <strong>Max drawdown ($)</strong> = Account × MaxDD%. <strong>Daily drawdown ($)</strong> = Account × DailyDD%. <strong>Min profit/day</strong> = Target($) ÷ Trading days.</div>
+    <h3>Worked example</h3>
+    <p>$100,000 account, 8% target, 10% max drawdown, 5% daily drawdown, 30 trading days: Target = $8,000. Max drawdown = $10,000. Daily drawdown = $5,000. Minimum average profit needed = $8,000 ÷ 30 = <strong>$266.67/day</strong>. At 1% risk per trade ($1,000), you could absorb <strong>5 losing trades</strong> in one day ($5,000 ÷ $1,000) before breaching the daily limit.</p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Not knowing your daily limit in dollars before you trade</div><div class="edu-card-body">"5% daily drawdown" doesn't mean much mid-session — know the exact dollar figure before the market opens, not after a bad morning.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Confusing static and trailing drawdown</div><div class="edu-card-body">A static floor stays fixed no matter how much your account grows; a trailing floor rises with your equity peak. Trading as if you have more room than you actually do is a common, entirely avoidable way to fail.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Sizing risk without checking the daily limit first</div><div class="edu-card-body">Three losing trades at 2% risk each is a 6% daily loss — enough to breach most firms' 5% daily limit in a single bad morning. Size risk against the daily number, not just your gut feel.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -313,7 +343,7 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">How is daily drawdown calculated?</div>
-    <div class="faq-a">Most firms use 'trailing daily drawdown' — calculated from the highest equity/balance reached that day. If your account is at $105,000 at some point during the day, your floor for that day is $105,000 × (1-5%) = $99,750. This resets at server midnight.</div>
+    <div class="faq-a">It depends on the firm. This calculator computes daily drawdown as a fixed percentage of your initial balance (static), which matches firms like FTMO's 2-Step and The5%ers. Other firms — including FTMO's 1-Step and TopStep — use a trailing daily drawdown instead, recalculated from the highest equity/balance reached that day (e.g. if your account reaches $105,000 during the day, a 5% trailing floor for that day would be $105,000 × (1-5%) = $99,750). Confirm which model your specific firm and plan use — the two produce different dollar floors as your account grows.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="faqToggle(this)">What is a profit split?</div>
@@ -321,8 +351,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📄 Your firm's official rules page</div><div class="edu-card-body">Profit targets, drawdown percentages, methodology (static vs. trailing), and time limits are set individually by each firm and change over time — always confirm current rules on the firm's own site before purchasing a challenge.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📊 Your own trading statistics</div><div class="edu-card-body">The daily-loss risk table above is only as useful as your actual average risk per trade — track your real numbers rather than assuming a round figure.</div></div>
+  </div>
+</section>
 
 
 

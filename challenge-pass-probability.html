@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prop Firm Challenge Pass Probability Calculator","url":"https://toolsnova.net/challenge-pass-probability","description":"Calculate your probability of passing a prop firm challenge based on your win rate, risk:reward ratio, and number of trades. Monte Carlo simulation with 2000 runs.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Monte Carlo simulation?","acceptedAnswer":{"@type":"Answer","text":"Monte Carlo simulation runs thousands of random trade sequences using your average statistics to estimate the probability of a given outcome. With 2,000 simulations, each using your win rate and R:R randomly, it shows the percentage of scenarios where you passed the challenge without breaching drawdown."}},{"@type":"Question","name":"What win rate and R:R do I need to pass?","acceptedAnswer":{"@type":"Answer","text":"A positive expectancy is required: (Win Rate × RR) - Loss Rate > 0. Example: 50% WR with 1:1.5 RR gives expectancy of 0.25R per trade — positive. Common passing combos: 55% WR + 1:1.5 RR, 45% WR + 1:2 RR, 60% WR + 1:1.2 RR."}},{"@type":"Question","name":"Why might I fail even with a positive edge?","acceptedAnswer":{"@type":"Answer","text":"Even with a positive edge, variance can create losing streaks that breach the drawdown limit. With 1% risk per trade and a 10% max drawdown, you can only sustain 10 consecutive losses before failing. Reducing risk per trade gives your edge more room to play out."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Prop Firm Tools","item":"https://toolsnova.net/prop-firm-tools/"},{"@type":"ListItem","position":3,"name":"Pass Probability Calculator","item":"https://toolsnova.net/challenge-pass-probability"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -214,36 +216,48 @@ gtag('config', 'G-S6PPGS7N63');
   <div class="toolbar">
     <button class="btn primary" onclick="challengePassProb()">Calculate</button>
     <button class="btn" onclick="copyEl('cpp-output')">Copy</button>
-    <span class="status-badge" id="{status_id}">{status_text}</span>
+    <span class="status-badge" id="cpp-status">enter win rate and risk:reward ratio</span>
   </div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Win rate (%)</div>
-      <input type="number" id="cpp-winrate" placeholder="e.g. 55" class="b2-input" oninput="challengePassProb()" aria-label="Win rate (%)">
+      <input type="number" id="cpp-winrate" placeholder="e.g. 55" class="uc-input" oninput="challengePassProb()" aria-label="Win rate (%)">
     </div>
     <div>
       <div class="pane-label">Risk:Reward ratio</div>
-      <input type="number" id="cpp-rr" placeholder="e.g. 1.5 (for 1:1.5)" class="b2-input" oninput="challengePassProb()" aria-label="Risk:Reward ratio">
+      <input type="number" id="cpp-rr" placeholder="e.g. 1.5 (for 1:1.5)" class="uc-input" oninput="challengePassProb()" aria-label="Risk:Reward ratio">
     </div>
     <div>
       <div class="pane-label">Risk per trade (%)</div>
-      <input type="number" id="cpp-risk" placeholder="e.g. 1" value="1" class="b2-input" oninput="challengePassProb()" aria-label="Risk per trade (%)">
+      <input type="number" id="cpp-risk" placeholder="e.g. 1" value="1" class="uc-input" oninput="challengePassProb()" aria-label="Risk per trade (%)">
     </div>
     <div>
       <div class="pane-label">Number of trades</div>
-      <input type="number" id="cpp-trades" placeholder="e.g. 30" value="30" class="b2-input" oninput="challengePassProb()" aria-label="Number of trades">
+      <input type="number" id="cpp-trades" placeholder="e.g. 30" value="30" class="uc-input" oninput="challengePassProb()" aria-label="Number of trades">
     </div>
     <div>
       <div class="pane-label">Profit target (%)</div>
-      <input type="number" id="cpp-target" placeholder="e.g. 8" value="8" class="b2-input" oninput="challengePassProb()" aria-label="Profit target (%)">
+      <input type="number" id="cpp-target" placeholder="e.g. 8" value="8" class="uc-input" oninput="challengePassProb()" aria-label="Profit target (%)">
     </div>
     <div>
       <div class="pane-label">Max drawdown (%)</div>
-      <input type="number" id="cpp-maxdd" placeholder="e.g. 10" value="10" class="b2-input" oninput="challengePassProb()" aria-label="Max drawdown (%)">
+      <input type="number" id="cpp-maxdd" placeholder="e.g. 10" value="10" class="uc-input" oninput="challengePassProb()" aria-label="Max drawdown (%)">
     </div>
   </div>
+
+  <div class="result-summary-card" id="cpp-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cpp-output" onclick="copyEl('cpp-output')" style="min-height:260px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Using Your Probability</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">A directional estimate, not an exact prediction</div><div class="edu-card-body">This is a simulation based on your stated stats, not a guarantee — real trading has streaks, variance, and conditions this model doesn't capture. Use it to compare strategies relative to each other, not as a precise forecast.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Your inputs need to be honest, not hopeful</div><div class="edu-card-body">Use your actual historical win rate and average R:R from a trading journal, not your best week or your goal — an overly optimistic input makes the whole output meaningless.</div></div>
+      <div class="edu-card"><div class="edu-card-title">A negative edge means fix the strategy first</div><div class="edu-card-body">If your expectancy is negative, no amount of position sizing or risk management will make the challenge profitable on average — the math has to work before the money management does.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -286,6 +300,23 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>How the Simulation Works</h2>
+    <div class="edu-highlight"><strong>Expectancy (R)</strong> = (Win rate × Reward) − (Loss rate × 1). <strong>Monte Carlo</strong>: 2,000 simulated trade sequences, each trade winning at your stated win rate for +Risk×R:R, or losing −Risk; a run passes if it reaches your target before breaching either a trailing (from peak) or static (from initial) drawdown limit, whichever comes first.</div>
+    <h3>Worked example</h3>
+    <p>55% win rate, 1:1.5 R:R: expectancy = (0.55 × 1.5) − (0.45 × 1) = 0.825 − 0.45 = <strong>+0.375R per trade</strong> — a positive edge. At 1% risk per trade over 30 trades, expected profit ≈ 0.375 × 1 × 30 = <strong>11.25%</strong> before accounting for the chance of an early drawdown breach, which is what the Monte Carlo simulation estimates.</p>
+    <p><em>This model simplifies real trading in two ways: it risks a fixed % of your starting balance on every trade (not compounded on your current, growing/shrinking balance), and it checks a combined trailing-and-static drawdown condition rather than matching one specific firm's exact rule. Treat the result as directional, not exact.</em></p>
+  </section>
+
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Using your best month's stats, not your real average</div><div class="edu-card-body">A win rate pulled from your best streak overstates your actual edge — use a full trading journal average, ideally across 50+ trades, not a cherry-picked sample.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Ignoring a negative expectancy and hoping variance saves you</div><div class="edu-card-body">If expectancy is negative, a "high enough" pass probability from lucky variance doesn't mean the strategy works — it means you got lucky once. Fix the edge before paying for another attempt.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Treating the percentage as exact</div><div class="edu-card-body">This is a simulation based on simplifying assumptions (see the worked example above), not a certified probability — a 65% estimate and a 70% estimate aren't meaningfully different in practice.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -302,8 +333,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">📊 Your trading journal</div><div class="edu-card-body">Win rate and R:R inputs are only useful if they reflect your real, logged trading history — a spreadsheet or journal covering at least 50+ trades gives a far more reliable input than memory or a single good week.</div></div>
+    <div class="edu-card"><div class="edu-card-title">📄 Your firm's official rules page</div><div class="edu-card-body">Drawdown methodology (static vs. trailing), profit target, and time limits are set by each firm — confirm current rules directly rather than assuming this simulation's assumptions match your specific plan exactly.</div></div>
+  </div>
+</section>
 
 
 

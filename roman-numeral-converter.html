@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Roman Numeral Converter","url":"https://toolsnova.net/roman-numeral-converter","description":"Convert any number to Roman numerals or convert Roman numerals to numbers. Supports 1–3999. Free online Roman numeral converter with character breakdown.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are Roman numerals?","acceptedAnswer":{"@type":"Answer","text":"Roman numerals use letters to represent numbers: I=1, V=5, X=10, L=50, C=100, D=500, M=1000. They originated in ancient Rome and are still used today for clock faces, book chapters, movie sequels, and year numbering in formal contexts."}},{"@type":"Question","name":"What is the subtractive rule?","acceptedAnswer":{"@type":"Answer","text":"When a smaller value appears before a larger one, it is subtracted. IV = 4 (5−1), IX = 9 (10−1), XL = 40 (50−10), XC = 90 (100−10), CD = 400 (500−100), CM = 900 (1000−100). This avoids repeating more than three identical symbols."}},{"@type":"Question","name":"What is the largest Roman numeral?","acceptedAnswer":{"@type":"Answer","text":"Standard Roman numerals go up to 3,999 (MMMCMXCIX). The number 4,000 would require MMMM which violates the rule of no more than three consecutive identical symbols. Some systems use a bar over a letter to mean ×1000 (V̄ = 5,000)."}},{"@type":"Question","name":"Are Roman numerals still used today?","acceptedAnswer":{"@type":"Answer","text":"Yes. Common uses: copyright years in movies and TV (© MMXXIV), Super Bowl numbering (Super Bowl LVIII), clock faces, book front matter (page numbering), outlines, monarchs and popes (King Charles III, Pope John Paul II), and formal event names."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Student Tools","item":"https://toolsnova.net/student-tools/"},{"@type":"ListItem","position":3,"name":"Roman Numeral Converter","item":"https://toolsnova.net/roman-numeral-converter"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -217,14 +219,14 @@ gtag('config', 'G-S6PPGS7N63');
     <button class="btn" onclick="copyEl('rom-output')">Copy</button>
     <span class="status-badge" id="rom-status">enter a number or Roman numeral</span>
   </div>
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem" class="uc-two-col">
     <div>
       <div class="pane-label">Input</div>
-      <input type="text" id="rom-input" placeholder="e.g. 2024 or MMXXIV" class="b2-input" oninput="romanConvert()" spellcheck="false" aria-label="Number or Roman numeral to convert">
+      <input type="text" id="rom-input" placeholder="e.g. 2024 or MMXXIV" class="uc-input" oninput="romanConvert()" spellcheck="false" aria-label="Number or Roman numeral to convert">
     </div>
     <div>
       <div class="pane-label">Direction</div>
-      <select id="rom-mode" class="mode-select" style="width:100%" onchange="romanConvert()">
+      <select id="rom-mode" class="uc-select" onchange="romanConvert()" aria-label="Conversion direction">
         <option value="toRoman">Number → Roman numeral</option>
         <option value="fromRoman">Roman numeral → Number</option>
       </select>
@@ -240,8 +242,20 @@ gtag('config', 'G-S6PPGS7N63');
       <button class="btn" onclick="document.getElementById('rom-input').value='MMXXIV';document.getElementById('rom-mode').value='fromRoman';romanConvert()">MMXXIV</button>
     </div>
   </div>
+
+  <div class="result-summary-card" id="rom-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="rom-output" onclick="copyEl('rom-output')" style="min-height:120px;white-space:pre;cursor:pointer"></div></div>
+
+  <section class="edu-section">
+    <h2>Standards-Compliant Validation</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Not every combination of I, V, X, L, C, D, M is valid</div><div class="edu-card-body">This converter checks real Roman numeral construction rules, not just that you used valid letters — "IIII" or "VV" will be rejected as non-standard, even though they use only valid characters.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Only six subtractive pairs are standard</div><div class="edu-card-body">IV, IX, XL, XC, CD, and CM are the only valid "subtract before" combinations — forms like "IL" (attempting 49) or "IC" (attempting 99) aren't standard notation, even though the arithmetic might seem to make sense.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Range is 1 to 3999</div><div class="edu-card-body">Standard Roman numerals don't have a symbol for zero or a clean way to represent 4000+ without extending the notation (e.g. a bar over a numeral for ×1000) — this converter covers the standard 1–3999 range.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -283,6 +297,15 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Repeating a symbol too many times</div><div class="edu-card-body">I, X, C, and M can repeat up to 3 times in a row (III = 3), but never 4 — "IIII" is not standard notation for 4; the correct form is "IV".</div></div>
+      <div class="edu-card"><div class="edu-card-title">Repeating V, L, or D at all</div><div class="edu-card-body">These three symbols should never repeat — "VV" is not valid for 10 (use "X" instead), and similarly for "LL" and "DD".</div></div>
+      <div class="edu-card"><div class="edu-card-title">Inventing subtractive pairs beyond the standard six</div><div class="edu-card-body">Only IV, IX, XL, XC, CD, and CM are valid subtractive forms. "IL" for 49 or "IC" for 99 look plausible but aren't standard — the correct forms are "XLIX" and "XCIX".</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -303,7 +326,12 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🏛️ Standard Roman numeral construction rules</div><div class="edu-card-body">The repeat-limit and subtractive-pair rules used for validation here reflect the standard convention taught in reference works and used consistently in modern formal contexts (publishing, broadcasting, horology).</div></div>
+  </div>
+</section>
 
 
 

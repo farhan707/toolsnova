@@ -34,7 +34,9 @@
 <meta name="twitter:description" content="Convert CGPA to percentage, letter grade, and different GPA scales. Supports 4.0, 5.0, 7.0, and 10.0 scales. Free CGPA to percentage calculator.">
 <meta name="twitter:image" content="https://toolsnova.net/icons/og-image.png">
 <meta name="twitter:site" content="@toolsnova">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CGPA Calculator","url":"https://toolsnova.net/cgpa-calculator","description":"Convert CGPA to percentage, letter grade, and different GPA scales. Supports 4.0, 5.0, 7.0, and 10.0 scales. Free CGPA to percentage calculator.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CGPA Calculator","url":"https://toolsnova.net/cgpa-calculator","description":"Convert CGPA to percentage, letter grade, and different GPA scales. Supports 4.0, 5.0, 7.0, and 10.0 scales. Free CGPA to percentage calculator.","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert CGPA to percentage?","acceptedAnswer":{"@type":"Answer","text":"For a 4.0 scale: Percentage = CGPA × 25. For a 10.0 scale: Percentage = CGPA × 9.5 (common formula used by many Indian universities). For a 5.0 scale: Percentage = CGPA × 20. Always check your institution's specific conversion formula."}},{"@type":"Question","name":"What is the difference between GPA and CGPA?","acceptedAnswer":{"@type":"Answer","text":"GPA (Grade Point Average) is your average for a single semester. CGPA (Cumulative Grade Point Average) is the average across all semesters completed. CGPA gives a more complete picture of overall academic performance."}},{"@type":"Question","name":"What CGPA is required for a job/masters?","acceptedAnswer":{"@type":"Answer","text":"Most companies: 2.5+ (4.0 scale) or 6.5+ (10.0 scale). Good companies: 3.0+/7.5+. Top companies: 3.5+/8.5+. US masters programs: typically 3.0+ minimum, competitive programs need 3.5+. UK masters: usually 3.3+ (equivalent to 2:1 honours)."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ToolsNova","item":"https://toolsnova.net/"},{"@type":"ListItem","position":2,"name":"Student Tools","item":"https://toolsnova.net/student-tools/"},{"@type":"ListItem","position":3,"name":"CGPA Calculator","item":"https://toolsnova.net/cgpa-calculator"}]}</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6PPGS7N63"></script>
 <script>
@@ -219,11 +221,11 @@ gtag('config', 'G-S6PPGS7N63');
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px">
     <div>
       <div class="pane-label">Your CGPA</div>
-      <input type="number" id="cgpa-gpa" placeholder="e.g. 3.5" class="b2-input" oninput="cgpaCalc()" aria-label="Your CGPA">
+      <input type="number" id="cgpa-gpa" placeholder="e.g. 3.5" class="uc-input" oninput="cgpaCalc()" aria-label="Your CGPA">
     </div>
     <div>
       <div class="pane-label">GPA scale</div>
-      <select id="cgpa-scale" class="mode-select" style="width:100%" onchange="cgpaCalc()">
+      <select id="cgpa-scale" class="uc-select" onchange="cgpaCalc()" aria-label="GPA scale">
           <option value="4.0" selected>4.0 scale (US/UK)</option>
           <option value="5.0">5.0 scale</option>
           <option value="7.0">7.0 scale</option>
@@ -231,8 +233,20 @@ gtag('config', 'G-S6PPGS7N63');
       </select>
     </div>
   </div>
+
+  <div class="result-summary-card" id="cgpa-summary"></div>
+
   <div><div class="pane-label">Result <span style="color:var(--text3);font-size:.65em">(click to copy)</span></div>
   <div class="output-box" id="cgpa-output" onclick="copyEl('cgpa-output')" style="min-height:220px;white-space:pre;cursor:pointer;font-size:.78rem"></div></div>
+
+  <section class="edu-section">
+    <h2>Using This Converter</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">This converts a single already-known CGPA</div><div class="edu-card-body">Enter the cumulative GPA your institution has already calculated for you, and this tool converts it between scales and gives a percentage/classification — it doesn't calculate a cumulative GPA from individual semester grades. For computing GPA from actual courses and credits, use the GPA Calculator instead.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Pick the scale your CGPA is actually reported on</div><div class="edu-card-body">Check your transcript for the correct scale (4.0, 5.0, 7.0, or 10.0) before converting — using the wrong source scale gives a meaningless result.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Classification labels are general conventions</div><div class="edu-card-body">"Distinction," "Merit," and similar labels shown here are common conventions, not your specific institution's official classification — check your program's actual grading policy for anything that matters academically.</div></div>
+    </div>
+  </section>
 
   <!-- EDUCATIONAL CONTENT -->
 
@@ -274,6 +288,15 @@ gtag('config', 'G-S6PPGS7N63');
 
   </section>
 
+  <section class="edu-section">
+    <h2>Avoid These Mistakes</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-card-title">Selecting the wrong source scale</div><div class="edu-card-body">A CGPA of 8.5 means something very different on a 10.0 scale (85%) versus mistakenly treated as a 4.0 scale (over 100%, impossible) — always match the scale selector to what your transcript actually uses.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Using approximate multipliers for official purposes</div><div class="edu-card-body">The conversion formulas shown here are standard approximations. For admissions, visas, or job applications, use your university's official conversion or a recognized credential evaluation service (WES, NACES, ICES) instead.</div></div>
+      <div class="edu-card"><div class="edu-card-title">Expecting this tool to compute a cumulative GPA for you</div><div class="edu-card-body">This is a scale converter for a CGPA you already know — it doesn't average multiple semesters' grades and credits into a cumulative figure. Use the GPA Calculator to compute an individual semester's GPA from actual courses.</div></div>
+    </div>
+  </section>
+
   <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -290,8 +313,13 @@ gtag('config', 'G-S6PPGS7N63');
   </div>
 </section>
 
-
-
+<section class="edu-section">
+  <h2>References</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><div class="edu-card-title">🌐 WES / NACES / ICES</div><div class="edu-card-body">Recognized credential evaluation services that provide official CGPA-to-scale conversions for international admissions and employment — use these, not this tool's approximate multipliers, for anything official.</div></div>
+    <div class="edu-card"><div class="edu-card-title">🎓 Your university's registrar</div><div class="edu-card-body">Your institution's own published conversion formula (often stated in the academic catalog or on the registrar's website) is the authoritative source for your specific CGPA scale.</div></div>
+  </div>
+</section>
 
 
 

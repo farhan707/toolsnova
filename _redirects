@@ -1,6 +1,13 @@
 # ToolsNova — Cloudflare Pages Redirects
-# Remove .html extension from all URLs
 
+# 1) Force non-www as the canonical host.
+#    Fixes: Google indexing both toolsnova.net AND www.toolsnova.net as
+#    separate duplicate copies of every page (seen in GSC coverage report).
+#    Requires www.toolsnova.net to be added as a Custom Domain on this
+#    Cloudflare Pages project (see chat instructions) for this rule to fire.
+https://www.toolsnova.net/*          https://toolsnova.net/:splat         301!
+
+# 2) Remove .html extension from all URLs
 /index.html                          /                                    301
 /json-formatter.html                 /json-formatter                      301
 /base64-encoder.html                 /base64-encoder                      301
@@ -104,3 +111,57 @@
 /ai-api-cost-calculator.html         /ai-api-cost-calculator              301
 /ai-prompt-studio.html              /ai-prompt-studio                    301
 /midjourney-prompt-builder.html     /midjourney-prompt-builder           301
+
+# 3) The following 49 pages were added after the original redirect list was
+#    written and never got a rule — this is why Google's coverage report
+#    shows both "/page" and "/page.html" indexed as separate duplicate URLs
+#    for exactly these pages.
+/ai-prompt-library.html                 /ai-prompt-library                 301
+/ai-token-counter.html                  /ai-token-counter                  301
+/blood-pressure-checker.html            /blood-pressure-checker            301
+/blood-type-compatibility.html          /blood-type-compatibility          301
+/break-even-calculator.html             /break-even-calculator             301
+/calorie-burn-calculator.html           /calorie-burn-calculator           301
+/cgpa-calculator.html                   /cgpa-calculator                   301
+/challenge-pass-probability.html        /challenge-pass-probability        301
+/concrete-calculator.html               /concrete-calculator               301
+/consistency-calculator.html            /consistency-calculator            301
+/currency-correlation-calculator.html   /currency-correlation-calculator   301
+/daily-drawdown-calculator.html         /daily-drawdown-calculator         301
+/dividend-calculator.html               /dividend-calculator               301
+/electricity-cost-calculator.html       /electricity-cost-calculator       301
+/flooring-calculator.html               /flooring-calculator               301
+/forex-swap-calculator.html             /forex-swap-calculator             301
+/funded-account-roi-calculator.html     /funded-account-roi-calculator     301
+/height-converter.html                  /height-converter                  301
+/inflation-calculator.html              /inflation-calculator              301
+/islamic-mortgage-calculator.html       /islamic-mortgage-calculator       301
+/kelly-criterion-calculator.html        /kelly-criterion-calculator        301
+/legal-document-analyzer.html           /legal-document-analyzer           301
+/loan-emi-comparison.html               /loan-emi-comparison               301
+/matrix-calculator.html                 /matrix-calculator                 301
+/meeting-time-zone-planner.html         /meeting-time-zone-planner         301
+/monte-carlo-simulator.html             /monte-carlo-simulator             301
+/mortgage-affordability-calculator.html /mortgage-affordability-calculator 301
+/ovulation-calculator.html              /ovulation-calculator              301
+/paint-calculator.html                  /paint-calculator                  301
+/position-scaling-calculator.html       /position-scaling-calculator       301
+/pregnancy-due-date-calculator.html     /pregnancy-due-date-calculator     301
+/profit-target-tracker.html             /profit-target-tracker             301
+/prop-firm-challenge-calculator.html    /prop-firm-challenge-calculator    301
+/quadratic-equation-solver.html         /quadratic-equation-solver         301
+/roi-calculator.html                    /roi-calculator                    301
+/roof-pitch-calculator.html             /roof-pitch-calculator             301
+/significant-figures-calculator.html    /significant-figures-calculator    301
+/solar-panel-roi-calculator.html        /solar-panel-roi-calculator        301
+/square-footage-calculator.html         /square-footage-calculator         301
+/standard-deviation-calculator.html     /standard-deviation-calculator     301
+/tip-split-calculator.html              /tip-split-calculator              301
+/triangle-calculator.html               /triangle-calculator               301
+/vitamin-d-calculator.html              /vitamin-d-calculator              301
+/win-rate-expectancy-calculator.html    /win-rate-expectancy-calculator    301
+/world-cup-2026-calculator.html         /world-cup-2026-calculator         301
+/world-cup-2026-prize-money.html        /world-cup-2026-prize-money        301
+/world-cup-2026-quiz.html               /world-cup-2026-quiz               301
+/world-cup-2026-schedule.html           /world-cup-2026-schedule           301
+/world-cup-2026-third-place.html        /world-cup-2026-third-place        301
